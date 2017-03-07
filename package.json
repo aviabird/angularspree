@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
+    "primeng": "^2.0.2",
     "rxjs": "^5.1.0",
     "zone.js": "^0.7.6"
   },
