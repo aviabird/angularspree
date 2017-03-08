@@ -1,11 +1,12 @@
-export class LightOrder {
-  number: string;
-  payment_state: string;
-  completed_at: string;
-  state: string;
-  total: string;
-  shipment_state: string;
-}
+/* 
+ * Order model
+ * Detailed info http://guides.spreecommerce.org/developer/orders.html
+ * Public API's http://guides.spreecommerce.org/api/orders.html
+ */
+
+import { LineItem } from './line_item';
+import { Address } from './address';
+import { Payment } from './payment';
 
 export class Order {
   id: string;
@@ -35,68 +36,19 @@ export class Order {
   canceler_id: string;
   total_quantity: string;
   token: string;
-  bill_address: [BillAddress];
-  ship_address: [ShipAddress];
+  bill_address: [Address];
+  ship_address: [Address];
   line_items: [LineItem];
   payments: [Payment];
 }
 
-class BillAddress {
-  id: string;
-  firstname: string;
-  lastname: string;
-  full_name: string;
-  address1: string;
-  address2: string;
-  city: string;
-  zipcode: string;
-  phone: string;
-  company: string;
-  alternative_phone: string;
-  country_id: string;
-  state_id: string;
-  state_name: string;
-  state_text: string;
-}
-
-class ShipAddress {
-  id: string;
-  firstname: string;
-  lastname: string;
-  full_name: string;
-  address1: string;
-  address2: string;
-  city: string;
-  zipcode: string;
-  phone: string;
-  company: string;
-  alternative_phone: string;
-  country_id: string;
-  state_id: string;
-  state_name: string;
-  state_text: string;
-}
-
-class LineItem {
-  id: string;
-  quantity: string;
-  price: string;
-  variant_id: string;
-  single_display_amount: string;
-  display_amount: string;
-  total: string;
-}
-
-class Payment {
-  id: string;
-  source_type: string;
-  source_id: string;
-  amount: string;
-  display_amount: string;
-  payment_method_id: string;
-  response_code: string;
+// NOTE: This just mimics the serializer exposed in the API
+// Not sure if it is required, review it in APRIL
+export class LightOrder {
+  number: string;
+  payment_state: string;
+  completed_at: string;
   state: string;
-  avs_response: string;
-  created_at: string;
-  updated_at: string;
+  total: string;
+  shipment_state: string;
 }

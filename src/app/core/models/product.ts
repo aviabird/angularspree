@@ -1,66 +1,14 @@
-class Master {
-  id: string;
-  name: string;
-  sku: string;
-  price: string;
-  weight: string;
-  height: string;
-  width: string;
-  depth: string;
-  is_master: boolean;
-  slug: string;
-  description: string;
-  track_inventory: boolean;
-  display_price: string;
-  options_text: string;
-  total_on_hand: string;
-  product_id: string;
-  in_stock: boolean;
-  is_backorderable: boolean;
-  is_destroyed: boolean;
-}
+/* 
+ * Product model
+ * Detailed info http://guides.spreecommerce.org/developer/products.html
+ * Public API's http://guides.spreecommerce.org/api/products.html
+ */
 
-class ProductProperties {
-  id: string;
-  product_id: string;
-  property_id: string;
-  value: string;
-  property_name: string;
-}
-
-class Classification {
-  taxon_id: string;
-  position: string;
-}
-
-class Variant {
-  id: string;
-  name: string;
-  sku: string;
-  price: string;
-  weight: string;
-  height: string;
-  width: string;
-  depth: string;
-  is_master: boolean;
-  slug: string;
-  description: string;
-  track_inventory: boolean;
-  display_price: string;
-  options_text: string;
-  total_on_hand: string;
-  product_id: string;
-  in_stock: boolean;
-  is_backorderable: boolean;
-  is_destroyed: boolean;
-}
-
-class OptionType {
-  id: string;
-  name: string;
-  presentation: string;
-  position: string;
-}
+import { Master } from './master';
+import { OptionType } from './option_type';
+import { Classification } from './classification';
+import { ProductProperty } from './product_property';
+import { Variant } from './variant';
 
 export class Product {
   id: string;
@@ -79,6 +27,6 @@ export class Product {
   master: Master;
   variants: [Variant];
   option_types: [OptionType];
-  product_properties: [ProductProperties];
+  product_properties: [ProductProperty];
   classifications: [Classification];
 }
