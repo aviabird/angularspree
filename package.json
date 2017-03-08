@@ -12,14 +12,17 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^2.4.0",
-    "@angular/compiler": "^2.4.0",
-    "@angular/core": "^2.4.0",
-    "@angular/forms": "^2.4.0",
-    "@angular/http": "^2.4.0",
-    "@angular/platform-browser": "^2.4.0",
-    "@angular/platform-browser-dynamic": "^2.4.0",
-    "@angular/router": "^3.4.0",
+    "@angular/common": "next",
+    "@angular/compiler": "next",
+    "@angular/core": "next",
+    "@angular/forms": "next",
+    "@angular/http": "next",
+    "@angular/platform-browser": "next",
+    "@angular/platform-browser-dynamic": "next",
+    "@angular/router": "4.0.0-rc.2",
+    "@ngrx/core": "^1.2.0",
+    "@ngrx/effects": "^2.0.0",
+    "@ngrx/store": "^2.2.1",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "primeng": "^2.0.2",
@@ -28,10 +31,10 @@
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
-    "@angular/compiler-cli": "^2.4.0",
+    "@angular/compiler-cli": "next",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
-    "codelyzer": "~2.0.0",
+    "codelyzer": "~2.0.0-beta.4",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",
@@ -46,6 +49,6 @@
     "sass-loader": "^6.0.3",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
-    "typescript": "~2.0.0"
+    "typescript": "2.1.6"
   }
 }
