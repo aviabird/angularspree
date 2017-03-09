@@ -1,6 +1,6 @@
 {
   "name": "angularspree",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -54,5 +54,9 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "2.1.6"
-  }
+  },
+  "description": "Spree for Angular2",
+  "main": "index.js",
+  "repository": "git@github.com:aviabird/angularspree.git",
+  "author": "Pankaj Rawat <pankajrawat19sept@gmail.com>"
 }
