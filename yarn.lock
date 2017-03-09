@@ -89,9 +89,17 @@
   version "4.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.0.0-rc.2.tgz#59535050e5d0e6141417186eee571296f8e9c3d0"
 
+"@angular/core@^2.0.0":
+  version "2.4.9"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.9.tgz#85dca2afa4021be91512c97597702ac8d73092e6"
+
 "@angular/forms@next":
   version "4.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-4.0.0-rc.2.tgz#6d9df97783b6023d652d97369db13d6ad6c7fa9e"
+
+"@angular/http@^2.0.0":
+  version "2.4.9"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.9.tgz#a7de980d564ac25a497c5e822d2b941c1f143d48"
 
 "@angular/http@next":
   version "4.0.0-rc.2"
@@ -100,6 +108,10 @@
 "@angular/platform-browser-dynamic@next":
   version "4.0.0-rc.2"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.0.0-rc.2.tgz#f2bbab322706dc6361d46647e1e2b7c26f036a1c"
+
+"@angular/platform-browser@^2.0.0":
+  version "2.4.9"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.9.tgz#936139a1e0d280394988473a8a11d922d768f89e"
 
 "@angular/platform-browser@next":
   version "4.0.0-rc.2"
@@ -3073,6 +3085,16 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+ng2-restangular@^0.1.29:
+  version "0.1.29"
+  resolved "https://registry.yarnpkg.com/ng2-restangular/-/ng2-restangular-0.1.29.tgz#887a1e6f781c489ac7778ed49f325e19a7eba0a8"
+  dependencies:
+    "@angular/core" "^2.0.0"
+    "@angular/http" "^2.0.0"
+    "@angular/platform-browser" "^2.0.0"
+    lodash "^4.0.0"
+    rxjs "^5.0.0-beta.12"
+
 no-case@^2.2.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.1.tgz#7aeba1c73a52184265554b7dc03baf720df80081"
@@ -4163,7 +4185,7 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs@^5.0.1, rxjs@^5.1.0:
+rxjs@^5.0.0-beta.12, rxjs@^5.0.1, rxjs@^5.1.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.2.0.tgz#db537de8767c05fa73721587a29e0085307d318b"
   dependencies:
