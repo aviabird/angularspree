@@ -18,7 +18,8 @@ import { HomeModule } from './home/index';
 import { CartModule } from './cart/index';
 import { ProductModule } from './product/index';
 import { CoreModule } from './core/index';
-
+import { StoreModule } from "@ngrx/store";
+import { reducer } from './app.state';
 // AppState
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CoreModule } from './core/index';
   ],
   imports: [
     RouterModule.forRoot(routes),
+    StoreModule.provideStore(reducer),
     BrowserModule,
     FormsModule,
     HttpModule,
