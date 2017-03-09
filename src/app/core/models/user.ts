@@ -1,5 +1,5 @@
 /**
- * User model 
+ * User model
  * Basically mimics the UserSerializer in the API.
  */
 

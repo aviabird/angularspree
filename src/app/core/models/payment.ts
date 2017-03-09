@@ -1,7 +1,7 @@
 /*
  * Payment Model
  * Detailed info http://guides.spreecommerce.org/developer/payments.html
- * Public API's http://guides.spreecommerce.org/api/payments.html 
+ * Public API's http://guides.spreecommerce.org/api/payments.html
  */
 
 export class Payment {

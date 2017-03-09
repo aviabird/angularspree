@@ -1,4 +1,4 @@
-/* 
+/*
  * Order model
  * Detailed info http://guides.spreecommerce.org/developer/orders.html
  * Public API's http://guides.spreecommerce.org/api/orders.html

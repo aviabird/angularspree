@@ -1,4 +1,4 @@
-/* 
+/*
  * Product model
  * Detailed info http://guides.spreecommerce.org/developer/products.html#variants
  * Public API's http://guides.spreecommerce.org/api/variants.html
