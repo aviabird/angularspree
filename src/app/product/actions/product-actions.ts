@@ -6,6 +6,7 @@ export class ProductActions {
     static GET_ALL_PRODUCTS_SUCCESS = "GET_ALL_PRODUCTS_SUCCESS";
     static GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
     static GET_PRODUCT_DETAIL_SUCCESS = "GET_PRODUCT_DETAIL_SUCCESS";
+    static CLEAR_SELECTED_PRODUCT = "CLEAR_SELECTED_TRIP";
 
     getAllProducts(): Action {
         return { type: ProductActions.GET_ALL_PRODUCTS };
@@ -25,11 +26,14 @@ export class ProductActions {
          };
     }
 
-    getProductDetailSuccess(product: Product) {
+    getProductDetailSuccess(product: Product): Action {
         return {
             type: ProductActions.GET_PRODUCT_DETAIL_SUCCESS,
             payload: product
         }
     }
 
+    clearSelectedProduct(): Action {
+        return { type: ProductActions.CLEAR_SELECTED_PRODUCT };
+    }
 }

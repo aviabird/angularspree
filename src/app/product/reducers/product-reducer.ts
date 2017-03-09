@@ -16,6 +16,14 @@ export const productReducer: ActionReducer<ProductState> = (state: ProductState 
       return state;
     }
 
+    case ActionTypes.CLEAR_SELECTED_PRODUCT: {
+      return Object.assign({}, state, {
+        selectedProduct: null
+      })
+
+      return state;
+    }
+
     case ProductActions.GET_ALL_PRODUCTS:
       const products: Product[] = payload;
       const productIds: string[] = products.map(product => product.id);
