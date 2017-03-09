@@ -8,7 +8,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build--prod": "npm run lint && ng build --prod --no-sourcemap --stats-json && npm run sw",
+    "sw": "sw-precache --root=dist --config=sw-precache-config.js",
+    "static-serve": "cd dist && live-server --port=4200 --host=localhost --entry-file=/index.html"
   },
   "private": true,
   "dependencies": {
@@ -47,6 +50,7 @@
     "protractor": "~5.1.0",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.3",
+    "sw-precache": "^5.0.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "2.1.6"
