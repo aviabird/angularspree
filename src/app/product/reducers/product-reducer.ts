@@ -7,6 +7,15 @@ export const initialState: ProductState = new ProductStateRecord() as ProductSta
 
 export const productReducer: ActionReducer<ProductState> = (state: ProductState = initialState, { type, payload }: Action): ProductState => {
   switch (type) {
+
+    case ProductActions.GET_PRODUCT_DETAIL_SUCCESS: {
+      Object.assign({}, state, {
+        selectedProduct: payload
+      });
+
+      return state;
+    }
+
     case ProductActions.GET_ALL_PRODUCTS:
       const products: Product[] = payload;
       const productIds: string[] = products.map(product => product.id);
