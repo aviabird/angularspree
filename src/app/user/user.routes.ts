@@ -1,4 +1,4 @@
-import { OverviewComponent } from './overview/overview.component';
+import { OverviewComponent } from './components/overview/overview.component';
 import { UserComponent } from './user.component';
 
 export const UserRoutes = [
