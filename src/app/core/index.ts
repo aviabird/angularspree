@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 // Components
 
 // Services
-import { DummyService } from './services/service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -14,8 +14,12 @@ import { DummyService } from './services/service';
   exports: [
     // components
     // DummyService
+    AuthService
   ],
   imports: [
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class CoreModule {}
