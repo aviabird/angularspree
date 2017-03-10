@@ -26,10 +26,11 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.0",
     "@ngrx/store": "^2.2.1",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
-    "primeng": "^2.0.3",
+    "ng2-bootstrap": "^1.4.0",
     "reselect": "^2.5.4",
     "rxjs": "^5.1.0",
     "zone.js": "^0.7.6"
