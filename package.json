@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
+    "ng": "./node_modules/@angular/cli/bin/ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
