@@ -136,7 +136,7 @@ export class HttpService extends Http {
     if (options.headers == null) {
       options.headers = new Headers({
         // 'Authorization': `Basic ${environment.basic_auth_token}`,
-        'X-Auth-Token': localStorage.getItem('access_token')
+        'X-Spree-Token': localStorage.getItem('x-spree-token')
       });
     }
     return options;

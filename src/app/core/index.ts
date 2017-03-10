@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { ProductDummyService } from './services/product-dummy.service';
+import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
 
 // Components
 
 // Services
 import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http';
+
+
+export function httpInterceptor(
+  backend: XHRBackend,
+  defaultOptions: RequestOptions,
+) {
+  return new HttpService(backend, defaultOptions);
+}
 
 @NgModule({
   declarations: [
@@ -21,7 +30,11 @@ import { HttpService } from './services/http';
   ],
   providers: [
     AuthService,
-    HttpService,
+    {
+      provide: HttpService,
+      useFactory: httpInterceptor,
+      deps: [ XHRBackend, RequestOptions]
+    },
     ProductDummyService
   ]
 })

@@ -1,7 +1,7 @@
 import { environment } from './../environments/environment';
 import { productReducer } from './product/reducers/product-reducer';
 import { ProductState } from './product/reducers/product-state';
-import { combineReducers, ActionReducer } from "@ngrx/store";
+import { combineReducers, ActionReducer } from '@ngrx/store';
 
 export interface AppState {
   productState: ProductState;
@@ -16,8 +16,8 @@ const productionReducer: ActionReducer<AppState> = combineReducers(reducers);
 export function reducer(state: any, action: any) {
   if (environment.production) {
     return productionReducer(state, action);
-  }
-  else {
+  } else {
     return developmentReducer(state, action);
   }
 }
+
