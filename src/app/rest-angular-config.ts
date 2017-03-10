@@ -3,7 +3,7 @@ import { environment } from './../environments/environment';
 const baseUrl = environment.API_ENDPOINT;
 
 // Function for settting the default restangular configuration
-export function RestangularConfigFactory(RestangularProvider) {
+export const RestangularConfigFactory = function(RestangularProvider) {
   RestangularProvider.setBaseUrl(baseUrl);
   RestangularProvider.setDefaultHeaders({ 'Authorization': getAuthToken() });
 }
