@@ -1,4 +1,7 @@
+import { Taxon } from './taxon';
+
 export class Classification {
-  taxon_id: string;
-  position: string;
+  taxon_id: number;
+  position: number;
+  taxon: Taxon;
 }

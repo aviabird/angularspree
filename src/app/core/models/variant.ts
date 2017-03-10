@@ -1,3 +1,5 @@
+import { Image } from './image';
+import { OptionValue } from './option_value';
 /*
  * Product model
  * Detailed info http://guides.spreecommerce.org/developer/products.html#variants
@@ -5,7 +7,7 @@
  */
 
 export class Variant {
-  id: string;
+  id: number;
   name: string;
   sku: string;
   price: string;
@@ -17,11 +19,13 @@ export class Variant {
   slug: string;
   description: string;
   track_inventory: boolean;
+  cost_price: string;
+  option_values: OptionValue[];
+  total_on_hand: number;
   display_price: string;
   options_text: string;
-  total_on_hand: string;
-  product_id: string;
   in_stock: boolean;
   is_backorderable: boolean;
   is_destroyed: boolean;
+  images: Image[];
 }
