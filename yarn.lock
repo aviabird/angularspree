@@ -3782,7 +3782,7 @@ pretty-error@^2.0.2:
     renderkid "~2.0.0"
     utila "~0.4"
 
-primeng@^2.0.2:
+primeng@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/primeng/-/primeng-2.0.3.tgz#3b237bee476acc501b56820ad83fbe2350ad49e8"
 
