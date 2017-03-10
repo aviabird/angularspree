@@ -1,3 +1,4 @@
+import { ProductDummyService } from './services/product-dummy.service';
 import { NgModule } from '@angular/core';
 
 // Components
@@ -19,7 +20,8 @@ import { AuthService } from './services/auth.service';
   imports: [
   ],
   providers: [
-    AuthService
+    AuthService,
+    ProductDummyService
   ]
 })
 export class CoreModule {}
