@@ -1,10 +1,11 @@
-import { ProductDummyService } from './services/product-dummy.service';
 import { NgModule } from '@angular/core';
+import { ProductDummyService } from './services/product-dummy.service';
 
 // Components
 
 // Services
 import { AuthService } from './services/auth.service';
+import { HttpService } from './services/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AuthService } from './services/auth.service';
   ],
   providers: [
     AuthService,
+    HttpService,
     ProductDummyService
   ]
 })
