@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ProductDummyService } from './services/product-dummy.service';
 import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
 
 // Components
 
