@@ -13,8 +13,8 @@ import { routes } from './app.routes';
 // Modules
 import { SharedModule } from './shared/index';
 import { UserModule } from './user/index';
-import { LayoutModule } from './layout/index';
 import { HomeModule } from './home/index';
+import { LayoutModule } from './layout/index';
 import { CartModule } from './cart/index';
 import { ProductModule } from './product/index';
 import { CoreModule } from './core/index';
@@ -33,8 +33,9 @@ import { reducer } from './app.state';
     FormsModule,
     HttpModule,
     HomeModule,
+    LayoutModule,
     CartModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

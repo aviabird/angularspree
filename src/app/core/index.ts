@@ -15,7 +15,6 @@ import { AuthService } from './services/auth.service';
   exports: [
     // components
     // DummyService
-    AuthService
   ],
   imports: [
   ],
