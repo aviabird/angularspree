@@ -1,10 +1,12 @@
 <div class="myntra">
-  <app-header></app-header>
+  <section class="container">
+    <app-header></app-header>
 
-  <main>
-    {{title}}
-    <router-outlet></router-outlet>
-  </main>
+    <main class="body">
+      {{title}}
+      <router-outlet></router-outlet>
+    </main>
 
-  <app-footer></app-footer>
+    <app-footer></app-footer>
+  </section>
 </div>

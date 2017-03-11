@@ -19,7 +19,9 @@ $theme-myntra-border: 2px solid #aaa;
   $border
 ) {
   .#{$name} {
-    .navbar-default {
+    .navbar-fixed-top {
+      min-height: 70px;
+      padding: 15px;
       background-color: $header-background-color;
       box-shadow: 0 1px 3px rgba(0,0,0,0.08);
       .navbar-nav {
@@ -30,12 +32,35 @@ $theme-myntra-border: 2px solid #aaa;
           }
         }
         a {
+          font-weight: 500;
+          min-height: 50px;
           &:hover {
             border-bottom: 3px solid $item-a-visited-color;
           }
         }
       }
     }
+
+    .badge-danger {
+      background-color: $item-a-visited-color;
+    }
+    .badge-warning {
+    background-color: #d58512;
+    }
+
+    .badge-success {
+    background-color: #398439;
+    }
+
+    .badge-info {
+    background-color: #269abc;
+    }
+
+    .badge-inverse {
+    background-color: #333333;
+    }
+
+
   }
 }
 
