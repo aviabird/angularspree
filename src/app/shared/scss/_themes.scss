@@ -25,17 +25,19 @@ $theme-myntra-border: 2px solid #aaa;
       background-color: $header-background-color;
       box-shadow: 0 1px 3px rgba(0,0,0,0.08);
       .navbar-nav {
-        .active {
-          a {
-            background-color: transparent;
-            border-bottom: 3px solid $item-a-color;
+        & > li {
+          .active {
+            & > a {
+              background-color: transparent;
+              border-bottom: 3px solid $item-a-color;
+            }
           }
-        }
-        a {
-          font-weight: 500;
-          min-height: 50px;
-          &:hover {
-            border-bottom: 3px solid $item-a-visited-color;
+          & > a {
+            font-weight: 500;
+            min-height: 50px;
+            &:hover {
+              border-bottom: 3px solid $item-a-visited-color;
+            }
           }
         }
       }

@@ -4,12 +4,15 @@ import { NgModule } from '@angular/core';
 // components
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 
+// imports
+import { DropdownModule } from 'ng2-bootstrap/dropdown';
+
 @NgModule({
   declarations: [
     // components
-    LoadingIndicatorComponent,    
+    LoadingIndicatorComponent,
     // pipes
-    
+
   ],
   exports: [
     // components
@@ -17,12 +20,14 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
 
     // modules
     CommonModule,
+    DropdownModule
 
     // pipes
-    
+
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DropdownModule.forRoot()
   ]
 })
 export class SharedModule {}
