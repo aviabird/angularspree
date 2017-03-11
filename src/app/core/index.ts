@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ProductDummyService } from './services/product-dummy.service';
 import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
+import { DropdownModule } from 'ng2-bootstrap/dropdown';
 
 // Components
 
@@ -27,6 +28,7 @@ export function httpInterceptor(
     // DummyService
   ],
   imports: [
+    DropdownModule.forRoot()
   ],
   providers: [
     AuthService,
