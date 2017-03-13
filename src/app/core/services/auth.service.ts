@@ -36,6 +36,17 @@ export class AuthService {
     // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
   }
 
+  // returns an observable
+  logout() {
+    return this.http.get('spree/logout.json')
+      .map((res: Response) => {
+        // Setting token after login
+        localStorage.removeItem('user');
+        this.store.dispatch(this.actions.logoutSuccess());
+        return res.json();
+      }).catch((res: Response) => this.catchError(res));
+  }
+
   private setTokenInLocalStorage(user_data): void {
     const jsonData = JSON.stringify(user_data);
     localStorage.setItem('user', jsonData);

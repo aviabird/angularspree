@@ -6,7 +6,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ProfileDropdownComponent } from './header/profile-dropdown/profile-dropdown.component';
 
 // Modules
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/index';
 import { RouterModule } from '@angular/router';
 
@@ -26,8 +25,6 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
   ],
   imports: [
-    FormsModule,
-    ReactiveFormsModule,
     SharedModule,
     RouterModule
   ]

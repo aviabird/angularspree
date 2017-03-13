@@ -6,6 +6,7 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
 
 // imports
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,16 @@ import { DropdownModule } from 'ng2-bootstrap/dropdown';
 
     // modules
     CommonModule,
-    DropdownModule
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     // pipes
 
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     DropdownModule.forRoot()
   ]

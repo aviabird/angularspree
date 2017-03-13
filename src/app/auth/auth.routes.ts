@@ -1,8 +1,8 @@
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const AuthRoutes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full' },
   { path: 'signup', component: SignUpComponent },
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
 ];
