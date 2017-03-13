@@ -3,13 +3,18 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Rx';
 import { Response } from '@angular/http';
 import { HttpService } from './http';
+import { AppState } from '../../interfaces';
+import { Store } from '@ngrx/store';
+import { AuthActions } from '../../auth/actions/auth.actions';
 
 @Injectable()
 export class AuthService {
   private apiLink: string = environment.API_ENDPOINT; // "http://localhost:3000";
 
   constructor(
-    private http: HttpService
+    private http: HttpService,
+    private actions: AuthActions,
+    private store: Store<AppState>
   ) {
 
   }
@@ -22,6 +27,7 @@ export class AuthService {
     ).map((res: Response) => {
       // Setting token after login
       this.setTokenInLocalStorage(res.json());
+      this.store.dispatch(this.actions.loginSuccess());
       return res.json();
     }).catch((res: Response) => this.catchError(res));
     // catch should be handled here with the http observable
