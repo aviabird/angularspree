@@ -16,7 +16,6 @@ export function fetchProducts(state: ProductState) {
         const ids = state.productIds as number[];
         const productEntities = state.productEntities;
         const ret = ids.map(id => productEntities[id]);
-        debugger;
         return ret;
     //  } else {
     //      console.log('state not defined');

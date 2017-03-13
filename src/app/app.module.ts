@@ -19,7 +19,6 @@ import { CartModule } from './cart/index';
 import { ProductModule } from './product/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducer } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // AppState
