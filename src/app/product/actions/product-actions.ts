@@ -19,7 +19,8 @@ export class ProductActions {
         };
     }
 
-    getAllProductsSuccess(products: Product[]): Action {
+    // change products type to Product[]
+    getAllProductsSuccess(products: any): Action {
         return {
             type: ProductActions.GET_ALL_PRODUCTS_SUCCESS,
             payload: products

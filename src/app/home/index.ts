@@ -1,3 +1,5 @@
+import { SharedModule } from './../shared/index';
+import { ProductActions } from './../product/actions/product-actions';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -9,8 +11,6 @@ import { HomeComponent } from './home.component';
 
 import { HomeRoutes as routes } from './home.routes';
 
-export { HomeState } from './reducers/home-state';
-
 @NgModule({
   declarations: [
     // components
@@ -21,13 +21,13 @@ export { HomeState } from './reducers/home-state';
     // pipes
   ],
   exports: [
-    // components
-    // ProductListComponent,
-    // ProductListItemComponent,
-    // TaxonComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
+    SharedModule,
+  ],
+  providers: [
+    ProductActions
   ]
 })
 export class HomeModule {}

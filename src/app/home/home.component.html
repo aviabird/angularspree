@@ -4,5 +4,7 @@
   <a [routerLink]="['/user']">User</a>
   <a [routerLink]="['/user', 'orders']">Overview</a>
   <!--<a [routerLink]="['/product', 'detail']">Product Detail</a>-->
-  <app-product-list></app-product-list>
+  <!--<app-product-list></app-product-list>-->
+  
 </p>
+<p> {{ products$ | async | json }}</p>

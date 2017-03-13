@@ -4,5 +4,5 @@ import { ProductState } from './product/reducers/product-state';
 // Ideally importing all the substate for the application
 
 export interface AppState {
-  productState: ProductState;
+  products: ProductState;
 }

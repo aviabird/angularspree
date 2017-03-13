@@ -15,8 +15,15 @@ export class ProductEffects {
               private productActions: ProductActions) { }
 
   // tslint:disable-next-line:member-ordering
-  @Effect()GetProducts$: Observable<Action> = this.actions$
+  @Effect()
+    GetAllProducts$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_ALL_PRODUCTS)
-    .switchMap((action: Action) => this.productService.getProducts())
-    .map((data: Product[]) => this.productActions.getAllProductsSuccess(data));
+    .switchMap((action: Action) => {
+      console.log('should call a service, ', action);
+      return this.productService.getProducts();
+    })
+    .map((data: any) => {
+      console.log('should call a action', data);
+      return this.productActions.getAllProductsSuccess({products: data});
+    });
 }
