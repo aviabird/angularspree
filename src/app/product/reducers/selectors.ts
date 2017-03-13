@@ -2,25 +2,18 @@ import { Product } from './../../core/models/product';
 import { AppState } from './../../interfaces';
 import { ProductState } from './product-state';
 import { createSelector } from 'reselect';
+import { Map, List, fromJS } from 'immutable';
 
 // Base product state function
 export function getProductState(state: AppState): ProductState {
-    console.log('store app state', state);
     return state.products;
 }
 
 // ******************** Individual selectors ***************************
 export function fetchProducts(state: ProductState) {
-    //  if (state) {
-        console.log('state -->>>>', state);
-        const ids = state.productIds as number[];
-        const productEntities = state.productEntities;
-        const ret = ids.map(id => productEntities[id]);
-        return ret;
-    //  } else {
-    //      console.log('state not defined');
-    //      return [];
-    //  }
+        const ids = state.productIds.toJS();
+        const productEntities = state.productEntities.toJS();
+        return ids.map(id => productEntities[id]);
 }
 
 const fetchSelectedProduct = function(state: ProductState): Product {

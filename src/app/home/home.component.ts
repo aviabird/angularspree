@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { ProductActions } from './../product/actions/product-actions';
 import { AppState } from './../interfaces';
 import { getProducts } from './../product/reducers/selectors';
@@ -14,19 +15,15 @@ import { Product } from '../core/models/product';
 export class HomeComponent implements OnInit {
   products$: Observable<any>;
 
-
   constructor(private store: Store<AppState>, private actions: ProductActions) {
+    // Get all products for the product list component
+    this.store.dispatch(this.actions.getAllProducts());
     this.products$ = this.store.select(getProducts);
-
-    this.products$.subscribe(data => {
-      console.log('products ----->>>>>>>>', data);
-      window['t'] = data;
-    });
   }
 
-  ngOnInit() {
-      console.log('store object', this.store);
-      this.store.dispatch(this.actions.getAllProducts());
-  }
+  ngOnInit() { }
 
+  getProductImageUrl(url) {
+    return environment.API_ENDPOINT + url;
+  }
 }

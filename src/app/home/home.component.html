@@ -1,5 +1,4 @@
 <p>
-  home works!
   <a [routerLink]="['/cart']">Cart</a>
   <a [routerLink]="['/user']">User</a>
   <a [routerLink]="['/user', 'orders']">Overview</a>
@@ -7,4 +6,9 @@
   <!--<app-product-list></app-product-list>-->
   
 </p>
-<p> {{ products$ | async | json }}</p>
+<div *ngFor="let product of products$ | async" class="column" style="margin-bottom: 20px;">
+  <p> Product id: {{ product.id }} </p>
+  <p> Product Name : {{ product.name }} </p>
+  <p> Product Price : {{ product.price }} </p>
+  <img [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+</div>
