@@ -17,7 +17,7 @@ import { CartModule } from './cart/index';
 import { ProductModule } from './product/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './app.state';
+import { reducer } from './app.reducers';
 // AppState
 
 @NgModule({

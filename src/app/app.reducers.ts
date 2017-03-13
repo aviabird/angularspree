@@ -2,10 +2,8 @@ import { environment } from './../environments/environment';
 import { productReducer } from './product/reducers/product-reducer';
 import { ProductState } from './product/reducers/product-state';
 import { combineReducers, ActionReducer } from '@ngrx/store';
+import { AppState } from "./interfaces";
 
-export interface AppState {
-  productState: ProductState;
-}
 const reducers = {
   product: productReducer
 }

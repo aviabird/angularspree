@@ -1,7 +1,8 @@
-import { HomeState } from './home/reducers/home-state';
+import { ProductState } from './product/reducers/product-state';
 
 // This should hold the AppState interface
 // Ideally importing all the substate for the application
+
 export interface AppState {
-  home: HomeState;
+  productState: ProductState;
 }
