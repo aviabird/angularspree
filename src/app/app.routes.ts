@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 
 
 export const routes: Routes = [
@@ -6,5 +6,6 @@ export const routes: Routes = [
   { path: 'home', loadChildren: './home/index#HomeModule' },
   { path: 'cart', loadChildren: './cart/index#CartModule' },
   { path: 'user', loadChildren: './user/index#UserModule' },
-  { path: 'product', loadChildren: './product/index#ProductModule' }
+  { path: 'product', loadChildren: './product/index#ProductModule' },
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
 ];

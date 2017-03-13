@@ -62,7 +62,12 @@ $theme-myntra-border: 2px solid #aaa;
     background-color: #333333;
     }
 
-
+    .login-input-container {
+      &:hover {
+        border: 1px solid $item-a-color;
+        box-shadow: 0 2px 5px $item-a-color + 50;
+      }
+    }
   }
 }
 

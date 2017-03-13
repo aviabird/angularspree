@@ -4,12 +4,18 @@
       <i class="fa fa-user" aria-hidden="true"></i>
       <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu" dropdownMenu>
-      <li><a href="#">Action</a></li>
-      <li><a href="#">Another action</a></li>
-      <li><a href="#">Something else here</a></li>
+    <ul class="dropdown-menu" dropdownMenu *ngIf="true">
+      <li><a [routerLink]="['/auth']">Sign Up</a></li>
       <li role="separator" class="divider"></li>
-      <li><a href="#">Separated link</a></li>
+      <li><a [routerLink]="['/auth', 'login']">Login</a></li>
+    </ul>
+
+    <ul class="dropdown-menu" dropdownMenu *ngIf="false">
+      <li><a href="#">My Profile</a></li>
+      <li><a href="#">My Orders</a></li>
+      <li><a href="#">Edit Profile</a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">Logout</a></li>
     </ul>
   </li>
   <li>
