@@ -19,6 +19,7 @@ import { CartModule } from './cart/index';
 import { ProductModule } from './product/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducer } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // AppState
@@ -30,6 +31,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   imports: [
     RouterModule.forRoot(routes),
     StoreModule.provideStore(reducer),
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 5
+    }),
     BrowserModule,
     FormsModule,
     HttpModule,

@@ -39,6 +39,7 @@
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
     "@angular/compiler-cli": "next",
+    "@ngrx/store-devtools": "^3.2.3",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0-beta.4",
@@ -50,6 +51,7 @@
     "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ngrx-store-freeze": "^0.1.9",
     "node-sass": "^4.5.0",
     "protractor": "~5.1.0",
     "raw-loader": "^0.5.1",
@@ -57,8 +59,7 @@
     "sw-precache": "^5.0.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
-    "typescript": "2.1.6",
-    "ngrx-store-freeze": "^0.1.9"
+    "typescript": "2.1.6"
   },
   "description": "Spree for Angular2",
   "main": "index.js",

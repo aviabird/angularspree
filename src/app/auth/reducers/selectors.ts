@@ -4,7 +4,7 @@ import { AuthState } from './auth.state';
 
 // Base product state function
 function getAuthState(state: AppState): AuthState {
-    return state.authState;
+    return state.auth;
 }
 
 // ******************** Individual selectors ***************************

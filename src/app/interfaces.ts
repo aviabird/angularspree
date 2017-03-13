@@ -6,5 +6,5 @@ import { AuthState } from './auth/reducers/auth.state';
 
 export interface AppState {
   products: ProductState;
-  authState: AuthState;
+  auth: AuthState;
 }
