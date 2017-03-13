@@ -1,4 +1,4 @@
-import { Record } from 'immutable';
+import { Map, Record } from 'immutable';
 import { LineItem } from './../../../core/models/line_item';
 
 export interface CartState extends Map<string, any> {
