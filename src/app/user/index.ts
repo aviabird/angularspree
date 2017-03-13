@@ -25,7 +25,7 @@ import { UserRoutes as routes } from './user.routes';
     ReturnListItemComponent,
     UserComponent
     // pipes
-    
+
   ],
   exports: [
     // components
@@ -34,7 +34,7 @@ import { UserRoutes as routes } from './user.routes';
     // OrdersComponent,
     // ReturnsComponent,
     // ReturnListItemComponent,
-    
+
   ],
   providers: [
     UserService

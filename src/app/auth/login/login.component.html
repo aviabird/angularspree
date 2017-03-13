@@ -1,0 +1,28 @@
+<div class="row" data-hook="">
+  <div id="content" class="col-sm-12" data-hook="">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Login to {{title}}</h3>
+        </div>
+        <div id="existing-customer" class="panel-body" data-hook="login">
+          <form class="login-login-form">
+            <fieldset class="login-input-container">
+              <div class="login-input-item"><input type="email" class="login-user-input-email login-user-input" name="email" placeholder="Your Email Address"
+                  autocomplete="off"></div>
+              <div class="login-input-item"><input type="password" class="login-user-input-password login-user-input" name="password" placeholder="Enter Password"
+                  autocomplete="off"></div><input type="hidden" name="xsrf" value="so50MUso9EvobXJksldjttg9HtlzX7cp"></fieldset>
+            <fieldset class="login-login-button-container"><button class="login-login-button">Log in</button></fieldset>
+          </form>
+          <div class="login-link-container">
+            <a class="login-link" routerLink="/">Recover password</a>
+            <div class="login-right-links">
+              <span class="login-info-text">New to {{title}}?</span>
+              <a class="login-create-account-link login-link" [routerLink]="['/auth']">Create Account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

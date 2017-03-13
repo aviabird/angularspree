@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  API_ENDPOINT: ''
+  API_ENDPOINT: '',
+  AppName: 'AngularSpree'
 };
