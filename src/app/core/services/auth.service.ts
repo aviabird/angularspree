@@ -1,27 +1,24 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Rx';
-import { Http, Headers, Response } from '@angular/http';
+import { Response } from '@angular/http';
+import { HttpService } from './http';
 
 @Injectable()
 export class AuthService {
   private apiLink: string = environment.API_ENDPOINT; // "http://localhost:3000";
 
   constructor(
-    private http: Http
+    private http: HttpService
   ) {
 
   }
 
   // returns an observable with user object
   login(data): Observable<Object> {
-    const headers = new Headers({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
     return this.http.post(
-      `${this.apiLink}/spree/login.json`,
-      JSON.stringify(data),
-      { headers: headers}
+      'spree/login.json',
+      { spree_user: data }
     ).map((res: Response) => {
       // Setting token after login
       this.setTokenInLocalStorage(res.json());
