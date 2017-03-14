@@ -1,3 +1,4 @@
+import { Variant } from './variant';
 /*
  * LineItem model
  * Detailed info http://guides.spreecommerce.org/developer/orders.html#line-items
@@ -8,8 +9,9 @@ export class LineItem {
   id: number;
   quantity: number;
   price: number;
-  variant_id: number;
   single_display_amount: number;
-  display_amount: number;
   total: number;
+  display_amount: number;
+  variant_id: number;
+  variant: Variant;
 }
