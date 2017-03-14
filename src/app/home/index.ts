@@ -4,18 +4,24 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 // Components
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductListItemComponent } from './product-list/product-list-item/product-list-item.component';
 import { HomeComponent } from './home.component';
-
+import { ProductListComponent } from './product-list/components/product-list/product-list.component';
+import { ProductListItemComponent } from './product-list/components/product-list-item/product-list-item.component';
+import { BreadcrumbComponent } from './breadcrumb/components/breadcrumb/breadcrumb.component';
+import { TaxonsComponent } from './sidebar/taxons/taxons.component';
+import { FilterComponent } from './sidebar/filter/filter.component';
+// Routes
 import { HomeRoutes as routes } from './home.routes';
 
 @NgModule({
   declarations: [
     // components
+    HomeComponent,
     ProductListComponent,
     ProductListItemComponent,
-    HomeComponent,
+    TaxonsComponent,
+    FilterComponent,
+    BreadcrumbComponent
     // pipes
   ],
   exports: [
