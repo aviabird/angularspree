@@ -135,7 +135,103 @@ export class ProductDummyService {
         }
       ],
       'has_variants': false
-    }
+    };
+  }
+
+  getTaxonomies(): any {
+    const taxonomies = {
+      'taxonomies': [
+        {
+          'id': 1,
+          'name': 'Categories',
+          'root': {
+            'id': 1,
+            'name': 'Categories',
+            'pretty_name': 'Categories',
+            'permalink': 'categories',
+            'parent_id': null,
+            'taxonomy_id': 1,
+            'taxons': [
+              {
+                'id': 3,
+                'name': 'Bags',
+                'pretty_name': 'Categories -> Bags',
+                'permalink': 'categories/bags',
+                'parent_id': 1,
+                'taxonomy_id': 1
+              },
+              {
+                'id': 4,
+                'name': 'Mugs',
+                'pretty_name': 'Categories -> Mugs',
+                'permalink': 'categories/mugs',
+                'parent_id': 1,
+                'taxonomy_id': 1
+              },
+              {
+                'id': 5,
+                'name': 'Clothing',
+                'pretty_name': 'Categories -> Clothing',
+                'permalink': 'categories/clothing',
+                'parent_id': 1,
+                'taxonomy_id': 1
+              }
+            ]
+          }
+        },
+        {
+          'id': 2,
+          'name': 'Brand',
+          'root': {
+            'id': 2,
+            'name': 'Brand',
+            'pretty_name': 'Brand',
+            'permalink': 'brand',
+            'parent_id': null,
+            'taxonomy_id': 2,
+            'taxons': [
+              {
+                'id': 8,
+                'name': 'Ruby',
+                'pretty_name': 'Brand -> Ruby',
+                'permalink': 'brand/ruby',
+                'parent_id': 2,
+                'taxonomy_id': 2
+              },
+              {
+                'id': 9,
+                'name': 'Apache',
+                'pretty_name': 'Brand -> Apache',
+                'permalink': 'brand/apache',
+                'parent_id': 2,
+                'taxonomy_id': 2
+              },
+              {
+                'id': 10,
+                'name': 'Spree',
+                'pretty_name': 'Brand -> Spree',
+                'permalink': 'brand/spree',
+                'parent_id': 2,
+                'taxonomy_id': 2
+              },
+              {
+                'id': 11,
+                'name': 'Rails',
+                'pretty_name': 'Brand -> Rails',
+                'permalink': 'brand/rails',
+                'parent_id': 2,
+                'taxonomy_id': 2
+              }
+            ]
+          }
+        }
+      ],
+      'count': 2,
+      'current_page': 1,
+      'pages': 1
+    };
+
+    return Observable.of(taxonomies);
   }
 
   getProducts(): any {
@@ -3015,9 +3111,5 @@ export class ProductDummyService {
     };
 
     return Observable.of(data);
-
-
-
   }
-
 }
