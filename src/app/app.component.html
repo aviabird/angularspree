@@ -1,9 +1,11 @@
-<app-header></app-header>
+<div class="myntra">
+  <section class="container">
+    <app-header></app-header>
 
-<h1>
-  {{title}}
-  <!--<a [routerLink]="['/cart']">Cart</a>-->
-  <!--<a [routerLink]="['/user']">User</a>-->
-  <!--<a RouterLink="/cart/cart">cart</a>-->
-  <router-outlet></router-outlet>
-</h1>
+    <main class="body">
+      <router-outlet></router-outlet>
+    </main>
+
+    <app-footer></app-footer>
+  </section>
+</div>

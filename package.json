@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build--prod": "npm run lint && ng build --prod --no-sourcemap --stats-json && npm run sw",
+    "build--prod": "ng build --prod --no-sourcemap --stats-json && npm run sw",
     "sw": "sw-precache --root=dist --config=sw-precache-config.js",
     "static-serve": "cd dist && live-server --port=4200 --host=localhost --entry-file=/index.html"
   },
@@ -26,6 +26,7 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.0",
     "@ngrx/store": "^2.2.1",
+    "@ngrx/store-devtools": "^3.2.3",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.1",
     "@angular/compiler-cli": "next",
+    "@ngrx/store-devtools": "^3.2.3",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0-beta.4",
@@ -49,6 +51,7 @@
     "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ngrx-store-freeze": "^0.1.9",
     "node-sass": "^4.5.0",
     "protractor": "~5.1.0",
     "raw-loader": "^0.5.1",

@@ -7,6 +7,7 @@ import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
 import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http';
 import { ProductService } from './services/product.service';
+import { AuthActions } from '../auth/actions/auth.actions';
 
 
 export function httpInterceptor(
@@ -36,7 +37,8 @@ export function httpInterceptor(
       deps: [ XHRBackend, RequestOptions]
     },
     ProductDummyService,
-    ProductService
+    ProductService,
+    AuthActions
   ]
 })
 export class CoreModule {}
