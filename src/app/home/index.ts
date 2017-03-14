@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 // Components
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductListItemComponent } from './product-list/product-list-item/product-list-item.component';
-import { TaxonComponent } from './taxon/taxon.component';
 import { HomeComponent } from './home.component';
 
 import { HomeRoutes as routes } from './home.routes';
@@ -16,7 +15,6 @@ import { HomeRoutes as routes } from './home.routes';
     // components
     ProductListComponent,
     ProductListItemComponent,
-    TaxonComponent,
     HomeComponent,
     // pipes
   ],
