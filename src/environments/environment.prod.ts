@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  API_ENDPOINT: 'angularspree-api.herokuapp.com',
+  API_ENDPOINT: 'https://angularspree-api.herokuapp.com/',
   AppName: 'AngularSpree'
 };
