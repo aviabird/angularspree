@@ -14,17 +14,17 @@ export class CartActions {
     };
   }
 
-  removeLineItem(lineItem: LineItem): Action {
+  removeLineItem(lineItemId: number): Action {
     return {
       type: CartActions.REMOVE_LINE_ITEM,
-      payload: lineItem
+      payload: lineItemId
     };
   }
 
-  changeLineItemQuantity(quantity: number): Action {
+  changeLineItemQuantity(quantity: number, lineItemId: number): Action {
     return {
       type: CartActions.CHANGE_LINE_ITEM_QUANTITY,
-      payload: quantity
+      payload: { quantity, lineItemId }
     };
   }
 
