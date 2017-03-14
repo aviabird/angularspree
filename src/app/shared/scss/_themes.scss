@@ -68,6 +68,19 @@ $theme-myntra-border: 2px solid #aaa;
         box-shadow: 0 2px 5px $item-a-color + 50;
       }
     }
+
+    .register-input-container {
+      &:hover {
+        border: 1px solid $item-a-color;
+        box-shadow: 0 2px 5px $item-a-color + 50;
+      }
+    }
+
+    input {
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }
 
