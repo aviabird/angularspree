@@ -12,7 +12,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  lineItems$: Observable<LineItem[]>;
   private lineItem: LineItem;
 
   constructor(private store: Store<AppState>, private actions: CartActions) { }

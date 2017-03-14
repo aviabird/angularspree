@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { LineItem } from './../../../../../core/models/line_item';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-line-item',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LineItemComponent implements OnInit {
 
+  @Input() lineItem: LineItem;
+
   constructor() { }
 
   ngOnInit() {
+    console.log('line item', this.lineItem);
   }
 
 }

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart.component';
 import { CartActions } from './actions/cart-actions';
 import { NgModule } from '@angular/core';
@@ -12,7 +13,9 @@ import { LineItemComponent } from './components/line-item-list/line-item/line-it
     LineItemComponent
   ],
   exports: [],
-  imports: [],
+  imports: [
+    CommonModule,
+  ],
   providers: [
     CartActions
   ]
