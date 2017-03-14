@@ -5,11 +5,11 @@
  */
 
 export class LineItem {
-  id: string;
-  quantity: string;
-  price: string;
-  variant_id: string;
-  single_display_amount: string;
-  display_amount: string;
-  total: string;
+  id: number;
+  quantity: number;
+  price: number;
+  variant_id: number;
+  single_display_amount: number;
+  display_amount: number;
+  total: number;
 }
