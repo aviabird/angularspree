@@ -33,4 +33,13 @@ export class ProductDetailPageComponent implements OnInit {
      }
     );
   }
+
+  /**
+   * Action To be dispatched 
+   * when added to cart
+   */
+  addToCart(){
+    return;
+  }
+
 }

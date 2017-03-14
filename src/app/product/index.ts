@@ -8,6 +8,9 @@ import { ProductService } from './../core/services/product.service';
 
 // Components
 import { ProductDetailPageComponent } from './components/product-detail-page/product-detail-page.component';
+import { ProductDetailsComponent } from './components/product-detail-page/product-details/product-details.component';
+import { ImageContainerComponent } from './components/product-detail-page/image-container/image-container.component';
+import { ProductDescriptionComponent } from './components/product-detail-page/product-description/product-description.component';
 import { ProductComponent } from './product.component';
 
 // Routes
@@ -23,11 +26,17 @@ import { ProductEffects } from './effects/product.effects';
     // components
     ProductDetailPageComponent,
     ProductComponent,
+    ProductDetailsComponent,
+    ImageContainerComponent,
+    ProductDescriptionComponent
     // pipes
   ],
   exports: [
     // components
     ProductDetailPageComponent,
+    ProductDetailsComponent,
+    ImageContainerComponent,
+    ProductDescriptionComponent
   ],
   imports: [
     SharedModule,
