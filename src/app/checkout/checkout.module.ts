@@ -7,6 +7,8 @@ import { AddressComponent } from './address/address.component';
 import { PaymentComponent } from './payment/payment.component';
 
 import { CheckoutRoutes as routes } from './checkout.routes';
+import { LineItemListComponent } from './cart/components/line-item-list/line-item-list.component';
+import { LineItemComponent } from './cart/components/line-item-list/line-item/line-item.component';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { CheckoutRoutes as routes } from './checkout.routes';
   declarations: [
     CartComponent,
     AddressComponent,
-    PaymentComponent
+    PaymentComponent,
+    LineItemListComponent,
+    LineItemComponent
   ]
 })
 export class CheckoutModule { }
