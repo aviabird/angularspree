@@ -76,7 +76,7 @@ $theme-myntra-border: 2px solid #aaa;
       }
     }
 
-    input {
+    input, button {
       &:focus {
         outline: none;
       }
