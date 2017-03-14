@@ -20,9 +20,12 @@ export class CartService {
   createNewLineItem(variant_id: number): Observable<LineItem> {
     console.log('in service');
     return this.http.post(
-      `spree/api/v1/orders/R938274445/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=1`,
+      `spree/api/v1/orders/R709983939/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=1`,
       {}
-    ).map(res => res);
+    ).map(res => {
+      console.log('res', res.json());
+      return res.json();
+    });
   }
 
 }

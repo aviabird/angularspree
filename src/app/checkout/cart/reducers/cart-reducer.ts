@@ -11,7 +11,7 @@ export const cartReducer: ActionReducer<CartState> =
     let lineItem, lineItemId;
 
     switch (type) {
-      case CartActions.ADD_TO_CART:
+      case CartActions.ADD_TO_CART_SUCCESS:
         lineItem = payload;
         lineItemId = lineItem.id;
         const lineItemEntity = { [lineItemId]: lineItem };
