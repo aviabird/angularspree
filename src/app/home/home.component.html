@@ -1,14 +1,10 @@
-<p>
-  <a [routerLink]="['/cart']">Cart</a>
-  <a [routerLink]="['/user']">User</a>
-  <a [routerLink]="['/user', 'orders']">Overview</a>
-  <!--<a [routerLink]="['/product', 'detail']">Product Detail</a>-->
-  <!--<app-product-list></app-product-list>-->
-  
-</p>
 <div *ngFor="let product of products$ | async" class="column" style="margin-bottom: 20px;">
   <p> Product id: {{ product.id }} </p>
   <p> Product Name : {{ product.name }} </p>
   <p> Product Price : {{ product.price }} </p>
   <img [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+</div>
+
+<div *ngFor="let taxonomy of taxonomies$ | async" class="column" style="margin-bottom: 20px;">
+  <p> Taxon id: {{ taxonomy.id }} </p>
 </div>
