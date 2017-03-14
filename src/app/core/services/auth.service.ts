@@ -39,7 +39,7 @@ export class AuthService {
   // returns an observable with user object
   register(data): Observable<Object> {
     return this.http.post(
-      'spree/account.json',
+      'api/account.json',
       { spree_user: data }
     ).map((res: Response) => {
       // Setting token after login
@@ -47,6 +47,22 @@ export class AuthService {
       this.store.dispatch(this.actions.loginSuccess());
       return res.json();
     }).catch((res: Response) => this.catchError(res));
+    // catch should be handled here with the http observable
+    // so that only the inner obs dies and not the effect Observable
+    // otherwise no further login requests will be fired
+    // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
+  }
+
+  // returns an observable with user object
+  authorized(): Observable<Object> {
+    return this.http
+      .get('api/account.json')
+      .filter((res: Response) => res.json().status === 'unauthorized')
+      .map((res: Response) => {
+        // Check if authorized
+        this.store.dispatch(this.actions.loginSuccess());
+        return res.json();
+      }).catch((res: Response) => this.catchError(res));
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
