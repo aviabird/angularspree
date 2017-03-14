@@ -49,12 +49,7 @@ fieldset {
 
 .login-container {
   box-sizing: border-box;
-  background: #feedf6;
-  background: -webkit-gradient(linear,left top,right bottom,from(#feedf6),to(#fcf0e2));
-  background: -webkit-linear-gradient(top left,#feedf6,#fcf0e2);
-  background: linear-gradient(to bottom right,#feedf6,#fcf0e2);
   text-align: center;
-  padding-top: 30px;
   position: relative;
   padding-bottom: 40px;
 }
@@ -79,9 +74,6 @@ fieldset {
   width: 100%;
   border: 0;
   padding: 15px;
-  &:focus {
-    outline: none;
-  }
 }
 
 input {
@@ -132,7 +124,6 @@ fieldset {
   border: 0;
   text-transform: uppercase;
   border-radius: 3px;
-  font-family: Whitney;
 }
 
 .login-link-container {
@@ -176,4 +167,103 @@ fieldset {
 
 a {
   background-color: transparent;
+}
+
+.login-third-party-login {
+  margin-top: 30px;
+}
+
+.login-button-info-text {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.login-info-text {
+  color: #94969f;
+  font-size: 12px;
+}
+
+.login-button-container {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 360px) {
+  .login-facebook {
+      margin-right: 15px;
+      margin-bottom: 0;
+  }
+}
+
+@media (min-width: 360px) {
+  .login-button {
+    width: 49%;
+    display: inline-block;
+  }
+}
+
+.login-facebook {
+  margin-bottom: 0px;
+}
+
+.login-button {
+  max-width: 162px;
+  padding-left: 18%;
+  position: relative;
+  font-size: 13px;
+  font-weight: 500;
+  color: #696b79;
+  height: 50px;
+  border: 1px solid #bfc0c6;
+  background-color: #fff;
+  border-radius: 5px;
+  text-align: left;
+}
+
+[type=reset], [type=submit], button, html [type=button] {
+  -webkit-appearance: button;
+}
+
+[type=button], [type=reset], [type=submit], button {
+  cursor: pointer;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, input, select, textarea {
+  margin: 0;
+}
+
+button, input, select {
+  overflow: visible;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+.header-sprite {
+  background: url(http://res.cloudinary.com/mally/image/upload/v1489480940/148948096411965_w5wbjb.png) no-repeat 0 0;
+  background-size: 159px 48px;
+  display: inline-block;
+}
+
+.login-fb-logo, .login-gplus-logo {
+  height: 29px;
+  position: absolute;
+  left: 15px;
+}
+
+.login-fb-logo {
+  background-position: -93px 0;
+  width: 28px;
+  top: 10px;
+}
+
+.login-gplus-logo {
+  background-position: -122px 0;
+  width: 23px;
+  top: 13px;
 }
