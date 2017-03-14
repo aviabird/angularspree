@@ -4,5 +4,10 @@
 @import url('../node_modules/font-awesome/css/font-awesome.min.css');
 
 body {
-  background-color: #fafafa !important;
+  background-color: #efefef !important;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
 }

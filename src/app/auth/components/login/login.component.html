@@ -1,11 +1,25 @@
-<div class="row" data-hook="">
+<div class="row login-container" data-hook="">
   <div id="content" class="col-sm-12" data-hook="">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-5 col-centered">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Login to {{title}}</h3>
         </div>
         <div id="existing-customer" class="panel-body" data-hook="login">
+          <div class="login-third-party-login">
+            <p class="login-button-info-text login-info-text">EASILY USING</p>
+            <div class="login-button-container">
+              <button class="login-facebook login-button">
+                <span class="header-sprite login-fb-logo"></span>
+                FACEBOOK
+              </button>
+              <button class="login-google login-button" id="gPlusLogin">
+                <span class="header-sprite login-gplus-logo"></span>
+                GOOGLE
+              </button>
+            </div>
+          </div>
+          <p class="login-info-text">- OR USING EMAIL -</p>
           <form class="login-login-form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
             <fieldset class="login-input-container">
               <div class="login-input-item">
