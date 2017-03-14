@@ -1,3 +1,5 @@
+import { ProductEffects } from './product/effects/product.effects';
+import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +20,7 @@ import { ProductModule } from './product/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './app.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // AppState
 
 @NgModule({
@@ -27,6 +30,9 @@ import { reducer } from './app.reducers';
   imports: [
     RouterModule.forRoot(routes),
     StoreModule.provideStore(reducer),
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 5
+    }),
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -34,6 +40,8 @@ import { reducer } from './app.reducers';
     LayoutModule,
     CheckoutModule,
     CoreModule,
+    EffectsModule.run(ProductEffects),
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [],
   bootstrap: [AppComponent]

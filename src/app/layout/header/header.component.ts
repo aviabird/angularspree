@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../interfaces';
+import { getAuthStatus } from '../../auth/reducers/selectors';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +13,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
   signInForm: FormGroup;
+  isAuthenticated: Observable<boolean>;
 
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit() {
     this.initForm();
+    this.isAuthenticated = this.store.select(getAuthStatus);
   }
 
   initForm() {
