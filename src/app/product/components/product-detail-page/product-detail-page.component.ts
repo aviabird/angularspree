@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { Product } from './../../../core/models/product';
-import { AppState } from './../../../interfaces';
-import { ProductActions } from './../../actions/product-actions';
-import { getSelectedProduct } from './../../reducers/selectors';
 import { ProductService } from './../../../core/services/product.service';
 
 @Component({
@@ -20,11 +16,8 @@ export class ProductDetailPageComponent implements OnInit {
   routeSubs: Subscription;
   productId: any;
 
-  constructor(private store: Store<AppState>,
-              private actions: ProductActions,
+  constructor(private productService: ProductService,
               private route: ActivatedRoute) {
-  /**Get a Selected Product from Store */
-  this.product$ = this.store.select(getSelectedProduct);
   };
 
   /**On Init 
@@ -36,8 +29,8 @@ export class ProductDetailPageComponent implements OnInit {
     this.actionsSubscription = this.route.params.subscribe(
       (params: any) => {
         this.productId = params['id'];
-        this.store.dispatch(this.actions.getProductDetail(this.productId));
-      }
+        this.product$ = this.productService.getProduct(this.productId);
+     }
     );
   }
 }
