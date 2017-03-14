@@ -12,4 +12,11 @@
   <p> Product Name : {{ product.name }} </p>
   <p> Product Price : {{ product.price }} </p>
   <img [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+<div class="col-xs-12">
+  <div class="col-xs-4">
+    <app-taxons [taxonomies]="taxonomies"></app-taxons>
+  </div>
+  <div class="col-xs-8">
+    <app-product-list [products]="products"></app-product-list>
+  </div>
 </div>
