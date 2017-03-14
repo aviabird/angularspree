@@ -2,14 +2,22 @@ import { Action } from '@ngrx/store';
 import { LineItem } from './../../../core/models/line_item';
 
 export class CartActions {
-  static ADD_LINE_ITEM = 'ADD_LINE_ITEM';
+  static ADD_TO_CART = 'ADD_TO_CART';
+  static ADD_TO_CART_SUCCESS = 'ADD_TO_CART_SUCCESS';
   static REMOVE_LINE_ITEM = 'REMOVE_LINE_ITEM';
   static CHANGE_LINE_ITEM_QUANTITY = 'CHANGE_LINE_ITEM_QUANTITY';
   static PLACE_ORDER = 'PLACE_ORDER';
 
-  addLineItem(lineItem: LineItem): Action {
+  addToCart(variant_id: number): Action {
     return {
-      type: CartActions.ADD_LINE_ITEM,
+      type: CartActions.ADD_TO_CART,
+      payload: variant_id
+    };
+  }
+
+  addToCartSuccess(lineItem: LineItem): Action {
+    return {
+      type: CartActions.ADD_TO_CART_SUCCESS,
       payload: lineItem
     };
   }
