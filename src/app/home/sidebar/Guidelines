@@ -1,0 +1,20 @@
+This part of the application is highly generic for eg.
+
+* OptionTypes can change as per user requirement. eg. color, size, price etc.
+* ShopBy taxonomies feature. eg. category & brand by default.
+* Filters can also be added.
+
+As an example check this page on myntra http://www.myntra.com/clothing
+1. Left sidebar has gender options All, men, women, girls, boys.
+2. Categories options T-shirts, Kurtas, Jeans etc.
+3. Brand options Roadster, ONLY, tommy hilfiger, Vero Moda etc.
+4. Color Options with the whole range.
+5. Price slider to filter range.
+6. Promotions tab eg. Buy 1 get on free.
+7. Discount selection tag eg. 80% and above, 30% and above etc.
+
+Roadmap for implementation:-
+
+1. First draft release(17th March release) implement filter by with just first level of taxonomy.
+2. Second draft release(24th March release) implement (1, 2, 3)
+3. Third draft release(31st March release) implement (4, 5, 6, 7) These are all OptionTypes(Generic can be custom per user)

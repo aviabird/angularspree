@@ -1,3 +1,4 @@
+import { Taxonomy } from './../../core/models/taxonomy';
 import { Product } from './../../core/models/product';
 import { Action } from '@ngrx/store';
 
@@ -7,6 +8,8 @@ export class ProductActions {
     static GET_PRODUCT_DETAIL = 'GET_PRODUCT_DETAIL';
     static GET_PRODUCT_DETAIL_SUCCESS = 'GET_PRODUCT_DETAIL_SUCCESS';
     static CLEAR_SELECTED_PRODUCT = 'CLEAR_SELECTED_TRIP';
+    static GET_ALL_TAXONOMIES = 'GET_ALL_TAXONOMIES';
+    static GET_ALL_TAXONOMIES_SUCCESS = 'GET_ALL_TAXONOMIES_SUCCESS';
 
     getAllProducts(): Action {
         return { type: ProductActions.GET_ALL_PRODUCTS };
@@ -31,10 +34,21 @@ export class ProductActions {
         return {
             type: ProductActions.GET_PRODUCT_DETAIL_SUCCESS,
             payload: product
-        }
+        };
     }
 
     clearSelectedProduct(): Action {
         return { type: ProductActions.CLEAR_SELECTED_PRODUCT };
+    }
+
+    getAllTaxonomies(): Action {
+        return { type: ProductActions.GET_ALL_TAXONOMIES };
+    }
+
+    getAllTaxonomiesSuccess(taxonomies: any): Action {
+        return {
+            type: ProductActions.GET_ALL_TAXONOMIES_SUCCESS,
+            payload: taxonomies
+        };
     }
 }

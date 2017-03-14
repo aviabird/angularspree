@@ -1,5 +1,3 @@
-/**Angular Modules */
-import { ProductEffects } from './effects/product.effects';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/index';
 
@@ -10,28 +8,34 @@ import { ProductService } from './../core/services/product.service';
 
 // Components
 import { ProductDetailPageComponent } from './components/product-detail-page/product-detail-page.component';
+import { ProductComponent } from './product.component';
+
 // Routes
 import { ProductRoutes as routes } from './product.routes';
-import { ProductComponent } from './product.component';
+
+// Effects
 import { EffectsModule } from '@ngrx/effects';
+import { ProductEffects } from './effects/product.effects';
+
 
 @NgModule({
   declarations: [
     // components
-    ProductComponent,
     ProductDetailPageComponent,
+    ProductComponent,
     // pipes
   ],
   exports: [
     // components
+    ProductDetailPageComponent,
   ],
   imports: [
     SharedModule,
+    EffectsModule.run(ProductEffects),
     RouterModule.forChild(routes),
   ],
   providers: [
-    ProductService,
-    EffectsModule.run(ProductEffects),
+    ProductService
   ]
 })
-export class ProductModule { }
+export class ProductModule {}

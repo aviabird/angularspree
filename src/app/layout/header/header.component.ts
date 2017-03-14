@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
 import { getAuthStatus } from '../../auth/reducers/selectors';
 import { Observable } from 'rxjs/Observable';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,32 +11,16 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  signInForm: FormGroup;
   isAuthenticated: Observable<boolean>;
 
   constructor(
-    private authService: AuthService,
-    private fb: FormBuilder,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.initForm();
+    this.authService.authorized().subscribe();
     this.isAuthenticated = this.store.select(getAuthStatus);
-  }
-
-  initForm() {
-    const email = 'admin@spree.com';
-    const password = 'pankajrawat';
-
-    this.signInForm = this.fb.group({
-      'email': [email, Validators.required],
-      'password': [password, Validators.required]
-    });
-
-    this.authService.login(this.signInForm.value).subscribe(
-      data => console.log(data)
-    );
   }
 
 }

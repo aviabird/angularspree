@@ -1,3 +1,4 @@
+import { Taxonomy } from './../../core/models/taxonomy';
 import { Product } from './../../core/models/product';
 import { ProductActions } from './../actions/product-actions';
 import { ProductState, ProductStateRecord } from './product-state';
@@ -10,11 +11,9 @@ export const productReducer: ActionReducer<ProductState> =
   switch (type) {
 
     case ProductActions.GET_PRODUCT_DETAIL_SUCCESS:
-      Object.assign({}, state, {
+      return state.merge({
         selectedProduct: payload
-      });
-
-      return state;
+      }) as ProductState;
 
     case ProductActions.GET_ALL_PRODUCTS_SUCCESS:
       const _products: Product[] = payload.products.products;
@@ -29,8 +28,12 @@ export const productReducer: ActionReducer<ProductState> =
         productEntities: productEntities
       }) as ProductState;
 
-    // case "":
-    //     return state;
+   case ProductActions.GET_ALL_TAXONOMIES_SUCCESS:
+    const _taxonomies: Taxonomy[] = payload.taxonomies.taxonomies;
+    return state.merge({
+      taxonomies: _taxonomies
+    }) as ProductState;
+
     default:
       return state;
   }

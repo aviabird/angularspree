@@ -17,7 +17,6 @@
         <li class=""><a href="#">Men <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Women</a></li>
         <li><a href="#">Kids</a></li>
-        <li><a href="">{{isAuthenticated | async | json}}</a></li>
       </ul>
       
       <app-profile-dropdown [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>

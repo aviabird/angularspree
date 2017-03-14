@@ -1,0 +1,60 @@
+<div class="row register-container" data-hook="">
+  <div id="content" class="col-sm-12" data-hook="">
+    <div class="col-md-5 col-centered">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Signup to {{title}}</h3>
+        </div>
+        <div id="existing-customer" class="panel-body" data-hook="login">
+          <div class="register-third-party-register">
+            <p class="register-button-info-text register-info-text">EASILY USING</p>
+            <div class="register-button-container"><button class="register-facebook register-button"><span class="register-fb-logo register-sprite"></span><!-- react-text: 78 -->FACEBOOK<!-- /react-text --></button>
+              <button
+                class="register-google register-button" id="gPlusLogin"><span class="register-gplus-logo register-sprite"></span>
+                  GOOGLE
+                </button>
+            </div>
+          </div>
+          <p class="register-button-info-text register-info-text">- OR USING EMAIL -</p>
+          <form class="register-register-form" novalidate="" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+            <fieldset class="register-input-container">
+
+              <div class="register-input-item">
+                <input type="email" class="register-user-input-email register-user-input" name="email" formControlName="email" placeholder="Your Email Address"
+                  autocomplete="off">
+              </div>
+
+              <div class="register-input-item">
+                <input type="password" class="register-user-input-password register-user-input" name="password" formControlName="password"
+                  placeholder="Choose Password" autocomplete="off">
+              </div>
+
+              <div class="register-input-item">
+                <input type="password" class="register-user-input-password register-user-input" name="confirm_password" formControlName="confirm_password"
+                  placeholder="Confirm Password" autocomplete="off">
+              </div>
+
+              <div class="register-input-item">
+                <input type="number" min="1000000000" max="9999999999" class="register-user-input-mobile register-user-input" name="mobile"
+                  placeholder="Mobile Number (For order status updates)">
+              </div>
+
+              <fieldset data-type="horizontal" class="register-gender">
+                <legend class="register-gender-title">I'm a</legend><input type="radio" class="register-gender-radio" id="male" name="gender" value="M">
+                <label class="register-gender-label" for="male">Male</label><input type="radio" class="register-gender-radio"
+                  id="female" name="gender" value="F">
+                <label class="register-gender-label" for="female">Female</label>
+              </fieldset>
+            </fieldset>
+            <fieldset class="register-register-button-container"><button class="register-register-button">REGISTER</button></fieldset>
+          </form>
+          <div class="register-link-container">
+            <div class="register-login-link">
+              <span class="register-info-text">Already have an account?</span>
+              <a class="register-create-account-link register-link" [routerLink]="['/auth','login']">Login!</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

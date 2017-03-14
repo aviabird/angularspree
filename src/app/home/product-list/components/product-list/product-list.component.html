@@ -1,0 +1,6 @@
+<div class='product-box col-xs-4' *ngFor="let product of products">
+  <app-product-list-item 
+  [product]="product"
+  [routerLink]="['/product', product.slug]">    
+  </app-product-list-item>
+</div>
