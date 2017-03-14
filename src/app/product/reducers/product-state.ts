@@ -1,3 +1,5 @@
+import { Taxonomy } from './../../core/models/taxonomy';
+import { Taxon } from './../../core/models/taxon';
 /**
  * Read more about Immutable Records here
  * 1. https://coderwall.com/p/vxk_tg/using-immutable-js-in-typescript
@@ -14,11 +16,13 @@ export interface ProductState extends Map<string, any> {
   productEntities: Map<number, Product>;
   selectedProductId: number;
   selectedProduct: Product;
+  taxonomies: List<Taxonomy>;
 }
 
 export const ProductStateRecord = Record({
   productIds: List([]),
   productEntities: Map({}),
   selectedProductId: null,
-  selectedProduct: Map({})
+  selectedProduct: Map({}),
+  taxonomies: List([])
 });

@@ -1,3 +1,4 @@
+import { Taxonomy } from './../../core/models/taxonomy';
 import { Product } from './../../core/models/product';
 import { ProductActions } from './../actions/product-actions';
 import { ProductState, ProductStateRecord } from './product-state';
@@ -28,6 +29,12 @@ export const productReducer: ActionReducer<ProductState> =
         productIds: productIds,
         productEntities: productEntities
       }) as ProductState;
+
+   case ProductActions.GET_ALL_TAXONOMIES_SUCCESS:
+    const _taxonomies: Taxonomy[] = payload.taxonomies.taxonomies;
+    return state.merge({
+      taxonomies: _taxonomies
+    }) as ProductState;
 
     // case "":
     //     return state;

@@ -18,12 +18,12 @@ export class ProductEffects {
   @Effect()
     GetAllProducts$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_ALL_PRODUCTS)
-    .switchMap((action: Action) => {
-      console.log('should call a service, ', action);
-      return this.productService.getProducts();
-    })
-    .map((data: any) => {
-      console.log('should call a action', data);
-      return this.productActions.getAllProductsSuccess({products: data});
-    });
+    .switchMap((action: Action) => this.productService.getProducts())
+    .map((data: any) => this.productActions.getAllProductsSuccess({products: data}));
+
+  @Effect()
+    GetAllTaxonomies$: Observable<Action> = this.actions$
+    .ofType(ProductActions.GET_ALL_TAXONOMIES)
+    .switchMap((action: Action) => this.productService.getTaxonomies())
+    .map((data: any) => this.productActions.getAllTaxonomiesSuccess({taxonomies: data}));
 }
