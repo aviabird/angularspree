@@ -9,8 +9,7 @@
           <div class="register-third-party-register">
             <p class="register-button-info-text register-info-text">EASILY USING</p>
             <div class="register-button-container"><button class="register-facebook register-button"><span class="register-fb-logo register-sprite"></span><!-- react-text: 78 -->FACEBOOK<!-- /react-text --></button>
-              <button
-                class="register-google register-button" id="gPlusLogin"><span class="register-gplus-logo register-sprite"></span>
+              <button class="register-google register-button" id="gPlusLogin"><span class="register-gplus-logo register-sprite"></span>
                   GOOGLE
                 </button>
             </div>
@@ -22,51 +21,57 @@
               <div class="register-input-item">
                 <input type="email" class="register-user-input-email register-user-input" name="email" formControlName="email" placeholder="Your Email Address"
                   autocomplete="off">
-                <div *ngIf="signUpForm.get('email').errors && signUpForm.get('email').errors.msg">
+                <div *ngIf="signUpForm.get('email').errors && signUpForm.get('email').touched">
                   <span class="register-error-icon">!</span>
-                  <p class="register-error-message">{{signUpForm.get('email').errors.msg}}</p>
+                  <p class="register-error-message">{{signUpForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
                 </div>
               </div>
 
               <div class="register-input-item">
                 <input type="password" class="register-user-input-password register-user-input" name="password" formControlName="password"
                   placeholder="Choose Password" autocomplete="off">
-                <div *ngIf="signUpForm.get('password').errors && signUpForm.get('password').errors.msg">
+                <div *ngIf="signUpForm.get('password').errors && signUpForm.get('password').touched">
                   <span class="register-error-icon">!</span>
-                  <p class="register-error-message">{{signUpForm.get('password').errors.msg}}</p>
+                  <p class="register-error-message">{{signUpForm.get('password').errors.msg || 'Password must be at least 6 characters'}}</p>
                 </div>
               </div>
 
               <div class="register-input-item">
                 <input type="password" class="register-user-input-password register-user-input" name="password_confirmation" formControlName="password_confirmation"
                   placeholder="Confirm Password" autocomplete="off">
-                <div *ngIf="signUpForm.get('password_confirmation').errors && signUpForm.get('password_confirmation').errors.msg">
+                <div *ngIf="signUpForm.get('password_confirmation').errors && signUpForm.get('password_confirmation').touched">
                   <span class="register-error-icon">!</span>
-                  <p class="register-error-message">{{signUpForm.get('password_confirmation').errors.msg}}</p>
+                  <p class="register-error-message">{{signUpForm.get('password_confirmation').errors.msg || 'Password must match'}}</p>
                 </div>
               </div>
 
               <div class="register-input-item">
                 <input type="number" min="1000000000" max="9999999999" class="register-user-input-mobile register-user-input" name="mobile"
-                  placeholder="Mobile Number (For order status updates)">
-                <div hidden="true">
+                  formControlName="mobile" placeholder="Mobile Number (For order status updates)">
+                <div *ngIf="signUpForm.get('mobile').errors && signUpForm.get('mobile').touched">
                   <span class="register-error-icon">!</span>
-                  <p class="register-error-message">Please enter a valid mobile number (10 digits)</p>
+                  <p class="register-error-message">{{signUpForm.get('mobile').errors.msg || 'Please enter a valid mobile number (10 digits)'}}</p>
                 </div>
               </div>
 
               <fieldset data-type="horizontal" class="register-gender">
-                <legend class="register-gender-title">I'm a</legend><input type="radio" class="register-gender-radio" id="male" name="gender" value="M">
-                <label class="register-gender-label" for="male">Male</label><input type="radio" class="register-gender-radio"
-                  id="female" name="gender" value="F">
+                <legend class="register-gender-title">I'm a</legend>
+
+                <input type="radio" class="register-gender-radio" id="male" name="gender" value="M" formControlName="gender">
+                <label class="register-gender-label" for="male">Male</label>
+
+                <input type="radio" class="register-gender-radio" id="female" name="gender" value="F" formControlName="gender">
                 <label class="register-gender-label" for="female">Female</label>
-                <div hidden="true">
+
+                <div *ngIf="signUpForm.get('gender').errors && signUpForm.get('gender').touched">
                   <span class="register-gender-error-icon register-error-icon">!</span>
-                  <p class="register-gender-error-message register-error-message">Please select your gender</p>
+                  <p class="register-gender-error-message register-error-message">{{signUpForm.get('gender').errors.msg || 'Please select your gender'}}</p>
                 </div>
               </fieldset>
             </fieldset>
-            <fieldset class="register-register-button-container"><button class="register-register-button">REGISTER</button></fieldset>
+            <fieldset class="register-register-button-container">
+              <button class="register-register-button">REGISTER</button>
+            </fieldset>
           </form>
           <div class="register-link-container">
             <div class="register-login-link">

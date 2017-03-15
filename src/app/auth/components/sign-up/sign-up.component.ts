@@ -33,29 +33,45 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const values = this.signUpForm.value;
-    this.registerSubs = this.authService.register(values).subscribe(data => {
-      const errors = data.errors;
-      if (errors) {
-        const keys = Object.keys(errors);
+    const keys = Object.keys(values);
 
-        keys.forEach(val => {
-          this.signUpForm.controls[val].setErrors({
-            'msg': errors[val][0]
+    if (this.signUpForm.valid) {
+      this.registerSubs = this.authService.register(values).subscribe(data => {
+        const errors = data.errors;
+        if (errors) {
+          keys.forEach(val => {
+            if (errors[val]) { this.pushErrorFor(val, errors[val][0]); };
           });
-        });
-      }
-    });
+        }
+      });
+    } else {
+      keys.forEach(val => {
+        const ctrl = this.signUpForm.controls[val];
+        if (!ctrl.valid) {
+          this.pushErrorFor(val, null);
+          ctrl.markAsTouched();
+        };
+      });
+    }
+  }
+
+  private pushErrorFor(ctrl_name: string, msg: string) {
+    this.signUpForm.controls[ctrl_name].setErrors({'msg': msg});
   }
 
   initForm() {
     const email = '';
     const password = '';
     const password_confirmation = '';
+    const mobile = '';
+    const gender = '';
 
     this.signUpForm = this.fb.group({
       'email': [email, Validators.required],
       'password': [password, Validators.required],
       'password_confirmation': [password_confirmation, Validators.required],
+      'mobile': [mobile, Validators.required],
+      'gender': [gender, Validators.required],
     });
   }
 
