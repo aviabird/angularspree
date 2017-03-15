@@ -50,7 +50,6 @@
               <a class="login-create-account-link login-link" [routerLink]="['/auth']">Create Account</a>
             </div>
           </div>
-          {{signInForm.untouched}}
           <div class="notify-container"
             [ngClass]="{'in': !signInForm.valid && !signInForm.untouched, 'out': signInForm.valid}">
             <div class="notify-error notify-content">
