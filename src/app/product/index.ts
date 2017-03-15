@@ -1,4 +1,3 @@
-import { ProductVariancesComponent } from './components/product-detail-page/product-variances/product-variances.component';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/index';
 
@@ -14,6 +13,7 @@ import { ProductDetailsComponent } from './components/product-detail-page/produc
 import { ProductDescriptionComponent } from './components/product-detail-page/product-description/product-description.component';
 import { ProductImagesComponent } from './components/product-detail-page/product-images/product-images.component';
 import { ProductPriceInfoComponent } from './components/product-detail-page/product-price-info/product-price-info.component';
+import { ProductVariantsComponent } from './components/product-detail-page/product-variants/product-variants.component';
 import { ProductComponent } from './product.component';
 
 // Routes
@@ -33,7 +33,7 @@ import { ProductEffects } from './effects/product.effects';
     ProductImagesComponent,
     ProductPriceInfoComponent,
     ProductDescriptionComponent,
-    ProductVariancesComponent
+    ProductVariantsComponent
     // pipes
   ],
   exports: [
@@ -43,7 +43,7 @@ import { ProductEffects } from './effects/product.effects';
     ProductImagesComponent,
     ProductPriceInfoComponent,
     ProductDescriptionComponent,
-    ProductVariancesComponent
+    ProductVariantsComponent
   ],
   imports: [
     SharedModule,

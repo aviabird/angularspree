@@ -1,1 +1,4 @@
-<h1>{{ product?.name }}</h1>
+<div *ngIf="product">
+  <h1>{{ product?.name }}</h1>
+  <app-product-variants [product]="product"></app-product-variants>  
+</div>
