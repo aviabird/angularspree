@@ -15,8 +15,13 @@ export const cartReducer: ActionReducer<CartState> =
 
       case CartActions.FETCH_CURRENT_ORDER_SUCCESS:
         const _orderNumber = payload.number;
+        let _totalCartItems = 0;
         _lineItems = payload.line_items;
         _lineItemIds = _lineItems.map(lineItem => lineItem.id);
+        _lineItems.forEach((lineItem) => {
+          _totalCartItems += lineItem.quantity;
+        });
+
 
         _lineItemEntities = _lineItems.reduce((lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
           return Object.assign(lineItems, {
@@ -27,7 +32,8 @@ export const cartReducer: ActionReducer<CartState> =
         return state.merge({
           orderNumber: _orderNumber,
           lineItemIds: _lineItemIds,
-          lineItemEntities: _lineItemEntities
+          lineItemEntities: _lineItemEntities,
+          totalCartItems: _totalCartItems
         }) as CartState;
 
       case CartActions.ADD_TO_CART_SUCCESS:
@@ -39,12 +45,15 @@ export const cartReducer: ActionReducer<CartState> =
           return state;
         }
 
+
+        _totalCartItems = state.totalCartItems + _lineItem.quantity;
         _lineItemEntity = { [_lineItemId]: _lineItem };
         _lineItemIds = state.lineItemIds.push(_lineItemId);
 
         return state.merge({
           lineItemIds: _lineItemIds,
-          lineItemEntities: state.lineItemEntities.merge(_lineItemEntity)
+          lineItemEntities: state.lineItemEntities.merge(_lineItemEntity),
+          totalCartItems: _totalCartItems
         }) as CartState;
 
       // case CartActions.REMOVE_LINE_ITEM:

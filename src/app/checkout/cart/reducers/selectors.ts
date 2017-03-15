@@ -18,6 +18,11 @@ export function fetchOrderNumber(state: CartState) {
   return state.orderNumber;
 }
 
+export function fetchTotalCartItems(state: CartState) {
+  return state.totalCartItems;
+}
+
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCartState, fetchLineItems);
 export const getOrderNumber = createSelector(getCartState, fetchOrderNumber);
+export const getTotalCartItems = createSelector(getCartState, fetchTotalCartItems);
