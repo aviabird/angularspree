@@ -88,28 +88,24 @@ $theme-myntra-border: 2px solid #aaa;
       0% {
         top: -1000px;
       }
-      
-      5% {
-        top: 150px;
-      }
-      
+
       10% {
-        top: 90px;
+        top: 100px;
       }
 
       15% {
         opacity: 1;
-        top: 120px;
+        top: 80px;
       }
 
       60% {
         opacity: 1;
-        top: 120px;
+        top: 80px;
       }
       
       65% {
         opacity: 1;
-        top: 150px;
+        top: 100px;
       }
       
       100% {
@@ -163,11 +159,12 @@ $theme-myntra-border: 2px solid #aaa;
     .notify-icon {
       border: 2px solid #fff;
       padding: 0 7px;
-      border-radius: 21px;
+      border-radius: 20px;
       position: absolute;
       top: 12px;
       left: 0;
       margin-top: -10px;
+      width: 27px;
     }
 
     .notify-icon-text {
