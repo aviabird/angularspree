@@ -1,3 +1,4 @@
+import { CartService } from './../../core/services/cart.service';
 import { Observable } from 'rxjs/Rx';
 import { CartActions } from './actions/cart-actions';
 import { AppState } from './../../interfaces';
@@ -14,15 +15,19 @@ export class CartComponent implements OnInit {
 
   variant_id = 1;
 
-  constructor(private store: Store<AppState>, private actions: CartActions) { }
+  constructor(private store: Store<AppState>, private actions: CartActions, private cartService: CartService) { }
 
   ngOnInit() {
-    this.store.dispatch(this.actions.fetchCurrentOrder());
+    // this.store.dispatch(this.actions.fetchCurrentOrder());
+    this.cartService.fetchCurrentOrder()
+      .subscribe();
   }
 
   addToCart() {
     this.variant_id++;
-    this.store.dispatch(this.actions.addToCart(this.variant_id));
+    // this.store.dispatch(this.actions.addToCart(this.variant_id));
+    this.cartService.createNewLineItem(this.variant_id)
+      .subscribe();
   }
 
 }

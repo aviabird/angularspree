@@ -15,23 +15,23 @@ export class CartEffects {
     private cartActions: CartActions) {}
 
   // tslint:disable-next-line:member-ordering
-  @Effect()
-    FetchCurrentOrder$ = this.actions$
-    .ofType(CartActions.FETCH_CURRENT_ORDER)
-    .switchMap((action: Action) => {
-      return this.cartService.fetchCurrentOrder();
-    })
-    .map((order: Order) => {
-      return this.cartActions.fetchCurrentOrderSuccess(order);
-    });
+  // @Effect()
+    // FetchCurrentOrder$ = this.actions$
+    // .ofType(CartActions.FETCH_CURRENT_ORDER)
+    // .switchMap((action: Action) => {
+    //   return this.cartService.fetchCurrentOrder();
+    // })
+    // .map((order: Order) => {
+    //   return this.cartActions.fetchCurrentOrderSuccess(order);
+    // });
 
-  @Effect()
-    AddToCart$ = this.actions$
-    .ofType(CartActions.ADD_TO_CART)
-    .switchMap((action: Action) => {
-      return this.cartService.createNewLineItem(action.payload);
-    })
-    .map((lineItem: LineItem) => this.cartActions.addToCartSuccess(lineItem));
+  // @Effect()
+  //   AddToCart$ = this.actions$
+  //   .ofType(CartActions.ADD_TO_CART)
+  //   .switchMap((action: Action) => {
+  //     return this.cartService.createNewLineItem(action.payload);
+  //   })
+  //   .map((lineItem: LineItem) => this.cartActions.addToCartSuccess(lineItem));
 
 
   // Use this effect once angular releases RC4

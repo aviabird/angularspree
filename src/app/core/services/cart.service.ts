@@ -24,12 +24,16 @@ export class CartService {
         .subscribe(number => this.orderNumber = number);
     }
 
-  createNewLineItem(variant_id: number): Observable<LineItem> {
+//  Change below methods once angular releases RC4, so that this methods can be called from effects
+//  Follow this linke to know more about this issue https://github.com/angular/angular/issues/12869
+
+  createNewLineItem(variant_id: number) {
     return this.http.post(
       `spree/api/v1/orders/${this.orderNumber}/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=1`,
       {}
     ).map(res => {
-      return res.json();
+      const lineItem: LineItem =  res.json();
+      this.store.dispatch(this.cartActions.addToCartSuccess(lineItem));
     });
   }
 
@@ -37,14 +41,15 @@ export class CartService {
     return this.http.get(
       'spree/api/v1/orders/current'
     ).map(res => {
-      return res.json();
+      const order = res.json();
+      return this.store.dispatch(this.cartActions.fetchCurrentOrderSuccess(order));
     });
   }
 
   deleteLineItem(id: number, quantity: number) {
     return this.http.delete(`spree/api/v1/orders/${this.orderNumber}/line_items/${id}`)
-      .subscribe(() => {
-        return this.store.dispatch(this.cartActions.removeLineItemSuccess(id, quantity));
+      .map(() => {
+        this.store.dispatch(this.cartActions.removeLineItemSuccess(id, quantity));
       });
   }
 

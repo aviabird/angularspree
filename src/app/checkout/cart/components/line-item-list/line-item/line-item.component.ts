@@ -33,7 +33,8 @@ export class LineItemComponent implements OnInit {
   // Follow this linke to know more about this issue https://github.com/angular/angular/issues/12869
   removeLineItem() {
     // this.store.dispatch(this.actions.removeLineItem(this.lineItem.id));
-  this.cartService.deleteLineItem(this.lineItem.id, this.lineItem.quantity);
+    this.cartService.deleteLineItem(this.lineItem.id, this.lineItem.quantity)
+      .subscribe();
   }
 
 }
