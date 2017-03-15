@@ -19,7 +19,7 @@
         <li><a href="#">Kids</a></li>
       </ul>
       
-      <app-profile-dropdown [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
+      <app-profile-dropdown [totalCartItems]="totalCartItems | async" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
 
       <form class="form-inline navbar-form navbar-right">
         <div class="form-group">

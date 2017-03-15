@@ -1,8 +1,22 @@
+<p>
+  home works!
+  <a [routerLink]="['/checkout']">Checkout</a>
+  <a [routerLink]="['/user']">User</a>
+  <a [routerLink]="['/user', 'orders']">Overview</a>
+  <!--<a [routerLink]="['/product', 'detail']">Product Detail</a>-->
+  <!--<app-product-list></app-product-list>-->
+  
+</p>
+<div *ngFor="let product of products$ | async" class="column" style="margin-bottom: 20px;">
+  <p> Product id: {{ product.id }} </p>
+  <p> Product Name : {{ product.name }} </p>
+  <p> Product Price : {{ product.price }} </p>
+  <img [src]="getProductImageUrl(product.master.images[0]?.large_url)">
 <div class="col-xs-12">
   <div class="col-xs-4">
-    <app-taxons [taxonomies]="taxonomies"></app-taxons>
+    <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons>
   </div>
   <div class="col-xs-8">
-    <app-product-list [products]="products"></app-product-list>
+    <app-product-list [products]="products$ | async"></app-product-list>
   </div>
 </div>

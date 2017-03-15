@@ -1,12 +1,13 @@
+import { CartService } from './services/cart.service';
 import { NgModule } from '@angular/core';
 import { ProductDummyService } from './services/product-dummy.service';
 import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
-
 // Components
 
 // Services
 import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http';
+import { ProductService } from './services/product.service';
 import { AuthActions } from '../auth/actions/auth.actions';
 
 
@@ -36,7 +37,9 @@ export function httpInterceptor(
       useFactory: httpInterceptor,
       deps: [ XHRBackend, RequestOptions]
     },
+    CartService,
     ProductDummyService,
+    ProductService,
     AuthActions
   ]
 })

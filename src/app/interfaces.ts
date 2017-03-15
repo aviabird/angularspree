@@ -1,3 +1,4 @@
+import { CartState } from './checkout/cart/reducers/cart-state';
 import { ProductState } from './product/reducers/product-state';
 import { AuthState } from './auth/reducers/auth.state';
 
@@ -7,4 +8,5 @@ import { AuthState } from './auth/reducers/auth.state';
 export interface AppState {
   products: ProductState;
   auth: AuthState;
+  cart: CartState;
 }
