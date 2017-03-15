@@ -4,6 +4,7 @@
     <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons>
   </div>
   <div class="col-xs-8">
-    <app-product-list [products]="products$ | async"></app-product-list>
+    <!--<app-product-list [products]="products$ | async"></app-product-list>-->
+    <app-content [products]="products$ | async"></app-content>
   </div>
 </div>
