@@ -3,7 +3,7 @@
     <a *ngIf="i != breadcrumbs.length - 1; else elseBlock" href="#" class="crumb">
       <span>{{breadcrumb}}</span>
     </a>
-    <template #elseBlock>{{breadcrumb}}</template>
+    <ng-template #elseBlock>{{breadcrumb}}</ng-template>
   </li>
 </ul>
 <!--</div>-->
