@@ -44,10 +44,10 @@ export class CheckoutActions {
     };
   }
 
-  removeLineItemSuccess(lineItemId: number, quantity: number): Action {
+  removeLineItemSuccess(lineItem: LineItem): Action {
     return {
       type: CheckoutActions.REMOVE_LINE_ITEM_SUCCESS,
-      payload: { quantity: quantity, id: lineItemId }
+      payload: lineItem
     };
   }
 

@@ -22,7 +22,12 @@ export function fetchTotalCartItems(state: CheckoutState) {
   return state.totalCartItems;
 }
 
+export function fetchTotalCartValue(state: CheckoutState) {
+  return state.totalCartValue;
+}
+
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCheckoutState, fetchLineItems);
 export const getOrderNumber = createSelector(getCheckoutState, fetchOrderNumber);
 export const getTotalCartItems = createSelector(getCheckoutState, fetchTotalCartItems);
+export const getTotalCartValue = createSelector(getCheckoutState, fetchTotalCartValue);

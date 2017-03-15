@@ -14,5 +14,5 @@ export const CheckoutStateRecord = Record({
   lineItemIds: List([]),
   lineItemEntities: Map({}),
   totalCartItems: 0,
-  totalCartValue: null
+  totalCartValue: 0
 });

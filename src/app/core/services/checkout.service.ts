@@ -28,7 +28,7 @@ export class CheckoutService {
 
   createNewLineItem(variant_id: number) {
     return this.http.post(
-      `spree/api/v1/orders/${this.orderNumber}/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=1`,
+      `spree/api/v1/orders/${this.orderNumber}/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=2`,
       {}
     ).map(res => {
       const lineItem: LineItem =  res.json();
@@ -45,10 +45,10 @@ export class CheckoutService {
     });
   }
 
-  deleteLineItem(id: number, quantity: number) {
-    return this.http.delete(`spree/api/v1/orders/${this.orderNumber}/line_items/${id}`)
+  deleteLineItem(lineItem: LineItem) {
+    return this.http.delete(`spree/api/v1/orders/${this.orderNumber}/line_items/${lineItem.id}`)
       .map(() => {
-        this.store.dispatch(this.actions.removeLineItemSuccess(id, quantity));
+        this.store.dispatch(this.actions.removeLineItemSuccess(lineItem));
       });
   }
 
