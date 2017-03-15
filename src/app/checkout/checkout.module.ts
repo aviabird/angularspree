@@ -1,3 +1,4 @@
+import { AddressModule } from './address/address.module';
 import { CheckoutEffects } from './effects/checkout.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './../product/effects/product.effects';
@@ -7,9 +8,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-// import { CartComponent } from './cart/cart.component';
-import { AddressComponent } from './address/address.component';
-import { PaymentComponent } from './payment/payment.component';
 
 import { CheckoutRoutes as routes } from './checkout.routes';
 
@@ -18,13 +16,10 @@ import { CheckoutRoutes as routes } from './checkout.routes';
     CommonModule,
     RouterModule.forChild(routes),
     EffectsModule.run(CheckoutEffects),
-    CartModule
+    CartModule,
+    AddressModule
   ],
-  declarations: [
-    // CartComponent,
-    AddressComponent,
-    PaymentComponent
-  ],
+  declarations: [],
   providers: [
     CheckoutActions
   ]
