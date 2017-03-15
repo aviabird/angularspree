@@ -1,5 +1,5 @@
+import { CheckoutActions } from './../../../../actions/checkout.actions';
 import { CartService } from './../../../../../core/services/cart.service';
-import { CartActions } from './../../../actions/cart-actions';
 import { AppState } from './../../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { environment } from './../../../../../../environments/environment';
@@ -20,7 +20,7 @@ export class LineItemComponent implements OnInit {
 
   @Input() lineItem: LineItem;
 
-  constructor(private store: Store<AppState>, private actions: CartActions, private cartService: CartService) { }
+  constructor(private store: Store<AppState>, private actions: CheckoutActions, private cartService: CartService) { }
 
   ngOnInit() {
     this.image = environment.API_ENDPOINT + this.lineItem.variant.images[0].product_url;

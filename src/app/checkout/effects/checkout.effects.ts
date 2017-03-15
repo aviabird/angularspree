@@ -1,18 +1,16 @@
-import { Order } from './../../../core/models/order';
-import { LineItem } from './../../../core/models/line_item';
-import { CartService } from './../../../core/services/cart.service';
+import { CheckoutActions } from './../actions/checkout.actions';
+import { CartService } from './../../core/services/cart.service';
 import { Action } from '@ngrx/store';
-import { CartActions } from './../actions/cart-actions';
 import { Observable } from 'rxjs/Observable';
 import { Effect, Actions } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class CartEffects {
+export class CheckoutEffects {
 
   constructor(private actions$: Actions,
     private cartService: CartService,
-    private cartActions: CartActions) {}
+    private actions: CheckoutActions) {}
 
   // tslint:disable-next-line:member-ordering
   // @Effect()

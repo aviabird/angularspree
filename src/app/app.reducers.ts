@@ -1,7 +1,7 @@
 import { environment } from './../environments/environment';
 import { productReducer } from './product/reducers/product-reducer';
-import { cartReducer } from './checkout/cart/reducers/cart-reducer';
 import { ProductState } from './product/reducers/product-state';
+import { checkoutReducer } from './checkout/reducers/checkout.reducer';
 
 /**
  * combineReducers is another useful metareducer that takes a map of reducer
@@ -36,7 +36,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 const reducers = {
   products: productReducer,
   auth: authReducer,
-  cart: cartReducer
+  checkout: checkoutReducer
 };
 
 export const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers);;

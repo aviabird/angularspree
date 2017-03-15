@@ -1,11 +1,11 @@
+import { getOrderNumber } from './../../checkout/reducers/selectors';
+import { CheckoutActions } from './../../checkout/actions/checkout.actions';
 import { Response } from '@angular/http';
-import { getOrderNumber } from './../../checkout/cart/reducers/selectors';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { LineItem } from './../models/line_item';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
-import { CartActions } from './../../checkout/cart/actions/cart-actions';
 import { HttpService } from './http';
 import { environment } from './../../../environments/environment.prod';
 
@@ -16,9 +16,8 @@ export class CartService {
 
   constructor(
     private http: HttpService,
-    private actions: CartActions,
+    private actions: CheckoutActions,
     private store: Store<AppState>,
-    private cartActions: CartActions
   ) {
       this.store.select(getOrderNumber)
         .subscribe(number => this.orderNumber = number);
@@ -33,7 +32,7 @@ export class CartService {
       {}
     ).map(res => {
       const lineItem: LineItem =  res.json();
-      this.store.dispatch(this.cartActions.addToCartSuccess(lineItem));
+      this.store.dispatch(this.actions.addToCartSuccess(lineItem));
     });
   }
 
@@ -42,14 +41,14 @@ export class CartService {
       'spree/api/v1/orders/current'
     ).map(res => {
       const order = res.json();
-      return this.store.dispatch(this.cartActions.fetchCurrentOrderSuccess(order));
+      return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
     });
   }
 
   deleteLineItem(id: number, quantity: number) {
     return this.http.delete(`spree/api/v1/orders/${this.orderNumber}/line_items/${id}`)
       .map(() => {
-        this.store.dispatch(this.cartActions.removeLineItemSuccess(id, quantity));
+        this.store.dispatch(this.actions.removeLineItemSuccess(id, quantity));
       });
   }
 

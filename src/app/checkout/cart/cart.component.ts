@@ -1,6 +1,6 @@
+import { CheckoutActions } from './../actions/checkout.actions';
 import { CartService } from './../../core/services/cart.service';
 import { Observable } from 'rxjs/Rx';
-import { CartActions } from './actions/cart-actions';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { LineItem } from './../../core/models/line_item';
@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
 
   variant_id = 1;
 
-  constructor(private store: Store<AppState>, private actions: CartActions, private cartService: CartService) { }
+  constructor(private store: Store<AppState>, private actions: CheckoutActions, private cartService: CartService) { }
 
   ngOnInit() {
     // this.store.dispatch(this.actions.fetchCurrentOrder());
