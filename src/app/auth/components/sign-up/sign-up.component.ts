@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
 import { Store } from '@ngrx/store';
@@ -6,15 +6,17 @@ import { AppState } from '../../../interfaces';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { getAuthStatus } from '../../reducers/selectors';
+import { Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
   title = environment.AppName;
+  registerSubs: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -31,18 +33,45 @@ export class SignUpComponent implements OnInit {
 
   onSubmit() {
     const values = this.signUpForm.value;
-    this.authService.register(values).subscribe();
+    const keys = Object.keys(values);
+
+    if (this.signUpForm.valid) {
+      this.registerSubs = this.authService.register(values).subscribe(data => {
+        const errors = data.errors;
+        if (errors) {
+          keys.forEach(val => {
+            if (errors[val]) { this.pushErrorFor(val, errors[val][0]); };
+          });
+        }
+      });
+    } else {
+      keys.forEach(val => {
+        const ctrl = this.signUpForm.controls[val];
+        if (!ctrl.valid) {
+          this.pushErrorFor(val, null);
+          ctrl.markAsTouched();
+        };
+      });
+    }
+  }
+
+  private pushErrorFor(ctrl_name: string, msg: string) {
+    this.signUpForm.controls[ctrl_name].setErrors({'msg': msg});
   }
 
   initForm() {
     const email = '';
     const password = '';
-    const confirm_password = '';
+    const password_confirmation = '';
+    const mobile = '';
+    const gender = '';
 
     this.signUpForm = this.fb.group({
       'email': [email, Validators.required],
       'password': [password, Validators.required],
-      'confirm_password': [confirm_password, Validators.required],
+      'password_confirmation': [password_confirmation, Validators.required],
+      'mobile': [mobile, Validators.required],
+      'gender': [gender, Validators.required],
     });
   }
 
@@ -52,5 +81,9 @@ export class SignUpComponent implements OnInit {
         if (data === true) { this.router.navigateByUrl('/'); }
       }
     );
+  }
+
+  ngOnDestroy() {
+    if (this.registerSubs) { this.registerSubs.unsubscribe(); }
   }
 }

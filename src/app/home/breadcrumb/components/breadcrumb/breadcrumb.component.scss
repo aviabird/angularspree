@@ -13,7 +13,7 @@
     text-transform: capitalize;
     a {
       color: #696b79;
-      text-decoration: none;
+      // text-decoration: none;
     }
   }
   li:after {
@@ -21,7 +21,7 @@
     content: '/';
     margin-left: 5px;
   }
-  li:last-child > a > span {
+  li:last-child {
     font-weight: 500;
     margin-right: 0;
     font-family: Whitney-semi-bold;
