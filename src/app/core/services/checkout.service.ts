@@ -10,7 +10,7 @@ import { HttpService } from './http';
 import { environment } from './../../../environments/environment.prod';
 
 @Injectable()
-export class CartService {
+export class CheckoutService {
   private apiLink: string = environment.API_ENDPOINT;
   private orderNumber: number;
 

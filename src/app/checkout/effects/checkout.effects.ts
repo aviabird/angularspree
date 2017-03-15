@@ -1,5 +1,5 @@
+import { CheckoutService } from './../../core/services/checkout.service';
 import { CheckoutActions } from './../actions/checkout.actions';
-import { CartService } from './../../core/services/cart.service';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Effect, Actions } from '@ngrx/effects';
@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 export class CheckoutEffects {
 
   constructor(private actions$: Actions,
-    private cartService: CartService,
+    private checkoutService: CheckoutService,
     private actions: CheckoutActions) {}
 
   // tslint:disable-next-line:member-ordering
