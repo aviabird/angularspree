@@ -1,0 +1,3 @@
+<div *ngFor="let item of lineItems$ | async" class="row line-item">
+  <app-line-item [lineItem]="item"></app-line-item>
+</div>
