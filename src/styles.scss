@@ -1,13 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 @import "app/shared/scss/themes";
+@font-face {
+    font-family: "Whitney-semi-bold";
+    src: url("assets/WhitneyHTF-SemiBold.woff") format("woff")
+}
+@font-face {
+    font-family: "Whitney";
+    src: url("assets/WhitneyHTF-Book.woff") format("woff")
+}
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
 @import url('../node_modules/font-awesome/css/font-awesome.min.css');
 
 body {
-  background-color: #efefef !important;
+  background-color: #fff !important;
 }
 
 .col-centered {
   float: none;
   margin: 0 auto;
+}
+
+html *:not(.fa)
+{
+   font-family: Whitney !important;
 }

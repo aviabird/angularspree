@@ -4,14 +4,16 @@ import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 
-// import { ProductService } from './../../core/services/product.service';
+import { ProductService } from './../../core/services/product.service';
 import { ProductDummyService } from './../../core/services/product-dummy.service';
 import { Action } from '@ngrx/store';
+
 
 @Injectable()
 export class ProductEffects {
   constructor(private actions$: Actions,
               private productService: ProductDummyService,
+              private readProductService: ProductService,
               private productActions: ProductActions) { }
 
   // tslint:disable-next-line:member-ordering
@@ -26,4 +28,10 @@ export class ProductEffects {
     .ofType(ProductActions.GET_ALL_TAXONOMIES)
     .switchMap((action: Action) => this.productService.getTaxonomies())
     .map((data: any) => this.productActions.getAllTaxonomiesSuccess({taxonomies: data}));
+
+  @Effect()
+  GetProductDetail$: Observable<Action> = this.actions$
+    .ofType(ProductActions.GET_PRODUCT_DETAIL)
+    .switchMap((action: Action) => this.readProductService.getProduct(action.payload))
+    .map((data: any) => this.productActions.getProductDetailSuccess(data));
 }

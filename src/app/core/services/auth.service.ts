@@ -56,9 +56,8 @@ export class AuthService {
   // returns an observable with user object
   authorized(): Observable<Object> {
     return this.http
-      .get('api/account.json')
+      .get('api/account')
       .filter((res: Response) => {
-        debugger
         return res.json().status === 'unauthorized';
       })
       .map((res: Response) => {

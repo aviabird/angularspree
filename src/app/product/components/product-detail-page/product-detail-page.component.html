@@ -1,0 +1,3 @@
+<div *ngIf="(product$ | async) != null">
+  <app-product-details [product]="product$ | async"></app-product-details>
+</div>

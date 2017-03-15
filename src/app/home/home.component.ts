@@ -25,18 +25,8 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(this.actions.getAllTaxonomies());
     this.products$ = this.store.select(getProducts);
     this.taxonomies$ = this.store.select(getTaxonomies);
-    this.products$.subscribe(data => {
-      this.products = data;
-    });
-
-    this.taxonomies$.subscribe(data => {
-      this.taxonomies = data;
-    });
   }
 
   ngOnInit() { }
 
-  getProductImageUrl(url) {
-    return environment.API_ENDPOINT + url;
-  }
 }

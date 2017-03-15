@@ -35,6 +35,8 @@ $theme-myntra-border: 2px solid #aaa;
           & > a {
             font-weight: 500;
             min-height: 50px;
+            font-family: Whitney-semi-bold !important;
+            font-size: 15px;
             &:hover {
               border-bottom: 3px solid $item-a-visited-color;
             }
