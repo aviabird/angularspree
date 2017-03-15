@@ -34,4 +34,10 @@ export class CartComponent implements OnInit {
       .subscribe();
   }
 
+  placeOrder() {
+    this.checkoutService.changeOrderState()
+      .subscribe();
+  }
+
+
 }

@@ -85,6 +85,9 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
       //     lineItemEntities: _lineItemEntities
       //   }) as CheckoutState;
 
+      // case CheckoutActions.CHANGE_ORDER_STATE:
+
+
       default:
         return state;
     }

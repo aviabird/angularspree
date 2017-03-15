@@ -56,7 +56,10 @@ export class CheckoutService {
     return this.http.put(
       `spree/api/v1/checkouts/${this.orderNumber}/next.json`,
       {}
-    );
+    ).map((res) => {
+      console.log('response', res.json());
+      // this.store.dispatch(this.actions.changeOrderState());
+    });
   }
 
 }
