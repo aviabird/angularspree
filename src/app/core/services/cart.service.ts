@@ -1,3 +1,4 @@
+import { getOrderNumber } from './../../checkout/cart/reducers/selectors';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { LineItem } from './../models/line_item';
@@ -18,10 +19,21 @@ export class CartService {
   ) {}
 
   createNewLineItem(variant_id: number): Observable<LineItem> {
-    console.log('in service');
+    const orderNo = this.store.select(getOrderNumber);
+    let number;
+    orderNo.subscribe((no) => number = no);
     return this.http.post(
-      `spree/api/v1/orders/R709983939/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=1`,
+      `spree/api/v1/orders/${number}/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=1`,
       {}
+    ).map(res => {
+      console.log('res', res.json());
+      return res.json();
+    });
+  }
+
+  fetchCurrentOrder() {
+    return this.http.get(
+      'spree/api/v1/orders/current'
     ).map(res => {
       console.log('res', res.json());
       return res.json();

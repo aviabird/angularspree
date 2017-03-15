@@ -17,10 +17,11 @@ export class CartComponent implements OnInit {
   constructor(private store: Store<AppState>, private actions: CartActions) { }
 
   ngOnInit() {
+    this.store.dispatch(this.actions.fetchCurrentOrder());
   }
 
   addToCart() {
-    this.store.dispatch(this.actions.addToCart(4));
+    this.store.dispatch(this.actions.addToCart(6));
   }
 
 }

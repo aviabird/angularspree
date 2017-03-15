@@ -14,5 +14,10 @@ export function fetchLineItems(state: CartState) {
   return ids.map(id => lineItemEntitites[id]);
 }
 
+export function fetchOrderNumber(state: CartState) {
+  return state.orderNumber;
+}
+
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCartState, fetchLineItems);
+export const getOrderNumber = createSelector(getCartState, fetchOrderNumber);

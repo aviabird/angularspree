@@ -1,3 +1,4 @@
+import { LineItem } from './../../../core/models/line_item';
 import { CartActions } from './../actions/cart-actions';
 import { Action, ActionReducer } from '@ngrx/store';
 import { CartState, CartStateRecord } from './cart-state';
@@ -8,37 +9,56 @@ export const initialState: CartState = new CartStateRecord() as CartState;
 export const cartReducer: ActionReducer<CartState> =
   (state: CartState = initialState, { type, payload }: Action): CartState => {
 
-    let lineItem, lineItemId;
+    let _lineItems, _lineItemEntities, _lineItemIds, _lineItem, _lineItemEntity, _lineItemId;
 
     switch (type) {
+
+      case CartActions.FETCH_CURRENT_ORDER_SUCCESS:
+        const _orderNumber = payload.number;
+        _lineItems = payload.line_items;
+        _lineItemIds = _lineItems.map(lineItem => lineItem.id);
+
+        _lineItemEntities = _lineItems.reduce((lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
+          return Object.assign(lineItems, {
+            [lineItem.id]: lineItem
+          });
+        }, { });
+
+        return state.merge({
+          orderNumber: _orderNumber,
+          lineItemIds: _lineItemIds,
+          lineItemEntities: _lineItemEntities
+        }) as CartState;
+
       case CartActions.ADD_TO_CART_SUCCESS:
-        lineItem = payload;
-        lineItemId = lineItem.id;
-        const lineItemEntity = { [lineItemId]: lineItem };
-        const _lineItemIds = state.lineItemIds.push(lineItemId);
+        _lineItem = payload;
+        _lineItemId = _lineItem.id;
+        _lineItemEntity = { [_lineItemId]: _lineItem };
+        _lineItemIds = state.lineItemIds.push(_lineItemId);
 
         return state.merge({
           lineItemIds: _lineItemIds,
-          lineItemEntities: Object.assign({}, state.lineItemEntities, lineItemEntity)
+          lineItemEntities: state.lineItemEntities.merge(_lineItemEntity)
+          // Object.assign({}, state.lineItemEntities, _lineItemEntity)
         }) as CartState;
 
-      case CartActions.REMOVE_LINE_ITEM:
-        lineItemId = payload;
-        const index = state.lineItemIds.indexOf(lineItemId);
-        state.lineItemIds.splice(index, 1);
-        delete state.lineItemEntities['lineItemId'];
+      // case CartActions.REMOVE_LINE_ITEM:
+      //   lineItemId = payload;
+      //   const index = state.lineItemIds.indexOf(lineItemId);
+      //   state.lineItemIds.splice(index, 1);
+      //   delete state.lineItemEntities['lineItemId'];
 
-      return state;
+      // return state;
 
-      case CartActions.CHANGE_LINE_ITEM_QUANTITY:
-        const quantity = payload.quantity;
-        lineItemId = payload.lineItemId;
-        const _lineItemEntities = state.lineItemEntities;
-        _lineItemEntities[lineItemId][quantity] = quantity;
+      // case CartActions.CHANGE_LINE_ITEM_QUANTITY:
+      //   const quantity = payload.quantity;
+      //   lineItemId = payload.lineItemId;
+      //   _lineItemEntities = state.lineItemEntities;
+      //   _lineItemEntities[lineItemId][quantity] = quantity;
 
-        return state.merge({
-          lineItemEntities: _lineItemEntities
-        }) as CartState;
+      //   return state.merge({
+      //     lineItemEntities: _lineItemEntities
+      //   }) as CartState;
 
       default:
         return state;
