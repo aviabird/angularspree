@@ -282,3 +282,40 @@ button, input, select, textarea {
   color: #94969f;
   font-size: 12px;
 }
+
+.register-error-icon {
+  border: 2px solid #ee5f73;
+  padding: 0 7px;
+  color: #ee5f73;
+  display: inline-block;
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  font-weight: 500;
+  border-radius: 21px;
+}
+
+.register-error-message {
+  font-size: 11px;
+  margin-left: 15px;
+  color: #ee5f73;
+  text-align: left;
+  margin-top: -9px;
+  max-height: 500px;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s;
+  -webkit-transition-timing-function: cubic-bezier(0,1,.5,1);
+  transition-timing-function: cubic-bezier(0,1,.5,1);
+}
+
+.register-gender-error-icon {
+  font-size: 16px;
+}
+
+.register-gender-error-message {
+  margin-left: 0;
+  margin-top: 10px;
+  margin-bottom: 0;
+}

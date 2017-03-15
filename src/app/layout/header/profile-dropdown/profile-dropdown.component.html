@@ -4,19 +4,21 @@
       <i class="fa fa-user" aria-hidden="true"></i>
       <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu" dropdownMenu *ngIf="!isAuthenticated">
+    <ul class="dropdown-menu" dropdownMenu *ngIf="!isAuthenticated; else elseBlock">
       <li><a [routerLink]="['/auth']">Sign Up</a></li>
       <li role="separator" class="divider"></li>
       <li><a [routerLink]="['/auth', 'login']">Login</a></li>
     </ul>
 
-    <ul class="dropdown-menu" dropdownMenu *ngIf="isAuthenticated">
-      <li><a href="#">My Profile</a></li>
-      <li><a href="#">My Orders</a></li>
-      <li><a href="#">Edit Profile</a></li>
-      <li role="separator" class="divider"></li>
-      <li><a (click)="logout()">Logout</a></li>
-    </ul>
+    <ng-template #elseBlock>
+      <ul class="dropdown-menu" dropdownMenu>
+        <li><a href="#">My Profile</a></li>
+        <li><a href="#">My Orders</a></li>
+        <li><a href="#">Edit Profile</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+    </ng-template>
   </li>
   <li>
     <a href="#">

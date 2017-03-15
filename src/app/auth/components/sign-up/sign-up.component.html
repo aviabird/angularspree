@@ -22,21 +22,37 @@
               <div class="register-input-item">
                 <input type="email" class="register-user-input-email register-user-input" name="email" formControlName="email" placeholder="Your Email Address"
                   autocomplete="off">
+                <div *ngIf="signUpForm.get('email').errors && signUpForm.get('email').errors.msg">
+                  <span class="register-error-icon">!</span>
+                  <p class="register-error-message">{{signUpForm.get('email').errors.msg}}</p>
+                </div>
               </div>
 
               <div class="register-input-item">
                 <input type="password" class="register-user-input-password register-user-input" name="password" formControlName="password"
                   placeholder="Choose Password" autocomplete="off">
+                <div *ngIf="signUpForm.get('password').errors && signUpForm.get('password').errors.msg">
+                  <span class="register-error-icon">!</span>
+                  <p class="register-error-message">{{signUpForm.get('password').errors.msg}}</p>
+                </div>
               </div>
 
               <div class="register-input-item">
-                <input type="password" class="register-user-input-password register-user-input" name="confirm_password" formControlName="confirm_password"
+                <input type="password" class="register-user-input-password register-user-input" name="password_confirmation" formControlName="password_confirmation"
                   placeholder="Confirm Password" autocomplete="off">
+                <div *ngIf="signUpForm.get('password_confirmation').errors && signUpForm.get('password_confirmation').errors.msg">
+                  <span class="register-error-icon">!</span>
+                  <p class="register-error-message">{{signUpForm.get('password_confirmation').errors.msg}}</p>
+                </div>
               </div>
 
               <div class="register-input-item">
                 <input type="number" min="1000000000" max="9999999999" class="register-user-input-mobile register-user-input" name="mobile"
                   placeholder="Mobile Number (For order status updates)">
+                <div hidden="true">
+                  <span class="register-error-icon">!</span>
+                  <p class="register-error-message">Please enter a valid mobile number (10 digits)</p>
+                </div>
               </div>
 
               <fieldset data-type="horizontal" class="register-gender">
@@ -44,6 +60,10 @@
                 <label class="register-gender-label" for="male">Male</label><input type="radio" class="register-gender-radio"
                   id="female" name="gender" value="F">
                 <label class="register-gender-label" for="female">Female</label>
+                <div hidden="true">
+                  <span class="register-gender-error-icon register-error-icon">!</span>
+                  <p class="register-gender-error-message register-error-message">Please select your gender</p>
+                </div>
               </fieldset>
             </fieldset>
             <fieldset class="register-register-button-container"><button class="register-register-button">REGISTER</button></fieldset>

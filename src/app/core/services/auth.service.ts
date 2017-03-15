@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   // returns an observable with user object
-  register(data): Observable<Object> {
+  register(data): Observable<any> {
     return this.http.post(
       'api/account',
       { spree_user: data }
@@ -56,10 +56,8 @@ export class AuthService {
   // returns an observable with user object
   authorized(): Observable<Object> {
     return this.http
-      .get('api/account')
-      .filter((res: Response) => {
-        return res.json().status === 'unauthorized';
-      })
+      .get('spree/api/v1/users')
+      .filter((res: Response) => !res.json().error && res.json().count)
       .map((res: Response) => {
         // Check if authorized
         this.store.dispatch(this.actions.loginSuccess());
@@ -87,10 +85,9 @@ export class AuthService {
     localStorage.setItem('user', jsonData);
   }
 
-  private catchError(response: Response): Observable<String> {
-    console.log('in catch error method');
+  private catchError(response: Response): Observable<any> {
     // not returning throw as it raises an error on the parent observable
     // MORE INFO at https://youtu.be/3LKMwkuK0ZE?t=24m29s
-    return Observable.of('server error');
+    return Observable.of(response.json());
   }
 }
