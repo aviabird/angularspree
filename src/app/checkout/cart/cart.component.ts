@@ -12,16 +12,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  private lineItem: LineItem;
-
   constructor(private store: Store<AppState>, private actions: CartActions) { }
 
   ngOnInit() {
     this.store.dispatch(this.actions.fetchCurrentOrder());
-  }
-
-  addToCart() {
-    this.store.dispatch(this.actions.addToCart(6));
   }
 
 }

@@ -26,7 +26,6 @@ export class CartService {
       `spree/api/v1/orders/${number}/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=1`,
       {}
     ).map(res => {
-      console.log('res', res.json());
       return res.json();
     });
   }
@@ -35,7 +34,6 @@ export class CartService {
     return this.http.get(
       'spree/api/v1/orders/current'
     ).map(res => {
-      console.log('res', res.json());
       return res.json();
     });
   }

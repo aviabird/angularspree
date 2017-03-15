@@ -33,13 +33,18 @@ export const cartReducer: ActionReducer<CartState> =
       case CartActions.ADD_TO_CART_SUCCESS:
         _lineItem = payload;
         _lineItemId = _lineItem.id;
+
+        // return the same state if the item is already included.
+        if (state.lineItemIds.includes(_lineItemId)) {
+          return state;
+        }
+
         _lineItemEntity = { [_lineItemId]: _lineItem };
         _lineItemIds = state.lineItemIds.push(_lineItemId);
 
         return state.merge({
           lineItemIds: _lineItemIds,
           lineItemEntities: state.lineItemEntities.merge(_lineItemEntity)
-          // Object.assign({}, state.lineItemEntities, _lineItemEntity)
         }) as CartState;
 
       // case CartActions.REMOVE_LINE_ITEM:
