@@ -25,10 +25,18 @@
               <div class="login-input-item">
                 <input type="email" class="login-user-input-email login-user-input" name="email" placeholder="Your Email Address" formControlName="email"
                   autocomplete="off">
+                <div *ngIf="signInForm.get('email').errors && signInForm.get('email').touched">
+                  <span class="login-error-icon">!</span>
+                  <p class="login-error-message">{{signInForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
+                </div>
               </div>
               <div class="login-input-item">
                 <input type="password" class="login-user-input-password login-user-input" name="password" placeholder="Enter Password" formControlName="password"
                   autocomplete="off">
+                <div *ngIf="signInForm.get('password').errors && signInForm.get('password').touched">
+                  <span class="login-error-icon">!</span>
+                  <p class="login-error-message">{{signInForm.get('password').errors.msg || 'Password must be at least 6 characters'}}</p>
+                </div>
               </div>
             </fieldset>
             <fieldset class="login-login-button-container">
@@ -40,6 +48,16 @@
             <div class="login-right-links">
               <span class="login-info-text">New to {{title}}?</span>
               <a class="login-create-account-link login-link" [routerLink]="['/auth']">Create Account</a>
+            </div>
+          </div>
+          {{signInForm.untouched}}
+          <div class="notify-container"
+            [ngClass]="{'in': !signInForm.valid && !signInForm.untouched, 'out': signInForm.valid}">
+            <div class="notify-error notify-content">
+              <div class="notify-error-message">
+                <span class="notify-icon">!</span>
+                <p class="notify-icon-text">Please enter valid Credentials</p>
+              </div>
             </div>
           </div>
         </div>

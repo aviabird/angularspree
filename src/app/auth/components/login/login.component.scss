@@ -57,11 +57,10 @@ fieldset {
 .login-user-input-email {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  border-bottom: 1px solid #aaa !important;
 }
 
 .login-user-input-password {
-  border-top: 1px solid #d5d6d9;
+  border-top: 1px solid #d5d6d9 !important;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -266,4 +265,39 @@ button, input, select, textarea {
   background-position: -122px 0;
   width: 23px;
   top: 13px;
+}
+
+.login-error-icon {
+  border: 2px solid #ee5f73;
+  padding: 0 7px;
+  color: #ee5f73;
+  display: inline-block;
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  font-weight: 500;
+  border-radius: 21px;
+}
+
+.login-error-message {
+  font-size: 11px;
+  margin-left: 15px;
+  color: #ee5f73;
+  text-align: left;
+  margin-top: -9px;
+  max-height: 500px;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s;
+  -webkit-transition-timing-function: cubic-bezier(0,1,.5,1);
+  transition-timing-function: cubic-bezier(0,1,.5,1);
+}
+
+p {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
 }

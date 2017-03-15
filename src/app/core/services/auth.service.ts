@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   // returns an observable with user object
-  login(data): Observable<Object> {
+  login(data): Observable<any> {
     return this.http.post(
       'spree/login.json',
       { spree_user: data }
