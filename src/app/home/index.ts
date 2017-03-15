@@ -5,8 +5,8 @@ import { NgModule } from '@angular/core';
 
 // Components
 import { HomeComponent } from './home.component';
-import { ProductListComponent } from './product-list/components/product-list/product-list.component';
-import { ProductListItemComponent } from './product-list/components/product-list-item/product-list-item.component';
+import { ProductListComponent } from './content/components/product-list/product-list.component';
+import { ProductListItemComponent } from './content/components/product-list-item/product-list-item.component';
 import { BreadcrumbComponent } from './breadcrumb/components/breadcrumb/breadcrumb.component';
 import { TaxonsComponent } from './sidebar/taxons/taxons.component';
 import { FilterComponent } from './sidebar/filter/filter.component';

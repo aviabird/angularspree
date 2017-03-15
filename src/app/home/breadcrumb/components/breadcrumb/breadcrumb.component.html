@@ -1,3 +1,8 @@
-<p>
-  breadcrumb works!
-</p>
+<ul class="bread_crumb">
+  <li *ngFor="let breadcrumb of breadcrumbs">
+    <a href="#" class="crumb">
+      <span>{{breadcrumb}}</span>
+    </a>
+  </li>
+</ul>
+<!--</div>-->
