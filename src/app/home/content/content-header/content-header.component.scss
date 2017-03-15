@@ -41,6 +41,7 @@
       margin-right: 10px;
       label {
         color: #696b79;
+        font-weight: 400;
       }
       li {
         list-style: none;
@@ -67,6 +68,7 @@
       color: #282c3f;
       label {
         margin-left: 5px;
+        font-weight: 400;
       }
       label:first-child {
         color: #3e4152;
@@ -88,9 +90,13 @@
         margin-bottom: -1px;
       }
       label {
+        font-weight: 400;
         margin-left: 5px;
         li:first-child {
           margin-left: 0;
+        }
+        li:after {
+          content: none;
         }
       }
     }
