@@ -26,12 +26,22 @@ export class CartEffects {
     });
 
   @Effect()
-    AddLineItem$ = this.actions$
+    AddToCart$ = this.actions$
     .ofType(CartActions.ADD_TO_CART)
     .switchMap((action: Action) => {
       return this.cartService.createNewLineItem(action.payload);
     })
     .map((lineItem: LineItem) => this.cartActions.addToCartSuccess(lineItem));
 
+
+  // Use this effect once angular releases RC4
+
+  // @Effect()
+  //   RemoveLineItem$ = this.actions$
+  //   .ofType(CartActions.REMOVE_LINE_ITEM)
+  //   .switchMap((action: Action) => {
+  //     return this.cartService.deleteLineItem(action.payload);
+  //   })
+  //   .map(() => this.cartActions.removeLineItemSuccess());
 
 }

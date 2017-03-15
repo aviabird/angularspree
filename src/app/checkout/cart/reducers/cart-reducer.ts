@@ -45,7 +45,6 @@ export const cartReducer: ActionReducer<CartState> =
           return state;
         }
 
-
         _totalCartItems = state.totalCartItems + _lineItem.quantity;
         _lineItemEntity = { [_lineItemId]: _lineItem };
         _lineItemIds = state.lineItemIds.push(_lineItemId);
@@ -56,13 +55,21 @@ export const cartReducer: ActionReducer<CartState> =
           totalCartItems: _totalCartItems
         }) as CartState;
 
-      // case CartActions.REMOVE_LINE_ITEM:
-      //   lineItemId = payload;
-      //   const index = state.lineItemIds.indexOf(lineItemId);
-      //   state.lineItemIds.splice(index, 1);
-      //   delete state.lineItemEntities['lineItemId'];
+      case CartActions.REMOVE_LINE_ITEM_SUCCESS:
+        _lineItemId = payload.id;
+        const _quantity = payload.quantity;
+        const index = state.lineItemIds.indexOf(_lineItemId);
+        if (index >= 0) {
+          _lineItemIds = state.lineItemIds.splice(index, 1);
+          _lineItemEntities = state.lineItemEntities.delete(_lineItemId);
+          _totalCartItems = state.totalCartItems - _quantity;
+        }
 
-      // return state;
+        return state.merge({
+          lineItemIds: _lineItemIds,
+          lineItemEntities: _lineItemEntities,
+          totalCartItems: _totalCartItems
+        }) as CartState;
 
       // case CartActions.CHANGE_LINE_ITEM_QUANTITY:
       //   const quantity = payload.quantity;

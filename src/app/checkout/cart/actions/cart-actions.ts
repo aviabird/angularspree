@@ -8,6 +8,7 @@ export class CartActions {
   static ADD_TO_CART = 'ADD_TO_CART';
   static ADD_TO_CART_SUCCESS = 'ADD_TO_CART_SUCCESS';
   static REMOVE_LINE_ITEM = 'REMOVE_LINE_ITEM';
+  static REMOVE_LINE_ITEM_SUCCESS = 'REMOVE_LINE_ITEM_SUCCESS';
   static CHANGE_LINE_ITEM_QUANTITY = 'CHANGE_LINE_ITEM_QUANTITY';
   static PLACE_ORDER = 'PLACE_ORDER';
 
@@ -40,6 +41,13 @@ export class CartActions {
     return {
       type: CartActions.REMOVE_LINE_ITEM,
       payload: lineItemId
+    };
+  }
+
+  removeLineItemSuccess(lineItemId: number, quantity: number): Action {
+    return {
+      type: CartActions.REMOVE_LINE_ITEM_SUCCESS,
+      payload: { quantity: quantity, id: lineItemId }
     };
   }
 
