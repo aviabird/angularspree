@@ -24,7 +24,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
