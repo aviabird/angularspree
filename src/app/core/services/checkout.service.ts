@@ -52,4 +52,11 @@ export class CheckoutService {
       });
   }
 
+  changeOrderState() {
+    return this.http.put(
+      `spree/api/v1/checkouts/${this.orderNumber}/next.json`,
+      {}
+    );
+  }
+
 }
