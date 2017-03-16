@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-summary.component.scss']
 })
 export class FilterSummaryComponent implements OnInit {
+  filters: string[] = ['Roadster', 'Will Lifestyle'];
 
   constructor() { }
 
