@@ -1,3 +1,7 @@
-<p>
-  product-variants works!
-</p>
+<div *ngFor="let variant of (variants | keys)">
+    <h3>{{ variant.key }}</h3>
+    <div *ngFor="let options of (variant.value | keys)">
+      <p>{{options.key}}</p>
+    </div>
+</div>
+

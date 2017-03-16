@@ -25,15 +25,16 @@ export class VariantParserService {
    */
   getOptionsToDisplay(variants: Variant[], optionTypes: OptionType[]) {
     const optionTypesHash: OptionTypesHash = {};
-
     /**Iterate over optionTypes say [tsize, tcolor] */
     optionTypes.forEach(optionType => {
-
       /**For each optionType iterate over each variant in varaints */
       variants.forEach(variant => {
-
         /**For option values like [small, Red] etc in varaint iterate over each option value */
         variant.option_values.forEach(optionValue => {
+          /**
+          * This loop runs for 750 times for 2 optiontypes and optionsvalues 3 and 5
+          * Refactor this latter;
+          */
 
           /**Check if optionvalue's type i.e smalls type is tsize and then procced else not
            * i.e for tsize option type color option value like green will be ignored.

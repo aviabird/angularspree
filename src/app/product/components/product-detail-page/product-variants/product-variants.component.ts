@@ -10,12 +10,14 @@ import { VariantParserService } from './../../../../core/services/variant-parser
 export class ProductVariantsComponent implements OnInit {
   @Input() product: Product;
   variants: any;
+  optionTypeNames: String[];
   constructor(private variantParser: VariantParserService) { 
   }
 
   ngOnInit() {
-    this.variants = this.variantParser.getOptionsToDisplay(this.product.variants, this.product.option_types);
-    console.log(this.variants);
+    this.variants = this.variantParser
+      .getOptionsToDisplay(this.product.variants, this.product.option_types);
+    this.optionTypeNames = Object.keys(this.variants);
  }
 
 }
