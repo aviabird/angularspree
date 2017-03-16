@@ -4,11 +4,13 @@ import { element } from 'protractor';
 import { Variant } from './../models/variant';
 import { OptionType } from './../models/option_type';
 import { Injectable } from '@angular/core';
-interface XyzType {
+
+/**Custom Interface for return option hash */
+interface OptionTypesHash {
   [id: string]: {
     [id: string]: {
-      option_value: {},
-      varaint_ids: [null];
+      optionValue: {},
+      variantIds: Array<any>;
     }
   };
 }
@@ -22,7 +24,7 @@ export class VariantParserService {
    * 
    */
   getOptionsToDisplay(variants: Variant[], optionTypes: OptionType[]) {
-    let optionTypesHash = {};
+    const optionTypesHash: OptionTypesHash = {};
 
     /**Iterate over optionTypes say [tsize, tcolor] */
     optionTypes.forEach(optionType => {
@@ -45,9 +47,6 @@ export class VariantParserService {
     return optionTypesHash;
   }
 
-
-
-
   /**Create a single custom option type
    * 
    * @param: optionValue, optionTypesHash(final hash to return), optionType(i.e tsize, tcolor, etc),
@@ -55,12 +54,24 @@ export class VariantParserService {
    *
    * @return: {tsize: {small: {etc etc etc}}};
    */
-  singleOptionTypeHashMaker(optionValue, optionTypesHash, optionType, variant) {
+  singleOptionTypeHashMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
+    optionType: OptionType, variant: Variant) {
+
     const optionTypeName: string = optionType.name;
-    const singleOption = {};
-    // e.g: singleOption["tsize"] = {small: {etc, etc}};
-    singleOption[optionTypeName] = this.optionMaker(optionValue, optionTypesHash, optionType, variant);
-    return singleOption;
+    if (optionTypesHash[optionTypeName] != null) {
+
+      // This will become value of op["tsize"] i.e {small: {etc, etc}};
+      optionTypesHash[optionTypeName] = Object.assign({},
+        optionTypesHash[optionTypeName],
+        this.optionMaker(optionValue, optionTypesHash, optionType, variant));
+
+      return optionTypesHash;
+    } else {
+      const singleOption = {};
+      // e.g: singleOption["tsize"] = {small: {etc, etc}};
+      singleOption[optionTypeName] = this.optionMaker(optionValue, optionTypesHash, optionType, variant);
+      return singleOption;
+    }
   }
 
   /**
@@ -68,7 +79,9 @@ export class VariantParserService {
    * say optionType is tsize  i.e key then here we making value of that option OptionType
    * like { small: {optionvalue: {}, variant_ids: [1,2,3,4]}};
    */
-  optionMaker(optionValue: OptionValue, optionTypesHash, optionType, variant) {
+  optionMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
+    optionType: OptionType, variant: Variant) {
+
     const name = optionValue.name;
     const optionInnerValue = {};
     // e.g: optionInnverValue['small'] = {option_value: {etc ,etc}, variant_ids: [1,2,3,4]}
@@ -80,10 +93,12 @@ export class VariantParserService {
    * Creates Inner Values of optionValue
    * like { option_value: {}, varaint_ids: [1,2,3,4]};
    */
-  optionInnerValueMaker(optionValue: OptionValue, optionTypesHash, optionType, variant) {
+  optionInnerValueMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
+    optionType: OptionType, variant: Variant) {
+
     return Object.assign({}, {
-      option_value: optionValue,
-      variant_ids: this.variantIdsMaker(optionValue, optionTypesHash, optionType, variant)
+      optionValue: optionValue,
+      variantIds: this.variantIdsMaker(optionValue, optionTypesHash, optionType, variant)
     });
   }
 
@@ -93,9 +108,13 @@ export class VariantParserService {
    * then take arr of the variant ids and push a new id in it and return;
    * else create a new array of the varaint id and return;
    */
-  variantIdsMaker(optionValue: OptionValue, optionTypesHash, optionType, variant) {
-    if (optionTypesHash[optionType.name] != null && optionTypesHash[optionType.name][optionValue.name] != null ) {
-      const variantArr = optionTypesHash[optionType.name][optionValue.name].variant_ids;
+  variantIdsMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
+    optionType: OptionType, variant: Variant) {
+
+    if (optionTypesHash[optionType.name] != null
+      && optionTypesHash[optionType.name][optionValue.name] != null) {
+
+      const variantArr = optionTypesHash[optionType.name][optionValue.name].variantIds;
       variantArr.push(variant.id);
       return variantArr;
     } else {
