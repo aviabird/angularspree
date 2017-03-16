@@ -1,0 +1,48 @@
+.filter-summary {
+  margin: 10px 0 5px;
+  height: 20px; // This is a workaround for same the component template replacement 
+  // problem IMO
+  .filter {
+    margin-right: 10px;
+    float: left;
+    .option {
+      display: block;
+      float: left;
+      position: relative;
+      background-color: #eaeaec;
+      text-transform: capitalize;
+      color: #3e4152;
+      padding: 2px 10px 2px 25px;
+      margin: 0 5px 5px 0;
+      cursor: pointer;
+      -webkit-transition: all .2s ease-out;
+      -moz-transition: all .2s ease-out;
+      -o-transition: all .2s ease-out;
+      transition: all .2s ease-out;
+    }
+    .option:hover {
+      background: #d4d5d9;
+      text-decoration: line-through;
+    }
+    .option:before {
+      content: ' ';
+      background: url(../../../../assets/search-sprite.d5ab50f1b815dfaf3976c6ce2e19d24670e5ba0b.png) no-repeat -281px -70px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      top: 7px;
+      left: 8px;
+    }
+  }
+  .filter:before, .filter:after {
+    content: "";
+    display: table;
+  }
+}
+
+.filter-summary:before, .filter-summary:after {
+    content: "";
+    display: table;
+}
