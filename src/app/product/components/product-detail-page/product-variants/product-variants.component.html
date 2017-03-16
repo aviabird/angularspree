@@ -1,7 +1,12 @@
 <div *ngFor="let variant of (variants | keys)">
-    <h3>{{ variant.key }}</h3>
-    <div *ngFor="let options of (variant.value | keys)">
-      <p>{{options.key}}</p>
-    </div>
+  <div class="size-buttons-size-header">
+    <h6>{{ variant.key }}</h6>
+  </div>
+  <button class="option-buttons" 
+    *ngFor="let options of (variant.value | keys)" (click)="onOptionClick(options.key)"
+    [class.selected]="options.key === currentSelectedOption">
+    
+    <p>{{ options.value["optionValue"].presentation }}</p>
+  </button>
 </div>
 

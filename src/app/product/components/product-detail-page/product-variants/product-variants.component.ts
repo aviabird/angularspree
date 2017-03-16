@@ -11,6 +11,8 @@ export class ProductVariantsComponent implements OnInit {
   @Input() product: Product;
   variants: any;
   optionTypeNames: String[];
+  currentSelectedOption: any;
+
   constructor(private variantParser: VariantParserService) { 
   }
 
@@ -20,4 +22,7 @@ export class ProductVariantsComponent implements OnInit {
     this.optionTypeNames = Object.keys(this.variants);
  }
 
+  onOptionClick(key) {
+   this.currentSelectedOption = key;
+  }
 }

@@ -1,4 +1,12 @@
-<div *ngIf="product">
-  <h1>{{ product?.name }}</h1>
-  <app-product-variants [product]="product"></app-product-variants>  
+<div *ngIf="product != null && product.length != 0" class="row padding-top">
+  <app-image-container [product]="product" class="col-md-6"></app-image-container>
+  <div class="col-md-6">
+    <app-product-price-info [product]="product" class="row"></app-product-price-info>
+    <app-product-variants [product]="product" class="row"></app-product-variants>  
+    <div>
+      <button class="pdp-add-to-bag pdp-button">ADD TO BAG</button>
+    </div>
+    <app-product-description [product]="product" class="row"  ></app-product-description>  
+  </div>
+
 </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { environment } from './../../../../../environments/environment';
+import { Product } from './../../../../core/models/product';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-image-container',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-images.component.scss']
 })
 export class ProductImagesComponent implements OnInit {
-
-  constructor() { }
+  @Input() product: Product;
+  image: any;
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  getProductImageUrl(url) {
+    return environment.API_ENDPOINT + url;
+  }
 }

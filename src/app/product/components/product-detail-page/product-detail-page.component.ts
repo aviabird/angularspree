@@ -20,7 +20,7 @@ export class ProductDetailPageComponent implements OnInit {
               private route: ActivatedRoute) {
   };
 
-  /**On Init 
+  /**On Init
    * 1. Parse route params
    * 2. Retrive product id
    * 3. Ask for the product detail based on product id 
@@ -32,10 +32,13 @@ export class ProductDetailPageComponent implements OnInit {
         this.product$ = this.productService.getProduct(this.productId);
      }
     );
+
+    this.product$.subscribe(res => console.log(res));
+
   }
 
   /**
-   * Action To be dispatched 
+   * Action To be dispatched
    * when added to cart
    */
   addToCart(){

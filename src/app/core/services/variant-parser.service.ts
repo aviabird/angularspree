@@ -58,7 +58,7 @@ export class VariantParserService {
   singleOptionTypeHashMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
     optionType: OptionType, variant: Variant) {
 
-    const optionTypeName: string = optionType.name;
+    const optionTypeName: string = optionType.presentation;
     if (optionTypesHash[optionTypeName] != null) {
 
       // This will become value of op["tsize"] i.e {small: {etc, etc}};
