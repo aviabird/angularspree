@@ -28,6 +28,16 @@
         left: 0;
       }
     }
+    li:not(.selected):hover:after  {
+       
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        background-color: #696b79;
+        content: ' ';
+        top: 108%;
+        left: 0;
+    }
   }
   ul.properties:before, ul.properties:after {
     content: "";
@@ -58,7 +68,6 @@
         display: inline-block;
         width: 120px;
         font-size: 14px;
-        // font-weight: 400;
         text-align: left;
         color: #3e4152;
         float: left;
@@ -74,6 +83,9 @@
           height: 19px;
           line-height: 19px;
           vertical-align: top;
+          &.selected:before {
+            background-position: -237px -138px;
+          }
           input.checkbox, input.radio {
             display: inline-block !important;
             visibility: hidden;
@@ -95,6 +107,9 @@
           top: 4px;
           position: absolute;
           
+        }
+        label:not(.selected):hover:before {
+          background-position: -237px -124px;
         }
       }
     }
