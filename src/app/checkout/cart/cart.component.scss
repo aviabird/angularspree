@@ -1,18 +1,27 @@
-.line-item-list {
-	margin-top: 40px;
-}
-
-.right {
-	padding: 70px 10px 30px 90px;
-}
-
-.bag-price {
-	float: right;
-}
-
-.place-order {
-	margin-top: 20px;
-	button {
-		width: 100%;
+.cart-section {
+	.left	{
+		display: inline-block;
+    width: 70%;
+    padding-right: 40px;
+    border-right: 1px solid #f5f5f6;
+    min-height: 500px;
+		.checkout-header-container {
+			.checkout-header {
+				display: inline-block;
+				padding: 30px 0;
+				.text {
+					font-size: 18px;
+    			font-weight: 600;
+					color: #535766;
+				}
+			}
+			.total-price {
+				float: right;
+				padding: 30px 0;
+				display: inline-block;
+				font-size: 18px;
+				color: #535766;
+			}
+		}
 	}
 }
