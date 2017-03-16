@@ -15,7 +15,7 @@ import { SharedModule } from './shared/index';
 import { UserModule } from './user/index';
 import { HomeModule } from './home/index';
 import { LayoutModule } from './layout/index';
-import { CartModule } from './cart/index';
+import { CheckoutModule } from './checkout/checkout.module';
 import { ProductModule } from './product/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
@@ -37,7 +37,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HttpModule,
     HomeModule,
     LayoutModule,
-    CartModule,
+    CheckoutModule,
     CoreModule,
     EffectsModule.run(ProductEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension()

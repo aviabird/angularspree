@@ -1,0 +1,113 @@
+.content {
+  background-color: #fff;
+  width: 759px;
+  display: inline-block;
+  vertical-align: top;
+  .queried-for {
+    display: inline;
+    overflow: hidden;
+    // display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #282c3f;
+    width: 50%;
+    .q {
+      font-weight: 900;
+      display: inline-block;
+      text-overflow: ellipsis;
+      vertical-align: top;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 67%;
+    }
+    span {
+      line-height: 39px; // Temporary hack fix it later
+      color: #282c3f;
+      font-weight: 400;
+      font-size: 18px;
+      font-style: normal;
+    }
+  }
+
+  .options {
+    position: relative;
+    float: right;
+    text-align: right;
+    margin: 12px 0 0 5px;
+    display: inline-block;
+    ul.img-size {
+      display: inline-block;
+      margin-right: 10px;
+      label {
+        color: #696b79;
+        font-weight: 400;
+      }
+      li {
+        list-style: none;
+        display: inline-block;
+        cursor: pointer;
+        margin: 0 4px -2px;
+        width: 19px;
+        height: 13px;
+        background: url(../../../../assets/search-sprite.d5ab50f1b815dfaf3976c6ce2e19d24670e5ba0b.png) no-repeat transparent;
+        &.big {
+          background-position: -284px -160px;
+        }
+        &.small {
+          background-position: -311px -180px;
+        }
+        &.selected {
+          cursor: default;  
+        }
+      }
+    }
+    ul.sort {
+      display: inline-block;
+      position: relative;
+      color: #282c3f;
+      label {
+        margin-left: 5px;
+        font-weight: 400;
+      }
+      label:first-child {
+        color: #3e4152;
+      }
+      li {
+        display: inline-block;
+        margin-left: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        
+      }
+      li:after {
+        content: ' ';
+        display: inline-block;
+        height: 11px;
+        width: 1px;
+        border-left: 1px solid #3e4152;
+        margin-left: 5px;
+        margin-bottom: -1px;
+      }
+      label {
+        font-weight: 400;
+        margin-left: 5px;
+        li:first-child {
+          margin-left: 0;
+        }
+        li:after {
+          content: none;
+        }
+      }
+    }
+    ul.sort:before, ul.sort:after {
+      content: "";
+      display: table;
+    }
+  }
+  .options:before, .options:after {
+    content: "";
+    display: table;
+  }
+}
+
