@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
   addToCart() {
     this.variant_id++;
     // this.store.dispatch(this.actions.addToCart(this.variant_id));
-    this.checkoutService.createNewLineItem(this.variant_id)
+    this.checkoutService.createNewLineItem(1)
       .subscribe();
   }
 

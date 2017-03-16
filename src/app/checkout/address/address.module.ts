@@ -1,3 +1,4 @@
+import { AddressService } from './services/address.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddressComponent } from './address.component';
 import { CommonModule } from '@angular/common';
@@ -16,6 +17,8 @@ import { AddAddressComponent } from './add-address/add-address.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: []
+  providers: [
+    AddressService
+  ]
 })
 export class AddressModule { }

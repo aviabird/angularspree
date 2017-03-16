@@ -87,6 +87,9 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
 
       // case CheckoutActions.CHANGE_ORDER_STATE:
 
+      case CheckoutActions.UPDATE_ORDER_SUCCESS:
+        console.log('order', payload);
+        return state;
 
       default:
         return state;

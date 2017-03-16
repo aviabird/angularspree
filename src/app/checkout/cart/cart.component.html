@@ -1,3 +1,5 @@
+<button (click)="addToCart()">Add To Cart</button>
+
 <div class="cart-section">
   <div class="left">
     <div class="checkout-header-container">
@@ -23,6 +25,7 @@
       <span>Order Total</span>
       <span style="float: right;">${{totalCartValue$ | async}}</span>
     </div>
-    <button (click)="placeOrder()" style="width: 100%">PLACE ORDER</button>
+    <!--<button (click)="placeOrder()" style="width: 100%">PLACE ORDER</button>-->
+    <button [routerLink]="['/checkout','address']" style="width: 100%">PLACE ORDER</button>
   </div>
 </div>
