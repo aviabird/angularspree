@@ -1,3 +1,20 @@
-<p>
-  user works!
-</p>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <h4> My Account </h4>
+    <p> pankaj@gmail.com </p>
+    <hr>
+  </div>
+
+  <div class="sidebar col-md-3">
+    <p><a href="#" class="active">Overview</a></p>
+    <hr>
+    <p><small>ORDERS</small></p>
+    <p><a routerLink="/user/orders">My Orders</a></p>
+    <hr>
+    <p><a routerLink="/user/addresses">My Address</a></p>
+  </div>
+
+  <div class="col-md-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>
