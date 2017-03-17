@@ -1,5 +1,10 @@
 <div *ngIf="(shipAddress$ | async)">
-	<app-delivery-address [address]="(shipAddress$ | async)"></app-delivery-address>
+	<div class="col-md-8">
+		<app-delivery-address [address]="(shipAddress$ | async)"></app-delivery-address>
+	</div>
+	<div class="col-md-4">
+		<app-delivery-options></app-delivery-options>
+	</div>
 </div>
 <div *ngIf="!(shipAddress$ | async)">
 	<app-add-address></app-add-address>
