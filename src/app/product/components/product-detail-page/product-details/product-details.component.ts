@@ -1,3 +1,4 @@
+import { Variant } from './../../../../core/models/variant';
 import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from './../../../../core/models/product';
@@ -12,11 +13,15 @@ export class ProductDetailsComponent implements OnInit {
   @Input() product: Product;
   customOptionTypesHash: any;
   currentSelectedOptions = {};
-
+  description: any;
+  images: any;
   constructor(private variantParser: VariantParserService) {
   }
 
   ngOnInit() {
+    this.description = this.product.description;
+    this.images = this.product.master.images;
+
     this.customOptionTypesHash = this.variantParser
       .getOptionsToDisplay(this.product.variants, this.product.option_types);
   }
@@ -27,8 +32,14 @@ export class ProductDetailsComponent implements OnInit {
    *                   variantIds: [1,2,3] }}
    */
   onOptionClick(option) {
-    const newVarient = new VariantRetriverService(this.currentSelectedOptions,
+    const result = new VariantRetriverService(this.currentSelectedOptions,
                         this.customOptionTypesHash,
                         option, this.product).getVariant();
-    }
+
+    this.currentSelectedOptions = result.newSelectedoptions;
+    const newVariant: Variant = result.variant;
+    this.description = newVariant.description;
+    this.images = newVariant.images;
+  }
+
 }
