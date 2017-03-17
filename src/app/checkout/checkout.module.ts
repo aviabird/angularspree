@@ -1,3 +1,4 @@
+import { PaymentModule } from './payment/payment.module';
 import { AddressModule } from './address/address.module';
 import { CheckoutEffects } from './effects/checkout.effects';
 import { EffectsModule } from '@ngrx/effects';
@@ -17,7 +18,8 @@ import { CheckoutRoutes as routes } from './checkout.routes';
     RouterModule.forChild(routes),
     EffectsModule.run(CheckoutEffects),
     CartModule,
-    AddressModule
+    AddressModule,
+    PaymentModule
   ],
   declarations: [],
   providers: [

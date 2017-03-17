@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import "app/shared/scss/themes";
 @font-face {
     font-family: "Whitney-semi-bold";
     src: url("assets/WhitneyHTF-SemiBold.woff") format("woff")
@@ -8,6 +7,7 @@
     font-family: "Whitney";
     src: url("assets/WhitneyHTF-Book.woff") format("woff")
 }
+@import "app/shared/scss/themes";
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
 @import url('../node_modules/font-awesome/css/font-awesome.min.css');
 
@@ -16,7 +16,7 @@ body {
   line-height: 1.5;
   color: #697071;
   background-color: #fff;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
