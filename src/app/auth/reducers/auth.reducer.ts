@@ -7,9 +7,6 @@ export const initialState: AuthState = new AuthStateRecord() as AuthState;
 export const authReducer: ActionReducer<AuthState> =
   (state: AuthState = initialState, { type, payload }: Action): AuthState => {
     switch (type) {
-      case AuthActions.GET_AUTH_STATUS_SUCCESS:
-        return state.merge({ isAuthenticated: payload }) as AuthState;
-
       case AuthActions.LOGIN_SUCCESS:
         return state.merge({ isAuthenticated: true }) as AuthState;
 

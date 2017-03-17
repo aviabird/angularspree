@@ -14,6 +14,7 @@ import { UserComponent } from './user.component';
 import { UserService } from './services/user.service';
 
 import { UserRoutes as routes } from './user.routes';
+import { AddressesComponent } from './components/addresses/addresses.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UserRoutes as routes } from './user.routes';
     OrdersComponent,
     ReturnsComponent,
     ReturnListItemComponent,
-    UserComponent
+    UserComponent,
+    AddressesComponent
     // pipes
 
   ],

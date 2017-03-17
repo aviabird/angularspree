@@ -13,10 +13,9 @@
     <ng-template #elseBlock>
       <ul class="dropdown-menu" dropdownMenu>
         <li><a routerLink="/user">My Profile</a></li>
-        <li><a href="#">My Orders</a></li>
+        <li><a routerLink="/user/orders">My Orders</a></li>
         <li role="separator" class="divider"></li>
-        <li><a href="#">Saved Cards</a></li>
-        <li><a href="#">Saved Addresses</a></li>
+        <li><a routerLink="/user/addresses">Saved Addresses</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="#">Edit Profile</a></li>
         <li><a (click)="logout()">Logout</a></li>
