@@ -27,11 +27,11 @@ export function fetchTotalCartValue(state: CheckoutState) {
 }
 
 export function fetchShipAddress(state: CheckoutState) {
-  return state.shipAddress;
+  return state.shipAddress.toJS();
 }
 
 export function fetchBillAddress(state: CheckoutState) {
-  return state.billAddress;
+  return state.billAddress.toJS();
 }
 
 // *************************** PUBLIC API's ****************************

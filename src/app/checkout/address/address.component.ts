@@ -15,7 +15,7 @@ export class AddressComponent implements OnInit {
   shipAddress$: Observable<Address>;
 
   constructor(private store: Store<AppState>) {
-    this.store.select(getShipAddress);
+    this.shipAddress$ = this.store.select(getShipAddress);
   }
 
   ngOnInit() {
