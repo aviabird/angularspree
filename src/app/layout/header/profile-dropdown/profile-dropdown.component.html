@@ -12,15 +12,18 @@
 
     <ng-template #elseBlock>
       <ul class="dropdown-menu" dropdownMenu>
-        <li><a href="#">My Profile</a></li>
+        <li><a routerLink="/user">My Profile</a></li>
         <li><a href="#">My Orders</a></li>
-        <li><a href="#">Edit Profile</a></li>
         <li role="separator" class="divider"></li>
+        <li><a href="#">Saved Cards</a></li>
+        <li><a href="#">Saved Addresses</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Edit Profile</a></li>
         <li><a (click)="logout()">Logout</a></li>
       </ul>
     </ng-template>
   </li>
-  <li [routerLink]="['checkout','cart']">
+  <li class="cart" [routerLink]="['checkout','cart']">
     <a>
       <i class="fa fa-shopping-bag" aria-hidden="true"></i> Bag
       <span class="badge badge-danger">{{totalCartItems}}</span></a>
