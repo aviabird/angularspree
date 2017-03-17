@@ -12,6 +12,9 @@ export class CheckoutActions {
   static CHANGE_LINE_ITEM_QUANTITY = 'CHANGE_LINE_ITEM_QUANTITY';
   static PLACE_ORDER = 'PLACE_ORDER';
   static CHANGE_ORDER_STATE = 'CHANGE_ORDER_STATE';
+  static CHANGE_ORDER_STATE_SUCCESS = 'CHANGE_ORDER_STATE_SUCCESS';
+  static UPDATE_ORDER = 'UPDATE_ORDER';
+  static UPDATE_ORDER_SUCCESS = 'UPDATE_ORDER_SUCCESS';
 
   fetchCurrentOrder() {
     return { type: CheckoutActions.FETCH_CURRENT_ORDER };
@@ -65,6 +68,24 @@ export class CheckoutActions {
 
   changeOrderState(): Action {
     return { type: CheckoutActions.CHANGE_ORDER_STATE };
+  }
+
+  changeOrderStateSuccess(order: Order): Action {
+    return {
+      type: CheckoutActions.CHANGE_ORDER_STATE_SUCCESS,
+      payload: order
+    };
+  }
+
+  updateOrder(): Action {
+    return { type: CheckoutActions.UPDATE_ORDER };
+  }
+
+  updateOrderSuccess(order: Order): Action {
+    return {
+      type: CheckoutActions.UPDATE_ORDER_SUCCESS,
+      payload: order
+    };
   }
 
 }
