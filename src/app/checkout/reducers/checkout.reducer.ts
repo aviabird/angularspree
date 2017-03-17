@@ -11,7 +11,8 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
 
     let _lineItems, _lineItemEntities, _lineItemIds,
         _lineItem, _lineItemEntity, _lineItemId,
-        _totalCartItems = 0, _totalCartValue;
+        _totalCartItems = 0, _totalCartValue,
+        _ship_address, _bill_address;
 
     switch (type) {
 
@@ -21,6 +22,8 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
         _lineItemIds = _lineItems.map(lineItem => lineItem.id);
         _totalCartItems = payload.total_quantity;
         _totalCartValue = parseFloat(payload.total);
+        _ship_address = payload.ship_address;
+        _bill_address = payload.bill_address;
 
         _lineItemEntities = _lineItems.reduce((lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
           return Object.assign(lineItems, {
@@ -33,7 +36,9 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
           lineItemIds: _lineItemIds,
           lineItemEntities: _lineItemEntities,
           totalCartItems: _totalCartItems,
-          totalCartValue: _totalCartValue
+          totalCartValue: _totalCartValue,
+          shipAddress: _ship_address,
+          billAddress: _bill_address
         }) as CheckoutState;
 
       case CheckoutActions.ADD_TO_CART_SUCCESS:
@@ -88,8 +93,13 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
       // case CheckoutActions.CHANGE_ORDER_STATE:
 
       case CheckoutActions.UPDATE_ORDER_SUCCESS:
-        console.log('order', payload);
-        return state;
+        _ship_address = payload.ship_address;
+        _bill_address = payload.bill_address;
+
+        return state.merge({
+          shipAddress: _ship_address,
+          billAddress: _bill_address
+        }) as CheckoutState;
 
       default:
         return state;

@@ -75,7 +75,7 @@ export class CheckoutActions {
 
   updateOrderSuccess(order: Order): Action {
     return {
-      type: CheckoutActions.UPDATE_ORDER,
+      type: CheckoutActions.UPDATE_ORDER_SUCCESS,
       payload: order
     };
   }
