@@ -1,3 +1,5 @@
+import { Payment } from './../../core/models/payment';
+import { CheckoutService } from './../../core/services/checkout.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor() { }
+  paymentMethods: Payment[] = [];
+
+  constructor(private checkoutService: CheckoutService) {
+    this.fetchAllPayments();
+  }
 
   ngOnInit() {
+  }
+
+  fetchAllPayments() {
+    this.checkoutService.availablePaymentMethods()
+      .subscribe((payment) => {
+        this.paymentMethods = payment.payment_methods;
+      });
   }
 
 }

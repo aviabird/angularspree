@@ -72,5 +72,13 @@ export class CheckoutService {
     });
   }
 
+  availablePaymentMethods() {
+    return this.http.get(
+      `spree/api/v1/orders/${this.orderNumber}/payments/new`
+    ).map((res) => {
+      const payments = res.json();
+      return payments;
+    });
+  }
 
 }
