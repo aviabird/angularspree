@@ -9,8 +9,8 @@ export interface CheckoutState extends Map<string, any> {
   lineItemEntities: Map<number, LineItem>;
   totalCartItems: number;
   totalCartValue: number;
-  billAddress: Address;
-  shipAddress: Address;
+  billAddress: any;
+  shipAddress: any;
 }
 
 export const CheckoutStateRecord = Record({
