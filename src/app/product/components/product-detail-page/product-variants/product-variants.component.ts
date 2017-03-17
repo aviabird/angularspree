@@ -2,6 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from './../../../../core/models/product';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
 
+interface CurrentSelectedOptionsType {
+  [key: string]: String;
+};
+
 @Component({
   selector: 'app-product-variants',
   templateUrl: './product-variants.component.html',
@@ -9,20 +13,30 @@ import { VariantParserService } from './../../../../core/services/variant-parser
 })
 export class ProductVariantsComponent implements OnInit {
   @Input() product: Product;
-  variants: any;
+  customOptionTypesHash: any;
   optionTypeNames: String[];
-  currentSelectedOption: any;
+  currentSelectedOptions = {};
 
-  constructor(private variantParser: VariantParserService) { 
+  constructor(private variantParser: VariantParserService) {
   }
 
   ngOnInit() {
-    this.variants = this.variantParser
+    this.customOptionTypesHash = this.variantParser
       .getOptionsToDisplay(this.product.variants, this.product.option_types);
-    this.optionTypeNames = Object.keys(this.variants);
+
+     /**[tsize, tcolor] */
+    // this.optionTypeNames = Object.keys(this.customOptionTypesHash);
  }
 
-  onOptionClick(key) {
-   this.currentSelectedOption = key;
+  /**
+   * @param: option: { key: "small",
+   *                   value: {optionValue: {etc etc},
+   *                   variantIds: [1,2,3] }}
+   */
+  onOptionClick(option) {
+    const currentselectedOptionType = option.value
+                                    .optionValue
+                                    .option_type_presentation;
+    this.currentSelectedOptions[currentselectedOptionType] = option.key;
   }
 }
