@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
   variant_id = 1;
   totalCartValue$: Observable<number>;
 
-  constructor(private store: Store<AppState>, private actions: CheckoutActions, private checkoutService: CheckoutService) { 
+  constructor(private store: Store<AppState>, private actions: CheckoutActions, private checkoutService: CheckoutService) {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
   }
 

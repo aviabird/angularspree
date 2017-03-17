@@ -8,7 +8,7 @@ export interface CheckoutState extends Map<string, any> {
   lineItemEntities: Map<number, LineItem>;
   totalCartItems: number;
   totalCartValue: number;
-  billAdress: {};
+  billAddress: {};
   shipAddress: {};
 }
 

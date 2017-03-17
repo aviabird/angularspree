@@ -26,8 +26,18 @@ export function fetchTotalCartValue(state: CheckoutState) {
   return state.totalCartValue;
 }
 
+export function fetchShipAddress(state: CheckoutState) {
+  return state.shipAddress;
+}
+
+export function fetchBillAddress(state: CheckoutState) {
+  return state.billAddress;
+}
+
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCheckoutState, fetchLineItems);
 export const getOrderNumber = createSelector(getCheckoutState, fetchOrderNumber);
 export const getTotalCartItems = createSelector(getCheckoutState, fetchTotalCartItems);
 export const getTotalCartValue = createSelector(getCheckoutState, fetchTotalCartValue);
+export const getShipAddress = createSelector(getCheckoutState, fetchShipAddress);
+export const getBillAddress = createSelector(getCheckoutState, fetchBillAddress);
