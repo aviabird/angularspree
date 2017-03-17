@@ -15,7 +15,8 @@ export class ProductDetailsComponent implements OnInit {
   currentSelectedOptions = {};
   description: any;
   images: any;
-  constructor(private variantParser: VariantParserService) {
+  constructor(private variantParser: VariantParserService,
+              private variantRetriver: VariantRetriverService) {
   }
 
   ngOnInit() {
@@ -32,10 +33,12 @@ export class ProductDetailsComponent implements OnInit {
    *                   variantIds: [1,2,3] }}
    */
   onOptionClick(option) {
-    const result = new VariantRetriverService(this.currentSelectedOptions,
-                        this.customOptionTypesHash,
-                        option, this.product).getVariant();
+    const result = this.variantRetriver
+                    .getVariant(this.currentSelectedOptions,
+                                this.customOptionTypesHash,
+                                option, this.product);
 
+    console.log("New esult is ", result, result.variant.id);
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
     this.description = newVariant.description;

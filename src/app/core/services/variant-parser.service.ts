@@ -113,7 +113,6 @@ export class VariantParserService {
     optionType: OptionType, variant: Variant) {
 
     if (optionTypesHash[optionType.presentation] != null && optionTypesHash[optionType.presentation][optionValue.name] != null) {
-        console.log("Inside If condiftion")
       const variantArr = optionTypesHash[optionType.presentation][optionValue.name].variantIds;
       variantArr.push(variant.id);
       return variantArr;
