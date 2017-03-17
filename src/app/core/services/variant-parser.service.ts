@@ -112,10 +112,9 @@ export class VariantParserService {
   variantIdsMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
     optionType: OptionType, variant: Variant) {
 
-    if (optionTypesHash[optionType.name] != null
-      && optionTypesHash[optionType.name][optionValue.name] != null) {
-
-      const variantArr = optionTypesHash[optionType.name][optionValue.name].variantIds;
+    if (optionTypesHash[optionType.presentation] != null && optionTypesHash[optionType.presentation][optionValue.name] != null) {
+        console.log("Inside If condiftion")
+      const variantArr = optionTypesHash[optionType.presentation][optionValue.name].variantIds;
       variantArr.push(variant.id);
       return variantArr;
     } else {
