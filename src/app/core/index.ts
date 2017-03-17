@@ -1,4 +1,4 @@
-import { CartService } from './services/cart.service';
+import { CheckoutService } from './services/checkout.service';
 import { NgModule } from '@angular/core';
 import { ProductDummyService } from './services/product-dummy.service';
 import { VariantParserService } from './services/variant-parser.service';
@@ -38,7 +38,7 @@ export function httpInterceptor(
       useFactory: httpInterceptor,
       deps: [ XHRBackend, RequestOptions]
     },
-    CartService,
+    CheckoutService,
     ProductDummyService,
     ProductService,
     AuthActions

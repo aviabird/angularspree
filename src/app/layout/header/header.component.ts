@@ -1,4 +1,4 @@
-import { getTotalCartItems } from './../../checkout/cart/reducers/selectors';
+import { getTotalCartItems } from './../../checkout/reducers/selectors';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';

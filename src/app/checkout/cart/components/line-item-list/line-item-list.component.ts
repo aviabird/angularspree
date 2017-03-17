@@ -1,7 +1,7 @@
-import { getLineItems } from './../../reducers/selectors';
+import { getLineItems } from './../../../reducers/selectors';
+import { CheckoutActions } from './../../../actions/checkout.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
-import { CartActions } from './../../actions/cart-actions';
 import { LineItem } from './../../../../core/models/line_item';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +15,7 @@ export class LineItemListComponent implements OnInit {
 
   lineItems$: Observable<LineItem[]>;
 
-  constructor(private store: Store<AppState>, private actions: CartActions) {
+  constructor(private store: Store<AppState>, private actions: CheckoutActions) {
     this.lineItems$ = this.store.select(getLineItems);
    }
 

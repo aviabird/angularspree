@@ -1,5 +1,5 @@
-import { CartService } from './../../../../../core/services/cart.service';
-import { CartActions } from './../../../actions/cart-actions';
+import { CheckoutService } from './../../../../../core/services/checkout.service';
+import { CheckoutActions } from './../../../../actions/checkout.actions';
 import { AppState } from './../../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { environment } from './../../../../../../environments/environment';
@@ -20,7 +20,7 @@ export class LineItemComponent implements OnInit {
 
   @Input() lineItem: LineItem;
 
-  constructor(private store: Store<AppState>, private actions: CartActions, private cartService: CartService) { }
+  constructor(private store: Store<AppState>, private actions: CheckoutActions, private checkoutService: CheckoutService) { }
 
   ngOnInit() {
     this.image = environment.API_ENDPOINT + this.lineItem.variant.images[0].product_url;
@@ -33,7 +33,8 @@ export class LineItemComponent implements OnInit {
   // Follow this linke to know more about this issue https://github.com/angular/angular/issues/12869
   removeLineItem() {
     // this.store.dispatch(this.actions.removeLineItem(this.lineItem.id));
-  this.cartService.deleteLineItem(this.lineItem.id, this.lineItem.quantity);
+    this.checkoutService.deleteLineItem(this.lineItem)
+      .subscribe();
   }
 
 }

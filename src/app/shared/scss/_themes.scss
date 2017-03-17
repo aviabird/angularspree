@@ -88,36 +88,26 @@ $theme-myntra-border: 2px solid #aaa;
       0% {
         top: -1000px;
       }
-      
-      60% {
-        top: 150px;
-      }
-      
-      80% {
-        top: 90px;
+
+      10% {
+        top: 100px;
       }
 
-      100% {
+      15% {
         opacity: 1;
-        top: 120px;
+        top: 80px;
       }
-    }
 
-    @keyframes notify-bounce-out-up {
-      0% {
-        opacity: 1;
-        top: 120px;
-      }
-      
       60% {
         opacity: 1;
-        top: 150px;
+        top: 80px;
       }
       
-      80% {
-        top: 90px;
+      65% {
+        opacity: 1;
+        top: 100px;
       }
-
+      
       100% {
         opacity: 0;
         top: -1000px;
@@ -138,20 +128,12 @@ $theme-myntra-border: 2px solid #aaa;
       text-align: center;
       opacity: 0;
       &.in {
-        -webkit-animation-duration: .7s;
-        animation-duration: .7s;
+        -webkit-animation-duration: 5s;
+        animation-duration: 5s;
         -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
         -webkit-animation-name: notify-bounce-in-down;
         animation-name: notify-bounce-in-down;
-      }
-      &.out {
-        -webkit-animation-duration: .7s;
-        animation-duration: .7s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-        -webkit-animation-name: notify-bounce-in-down;
-        animation-name: notify-bounce-out-up;
       }
     }
 
@@ -177,11 +159,12 @@ $theme-myntra-border: 2px solid #aaa;
     .notify-icon {
       border: 2px solid #fff;
       padding: 0 7px;
-      border-radius: 21px;
+      border-radius: 20px;
       position: absolute;
       top: 12px;
       left: 0;
       margin-top: -10px;
+      width: 27px;
     }
 
     .notify-icon-text {

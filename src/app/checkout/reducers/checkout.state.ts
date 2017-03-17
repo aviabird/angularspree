@@ -1,18 +1,22 @@
+import { LineItem } from './../../core/models/line_item';
 import { Map, Record, List } from 'immutable';
-import { LineItem } from './../../../core/models/line_item';
 
-export interface CartState extends Map<string, any> {
+export interface CheckoutState extends Map<string, any> {
   orderNumber: number;
   lineItemIds: List<number>;
   lineItemEntities: Map<number, LineItem>;
   totalCartItems: number;
   totalCartValue: number;
+  billAdress: {};
+  shipAddress: {};
 }
 
-export const CartStateRecord = Record({
+export const CheckoutStateRecord = Record({
   orderNumber: null,
   lineItemIds: List([]),
   lineItemEntities: Map({}),
   totalCartItems: 0,
-  totalCartValue: null
+  totalCartValue: 0,
+  billAddress: {},
+  shipAddress: {}
 });
