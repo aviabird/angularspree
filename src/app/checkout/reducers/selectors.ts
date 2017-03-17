@@ -34,6 +34,10 @@ export function fetchBillAddress(state: CheckoutState) {
   return state.billAddress.toJS();
 }
 
+export function fetchOrderState(state: CheckoutState) {
+  return state.orderState;
+}
+
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCheckoutState, fetchLineItems);
 export const getOrderNumber = createSelector(getCheckoutState, fetchOrderNumber);
@@ -41,3 +45,4 @@ export const getTotalCartItems = createSelector(getCheckoutState, fetchTotalCart
 export const getTotalCartValue = createSelector(getCheckoutState, fetchTotalCartValue);
 export const getShipAddress = createSelector(getCheckoutState, fetchShipAddress);
 export const getBillAddress = createSelector(getCheckoutState, fetchBillAddress);
+export const getOrderState = createSelector(getCheckoutState, fetchOrderState);

@@ -4,6 +4,7 @@
 	</div>
 	<div class="col-md-4">
 		<app-delivery-options></app-delivery-options>
+		<button (click)="checkoutToPayment()" style="width: 100%">CONTINUE TO PAYMENT</button>
 	</div>
 </div>
 <div *ngIf="!(shipAddress$ | async)">
