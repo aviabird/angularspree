@@ -64,7 +64,7 @@ export class CheckoutService {
 
   updateOrder(params) {
     return this.http.put(
-      `spree/api/v1/checkouts/${this.orderNumber}/next.json`,
+      `spree/api/v1/checkouts/${this.orderNumber}.json`,
       params
     ).map((res) => {
       const order = res.json();
