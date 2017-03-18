@@ -1,3 +1,4 @@
+import { CheckoutService } from './../../../core/services/checkout.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentModesListComponent implements OnInit {
 
-  constructor() { }
+  paymentModes = [];
+
+  constructor(private checkoutService: CheckoutService) {
+    this.fetchAllPayments();
+  }
 
   ngOnInit() {
   }
+
+  fetchAllPayments() {
+    this.checkoutService.availablePaymentMethods()
+      .subscribe((payment) => {
+        this.paymentModes = payment.payment_methods;
+      });
+  }
+
+  selectedPaymentMode(id) {
+    console.log('mode id', id);
+  }
+
 
 }

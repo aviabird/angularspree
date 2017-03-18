@@ -21,14 +21,10 @@ import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { PaymentModesListComponent } from './checkouts/payment/payment-modes-list/payment-modes-list.component';
-import { PaymentModeComponent } from './checkouts/payment/payment-modes-list/payment-mode/payment-mode.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PaymentModesListComponent,
-    PaymentModeComponent,
+    AppComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

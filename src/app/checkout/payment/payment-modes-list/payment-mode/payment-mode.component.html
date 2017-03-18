@@ -1,3 +1,8 @@
-<p>
-  payment-mode works!
-</p>
+<div>
+  <span>{{paymentMode.name}}</span>
+  <input type="radio" name="radiogroup" 
+      [checked]="paymentMode.name === 'Check'"
+      [value]="paymentMode.id"
+      (change)="onSelectPaymentMode()">
+</div>
+  
