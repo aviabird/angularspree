@@ -16,8 +16,7 @@ export class PaymentModeComponent implements OnInit {
   }
 
   onSelectPaymentMode() {
-    const id = this.paymentMode.id;
-    this.changePaymentMode.emit(id);
+    this.changePaymentMode.emit(this.paymentMode);
   }
 
 }

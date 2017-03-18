@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class PaymentModesListComponent implements OnInit {
 
   paymentModes = [];
+  selectedMode = {};
 
   constructor(private checkoutService: CheckoutService) {
     this.fetchAllPayments();
@@ -17,15 +18,29 @@ export class PaymentModesListComponent implements OnInit {
   ngOnInit() {
   }
 
-  fetchAllPayments() {
+  selectedPaymentMode(mode) {
+    this.selectedMode = mode;
+  }
+
+  private fetchAllPayments() {
     this.checkoutService.availablePaymentMethods()
       .subscribe((payment) => {
         this.paymentModes = payment.payment_methods;
+        this.selectedMode = this.setCODAsSelectedMode();
       });
   }
 
-  selectedPaymentMode(id) {
-    console.log('mode id', id);
+  private setCODAsSelectedMode() {
+    if (this.paymentModes.length === 0) {
+      return {};
+    }
+
+    this.paymentModes.forEach((mode) => {
+      if (mode.name === 'Check') {
+        return mode;
+      }
+    });
+    return this.paymentModes[1];
   }
 
 
