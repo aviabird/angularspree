@@ -1,3 +1,4 @@
+import { PaymentMode } from './../../../../core/models/payment_mode';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -7,8 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PaymentModeComponent implements OnInit {
 
-  @Input() paymentMode;
-  @Output() changePaymentMode: EventEmitter<number> = new EventEmitter<number>();
+  @Input() paymentMode: PaymentMode;
+  @Output() changePaymentMode: EventEmitter<PaymentMode> = new EventEmitter<PaymentMode>();
 
   constructor() { }
 

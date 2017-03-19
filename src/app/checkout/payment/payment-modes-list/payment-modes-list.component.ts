@@ -1,5 +1,8 @@
+import { PaymentMode } from './../../../core/models/payment_mode';
+import { Observable } from 'rxjs/Rx';
+import { PaymentService } from './../services/payment.service';
 import { CheckoutService } from './../../../core/services/checkout.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-payment-modes-list',
@@ -8,11 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentModesListComponent implements OnInit {
 
-  paymentModes = [];
-  selectedMode = {};
+  @Input() paymentAmount: number;
+  paymentModes: PaymentMode[];
+  selectedMode: PaymentMode = new PaymentMode;
 
-  constructor(private checkoutService: CheckoutService) {
-    this.fetchAllPayments();
+  constructor(private checkoutService: CheckoutService,
+    private paymentService: PaymentService) {
+      this.fetchAllPayments();
   }
 
   ngOnInit() {
@@ -26,22 +31,14 @@ export class PaymentModesListComponent implements OnInit {
     this.checkoutService.availablePaymentMethods()
       .subscribe((payment) => {
         this.paymentModes = payment.payment_methods;
-        this.selectedMode = this.setCODAsSelectedMode();
+        this.selectedMode = this.paymentService.setCODAsSelectedMode(this.paymentModes);
       });
   }
 
-  private setCODAsSelectedMode() {
-    if (this.paymentModes.length === 0) {
-      return {};
-    }
-
-    this.paymentModes.forEach((mode) => {
-      if (mode.name === 'Check') {
-        return mode;
-      }
-    });
-    return this.paymentModes[1];
+  makePayment() {
+    const paymentModeId = this.selectedMode.id;
+    this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount)
+      .subscribe();
   }
-
 
 }

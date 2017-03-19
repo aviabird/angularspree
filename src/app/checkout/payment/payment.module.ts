@@ -1,3 +1,4 @@
+import { PaymentService } from './services/payment.service';
 import { PaymentComponent } from './payment.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +26,8 @@ import { CashOnDeliveryComponent } from './payment-modes-list/cash-on-delivery/c
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: []
+  providers: [
+    PaymentService
+  ]
 })
 export class PaymentModule { }

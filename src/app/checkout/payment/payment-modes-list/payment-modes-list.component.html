@@ -9,6 +9,6 @@
      <app-credit-card></app-credit-card>   
    </ng-template>      
    <ng-template [ngSwitchCase]="'Check'" ngSwitchDefault> 
-      <app-cash-on-delivery></app-cash-on-delivery>
+      <app-cash-on-delivery (payOnDelivery)="makePayment()"></app-cash-on-delivery>
   </ng-template>
 </div>
