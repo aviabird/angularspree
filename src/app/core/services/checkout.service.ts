@@ -105,6 +105,8 @@ export class CheckoutService {
       {}
     ).map((res) => {
       console.log('payment', res.json());
+      this.changeOrderState()
+        .subscribe();
     });
   }
 
