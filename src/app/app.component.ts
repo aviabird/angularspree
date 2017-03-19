@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { CheckoutService } from './core/services/checkout.service';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -6,8 +7,8 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  constructor(private router: Router) {
+export class AppComponent implements OnInit{
+  constructor(private router: Router, private checkoutService: CheckoutService) {
     router
       .events
       .filter(e => e instanceof NavigationEnd)
@@ -15,4 +16,10 @@ export class AppComponent {
         window.scrollTo(0, 0);
       });
   }
+
+  ngOnInit() {
+    this.checkoutService.fetchCurrentOrder()
+      .subscribe();
+  }
+
 }
