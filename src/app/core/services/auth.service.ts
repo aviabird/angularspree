@@ -9,7 +9,6 @@ import { AuthActions } from '../../auth/actions/auth.actions';
 
 @Injectable()
 export class AuthService {
-  private apiLink: string = environment.API_ENDPOINT; // "http://localhost:3000";
 
   constructor(
     private http: HttpService,
@@ -29,7 +28,7 @@ export class AuthService {
       this.setTokenInLocalStorage(res.json());
       this.store.dispatch(this.actions.loginSuccess());
       return res.json();
-    }).catch((res: Response) => this.catchError(res));
+    });
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
@@ -46,23 +45,18 @@ export class AuthService {
       this.setTokenInLocalStorage(res.json());
       this.store.dispatch(this.actions.loginSuccess());
       return res.json();
-    }).catch((res: Response) => this.catchError(res));
+    });
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
     // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
   }
 
-  // returns an observable with user object
-  authorized(): Observable<Object> {
+  // returns an observable with user any
+  authorized(): Observable<any> {
     return this.http
       .get('spree/api/v1/users')
-      .filter((res: Response) => !res.json().error && res.json().count)
-      .map((res: Response) => {
-        // Check if authorized
-        this.store.dispatch(this.actions.loginSuccess());
-        return res.json();
-      }).catch((res: Response) => this.catchError(res));
+      .map((res: Response) => res.json());
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
@@ -77,17 +71,11 @@ export class AuthService {
         localStorage.removeItem('user');
         this.store.dispatch(this.actions.logoutSuccess());
         return res.json();
-      }).catch((res: Response) => this.catchError(res));
+      });
   }
 
   private setTokenInLocalStorage(user_data): void {
     const jsonData = JSON.stringify(user_data);
     localStorage.setItem('user', jsonData);
-  }
-
-  private catchError(response: Response): Observable<any> {
-    // not returning throw as it raises an error on the parent observable
-    // MORE INFO at https://youtu.be/3LKMwkuK0ZE?t=24m29s
-    return Observable.of(response.json());
   }
 }

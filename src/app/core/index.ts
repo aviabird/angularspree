@@ -9,6 +9,9 @@ import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http';
 import { ProductService } from './services/product.service';
 import { AuthActions } from '../auth/actions/auth.actions';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthenticationEffects } from '../auth/effects/auth.effects';
+import { ProductEffects } from '../product/effects/product.effects';
 
 
 export function httpInterceptor(
@@ -29,6 +32,8 @@ export function httpInterceptor(
     // DummyService
   ],
   imports: [
+    EffectsModule.run(AuthenticationEffects),
+    EffectsModule.run(ProductEffects),
   ],
   providers: [
     AuthService,
