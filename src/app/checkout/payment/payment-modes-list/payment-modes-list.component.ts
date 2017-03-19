@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { PaymentMode } from './../../../core/models/payment_mode';
 import { Observable } from 'rxjs/Rx';
 import { PaymentService } from './../services/payment.service';
@@ -16,7 +17,8 @@ export class PaymentModesListComponent implements OnInit {
   selectedMode: PaymentMode = new PaymentMode;
 
   constructor(private checkoutService: CheckoutService,
-    private paymentService: PaymentService) {
+    private paymentService: PaymentService,
+    private router: Router) {
       this.fetchAllPayments();
   }
 
@@ -39,6 +41,7 @@ export class PaymentModesListComponent implements OnInit {
     const paymentModeId = this.selectedMode.id;
     this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount)
       .subscribe();
+    this.router.navigate(['/']);
   }
 
 }
