@@ -29,11 +29,7 @@ export class CartComponent implements OnInit, OnDestroy {
         .subscribe(state => this.orderState = state);
   }
 
-  ngOnInit() {
-    // this.store.dispatch(this.actions.fetchCurrentOrder());
-    this.checkoutService.fetchCurrentOrder()
-      .subscribe();
-  }
+  ngOnInit() {}
 
   placeOrder() {
     if (this.orderState === 'cart') {
