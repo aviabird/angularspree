@@ -14,7 +14,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class AddressComponent implements OnInit, OnDestroy {
 
-  getStateSub$: Subscription;
   stateSub$: Subscription;
   orderState: string;
   shipAddress$: Observable<Address>;
@@ -23,7 +22,7 @@ export class AddressComponent implements OnInit, OnDestroy {
     private checkoutService: CheckoutService,
     private router: Router) {
       this.shipAddress$ = this.store.select(getShipAddress);
-      this.getStateSub$ = this.store.select(getOrderState)
+      this.stateSub$ = this.store.select(getOrderState)
         .subscribe(state => this.orderState = state);
   }
 
@@ -32,14 +31,13 @@ export class AddressComponent implements OnInit, OnDestroy {
 
   checkoutToPayment() {
     if (this.orderState === 'delivery') {
-      this.stateSub$ = this.checkoutService.changeOrderState()
+      this.checkoutService.changeOrderState()
         .subscribe();
     }
     this.router.navigate(['/checkout', 'payment']);
   }
 
   ngOnDestroy() {
-    this.getStateSub$.unsubscribe();
     this.stateSub$.unsubscribe();
   }
 
