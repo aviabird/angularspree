@@ -1,17 +1,15 @@
 import { getOrderNumber } from './../../checkout/reducers/selectors';
 import { CheckoutActions } from './../../checkout/actions/checkout.actions';
-import { Response } from '@angular/http';
+import { Response, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { LineItem } from './../models/line_item';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { HttpService } from './http';
-import { environment } from './../../../environments/environment.prod';
 
 @Injectable()
 export class CheckoutService {
-  private apiLink: string = environment.API_ENDPOINT;
   private orderNumber: number;
 
   constructor(
@@ -39,6 +37,26 @@ export class CheckoutService {
   fetchCurrentOrder() {
     return this.http.get(
       'spree/api/v1/orders/current'
+    ).map(res => {
+      const order = res.json();
+      if (order) {
+        return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
+      } else {
+        this.createEmptyOrder()
+          .subscribe();
+      }
+    });
+  }
+
+  createEmptyOrder() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const headers = new Headers({
+      'Content-Type': 'text/plain',
+      'X-Spree-Token': user && user.spree_api_key
+    });
+
+    return this.http.post(
+      'spree/api/v1/orders.json', {}, { headers: headers }
     ).map(res => {
       const order = res.json();
       return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));

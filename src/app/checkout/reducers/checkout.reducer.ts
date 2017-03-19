@@ -18,6 +18,7 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
     switch (type) {
 
       case CheckoutActions.FETCH_CURRENT_ORDER_SUCCESS:
+        console.log('order', payload);
         const _orderNumber = payload.number;
         _lineItems = payload.line_items;
         _lineItemIds = _lineItems.map(lineItem => lineItem.id);
