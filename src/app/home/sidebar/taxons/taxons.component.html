@@ -1,4 +1,6 @@
 <h3>Search by category</h3>
-<div class="taxon" *ngFor="let taxon of taxonomies">
-  <a href="#">{{ taxon.name }}</a>
+<div class="taxonomy" *ngFor="let taxonomy of taxonomies">
+  <div *ngFor="let taxon of taxonomy.root.taxons" class="filter"> 
+    <input type="checkbox" [checked]="isChecked(taxon)" (click)="taxonSelected(taxon, $event.target.checked)">  {{taxon.name}}
+  </div>
 </div>
