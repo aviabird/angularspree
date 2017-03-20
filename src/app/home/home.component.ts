@@ -5,7 +5,7 @@ import { AppState } from './../interfaces';
 import { getProducts, getTaxonomies } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Product } from '../core/models/product';
 
 @Component({
@@ -16,8 +16,6 @@ import { Product } from '../core/models/product';
 export class HomeComponent implements OnInit {
   products$: Observable<any>;
   taxonomies$: Observable<any>;
-  products: Product[] = [];
-  taxonomies: Taxonomy[] = [];
 
   constructor(private store: Store<AppState>, private actions: ProductActions) {
     // Get all products for the product list component
@@ -28,5 +26,5 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() { }
-
+ 
 }

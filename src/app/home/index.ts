@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ProductActions } from './../product/actions/product-actions';
+import { SearchActions } from './reducers/search.actions';
 import { SharedModule } from './../shared/index';
 
 // Components
@@ -43,7 +44,8 @@ import { HomeRoutes as routes } from './home.routes';
     SharedModule,
   ],
   providers: [
-    ProductActions
+    ProductActions,
+    SearchActions
   ]
 })
 export class HomeModule {}

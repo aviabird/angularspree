@@ -1,13 +1,13 @@
 import { Observable } from 'rxjs/Observable';
-import { Product } from './../models/product';
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product';
 
 @Injectable()
 export class ProductDummyService {
   constructor() { }
 
   getProduct(slug: string): Product {
-    return {
+    return Object.assign(new Product, {
       'id': 1,
       'name': 'Ruby on Rails Tote',
       'description': 'Doloribus quia minima natus dolorem sit nostrum. Explicabo id et quos odit aut laborum. Hic aut inventore est voluptas corrupti veritatis.',
@@ -135,7 +135,7 @@ export class ProductDummyService {
         }
       ],
       'has_variants': false
-    };
+    });
   }
 
   getTaxonomies(): any {

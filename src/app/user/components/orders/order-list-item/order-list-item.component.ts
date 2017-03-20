@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Order } from '../../../../core/models/order';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-order-list-item',
@@ -12,6 +13,10 @@ export class OrderListItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  getProductImageUrl(url) {
+    return environment.API_ENDPOINT + url;
   }
 
 }

@@ -1,3 +1,4 @@
+import { searchReducer } from './home/reducers/search.reducers';
 import { environment } from './../environments/environment';
 import { productReducer } from './product/reducers/product-reducer';
 import { ProductState } from './product/reducers/product-state';
@@ -38,7 +39,8 @@ const reducers = {
   products: productReducer,
   auth: authReducer,
   checkout: checkoutReducer,
-  users: userReducer
+  users: userReducer,
+  search: searchReducer
 };
 
 export const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers);;
