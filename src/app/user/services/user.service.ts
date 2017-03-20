@@ -21,7 +21,12 @@ export class UserService {
    * @returns Observable<Order[]>
    */
   getOrders(): Observable<Order[]> {
-    return this.http.get('/api/orders')
+    return this.http.get('api/orders')
+      .map((res: Response) => res.json());
+  }
+
+  getOrderDetail(orderNumber): Observable<Order> {
+    return this.http.get(`spree/api/v1/orders/${orderNumber}`)
       .map((res: Response) => res.json());
   }
 

@@ -19,6 +19,7 @@ import { UserActions } from './actions/user.actions';
 import { EffectsModule } from '@ngrx/effects';
 import { UsersEffects } from './effects/user.effects';
 import { SharedModule } from '../shared/index';
+import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SharedModule } from '../shared/index';
     ReturnsComponent,
     ReturnListItemComponent,
     UserComponent,
-    AddressesComponent
+    AddressesComponent,
+    OrderDetailComponent
     // pipes
 
   ],
