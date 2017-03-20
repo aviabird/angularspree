@@ -1,8 +1,3 @@
-// img {
-// 	width: 100%;
-// }
-
-
 .prod-item {
 	background: #fff;
 	border: 1px solid #eaeaec;
@@ -33,6 +28,8 @@
 			max-width: 400px;
     	padding: 5px 5px 5px 0;
 			a {
+				font-size: 14px;
+				font-family: "Whitney-semi-bold";
 				font-weight: 600;
     		color: #535766;
     		margin-right: 6px;
@@ -43,6 +40,8 @@
 			display: inline-block;
 			vertical-align: top;
 			font-weight: 600;
+			font-size: 14px;
+			font-family: "Whitney-semi-bold";
     	color: #535766;
 			margin-left: 20px;
 		}
@@ -85,6 +84,7 @@
 			padding-left: 0;
 			color: #696e79;
 			.delete-item, .move-item {
+				font-family: "Whitney-semi-bold";
 				margin: 0 15px 0 0;
 				cursor: pointer;
 			}

@@ -15,6 +15,7 @@
 					font-size: 18px;
     			font-weight: 600;
 					color: #535766;
+					font-family: "Whitney-semi-bold";
 				}
 			}
 			.total-price {
@@ -55,9 +56,11 @@
 			}
 		}
 	}
-	// .right{
-	// 	display: inline-block;
-	// 	padding: 30px 20px;
-  //   width: 300px;
-	// }
+	.right{
+		display: inline-block;
+    width: 29%;
+    vertical-align: top;
+    margin-top: 52px;
+    padding-left: 35px;
+	}
 }

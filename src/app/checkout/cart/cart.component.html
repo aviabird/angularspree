@@ -14,21 +14,7 @@
       </a>
     </div>
   </div>
-  <!--<div class="right">
-    <div>PRICE DETAILS</div>
-    <div>
-      <span>Bag Total</span>
-      <span style="float: right;">${{totalCartValue$ | async}}</span>
-    </div>
-    <div>
-      <span>Delivery</span>
-      <span style="float: right;">Free</span>
-    </div>
-    <div style="border-bottom: 1px solid gray; margin: 10px 0;"></div>
-    <div>
-      <span>Order Total</span>
-      <span style="float: right;">${{totalCartValue$ | async}}</span>
-    </div>
-    <button (click)="placeOrder()" style="width: 100%">PLACE ORDER</button>
-  </div>-->
+  <div class="right">
+    <app-order-total-summary></app-order-total-summary>
+  </div>
 </div>
