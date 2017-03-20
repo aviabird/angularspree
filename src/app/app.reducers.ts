@@ -39,8 +39,7 @@ const reducers = {
   products: productReducer,
   auth: authReducer,
   checkout: checkoutReducer,
-  users: userReducer
-  cart: cartReducer,
+  users: userReducer,
   search: searchReducer
 };
 
