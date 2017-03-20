@@ -13,19 +13,28 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } fro
 export class TaxonsComponent implements OnInit {
   @Input() taxonomies;
   searchFilters$: Observable<any>;
+  selectedFilters = [];
 
   constructor(private store: Store<AppState>, 
     private actions: SearchActions,
     private ref: ChangeDetectorRef) {
     this.searchFilters$ = this.store.select(getFilters);
     this.searchFilters$.subscribe(data => {
-      this.ref.markForCheck();
-      console.log('testing data', data);
+      this.selectedFilters = data;
     });
   }
 
   ngOnInit() {
-    // get clothing taxons
+  }
+
+  isChecked(taxon) {
+    let result = false;
+    this.selectedFilters.forEach((filter) => {
+      if (filter.id === taxon.id) {
+        result = true;
+      }
+    });
+    return result;
   }
 
   taxonSelected(taxon, checked) {
