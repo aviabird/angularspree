@@ -7,9 +7,12 @@
         class="fa fa-{{order.currency | lowercase}}"
         aria-hidden="true">
       </i>{{order.total}} / 
-      {{order.products.length}} items /
+      {{order.line_items.length}} items /
       Payment: {{order.payment_state | humanize | uppercase}}
     </small>
     <hr>
+    <div *ngFor="let line_item of order.line_items">
+      <img class="line_item_image" [src]="getProductImageUrl(line_item.image_url)" alt="Line Item">
+    </div>
   </div>
 </div>

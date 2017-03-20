@@ -6,7 +6,11 @@ import { Pipe } from '@angular/core';
 export class HumanizePipe {
 
   transform(value) {
-    return (value.replace(/\_/g, ' '));
+    let updated_val = value;
+    if (typeof(value) === 'string') {
+      updated_val = value.replace(/\_/g, ' ');
+    }
+    return updated_val;
   }
 
 };
