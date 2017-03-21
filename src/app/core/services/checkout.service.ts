@@ -26,11 +26,12 @@ export class CheckoutService {
 
   createNewLineItem(variant_id: number) {
     return this.http.post(
-      `spree/api/v1/orders/${this.orderNumber}/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=2`,
+      `spree/api/v1/orders/${this.orderNumber}/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=1`,
       {}
     ).map(res => {
       const lineItem: LineItem =  res.json();
-      this.store.dispatch(this.actions.addToCartSuccess(lineItem));
+      return lineItem;
+      // this.store.dispatch(this.actions.addToCartSuccess(lineItem));
     });
   }
 

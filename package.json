@@ -22,7 +22,7 @@
     "@angular/http": "next",
     "@angular/platform-browser": "next",
     "@angular/platform-browser-dynamic": "next",
-    "@angular/router": "4.0.0-rc.5",
+    "@angular/router": "next",
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.0",
     "@ngrx/store": "^2.2.1",
@@ -37,7 +37,7 @@
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-rc.2",
+    "@angular/cli": "1.0.0-rc.4",
     "@angular/compiler-cli": "next",
     "@ngrx/store-devtools": "^3.2.3",
     "@types/jasmine": "2.5.38",

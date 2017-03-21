@@ -1,4 +1,6 @@
 .cart-section {
+	max-width: 980px;
+	margin: auto;
 	.left	{
 		display: inline-block;
     width: 70%;
@@ -13,6 +15,7 @@
 					font-size: 18px;
     			font-weight: 600;
 					color: #535766;
+					font-family: "Whitney-semi-bold";
 				}
 			}
 			.total-price {
@@ -23,10 +26,41 @@
 				color: #535766;
 			}
 		}
+		.prod-set {
+			width: 100%;
+			display: inline-block;
+			height: 100%;
+			overflow: auto;
+			padding-left: 1px;
+			.wishlist-link {
+				cursor: pointer;
+				.icon {
+					width: 12px;
+					height: 16px;
+					background-position: -689px 0;
+					display: inline-block;
+					overflow: hidden;
+					background-repeat: no-repeat;
+					background-size: 4250px 153px;
+					vertical-align: middle;
+					background-image: url(/assets/checkout_sprite.png);
+					margin-right: 5px;
+				}
+				text-align: center;
+				display: block;
+				height: 40px;
+    		padding-top: 10px;
+    		background: #fff;
+    		color: #535766;
+    		border: 1px solid #eaeaec;
+			}
+		}
 	}
 	.right{
 		display: inline-block;
-		padding: 30px 20px;
-    width: 300px;
+    width: 29%;
+    vertical-align: top;
+    margin-top: 52px;
+    padding-left: 35px;
 	}
 }
