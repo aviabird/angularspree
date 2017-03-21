@@ -78,16 +78,6 @@
               <span class="register-info-text">Already have an account?</span>
               <a class="register-create-account-link register-link" [routerLink]="['/auth','login']">Login!</a></div>
           </div>
-
-          <div class="notify-container"
-            [ngClass]="{'in': !signUpForm.valid && formSubmit}">>
-            <div class="notify-error notify-content">
-              <div class="notify-error-message">
-                <span class="notify-icon">!</span>
-                <p class="notify-icon-text">Please enter valid data</p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

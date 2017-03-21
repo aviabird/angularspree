@@ -3,11 +3,11 @@ import { Observable } from 'rxjs/Rx';
 import { HttpService } from '../../../core/services/http';
 
 @Component({
-  selector: 'app-loading-indicator',
-  templateUrl: './loading-indicator.component.html',
-  styleUrls: ['./loading-indicator.component.scss']
+  selector: 'app-notification',
+  templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.scss']
 })
-export class LoadingIndicatorComponent implements OnInit {
+export class NotificationComponent implements OnInit {
   loading$: Observable<{loading: false, error: false}>;
 
   constructor(private httpInterceptor: HttpService) {
