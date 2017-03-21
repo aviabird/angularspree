@@ -8,7 +8,7 @@ export class ProductService {
   constructor(private http: HttpService) { }
 
   getProduct(id: string): Observable<any> {
-    return this.http.get(`/api/products/${id}`)
+    return this.http.get(`/spree/api/v1/products/${id}`)
     .map(res => res.json());
   }
 }

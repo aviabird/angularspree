@@ -1,6 +1,5 @@
 import { CheckoutService } from './services/checkout.service';
 import { NgModule } from '@angular/core';
-import { ProductDummyService } from './services/product-dummy.service';
 import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
 // Components
 
@@ -9,6 +8,10 @@ import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http';
 import { ProductService } from './services/product.service';
 import { AuthActions } from '../auth/actions/auth.actions';
+import { VariantRetriverService } from './services/variant-retriver.service';
+import { VariantParserService } from './services/variant-parser.service';
+import { ProductDummyService } from './services/product-dummy.service';
+
 import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationEffects } from '../auth/effects/auth.effects';
 import { ProductEffects } from '../product/effects/product.effects';
@@ -42,6 +45,8 @@ export function httpInterceptor(
     EffectsModule.run(UserEffects)
   ],
   providers: [
+    VariantParserService,
+    VariantRetriverService,
     AuthService,
     {
       provide: HttpService,
