@@ -7,7 +7,7 @@ import { UserService } from '../services/user.service';
 import { UserActions } from '../actions/user.actions';
 
 @Injectable()
-export class UsersEffects {
+export class UserEffects {
   constructor(
     private actions$: Actions,
     private userService: UserService,
