@@ -1,26 +1,99 @@
-img {
-	width: 100%;
+.prod-item {
+	background: #fff;
+	border: 1px solid #eaeaec;
+	box-shadow: 0 0 4px rgba(40,44,63,.08);
+	margin-bottom: 30px;
+	text-transform: none;
+	padding-bottom: 0!important;
+	.col1 {
+		width: 20%;
+		display: inline-block;
+		vertical-align: bottom;
+		img {
+			width: 120px;
+			height: 160px;
+			object-fit: contain;
+		}
+	}
+	.col2 {
+		vertical-align: top;
+		display: inline-block;
+		padding: 10px 10px 10px 25px;
+		min-height: 145px;
+		position: relative;
+		width: 79%;
+		.prod-name {
+			display: inline-block;
+			overflow: hidden;
+    	text-overflow: ellipsis;
+    	white-space: nowrap;
+			max-width: 400px;
+    	padding: 5px 5px 5px 0;
+			a {
+				font-size: 14px;
+				font-family: "Whitney-semi-bold";
+				font-weight: 600;
+    		color: #535766;
+    		margin-right: 6px;
+			}
+		}
+		.prod-amount {
+			float: right;
+			padding: 5px 5px 5px 0;
+			display: inline-block;
+			vertical-align: top;
+			font-weight: 600;
+			font-size: 14px;
+			font-family: "Whitney-semi-bold";
+    	color: #535766;
+			margin-left: 20px;
+		}
+		.size-qty-wrap {
+			margin: 5px 0;
+			color: #535766;
+			.size-qty {
+				margin: 0 0 4px;
+				padding-right: 10px;
+				display: inline-block;
+				.size, .qty {
+					cursor: pointer;
+					margin-right: 20px;
+					.gray {
+						color: gray;
+					}
+					.icon {
+						width: 20px;
+						height: 20px;
+						background-position: -2570px -13px;
+						display: inline-block;
+						overflow: hidden;
+						background-repeat: no-repeat;
+						background-size: 4250px 153px;
+						vertical-align: middle;
+						background-image: url(/assets/checkout_sprite.png);
+					}
+				}
+			}
+		}
+		.edit-move-delete {
+			position: absolute;
+			left: 25px;
+			right: 20px;
+			bottom: 0;
+			border-top: 1px solid #eaeaec;
+			padding-top: 9px;
+			font-size: 13px;
+			font-weight: 600;
+			padding-left: 0;
+			color: #696e79;
+			.delete-item, .move-item {
+				font-family: "Whitney-semi-bold";
+				margin: 0 15px 0 0;
+				cursor: pointer;
+			}
+			.move-item {
+				color: #526cd0;
+			}
+		}
+	}
 }
-
-
-// .prod-item {
-// 	background: #fff;
-// 	border: 1px solid #eaeaec;
-// 	box-shadow: 0 0 4px rgba(40,44,63,.08);
-// 	margin-bottom: 30px;
-// 	text-transform: none;
-// 	padding-bottom: 0!important;
-// 	.col1 {
-// 		display: inline-block;
-// 		img {
-// 			width: 120px;
-// 			height: 160px;
-// 			object-fit: contain;
-// 		}
-// 	}
-// 	.col2 {
-// 		display: inline-block;
-// 		padding: 0 10px 0 45px;
-// 		min-height: 145px;
-// 	}
-// }

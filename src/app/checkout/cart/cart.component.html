@@ -1,28 +1,25 @@
 <div class="cart-section">
-  <div class="left">
-    <div class="checkout-header-container">
-      <div class="checkout-header">
-        <span class="text">My Shopping Bag</span>
+  <div *ngIf="(totalCartItems$ | async) > 0 else emptyCart">
+    <div class="left">
+      <div class="checkout-header-container">
+        <div class="checkout-header">
+          <span class="text">My Shopping Bag ({{totalCartItems$ | async}})</span>
+        </div>
+        <div class="total-price">Total: ${{totalCartValue$ | async}}</div>
       </div>
-      <div class="total-price">Total: Rs. 4,999</div>
+      <div class="prod-set">
+        <app-line-item-list></app-line-item-list>
+        <a class="wishlist-link">
+          <span class="icon"></span>
+          <span>Add more from wishlist</span>
+        </a>
+      </div>
     </div>
-    <app-line-item-list></app-line-item-list>
+    <div class="right">
+      <app-order-total-summary [totalCartValue]="totalCartValue$ | async"></app-order-total-summary>
+    </div>
   </div>
-  <div class="right">
-    <div>PRICE DETAILS</div>
-    <div>
-      <span>Bag Total</span>
-      <span style="float: right;">${{totalCartValue$ | async}}</span>
-    </div>
-    <div>
-      <span>Delivery</span>
-      <span style="float: right;">Free</span>
-    </div>
-    <div style="border-bottom: 1px solid gray; margin: 10px 0;"></div>
-    <div>
-      <span>Order Total</span>
-      <span style="float: right;">${{totalCartValue$ | async}}</span>
-    </div>
-    <button (click)="placeOrder()" style="width: 100%">PLACE ORDER</button>
-  </div>
+  <ng-template #emptyCart>
+    <app-empty-cart></app-empty-cart>
+  </ng-template>
 </div>

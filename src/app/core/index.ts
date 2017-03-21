@@ -1,3 +1,5 @@
+import { CheckoutEffects } from './../checkout/effects/checkout.effects';
+import { CheckoutActions } from './../checkout/actions/checkout.actions';
 import { CheckoutService } from './services/checkout.service';
 import { NgModule } from '@angular/core';
 import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
@@ -42,6 +44,7 @@ export function httpInterceptor(
     // TO BE moved to respective modules.
     EffectsModule.run(AuthenticationEffects),
     EffectsModule.run(ProductEffects),
+    EffectsModule.run(CheckoutEffects),
     EffectsModule.run(UserEffects)
   ],
   providers: [
@@ -57,6 +60,7 @@ export function httpInterceptor(
     ProductDummyService,
     ProductService,
     AuthActions,
+    CheckoutActions,
     UserActions,
     UserService
   ]
