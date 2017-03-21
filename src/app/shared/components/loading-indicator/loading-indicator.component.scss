@@ -1,0 +1,22 @@
+.loading {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(255, 255, 255, 0.78);
+  position: fixed;
+  left: 0px;
+  top: 85px;
+  z-index: 999;
+  .spinner {
+    height: 11px;
+    width: 43px;
+    margin: auto;
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(/assets/loader.gif);
+    z-index: 999;
+  }
+}
