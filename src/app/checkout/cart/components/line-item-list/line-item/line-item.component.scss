@@ -6,6 +6,7 @@
 	text-transform: none;
 	padding-bottom: 0!important;
 	.col1 {
+		width: 20%;
 		display: inline-block;
 		vertical-align: bottom;
 		img {
@@ -20,6 +21,7 @@
 		padding: 10px 10px 10px 25px;
 		min-height: 145px;
 		position: relative;
+		width: 79%;
 		.prod-name {
 			display: inline-block;
 			overflow: hidden;
@@ -36,6 +38,7 @@
 			}
 		}
 		.prod-amount {
+			float: right;
 			padding: 5px 5px 5px 0;
 			display: inline-block;
 			vertical-align: top;

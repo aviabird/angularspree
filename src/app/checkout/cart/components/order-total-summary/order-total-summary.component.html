@@ -6,13 +6,13 @@
   <div class="gift-wrap-order">
     <span class="gift-wrap-checkbox"></span>
     <a href="" class="gift-card-lbl">Gift wrap for</a>
-    <span class="gift-card-price">Rs. 25</span>
+    <span class="gift-card-price">$1</span>
     <span class="not-cod">Cash/Card On Delivery not available</span>
   </div>
   <div class="order-summary-span">
     <div class="bag-total">
       <span>Bag Total</span>
-      <span class="value">Rs. 5.898</span>
+      <span class="value">${{totalCartValue}}</span>
     </div>
     <div class="coupon">
       <span>Coupon Discount</span>
@@ -25,10 +25,10 @@
   </div>
   <div class="order-total footer">
     <div class="place-order">
-      <button class="order-btn">PLACE ORDER</button>
+      <button (click)="placeOrder()" class="order-btn">PLACE ORDER</button>
     </div>
     <div class="total-amount">
-      <span class="total-rupees">Rs. 5,898</span>
+      <span class="total-rupees">${{totalCartValue}}</span>
     </div>
   </div>
 </div>
