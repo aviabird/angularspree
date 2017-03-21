@@ -17,7 +17,7 @@ import { UserRoutes as routes } from './user.routes';
 import { AddressesComponent } from './components/addresses/addresses.component';
 import { UserActions } from './actions/user.actions';
 import { EffectsModule } from '@ngrx/effects';
-import { UsersEffects } from './effects/user.effects';
+import { UserEffects } from './effects/user.effects';
 import { SharedModule } from '../shared/index';
 import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
 
@@ -50,7 +50,7 @@ import { OrderDetailComponent } from './components/orders/order-detail/order-det
   ],
   imports: [
     RouterModule.forChild(routes),
-    EffectsModule.run(UsersEffects),
+    EffectsModule.run(UserEffects),
     SharedModule
   ]
 })
