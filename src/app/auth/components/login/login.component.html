@@ -51,7 +51,7 @@
             </div>
           </div>
           <div class="notify-container"
-            [ngClass]="{'in': !signInForm.valid && !signInForm.untouched}">
+            [ngClass]="{'in': !signInForm.valid && !signInForm.get('password').untouched && !signInForm.get('email').untouched}">
             <div class="notify-error notify-content">
               <div class="notify-error-message">
                 <span class="notify-icon">!</span>
