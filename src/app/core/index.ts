@@ -12,6 +12,11 @@ import { VariantRetriverService } from './services/variant-retriver.service';
 import { VariantParserService } from './services/variant-parser.service';
 import { ProductDummyService } from './services/product-dummy.service';
 
+import { EffectsModule } from '@ngrx/effects';
+import { AuthenticationEffects } from '../auth/effects/auth.effects';
+import { ProductEffects } from '../product/effects/product.effects';
+
+
 export function httpInterceptor(
   backend: XHRBackend,
   defaultOptions: RequestOptions,
@@ -30,6 +35,8 @@ export function httpInterceptor(
     // DummyService
   ],
   imports: [
+    EffectsModule.run(AuthenticationEffects),
+    EffectsModule.run(ProductEffects),
   ],
   providers: [
     VariantParserService,

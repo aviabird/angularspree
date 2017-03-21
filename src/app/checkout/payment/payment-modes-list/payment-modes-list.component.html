@@ -1,0 +1,14 @@
+{{selectedPaymentMode | json}}
+
+<div *ngFor="let mode of paymentModes">
+  <app-payment-mode [paymentMode]="mode" (changePaymentMode)="selectedPaymentMode($event)" ></app-payment-mode>
+</div>
+
+<div [ngSwitch]="selectedMode.name">
+  <ng-template [ngSwitchCase]="'Credit Card'"> 
+     <app-credit-card></app-credit-card>   
+   </ng-template>      
+   <ng-template [ngSwitchCase]="'Check'" ngSwitchDefault> 
+      <app-cash-on-delivery (payOnDelivery)="makePayment()"></app-cash-on-delivery>
+  </ng-template>
+</div>

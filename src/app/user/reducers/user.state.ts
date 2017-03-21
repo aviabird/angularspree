@@ -4,10 +4,10 @@ import { Order } from '../../core/models/order';
 
 export interface UserState extends Map<string, any> {
   user: User;
-  orders: List<Order>;
+  orders: List<Order[]>;
 }
 
 export const UserStateRecord = Record({
   user: Map({}),
-  orders: []
+  orders: List([])
 });

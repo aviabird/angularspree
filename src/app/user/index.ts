@@ -15,6 +15,11 @@ import { UserService } from './services/user.service';
 
 import { UserRoutes as routes } from './user.routes';
 import { AddressesComponent } from './components/addresses/addresses.component';
+import { UserActions } from './actions/user.actions';
+import { EffectsModule } from '@ngrx/effects';
+import { UsersEffects } from './effects/user.effects';
+import { SharedModule } from '../shared/index';
+import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,8 @@ import { AddressesComponent } from './components/addresses/addresses.component';
     ReturnsComponent,
     ReturnListItemComponent,
     UserComponent,
-    AddressesComponent
+    AddressesComponent,
+    OrderDetailComponent
     // pipes
 
   ],
@@ -39,10 +45,13 @@ import { AddressesComponent } from './components/addresses/addresses.component';
 
   ],
   providers: [
-    UserService
+    UserService,
+    UserActions
   ],
   imports: [
     RouterModule.forChild(routes),
+    EffectsModule.run(UsersEffects),
+    SharedModule
   ]
 })
 export class UserModule {}

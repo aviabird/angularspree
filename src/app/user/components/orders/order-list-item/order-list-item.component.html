@@ -1,5 +1,25 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    Basic panel example
+    <h5 class="active">{{order.shipment_state | uppercase}}</h5>
+    <small>
+      Placed on {{order.created_at | date:'fullDate'}} / 
+      <i
+        class="fa fa-{{order.currency | lowercase}}"
+        aria-hidden="true">
+      </i>{{order.total}} / 
+      {{order.line_items.length}} items /
+      Payment: {{order.payment_state | humanize | uppercase}}
+    </small>
+    <hr>
+    <h5 class="strong">
+      Shipment: {{order.line_items.length}} items | 
+      {{order.shipment_state | uppercase}} on {{order.updated_at | date:'fullDate'}}
+      <div class="pull-right">
+        <a [routerLink]="['detail', order.number]" class="view-details-link strong">View Details</a>
+      </div>
+    </h5>
+    <div *ngFor="let line_item of order.line_items">
+      <img class="line_item_image" [src]="getProductImageUrl(line_item.image_url)" alt="Line Item">
+    </div>
   </div>
 </div>

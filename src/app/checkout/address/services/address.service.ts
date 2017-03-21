@@ -1,8 +1,23 @@
+import { FormBuilder, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AddressService {
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
+
+  initAddressForm() {
+    return this.fb.group({
+      'firstname': ['John', Validators.required],
+      'lastname': ['Doe', Validators.required],
+      'address1': ['7735 Old Georgetown Road', Validators.required],
+      'address2': ['Bethesda', Validators.required],
+      'city': ['New York', Validators.required],
+      'phone': ['3014445002', Validators.required],
+      'zipcode': ['10001', Validators.required],
+      'state_id': [3561, Validators.required],
+      'country_id': [232, Validators.required]
+    });
+  }
 
   createAddresAttributes(address) {
     return {
@@ -22,7 +37,5 @@ export class AddressService {
       }
     };
   }
-
-
 
 }

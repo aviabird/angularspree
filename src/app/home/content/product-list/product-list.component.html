@@ -1,6 +1,46 @@
-<div class='product-box col-xs-4' *ngFor="let product of products">
-  <app-product-list-item 
-  [product]="product"
-  [routerLink]="['/product', product.slug]">    
-  </app-product-list-item>
+<div class="row-base" style="display: -webkit-flex">
+  <section>  
+    <ul class="results-base">
+      <li *ngFor="let product of products" class="product-base">
+        <div class="product-thumbShim"></div>
+        <a href="#">
+          <img class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+          <div class="product-productMetaInfo">
+            <div class="product-brand">{{ product.name }}</div>
+            <h2 class="product-product">{{ product.description }}</h2>
+            <div class="product-price">
+              <span>
+                <!-- Discounted price -->
+                <span class="product-discountedPrice">$ {{ product.price }}</span>
+                <!-- Original price -->
+                <!--<span class="product-strike"> react-text: 485 Rs.  /react-text  react-text: 486 1699 /react-text </span>-->
+              </span>
+              <!--Percentage off --><!--<span class="product-discountPercentage">(40% OFF)</span>-->
+            </div>
+            <!-- Product Size --><!--<div class="product-sizes">Sizes: S, M, L, XL, XXL</div>-->
+          </div>
+        </a>
+        <div class="product-sizeDisplayDiv">
+          <div class="product-sizeDisplayHeader">
+            <span>Select a size</span>
+            <span class="myntraweb-sprite product-sizeDisplayRemoveMark sprites-remove"></span>
+          </div>
+          <div class="product-sizeButtonsContaier">
+            <button class="product-sizeButton">S</button>
+            <button class="product-sizeButton">M</button>
+            <button class="product-sizeButton">L</button>
+            <button class="product-sizeButton">XL</button>
+            <button class="product-sizeButton">XXL</button>
+          </div>
+        </div>
+        <div class="product-actions">
+          <span class="product-actionsButton product-wishlist">save</span>
+          <span class="product-actionsButton product-addToBag">
+            <span>Add to bag</span>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </section>
 </div>
+

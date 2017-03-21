@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 // Pipes
 import { KeysPipe } from './pipes/keys.pipe';
+import { HumanizePipe } from '../core/pipes/humanize.pipe';
 
 // components
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
@@ -15,7 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     // components
     LoadingIndicatorComponent,
     // pipes
-    KeysPipe
+    KeysPipe,
+    HumanizePipe
   ],
   exports: [
     // components
@@ -26,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     // pipes
-    KeysPipe
+    KeysPipe,
+    HumanizePipe
   ],
   imports: [
     FormsModule,
