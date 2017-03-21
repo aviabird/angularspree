@@ -11,7 +11,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class AddAddressComponent implements OnInit, OnDestroy {
 
-  updateSub$: Subscription;
   addressForm: FormGroup;
 
   constructor(private fb: FormBuilder, private checkoutService: CheckoutService, private addrService: AddressService) {
@@ -29,7 +28,6 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.updateSub$.unsubscribe();
   }
 
 }
