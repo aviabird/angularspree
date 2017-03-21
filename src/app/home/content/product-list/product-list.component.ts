@@ -1,3 +1,5 @@
+import { getSelectedTaxonIds } from './../../reducers/selectors';
+import { Observable } from 'rxjs/Rx';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { CheckoutActions } from './../../../checkout/actions/checkout.actions';
 import { AppState } from './../../../interfaces';
@@ -13,12 +15,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
   @Input() products;
+  @Input('taxonIds') selectedTaxonIds;
 
   constructor(private checkoutService: CheckoutService, private store: Store<AppState>, private checkoutActions: CheckoutActions) { }
 
-  ngOnInit() {
-    // console.log('products', this.products);
-  }
+  ngOnInit() { }
 
   getProductImageUrl(url) {
     return environment.API_ENDPOINT + url;

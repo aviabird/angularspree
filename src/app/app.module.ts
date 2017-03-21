@@ -34,7 +34,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HomeModule,
     LayoutModule,
     CoreModule,
-    StoreDevtoolsModule.instrumentOnlyWithExtension()
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

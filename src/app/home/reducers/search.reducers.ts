@@ -20,10 +20,11 @@ export const searchReducer: ActionReducer<SearchState> =
         if (filterAlreadyPresent) {
           return state;
         } else {
-          // let newSelectedArray = [];
           const _selectedFilters = state.selectedFilters.concat([payload]);
+          const _selectedTaxonIds = state.selectedTaxonIds.concat(payload.id);
           return state.merge({
-            selectedFilters: _selectedFilters
+            selectedFilters: _selectedFilters,
+            selectedTaxonIds: _selectedTaxonIds
           }) as SearchState;
         }
 
@@ -36,10 +37,12 @@ export const searchReducer: ActionReducer<SearchState> =
           }
         });
         const _selectedFilters = state.selectedFilters.remove(removeIndex);
+        const taxonRemoveIndex = state.selectedTaxonIds.findIndex(filterId => payload.id === filterId);
+        const _selectedTaxonIds = state.selectedTaxonIds.remove(taxonRemoveIndex);
         return state.merge({
-            selectedFilters: _selectedFilters
+            selectedFilters: _selectedFilters,
+            selectedTaxonIds: _selectedTaxonIds
         }) as SearchState;
-        // return state;
 
       default:
         return state;

@@ -1,3 +1,5 @@
 <div *ngFor="let order of orders$ | async">
   <app-order-list-item [order]="order"></app-order-list-item>
 </div>
+
+<app-loading-indicator></app-loading-indicator>
