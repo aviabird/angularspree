@@ -23,8 +23,8 @@ export const checkoutReducer: ActionReducer<CheckoutState> =
         _lineItemIds = _lineItems.map(lineItem => lineItem.id);
         _totalCartItems = payload.total_quantity;
         _totalCartValue = parseFloat(payload.total);
-        _ship_address = payload.ship_address;
-        _bill_address = payload.bill_address;
+        _ship_address = payload.ship_address ? payload.ship_address : state.shipAddress;
+        _bill_address = payload.bill_address ? payload.bill_address : state.billAddress;
         _orderState = payload.state;
 
         _lineItemEntities = _lineItems.reduce((lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
