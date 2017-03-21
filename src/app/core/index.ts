@@ -1,3 +1,4 @@
+import { CheckoutActions } from './../checkout/actions/checkout.actions';
 import { CheckoutService } from './services/checkout.service';
 import { NgModule } from '@angular/core';
 import { ProductDummyService } from './services/product-dummy.service';
@@ -45,7 +46,8 @@ export function httpInterceptor(
     CheckoutService,
     ProductDummyService,
     ProductService,
-    AuthActions
+    AuthActions,
+    CheckoutActions
   ]
 })
 export class CoreModule {}
