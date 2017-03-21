@@ -47,7 +47,7 @@ export class HttpService extends Http {
   get(url: string, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.get(this.getFullUrl(url), this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -72,7 +72,7 @@ export class HttpService extends Http {
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.post(this.getFullUrl(url), body, this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -93,7 +93,7 @@ export class HttpService extends Http {
   put(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.put(this.getFullUrl(url), body, this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -113,7 +113,7 @@ export class HttpService extends Http {
   delete(url: string, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.delete(this.getFullUrl(url), this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
