@@ -1,7 +1,8 @@
 <div class="row-base" style="display: -webkit-flex">
   <section>  
     <ul class="results-base">
-      <li *ngFor="let product of products" class="product-base">
+      <p *ngIf="products.length === 0">No Products found for this category</p>
+      <li *ngFor="let product of products | filter : selectedTaxonIds" class="product-base">
         <div class="product-thumbShim"></div>
         <a href="#">
           <img class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.large_url)">

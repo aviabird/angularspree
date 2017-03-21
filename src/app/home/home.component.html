@@ -7,7 +7,7 @@
   </div>
   <div class="col-xs-9">
     <!--<app-product-list [products]="products$ | async"></app-product-list>-->
-    <app-content [products]="products$ | async">
+    <app-content [products]="products$ | async" [taxonIds]="selectedTaxonIds$ | async">
     </app-content>
   </div>
 </div>

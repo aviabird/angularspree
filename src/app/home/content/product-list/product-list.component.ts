@@ -1,3 +1,7 @@
+import { getSelectedTaxonIds } from './../../reducers/selectors';
+import { Observable } from 'rxjs/Rx';
+import { AppState } from './../../../interfaces';
+import { Store } from '@ngrx/store';
 import { environment } from './../../../../environments/environment';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -8,11 +12,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
   @Input() products;
+  @Input('taxonIds') selectedTaxonIds;
 
   constructor() { }
 
   ngOnInit() {
     // console.log('products', this.products);
+  }
+
+  filterProduct(product) {
+    debugger;
+    return false;
   }
 
   getProductImageUrl(url) {
