@@ -1,20 +1,3 @@
-<!--<div class="col-md-4">
-</div>
-
-<div class="col-md-8">
-  <div class="row">
-    <div class="col-md-8">
-      {{name}}
-    </div>
-    <div class="col-md-4">
-      {{amount}}
-    </div>
-  </div>
-  <div class="row">
-    <button (click)="removeLineItem()">Remove</button>
-  </div>
-</div>-->
-
 <div class="prod-item">
   <div class="col1">
     <img [src]="'http://assets.myntassets.com/h_128,q_100,w_96/v1/assets/images/1714052/2017/3/6/11488792709467-HRX-by-Hrithik-Roshan-Men-Black-Printed-Round-Neck-T-Shirt-191488792709172-1.jpg'">
@@ -22,11 +5,11 @@
   <div class="col2">
     <div class="prod-name">
       <a class="c-gray">
-        HRX by Hrithik Roshan Men Black Printed Round Neck Active T-Shirt
+        {{name}}
       </a>
     </div>
     <div class="prod-amount">
-      Rs. 899
+      {{amount}}
     </div>
     <div class="size-qty-wrap">
       <div class="size-qty">
@@ -45,7 +28,7 @@
     </div>
     <div class="edit-move-delete">
       <div class="actions">
-        <span class="delete-item">REMOVE</span>
+        <span (click)="removeLineItem()" class="delete-item">REMOVE</span>
         <span class="move-item">MOVE TO WISHLIST</span>
       </div>
     </div>

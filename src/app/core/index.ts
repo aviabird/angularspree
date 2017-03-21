@@ -1,3 +1,4 @@
+import { CheckoutEffects } from './../checkout/effects/checkout.effects';
 import { CheckoutActions } from './../checkout/actions/checkout.actions';
 import { CheckoutService } from './services/checkout.service';
 import { NgModule } from '@angular/core';
@@ -35,6 +36,7 @@ export function httpInterceptor(
   imports: [
     EffectsModule.run(AuthenticationEffects),
     EffectsModule.run(ProductEffects),
+    EffectsModule.run(CheckoutEffects)
   ],
   providers: [
     AuthService,

@@ -7,13 +7,15 @@ import { RouterModule } from '@angular/router';
 import { LineItemListComponent } from './components/line-item-list/line-item-list.component';
 import { LineItemComponent } from './components/line-item-list/line-item/line-item.component';
 import { OrderTotalSummaryComponent } from './components/order-total-summary/order-total-summary.component';
+import { EmptyCartComponent } from './components/empty-cart/empty-cart.component';
 
 @NgModule({
   declarations: [
     CartComponent,
     LineItemListComponent,
     LineItemComponent,
-    OrderTotalSummaryComponent
+    OrderTotalSummaryComponent,
+    EmptyCartComponent
   ],
   exports: [],
   imports: [

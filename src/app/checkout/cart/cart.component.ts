@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { getTotalCartValue, getOrderState } from './../reducers/selectors';
+import { getTotalCartValue, getOrderState, getTotalCartItems } from './../reducers/selectors';
 import { Observable } from 'rxjs/Observable';
 import { CheckoutService } from './../../core/services/checkout.service';
 import { CheckoutActions } from './../actions/checkout.actions';
@@ -19,6 +19,7 @@ export class CartComponent implements OnInit, OnDestroy {
   stateSub$: Subscription;
   orderState: string;
   totalCartValue$: Observable<number>;
+  totalCartItems: Observable<number>;
 
   constructor(private store: Store<AppState>,
     private actions: CheckoutActions,
@@ -29,7 +30,9 @@ export class CartComponent implements OnInit, OnDestroy {
         .subscribe(state => this.orderState = state);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.totalCartItems = this.store.select(getTotalCartItems);
+  }
 
   placeOrder() {
     if (this.orderState === 'cart') {
