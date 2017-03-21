@@ -40,11 +40,9 @@ import { ProductEffects } from './effects/product.effects';
   ],
   imports: [
     SharedModule,
-    EffectsModule.run(ProductEffects),
     RouterModule.forChild(routes),
   ],
   providers: [
-    ProductService
   ]
 })
 export class ProductModule {}

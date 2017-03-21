@@ -12,6 +12,9 @@ import { AuthActions } from '../auth/actions/auth.actions';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthenticationEffects } from '../auth/effects/auth.effects';
 import { ProductEffects } from '../product/effects/product.effects';
+import { UserActions } from '../user/actions/user.actions';
+import { UserEffects } from '../user/effects/user.effects';
+import { UserService } from '../user/services/user.service';
 
 
 export function httpInterceptor(
@@ -32,8 +35,11 @@ export function httpInterceptor(
     // DummyService
   ],
   imports: [
+    // Were not working on modules sice update to rc-5
+    // TO BE moved to respective modules.
     EffectsModule.run(AuthenticationEffects),
     EffectsModule.run(ProductEffects),
+    EffectsModule.run(UserEffects)
   ],
   providers: [
     AuthService,
@@ -45,7 +51,9 @@ export function httpInterceptor(
     CheckoutService,
     ProductDummyService,
     ProductService,
-    AuthActions
+    AuthActions,
+    UserActions,
+    UserService
   ]
 })
 export class CoreModule {}
