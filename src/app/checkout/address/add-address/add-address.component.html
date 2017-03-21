@@ -1,73 +1,66 @@
-<div class="left">
-  <div class="add-address">
-    <span class="add-label">
-      ADD NEW ADDRESS
-    </span>
+<form class="addr-form" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+  <input type="hidden" formControlName="country_id">
+  <div class="pincode">
+    <label>
+      Pin Code
+      <span class="required">*</span>
+    </label>
+    <input type="tel" class="half-width" formControlName="zipcode">
   </div>
-  <form class="addr-form" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-    <input type="hidden" formControlName="country_id">
-    <div class="pincode">
+  <div class="locality">
+    <label>
+      Locality / Town
+      <span class="required">*</span>
+    </label>
+    <input type="text" class="full-width" formControlName="address2">
+  </div>
+  <div>
+    <div class="city">
       <label>
-        Pin Code
+        City / District
         <span class="required">*</span>
       </label>
-      <input type="tel" class="half-width" formControlName="zipcode">
+      <input type="text" class="half-width" formControlName="city">
     </div>
-    <div class="locality">
+    <div class="state">
       <label>
-        Locality / Town
+        State
         <span class="required">*</span>
       </label>
-      <input type="text" class="full-width" formControlName="address2">
+      <input type="text" class="half-width" formControlName="state_id">
     </div>
-    <div>
-      <div class="city">
-        <label>
-          City / District
-          <span class="required">*</span>
-        </label>
-        <input type="text" class="half-width" formControlName="city">
-      </div>
-      <div class="state">
-        <label>
-          State
-          <span class="required">*</span>
-        </label>
-        <input type="text" class="half-width" formControlName="state_id">
-      </div>
-    </div>
-    <div>
-      <div class="first-name">
-        <label>
-          First Name
-          <span class="required">*</span>
-        </label>
-        <input type="text" class="half-width" formControlName="firstname">
-      </div>
-      <div class="last-name">
-        <label>
-          Last Name
-          <span class="required">*</span>
-        </label>
-        <input type="text" class="half-width" formControlName="lastname">
-      </div>
-    </div>
-    <div class="address">
+  </div>
+  <div>
+    <div class="first-name">
       <label>
-        Address
+        First Name
         <span class="required">*</span>
       </label>
-      <textarea type="text" class="full-width" formControlName="address1"></textarea>
+      <input type="text" class="half-width" formControlName="firstname">
     </div>
-    <div class="mobile">
+    <div class="last-name">
       <label>
-        Mobile No
+        Last Name
         <span class="required">*</span>
       </label>
-      <input type="tel" class="half-width" formControlName="phone">
+      <input type="text" class="half-width" formControlName="lastname">
     </div>
-    <div class="save-button">
-      <button>SAVE</button>
-    </div>
-  </form>
-</div>
+  </div>
+  <div class="address">
+    <label>
+      Address
+      <span class="required">*</span>
+    </label>
+    <textarea type="text" class="full-width" formControlName="address1"></textarea>
+  </div>
+  <div class="mobile">
+    <label>
+      Mobile No
+      <span class="required">*</span>
+    </label>
+    <input type="tel" class="half-width" formControlName="phone">
+  </div>
+  <div class="save-button">
+    <button>SAVE</button>
+  </div>
+</form>

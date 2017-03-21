@@ -9,6 +9,13 @@
 		</div>
 	</div>
 	<div *ngIf="!(shipAddress$ | async)">
-		<app-add-address></app-add-address>
+		<div class="left">
+			<div class="add-address">
+				<span class="add-label">
+					ADD NEW ADDRESS
+				</span>
+			</div>
+			<app-add-address></app-add-address>
+		</div>
 	</div>
 </div>
