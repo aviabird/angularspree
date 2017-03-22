@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/">
+  <a href="https://angularspree.firebaseapp.com/" target='_blank'>
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/mally/image/upload/v1490186051/Angular_spree_hqgwtq.png" width="200">
   </a>
 </p>
@@ -9,12 +9,12 @@
 </p>
 
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/">Check demo</a>
+  <a href="https://angularspree.firebaseapp.com/" target='_blank'>Check demo</a>
 </p>
 
 <p align="center">
-  <a href="/CONTRIBUTING.md"><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
-  <a href="https://www.pivotaltracker.com/n/projects/1985365"><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/c_limit,h_1041,w_1487/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
+  <a href="/CONTRIBUTING.md" target='_blank'><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
+  <a href="https://www.pivotaltracker.com/n/projects/1985365" target='_blank'><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/c_limit,h_1041,w_1487/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
 </p>
 
 ## What is it?
@@ -25,7 +25,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 ### Home Page
 
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/">
+  <a href="https://angularspree.firebaseapp.com/" target='_blank'>
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
   </a>
 </p>
@@ -33,7 +33,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 ### Cart Page
 
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/">
+  <a href="https://angularspree.firebaseapp.com/" target='_blank'>
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
   </a>
 </p>
@@ -41,7 +41,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 ### Product detail page
 
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/">
+  <a href="https://angularspree.firebaseapp.com/" target='_blank'>
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
   </a>
 </p>
