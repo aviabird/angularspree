@@ -1,8 +1,11 @@
-<div>
-  <span>{{paymentMode.name}}</span>
-  <input type="radio" name="radiogroup" 
+<!--<div>
+  <label for="payment">{{paymentMode.name}}</label>
+  <input id="payment" type="radio" name="radiogroup" 
       [checked]="paymentMode.name === 'Check'"
       [value]="paymentMode.id"
       (change)="onSelectPaymentMode()">
+</div>-->
+<div>
+  {{paymentMode.name}}
 </div>
   

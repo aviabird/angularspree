@@ -1,0 +1,48 @@
+.cod-block {
+	.section-help {
+		padding: 23px 0px 36px!important;
+    text-transform: uppercase;
+    width: 100%!important;
+    border-bottom: 1px solid #f5f5f6!important;
+		height: 66px;
+		.lbl {
+			color: #535766;
+    	font-size: 16px;
+			display: block;
+			font-weight: 600;
+			font-family: "Whitney-semi-bold";
+		}
+		.sub-lbl {
+			display: block;
+    	font-size: 12px;
+    	color: #696e79;
+			text-transform: none;
+		}
+	}
+	.cod-info {
+		padding: 10px 10px 10px 0;
+    font-weight: 600;
+    color: #29303f;
+    font-size: 14px;
+    margin-bottom: 20px;
+		margin-top: 20px;
+		font-family: "Whitney-semi-bold";
+	}
+}
+
+.pay-btn-wrap {
+	.pay-btn {
+		font-size: 14px;
+		font-weight: 600;
+		font-family: "Whitney-semi-bold";
+    height: 48px;
+    background: #0bc6a0;
+		width: 100%;
+		margin-top: 15px;	
+		border: none;
+		border-radius: 4px;
+		box-shadow: none;
+		width: 100%;
+		color: #fff;
+	}
+}

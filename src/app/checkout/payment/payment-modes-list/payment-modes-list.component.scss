@@ -1,0 +1,29 @@
+.pay-modes {
+	display: inline-block;
+	width: 32%;
+	background: #f5f5f6;
+	.mode {
+		cursor: pointer;
+		height: 60px;
+		font-size: 14px;
+		font-weight: 600;
+		font-family: "Whitney-semi-bold";
+		text-transform: uppercase;
+    color: #535766;
+    padding-top: 22px;
+		padding-left: 20px;
+    border-left: 1px solid #eaeaec;
+		border-bottom: 1px solid #eaeaec;
+	}
+	.selected {
+		background-color: #fff;
+    border-left: 5px solid #0bc6a0;
+    color: #0bc6a0;
+	}
+}
+.selected-mode {
+	display: inline-block;
+	width: 67%;
+	vertical-align: top;
+	padding-left: 40px;
+}
