@@ -14,8 +14,7 @@
 
 <p align="center">
   <a href="/CONTRIBUTING.md"><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
-  <a href="https://codeclimate.com/github/aviabird/travel-app"><img src="https://codeclimate.com/github/aviabird/travel-app/badges/gpa.svg" /></a>
-  <a href="https://www.pivotaltracker.com/n/projects/1927191"><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
+  <a href="https://www.pivotaltracker.com/n/projects/1985365"><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
 </p>
 
 ## What is it?
