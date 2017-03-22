@@ -1,5 +1,3 @@
-# AngularSpree
-
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/">
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/mally/image/upload/v1490186051/Angular_spree_hqgwtq.png" width="200">
