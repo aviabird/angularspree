@@ -24,6 +24,8 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 
 ### Home Page
 
+On this page user can filter products as per category. Change layout of the products(cozy, comfortable) etc.
+
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
@@ -32,6 +34,8 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 
 ### Cart Page
 
+Cart page displays all the line items or items in the cart which the user has added while browsing the website.
+
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
@@ -39,6 +43,8 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 </p>
 
 ### Product detail page
+
+Display's the detailed product information of a particular product.
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
@@ -78,7 +84,7 @@ There is a long way to go... keep an eye on this [project](https://github.com/av
 
 ## What in the Tech News?
 
-Built with keeping scaling in mind leveraging the best technologies out there.
+We've built AngularSpree keeping scaling in mind leveraging the best technologies out there.
 
 * Exclusively using @ngrx libraries(store, effects, actions), showcasing common patterns and best practices.
 * Fully Observable approach using RxJS 5.0.1(latest beta).
@@ -86,7 +92,19 @@ Built with keeping scaling in mind leveraging the best technologies out there.
 * @angular/router to manage navigation between routes, 
 * @ngrx/effects to isolate side effects.
 * @ngrx/actions to define the actions on the frontend.
+* Following Container/Presentation component approach.
+* Lazy loading of modules(for modules which are not immediately required for first painting the DOM).
 * ImmutableJs to create and safeguard objects againts mutability.
+* Project is divided into modules which are more or less independant of each other except core module.
+
+** Current version of Angular is latest release [4.0.0-rc.5](https://github.com/angular/angular/releases/tag/4.0.0-rc.5).**
+** Current version of Angular-cli is [1.0.0-rc.4](https://github.com/angular/angular-cli/releases/tag/v1.0.0-rc.4) **
+
+We try to make sure that we keep the repository upto date with the angular release every weekend.
+
+### [Yarn](https://yarnpkg.com/en/)
+
+We are using Yarn as a package manager in this project though you can also use `npm` if you like to.
 
 ## Backend for this project?
 
