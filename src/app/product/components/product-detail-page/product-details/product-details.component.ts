@@ -1,3 +1,6 @@
+import { AppState } from './../../../../interfaces';
+import { Store } from '@ngrx/store';
+import { CheckoutActions } from './../../../../checkout/actions/checkout.actions';
 import { Variant } from './../../../../core/models/variant';
 import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -16,7 +19,9 @@ export class ProductDetailsComponent implements OnInit {
   description: any;
   images: any;
   constructor(private variantParser: VariantParserService,
-              private variantRetriver: VariantRetriverService) {
+              private variantRetriver: VariantRetriverService,
+              private checkoutActions: CheckoutActions,
+              private store: Store<AppState>) {
   }
 
   ngOnInit() {
@@ -45,4 +50,8 @@ export class ProductDetailsComponent implements OnInit {
     this.images = newVariant.images;
   }
 
+  addToCart(product: Product) {
+    const variant_id = this.product.master.id;
+    this.store.dispatch(this.checkoutActions.addToCart(variant_id));
+  }
 }
