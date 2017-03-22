@@ -49,7 +49,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 
 ## Why did we build it?
 
-We have been working with Spree for very long time, making products for a lot of clients. There was one pattern we noticed in what the clients always asked for. They were comfortable using spree for the backend[API](http://guides.spreecommerce.org/api/) but not for the front-end. These requests have been very consistent with so many awesome [front-end framework](https://github.com/showcases/front-end-javascript-frameworks) around.
+We have been working with Spree for very long time, making products for a lot of clients. There was one pattern we noticed in what the clients always asked for. They were comfortable using spree for the backend [API](http://guides.spreecommerce.org/api/) but not for the front-end. These requests have been very consistent with so many awesome [front-end framework](https://github.com/showcases/front-end-javascript-frameworks) around.
 
 When Angular team realease the beta version in March last year we knew that angular was going to be a big player soon.
 We decided to give it a try. Hence, AngularSpree was born as a front-end framework for the most awesome backend api for E-Commerce out there.
