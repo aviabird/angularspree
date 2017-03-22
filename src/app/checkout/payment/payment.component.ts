@@ -11,23 +11,15 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
-export class PaymentComponent implements OnInit, OnDestroy {
+export class PaymentComponent implements OnInit {
 
   totalCartValue: Observable<number>;
 
-  constructor(private store: Store<AppState>,
-    private checkoutActions: CheckoutActions,
-    private checkoutService: CheckoutService) {
+  constructor(private store: Store<AppState>) {
       this.totalCartValue = this.store.select(getTotalCartValue);
   }
 
   ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-    this.checkoutService.createEmptyOrder()
-      .subscribe();
   }
 
 }

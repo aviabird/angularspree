@@ -8,7 +8,7 @@
       (onOptionClickEvent)="onOptionClick($event)"
       class="row"></app-product-variants>  
     <div>
-      <button class="pdp-add-to-bag pdp-button">ADD TO BAG</button>
+      <button (click)="addToCart()" class="pdp-add-to-bag pdp-button">ADD TO BAG</button>
     </div>
     <app-product-description [product]="product" class="row"  ></app-product-description>  
   </div>

@@ -1,3 +1,4 @@
+import { CheckoutActions } from './../../actions/checkout.actions';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
@@ -20,7 +21,9 @@ export class PaymentModesListComponent implements OnInit {
 
   constructor(private checkoutService: CheckoutService,
     private paymentService: PaymentService,
-    private router: Router) {
+    private router: Router,
+    private store: Store<AppState>,
+    private checkoutActions: CheckoutActions) {
       this.fetchAllPayments();
   }
 
@@ -43,7 +46,10 @@ export class PaymentModesListComponent implements OnInit {
     const paymentModeId = this.selectedMode.id;
     this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount)
       .do(() => {
+        this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
         this.router.navigate(['/']);
+        this.checkoutService.createEmptyOrder()
+          .subscribe();
       })
       .subscribe();
   }
