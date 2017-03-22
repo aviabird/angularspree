@@ -14,9 +14,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class=""><a href="#">Men <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Women</a></li>
-        <li><a href="#">Kids</a></li>
+        <li *ngFor="let taxon of taxonList" class="">
+          <a (click)="selectTaxon(taxon)" href="javascript:void(0)">{{taxon.name}}
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <!--<li><a href="javascript:void(0)" (click)="selectTaxon(5)">Mugs</a></li>
+        <li><a href="javascript:void(0)" (click)="selectTaxon(6)">Clothing</a></li>-->
       </ul>
       
       <app-profile-dropdown [totalCartItems]="totalCartItems | async" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
