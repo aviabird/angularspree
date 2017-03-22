@@ -25,7 +25,7 @@
       
       <app-profile-dropdown [totalCartItems]="totalCartItems | async" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
 
-      <form class="form-inline navbar-form navbar-right">
+      <!--<form class="form-inline navbar-form navbar-right">
         <div class="form-group">
           <div class="input-group">
             <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
@@ -34,7 +34,13 @@
             </div>
           </div>
         </div>
-      </form>
+      </form>-->
+      <div class="desktop-query">
+        <input placeholder="Search" class="desktop-searchBar">
+        <a class="desktop-submit" data-reactid="458">
+          <span class="web-sprite desktop-iconSearch sprites-search" data-reactid="459"></span>
+        </a>
+      </div>
     </div>
     <!-- /.navbar-collapse -->
   </div>
