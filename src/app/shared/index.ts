@@ -10,11 +10,13 @@ import { LoadingIndicatorComponent } from './components/loading-indicator/loadin
 // imports
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
     // components
     LoadingIndicatorComponent,
+    NotificationComponent,
     // pipes
     KeysPipe,
     HumanizePipe
@@ -22,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   exports: [
     // components
     LoadingIndicatorComponent,
+    NotificationComponent,
     // modules
     CommonModule,
     DropdownModule,
