@@ -1,6 +1,11 @@
-<h3>Search by category</h3>
-<div class="taxonomy" *ngFor="let taxonomy of taxonomies">
-  <div *ngFor="let taxon of taxonomy.root.taxons" class="filter"> 
-    <input type="checkbox" [checked]="isChecked(taxon)" (click)="taxonSelected(taxon, $event.target.checked)">  {{taxon.name}}
-  </div>
+<h4 class="heading">Category</h4>
+<div class="filter-box">
+  <ul class="taxonomy" *ngFor="let taxonomy of taxonomies">
+    <li *ngFor="let taxon of taxonomy.root.taxons" class="filter"> 
+      <label class="vertical-filters-label common-customCheckbox">  
+        <input type="checkbox" [checked]="isChecked(taxon)" (click)="taxonSelected(taxon, $event.target.checked)">  {{taxon.name}}
+        <div class="common-checkboxIndicator" ></div>
+      </label>
+    </li>
+  </ul>
 </div>

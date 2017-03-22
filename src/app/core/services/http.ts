@@ -47,7 +47,7 @@ export class HttpService extends Http {
   get(url: string, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.get(this.getFullUrl(url), this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -72,7 +72,7 @@ export class HttpService extends Http {
   post(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.post(this.getFullUrl(url), body, this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -93,7 +93,7 @@ export class HttpService extends Http {
   put(url: string, body: any, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.put(this.getFullUrl(url), body, this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -113,7 +113,7 @@ export class HttpService extends Http {
   delete(url: string, options?: RequestOptionsArgs): Observable<any> {
     this.requestInterceptor();
     return super.delete(this.getFullUrl(url), this.requestOptions(options))
-      .catch(this.onCatch)
+      .catch(this.onCatch.bind(this))
       .do((res: Response) => {
         this.onSubscribeSuccess(res);
       }, (error: any) => {
@@ -160,7 +160,7 @@ export class HttpService extends Http {
   private requestInterceptor(): void {
     console.log('Sending Request');
     // this.loaderService.showPreloader();
-    this.loading.next(true);
+    this.loading.next({loading: true, hasError: false});
   }
 
   /**
@@ -169,7 +169,6 @@ export class HttpService extends Http {
   private responseInterceptor(): void {
     console.log('Request Complete');
     // this.loaderService.hidePreloader();
-    this.loading.next(false);
   }
 
   /**
@@ -181,8 +180,8 @@ export class HttpService extends Http {
   private onCatch(error: any, caught: Observable<any>): Observable<any> {
     console.log('Something went terrible wrong and error is', error);
     // this.loaderService.popError();
-    this.loading.next(false);
-    return Observable.throw(error);
+    this.loading.next({loading: false, hasError: true});
+    return Observable.throw(caught);
   }
 
   /**
@@ -190,6 +189,7 @@ export class HttpService extends Http {
    * @param res
    */
   private onSubscribeSuccess(res: Response): void {
+    this.loading.next({loading: false, hasError: false});
   }
 
   /**
@@ -197,9 +197,9 @@ export class HttpService extends Http {
    * @param error
    */
   private onSubscribeError(error: any): void {
-    console.log('Something Went wrong while subribing', error);
+    console.log('Something Went wrong while subscribing', error);
     // this.loaderService.popError();
-    this.loading.next(false);
+    this.loading.next({loading: false, hasError: true});
   }
 
   /**
@@ -207,6 +207,5 @@ export class HttpService extends Http {
    */
   private onFinally(): void {
     this.responseInterceptor();
-    this.loading.next(false);
   }
 }
