@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  AngularSpree built with ❤️ using Angular2, Ngrx store, Observables and Reactive forms & ImmutableJs.
+  AngularSpree Plug and play frontend application for SPREE E-Commerce API built with ❤️ using Angular2, Redux, Observables & ImmutableJs.
 </p>
 
 <p align="center">
@@ -57,12 +57,12 @@ Display's the detailed product information of a particular product.
 
 We have been working with Spree for very long time, making products for a lot of clients. There was one pattern we noticed in what the clients always asked for. They were comfortable using spree for the backend [API](http://guides.spreecommerce.org/api/) but not for the front-end. These requests have been very consistent with so many awesome [front-end framework](https://github.com/showcases/front-end-javascript-frameworks) around.
 
-When Angular team realease the beta version in March last year we knew that angular was going to be a big player soon.
+When Angular team realeased the beta version in March last year we knew that angular was going to be a big player soon.
 We decided to give it a try. Hence, AngularSpree was born as a front-end framework for the most awesome backend api for E-Commerce out there.
 
 ## What's included?
 
-Currently, this is a fairly basic vesion of the application. We like to call is pre-alpha release.
+Currently, this is a fairly basic vesion of the application. We are calling it a pre-alpha release.
 
 ### What's working and ready to be deployed?
 * Add/Remove products to cart.
