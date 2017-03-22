@@ -15,6 +15,7 @@ export class CheckoutActions {
   static CHANGE_ORDER_STATE_SUCCESS = 'CHANGE_ORDER_STATE_SUCCESS';
   static UPDATE_ORDER = 'UPDATE_ORDER';
   static UPDATE_ORDER_SUCCESS = 'UPDATE_ORDER_SUCCESS';
+  static ORDER_COMPLETE_SUCCESS = 'ORDER_COMPLETE_SUCCESS';
 
   fetchCurrentOrder() {
     return { type: CheckoutActions.FETCH_CURRENT_ORDER };
@@ -86,6 +87,10 @@ export class CheckoutActions {
       type: CheckoutActions.UPDATE_ORDER_SUCCESS,
       payload: order
     };
+  }
+
+  orderCompleteSuccess() {
+    return { type: CheckoutActions.ORDER_COMPLETE_SUCCESS };
   }
 
 }

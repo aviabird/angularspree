@@ -33,13 +33,16 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy {
   placeOrder() {
     if (this.orderState === 'cart') {
       this.checkoutService.changeOrderState()
+        .do(() => {
+          this.router.navigate(['/checkout', 'address']);
+        })
         .subscribe();
+    } else {
+      this.router.navigate(['/checkout', 'address']);
     }
-    this.router.navigate(['/checkout', 'address']);
   }
 
   ngOnDestroy() {
     this.stateSub$.unsubscribe();
   }
-
 }

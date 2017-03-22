@@ -1,6 +1,4 @@
-{{(loading$ | async |json)}}
-<div class="notify-container"
-  [ngClass]="{'in': (loading$ | async)?.hasError}">
+<div class="notify-container in" *ngIf="(loading$ | async)?.hasError">
   <div class="notify-error notify-content">
     <div class="notify-error-message">
       <span class="notify-icon">!</span>

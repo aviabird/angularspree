@@ -1,3 +1,5 @@
+import { AppState } from './../../../interfaces';
+import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { PaymentMode } from './../../../core/models/payment_mode';
 import { Observable } from 'rxjs/Rx';
@@ -40,8 +42,10 @@ export class PaymentModesListComponent implements OnInit {
   makePayment() {
     const paymentModeId = this.selectedMode.id;
     this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount)
+      .do(() => {
+        this.router.navigate(['/']);
+      })
       .subscribe();
-    this.router.navigate(['/']);
   }
 
 }
