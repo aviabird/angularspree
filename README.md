@@ -26,7 +26,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png" width="200">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
   </a>
 </p>
 
@@ -34,7 +34,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png" width="200">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
   </a>
 </p>
 
@@ -42,7 +42,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/v1490188748/screen_product_page.png" width="200">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
   </a>
 </p>
 
