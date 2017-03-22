@@ -86,6 +86,10 @@ There is a long way to go... keep an eye on this [project](https://github.com/av
 
 We've built AngularSpree keeping scaling in mind leveraging the best technologies out there.
 
+As of now, the application has 7 major modules, `products`, `core`, `home`, `user`, `checkout`, `auth`, `shared`.
+
+We are working on documentation and we can share that once we are looking at a more stable release.
+
 * Exclusively using @ngrx libraries(store, effects, actions), showcasing common patterns and best practices.
 * Fully Observable approach using RxJS 5.0.1(latest beta).
 * Uses @ngrx/store to manage the state of the app and to cache requests made to the Backend API, 
@@ -102,14 +106,31 @@ We've built AngularSpree keeping scaling in mind leveraging the best technologie
 
 We try to make sure that we keep the repository upto date with the angular release every weekend.
 
-### [Yarn](https://yarnpkg.com/en/)
+### Package Manager [Yarn](https://yarnpkg.com/en/)
 
 We are using Yarn as a package manager in this project though you can also use `npm` if you like to.
 
 ## Backend for this project?
 
+** Start the API for this project to work successfully. **
+
 We have a very thin and custom [repo](https://github.com/aviabird/angularspree-api/) which is the backend for this project. 
-Clone it and run the server.
+Clone it and run the server. We have updated the readme on how to setup the backend API project.
+
+## Contributing to AngularSpree
+
+Where to start
+
+There are many different ways to contribute to AngularSpree's development, just find the one that best fits with your skills. Examples of contributions we would love to receive include:
+
+* Code patches
+* Documentation improvements
+* Translations(yet to come)
+* Bug reports
+* Patch reviews
+* UI enhancements
+
+Big features are also welcome but if you want to see your contributions included in AngularSpree's codebase we strongly recommend you start by initiating a chat on our **[slack channel](https://angular-spree.herokuapp.com/)**.
 
 ## Development server
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
