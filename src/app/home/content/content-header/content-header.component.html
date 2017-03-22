@@ -7,8 +7,8 @@
   <div class="options">
     <ul class="img-size">
       <label>View:</label>
-      <li class="big"></li>
-      <li class="small selected"></li>
+      <li (click)="toggleView('COMPACT')" [ngClass]="{'big': true, 'selected': isBigSelected()}"></li>
+      <li (click)="toggleView('COZY')" [ngClass]="{'small': true, 'selected': isSmallSelected()}"></li>
     </ul>
     <ul class="sort">
       <label>Sort:</label>
