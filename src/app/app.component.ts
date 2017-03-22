@@ -1,3 +1,6 @@
+import { getAuthStatus } from './auth/reducers/selectors';
+import { AppState } from './interfaces';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { CheckoutService } from './core/services/checkout.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -11,7 +14,11 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit, OnDestroy {
   orderSub$: Subscription;
 
-  constructor(private router: Router, private checkoutService: CheckoutService) {
+  constructor(
+    private router: Router,
+    private checkoutService: CheckoutService,
+    private store: Store<AppState>
+    ) {
     router
       .events
       .filter(e => e instanceof NavigationEnd)
@@ -21,8 +28,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.orderSub$ = this.checkoutService.fetchCurrentOrder()
-      .subscribe();
+    this.store.select(getAuthStatus).
+      subscribe(() => {
+        this.orderSub$ = this.checkoutService.fetchCurrentOrder()
+          .subscribe();
+      });
   }
 
   ngOnDestroy() {
