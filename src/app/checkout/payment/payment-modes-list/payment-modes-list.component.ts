@@ -16,6 +16,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PaymentModesListComponent implements OnInit {
 
   @Input() paymentAmount: number;
+  @Input() orderNumber: number;
   paymentModes: PaymentMode[];
   selectedMode: PaymentMode = new PaymentMode;
 
@@ -47,7 +48,7 @@ export class PaymentModesListComponent implements OnInit {
     this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount)
       .do(() => {
         this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-        this.router.navigate(['/']);
+        this.router.navigate(['/user', 'orders', 'detail', this.orderNumber]);
         this.checkoutService.createEmptyOrder()
           .subscribe();
       })
