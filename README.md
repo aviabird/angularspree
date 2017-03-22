@@ -25,7 +25,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 ### Home Page
 
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/" target='_blank'>
+  <a href="https://angularspree.firebaseapp.com/" target="_blank">
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
   </a>
 </p>
@@ -33,7 +33,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 ### Cart Page
 
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/" target='_blank'>
+  <a href="https://angularspree.firebaseapp.com/" target="_blank">
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
   </a>
 </p>
@@ -41,7 +41,7 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ec
 ### Product detail page
 
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/" target='_blank'>
+  <a href="https://angularspree.firebaseapp.com/" target="_blank">
     <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
   </a>
 </p>
