@@ -1,24 +1,17 @@
-# Angularspree
+# AngularSpree
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="" width="200">
-  </a>
-</p>
-
-
-<p align="center">
-  <a href="https://angularspree.firebaseapp.com/">
-    <img alt="Yatrum App Logo" title="Angular 2 Yatrum App" src="http://res.cloudinary.com/zeus999/image/upload/v1486108021/Yatrum%20Logo/Screen_Shot_2017-02-03_at_1.01.33_PM.png" width="300">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/mally/image/upload/v1490186051/Angular_spree_hqgwtq.png" width="200">
   </a>
 </p>
 
 <p align="center">
-  Yatrum built with ❤️ using Angular2, ngrx store, observables and reactive forms.
+  AngularSpree built with ❤️ using Angular2, Ngrx store, Observables and reactive forms & ImmutableJs.
 </p>
 
 <p align="center">
-  <a href="http://yatrum.com">Visit Website</a>
+  <a href="https://angularspree.firebaseapp.com/">Check demo</a>
 </p>
 
 <p align="center">
@@ -27,12 +20,57 @@
   <a href="https://www.pivotaltracker.com/n/projects/1927191"><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
 </p>
 
+## What is it?
+
+AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ecommerce](https://spreecommerce.com/). 
+**It's free and always will be**. Go ahead use it the way you want to.
+
+
+## Why did we build it?
+
+We have been working with Spree for very long time, making products for a lot of clients. There was one pattern we noticed in what the clients always asked for. They were comfortable using spree for the backend[API](http://guides.spreecommerce.org/api/) but not for the front-end. These requests have been very consistent with so many awesome [front-end framework](https://github.com/showcases/front-end-javascript-frameworks) around.
+
+When Angular team realease the beta version in March last year we knew that angular was going to be a big player soon.
+We decided to give it a try. Hence, AngularSpree was born as a front-end framework for the most awesome backend api for E-Commerce out there.
+
 ## What's included?
 
-* Yatrum uses @ngrx libraries, showcasing common patterns and best practices.
-* Yatrum is a travel diary app for travellers.
-* Travellers can create itinerary for their trips.
-* This application utilises @ngrx/store to manage the state of the app and to cache requests made to the Backend API, @angular/router to manage navigation between routes, @ngrx/effects to isolate side effects.
+Currently, this is a fairly basic vesion of the application. We like to call is pre-alpha release.
+
+### What's working and ready to be deployed?
+* Add/Remove products to cart.
+* Select/Clear filters based on category.
+* Support for product variants.
+* Cart checkout feature.
+* Cash on delivery option.
+
+### What's coming very soon?
+* Payment options credit/debit cards.
+* More sorting features(new/popular, Discount, Price[low,high]).
+* Support for further types of products(size, pattern, collar, etc).
+* Support for further options in types eg. size(32, 34, 36) etc. etc.
+* Multilanguage Support i18n.
+* Ability to add more than one addresses.
+* and many more....
+
+There is a long way to go... keep an eye on this [project](https://github.com/aviabird/angularspree/) here on github.
+
+## What in the Tech News?
+
+Built with keeping scaling in mind leveraging the best technologies out there.
+
+* Exclusively using @ngrx libraries(store, effects, actions), showcasing common patterns and best practices.
+* Fully Observable approach using RxJS 5.0.1(latest beta).
+* Uses @ngrx/store to manage the state of the app and to cache requests made to the Backend API, 
+* @angular/router to manage navigation between routes, 
+* @ngrx/effects to isolate side effects.
+* @ngrx/actions to define the actions on the frontend.
+* ImmutableJs to create and safeguard objects againts mutability.
+
+## Backend for this project?
+
+We have a very thin and custom [repo](https://github.com/aviabird/angularspree-api/) which is the backend for this project. 
+Clone it and run the server.
 
 ## Development server
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -40,23 +78,7 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app 
 ## Development server with Service Worker
 Run `npm run build--prod` to build in production with service worker pre-cache and then `npm run static-serve` to serve.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
-
 ## Build with Service Worker
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `npm run build--prod` for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
