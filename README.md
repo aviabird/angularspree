@@ -17,10 +17,11 @@
   <a href="https://www.pivotaltracker.com/n/projects/1985365" target='_blank'><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/c_limit,h_1041,w_1487/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
 </p>
 
-## What is it?
+## What is AngularSpree?
 
 AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ecommerce](https://spreecommerce.com/). 
-**It's free and always will be**. Go ahead use it the way you want to.
+**It's free and always will be**. Go ahead use it the way you want to or let us know at `hello@aviabird.com` if you need any help with this project.
+
 
 ### Home Page
 
@@ -101,8 +102,9 @@ We are working on documentation and we can share that once we are looking at a m
 * ImmutableJs to create and safeguard objects againts mutability.
 * Project is divided into modules which are more or less independant of each other except core module.
 
-** Current version of Angular is latest release [4.0.0-rc.5](https://github.com/angular/angular/releases/tag/4.0.0-rc.5).**
-** Current version of Angular-cli is [1.0.0-rc.4](https://github.com/angular/angular-cli/releases/tag/v1.0.0-rc.4) **
+**Current version of Angular is latest release [4.0.0-rc.5](https://github.com/angular/angular/releases/tag/4.0.0-rc.5).**
+
+**Current version of Angular-cli is [1.0.0-rc.4](https://github.com/angular/angular-cli/releases/tag/v1.0.0-rc.4) **
 
 We try to make sure that we keep the repository upto date with the angular release every weekend.
 
@@ -112,7 +114,7 @@ We are using Yarn as a package manager in this project though you can also use `
 
 ## Backend for this project?
 
-** Start the API for this project to work successfully. **
+**Start the API for this project to work successfully. **
 
 We have a very thin and custom [repo](https://github.com/aviabird/angularspree-api/) which is the backend for this project. 
 Clone it and run the server. We have updated the readme on how to setup the backend API project.
@@ -142,3 +144,21 @@ Run `npm run build--prod` to build in production with service worker pre-cache a
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `npm run build--prod` for a production build.
 
+
+## Who are we?
+
+We are [Aviabird Technologies](https://aviabird.com).
+
+**We love to create awesome Web & Mobile products.**
+
+**We are very proud of our work.**
+
+We love technologies like Golang, Elixir, Scala, Ruby, Javascript, Typescript, Swift, Java.
+
+We love some frameworks too:-
+* Ruby On Rails
+* Phoenix/Elixir framework.
+* Spring framework.
+* AngularJs (1.x+ & 2.x+)
+* ReactJs
+* BackboneJs
