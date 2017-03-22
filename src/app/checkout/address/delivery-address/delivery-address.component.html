@@ -1,11 +1,36 @@
-<div>
-  <span>{{address.firstname}}</span>
-  <span>{{address.lastname}}</span>
-</div>
-<div>
-  <p>{{address.address2}}<p>
-  <p>{{address.address1}}<p>
-  <p>{{address.city}}<p>
-  <p>{{address.zipcode}}<p>
-  <p>{{address.phone}}<p>    
+<div class="items">
+  <div class="address-row">
+    <div class="name">{{address.full_name}}</div>
+    <div class="address">
+      <div class="address-content">
+        <span class="address-field">{{address.address1}}</span>
+        <span class="address-field">{{address.address2}}</span><br>
+        <span class="address-field">{{address.city}}</span>
+        <span class="address-field">-{{address.zipcode}}</span>
+        <div class="mob">
+          <span class="mob-lbl">Mobile: </span>
+          <span class="mob-no">{{address.phone}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="serviceability">
+      <div class="try-and-buy">
+        <span class="mid-dot">.</span>
+        Try and Buy available
+      </div>
+      <div class="cod">
+        <span class="mid-dot">.</span>
+        Cash/Card on Delivery available
+      </div>
+      <div class="standard">
+        <span class="mid-dot">.</span>
+        Standard Delivery available
+      </div>
+    </div>
+    <button class="select"></button>
+    <!--<div class="remove-edit">
+      <span class="remove">Remove</span>
+      <span class="edit">Edit</span>
+    </div>-->
+  </div>
 </div>

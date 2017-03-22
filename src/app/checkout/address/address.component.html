@@ -1,12 +1,17 @@
 <div class="address-section">
 	<div *ngIf="(shipAddress$ | async)">
-		<div class="col-md-8">
+		<div class="left">
+			<div class="edit-address">
+				<span class="edit-label">
+					Select Delivery Address
+				</span>
+			</div>
 			<app-delivery-address [address]="(shipAddress$ | async)"></app-delivery-address>
 		</div>
-		<div class="col-md-4">
+		<!--<div class="col-md-4">
 			<app-delivery-options></app-delivery-options>
 			<button (click)="checkoutToPayment()" style="width: 100%">CONTINUE TO PAYMENT</button>
-		</div>
+		</div>-->
 	</div>
 	<div *ngIf="!(shipAddress$ | async)">
 		<div class="left">
