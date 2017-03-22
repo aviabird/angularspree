@@ -17,10 +17,14 @@ import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-header.component';
+import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CheckoutHeaderComponent,
+    CheckoutFooterComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
