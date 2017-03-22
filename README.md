@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  AngularSpree built with ❤️ using Angular2, Ngrx store, Observables and reactive forms & ImmutableJs.
+  AngularSpree built with ❤️ using Angular2, Ngrx store, Observables and Reactive forms & ImmutableJs.
 </p>
 
 <p align="center">
