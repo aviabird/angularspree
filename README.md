@@ -102,9 +102,9 @@ We are working on documentation and we can share that once we are looking at a m
 * ImmutableJs to create and safeguard objects againts mutability.
 * Project is divided into modules which are more or less independant of each other except core module.
 
-**Current version of Angular is latest release [4.0.0-rc.5](https://github.com/angular/angular/releases/tag/4.0.0-rc.5).**
+**Current version of Angular is latest release [4.0.0-rc.5](https://github.com/angular/angular/releases/tag/4.0.0-rc.5).
 
-**Current version of Angular-cli is [1.0.0-rc.4](https://github.com/angular/angular-cli/releases/tag/v1.0.0-rc.4) **
+**Current version of Angular-cli is [1.0.0-rc.4](https://github.com/angular/angular-cli/releases/tag/v1.0.0-rc.4)
 
 We try to make sure that we keep the repository upto date with the angular release every weekend.
 
@@ -114,7 +114,8 @@ We are using Yarn as a package manager in this project though you can also use `
 
 ## Backend for this project?
 
-**Start the API for this project to work successfully. **
+
+**Start the API for this project to work successfully.
 
 We have a very thin and custom [repo](https://github.com/aviabird/angularspree-api/) which is the backend for this project. 
 Clone it and run the server. We have updated the readme on how to setup the backend API project.
