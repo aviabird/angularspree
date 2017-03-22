@@ -38,7 +38,6 @@ export class ProductDetailsComponent implements OnInit {
                                 this.customOptionTypesHash,
                                 option, this.product);
 
-    console.log("New esult is ", result, result.variant.id);
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
     this.description = newVariant.description;

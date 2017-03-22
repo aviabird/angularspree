@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./product-description.component.scss']
 })
 export class ProductDescriptionComponent implements OnInit {
-  @Input() product;
+  @Input() description;
   constructor() { }
 
   ngOnInit() {

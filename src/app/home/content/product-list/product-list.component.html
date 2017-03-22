@@ -4,8 +4,10 @@
       <p *ngIf="products.length === 0">No Products found for this category</p>
       <li *ngFor="let product of products | filter : selectedTaxonIds" class="product-base">
         <div class="product-thumbShim"></div>
-        <a href="#">
-          <img class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+        <a [routerLink]="['/product/', product.slug]">
+          <img class="product-thumb"
+               alt="{{product.name}}" 
+               [src]="getProductImageUrl(product.master.images[0]?.large_url)">
           <div class="product-productMetaInfo">
             <div class="product-brand">{{ product.name }}</div>
             <h2 class="product-product">{{ product.description }}</h2>

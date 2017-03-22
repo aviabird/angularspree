@@ -1,3 +1,13 @@
 <div class="image-container" *ngIf="images">
-	<img [src]="getProductImageUrl(images[0].large_url)" class="thumbnails-selected-image" alt='' />
+  <div class="thumbnails-vertical-container">
+    <button class="thumbnails-thumbnail-button" *ngFor="let image of images">
+      <img class="thumbnails-thumbnail" 
+           [src]="getProductImageUrl(image.small_url)"
+           [alt]="image.alt"
+           (mouseover)="onMouseOver(image)">
+  </button>
+  </div>
+  <img [src]="getProductImageUrl(selectedImage.large_url)" 
+       [alt]="selectedImage.alt"
+       class="thumbnails-selected-image" />
 </div>
