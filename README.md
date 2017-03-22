@@ -71,6 +71,7 @@ Currently, this is a fairly basic vesion of the application. We are calling it a
 * Support for product variants.
 * Cart checkout feature.
 * Cash on delivery option.
+* Authentication (Login/Signup)
 
 ### What's coming very soon?
 * Payment options credit/debit cards.
