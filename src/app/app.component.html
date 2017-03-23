@@ -1,6 +1,7 @@
 <div class="myntra">
   <section>
-    <app-header></app-header>
+    <app-header *ngIf="currentUrl && !isCheckoutRoute()"></app-header>
+    <app-checkout-header [currentStep]="currentStep" *ngIf="currentUrl && isCheckoutRoute()"></app-checkout-header>
     <app-loading-indicator></app-loading-indicator>
     <app-notification></app-notification>
 
@@ -8,6 +9,7 @@
       <router-outlet></router-outlet>
     </main>
 
-    <app-footer></app-footer>
+    <app-checkout-footer *ngIf="currentUrl && isCheckoutRoute()"></app-checkout-footer>
+    <app-footer *ngIf="currentUrl && !isCheckoutRoute()"></app-footer>
   </section>
 </div>

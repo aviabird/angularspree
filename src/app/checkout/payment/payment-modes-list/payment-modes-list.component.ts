@@ -25,10 +25,10 @@ export class PaymentModesListComponent implements OnInit {
     private router: Router,
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions) {
-      this.fetchAllPayments();
   }
 
   ngOnInit() {
+    this.fetchAllPayments();
   }
 
   selectedPaymentMode(mode) {
