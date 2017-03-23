@@ -49,6 +49,16 @@ export class CheckoutService {
     });
   }
 
+  getOrder(orderNumber) {
+    return this.http.get(
+      `spree/api/v1/orders/${orderNumber}.json`
+    ).map(res => {
+      const order = res.json();
+      return order;
+    });
+  }
+
+
   createEmptyOrder() {
     const user = JSON.parse(localStorage.getItem('user'));
     const headers = new Headers({

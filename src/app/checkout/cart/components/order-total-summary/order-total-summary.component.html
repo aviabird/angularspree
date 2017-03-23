@@ -12,7 +12,7 @@
   <div class="order-summary-span">
     <div class="bag-total">
       <span>Bag Total</span>
-      <span class="value">${{totalCartValue}}</span>
+      <span class="value">${{totalCartValue | number:'1.2-2'}}</span>
     </div>
     <div class="coupon">
       <span>Coupon Discount</span>
@@ -28,7 +28,7 @@
       <button (click)="placeOrder()" class="order-btn">PLACE ORDER</button>
     </div>
     <div class="total-amount">
-      <span class="total-rupees">${{totalCartValue}}</span>
+      <span class="total-rupees">${{totalCartValue | number:'1.2-2'}}</span>
     </div>
   </div>
 </div>
