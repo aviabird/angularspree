@@ -29,6 +29,8 @@ export class ProductDetailsComponent implements OnInit {
       .getOptionsToDisplay(this.product.variants, this.product.option_types);
     this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
     this.correspondingOptions = this.mainOptions;
+    console.log('Custom hash', this.customOptionTypesHash);
+    console.log('main options are', this.mainOptions);
   }
 
   /**
@@ -41,7 +43,7 @@ export class ProductDetailsComponent implements OnInit {
       .getVariant(this.currentSelectedOptions,
       this.customOptionTypesHash,
       option, this.product);
-
+    
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
     this.description = newVariant.description;

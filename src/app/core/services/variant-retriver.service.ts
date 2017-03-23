@@ -44,7 +44,7 @@ export class VariantRetriverService {
     this.getVariantId();
     this.parseVariantId();
     this.getVariantFromProduct();
-    this.setCorrespondingOptionValues();
+    this.setCorrespondingOptions();
     return {
       newSelectedoptions: this.currentSelectedOptions,
       variant: this.variant
@@ -97,7 +97,7 @@ export class VariantRetriverService {
 
   getVariantFromProduct() {
     const result = this.product.variants
-      .filter(v => { return v.id === parseInt(this.variantId); });
+      .filter(v => { return v.id === parseInt(this.variantId, 10); });
     this.variant = result ? result[0] : null;
   }
 
@@ -105,12 +105,11 @@ export class VariantRetriverService {
     const currSelectedOptionType = this.currSelectedOption.value
       .optionValue
       .option_type_name;
-
     this.currentSelectedOptions[currSelectedOptionType] = this.currSelectedOption.key;
 
   }
 
-  setCorrespondingOptionValues() {
-    this.varain
+  setCorrespondingOptions(){
+    
   }
 }
