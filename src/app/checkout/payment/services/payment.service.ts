@@ -13,7 +13,6 @@ export class PaymentService {
         return mode;
       }
     });
-    return modes[1];
   }
 
 }
