@@ -37,7 +37,19 @@
 		display: inline-block;
     width: 29%;
     vertical-align: top;
-    margin-top: 52px;
     padding-left: 35px;
+		.pay-btn {
+			border: none;
+			border-radius: 3px;
+			height: 45px;
+			background-color: #2cd2b1!important;
+			font-weight: 600!important;
+			box-shadow: none;
+			width: 100%;
+			color: #fff;
+			font-family: "Whitney-semi-bold";
+			font-size: 14px;
+			margin: 10px auto;
+		}
 	}
 }

@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { CheckoutService } from './../../core/services/checkout.service';
-import { getShipAddress, getOrderState } from './../reducers/selectors';
+import { getShipAddress, getOrderState, getOrderNumber } from './../reducers/selectors';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
@@ -16,11 +16,13 @@ export class AddressComponent implements OnInit, OnDestroy {
 
   stateSub$: Subscription;
   orderState: string;
+  orderNumber$: Observable<number>;
   shipAddress$: Observable<Address>;
 
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
     private router: Router) {
+      this.orderNumber$ = this.store.select(getOrderNumber);
       this.shipAddress$ = this.store.select(getShipAddress);
       this.stateSub$ = this.store.select(getOrderState)
         .subscribe(state => this.orderState = state);
