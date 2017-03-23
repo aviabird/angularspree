@@ -26,4 +26,9 @@ export class ProductVariantsComponent implements OnInit {
   onOptionClick(option) {
     this.onOptionClickEvent.emit(option);
   }
+
+  isDisabled(arrayTocheck, value) {
+    return (arrayTocheck.indexOf(value) === -1);
+  }
+
 }

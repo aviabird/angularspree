@@ -43,7 +43,10 @@ export class ProductDetailsComponent implements OnInit {
       .getVariant(this.currentSelectedOptions,
       this.customOptionTypesHash,
       option, this.product);
-    
+
+    this.createNewCorrespondingOptions(result.newCorrespondingOptions,
+                                       option.value.optionValue.option_type_name);
+
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
     this.description = newVariant.description;
@@ -58,5 +61,13 @@ export class ProductDetailsComponent implements OnInit {
       }
     };
     return temp;
+  }
+
+  createNewCorrespondingOptions(newOptions, optionKey) {
+    for (const key in this.correspondingOptions) {
+      if (this.correspondingOptions.hasOwnProperty(key) && key !== optionKey) {
+        this.correspondingOptions[key] = newOptions[key];
+      }
+    }
   }
 }
