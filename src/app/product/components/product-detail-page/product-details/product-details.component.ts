@@ -15,8 +15,10 @@ export class ProductDetailsComponent implements OnInit {
   currentSelectedOptions = {};
   description: any;
   images: any;
+  mainOptions: any;
+  correspondingOptions: any;
   constructor(private variantParser: VariantParserService,
-              private variantRetriver: VariantRetriverService) {
+    private variantRetriver: VariantRetriverService) {
   }
 
   ngOnInit() {
@@ -25,6 +27,8 @@ export class ProductDetailsComponent implements OnInit {
 
     this.customOptionTypesHash = this.variantParser
       .getOptionsToDisplay(this.product.variants, this.product.option_types);
+    this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
+    this.correspondingOptions = this.mainOptions;
   }
 
   /**
@@ -34,9 +38,9 @@ export class ProductDetailsComponent implements OnInit {
    */
   onOptionClick(option) {
     const result = this.variantRetriver
-                    .getVariant(this.currentSelectedOptions,
-                                this.customOptionTypesHash,
-                                option, this.product);
+      .getVariant(this.currentSelectedOptions,
+      this.customOptionTypesHash,
+      option, this.product);
 
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
@@ -44,4 +48,13 @@ export class ProductDetailsComponent implements OnInit {
     this.images = newVariant.images;
   }
 
+  makeGlobalOptinTypesHash(customOptionTypes) {
+    const temp = {};
+    for (const key in customOptionTypes) {
+      if (customOptionTypes.hasOwnProperty(key)) {
+        temp[key] = Object.keys(customOptionTypes[key]);
+      }
+    };
+    return temp;
+  }
 }
