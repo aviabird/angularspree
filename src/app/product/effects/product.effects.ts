@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { ProductService } from './../../core/services/product.service';
-import { ProductDummyService } from './../../core/services/product-dummy.service';
+// import { ProductDummyService } from './../../core/services/product-dummy.service';
 import { Action } from '@ngrx/store';
 
 
