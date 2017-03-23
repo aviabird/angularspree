@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 
 @Component({
@@ -8,15 +8,9 @@ import { Router, NavigationStart } from '@angular/router';
 })
 export class CheckoutHeaderComponent implements OnInit {
 
-  private currentStep: string;
+  @Input() currentStep: string;
   private checkoutStep = ['cart', 'address', 'payment'];
   constructor(private router: Router) {
-    router.events
-      .filter((e) => e instanceof NavigationStart)
-      .subscribe((e: NavigationStart) => {
-        const route = e.url;
-        this.findCurrentStep(route);
-      });
   }
 
   ngOnInit() {
@@ -52,15 +46,12 @@ export class CheckoutHeaderComponent implements OnInit {
     }
     const currentStepIndex = this.checkoutStep.indexOf(this.currentStep);
     const stepIndex = this.checkoutStep.indexOf(step);
+
     if (stepIndex <= currentStepIndex) {
       return true;
     } else {
       return false;
     }
-  }
-
-  private findCurrentStep(currentRoute) {
-    this.currentStep = currentRoute.split('/')[2];
   }
 
 }
