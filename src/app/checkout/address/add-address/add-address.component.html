@@ -16,7 +16,7 @@
       Pin Code
       <span class="required">*</span>
     </label>
-    <input type="tel" class="half-width" formControlName="zipcode">
+    <input type="tel" class="half-width readonly" readonly formControlName="zipcode">
     <p *ngIf="addressForm.get('zipcode').hasError('required') && addressForm.get('zipcode').touched" class="value-err show">This is a mandatory field</p>
   </div>
   <div class="locality">
@@ -41,7 +41,7 @@
         State
         <span class="required">*</span>
       </label>
-      <input type="text" class="half-width" readonly formControlName="state_id">
+      <input type="text" class="half-width readonly" readonly formControlName="state_id">
     </div>
   </div>
   <div>

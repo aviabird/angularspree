@@ -1,5 +1,5 @@
 <div class="pay-modes">
-  <div class="mode" [ngClass]="{'selected': mode.id == selectedMode.id}" *ngFor="let mode of paymentModes">
+  <div class="mode" [ngClass]="{'selected': mode.id == selectedMode.id, 'coming-soon': mode.id != selectedMode.id}" *ngFor="let mode of paymentModes">
     {{mode.name}}
   </div>
 </div>

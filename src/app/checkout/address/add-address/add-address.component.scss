@@ -37,7 +37,10 @@
 		input {
 			height: 40px;
 			padding: 0 10px !important;
-			border: 1px solid #949c9d !important
+			border: 1px solid #949c9d;
+		}
+		.readonly {
+			border: 1px solid #d5d6d9!important;
 		}
 	}
 	.email {
