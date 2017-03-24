@@ -19,6 +19,12 @@ export class AddressService {
     });
   }
 
+  initEmailForm() {
+    return this.fb.group({
+      'email': ['', Validators.required]
+    });
+  }
+
   createAddresAttributes(address) {
     return {
       'order': {
@@ -28,10 +34,10 @@ export class AddressService {
     };
   }
 
-  createGuestAddressAttributes(address) {
+  createGuestAddressAttributes(address, email) {
     return {
       'order': {
-        'email': 'cshekhar@aviabird.com', // in future take this email from user input in case of guest user.
+        'email': email,
         'bill_address_attributes': address,
         'ship_address_attributes': address
       }

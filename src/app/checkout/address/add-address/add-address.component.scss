@@ -1,4 +1,4 @@
-.addr-form {
+.form {
 	.half-width {
 		width: 190px;
 	}
@@ -17,7 +17,8 @@
 	.first-name, 
 	.last-name,
 	.address,
-	.mobile {
+	.mobile,
+	.email {
 		padding-left: 20px;
 		padding-right: 10px;
 		padding-bottom: 25px;

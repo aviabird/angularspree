@@ -1,3 +1,4 @@
+import { getAuthStatus } from './../../../auth/reducers/selectors';
 import { CheckoutActions } from './../../actions/checkout.actions';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
@@ -19,12 +20,16 @@ export class PaymentModesListComponent implements OnInit {
   @Input() orderNumber: number;
   paymentModes: PaymentMode[];
   selectedMode: PaymentMode = new PaymentMode;
+  isAuthenticated: boolean;
 
   constructor(private checkoutService: CheckoutService,
     private paymentService: PaymentService,
     private router: Router,
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions) {
+      this.store.select(getAuthStatus).subscribe((auth) => {
+        this.isAuthenticated = auth;
+      });
   }
 
   ngOnInit() {
@@ -48,11 +53,19 @@ export class PaymentModesListComponent implements OnInit {
     this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount)
       .do(() => {
         this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-        this.router.navigate(['/user', 'orders', 'detail', this.orderNumber]);
+        this.redirectToNewPage();
         this.checkoutService.createEmptyOrder()
           .subscribe();
       })
       .subscribe();
+  }
+
+  private redirectToNewPage() {
+    if (this.isAuthenticated) {
+      this.router.navigate(['/user', 'orders', 'detail', this.orderNumber]);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
 }

@@ -26,12 +26,16 @@ export class CheckoutService {
 
   createNewLineItem(variant_id: number) {
     return this.http.post(
-      `spree/api/v1/orders/${this.orderNumber}/line_items?line_item[variant_id]=${variant_id}&line_item[quantity]=1`,
-      {}
+      `spree/api/v1/orders/${this.orderNumber}/line_items?order_token=${this.getOrderToken()}`,
+      {
+        line_item: {
+          variant_id: variant_id,
+          quantity: 1
+        }
+      }
     ).map(res => {
       const lineItem: LineItem =  res.json();
       return lineItem;
-      // this.store.dispatch(this.actions.addToCartSuccess(lineItem));
     });
   }
 
@@ -41,6 +45,8 @@ export class CheckoutService {
     ).map(res => {
       const order = res.json();
       if (order) {
+        const token = order.token;
+        this.setOrderTokenInLocalStorage({order_token: token});
         return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
       } else {
         this.createEmptyOrder()
@@ -70,12 +76,14 @@ export class CheckoutService {
       'spree/api/v1/orders.json', {}, { headers: headers }
     ).map(res => {
       const order = res.json();
+      const token = order.token;
+      this.setOrderTokenInLocalStorage({order_token: token});
       return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
     });
   }
 
   deleteLineItem(lineItem: LineItem) {
-    return this.http.delete(`spree/api/v1/orders/${this.orderNumber}/line_items/${lineItem.id}`)
+    return this.http.delete(`spree/api/v1/orders/${this.orderNumber}/line_items/${lineItem.id}?order_token=${this.getOrderToken()}`)
       .map(() => {
         this.store.dispatch(this.actions.removeLineItemSuccess(lineItem));
       });
@@ -83,7 +91,7 @@ export class CheckoutService {
 
   changeOrderState() {
     return this.http.put(
-      `spree/api/v1/checkouts/${this.orderNumber}/next.json`,
+      `spree/api/v1/checkouts/${this.orderNumber}/next.json?order_token=${this.getOrderToken()}`,
       {}
     ).map((res) => {
       const order = res.json();
@@ -93,7 +101,7 @@ export class CheckoutService {
 
   updateOrder(params) {
     return this.http.put(
-      `spree/api/v1/checkouts/${this.orderNumber}.json`,
+      `spree/api/v1/checkouts/${this.orderNumber}.json?order_token=${this.getOrderToken()}`,
       params
     ).map((res) => {
       const order = res.json();
@@ -103,7 +111,7 @@ export class CheckoutService {
 
   availablePaymentMethods() {
     return this.http.get(
-      `spree/api/v1/orders/${this.orderNumber}/payments/new`
+      `spree/api/v1/orders/${this.orderNumber}/payments/new?order_token=${this.getOrderToken()}`
     ).map((res) => {
       const payments = res.json();
       return payments;
@@ -112,13 +120,27 @@ export class CheckoutService {
 
   createNewPayment(paymentModeId, paymentAmount) {
     return this.http.post(
-      `spree/api/v1/orders/${this.orderNumber}/payments?payment[payment_method_id]=${paymentModeId}&payment[amount]=${paymentAmount}`,
-      {}
+      `spree/api/v1/orders/${this.orderNumber}/payments?order_token=${this.getOrderToken()}`,
+      {
+        payment: {
+          payment_method_id: paymentModeId,
+          amount: paymentAmount
+        }
+      }
     ).map((res) => {
-      console.log('payment', res.json());
       this.changeOrderState()
         .subscribe();
     });
   }
 
+  private getOrderToken() {
+    const order = JSON.parse(localStorage.getItem('order'));
+    const token = order.order_token;
+    return token;
+  }
+
+  private setOrderTokenInLocalStorage(token): void {
+    const jsonData = JSON.stringify(token);
+    localStorage.setItem('order', jsonData);
+  }
 }
