@@ -1,14 +1,28 @@
-<div>PRICE DETAILS</div>
-<div>
-  <span>Bag Total</span>
-  <span style="float: right;">$39</span>
+<div class="del-lbl">
+  DELIVERY SPEED
 </div>
-<div>
-  <span>Delivery</span>
-  <span style="float: right;">Free</span>
+<div class="del-options">
+  <div class="option">
+    <div class="option-name">
+      Standard delivery
+    </div>
+    <div class="option-rate">
+      Free delivery
+    </div>
+  </div>
 </div>
-<div style="border-bottom: 1px solid gray; margin: 10px 0;"></div>
-<div>
-  <span>Order Total</span>
-  <span style="float: right;">$39</span>
+<div class="mini-bag-summary">
+  <div class="items">{{totalCartItems$ | async}} ITEMS</div>
+  <div class="order-total">
+    <span>Order Total</span>
+    <span class="value">${{totalCartValue$ | async | number:'1.2-2'}}</span>
+  </div>
+  <div class="shipping">
+    <span>Delivery</span>
+    <span class="shipping-fee c-green">FREE</span>
+  </div>
+</div>
+<div class="pay-lbl-total">
+  <span class="pay-lbl">Total Payable</span>
+  <span class="pay-total">${{totalCartValue$ | async | number:'1.2-2'}}</span>
 </div>

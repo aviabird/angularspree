@@ -14,6 +14,8 @@ interface CurrentSelectedOptionsType {
 export class ProductVariantsComponent implements OnInit {
   @Input() customOptionTypesHash: any;
   @Input() currentSelectedOptions = {};
+  @Input() mainOptions;
+  @Input() correspondingOptions;
   @Output() onOptionClickEvent = new EventEmitter();
   constructor() {
   }
@@ -24,4 +26,9 @@ export class ProductVariantsComponent implements OnInit {
   onOptionClick(option) {
     this.onOptionClickEvent.emit(option);
   }
+
+  isDisabled(arrayTocheck, value) {
+    return (arrayTocheck.indexOf(value) === -1);
+  }
+
 }

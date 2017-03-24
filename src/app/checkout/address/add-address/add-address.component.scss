@@ -1,9 +1,14 @@
-.addr-form {
+.form {
 	.half-width {
 		width: 190px;
 	}
 	.full-width {
 		width: 400px;
+	}
+	.value-err {
+		height: 18px;
+    padding-top: 2px;
+		color: #ea6c6c;
 	}
 	.pincode, 
 	.locality, 
@@ -12,7 +17,8 @@
 	.first-name, 
 	.last-name,
 	.address,
-	.mobile {
+	.mobile,
+	.email {
 		padding-left: 20px;
 		padding-right: 10px;
 		padding-bottom: 25px;
@@ -31,9 +37,20 @@
 		input {
 			height: 40px;
 			padding: 0 10px !important;
-			border: 1px solid #949c9d !important
+			border: 1px solid #949c9d;
+		}
+		.readonly {
+			border: 1px solid #d5d6d9!important;
 		}
 	}
+	.email {
+		padding-bottom: 10px;
+		padding-top: 15px;
+		label {
+			top: 4px;
+		}
+	}
+
 	.pincode {
 		padding-top: 15px;
 		label {

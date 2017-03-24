@@ -1,10 +1,10 @@
-{{selectedPaymentMode | json}}
-
-<div *ngFor="let mode of paymentModes">
-  <app-payment-mode [paymentMode]="mode" (changePaymentMode)="selectedPaymentMode($event)" ></app-payment-mode>
+<div class="pay-modes">
+  <div class="mode" [ngClass]="{'selected': mode.id == selectedMode.id, 'coming-soon': mode.id != selectedMode.id}" *ngFor="let mode of paymentModes">
+    {{mode.name}}
+  </div>
 </div>
 
-<div [ngSwitch]="selectedMode.name">
+<div class="selected-mode" [ngSwitch]="selectedMode.name">
   <ng-template [ngSwitchCase]="'Credit Card'"> 
      <app-credit-card></app-credit-card>   
    </ng-template>      
