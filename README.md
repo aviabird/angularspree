@@ -19,7 +19,7 @@
 
 ## What is AngularSpree?
 
-AngularSpree is an open source Angular(2.x+) front-end application for [Spree Ecommerce](https://spreecommerce.com/). 
+AngularSpree is an open source Angular(2.x+) front-end application for [Spree Commerce](https://github.com/spree/spree). 
 **It's free and always will be**. 
 
 **Bootstrap 4 Compatible**
