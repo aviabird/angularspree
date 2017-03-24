@@ -95,9 +95,9 @@ We are working on documentation and we can share that once we are looking at a m
 * ImmutableJs to create and safeguard objects againts mutability.
 * Project is divided into modules which are more or less independant of each other except core module.
 
-__Current version of Angular is latest release [4.0.0](https://github.com/angular/angular/releases/tag/4.0.0-rc.5).__
+__Current version of Angular is latest release [4.0.0](https://github.com/angular/angular/releases/tag/4.0.0).__
 
-__Current version of Angular-cli is [1.0.0](https://github.com/angular/angular-cli/releases/tag/v1.0.0-rc.4).__
+__Current version of Angular-cli is [1.0.0](https://github.com/angular/angular-cli/releases/tag/v1.0.0).__
 
 We try to make sure that we keep the repository upto date with the angular release every weekend.
 
@@ -109,7 +109,7 @@ On this page user can filter products as per category. Change layout of the prod
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="70%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
   </a>
 </p>
 
@@ -119,7 +119,7 @@ Cart page displays all the line items or items in the cart which the user has ad
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="70%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
   </a>
 </p>
 
@@ -129,7 +129,7 @@ Display's the detailed product information of a particular product.
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="70%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
   </a>
 </p>
 
