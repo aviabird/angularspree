@@ -16,7 +16,6 @@ import { LayoutModule } from './layout/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './app.reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-header.component';
 import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
 
@@ -29,16 +28,12 @@ import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-foote
   imports: [
     RouterModule.forRoot(routes),
     StoreModule.provideStore(reducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension({
-      maxAge: 5
-    }),
     BrowserModule,
     FormsModule,
     HttpModule,
     HomeModule,
     LayoutModule,
     CoreModule,
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
     SharedModule
   ],
   providers: [],
