@@ -38,6 +38,25 @@ We decided to give it a try. Hence, AngularSpree was born as a front-end framewo
 
 Currently, this is a fairly basic vesion of the application. We are calling it a pre-alpha release.
 
+## Angular 2 Fundamentals course
+
+Based on this application and **[other applications](https://github.com/aviabird/yatrum)** we have built in past we are working on a full blown Angular 2 fundamentals course on udemy. Throughout this course you'll learn how to build yatrum from ground up.
+
+### Course curriculum
+
+* Architecture, setup, source files
+* TypeScript basics
+* Getting started with latest angular
+* Template fundamentals
+* Rendering flows
+* Component Architecture and Modules
+* Services, Http and Observables
+* Template Forms, Inputs and Validation
+* Reactive Forms and more magic
+* Routing
+
+** [Subscribe to this course here](https://upscri.be/a00eaf/)
+
 ### What's working and ready to be deployed?
 * Add/Remove products to cart.
 * Select/Clear filters based on category.
