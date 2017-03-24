@@ -9,11 +9,11 @@ export const UserRoutes = [
     path: '',
     component: UserComponent,
     children: [
-      { path: '', redirectTo: 'overview' },
-      { path: 'overview', component: OverviewComponent },
+      { path: '', redirectTo: 'orders' },
+      { path: 'overview', component: OverviewComponent, redirectTo: 'orders' },
       { path: 'orders', component: OrdersComponent },
       { path: 'orders/detail/:number', component: OrderDetailComponent },
-      { path: 'addresses', component: AddressesComponent }
+      { path: 'addresses', component: AddressesComponent, redirectTo: 'orders' }
     ]
   },
 ];

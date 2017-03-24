@@ -1,5 +1,13 @@
-<div *ngFor="let order of orders$ | async">
-  <app-order-list-item [order]="order"></app-order-list-item>
+<div *ngIf="(orders$ | async).length; else elseBlock">
+  <div *ngFor="let order of orders$ | async">
+    <app-order-list-item [order]="order"></app-order-list-item>
+  </div>
 </div>
 
-<app-loading-indicator></app-loading-indicator>
+<ng-template #elseBlock>
+  <div class="cart-empty">
+    <div class="empty-cart-icon"></div>
+    <div class="empty-cart-message">You have'nt ordered anything yet.</div>
+    <a class="empty-wishlist-link" routerLink="/home">Start Shopping</a>
+  </div>
+</ng-template>
