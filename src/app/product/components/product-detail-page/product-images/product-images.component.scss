@@ -5,12 +5,27 @@
   .thumbnails-selected-image {
     height: 500px;
     min-height: 300px;
-    width: 480px;
+    width: 420px;
     background: rgb(245, 245, 246) none repeat scroll 0% 0% / auto padding-box border-box;
     }
+
+  .thumbnails-vertical-container {
+      width: 60px;
+      float: left;
+      margin-bottom: 10px;
+      .thumbnails-thumbnail-button {
+          outline: 0;
+          margin-right: 15px;
+          background-color: #fff;
+          border: 0;
+          padding: 0;
+          position: relative;
+          cursor: pointer;
+          margin-bottom: 10px;
+      }
+  }
 }
 
-  
 
 
 

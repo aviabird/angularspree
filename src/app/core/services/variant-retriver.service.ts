@@ -17,6 +17,7 @@ export class VariantRetriverService {
   customOptionTypesHash: any;
   currSelectedOption: any;
   product: Product;
+  newCorrespondingOptions: any;
 
   constructor() {
   }
@@ -44,10 +45,11 @@ export class VariantRetriverService {
     this.getVariantId();
     this.parseVariantId();
     this.getVariantFromProduct();
-
+    this.setCorrespondingOptions();
     return {
       newSelectedoptions: this.currentSelectedOptions,
-      variant: this.variant
+      variant: this.variant,
+      newCorrespondingOptions: this.newCorrespondingOptions
     };
   }
 
@@ -62,12 +64,16 @@ export class VariantRetriverService {
   }
 
   setCombinedVariantIds() {
+    const temp = [];
     for (const key in this.customSelectedOptions) {
       if (this.customSelectedOptions.hasOwnProperty(key)) {
-        this.currentVariantIds
-          .push(this.customSelectedOptions[key].variantIds);
+        this.customSelectedOptions[key].variantIds.forEach((obj) => {
+          temp.push(Object.keys(obj)[0]);
+        });
       }
     }
+    this.currentVariantIds
+      .push(temp);
   }
 
   getVariantId() {
@@ -91,18 +97,35 @@ export class VariantRetriverService {
 
   getVariantFromProduct() {
     const result = this.product.variants
-      .filter(v => { return v.id === this.variantId; });
-
+      .filter(v => { return v.id === parseInt(this.variantId, 10); });
     this.variant = result ? result[0] : null;
   }
 
   setCurrentSelectedOptions() {
     const currSelectedOptionType = this.currSelectedOption.value
       .optionValue
-      .option_type_presentation;
-
+      .option_type_name;
     this.currentSelectedOptions[currSelectedOptionType] = this.currSelectedOption.key;
-
   }
 
+  setCorrespondingOptions() {
+    const vIds: Array<any> = this.currSelectedOption.value.variantIds;
+    const newObj = {};
+    vIds.forEach((obj: Object) => {
+      for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          obj[key].forEach((oType: Object) => {
+            for (const jkey in oType) {
+              if (newObj[jkey] !== undefined) {
+                newObj[jkey].push(oType[jkey]);
+              } else {
+                newObj[jkey] = Array.of(oType[jkey]);
+              }
+            }
+          });
+        }
+      }
+    });
+    this.newCorrespondingOptions = newObj;
+  }
 }
