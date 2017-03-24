@@ -193,4 +193,4 @@ We love some frameworks too:-
 
 ### We are avialible for hire
 
-__If you'd like us to work for you, please let us know on `hello@aviabird.com`.__
+__If you want to hire us for a project, please contact us on `hello@aviabird.com`.__
