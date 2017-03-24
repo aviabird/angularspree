@@ -95,9 +95,9 @@ We are working on documentation and we can share that once we are looking at a m
 * ImmutableJs to create and safeguard objects againts mutability.
 * Project is divided into modules which are more or less independant of each other except core module.
 
-**Current version of Angular is latest release [4.0.0-rc.5](https://github.com/angular/angular/releases/tag/4.0.0-rc.5).
+__Current version of Angular is latest release [4.0.0](https://github.com/angular/angular/releases/tag/4.0.0-rc.5).__
 
-**Current version of Angular-cli is [1.0.0-rc.4](https://github.com/angular/angular-cli/releases/tag/v1.0.0-rc.4)
+__Current version of Angular-cli is [1.0.0](https://github.com/angular/angular-cli/releases/tag/v1.0.0-rc.4).__
 
 We try to make sure that we keep the repository upto date with the angular release every weekend.
 
@@ -160,7 +160,7 @@ There are many different ways to contribute to AngularSpree's development, just 
 * Patch reviews
 * UI enhancements
 
-Big features are also welcome but if you want to see your contributions included in AngularSpree's codebase we strongly recommend you start by initiating a chat on our **[slack channel](https://angular-spree.herokuapp.com/)**.
+Big features are also welcome but if you want to see your contributions included in AngularSpree's codebase we strongly recommend you start by initiating a chat on our __[slack channel](https://angular-spree.herokuapp.com/)__.
 
 ## Development server
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -177,9 +177,9 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 We are [Aviabird Technologies](https://aviabird.com).
 
-**We love to create awesome Web & Mobile products.**
+__We love to create awesome Web & Mobile products.__
 
-**We are very proud of our work.**
+__We are very proud of our work.__
 
 We love technologies like Golang, Elixir, Scala, Ruby, Javascript, Typescript, Swift, Java.
 
@@ -190,3 +190,7 @@ We love some frameworks too:-
 * AngularJs (1.x+ & 2.x+)
 * ReactJs
 * BackboneJs
+
+### We are avialible for hire
+
+__If you'd like us to work for you, please let us know on `hello@aviabird.com`.__
