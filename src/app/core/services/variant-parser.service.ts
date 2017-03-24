@@ -17,19 +17,21 @@ interface OptionTypesHash {
 
 @Injectable()
 export class VariantParserService {
-
+  currVariantOptionValues: any;
   constructor() { }
   /**
    * @param: variants: Varaint[], optionTypes: OptionType[]
-   * 
+   *
    */
   getOptionsToDisplay(variants: Variant[], optionTypes: OptionType[]) {
     const optionTypesHash: OptionTypesHash = {};
+
     /**Iterate over optionTypes say [tsize, tcolor] */
     optionTypes.forEach(optionType => {
       /**For each optionType iterate over each variant in varaints */
       variants.forEach(variant => {
         /**For option values like [small, Red] etc in varaint iterate over each option value */
+        this.currVariantOptionValues = variant.option_values;
         variant.option_values.forEach(optionValue => {
           /**
           * This loop runs for 750 times for 2 optiontypes and optionsvalues 3 and 5
@@ -58,7 +60,7 @@ export class VariantParserService {
   singleOptionTypeHashMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
     optionType: OptionType, variant: Variant) {
 
-    const optionTypeName: string = optionType.presentation;
+    const optionTypeName: string = optionType.name;
     if (optionTypesHash[optionTypeName] != null) {
 
       // This will become value of op["tsize"] i.e {small: {etc, etc}};
@@ -111,13 +113,24 @@ export class VariantParserService {
    */
   variantIdsMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
     optionType: OptionType, variant: Variant) {
-
-    if (optionTypesHash[optionType.presentation] != null && optionTypesHash[optionType.presentation][optionValue.name] != null) {
-      const variantArr = optionTypesHash[optionType.presentation][optionValue.name].variantIds;
-      variantArr.push(variant.id);
+    const currespondingOptionValues = this.getOtherOptionValues(optionValue, optionType);
+    if (optionTypesHash[optionType.name] != null && optionTypesHash[optionType.name][optionValue.name] != null) {
+      const variantArr = optionTypesHash[optionType.name][optionValue.name].variantIds;
+      variantArr.push({[variant.id]: currespondingOptionValues });
       return variantArr;
     } else {
-      return Array.of(variant.id);
+      return Array.of({[variant.id]: currespondingOptionValues});
     }
   }
+
+  getOtherOptionValues(optionValue, currOptionType) {
+    const correspondingOptionValues: any = [];
+    for (let i = 0; i < this.currVariantOptionValues.length; i++) {
+      if (this.currVariantOptionValues[i].option_type_name !== currOptionType.name) {
+        correspondingOptionValues.push({ [this.currVariantOptionValues[i].option_type_name]: this.currVariantOptionValues[i].name })
+      }
+    }
+    return correspondingOptionValues;
+  }
 }
+

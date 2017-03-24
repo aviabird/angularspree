@@ -10,14 +10,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductImagesComponent implements OnInit {
   @Input() images: Image[] = null;
-  constructor() {
+  @Input() selectedImage: Image = null;
+  constructor() { }
 
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   getProductImageUrl(url) {
     return environment.API_ENDPOINT + url;
+  }
+
+  onMouseOver(image: Image) {
+    this.selectedImage = image;
   }
 }
