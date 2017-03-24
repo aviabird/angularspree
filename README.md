@@ -74,7 +74,7 @@ Based on this application and **[other applications](https://github.com/aviabird
 * Reactive Forms and more magic
 * Routing
 
-**[Subscribe to this course here](https://upscri.be/a00eaf/)
+__[Subscribe to this course here](https://upscri.be/a00eaf/)__
 
 ## What in the Tech News?
 
