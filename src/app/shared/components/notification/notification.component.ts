@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs/Rx';
 import { HttpService } from '../../../core/services/http';
 
 @Component({
@@ -7,14 +7,21 @@ import { HttpService } from '../../../core/services/http';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss']
 })
-export class NotificationComponent implements OnInit {
-  loading$: Observable<{loading: false, error: false}>;
+export class NotificationComponent implements OnInit, OnDestroy {
+  loading: any;
+  notiSubs: Subscription;
 
   constructor(private httpInterceptor: HttpService) {
-    this.loading$ = this.httpInterceptor.loading;
+    this.notiSubs = this.httpInterceptor.loading.subscribe(
+      data => this.loading = data
+    );
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    // this.notiSubs.unsubscribe();
   }
 
 }

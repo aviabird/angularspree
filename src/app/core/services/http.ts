@@ -160,7 +160,9 @@ export class HttpService extends Http {
   private requestInterceptor(): void {
     console.log('Sending Request');
     // this.loaderService.showPreloader();
-    this.loading.next({loading: true, hasError: false});
+    this.loading.next({
+      loading: true, hasError: false, hasMsg: ''
+    });
   }
 
   /**
@@ -180,8 +182,7 @@ export class HttpService extends Http {
   private onCatch(error: any, caught: Observable<any>): Observable<any> {
     console.log('Something went terrible wrong and error is', error);
     // this.loaderService.popError();
-    this.loading.next({loading: false, hasError: true});
-    return Observable.throw(caught);
+    return Observable.of(error);
   }
 
   /**
@@ -189,7 +190,9 @@ export class HttpService extends Http {
    * @param res
    */
   private onSubscribeSuccess(res: Response): void {
-    this.loading.next({loading: false, hasError: false});
+    this.loading.next({
+      loading: false, hasError: false, hasMsg: ''
+    });
   }
 
   /**
@@ -199,7 +202,9 @@ export class HttpService extends Http {
   private onSubscribeError(error: any): void {
     console.log('Something Went wrong while subscribing', error);
     // this.loaderService.popError();
-    this.loading.next({loading: false, hasError: true});
+    this.loading.next({
+      loading: false, hasError: true, hasMsg: 'Something went wrong'
+    });
   }
 
   /**
