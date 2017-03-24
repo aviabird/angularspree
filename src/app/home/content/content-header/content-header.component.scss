@@ -53,13 +53,19 @@
         background: url(../../../../assets/search-sprite.d5ab50f1b815dfaf3976c6ce2e19d24670e5ba0b.png) no-repeat transparent;
         &.big {
           background-position: -284px -160px;
+          &.selected {
+            cursor: default;
+            background-position: -284px -180px;
+          }
         }
         &.small {
-          background-position: -311px -180px;
+          background-position: -311px -160px;
+          &.selected {
+            background-position: -311px -180px;
+            cursor: default;  
+          }
         }
-        &.selected {
-          cursor: default;  
-        }
+        
       }
     }
     ul.sort {

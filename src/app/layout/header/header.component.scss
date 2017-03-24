@@ -1,3 +1,8 @@
+.navbar {
+  height: 78px;
+  border-bottom: 1px solid #f5f5f6;
+}
+
 .navbar-brand {
   margin-top: -8%;
   img {
@@ -30,4 +35,61 @@
 
 .input-group-addon {
   background: #f5f5f6;
+}
+
+.desktop-query {
+  width: 300px;
+  float: right;
+  line-height: 0;
+  margin: 4px 10px 20px 0;
+  input.desktop-searchBar {
+    font-family: Whitney;
+    display: inline-block;
+    float: left;
+    font-size: 16px;
+    height: 20px;
+    line-height: 24px;
+    width: 235px;
+    color: #696e79;
+    box-sizing: content-box;
+    padding: 8px 10px 10px;
+    margin: 0;
+    outline: 0;
+    border: 1px solid #d5d6d9;
+    border-radius: 4px 0 0 4px;
+    border-right: 0;
+    background: #f5f5f6;
+    &:focus, &:focus+a.desktop-submit {
+      background-color: #fff;
+      border-color: #14cda8;
+    }
+  }
+  
+  a.desktop-submit {
+    box-sizing: content-box;
+    display: inline-block;
+    height: 28px;
+    width: 40px;
+    text-align: center;
+    padding: 8px 0 2px;
+    background: #f5f5f6;
+    border: 1px solid #d4d5d9;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    .desktop-iconSearch {
+      display: inline-block;
+    }
+    .sprites-search {
+      width: 21px;
+      height: 21px;
+      // background-position: -284px -160px;
+    }
+    .web-sprite {
+      background: url(../../../assets/search-sprite.d5ab50f1b815dfaf3976c6ce2e19d24670e5ba0b.png);
+      background-position: -209px -148px;
+      // background-size: 1404px 105px;
+      display: inline-block;
+    }
+
+  }
 }

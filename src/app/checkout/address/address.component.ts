@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { CheckoutService } from './../../core/services/checkout.service';
-import { getShipAddress, getOrderState } from './../reducers/selectors';
+import { getShipAddress, getOrderState, getOrderNumber } from './../reducers/selectors';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
@@ -16,11 +16,13 @@ export class AddressComponent implements OnInit, OnDestroy {
 
   stateSub$: Subscription;
   orderState: string;
+  orderNumber$: Observable<number>;
   shipAddress$: Observable<Address>;
 
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
     private router: Router) {
+      this.orderNumber$ = this.store.select(getOrderNumber);
       this.shipAddress$ = this.store.select(getShipAddress);
       this.stateSub$ = this.store.select(getOrderState)
         .subscribe(state => this.orderState = state);
@@ -30,14 +32,22 @@ export class AddressComponent implements OnInit, OnDestroy {
   }
 
   checkoutToPayment() {
+    if (this.orderState === 'delivery' || this.orderState === 'address') {
+      this.checkoutService.changeOrderState()
+        .do(() => {
+          this.router.navigate(['/checkout', 'payment']);
+        })
+        .subscribe();
+    } else {
+      this.router.navigate(['/checkout', 'payment']);
+    }
+  }
+
+  ngOnDestroy() {
     if (this.orderState === 'delivery') {
       this.checkoutService.changeOrderState()
         .subscribe();
     }
-    this.router.navigate(['/checkout', 'payment']);
-  }
-
-  ngOnDestroy() {
     this.stateSub$.unsubscribe();
   }
 

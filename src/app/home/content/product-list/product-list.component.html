@@ -2,7 +2,7 @@
   <section>  
     <ul class="results-base">
       <p *ngIf="products.length === 0">No Products found for this category</p>
-      <li *ngFor="let product of products | filter : selectedTaxonIds" class="product-base">
+      <li *ngFor="let product of products | filter : selectedTaxonIds" class="product-base" [style.margin]="getMargin()">
         <div class="product-thumbShim"></div>
         <a [routerLink]="['/product/', product.slug]">
           <img class="product-thumb"

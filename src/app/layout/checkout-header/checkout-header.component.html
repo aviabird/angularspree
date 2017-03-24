@@ -1,0 +1,18 @@
+<div class="checkout-header">
+  <div class="full-container">
+    <a class="navbar-brand" routerLink="/"><img src="assets/logo.png" alt="Angular Spree"></a>
+    <ol class="checkout-steps">
+      <li class="step step1">
+        <a [ngClass]="{'can-click': checkIfClickable('cart'), 'active': isActiveRoute('cart')}" [routerLink]="getRouterLink('cart')">Bag</a>
+      </li>
+      <li class="divider"></li>
+      <li class="step step2">
+        <a [ngClass]="{'can-click': checkIfClickable('address'), 'active': isActiveRoute('address')}" [routerLink]="getRouterLink('address')">Delivery</a>
+      </li>
+      <li class="divider"></li>
+      <li class="step step3">
+        <a [ngClass]="{'can-click': checkIfClickable('payment'), 'active': isActiveRoute('payment')}" [routerLink]="getRouterLink('payment')">Payment</a>
+      </li>
+    </ol>
+  </div>
+</div>

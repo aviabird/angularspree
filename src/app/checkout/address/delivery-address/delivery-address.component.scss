@@ -1,0 +1,58 @@
+.items {
+	.address-row {
+		background: #f4fdfb;
+    border: 1px solid #b9f0e5;
+		box-shadow: 0 0 4px rgba(40,44,63,.08);
+    padding-top: 25px;
+    padding-left: 45px;
+		display: inline-block;
+    height: 296px;
+    width: 302px;
+    margin-right: 25px;
+		border-radius: 4px;
+		position: relative;
+		cursor: pointer;
+		.name {
+			font-family: "Whitney-semi-bold";
+			font-weight: 600;
+    	font-size: 15px;
+    	color: #596062;
+		}
+		.address {
+			padding-top: 10px;
+			width: 90%;
+			.address-content {
+				color: #535766;
+    		line-height: 1.4;
+    		word-break: break-word;
+    		font-size: 13px;
+				.mob {
+					padding: 8px 0;
+					.mob-no {
+						font-weight: 600;
+						font-family: "Whitney-semi-bold";
+					}
+				}
+			}
+		}
+		.serviceability {
+			font-size: 13px;
+		}
+		.select {
+			cursor: pointer;
+			position: absolute;
+			left: 14px;
+			top: 23px;
+			width: 20px;
+			height: 20px;
+			border: none;
+			background-position: -551px 0;
+			display: inline-block;
+			overflow: hidden;
+			background-repeat: no-repeat;
+			background-size: 4250px 153px;
+			vertical-align: middle;
+			background-image: url(/assets/checkout_sprite.png);
+		}
+	}
+}
