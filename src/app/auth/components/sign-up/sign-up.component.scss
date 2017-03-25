@@ -1,3 +1,5 @@
+@import "../../../shared/scss/_themes.scss";
+
 .panel {
   margin-bottom: 20px;
   background-color: #fff;
@@ -318,4 +320,11 @@ button, input, select, textarea {
   margin-left: 0;
   margin-top: 10px;
   margin-bottom: 0;
+}
+
+.register-input-container {
+  &:hover {
+    border: 1px solid $theme-myntra-text-color;
+    box-shadow: 0 2px 5px $theme-myntra-text-color + 50;
+  }
 }

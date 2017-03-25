@@ -1,3 +1,5 @@
+@import "../../../shared/scss/_themes.scss";
+
 .panel {
   margin-bottom: 20px;
   background-color: #fff;
@@ -300,4 +302,11 @@ p {
   -webkit-margin-after: 1em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
+}
+
+.login-input-container {
+  &:hover {
+    border: 1px solid $theme-myntra-text-color;
+    box-shadow: 0 2px 5px $theme-myntra-text-color + 50;
+  }
 }

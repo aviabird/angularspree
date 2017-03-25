@@ -11,9 +11,7 @@
 // bootstrap fonts
 $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 
-// Uncomment Active themes
-@import "app/shared/scss/custom_themes/myntra/myntra";
-
+@import "app/shared/scss/themes";
 @import "app/shared/scss/custom_bootstrap";
 @import url('../node_modules/font-awesome/css/font-awesome.min.css');
 
