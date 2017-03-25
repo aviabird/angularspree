@@ -28,7 +28,7 @@ Go ahead use it the way you want to or let us know at `hello@aviabird.com` if yo
 
 <p align="center">
   <a href="https://angular-spree.herokuapp.com/" target='_blank'>
-    Join us on <img alt="Slack invite Logo" title="Slack invite Logo" src="http://res.cloudinary.com/yatrum/image/upload/v1490434825/slack_vmaait.png" width="100">
+    <img alt="Slack invite Logo" title="Slack invite Logo" src="http://res.cloudinary.com/yatrum/image/upload/v1490434825/slack_vmaait.png" style="width:300px;max-width:100%;text-shadow: 0 0 black;border: solid 1px gray;">
   </a>
 </p>
 
