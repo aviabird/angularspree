@@ -26,6 +26,12 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Co
 
 Go ahead use it the way you want to or let us know at `hello@aviabird.com` if you need any help with this project.
 
+<p align="center">
+  <a href="https://angular-spree.herokuapp.com/" target='_blank'>
+    <img alt="Slack invite Logo" title="Slack invite Logo" src="http://res.cloudinary.com/yatrum/image/upload/v1490434825/slack_vmaait.png" width="100">
+  </a>
+</p>
+
 
 ## Why did we build it?
 
