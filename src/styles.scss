@@ -7,8 +7,16 @@
     font-family: "Whitney";
     src: url("assets/WhitneyHTF-Book.woff") format("woff")
 }
+// TODO: will be removed
 @import "app/shared/scss/themes";
-@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+// bootstrap fonts
+$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+
+// Uncomment Active themes
+@import "app/shared/scss/custom_themes/myntra/myntra";
+
+@import "app/shared/scss/custom_bootstrap";
 @import url('../node_modules/font-awesome/css/font-awesome.min.css');
 
 body {
@@ -23,11 +31,6 @@ body {
 .col-centered {
   float: none;
   margin: 0 auto;
-}
-
-html *:not(.fa)
-{
-   font-family: Whitney;
 }
 
 .row-base {
