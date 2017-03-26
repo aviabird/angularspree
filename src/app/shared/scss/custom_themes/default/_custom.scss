@@ -6,7 +6,7 @@ $theme-myntra-secondary-color: rgba(white,0.98);
 $theme-myntra-header-background-color: $theme-myntra-secondary-color;
 $theme-myntra-border: 2px solid #aaa;
 
-.myntra {
+.default {
   @import "header";
   @import "badge";
   @import "notify";

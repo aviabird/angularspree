@@ -1,4 +1,4 @@
-<div class="myntra">
+<div class="default">
   <section>
     <app-header *ngIf="currentUrl && !isCheckoutRoute()"></app-header>
     <app-checkout-header [currentStep]="currentStep" *ngIf="currentUrl && isCheckoutRoute()"></app-checkout-header>
