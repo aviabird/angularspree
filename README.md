@@ -53,11 +53,12 @@ Currently, this is a fairly basic vesion of the application. We are calling it a
 * Authentication (Login/Signup)
 
 ### What's coming very soon?
-* Payment options credit/debit cards.
+* __Angular Universal__ support for better SEO and [much more](https://github.com/angular/angular/issues/13822).
+* __Payment__ options credit/debit cards.
+* __Multilanguage__ Support i18n.
 * More sorting features(new/popular, Discount, Price[low,high]).
 * Support for further types of products(size, pattern, collar, etc).
 * Support for further options in types eg. size(32, 34, 36) etc. etc.
-* Multilanguage Support i18n.
 * Ability to add more than one addresses.
 * and many more....
 
