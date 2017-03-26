@@ -1,3 +1,5 @@
+@import "../../../shared/scss/themes";
+
 .panel {
   margin-bottom: 20px;
   background-color: #fff;
@@ -112,8 +114,6 @@ fieldset {
 }
 
 .login-login-button {
-  background-color: #ff527b;
-  color: #fff;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -131,11 +131,7 @@ fieldset {
 }
 
 .login-link {
-  cursor: pointer;
   text-decoration: none;
-  color: #ea5e8b;
-  font-size: 13px;
-  padding: 10px 0;
 }
 
 .login-right-links {
@@ -154,14 +150,6 @@ fieldset {
 
 .login-create-account-link {
   margin-left: 5px;
-}
-
-.login-link {
-  cursor: pointer;
-  text-decoration: none;
-  color: #ea5e8b;
-  font-size: 13px;
-  padding: 10px 0;
 }
 
 a {
@@ -211,7 +199,6 @@ a {
   position: relative;
   font-size: 13px;
   font-weight: 500;
-  color: #696b79;
   height: 50px;
   border: 1px solid #bfc0c6;
   background-color: #fff;
@@ -268,9 +255,8 @@ button, input, select, textarea {
 }
 
 .login-error-icon {
-  border: 2px solid #ee5f73;
+  border: 2px solid $state-danger-text;
   padding: 0 7px;
-  color: #ee5f73;
   display: inline-block;
   position: absolute;
   top: 12px;
@@ -282,7 +268,6 @@ button, input, select, textarea {
 .login-error-message {
   font-size: 11px;
   margin-left: 15px;
-  color: #ee5f73;
   text-align: left;
   margin-top: -9px;
   max-height: 500px;
@@ -300,4 +285,11 @@ p {
   -webkit-margin-after: 1em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
+}
+
+.login-input-container {
+  &:hover {
+    border: 1px solid $brand-danger;
+    box-shadow: 0 2px 5px $brand-danger + 100;
+  }
 }

@@ -1,0 +1,24 @@
+.navbar-fixed-top {
+  min-height: 70px;
+  padding: 15px;
+  background-color: $theme-myntra-header-background-color;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  .navbar-nav {
+    & > li {
+      .active {
+        & > a {
+          border-bottom: 3px solid $theme-myntra-text-color;
+        }
+      }
+      & > a {
+        font-weight: 500;
+        min-height: 50px;
+        font-family: Whitney-semi-bold !important;
+        font-size: 15px;
+        &:hover {
+          border-bottom: 3px solid $theme-myntra-subtext-color;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// -- Theme Colors here --
+// Mayntra theme colors
+$theme-myntra-text-color: #ee5f73 + 50;
+$theme-myntra-subtext-color: #ee5f73;
+$theme-myntra-secondary-color: rgba(white,0.98);
+$theme-myntra-header-background-color: $theme-myntra-secondary-color;
+$theme-myntra-border: 2px solid #aaa;
+
+.default {
+  @import "header";
+  @import "badge";
+  @import "notify";
+
+  input, button {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .panel {
+    box-shadow: 0 0 4px rgba(40,44,63,0.08);
+  }
+
+  .strong {
+    font-family: Whitney-semi-bold;
+    font-weight: 800;
+  }
+}

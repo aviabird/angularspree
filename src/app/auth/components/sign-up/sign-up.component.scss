@@ -1,3 +1,5 @@
+@import "../../../shared/scss/_themes.scss";
+
 .panel {
   margin-bottom: 20px;
   background-color: #fff;
@@ -35,8 +37,6 @@
 }
 
 .register-register-button {
-  background-color: #ff527b;
-  color: #fff;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -170,11 +170,7 @@ fieldset {
 }
 
 .register-link {
-  cursor: pointer;
   text-decoration: none;
-  color: #ff527b;
-  padding: 10px 0;
-  font-size: 13px;
 }
 
 a {
@@ -318,4 +314,11 @@ button, input, select, textarea {
   margin-left: 0;
   margin-top: 10px;
   margin-bottom: 0;
+}
+
+.register-input-container {
+  &:hover {
+    border: 1px solid $brand-danger;
+    box-shadow: 0 2px 5px $brand-danger + 100;
+  }
 }
