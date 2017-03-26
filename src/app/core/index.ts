@@ -20,6 +20,7 @@ import { ProductEffects } from '../product/effects/product.effects';
 import { UserActions } from '../user/actions/user.actions';
 import { UserEffects } from '../user/effects/user.effects';
 import { UserService } from '../user/services/user.service';
+import { CanActivateViaAuthGuard } from './guards/auth.guard';
 
 
 export function httpInterceptor(
@@ -62,7 +63,8 @@ export function httpInterceptor(
     AuthActions,
     CheckoutActions,
     UserActions,
-    UserService
+    UserService,
+    CanActivateViaAuthGuard
   ]
 })
 export class CoreModule {}
