@@ -37,8 +37,6 @@
 }
 
 .register-register-button {
-  background-color: #ff527b;
-  color: #fff;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -172,11 +170,7 @@ fieldset {
 }
 
 .register-link {
-  cursor: pointer;
   text-decoration: none;
-  color: #ff527b;
-  padding: 10px 0;
-  font-size: 13px;
 }
 
 a {
@@ -324,7 +318,7 @@ button, input, select, textarea {
 
 .register-input-container {
   &:hover {
-    border: 1px solid $theme-myntra-text-color;
-    box-shadow: 0 2px 5px $theme-myntra-text-color + 50;
+    border: 1px solid $brand-danger;
+    box-shadow: 0 2px 5px $brand-danger + 100;
   }
 }

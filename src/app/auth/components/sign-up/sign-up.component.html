@@ -74,13 +74,16 @@
               </fieldset>
             </fieldset>
             <fieldset class="register-register-button-container">
-              <button class="register-register-button">REGISTER</button>
+              <button class="btn btn-danger register-register-button">REGISTER</button>
             </fieldset>
           </form>
           <div class="register-link-container">
-            <div class="register-login-link">
-              <span class="register-info-text">Already have an account?</span>
-              <a class="register-create-account-link register-link" [routerLink]="['/auth','login']">Login!</a></div>
+            <small>
+              <div class="register-login-link">
+                <span class="register-info-text">Already have an account?</span>
+                <a class="register-create-account-link register-link text-danger" [routerLink]="['/auth','login']">Login!</a>
+              </div>
+            </small>
           </div>
         </div>
       </div>
