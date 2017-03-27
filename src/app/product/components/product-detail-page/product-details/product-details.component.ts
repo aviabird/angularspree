@@ -20,6 +20,8 @@ export class ProductDetailsComponent implements OnInit {
   images: any;
   mainOptions: any;
   correspondingOptions: any;
+  variantId: any;
+
   constructor(private variantParser: VariantParserService,
               private variantRetriver: VariantRetriverService,
               private checkoutActions: CheckoutActions,
@@ -29,13 +31,11 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.description = this.product.description;
     this.images = this.product.master.images;
-
+    this.variantId = this.product.master.id;
     this.customOptionTypesHash = this.variantParser
       .getOptionsToDisplay(this.product.variants, this.product.option_types);
     this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
     this.correspondingOptions = this.mainOptions;
-    console.log('Custom hash', this.customOptionTypesHash);
-    console.log('main options are', this.mainOptions);
   }
 
   /**
@@ -44,16 +44,17 @@ export class ProductDetailsComponent implements OnInit {
    *                   variantIds: [1,2,3] }}
    */
   onOptionClick(option) {
-    const result = this.variantRetriver
-      .getVariant(this.currentSelectedOptions,
-      this.customOptionTypesHash,
-      option, this.product);
+    const result = new VariantRetriverService()
+                    .getVariant(this.currentSelectedOptions,
+                                this.customOptionTypesHash,
+                                option, this.product);
 
     this.createNewCorrespondingOptions(result.newCorrespondingOptions,
                                        option.value.optionValue.option_type_name);
 
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
+    this.variantId = newVariant.id;
     this.description = newVariant.description;
     this.images = newVariant.images;
   }
@@ -77,8 +78,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    const variant_id = this.product.master.id;
-    this.store.dispatch(this.checkoutActions.addToCart(variant_id));
+    this.store.dispatch(this.checkoutActions.addToCart(this.variantId));
   }
-
 }

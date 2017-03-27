@@ -107,16 +107,20 @@ export class VariantRetriverService {
    * e.g: [[1,2,3,4], [7,8,9,1]]
    */
   setCombinedVariantIds() {
-    const temp = [];
+    let temp = [];
     for (const key in this.customSelectedOptions) {
+      // First key may be 'small' so varaiant Ids of small should be.
+      // inside temp  = [vIds of small];
       if (this.customSelectedOptions.hasOwnProperty(key)) {
+        // Make temp empty for each key;
+        temp = [];
         this.customSelectedOptions[key].variantIds.forEach((obj) => {
           temp.push(Object.keys(obj)[0]);
         });
+        this.currentVariantIds
+          .push(temp);
       }
     }
-    this.currentVariantIds
-      .push(temp);
   }
 
   /**
