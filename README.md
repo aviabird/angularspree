@@ -17,7 +17,7 @@
   <a href="https://www.pivotaltracker.com/n/projects/1985365" target='_blank'><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/c_limit,h_1041,w_1487/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
 </p>
 
-:rocket: **Progressive:** [Lighthouse](https://github.com/GoogleChrome/lighthouse) score of 86/100.
+### :rocket: **Progressive:** [Lighthouse](https://github.com/GoogleChrome/lighthouse) score of __95/100__.
 
 ## What is AngularSpree?
 
