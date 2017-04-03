@@ -15,7 +15,7 @@ module.exports = {
   stripPrefix: 'dist/',
   navigateFallback: '/index.html',
   runtimeCaching: [{
-    urlPattern: '',
+    urlPattern: /angularspree-new\.herokuapp\.com/,
     handler: 'networkFirst'
   }]
 };
