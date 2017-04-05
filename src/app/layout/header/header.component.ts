@@ -86,7 +86,7 @@ export class HeaderComponent implements OnInit {
   }
 
   selectTaxon(taxon) {
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/');
     this.store.dispatch(this.searchActions.addFilter(taxon));
   }
 
