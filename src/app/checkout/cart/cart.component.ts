@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
 import { getTotalCartValue, getOrderState, getTotalCartItems } from './../reducers/selectors';
 import { Observable } from 'rxjs/Observable';
 import { CheckoutService } from './../../core/services/checkout.service';

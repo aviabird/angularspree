@@ -4,7 +4,6 @@ import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { PaymentMode } from './../../../core/models/payment_mode';
-import { Observable } from 'rxjs/Rx';
 import { PaymentService } from './../services/payment.service';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { Component, OnInit, Input } from '@angular/core';

@@ -3,10 +3,10 @@ import { HttpService } from '../../core/services/http';
 import { UserActions } from '../actions/user.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
-import { Observable } from 'rxjs/Rx';
 import { Order } from '../../core/models/order';
 import { Response } from '@angular/http';
 import { User } from '../../core/models/user';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {

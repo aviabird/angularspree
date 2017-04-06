@@ -2,7 +2,6 @@ import { getAuthStatus } from './../../../auth/reducers/selectors';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { AuthActions } from './../../../auth/actions/auth.actions';
-import { Subscription } from 'rxjs/Rx';
 import { AddressService } from './../services/address.service';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

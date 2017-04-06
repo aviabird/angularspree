@@ -1,5 +1,5 @@
 import { getSelectedTaxonIds } from './../../reducers/selectors';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { CheckoutActions } from './../../../checkout/actions/checkout.actions';
 import { AppState } from './../../../interfaces';

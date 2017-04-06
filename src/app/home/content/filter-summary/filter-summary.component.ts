@@ -2,7 +2,7 @@ import { SearchActions } from './../../reducers/search.actions';
 import { getFilters } from './../../reducers/selectors';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
