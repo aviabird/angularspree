@@ -1,10 +1,10 @@
-import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { Action } from '@ngrx/store';
 import { AuthService } from '../../core/services/auth.service';
 import { AuthActions } from '../actions/auth.actions';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()

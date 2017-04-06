@@ -1,6 +1,6 @@
 import { Product } from './../../core/models/product';
 import { ProductActions } from './../actions/product-actions';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 

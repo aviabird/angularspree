@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
 import { UserActions } from '../../actions/user.actions';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Order } from '../../../core/models/order';
 import { getUserOrders } from '../../reducers/selector';
 

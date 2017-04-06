@@ -5,7 +5,7 @@ import { ProductActions } from './../product/actions/product-actions';
 import { AppState } from './../interfaces';
 import { getProducts, getTaxonomies } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Product } from '../core/models/product';
 

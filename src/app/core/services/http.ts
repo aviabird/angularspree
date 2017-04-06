@@ -15,7 +15,7 @@ import {
 } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from './../../../environments/environment';
-import { Subject } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class HttpService extends Http {

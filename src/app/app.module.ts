@@ -19,6 +19,11 @@ import { reducer } from './app.reducers';
 import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-header.component';
 import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
 
+// adding rx operators
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/switchMap';
+
 @NgModule({
   declarations: [
     AppComponent,

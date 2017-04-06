@@ -4,8 +4,9 @@ import { getShipAddress, getOrderState, getOrderNumber } from './../reducers/sel
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
-import { Observable, Subscription } from 'rxjs/Rx';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-address',

@@ -6,7 +6,7 @@ import { AppState } from '../../../interfaces';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { getAuthStatus } from '../../reducers/selectors';
-import { Subscription } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-sign-up',
