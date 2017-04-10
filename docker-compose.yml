@@ -13,6 +13,8 @@ services:
       - dev-network
     ports:
       - '4200:4200'
+    volumes:
+      - .:/home/app/angularspree-client
 
 networks:
   dev-network:
