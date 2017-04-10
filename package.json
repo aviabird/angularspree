@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "./node_modules/@angular/cli/bin/ng",
-    "start": "ng serve",
+    "start": "ng serve -H 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -31,7 +31,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
-    "ng2-bootstrap": "^1.4.0",
+    "ng2-bootstrap": "1.4.2",
     "reselect": "^2.5.4",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
