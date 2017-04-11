@@ -32,6 +32,8 @@ npm-debug.log
 testem.log
 /typings
 
+.cache
+
 # e2e
 /e2e/*.js
 /e2e/*.map
@@ -40,3 +42,4 @@ testem.log
 .DS_Store
 Thumbs.db
 /functions/node_modules
+documentation

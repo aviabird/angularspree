@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+
+  angularspree-client:
+    build:
+      context: .
+      dockerfile: ./.docker/development.dockerfile
+    command: npm start
+    container_name: angularspree-client-start
+    image: angularspree-client
+    networks:
+      - dev-network
+    ports:
+      - '4200:4200'
+    volumes:
+      - .:/home/app/angularspree-client
+
+networks:
+  dev-network:
+    driver: bridge

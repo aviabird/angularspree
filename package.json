@@ -4,11 +4,12 @@
   "license": "MIT",
   "scripts": {
     "ng": "./node_modules/@angular/cli/bin/ng",
-    "start": "ng serve",
+    "start": "ng serve -H 0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d docs/",
     "build--prod": "ng build --prod --no-sourcemap --stats-json && npm run sw",
     "sw": "sw-precache --root=dist --config=sw-precache-config.js",
     "static-serve": "cd dist && live-server --port=4200 --host=localhost --entry-file=/index.html"
@@ -31,7 +32,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "immutable": "^3.8.1",
-    "ng2-bootstrap": "^1.4.0",
+    "ng2-bootstrap": "1.4.2",
     "reselect": "^2.5.4",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
@@ -40,6 +41,7 @@
     "@angular/cli": "^1.0.0",
     "@angular/compiler-cli": "^4.0.0",
     "@ngrx/store-devtools": "^3.2.3",
+    "@compodoc/compodoc": "^1.0.0-beta.3",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0-beta.4",
