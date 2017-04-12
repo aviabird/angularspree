@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/" target='_blank'>Check demo</a>
+  <a href="https://angularspree.firebaseapp.com/" target='_blank'>Check demo</a> | <a href="https://aviabird.github.io/angularspree/" target="_blank">Docs </a>
 </p>
 
 <p align="center">
