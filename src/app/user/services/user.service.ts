@@ -18,19 +18,37 @@ export class UserService {
   ) { }
 
   /**
-   * Performs a request with `get` http method.
-   * @returns Observable<Order[]>
+   *
+   *
+   * @returns {Observable<Order[]>}
+   *
+   * @memberof UserService
    */
   getOrders(): Observable<Order[]> {
     return this.http.get('api/orders')
       .map((res: Response) => res.json());
   }
 
+  /**
+   *
+   *
+   * @param {any} orderNumber
+   * @returns {Observable<Order>}
+   *
+   * @memberof UserService
+   */
   getOrderDetail(orderNumber): Observable<Order> {
     return this.http.get(`spree/api/v1/orders/${orderNumber}`)
       .map((res: Response) => res.json());
   }
 
+  /**
+   *
+   *
+   * @returns {Observable<User>}
+   *
+   * @memberof UserService
+   */
   getUser(): Observable<User> {
     const user_id = JSON.parse(localStorage.getItem('user')).id;
     return this.http.get(`spree/api/v1/users/${user_id}`)

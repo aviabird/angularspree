@@ -63,7 +63,7 @@ export class VariantRetriverService {
   /**
    * This sets current selected Options by user say (small, red, full-sleves)
    * { tsize: 'small', tcolor: 'red' }
-   * if new currSelectedOptionType is tcolor and the value is blue the 
+   * if new currSelectedOptionType is tcolor and the value is blue the
    * previous one will get overidden
    * like { tsize: 'small', tcolor: 'red' } => { tsize: 'small', tcolor: 'blue' }
    *
@@ -78,7 +78,7 @@ export class VariantRetriverService {
   /**
    * It creates Custom selected Options extracting the options selected by user from
    *  customOptionTypesHash
-   * say user selected {tsize: 'small'} this will extract the red option from 
+   * say user selected {tsize: 'small'} this will extract the red option from
    * the global option types hash {'tsize': [small: {etc..}, large: {etc..}, medium: {etc..}]}
    *
    */
@@ -88,7 +88,7 @@ export class VariantRetriverService {
      * currentSelectedOptions: {} at first.. keeps
      * filling up on iteration of currentSelectedOptions
      *
-     * this.customOptionTypesHash[key][this.currentSelectedOptions[key]] = 
+     * this.customOptionTypesHash[key][this.currentSelectedOptions[key]] =
      * { optionValue: SomeObject, varaintIds: {etc etc} }
      *
      *
@@ -128,7 +128,7 @@ export class VariantRetriverService {
    * by intersecting the arrays in currentvaraintIds
    * Example: [[1,2,3,4], [1,5,6,7]]
    * returns [1] from which we take first index so it is 1;
-   * if the array only contains [[2,3,4]] then it will return 
+   * if the array only contains [[2,3,4]] then it will return
    * the first element i.e 2;
    */
   getVariantId() {
@@ -163,6 +163,12 @@ export class VariantRetriverService {
     this.variant = result ? result[0] : null;
   }
 
+  /**
+   *
+   *
+   *
+   * @memberof VariantRetriverService
+   */
   setCorrespondingOptions() {
     const vIds: Array<any> = this.currSelectedOption.value.variantIds;
     const newObj = {};

@@ -7,6 +7,12 @@ import { SearchState } from './home/reducers/search.state';
 // This should hold the AppState interface
 // Ideally importing all the substate for the application
 
+/**
+ *
+ *
+ * @export
+ * @interface AppState
+ */
 export interface AppState {
   products: ProductState;
   auth: AuthState;

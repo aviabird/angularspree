@@ -10,6 +10,14 @@ import { AuthActions } from '../../auth/actions/auth.actions';
 @Injectable()
 export class AuthService {
 
+  /**
+   * Creates an instance of AuthService.
+   * @param {HttpService} http
+   * @param {AuthActions} actions
+   * @param {Store<AppState>} store
+   *
+   * @memberof AuthService
+   */
   constructor(
     private http: HttpService,
     private actions: AuthActions,
@@ -18,7 +26,14 @@ export class AuthService {
 
   }
 
-  // returns an observable with user object
+  /**
+   *
+   *
+   * @param {any} data
+   * @returns {Observable<any>}
+   *
+   * @memberof AuthService
+   */
   login(data): Observable<any> {
     return this.http.post(
       'spree/login.json',
@@ -44,7 +59,14 @@ export class AuthService {
     // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
   }
 
-  // returns an observable with user object
+  /**
+   *
+   *
+   * @param {any} data
+   * @returns {Observable<any>}
+   *
+   * @memberof AuthService
+   */
   register(data): Observable<any> {
     return this.http.post(
       'api/account',
@@ -70,7 +92,13 @@ export class AuthService {
     // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
   }
 
-  // returns an observable with user any
+  /**
+   *
+   *
+   * @returns {Observable<any>}
+   *
+   * @memberof AuthService
+   */
   authorized(): Observable<any> {
     return this.http
       .get('spree/api/v1/users')
@@ -81,7 +109,13 @@ export class AuthService {
     // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
   }
 
-  // returns an observable
+  /**
+   *
+   *
+   * @returns
+   *
+   * @memberof AuthService
+   */
   logout() {
     return this.http.get('spree/logout.json')
       .map((res: Response) => {
@@ -92,6 +126,14 @@ export class AuthService {
       });
   }
 
+  /**
+   *
+   *
+   * @private
+   * @param {any} user_data
+   *
+   * @memberof AuthService
+   */
   private setTokenInLocalStorage(user_data): void {
     const jsonData = JSON.stringify(user_data);
     localStorage.setItem('user', jsonData);

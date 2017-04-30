@@ -43,9 +43,17 @@ const reducers = {
   search: searchReducer
 };
 
-export const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers);;
+export const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers); ;
 const productionReducer: ActionReducer<AppState> = combineReducers(reducers);
 
+/**
+ *
+ *
+ * @export
+ * @param {*} state
+ * @param {*} action
+ * @returns
+ */
 export function reducer(state: any, action: any) {
   if (environment.production) {
     return productionReducer(state, action);

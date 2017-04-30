@@ -4,7 +4,14 @@ import { UserActions } from '../actions/user.actions';
 
 export const initialState: UserState = new UserStateRecord() as UserState;
 
-export const userReducer: ActionReducer<UserState> =
+export /**
+ *
+ *
+ * @param {UserState} [state=initialState]
+ * @param {Action} { type, payload }
+ * @returns {UserState}
+ */
+const userReducer: ActionReducer<UserState> =
   (state: UserState = initialState, { type, payload }: Action): UserState => {
     switch (type) {
       case UserActions.GET_USER_ORDERS_SUCCESS:

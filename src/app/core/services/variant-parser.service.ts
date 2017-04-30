@@ -19,9 +19,15 @@ interface OptionTypesHash {
 export class VariantParserService {
   currVariantOptionValues: any;
   constructor() { }
+
   /**
-   * @param: variants: Varaint[], optionTypes: OptionType[]
    *
+   *
+   * @param {Variant[]} variants
+   * @param {OptionType[]} optionTypes
+   * @returns
+   *
+   * @memberof VariantParserService
    */
   getOptionsToDisplay(variants: Variant[], optionTypes: OptionType[]) {
     const optionTypesHash: OptionTypesHash = {};
@@ -51,7 +57,7 @@ export class VariantParserService {
   }
 
   /**Create a single custom option type
-   * 
+   *
    * @param: optionValue, optionTypesHash(final hash to return), optionType(i.e tsize, tcolor, etc),
    * variant(i.e current variant from which option value is to retrived e.g: (s-small, green))
    *
@@ -106,7 +112,7 @@ export class VariantParserService {
   }
 
   /**
-   * Checks if the optionType  and the optionvalue of that type exist in OptionTypesHash 
+   * Checks if the optionType  and the optionvalue of that type exist in OptionTypesHash
    * i.e "tsize" exists in the main hash that we are creating and corresponding "small" value exists too
    * then take arr of the variant ids and push a new id in it and return;
    * else create a new array of the varaint id and return;
@@ -123,11 +129,20 @@ export class VariantParserService {
     }
   }
 
+  /**
+   *
+   *
+   * @param {any} optionValue
+   * @param {any} currOptionType
+   * @returns
+   *
+   * @memberof VariantParserService
+   */
   getOtherOptionValues(optionValue, currOptionType) {
     const correspondingOptionValues: any = [];
     for (let i = 0; i < this.currVariantOptionValues.length; i++) {
       if (this.currVariantOptionValues[i].option_type_name !== currOptionType.name) {
-        correspondingOptionValues.push({ [this.currVariantOptionValues[i].option_type_name]: this.currVariantOptionValues[i].name })
+        correspondingOptionValues.push({ [this.currVariantOptionValues[i].option_type_name]: this.currVariantOptionValues[i].name });
       }
     }
     return correspondingOptionValues;

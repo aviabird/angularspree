@@ -5,6 +5,14 @@ import { Pipe } from '@angular/core';
 
 export class HumanizePipe {
 
+  /**
+   *
+   *
+   * @param {any} value
+   * @returns
+   *
+   * @memberof HumanizePipe
+   */
   transform(value) {
     let updated_val = value;
     if (typeof(value) === 'string') {
