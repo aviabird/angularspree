@@ -283,13 +283,8 @@ h4, h5 {
     padding-left: 20px;
 }
 
-.menu ul.list li.for-chapter {
-    padding-left: 20px;
-}
-
 .menu ul.list li.chapter .simple {
     padding: 10px 15px;
-    position: relative;
 }
 
 .menu .panel-group {
@@ -343,15 +338,6 @@ h4, h5 {
     padding: 8px 0;
 }
 
-.menu-toggler {
-    cursor: pointer;
-    padding: 5px 10px;
-    font-size: 16px;
-    position: absolute;
-    right: 0;
-    top: 7px;
-}
-
 .overview .card-title .fa {
     font-size: 50px;
 }
@@ -387,10 +373,6 @@ h4, h5 {
     margin: 10px;
 }
 
-.content ul.nav {
-    padding-left: 0;
-}
-
 .xs-menu {
     height: calc(100% - 50px);
     display: none;
@@ -404,10 +386,6 @@ h4, h5 {
 .xs-menu .copyright {
     margin-top: 20px;
     position: relative;
-}
-
-.tab-source-code {
-    padding: 10px 0;
 }
 
 pre {
@@ -490,202 +468,4 @@ code {
 .search-results ul.search-results-list li p em {
   background-color: rgba(255, 220, 0, 0.4);
   font-style: normal;
-}
-
-.jsdoc-params {
-    list-style: square;
-    margin-top: 10px;
-    margin-bottom: 0 !important;
-}
-.jsdoc-params li {
-    padding-bottom: 10px;
-}
-.jsdoc-example-ul ul {
-    padding-left: 20px;
-}
-
-i {
-    font-style: italic;
-}
-
-.coverage a {
-    color: #333;
-    text-decoration: underline;
-}
-
-.coverage tr.low {
-    background: rgba(216, 96, 75, 0.75);
-}
-.coverage tr.medium {
-    background: rgba(218, 178, 38, 0.75);
-}
-.coverage tr.good {
-    background: rgba(143, 189, 8, 0.75);
-}
-.coverage tr.very-good {
-    background: rgba(77, 199, 31, 0.75);
-}
-
-.coverage-header {
-    background: #fafafa;
-}
-thead.coverage-header >tr>td, thead.coverage-header>tr>th {
-    border-bottom-width: 0;
-}
-.coverage-count {
-    color: grey;
-    font-size: 12px;
-    margin-left: 10px;
-    display: inline-block;
-    width: 50px;
-}
-.coverage-badge {
-    background: #5d5d5d;
-    border-radius: 4px;
-    display: inline-block;
-    color: white;
-    padding: 4px;
-    padding-right: 0;
-    padding-left: 8px;
-}
-.coverage-badge .count{
-    padding: 6px;
-    margin-left: 5px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-.coverage-badge .count.low {
-    background: #d8624c;
-}
-.coverage-badge .count.medium {
-    background: #dab226;
-}
-.coverage-badge .count.good {
-    background: #8fbd08;
-}
-.coverage-badge .count.very-good {
-    background: #4dc71f;
-}
-
-.content ul {
-    list-style: disc;
-    margin-top: 0;
-    padding-left: 20px;
-    margin-bottom: 16px;
-}
-.content ul.list-group {
-    padding-left: 0;
-}
-.content ul ul {
-    list-style-type: circle;
-}
-.compodoc-table {
-    width: inherit;
-}
-.compodoc-table thead {
-    font-weight: bold;
-}
-.modifier {
-    background: #9a9a9a;
-    padding: 1px 5px;
-    color: white;
-    border-radius: 4px;
-}
-.modifier-icon {
-    color: #c7254e;
-}
-.modifier-icon.method {
-    color: white;
-    background: #c7254e;
-    padding: 4px;
-    border-radius: 8px;
-    font-size: 10px;
-    margin-right: 2px;
-}
-.modifier-icon.method.square {
-    border-radius: 4px;
-}
-.modifier-icon.method.export {
-    display: none;
-}
-.modifier-icon.method .fa-circle, .modifier-icon.method .fa-square {
-    display: none;
-}
-.modifier-icon.method .fa-lock {
-    margin-right: 0;
-}
-
-/* Routes graph */
-
-.node text {
-    font-size: 12px;
-}
-
-.node .icon {
-    font-size: 15px;
-    cursor: default;
-}
-.node .icon.has-children {
-    cursor: pointer;
-}
-
-path.link {
-    fill: none;
-    stroke: #9ecae1;
-    stroke-width: 1.5px;
-}
-
-#body-routes a {
-    text-decoration: underline;
-}
-#body-routes svg {
-    overflow: visible;
-}
-
-/* Miscellaneous */
-
-.content.miscellaneous h2 {
-    margin-bottom: 20px;
-}
-.content.miscellaneous h4 {
-    padding-top: 20px;
-}
-
-/* highlight line */
-.line-highlight {
-    background: linear-gradient(to right, hsla(0, 0%, 100%,.1) 70%, hsla(24, 20%, 50%,0));
-}
-
-#tree-container {
-    width: 100%;
-    height: 100%;
-}
-
-#tree {
-    position: relative;
-}
-.tree-legend {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    border: 1px solid #ddd;
-    padding: 5px 10px;
-}
-.tree-legend .title {
-    margin-bottom: 8px;
-}
-.tree-legend .color {
-    width: 20px;
-    height: 12px;
-    display: inline-block;
-    margin-right: 5px;
-}
-.tree-legend .htmlelement {
-    background: #97c2fc;
-}
-.tree-legend .component {
-    background: #fb7e81;
-}
-.tree-legend .directive {
-    background: #FF9800;
 }
