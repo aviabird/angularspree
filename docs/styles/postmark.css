@@ -46,6 +46,10 @@
     background: rgba(255, 255, 255, 0.07);
 }
 
+#book-search-input input, #book-search-input input:focus, #book-search-input input:hover {
+    color: #949494;
+}
+
 .copyright {
     color: #b3b3b3;
 }
@@ -90,7 +94,6 @@ code {
     white-space: nowrap;
     max-width: 100%;
     background: #F5F5F5;
-    border: solid 1px #e1e4e5;
     padding: 2px 5px;
     color: #666666;
     overflow-x: auto;

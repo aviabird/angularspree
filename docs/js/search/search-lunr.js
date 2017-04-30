@@ -10,19 +10,9 @@
         var that = this,
             d = new promise.Promise();
 
-        $.ajax({
-            type: 'GET',
-            url: './search_index.json',
-            dataType: 'json',
-            success: function(data){
-                that.index = lunr.Index.load(data.index);
-                that.store = data.store;
-                d.done();
-            },
-            error: function(xhr, type){
-                console.error('Error loading search index json');
-            }
-        });
+        that.index = lunr.Index.load(COMPODOC_SEARCH_INDEX.index);
+        that.store = COMPODOC_SEARCH_INDEX.store;
+        d.done();
 
         return d;
     };
@@ -54,18 +44,8 @@
     };
 
     compodoc.addEventListener(compodoc.EVENTS.READY, function(event) {
-        console.log('compodoc ready');
-
         var engine = new LunrSearchEngine(),
             initialized = false;
-
-        engine.init()
-        .then(function() {
-            initialized = true;
-            compodoc.dispatchEvent({
-                type: compodoc.EVENTS.SEARCH_READY
-            });
-        });
 
         function query(q, offset, length) {
             if (!initialized) throw new Error('Search has not been initialized');
@@ -75,5 +55,13 @@
         compodoc.search = {
             query: query
         };
+
+        engine.init()
+        .then(function() {
+            initialized = true;
+            compodoc.dispatchEvent({
+                type: compodoc.EVENTS.SEARCH_READY
+            });
+        });
     });
 })(compodoc);

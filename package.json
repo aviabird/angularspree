@@ -40,8 +40,8 @@
   "devDependencies": {
     "@angular/cli": "^1.0.0",
     "@angular/compiler-cli": "^4.0.0",
+    "@compodoc/compodoc": "^1.0.0-beta.8",
     "@ngrx/store-devtools": "^3.2.3",
-    "@compodoc/compodoc": "^1.0.0-beta.3",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0-beta.4",
