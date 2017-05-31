@@ -136,7 +136,7 @@ export class HttpService extends Http {
     }
 
     if (options.headers == null) {
-      const user = JSON.parse(localStorage.getItem('user'));
+      const user = localStorage.getItem('user') != "undefined" ? JSON.parse(localStorage.getItem('user')) : null;
       options.headers = new Headers({
         'Content-Type': 'application/json',
         'X-Spree-Token': user && user.spree_api_key
