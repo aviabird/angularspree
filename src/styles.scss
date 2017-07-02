@@ -50,3 +50,7 @@ body {
 .coming-soon {
   cursor: url('/assets/comingsoon.png'), auto !important;
 }
+
+html {
+overflow-y: scroll;
+}
