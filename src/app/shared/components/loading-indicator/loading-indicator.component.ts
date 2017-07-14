@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs/Subject';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpService } from '../../../core/services/http';
@@ -8,7 +9,7 @@ import { HttpService } from '../../../core/services/http';
   styleUrls: ['./loading-indicator.component.scss']
 })
 export class LoadingIndicatorComponent implements OnInit {
-  loading$: Observable<{loading: false, error: false}>;
+  loading$: Subject<{loading: boolean, hasError: boolean, hasMsg: string}>;
 
   constructor(private httpInterceptor: HttpService) {
     this.loading$ = this.httpInterceptor.loading;

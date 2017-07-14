@@ -19,7 +19,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class HttpService extends Http {
-  public loading = new Subject();
+  public loading = new Subject<{loading: boolean, hasError: boolean, hasMsg: string}>();
 
   constructor(
     backend: ConnectionBackend,

@@ -8,7 +8,7 @@ import { HumanizePipe } from '../core/pipes/humanize.pipe';
 // components
 import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 // imports
-import { DropdownModule } from 'ng2-bootstrap/dropdown';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotificationComponent } from './components/notification/notification.component';
 
@@ -27,7 +27,7 @@ import { NotificationComponent } from './components/notification/notification.co
     NotificationComponent,
     // modules
     CommonModule,
-    DropdownModule,
+    BsDropdownModule,
     FormsModule,
     ReactiveFormsModule,
     // pipes
@@ -38,7 +38,7 @@ import { NotificationComponent } from './components/notification/notification.co
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    DropdownModule.forRoot()
+    BsDropdownModule.forRoot()
   ]
 })
 export class SharedModule {}
