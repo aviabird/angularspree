@@ -28,61 +28,61 @@ export class CheckoutActions {
     };
   }
 
-  addToCart(variant_id: number): Action {
+  addToCart(variant_id: number) {
     return {
       type: CheckoutActions.ADD_TO_CART,
       payload: variant_id
     };
   }
 
-  addToCartSuccess(lineItem: LineItem): Action {
+  addToCartSuccess(lineItem: LineItem) {
     return {
       type: CheckoutActions.ADD_TO_CART_SUCCESS,
       payload: lineItem
     };
   }
 
-  removeLineItem(lineItemId: number): Action {
+  removeLineItem(lineItemId: number) {
     return {
       type: CheckoutActions.REMOVE_LINE_ITEM,
       payload: lineItemId
     };
   }
 
-  removeLineItemSuccess(lineItem: LineItem): Action {
+  removeLineItemSuccess(lineItem: LineItem) {
     return {
       type: CheckoutActions.REMOVE_LINE_ITEM_SUCCESS,
       payload: lineItem
     };
   }
 
-  changeLineItemQuantity(quantity: number, lineItemId: number): Action {
+  changeLineItemQuantity(quantity: number, lineItemId: number) {
     return {
       type: CheckoutActions.CHANGE_LINE_ITEM_QUANTITY,
       payload: { quantity, lineItemId }
     };
   }
 
-  placeOrder(): Action {
+  placeOrder() {
     return { type: CheckoutActions.PLACE_ORDER };
   }
 
-  changeOrderState(): Action {
+  changeOrderState() {
     return { type: CheckoutActions.CHANGE_ORDER_STATE };
   }
 
-  changeOrderStateSuccess(order: Order): Action {
+  changeOrderStateSuccess(order: Order) {
     return {
       type: CheckoutActions.CHANGE_ORDER_STATE_SUCCESS,
       payload: order
     };
   }
 
-  updateOrder(): Action {
+  updateOrder() {
     return { type: CheckoutActions.UPDATE_ORDER };
   }
 
-  updateOrderSuccess(order: Order): Action {
+  updateOrderSuccess(order: Order) {
     return {
       type: CheckoutActions.UPDATE_ORDER_SUCCESS,
       payload: order

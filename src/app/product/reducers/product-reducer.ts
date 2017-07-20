@@ -7,7 +7,7 @@ import { Action, ActionReducer } from '@ngrx/store';
 export const initialState: ProductState = new ProductStateRecord() as ProductState;
 
 export const productReducer: ActionReducer<ProductState> =
-  (state: ProductState = initialState, { type, payload }: Action): ProductState => {
+  (state: ProductState = initialState, { type, payload }: any): ProductState => {
   switch (type) {
 
     case ProductActions.GET_PRODUCT_DETAIL_SUCCESS:

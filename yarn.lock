@@ -184,17 +184,21 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@ngrx/core/-/core-1.2.0.tgz#882b46abafa2e0e6d887cb71a1b2c2fa3e6d0dc6"
 
-"@ngrx/effects@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-2.0.4.tgz#418eee5e1032fa66de5bbf1855653bb1951f12a4"
+"@ngrx/effects@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-4.0.1.tgz#9403d5668c70217eb5c84ba7a5ffebbbcf507b34"
 
-"@ngrx/store-devtools@^3.2.3":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-3.2.3.tgz#3e89ac95ba7e96ebb20180a61d731954078728fb"
+"@ngrx/router-store@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-4.0.0.tgz#22b50297395669834df09c46b5a15a8eb56b871d"
 
-"@ngrx/store@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-2.2.1.tgz#316ec1e43aa5a0166e5e6e1aa2c34a4049386510"
+"@ngrx/store-devtools@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-4.0.0.tgz#b79c24773217df7fd9735ad21f9cbf2533c96e04"
+
+"@ngrx/store@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-4.0.0.tgz#714d82056f0eb31518ca85a68a5cfecfc12cc50b"
 
 "@ngtools/json-schema@1.1.0":
   version "1.1.0"
@@ -6202,13 +6206,13 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@2.3, "typescript@>=2.0.0 <2.4.0":
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.3.4.tgz#3d38321828231e434f287514959c37a82b629f42"
-
-typescript@2.4.1:
+typescript@2.4.1, typescript@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.4.1.tgz#c3ccb16ddaa0b2314de031e7e6fee89e5ba346bc"
+
+"typescript@>=2.0.0 <2.4.0":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.3.4.tgz#3d38321828231e434f287514959c37a82b629f42"
 
 uglify-js@2.8.x, uglify-js@^2.6, uglify-js@^2.8.5:
   version "2.8.15"
@@ -6821,6 +6825,10 @@ yn@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-1.2.0.tgz#d237a4c533f279b2b89d3acac2db4b8c795e4a63"
 
-zone.js@0.8.7, zone.js@^0.8.4:
+zone.js@0.8.12:
+  version "0.8.12"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.12.tgz#86ff5053c98aec291a0bf4bbac501d694a05cfbb"
+
+zone.js@^0.8.4:
   version "0.8.7"
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.7.tgz#14c360b962ff86efc4f507f34428391eb1b28fb9"

@@ -15,7 +15,7 @@ import { HomeModule } from './home/index';
 import { LayoutModule } from './layout/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './app.reducers';
+import { reducers } from './app.reducers';
 import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-header.component';
 import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
 
@@ -36,7 +36,7 @@ import 'rxjs/add/observable/of';
   ],
   imports: [
     RouterModule.forRoot(routes),
-    StoreModule.provideStore(reducer),
+    StoreModule.forRoot(reducers),
     BrowserModule,
     FormsModule,
     HttpModule,

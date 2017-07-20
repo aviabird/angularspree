@@ -35,7 +35,7 @@ import { compose } from '@ngrx/core/compose';
  */
 import { storeFreeze } from 'ngrx-store-freeze';
 
-const reducers = {
+export const reducers = {
   products: productReducer,
   auth: authReducer,
   checkout: checkoutReducer,

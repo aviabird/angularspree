@@ -27,8 +27,9 @@
     "@angular/platform-browser-dynamic": "^4.2.6",
     "@angular/router": "^4.2.6",
     "@ngrx/core": "^1.2.0",
-    "@ngrx/effects": "^2.0.4",
-    "@ngrx/store": "^2.2.1",
+    "@ngrx/effects": "^4.0.1",
+    "@ngrx/router-store": "^4.0.0",
+    "@ngrx/store": "^4.0.0",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "core-js": "^2.4.1",
@@ -37,14 +38,14 @@
     "ngx-bootstrap": "^1.7.1",
     "reselect": "^2.5.4",
     "rxjs": "^5.3.0",
-    "zone.js": "0.8.7"
+    "zone.js": "0.8.12"
   },
   "devDependencies": {
     "@angular/cli": "^1.1.2",
     "@angular/compiler-cli": "^4.2.6",
     "@angularclass/hmr": "^1.2.2",
     "@compodoc/compodoc": "^1.0.0-beta.8",
-    "@ngrx/store-devtools": "^3.2.3",
+    "@ngrx/store-devtools": "^4.0.0",
     "@types/grecaptcha": "^2.0.31",
     "@types/jasmine": "2.5.38",
     "@types/morris.js": "^0.5.6",
@@ -67,7 +68,7 @@
     "sw-precache": "^5.0.0",
     "ts-node": "^1.7.2",
     "tslint": "^4.5.1",
-    "typescript": "2.3"
+    "typescript": "^2.4.0"
   },
   "description": "Spree for Angular2",
   "main": "index.js",
