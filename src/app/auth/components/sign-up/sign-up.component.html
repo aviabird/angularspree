@@ -45,7 +45,7 @@
                   placeholder="Confirm Password" autocomplete="off">
                 <div *ngIf="(signUpForm.get('password_confirmation').errors || signUpForm.hasError('mismatchedPasswords')) && signUpForm.get('password_confirmation').touched">
                   <span class="register-error-icon">!</span>
-                  <p class="register-error-message">{{signUpForm.get('password_confirmation').errors.msg || 'Password must match'}}</p>
+                  <p class="register-error-message">{{ 'Password must match'}}</p>
                 </div>
               </div>
 
