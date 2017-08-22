@@ -43,7 +43,7 @@
               <div class="register-input-item">
                 <input type="password" class="register-user-input-password register-user-input" name="password_confirmation" formControlName="password_confirmation"
                   placeholder="Confirm Password" autocomplete="off">
-                <div *ngIf="signUpForm.get('password_confirmation').errors && signUpForm.get('password_confirmation').touched">
+                <div *ngIf="(signUpForm.get('password_confirmation').errors || signUpForm.hasError('mismatchedPasswords')) && signUpForm.get('password_confirmation').touched">
                   <span class="register-error-icon">!</span>
                   <p class="register-error-message">{{signUpForm.get('password_confirmation').errors.msg || 'Password must match'}}</p>
                 </div>
