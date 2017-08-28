@@ -11,4 +11,3 @@ Angularspree Contributors
 8. **[mirvel](https://github.com/mirvel)** | [Twitter]
 9. **[Tiep Phan](https://github.com/tieppt)** | [Twitter]
 10. **[Mayor](https://github.com/tieppt)** | [Twitter]
-11. **[angular-cli](https://github.com/angular-cli)** | [Twitter]
