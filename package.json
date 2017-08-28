@@ -29,6 +29,8 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^2.0.4",
     "@ngrx/store": "^2.2.1",
+    "@ngx-translate/core": "^7.2.0",
+    "@ngx-translate/http-loader": "^1.0.2",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "core-js": "^2.4.1",

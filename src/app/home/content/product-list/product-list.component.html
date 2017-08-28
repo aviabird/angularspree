@@ -1,12 +1,12 @@
 <div class="row-base" style="display: -webkit-flex">
-  <section>  
+  <section>
     <ul class="results-base">
-      <p *ngIf="products.length === 0">No Products found for this category</p>
+      <p *ngIf="products.length === 0">{{ 'HOME.NOT_FOUNDED' | translate }}</p>
       <li *ngFor="let product of products | filter : selectedTaxonIds" class="product-base" [style.margin]="getMargin()">
         <div class="product-thumbShim"></div>
         <a [routerLink]="['/product/', product.slug]">
           <img class="product-thumb"
-               alt="{{product.name}}" 
+               alt="{{product.name}}"
                [src]="getProductImageUrl(product.master.images[0]?.large_url)">
           <div class="product-productMetaInfo">
             <div class="product-brand">{{ product.name }}</div>
@@ -37,9 +37,9 @@
           </div>
         </div>
         <div class="product-actions">
-          <span class="product-actionsButton product-wishlist coming-soon">save</span>
+          <span class="product-actionsButton product-wishlist coming-soon">{{ 'HOME.SAVE' | translate }}</span>
           <span class="product-actionsButton product-addToBag">
-            <span (click)="addToCart(product)">Add to bag</span>
+            <span (click)="addToCart(product)">{{ 'HOME.ADD_TO_BAG' | translate }}</span>
           </span>
         </div>
       </li>

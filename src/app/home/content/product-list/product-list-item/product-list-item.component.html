@@ -1,6 +1,6 @@
 <div class="product-tile">
-  <p> Product id: {{ product.id }} </p>
-  <p> Product Name : {{ product.name }} </p>
-  <p> Product Price : {{ product.price }} </p>
+  <p> {{ 'HOME.PRODUCT_ID' | translate }}: {{ product.id }} </p>
+  <p> {{ 'HOME.PRODUCT_NAME' | translate }} : {{ product.name }} </p>
+  <p> {{ 'HOME.PRODUCT_PRICE' | translate }} : {{ product.price }} </p>
   <img [src]="getProductImageUrl(product.master.images[0]?.large_url)">
 </div>
