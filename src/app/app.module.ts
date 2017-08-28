@@ -56,7 +56,6 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     BrowserModule,
     FormsModule,
-    HttpClientModule,
     HomeModule,
     LayoutModule,
     CoreModule,
