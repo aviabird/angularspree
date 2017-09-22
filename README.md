@@ -17,6 +17,11 @@
   <a href="https://www.pivotaltracker.com/n/projects/1985365" target='_blank'><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/c_limit,h_1041,w_1487/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
 </p>
 
+<p align="center">
+  <a href="https://teracommerce.in" target='_blank'><img alt="TeraCommerce Bundle" src="https://res.cloudinary.com/ashish173/image/upload/v1506115865/Full_E-COMMERCE_BUNDL_3_km1yzz.jpg"></a>
+</p>
+
+
 ### :rocket: **Progressive Web App:** [Lighthouse](https://github.com/GoogleChrome/lighthouse) score of __95/100__.
 
 ## What is AngularSpree?
