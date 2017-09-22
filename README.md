@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <a href="https://teracommerce.in" target='_'><img alt="TeraCommerce Bundle" src="https://res.cloudinary.com/ashish173/image/upload/v1506115865/Full_E-COMMERCE_BUNDL_3_km1yzz.jpg"></a>
+  <a href="https://teracommerce.in" target="_blank"><img alt="TeraCommerce Bundle" src="https://res.cloudinary.com/ashish173/image/upload/v1506115865/Full_E-COMMERCE_BUNDL_3_km1yzz.jpg"></a>
 </p>
 
 
