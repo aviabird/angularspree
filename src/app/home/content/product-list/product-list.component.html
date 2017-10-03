@@ -2,19 +2,21 @@
   <section>
     <ul class="results-base">
       <p *ngIf="products.length === 0">{{ 'HOME.NOT_FOUNDED' | translate }}</p>
-      <li *ngFor="let product of products | filter : selectedTaxonIds" class="product-base" [style.margin]="getMargin()">
+      <li *ngFor="let product of products | filter : selectedTaxonIds" class="product-base" [style.margin]="getMargin()" itemscope
+        itemtype="https://schema.org/Product">
         <div class="product-thumbShim"></div>
-        <a [routerLink]="['/product/', product.slug]">
-          <img class="product-thumb"
-               alt="{{product.name}}"
-               [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+        <a itemprop="url" [routerLink]="['/product/', product.slug]">
+          <img itemprop="image"
+            class="product-thumb"
+            alt="{{product.name}}" 
+            [src]="getProductImageUrl(product.master.images[0]?.large_url)">
           <div class="product-productMetaInfo">
-            <div class="product-brand">{{ product.name }}</div>
+            <div itemprop="name" class="product-brand">{{ product.name }}</div>
             <h2 class="product-product">{{ product.description }}</h2>
-            <div class="product-price">
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
               <span>
                 <!-- Discounted price -->
-                <span class="product-discountedPrice">$ {{ product.price }}</span>
+                <span itemprop="price" class="product-discountedPrice">$ {{ product.price }}</span>
                 <!-- Original price -->
                 <!--<span class="product-strike"> react-text: 485 Rs.  /react-text  react-text: 486 1699 /react-text </span>-->
               </span>
@@ -46,4 +48,3 @@
     </ul>
   </section>
 </div>
-
