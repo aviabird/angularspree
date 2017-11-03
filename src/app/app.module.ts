@@ -19,6 +19,9 @@ import { reducer } from './app.reducers';
 import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-header.component';
 import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
 
+import { Ng2UiAuthModule } from "ng2-ui-auth";
+import { OAuthConfig } from "./oauth_config";
+
 // adding rx operators
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
@@ -43,7 +46,8 @@ import 'rxjs/add/observable/of';
     HomeModule,
     LayoutModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    Ng2UiAuthModule.forRoot(OAuthConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

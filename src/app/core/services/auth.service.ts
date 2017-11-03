@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
 import { HttpService } from './http';
 import { AppState } from '../../interfaces';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '../../auth/actions/auth.actions';
+import { AuthService as OAuthService } from "ng2-ui-auth";
 
 @Injectable()
 export class AuthService {
@@ -21,7 +21,8 @@ export class AuthService {
   constructor(
     private http: HttpService,
     private actions: AuthActions,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private oAuthService: OAuthService
   ) {
 
   }
@@ -57,6 +58,20 @@ export class AuthService {
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
     // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
+  }
+
+  socialLogin(provider: string) {
+    return this.oAuthService.authenticate(provider).map((res: Response) => {
+      this.setTokenInLocalStorage(res.json());
+      return res.json();
+    }).catch((res: Response) => {
+      this.http.loading.next({
+        loading: false,
+        hasError: true,
+        hasMsg: `Could not login with ${provider}. Error: ${res}`
+      });
+      return Observable.of('Social login failed');
+    });
   }
 
   /**

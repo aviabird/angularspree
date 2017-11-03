@@ -6,6 +6,8 @@ export class AuthActions {
   static LOGOUT = 'LOGOUT';
   static LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
   static AUTHORIZE = 'AUTHORIZE';
+  static O_AUTH_LOGIN = 'O_AUTH_LOGIN';
+  static NO_OP = 'NO_OPERATION'
 
   authorize(): Action {
     return { type: AuthActions.AUTHORIZE };
@@ -13,6 +15,13 @@ export class AuthActions {
 
   login(): Action {
     return { type: AuthActions.LOGIN };
+  }
+
+  oAuthLogin(provider: string): Action {
+    return {
+      type: AuthActions.O_AUTH_LOGIN,
+      payload: provider
+    };
   }
 
   loginSuccess(): Action {
@@ -25,5 +34,9 @@ export class AuthActions {
 
   logoutSuccess(): Action {
     return { type: AuthActions.LOGOUT_SUCCESS };
+  }
+
+  noOp(): Action {
+    return { type: AuthActions.NO_OP };
   }
 }
