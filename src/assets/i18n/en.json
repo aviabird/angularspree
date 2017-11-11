@@ -1,0 +1,20 @@
+{
+	"HOME": {
+    "BREADCRUMB": "Breadcrumb",
+    "HOME": "Home",
+    "CATEGORIES": "Categories",
+    "CATEGORY": "Category",
+    "POPULAR": "Popular",
+    "NEW": "New",
+    "DISCOUNT": "Discount",
+    "LOW": "Low",
+    "HIGH": "High",
+    "SAVE": "Save",
+    "ADD_TO_BAG": "Add to bag",
+    "PRODUCT_ID": "Product id",
+    "PRODUCT_NAME": "Product name",
+    "PRODUCT_PRICE": "Product Price",
+    "NOT_FOUNDED": "No Products found for this category",
+    "DISPLAY_AVAILABLE_PRODUCTS": "Displaying available products"
+	}
+}

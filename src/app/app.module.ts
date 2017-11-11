@@ -1,8 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
+
 
 // Components
 import { AppComponent } from './app.component';
@@ -10,7 +15,6 @@ import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 // Modules
 import { SharedModule } from './shared/index';
-import { UserModule } from './user/index';
 import { HomeModule } from './home/index';
 import { LayoutModule } from './layout/index';
 import { CoreModule } from './core/index';
@@ -28,6 +32,10 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/finally';
 import 'rxjs/add/observable/of';
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +45,17 @@ import 'rxjs/add/observable/of';
   imports: [
     RouterModule.forRoot(routes),
     StoreModule.provideStore(reducer),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
+    HttpModule,
+    HttpClientModule,
     BrowserModule,
     FormsModule,
-    HttpModule,
     HomeModule,
     LayoutModule,
     CoreModule,

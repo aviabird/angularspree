@@ -1,13 +1,11 @@
 import { getSelectedTaxonIds } from './reducers/selectors';
-import { Taxonomy } from './../core/models/taxonomy';
-import { environment } from './../../environments/environment';
 import { ProductActions } from './../product/actions/product-actions';
 import { AppState } from './../interfaces';
 import { getProducts, getTaxonomies } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { Product } from '../core/models/product';
+import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -32,13 +30,18 @@ export class HomeComponent implements OnInit {
   taxonomies$: Observable<any>;
   selectedTaxonIds$: Observable<number[]>;
 
-  constructor(private store: Store<AppState>, private actions: ProductActions) {
+  constructor(private store: Store<AppState>,
+              private actions: ProductActions,
+              private translate: TranslateService) {
     // Get all products for the product list component
     this.store.dispatch(this.actions.getAllProducts());
     this.store.dispatch(this.actions.getAllTaxonomies());
     this.products$ = this.store.select(getProducts);
     this.taxonomies$ = this.store.select(getTaxonomies);
     this.selectedTaxonIds$ = this.store.select(getSelectedTaxonIds);
+    translate.addLangs(['en', 'de', 'es', 'fr', 'it', 'pt']);
+    translate.setDefaultLang('en');
+    translate.use('en');
   }
 
   ngOnInit() { }
