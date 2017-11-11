@@ -47,6 +47,14 @@ We have been working with Spree for very long time, making products for a lot of
 When Angular team realeased the beta version in March last year we knew that angular was going to be a big player soon.
 We decided to give it a try. Hence, AngularSpree was born as a front-end framework for the most awesome backend api for E-Commerce out there.
 
+🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+If you are looking to build a project similar to this one with all the ready-made setup, then I highly encourage you to look at this [starter seed project](https://github.com/aviabird/angular-seed) by [Aviabird Team](https://aviabird.com).
+
+**[AngularSeed](https://github.com/aviabird/angular-seed) is a Plug and play Seed project built with ❤️ using Angular 5, Redux/ngrx-store 4, Observables & ImmutableJs. We are commited to keeping this project upto date with all the latest versions of all the libs and components.**
+
+🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
 ## What's included?
 
 Currently, this is a fairly basic vesion of the application. We are calling it a pre-alpha release.
