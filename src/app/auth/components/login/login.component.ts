@@ -7,6 +7,7 @@ import { AppState } from '../../../interfaces';
 import { Router, ActivatedRoute } from '@angular/router';
 import { getAuthStatus } from '../../reducers/selectors';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthActions } from '../../actions/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private store: Store<AppState>,
+    private actions: AuthActions,
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
@@ -57,6 +59,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         };
       });
     }
+  }
+
+  socialLogin(provider: string) {
+    this.store.dispatch(this.actions.oAuthLogin(provider));
   }
 
   private pushErrorFor(ctrl_name: string, msg: string) {
