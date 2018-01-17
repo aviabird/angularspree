@@ -14,7 +14,7 @@ import { authReducer } from './auth/reducers/auth.reducer';
  *
  * More: https://egghead.io/lessons/javascript-redux-implementing-combinereducers-from-scratch
  */
-import { combineReducers, ActionReducer, ActionReducerMap } from '@ngrx/store';
+import { combineReducers, ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 
 import { AppState as State } from './interfaces';
 
@@ -57,6 +57,6 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<any, any> {
  * the root meta-reducer. To add more meta-reducers, provide an array of meta-reducers
  * that will be composed to form the root meta-reducer.
  */
-export const metaReducers: ActionReducer<any, any>[] = !environment.production
+export const metaReducers: MetaReducer<State>[] = !environment.production
   ? [logger]
   : [];

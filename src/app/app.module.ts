@@ -40,7 +40,7 @@ import 'rxjs/add/observable/of';
   imports: [
     RouterModule.forRoot(routes),
     StoreModule.forRoot(reducers, { metaReducers }),
-    
+
     /**
      * Store devtools instrument the store retaining past versions of state
      * and recalculating new states. This enables powerful time-travel
