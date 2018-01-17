@@ -12,7 +12,7 @@ export /**
  * @returns {UserState}
  */
 const userReducer: ActionReducer<UserState> =
-  (state: UserState = initialState, { type, payload }: Action): UserState => {
+  (state: UserState = initialState, { type, payload }: any): UserState => {
     switch (type) {
       case UserActions.GET_USER_ORDERS_SUCCESS:
         return state.merge({ orders: payload }) as UserState;

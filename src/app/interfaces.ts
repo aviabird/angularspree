@@ -18,5 +18,4 @@ export interface AppState {
   auth: AuthState;
   checkout: CheckoutState;
   users: UserState;
-  search: SearchState;
 }

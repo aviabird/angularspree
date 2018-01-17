@@ -43,10 +43,12 @@ export function httpInterceptor(
   imports: [
     // Were not working on modules sice update to rc-5
     // TO BE moved to respective modules.
-    EffectsModule.run(AuthenticationEffects),
-    EffectsModule.run(ProductEffects),
-    EffectsModule.run(CheckoutEffects),
-    EffectsModule.run(UserEffects)
+    EffectsModule.forRoot([
+      AuthenticationEffects,
+      ProductEffects,
+      CheckoutEffects,
+      UserEffects
+    ])
   ],
   providers: [
     VariantParserService,

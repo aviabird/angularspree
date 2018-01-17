@@ -1,0 +1,21 @@
+{
+  "typescript.check.workspaceVersion": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    // "node_modules": true,
+    "bin": true,
+    "obj": true,
+    "dist": true,
+    "Properties": true,
+    ".vs": true,
+    "*.csproj": true,
+    "*.sln": true,
+    "*.csproj.user": true,
+    "*.suo": true,
+    ".docker": false,
+    "docs": false
+  }
+}
