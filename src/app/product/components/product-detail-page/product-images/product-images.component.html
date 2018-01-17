@@ -7,7 +7,7 @@
            (mouseover)="onMouseOver(image)">
   </button>
   </div>
-  <img [src]="getProductImageUrl(selectedImage.large_url)" 
+  <img itemprop="image" [src]="getProductImageUrl(selectedImage.large_url)" 
        [alt]="selectedImage.alt"
        class="thumbnails-selected-image" />
 </div>
