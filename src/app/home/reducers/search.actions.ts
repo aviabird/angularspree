@@ -10,7 +10,7 @@ export class SearchActions {
      * Fetches all the filters that have been getSelectedProduct
      * Used in filterSummaryComponent
      */
-    getAllFiltes() {
+    getAllFiltes(): Action {
         return { type: SearchActions.GET_ALL_FILTERS };
     }
 
@@ -19,7 +19,7 @@ export class SearchActions {
      * @param taxon Class Taxon
      * Get's triggered on checking the checkboxes in TaxonsComponent.
      */
-    addFilter(taxon: any) {
+    addFilter(taxon: any): Action {
       return {
         type: SearchActions.ADD_FILTER,
         payload: taxon

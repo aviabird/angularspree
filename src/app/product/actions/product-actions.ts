@@ -11,11 +11,11 @@ export class ProductActions {
     static GET_ALL_TAXONOMIES = 'GET_ALL_TAXONOMIES';
     static GET_ALL_TAXONOMIES_SUCCESS = 'GET_ALL_TAXONOMIES_SUCCESS';
 
-    getAllProducts() {
+    getAllProducts(): Action {
         return { type: ProductActions.GET_ALL_PRODUCTS };
     }
 
-    getProductDetail(id: string) {
+    getProductDetail(id: string): Action {
         return {
             type: ProductActions.GET_PRODUCT_DETAIL,
             payload: id
@@ -23,29 +23,29 @@ export class ProductActions {
     }
 
     // change products type to Product[]
-    getAllProductsSuccess(products: any) {
+    getAllProductsSuccess(products: any): Action {
         return {
             type: ProductActions.GET_ALL_PRODUCTS_SUCCESS,
             payload: products
          };
     }
 
-    getProductDetailSuccess(product: Product) {
+    getProductDetailSuccess(product: Product): Action {
         return {
             type: ProductActions.GET_PRODUCT_DETAIL_SUCCESS,
             payload: product
         };
     }
 
-    clearSelectedProduct() {
+    clearSelectedProduct(): Action {
         return { type: ProductActions.CLEAR_SELECTED_PRODUCT };
     }
 
-    getAllTaxonomies() {
+    getAllTaxonomies(): Action {
         return { type: ProductActions.GET_ALL_TAXONOMIES };
     }
 
-    getAllTaxonomiesSuccess(taxonomies: any) {
+    getAllTaxonomiesSuccess(taxonomies: any): Action {
         return {
             type: ProductActions.GET_ALL_TAXONOMIES_SUCCESS,
             payload: taxonomies

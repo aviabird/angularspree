@@ -6,7 +6,8 @@ import { Action, ActionReducer } from '@ngrx/store';
 
 export const initialState: CheckoutState = new CheckoutStateRecord() as CheckoutState;
 
-export function reducer(state = initialState, { type, payload }: any): CheckoutState {
+export const checkoutReducer: ActionReducer<CheckoutState> =
+  (state: CheckoutState = initialState, { type, payload }: Action): CheckoutState => {
 
     let _lineItems, _lineItemEntities, _lineItemIds,
         _lineItem, _lineItemEntity, _lineItemId,

@@ -16,9 +16,7 @@ import { CheckoutRoutes as routes } from './checkout.routes';
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    EffectsModule.forRoot([
-      CheckoutEffects
-    ]),
+    EffectsModule.run(CheckoutEffects),
     CartModule,
     AddressModule,
     PaymentModule
