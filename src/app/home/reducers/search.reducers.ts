@@ -5,8 +5,7 @@ import { SearchState, SearchStateRecord } from './search.state';
 
 export const initialState: SearchState = new SearchStateRecord() as SearchState;
 
-export const searchReducer: ActionReducer<SearchState> =
-  (state: SearchState = initialState, {type, payload}: Action): SearchState => {
+export function reducer(state = initialState, { type, payload }: any): SearchState {
     switch (type) {
       case SearchActions.ADD_FILTER:
         let filterAlreadyPresent = false;

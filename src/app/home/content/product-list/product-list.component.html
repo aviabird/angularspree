@@ -2,7 +2,7 @@
   <section>
     <ul class="results-base">
       <p *ngIf="products.length === 0">No Products found for this category</p>
-      <li *ngFor="let product of products | filter : selectedTaxonIds" class="product-base" [style.margin]="getMargin()" itemscope
+      <li *ngFor="let product of products | filter : selectedTaxonIds; trackBy: trackByFn" class="product-base" [style.margin]="getMargin()" itemscope
         itemtype="https://schema.org/Product">
         <div class="product-thumbShim"></div>
         <a itemprop="url" [routerLink]="['/product/', product.slug]">

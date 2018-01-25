@@ -1,11 +1,15 @@
+import { HomeState } from './index';
 import { SearchState } from './search.state';
 import { AppState } from './../../interfaces';
-import { createSelector } from 'reselect';
+import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 /******************* Base Search State ******************/
-function getSearchState(state: AppState): SearchState {
-    return state.search;
-};
+export const getHomeState = createFeatureSelector<HomeState>('home');
+
+export const getSearchState = createSelector(
+  getHomeState,
+  (state: HomeState) => state.search
+);
 
 /******************* Individual selectors ******************/
 function fetchSelectedFilters(state: SearchState) {

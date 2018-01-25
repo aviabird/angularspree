@@ -1,10 +1,9 @@
-import { searchReducer } from './home/reducers/search.reducers';
 import { environment } from './../environments/environment';
-import { productReducer } from './product/reducers/product-reducer';
+import * as fromProduct from './product/reducers/product-reducer';
 import { ProductState } from './product/reducers/product-state';
-import { userReducer } from './user/reducers/user.reducer';
-import { checkoutReducer } from './checkout/reducers/checkout.reducer';
-import { authReducer } from './auth/reducers/auth.reducer';
+import * as fromUser from './user/reducers/user.reducer';
+import * as fromCheckout from './checkout/reducers/checkout.reducer';
+import * as fromAuth from './auth/reducers/auth.reducer';
 
 /**
  * combineReducers is another useful metareducer that takes a map of reducer
@@ -14,9 +13,9 @@ import { authReducer } from './auth/reducers/auth.reducer';
  *
  * More: https://egghead.io/lessons/javascript-redux-implementing-combinereducers-from-scratch
  */
-import { combineReducers, ActionReducer } from '@ngrx/store';
+import { combineReducers, ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 
-import { AppState } from './interfaces';
+import { AppState as State } from './interfaces';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
@@ -35,30 +34,28 @@ import { compose } from '@ngrx/core/compose';
  */
 import { storeFreeze } from 'ngrx-store-freeze';
 
-const reducers = {
-  products: productReducer,
-  auth: authReducer,
-  checkout: checkoutReducer,
-  users: userReducer,
-  search: searchReducer
+export const reducers: ActionReducerMap<State> = {
+  products: fromProduct.reducer,
+  auth: fromAuth.reducer,
+  checkout: fromCheckout.reducer,
+  users: fromUser.reducer
 };
 
-export const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers); ;
-const productionReducer: ActionReducer<AppState> = combineReducers(reducers);
+// console.log all actions
+export function logger(reducer: ActionReducer<State>): ActionReducer<any, any> {
+  return function(state: State, action: any): State {
+    console.log('state', state);
+    console.log('action', action);
 
-/**
- *
- *
- * @export
- * @param {*} state
- * @param {*} action
- * @returns
- */
-export function reducer(state: any, action: any) {
-  if (environment.production) {
-    return productionReducer(state, action);
-  } else {
-    return developmentReducer(state, action);
-  }
+    return reducer(state, action);
+  };
 }
 
+/**
+ * By default, @ngrx/store uses combineReducers with the reducer map to compose
+ * the root meta-reducer. To add more meta-reducers, provide an array of meta-reducers
+ * that will be composed to form the root meta-reducer.
+ */
+export const metaReducers: MetaReducer<State>[] = !environment.production
+  ? [logger]
+  : [];

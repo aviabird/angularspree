@@ -17,7 +17,7 @@ export class CheckoutEffects {
   @Effect()
     AddToCart$ = this.actions$
     .ofType(CheckoutActions.ADD_TO_CART)
-    .switchMap((action: Action) => {
+    .switchMap((action: any) => {
       return this.checkoutService.createNewLineItem(action.payload);
     })
     .map((lineItem: LineItem) => this.actions.addToCartSuccess(lineItem));
@@ -25,7 +25,7 @@ export class CheckoutEffects {
   // @Effect()
     // FetchCurrentOrder$ = this.actions$
     // .ofType(CartActions.FETCH_CURRENT_ORDER)
-    // .switchMap((action: Action) => {
+    // .switchMap((action: any) => {
     //   return this.cartService.fetchCurrentOrder();
     // })
     // .map((order: Order) => {
@@ -39,7 +39,7 @@ export class CheckoutEffects {
   // @Effect()
   //   RemoveLineItem$ = this.actions$
   //   .ofType(CartActions.REMOVE_LINE_ITEM)
-  //   .switchMap((action: Action) => {
+  //   .switchMap((action: any) => {
   //     return this.cartService.deleteLineItem(action.payload);
   //   })
   //   .map(() => this.cartActions.removeLineItemSuccess());

@@ -7,23 +7,23 @@ export class AuthActions {
   static LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
   static AUTHORIZE = 'AUTHORIZE';
 
-  authorize(): Action {
+  authorize() {
     return { type: AuthActions.AUTHORIZE };
   }
 
-  login(): Action {
+  login() {
     return { type: AuthActions.LOGIN };
   }
 
-  loginSuccess(): Action {
+  loginSuccess() {
     return { type: AuthActions.LOGIN_SUCCESS};
   }
 
-  logout(): Action {
+  logout() {
     return { type: AuthActions.LOGOUT };
   }
 
-  logoutSuccess(): Action {
+  logoutSuccess() {
     return { type: AuthActions.LOGOUT_SUCCESS };
   }
 }
