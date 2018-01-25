@@ -11,5 +11,5 @@ export interface State extends fromRoot.AppState {
 }
 
 export const reducers = {
-  search: fromSearch.searchReducer
+  search: fromSearch.reducer
 };

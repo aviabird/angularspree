@@ -1,10 +1,9 @@
-import { searchReducer } from './home/reducers/search.reducers';
 import { environment } from './../environments/environment';
-import { productReducer } from './product/reducers/product-reducer';
+import * as fromProduct from './product/reducers/product-reducer';
 import { ProductState } from './product/reducers/product-state';
-import { userReducer } from './user/reducers/user.reducer';
-import { checkoutReducer } from './checkout/reducers/checkout.reducer';
-import { authReducer } from './auth/reducers/auth.reducer';
+import * as fromUser from './user/reducers/user.reducer';
+import * as fromCheckout from './checkout/reducers/checkout.reducer';
+import * as fromAuth from './auth/reducers/auth.reducer';
 
 /**
  * combineReducers is another useful metareducer that takes a map of reducer
@@ -36,10 +35,10 @@ import { compose } from '@ngrx/core/compose';
 import { storeFreeze } from 'ngrx-store-freeze';
 
 export const reducers: ActionReducerMap<State> = {
-  products: productReducer,
-  auth: authReducer,
-  checkout: checkoutReducer,
-  users: userReducer
+  products: fromProduct.reducer,
+  auth: fromAuth.reducer,
+  checkout: fromCheckout.reducer,
+  users: fromUser.reducer
 };
 
 // console.log all actions
