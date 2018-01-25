@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // Components
@@ -38,7 +38,7 @@ import 'rxjs/add/observable/of';
     CheckoutFooterComponent
   ],
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     StoreModule.forRoot(reducers, { metaReducers }),
 
     /**
