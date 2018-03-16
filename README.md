@@ -185,13 +185,13 @@ There are many different ways to contribute to AngularSpree's development, just 
 Big features are also welcome but if you want to see your contributions included in AngularSpree's codebase we strongly recommend you start by initiating a chat on our __[slack channel](https://angular-spree.herokuapp.com/)__.
 
 ## Development server & Mock Api
-Run `npm start-mock` for a dev server with 'mock' api. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files and will fetch data from mock api;
+Run `npm start:mock` for a dev server with 'mock' api. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files and will fetch data from mock api;
 
 ## Development server
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Development server with Service Worker
-Run `npm run build--prod` to build in production with service worker pre-cache and then `npm run static-serve` to serve.
+Run `npm run build --prod` to build in production with service worker pre-cache and then `npm run static-serve` to serve.
 
 ## Build with Service Worker
 
