@@ -191,11 +191,11 @@ Run `npm start:mock` for a dev server with 'mock' api. Navigate to `http://local
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Development server with Service Worker
-Run `npm run build --prod` to build in production with service worker pre-cache and then `npm run static-serve` to serve.
+Run `npm run build:prod` to build in production with service worker pre-cache and then `npm run static-serve` to serve.
 
 ## Build with Service Worker
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `npm run build--prod` for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `npm run build:prod` for a production build.
 
 
 ## Who are we?
