@@ -1,3 +1,4 @@
+import { AuthActions } from './../../actions/auth.actions';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private route: ActivatedRoute,
     private router: Router,
+    private actions: AuthActions,
     private authService: AuthService
   ) {
     this.redirectIfUserLoggedIn();
@@ -60,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private pushErrorFor(ctrl_name: string, msg: string) {
-    this.signInForm.controls[ctrl_name].setErrors({'msg': msg});
+    this.signInForm.controls[ctrl_name].setErrors({ 'msg': msg });
   }
 
   initForm() {
@@ -85,4 +87,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginSubs) { this.loginSubs.unsubscribe(); }
   }
 
+  socialLogin(provider: string) {
+    this.store.dispatch(this.actions.oAuthLogin(provider));
+  }
 }
