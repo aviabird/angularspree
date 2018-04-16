@@ -13,9 +13,10 @@
                 <span class="register-fb-logo register-sprite"></span>
                 FACEBOOK
               </button>
-              <button class="register-google register-button coming-soon" id="gPlusLogin"><span class="register-gplus-logo register-sprite"></span>
-                  GOOGLE
-                </button>
+              <button class="register-google register-button" id="gPlusLogin" (click)="socialLogin('google')">
+                <span class="register-gplus-logo register-sprite"></span>
+                GOOGLE
+              </button>
             </div>
           </div>
           <p class="register-button-info-text register-info-text">- OR USING EMAIL -</p>
@@ -50,8 +51,7 @@
               </div>
 
               <div class="register-input-item">
-                <input type="number" class="register-user-input-mobile register-user-input" name="mobile"
-                  formControlName="mobile" placeholder="Mobile Number (For order status updates)">
+                <input type="number" class="register-user-input-mobile register-user-input" name="mobile" formControlName="mobile" placeholder="Mobile Number (For order status updates)">
                 <div *ngIf="signUpForm.get('mobile').errors && signUpForm.get('mobile').touched">
                   <span class="register-error-icon">!</span>
                   <p class="register-error-message">{{signUpForm.get('mobile').errors.msg || 'Please enter a valid mobile number (10 digits)'}}</p>
