@@ -43,7 +43,7 @@ export function httpInterceptor(
   imports: [
     // Were not working on modules sice update to rc-5
     // TO BE moved to respective modules.
-    EffectsModule.forRoot([
+    EffectsModule.forFeature([
       AuthenticationEffects,
       ProductEffects,
       CheckoutEffects,

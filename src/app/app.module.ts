@@ -1,5 +1,5 @@
 import { EffectsModule } from '@ngrx/effects';
-import { environment } from './../environments/environment.prod';
+import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';

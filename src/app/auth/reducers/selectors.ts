@@ -2,7 +2,7 @@ import { AppState } from './../../interfaces';
 import { createSelector } from 'reselect';
 import { AuthState } from './auth.state';
 
-// Base product state function
+// Base state function
 function getAuthState(state: AppState): AuthState {
     return state.auth;
 }

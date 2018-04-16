@@ -15,7 +15,6 @@ export class AuthenticationEffects {
     private authActions: AuthActions
   ) { }
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
     Authorized$: Observable<Action> = this.actions$
     .ofType(AuthActions.AUTHORIZE)
