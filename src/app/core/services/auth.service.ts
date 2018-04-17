@@ -6,6 +6,7 @@ import { HttpService } from './http';
 import { AppState } from '../../interfaces';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '../../auth/actions/auth.actions';
+import { AuthService as OauthService } from 'ng2-ui-auth';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +22,8 @@ export class AuthService {
   constructor(
     private http: HttpService,
     private actions: AuthActions,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private oAuthService: OauthService
   ) {
 
   }
@@ -137,5 +139,19 @@ export class AuthService {
   private setTokenInLocalStorage(user_data): void {
     const jsonData = JSON.stringify(user_data);
     localStorage.setItem('user', jsonData);
+  }
+
+  socialLogin(provider: string) {
+    return this.oAuthService.authenticate(provider).map((res: Response) => {
+      this.setTokenInLocalStorage(res);
+      return res;
+    }).catch((res: Response) => {
+      this.http.loading.next({
+        loading: false,
+        hasError: true,
+        hasMsg: `Could not login with ${provider}. Error: ${res}`
+      });
+      return Observable.of('Social login failed');
+    });
   }
 }

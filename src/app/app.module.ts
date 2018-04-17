@@ -1,3 +1,5 @@
+import { myAuthConfig } from './oauth_config';
+import { Ng2UiAuthModule} from 'ng2-ui-auth';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -60,7 +62,7 @@ import 'rxjs/add/observable/of';
      *
      * See: https://github.com/ngrx/platform/blob/master/docs/effects/api.md#forroot
      */
-    EffectsModule.forRoot([]),
+    // EffectsModule.forRoot([]),
 
     BrowserModule,
     FormsModule,
@@ -68,7 +70,9 @@ import 'rxjs/add/observable/of';
     HomeModule,
     LayoutModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    Ng2UiAuthModule.forRoot(myAuthConfig)
+
   ],
   providers: [],
   bootstrap: [AppComponent]
