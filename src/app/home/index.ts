@@ -1,3 +1,6 @@
+import { LpProductListComponent } from './landing/lp-product-list/lp-product-list.component';
+import { LpBannerComponent } from './landing/lp-banner/lp-banner.component';
+import { LandingComponent } from './landing/landing.component';
 import { ProductEffects } from './../product/effects/product.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -6,6 +9,8 @@ import { NgModule } from '@angular/core';
 import { ProductActions } from './../product/actions/product-actions';
 import { SearchActions } from './reducers/search.actions';
 import { SharedModule } from './../shared/index';
+import { CarouselModule } from 'ngx-bootstrap';
+
 
 // Components
 import { HomeComponent } from './home.component';
@@ -41,13 +46,17 @@ import { reducers } from "./reducers/index";
     CustomizeComponent,
     FilterSummaryComponent,
     ContentComponent,
+    LandingComponent,
+    LpBannerComponent,
+    LpProductListComponent,
     // pipes
-    FilterPipe,
+    FilterPipe
   ],
   exports: [
   ],
   imports: [
     RouterModule.forChild(routes),
+    CarouselModule,
 
     /**
      * StoreModule.forFeature is used for composing state

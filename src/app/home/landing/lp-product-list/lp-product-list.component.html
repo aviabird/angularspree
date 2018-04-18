@@ -1,0 +1,14 @@
+<carousel>
+  <h3>
+    <a href=#>Save an Extra 5-10% on Every Autoship Order</a>
+    <p *ngIf="products.length === 0">No Products found for this category</p>
+  </h3>
+  <slide>
+    <div class="card" style="width: 18rem;" *ngFor="let product of products">
+      <img class="card-img-top" [src]="getProductImageUrl(product.master.images[0]?.large_url)" width="100px" height="100px">
+      <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+      </div>
+    </div>
+  </slide>
+</carousel>

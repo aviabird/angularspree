@@ -37,7 +37,7 @@ import 'rxjs/add/observable/of';
   declarations: [
     AppComponent,
     CheckoutHeaderComponent,
-    CheckoutFooterComponent
+    CheckoutFooterComponent,
   ],
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
