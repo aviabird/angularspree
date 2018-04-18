@@ -62,7 +62,7 @@ import 'rxjs/add/observable/of';
      *
      * See: https://github.com/ngrx/platform/blob/master/docs/effects/api.md#forroot
      */
-    // EffectsModule.forRoot([]),
+    EffectsModule.forRoot([]),
 
     BrowserModule,
     FormsModule,
