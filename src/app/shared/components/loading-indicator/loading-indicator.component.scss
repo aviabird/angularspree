@@ -1,4 +1,4 @@
-@import '../../../shared/scss/themes';
+@import "../../../shared/scss/selected_theme_variables";
 
 .loading {
   height: 100vh;
@@ -78,14 +78,14 @@ body {
   -webkit-animation: pulse 750ms ease-in infinite;
   -moz-animation: pulse 750ms ease-in infinite;
   animation: pulse 750ms ease-in infinite;
-  border-top: 27px solid $brand-danger;
+  border-top: 27px solid $danger;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-bottom: 0px;
 }
 .tri.invert {
   border-top: 0px;
-  border-bottom: 27px solid $brand-danger;
+  border-bottom: 27px solid $danger;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
 }

@@ -1,18 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-@font-face {
-    font-family: "Whitney-semi-bold";
-    src: url("assets/WhitneyHTF-SemiBold.woff") format("woff")
-}
-@font-face {
-    font-family: "Whitney";
-    src: url("assets/WhitneyHTF-Book.woff") format("woff")
-}
-
-// bootstrap fonts
-$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
-
 @import "app/shared/scss/themes";
-@import "app/shared/scss/custom_bootstrap";
 
 body {
   font-size: 15px;
