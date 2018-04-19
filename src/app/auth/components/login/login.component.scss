@@ -1,4 +1,4 @@
-@import "../../../shared/scss/themes";
+@import "../../../shared/scss/selected_theme_variables";
 
 .panel {
   margin-bottom: 20px;
@@ -255,7 +255,7 @@ button, input, select, textarea {
 }
 
 .login-error-icon {
-  border: 2px solid $state-danger-text;
+  border: 2px solid $danger;
   padding: 0 7px;
   display: inline-block;
   position: absolute;
@@ -289,7 +289,7 @@ p {
 
 .login-input-container {
   &:hover {
-    border: 1px solid $brand-danger;
-    box-shadow: 0 2px 5px $brand-danger + 100;
+    border: 1px solid $danger;
+    box-shadow: 0 2px 5px $danger + 100;
   }
 }

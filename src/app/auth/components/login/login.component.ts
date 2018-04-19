@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   signInForm: FormGroup;
-  title = environment.AppName;
+  title = environment.appName;
   loginSubs: Subscription;
   returnUrl: string;
 

@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 // Components
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ProfileDropdownComponent } from './header/profile-dropdown/profile-dropdown.component';
+import { ProfileDropdownComponent } from './header/components/profile-dropdown/profile-dropdown.component';
+import { HeaderSearchComponent } from './header/components/header-search/header-search.component';
+import { HeaderCartComponent } from './header/components/header-cart/header-cart.component';
 
 // Modules
 import { SharedModule } from '../shared/index';
@@ -13,6 +15,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     // components
     HeaderComponent,
+    HeaderSearchComponent,
+    HeaderCartComponent,
     FooterComponent,
 
     // sub components
