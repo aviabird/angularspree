@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import { APP_DATA } from './../../shared/data/app-data';
 import { ProductService } from './../../core/services/product.service';
+=======
+>>>>>>> 63fd9a9... Added Modified landing page
 import { LpPromoComponent } from './lp-promo/lp-promo.component';
 import { LpVideosComponent } from './lp-videos/lp-videos.component';
 import { LpBrandsComponent } from './lp-brands/lp-brands.component';
