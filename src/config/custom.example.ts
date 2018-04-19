@@ -1,10 +1,14 @@
 export const CUSTOM_EXAMPLE_CONFIG = {
   // Add Your custom configs here
-  ProdApiEndpoint: 'http://my-prod.api.example.com/',
-  AppName: 'Custom App Name',
+  prodApiEndpoint: 'http://my-prod.api.example.com/',
+  appName: 'Custom App Name',
   header: {
-    logo: 'custom.png',
-    brand: 'Custom',
-    showGithubRibon: false
+    brand: {
+      logo: 'http://via.placeholder.com/350x150',
+      name: 'Custom',
+      height: '40',
+      width: '112'
+    },
+    showGithubRibon: false,
   }
 };

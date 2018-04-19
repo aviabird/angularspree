@@ -1,10 +1,14 @@
 export const DEFAULT_CONFIG = {
   // Add Your custom configs here
-  ProdApiEndpoint: 'http://my-prod.api.example.com/',
-  AppName: 'Angularspree',
+  prodApiEndpoint: 'https://my-prod.api.example.com/',
+  appName: 'Angularspree',
   header: {
-    logo: 'default.png',
-    brand: 'Default',
+    brand: {
+      logo: '/assets/default/logo.png',
+      name: 'Angularspree',
+      height: '40',
+      width: '112'
+    },
     showGithubRibon: true
   }
 };

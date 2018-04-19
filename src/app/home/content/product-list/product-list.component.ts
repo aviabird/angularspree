@@ -26,7 +26,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit() { }
 
   getProductImageUrl(url) {
-    return environment.API_ENDPOINT + url;
+    return environment.apiEndpoint + url;
   }
 
   addToCart(product: Product) {

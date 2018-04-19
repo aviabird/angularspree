@@ -2,7 +2,7 @@ import { DEFAULT_CONFIG } from '../config/default';
 
 export const environment = {
   production: true,
-  API_ENDPOINT: 'https://angularspree-new.herokuapp.com/',
-  AppName: DEFAULT_CONFIG.AppName,
+  apiEndpoint: 'https://angularspree-new.herokuapp.com/',
+  appName: DEFAULT_CONFIG.appName,
   config: DEFAULT_CONFIG
 };
