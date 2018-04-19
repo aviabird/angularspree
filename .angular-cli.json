@@ -27,9 +27,11 @@
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
-        "mock": "environments/environment.mock.ts",
-        "dev": "environments/environment.ts",        
-        "prod": "environments/environment.prod.ts"
+        "mock-ng-spree": "environments/environment.mock-ng-spree.ts",
+        "dev-ng-spree": "environments/environment.dev-ng-spree.ts",        
+        "prod-ng-spree": "environments/environment.prod-ng-spree.ts",
+        "dev-custom": "environments/environment.dev-custom.ts",
+        "prod-custom": "environments/environment.prod-custom.ts"
       }
     }
   ],

@@ -1,6 +1,6 @@
 /**
  * Http Intercepter Service
- * TODO: Add Loader and Toasty Service currently using console log 
+ * TODO: Add Loader and Toasty Service currently using console log
  * for showing errors and response and request completion;
  */
 import { Injectable } from '@angular/core';
@@ -136,7 +136,7 @@ export class HttpService extends Http {
     }
 
     if (options.headers == null) {
-      const user = localStorage.getItem('user') != "undefined" ? JSON.parse(localStorage.getItem('user')) : null;
+      const user = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : null;
       options.headers = new Headers({
         'Content-Type': 'application/json',
         'X-Spree-Token': user && user.spree_api_key
@@ -151,7 +151,7 @@ export class HttpService extends Http {
    * @returns {string}
    */
   private getFullUrl(url: string): string {
-    return environment.API_ENDPOINT + url;
+    return environment.apiEndpoint + url;
   }
 
   /**

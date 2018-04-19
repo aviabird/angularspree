@@ -17,7 +17,7 @@ import { AuthActions } from '../../actions/auth.actions';
 export class SignUpComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
   formSubmit = false;
-  title = environment.AppName;
+  title = environment.appName;
   registerSubs: Subscription;
 
   constructor(

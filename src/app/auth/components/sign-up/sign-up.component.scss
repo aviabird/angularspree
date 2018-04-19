@@ -1,4 +1,4 @@
-@import "../../../shared/scss/_themes.scss";
+@import "../../../shared/scss/selected_theme_variables";
 
 .panel {
   margin-bottom: 20px;
@@ -328,7 +328,7 @@ button, input, select, textarea {
 
 .register-input-container {
   &:hover {
-    border: 1px solid $brand-danger;
-    box-shadow: 0 2px 5px $brand-danger + 100;
+    border: 1px solid $danger;
+    box-shadow: 0 2px 5px $danger + 100;
   }
 }
