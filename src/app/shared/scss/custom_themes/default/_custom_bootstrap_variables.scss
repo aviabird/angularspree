@@ -8,11 +8,9 @@
 
 // Refer this https://getbootstrap.com/docs/4.0/getting-started/theming/
 
-
-:root {
-  --font-family-sans-serif: "Whitney", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
+$font-family-sans-serif:      "Whitney", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-monospace:       "Whitney", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:            $font-family-sans-serif !default;
 
 
 // XXXXXXXXXXXXXXXXXX--STOP--XXXXXXXXXXXXXXXXXXXX

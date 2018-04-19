@@ -4,14 +4,23 @@
   "license": "MIT",
   "scripts": {
     "ng": "./node_modules/@angular/cli/bin/ng",
-    "start:mock": "ng serve -H 0.0.0.0 --environment=mock",
-    "start": "ng serve -H 0.0.0.0",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
+
+    "start:mock-ng-spree": "ng serve -H 0.0.0.0 --environment=mock-ng-spree",
+    "start:dev-ng-spree": "ng serve -H 0.0.0.0 --environment=dev-ng-spree",
+    "build:dev-ng-spree": "ng build --environment=dev-ng-spree",
+    "build:prod-ng-spree": "ng build --environment=prod-ng-spree --no-sourcemap --stats-json && npm run sw",    
+    "test:dev-ng-spree": "ng test --environment=dev-ng-spree",
+    "lint:dev-ng-spree": "ng lint --environment=dev-ng-spree",
+    "e2e:dev-ng-spree": "ng e2e --environment=dev-ng-spree",
+    
+    "start:dev-custom": "ng serve -H 0.0.0.0 --environment=dev-custom",
+    "build:dev-custom": "ng build --environment=dev-custom",
+    "test:dev-custom": "ng test --environment=dev-custom",
+    "lint:dev-custom": "ng lint --environment=dev-custom",
+    "e2e:dev-custom": "ng e2e --environment=dev-custom",
+    "build:prod-custom": "ng build --environment=prod-custom --no-sourcemap --stats-json && npm run sw",    
+
     "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d docs/",
-    "build:prod": "ng build --prod --no-sourcemap --stats-json && npm run sw",
     "sw": "sw-precache --root=dist --config=sw-precache-config.js",
     "static-serve": "cd dist && live-server --port=4200 --host=localhost --entry-file=/index.html"
   },
