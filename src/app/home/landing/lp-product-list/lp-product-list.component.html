@@ -1,14 +1,17 @@
-<carousel>
-  <h3>
-    <a href=#>Save an Extra 5-10% on Every Autoship Order</a>
-    <p *ngIf="products.length === 0">No Products found for this category</p>
-  </h3>
-  <slide>
-    <div class="card" style="width: 18rem;" *ngFor="let product of products">
-      <img class="card-img-top" [src]="getProductImageUrl(product.master.images[0]?.large_url)" width="100px" height="100px">
-      <div class="card-body">
-        <h5 class="card-title">{{product.name}}</h5>
+<section class="row">
+  <div class="content">
+    <div class="row">
+      <h3>
+        <a href=#>Todays' Deal</a>
+        <p *ngIf="products.length === 0">No Products found for this category</p>
+      </h3>
+      <button button color="primary " (click)="moveLeft() ">left</button>
+      <button button color="primary " (click)="moveRight() ">right</button>
+    </div>
+    <div class="row" dragScroll drag-scroll-y-disabled="true" #nav>
+      <div class="col-md-3" *ngFor="let product of products | slice:0:10">
+        <app-pl-item [product]="product"></app-pl-item>
       </div>
     </div>
-  </slide>
-</carousel>
+  </div>
+</section>

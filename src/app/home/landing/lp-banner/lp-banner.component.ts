@@ -1,3 +1,4 @@
+import { APP_DATA } from './../../../shared/data/app-data';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lp-banner.component.scss']
 })
 export class LpBannerComponent implements OnInit {
-
+  banners = APP_DATA.landing_page_banner;
   constructor() { }
 
   ngOnInit() {

@@ -1,11 +1,9 @@
-<carousel>
-  <slide>
-    <img src="assets/page1.png" alt="first slide" style="display: block; width: 100%;">
-  </slide>
-  <slide>
-    <img src="assets/page2.png" alt="second slide" style="display: block; width: 100%;">
-  </slide>
-  <slide>
-    <img src="assets/page1.png" alt="first slide" style="display: block; width: 100%;">
-  </slide>
-</carousel>
+<section class="row">
+  <carousel>
+    <slide *ngFor="let banner of banners">
+      <a href="{{banner.link_url}}">
+        <img src={{banner.image_link}} alt="" style="display: block; width: 100%;">
+      </a>
+    </slide>
+  </carousel>
+</section>

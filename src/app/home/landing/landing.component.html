@@ -1,3 +1,11 @@
-<app-lp-banner>
-</app-lp-banner>
+<app-lp-banner>Loading...</app-lp-banner>
+<br>
 <app-lp-product-list [products]="products$ | async"> </app-lp-product-list>
+<hr>
+<app-lp-favorites [products]="products$ | async"></app-lp-favorites>
+<hr>
+<app-lp-promo> </app-lp-promo>
+<hr>
+<app-lp-brands [products]="products$ | async"></app-lp-brands>
+<hr>
+<app-lp-videos></app-lp-videos>

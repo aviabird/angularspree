@@ -1,3 +1,9 @@
+import { LpPromoComponent } from './landing/lp-promo/lp-promo.component';
+import { PlFavItemComponent } from './landing/lp-favorites/pl-fav-item/pl-fav-item.component';
+import { PlItemComponent } from './landing/lp-product-list/pl-item/pl-item.component';
+import { LpVideosComponent } from './landing/lp-videos/lp-videos.component';
+import { LpBrandsComponent } from './landing/lp-brands/lp-brands.component';
+import { LpFavoritesComponent } from './landing/lp-favorites/lp-favorites.component';
 import { LpProductListComponent } from './landing/lp-product-list/lp-product-list.component';
 import { LpBannerComponent } from './landing/lp-banner/lp-banner.component';
 import { LandingComponent } from './landing/landing.component';
@@ -32,7 +38,7 @@ import { HomeRoutes as routes } from './home.routes';
 
 import { FilterPipe } from './content/product-list/product-filter.pipe';
 import { reducers } from "./reducers/index";
-
+import { DragScrollModule } from 'ngx-drag-scroll';
 @NgModule({
   declarations: [
     // components
@@ -49,6 +55,13 @@ import { reducers } from "./reducers/index";
     LandingComponent,
     LpBannerComponent,
     LpProductListComponent,
+    LpFavoritesComponent,
+    LpBrandsComponent,
+    LpVideosComponent,
+    PlItemComponent,
+    PlFavItemComponent,
+    LpPromoComponent,
+    
     // pipes
     FilterPipe
   ],
@@ -57,6 +70,7 @@ import { reducers } from "./reducers/index";
   imports: [
     RouterModule.forChild(routes),
     CarouselModule,
+    DragScrollModule,
 
     /**
      * StoreModule.forFeature is used for composing state
