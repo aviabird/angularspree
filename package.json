@@ -45,6 +45,7 @@
     "immutable": "^3.8.1",
     "ng2-ui-auth": "^8.0.1",
     "ngx-bootstrap": "^2.0.4",
+    "ngx-drag-scroll": "^1.7.7",
     "reselect": "^2.5.4",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.14"

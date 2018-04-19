@@ -1,3 +1,12 @@
+import { LpPromoComponent } from './landing/lp-promo/lp-promo.component';
+import { PlFavItemComponent } from './landing/lp-favorites/pl-fav-item/pl-fav-item.component';
+import { PlItemComponent } from './landing/lp-product-list/pl-item/pl-item.component';
+import { LpVideosComponent } from './landing/lp-videos/lp-videos.component';
+import { LpBrandsComponent } from './landing/lp-brands/lp-brands.component';
+import { LpFavoritesComponent } from './landing/lp-favorites/lp-favorites.component';
+import { LpProductListComponent } from './landing/lp-product-list/lp-product-list.component';
+import { LpBannerComponent } from './landing/lp-banner/lp-banner.component';
+import { LandingComponent } from './landing/landing.component';
 import { ProductEffects } from './../product/effects/product.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -6,6 +15,8 @@ import { NgModule } from '@angular/core';
 import { ProductActions } from './../product/actions/product-actions';
 import { SearchActions } from './reducers/search.actions';
 import { SharedModule } from './../shared/index';
+import { CarouselModule } from 'ngx-bootstrap';
+
 
 // Components
 import { HomeComponent } from './home.component';
@@ -27,7 +38,7 @@ import { HomeRoutes as routes } from './home.routes';
 
 import { FilterPipe } from './content/product-list/product-filter.pipe';
 import { reducers } from "./reducers/index";
-
+import { DragScrollModule } from 'ngx-drag-scroll';
 @NgModule({
   declarations: [
     // components
@@ -41,13 +52,25 @@ import { reducers } from "./reducers/index";
     CustomizeComponent,
     FilterSummaryComponent,
     ContentComponent,
+    LandingComponent,
+    LpBannerComponent,
+    LpProductListComponent,
+    LpFavoritesComponent,
+    LpBrandsComponent,
+    LpVideosComponent,
+    PlItemComponent,
+    PlFavItemComponent,
+    LpPromoComponent,
+    
     // pipes
-    FilterPipe,
+    FilterPipe
   ],
   exports: [
   ],
   imports: [
     RouterModule.forChild(routes),
+    CarouselModule,
+    DragScrollModule,
 
     /**
      * StoreModule.forFeature is used for composing state
