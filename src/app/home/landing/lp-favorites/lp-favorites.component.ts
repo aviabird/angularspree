@@ -1,5 +1,5 @@
 import { DragScrollDirective } from 'ngx-drag-scroll';
-import { environment } from './../../../../environments/environment.mock';
+import { environment } from './../../../../environments/environment';
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ export class LpFavoritesComponent implements OnInit {
   ngOnInit() {
   }
   getProductImageUrl(url) {
-    return environment.API_ENDPOINT + url;
+    return environment.apiEndpoint + url;
   }
   @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 

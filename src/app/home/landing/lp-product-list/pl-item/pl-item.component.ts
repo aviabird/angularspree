@@ -1,6 +1,6 @@
 import { Product } from './../../../../core/models/product';
 import { Component, OnInit, Input } from '@angular/core';
-import { environment } from '../../../../../environments/environment.mock';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-pl-item',
@@ -14,6 +14,6 @@ export class PlItemComponent implements OnInit {
   ngOnInit() {
   }
   getProductImageUrl(url) {
-    return environment.API_ENDPOINT + url;
+    return environment.apiEndpoint + url;
   }
 }

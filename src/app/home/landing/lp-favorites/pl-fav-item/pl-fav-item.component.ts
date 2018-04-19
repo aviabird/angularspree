@@ -1,4 +1,4 @@
-import { environment } from './../../../../../environments/environment.prod';
+import { environment } from './../../../../../environments/environment';
 import { Product } from './../../../../core/models/product';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -16,7 +16,7 @@ export class PlFavItemComponent implements OnInit {
   }
 
   getProductImageUrl(url) {
-    return environment.API_ENDPOINT + url;
+    return environment.apiEndpoint + url;
   }
 
 }

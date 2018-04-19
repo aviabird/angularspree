@@ -1,4 +1,4 @@
-import { environment } from './../../../../environments/environment.mock';
+import { environment } from './../../../../environments/environment';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ export class LpBrandsComponent implements OnInit {
   }
 
   getProductImageUrl(url) {
-    return environment.API_ENDPOINT + url;
+    return environment.apiEndpoint + url;
   }
 
 }

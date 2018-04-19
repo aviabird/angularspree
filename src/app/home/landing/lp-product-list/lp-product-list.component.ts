@@ -1,6 +1,6 @@
 import { PlItemComponent } from './pl-item/pl-item.component';
 import { DragScrollDirective } from 'ngx-drag-scroll';
-import { environment } from './../../../../environments/environment.mock';
+import { environment } from './../../../../environments/environment';
 import { Component, OnInit, Input, ViewChild, Renderer2, ElementRef } from '@angular/core';
 
 @Component({
@@ -19,7 +19,7 @@ export class LpProductListComponent implements OnInit {
   }
 
   getProductImageUrl(url) {
-    return environment.API_ENDPOINT + url;
+    return environment.apiEndpoint + url;
   }
   @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
