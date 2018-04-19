@@ -4685,6 +4685,10 @@ ngx-bootstrap@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-2.0.4.tgz#26be0eb1b9a5dc133caa93b39ae221d6872c8b55"
 
+ngx-drag-scroll@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/ngx-drag-scroll/-/ngx-drag-scroll-1.7.7.tgz#a81c450cfbdb61f4e063c8e4be755a99c51c0fe5"
+
 no-case@^2.2.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.1.tgz#7aeba1c73a52184265554b7dc03baf720df80081"

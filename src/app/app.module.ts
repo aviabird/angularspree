@@ -1,5 +1,5 @@
 import { myAuthConfig } from './oauth_config';
-import { Ng2UiAuthModule} from 'ng2-ui-auth';
+import { Ng2UiAuthModule } from 'ng2-ui-auth';
 import { EffectsModule } from '@ngrx/effects';
 import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,6 +23,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './app.reducers';
 import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-header.component';
 import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 // adding rx operators
 import 'rxjs/add/operator/map';
@@ -37,7 +38,8 @@ import 'rxjs/add/observable/of';
   declarations: [
     AppComponent,
     CheckoutHeaderComponent,
-    CheckoutFooterComponent
+    CheckoutFooterComponent,
+    
   ],
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
@@ -71,7 +73,8 @@ import 'rxjs/add/observable/of';
     LayoutModule,
     CoreModule,
     SharedModule,
-    Ng2UiAuthModule.forRoot(myAuthConfig)
+    Ng2UiAuthModule.forRoot(myAuthConfig),
+    DragScrollModule
 
   ],
   providers: [],

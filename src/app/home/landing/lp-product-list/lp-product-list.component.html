@@ -1,0 +1,17 @@
+<section class="row">
+  <div class="content">
+    <div class="row">
+      <h3>
+        <a href=#>Todays' Deal</a>
+        <p *ngIf="products.length === 0">No Products found for this category</p>
+      </h3>
+      <button button color="primary " (click)="moveLeft() ">left</button>
+      <button button color="primary " (click)="moveRight() ">right</button>
+    </div>
+    <div class="row" dragScroll drag-scroll-y-disabled="true" #nav>
+      <div class="col-md-3" *ngFor="let product of products | slice:0:10">
+        <app-pl-item [product]="product"></app-pl-item>
+      </div>
+    </div>
+  </div>
+</section>
