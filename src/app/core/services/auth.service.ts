@@ -60,6 +60,19 @@ export class AuthService {
     // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
   }
 
+
+
+  forgetPassword(data): Observable<any>{
+    console.log(data);
+    return this.http.get('spree/forget_password.json')
+      .map((res: Response) => {
+        // Setting token after login
+        // localStorage.removeItem('user');
+        this.store.dispatch(this.actions.forgetPasswordSucess());
+        return res.json();
+      });
+  }
+
   /**
    *
    *
