@@ -7,7 +7,8 @@ export class AuthActions {
   static AUTHORIZE = 'AUTHORIZE';
   static O_AUTH_LOGIN = 'O_AUTH_LOGIN';
   static NO_OP = 'NO_OPERATION'
-
+  static FORGET_PASSWORD = 'FORGET_PASSWORD';
+  static FORGET_PASSWORD_SUCCESS = 'FORGET_PASSWORD_SUCCESS';
   authorize() {
     return { type: AuthActions.AUTHORIZE };
   }
@@ -22,7 +23,12 @@ export class AuthActions {
       payload: provider
     };
   }
-
+  forgetPasswordSuccess() {
+    return { type: AuthActions.FORGET_PASSWORD_SUCCESS };
+  }
+  forgetPassword(){
+    return { type: AuthActions.FORGET_PASSWORD };
+  }
   loginSuccess() {
     return { type: AuthActions.LOGIN_SUCCESS };
   }

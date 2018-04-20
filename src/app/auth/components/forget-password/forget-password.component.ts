@@ -13,7 +13,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent implements OnInit, OnDestroy {
-  signInForm: FormGroup;
+  forgetPasswordForm: FormGroup;
   forgetPasswordSubs: Subscription;
   returnUrl: string;
 
@@ -31,10 +31,10 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const values = this.signInForm.value;
+    const values = this.forgetPasswordForm.value;
     const keys = Object.keys(values);
 
-    if (this.signInForm.valid) {
+    if (this.forgetPasswordForm.valid) {
       this.forgetPasswordSubs = this.authService.forgetPassword(values).subscribe(data => {
         const error = data.error;
         if (error) {
@@ -45,7 +45,7 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
       });
     } else {
       keys.forEach(val => {
-        const ctrl = this.signInForm.controls[val];
+        const ctrl = this.forgetPasswordForm.controls[val];
         if (!ctrl.valid) {
           this.pushErrorFor(val, null);
           ctrl.markAsTouched();
@@ -56,13 +56,13 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
 
 
   private pushErrorFor(ctrl_name: string, msg: string) {
-    this.signInForm.controls[ctrl_name].setErrors({ 'msg': msg });
+    this.forgetPasswordForm.controls[ctrl_name].setErrors({ 'msg': msg });
   }
 
   initForm() {
     const email = '';
 
-    this.signInForm = this.fb.group({
+    this.forgetPasswordForm = this.fb.group({
       'email': [email, Validators.required]
     });
   }
