@@ -16,7 +16,7 @@ export class ProductImagesComponent implements OnInit {
   ngOnInit() { }
 
   getProductImageUrl(url) {
-    return environment.API_ENDPOINT + url;
+    return environment.apiEndpoint + url;
   }
 
   onMouseOver(image: Image) {

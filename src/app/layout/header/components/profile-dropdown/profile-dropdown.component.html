@@ -1,0 +1,45 @@
+<ul class="nav navbar-nav navbar-right">
+
+  <div class="btn-group" dropdown *ngIf="!isAuthenticated">
+    <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle" aria-controls="dropdown-basic">
+      <i class="fa fa-user text-secondary" aria-hidden="true"></i>
+      <span class="caret"></span>
+    </button>
+    <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
+      <li role="menuitem">
+        <a class="dropdown-item" [routerLink]="['/auth', 'login']">Login</a>
+      </li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem">
+        <a class="dropdown-item" [routerLink]="['/auth']">Sign Up</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="btn-group" dropdown *ngIf="isAuthenticated">
+    <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+      <i class="fa fa-user text-secondary" aria-hidden="true"></i>
+      <span class="caret"></span>
+    </button>
+    <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
+      <li role="menuitem">
+        <a class="dropdown-item" routerLink="/user">My Profile</a>
+      </li>
+      <li class="divider dropdown-divider"></li>
+
+      <li role="menuitem">
+        <a class="dropdown-item" routerLink="/user/orders">My Orders</a>
+      </li>
+      <li role="menuitem">
+        <a class="dropdown-item" routerLink="/user/addresses">Saved Addresses</a>
+      </li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem">
+        <a class="dropdown-item" href="#">Edit Profile</a>
+      </li>
+      <li role="menuitem">
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</ul>

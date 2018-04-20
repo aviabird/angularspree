@@ -2,7 +2,7 @@ import { DEFAULT_CONFIG } from './../config/default';
 
 export const environment = {
   production: false,
-  API_ENDPOINT: 'http://localhost:3000/',
-  AppName: DEFAULT_CONFIG.AppName,
+  apiEndpoint: 'http://localhost:3000/',
+  appName: DEFAULT_CONFIG.appName,
   config: DEFAULT_CONFIG
 };

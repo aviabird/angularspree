@@ -2,7 +2,7 @@ import { CUSTOM_CONFIG } from '../config/custom';
 
 export const environment = {
   production: false,
-  API_ENDPOINT: CUSTOM_CONFIG.ProdApiEndpoint,
-  AppName: CUSTOM_CONFIG.AppName,
+  apiEndpoint: CUSTOM_CONFIG.prodApiEndpoint,
+  appName: CUSTOM_CONFIG.appName,
   config: CUSTOM_CONFIG
 };
