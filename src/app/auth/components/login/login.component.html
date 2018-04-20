@@ -45,7 +45,7 @@
           </form>
           <div class="login-link-container">
             <small>
-              <a class="login-link text-danger" routerLink="/">Recover password</a>
+              <a class="login-link text-danger" [routerLink]="['/auth/recover']">Forget Password</a>
               <div class="login-right-links">
                 <span class="text-default">New to {{title}}?</span>
                 <a class="login-create-account-link login-link text-danger" [routerLink]="['/auth']">Create Account</a>

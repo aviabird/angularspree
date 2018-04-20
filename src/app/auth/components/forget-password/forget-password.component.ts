@@ -1,0 +1,73 @@
+import { AuthService } from './../../../core/services/auth.service';
+import { AuthActions } from './../../actions/auth.actions';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from './../../../interfaces';
+import { Subscription } from 'rxjs/Subscription';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+@Component({
+  selector: 'app-forget-password',
+  templateUrl: './forget-password.component.html',
+  styleUrls: ['./forget-password.component.scss']
+})
+export class ForgetPasswordComponent implements OnInit, OnDestroy {
+  signInForm: FormGroup;
+  forgetPasswordSubs: Subscription;
+  returnUrl: string;
+
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<AppState>,
+    private route: ActivatedRoute,
+    private router: Router,
+    private actions: AuthActions,
+    private authService: AuthService
+  ) { }
+
+  ngOnInit() {
+    this.initForm();
+  }
+
+  onSubmit() {
+    const values = this.signInForm.value;
+    const keys = Object.keys(values);
+
+    if (this.signInForm.valid) {
+      this.forgetPasswordSubs = this.authService.forgetPassword(values).subscribe(data => {
+        const error = data.error;
+        if (error) {
+          keys.forEach(val => {
+            this.pushErrorFor(val, error);
+          });
+        }
+      });
+    } else {
+      keys.forEach(val => {
+        const ctrl = this.signInForm.controls[val];
+        if (!ctrl.valid) {
+          this.pushErrorFor(val, null);
+          ctrl.markAsTouched();
+        };
+      });
+    }
+  }
+
+
+  private pushErrorFor(ctrl_name: string, msg: string) {
+    this.signInForm.controls[ctrl_name].setErrors({ 'msg': msg });
+  }
+
+  initForm() {
+    const email = '';
+
+    this.signInForm = this.fb.group({
+      'email': [email, Validators.required]
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.forgetPasswordSubs) { this.forgetPasswordSubs.unsubscribe(); }
+  }
+}
