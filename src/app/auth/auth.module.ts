@@ -8,6 +8,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AuthRoutes as routes } from './auth.routes';
 import { SharedModule } from '../shared/index';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
   declarations: [
     LoginComponent,
     SignUpComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    UpdatePasswordComponent
   ]
 })
 export class AuthModule { }

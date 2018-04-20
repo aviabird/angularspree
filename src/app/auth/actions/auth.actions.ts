@@ -9,6 +9,9 @@ export class AuthActions {
   static NO_OP = 'NO_OPERATION'
   static FORGET_PASSWORD = 'FORGET_PASSWORD';
   static FORGET_PASSWORD_SUCCESS = 'FORGET_PASSWORD_SUCCESS';
+  static UPDATE_PASSWORD = 'UPDATE_PASSWORD';
+  static UPDATE_PASSWORD_SUCCESS = 'UPDATE_PASSWORD_SUCCESS';
+
   authorize() {
     return { type: AuthActions.AUTHORIZE };
   }
@@ -29,6 +32,14 @@ export class AuthActions {
   forgetPassword(){
     return { type: AuthActions.FORGET_PASSWORD };
   }
+
+  updatePasswordSuccess() {
+    return { type: AuthActions.UPDATE_PASSWORD_SUCCESS };
+  }
+  updatePassword(){
+    return { type: AuthActions.UPDATE_PASSWORD };
+  }
+
   loginSuccess() {
     return { type: AuthActions.LOGIN_SUCCESS };
   }
