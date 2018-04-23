@@ -43,14 +43,14 @@ export class UpdatePasswordComponent implements OnInit {
     const keys = Object.keys(values);
 
     if (this.updatePasswordForm.valid) {
-      this.updatePasswordSubs = this.authService.updatePassword(values).subscribe(data => {
-        const error = data.error;
-        if (error) {
+      this.updatePasswordSubs = this.authService
+        .updatePassword(values)
+        .do(_ => _, (user) => {
+          const errors = user.error.error || 'Something went wrong';
           keys.forEach(val => {
-            this.pushErrorFor(val, error);
+            this.pushErrorFor(val, errors);
           });
-        }
-      });
+        }).subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.updatePasswordForm.controls[val];
@@ -74,15 +74,15 @@ export class UpdatePasswordComponent implements OnInit {
       'password': [password, Validators.compose([Validators.required, Validators.minLength(6)])],
       'password_confirmation': [password_confirmation, Validators.compose([Validators.required, Validators.minLength(6)])],
       'email': this.email,
-      'token': this.token,
+      'reset_password_token': this.token,
       'id': this.id,
     }, { validator: this.matchingPasswords('password', 'password_confirmation') });
   }
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
     return (group: FormGroup): { [key: string]: any } => {
-      let password = group.controls[passwordKey];
-      let confirmPassword = group.controls[confirmPasswordKey];
+      const password = group.controls[passwordKey];
+      const confirmPassword = group.controls[confirmPasswordKey];
 
       if (password.value !== confirmPassword.value) {
         return {
