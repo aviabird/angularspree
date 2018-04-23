@@ -1,3 +1,4 @@
+import { ToastyService } from 'ng2-toasty';
 import { Payment } from './../models/payment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { getOrderNumber } from './../../checkout/reducers/selectors';
@@ -25,6 +26,7 @@ export class CheckoutService {
     private http: HttpClient,
     private actions: CheckoutActions,
     private store: Store<AppState>,
+    private toastyService: ToastyService
   ) {
     this.store.select(getOrderNumber)
       .subscribe(number => this.orderNumber = number);
@@ -107,6 +109,10 @@ export class CheckoutService {
           this.setOrderTokenInLocalStorage({ order_token: order.token });
           return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
         })
+        .do(
+          _ => _,
+          _ => this.toastyService.error({title: 'ERROR!!', msg: 'Unable to create empty order'})
+        )
     );
   }
 
