@@ -1,9 +1,5 @@
 export const APP_DATA = {
-  videos: [{
-    link: 'assets/custom/videos/videoplayback.webm',
-    type: 'video/webm',
-    title: 'Animal vedio'
-  },
+  videos: [
   {
     link: 'http://techslides.com/demos/sample-videos/small.webm',
     type: 'video/webm',
@@ -18,11 +14,6 @@ export const APP_DATA = {
     link: 'http://dl3.webmfiles.org/elephants-dream.webm',
     type: 'video/webm',
     title: 'sample vedio'
-  },
-  {
-    link: 'assets/videos/videoplayback.webm',
-    type: 'video/webm',
-    title: 'Animal vedio'
   }
   ],
   landing_page_banner: [{
