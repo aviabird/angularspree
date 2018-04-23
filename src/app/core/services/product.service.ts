@@ -1,6 +1,8 @@
+import { Taxonomy } from './../models/taxonomy';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { HttpService } from './http';
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product';
 
 @Injectable()
 export class ProductService {
@@ -11,7 +13,7 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpClient) { }
 
   /**
    *
@@ -21,32 +23,23 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getProduct(id: string): Observable<any> {
-    return this.http.get(`/spree/api/v1/products/${id}`)
-    .map(res => res.json());
-  }
+  getProduct(id: string): Observable<any> { return this.http.get<Product>(`/spree/api/v1/products/${id}`) }
 
   /**
    *
    *
-   * @returns {*}
+   * @returns {Array<Taxonomy>}
    *
    * @memberof ProductService
    */
-  getTaxonomies(): any {
-    return this.http.get(`/spree/api/v1/taxonomies?set=nested`)
-    .map(res => res.json());
-  }
+  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`/spree/api/v1/taxonomies?set=nested`) }
 
   /**
    *
    *
-   * @returns {*}
+   * @returns {Array<Product>}
    *
    * @memberof ProductService
    */
-  getProducts(): any {
-    return this.http.get(`/spree/api/v1/products`)
-    .map(res => res.json());
-  }
+  getProducts(): any { return this.http.get<Array<Product>>(`/spree/api/v1/products`) }
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationComponent } from './notification.component';
+import { HeaderHelpDropdownComponent } from './header-help-dropdown.component';
 
-describe('NotificationComponent', () => {
-  let component: NotificationComponent;
-  let fixture: ComponentFixture<NotificationComponent>;
+describe('HeaderHelpDropdownComponent', () => {
+  let component: HeaderHelpDropdownComponent;
+  let fixture: ComponentFixture<HeaderHelpDropdownComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NotificationComponent ]
+      declarations: [ HeaderHelpDropdownComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotificationComponent);
+    fixture = TestBed.createComponent(HeaderHelpDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,16 +2,17 @@ import { CheckoutEffects } from './../checkout/effects/checkout.effects';
 import { CheckoutActions } from './../checkout/actions/checkout.actions';
 import { CheckoutService } from './services/checkout.service';
 import { NgModule } from '@angular/core';
-import { HttpModule, XHRBackend, RequestOptions, Http } from '@angular/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
 // Components
 
 // Services
 import { AuthService } from './services/auth.service';
-import { HttpService } from './services/http';
 import { ProductService } from './services/product.service';
 import { AuthActions } from '../auth/actions/auth.actions';
 import { VariantRetriverService } from './services/variant-retriver.service';
 import { VariantParserService } from './services/variant-parser.service';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 // import { ProductDummyService } from './services/product-dummy.service';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -22,14 +23,6 @@ import { UserEffects } from '../user/effects/user.effects';
 import { UserService } from '../user/services/user.service';
 import { CanActivateViaAuthGuard } from './guards/auth.guard';
 
-
-export function httpInterceptor(
-  backend: XHRBackend,
-  defaultOptions: RequestOptions,
-) {
-  return new HttpService(backend, defaultOptions);
-}
-
 @NgModule({
   declarations: [
     // components
@@ -39,6 +32,7 @@ export function httpInterceptor(
   exports: [
     // components
     // DummyService
+    NgProgressModule
   ],
   imports: [
     // Were not working on modules sice update to rc-5
@@ -48,17 +42,13 @@ export function httpInterceptor(
       ProductEffects,
       CheckoutEffects,
       UserEffects
-    ])
+    ]),
+    NgProgressModule
   ],
   providers: [
     VariantParserService,
     VariantRetriverService,
     AuthService,
-    {
-      provide: HttpService,
-      useFactory: httpInterceptor,
-      deps: [ XHRBackend, RequestOptions]
-    },
     CheckoutService,
     // ProductDummyService,
     ProductService,
@@ -66,7 +56,9 @@ export function httpInterceptor(
     CheckoutActions,
     UserActions,
     UserService,
-    CanActivateViaAuthGuard
+    CanActivateViaAuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true },
   ]
 })
 export class CoreModule {}

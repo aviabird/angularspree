@@ -18,7 +18,7 @@ import { LineItem } from '../../../../core/models/line_item';
 export class OrderDetailComponent implements OnInit, OnDestroy {
   routeSubscription$: Subscription;
   orderSubscription$: Subscription;
-  orderNumber: String;
+  orderNumber: string;
   order: Order;
 
   constructor(

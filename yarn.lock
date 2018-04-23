@@ -4671,6 +4671,10 @@ neo-async@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.1.tgz#acb909e327b1e87ec9ef15f41b8a269512ad41ee"
 
+ng2-toasty@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/ng2-toasty/-/ng2-toasty-4.0.3.tgz#ea78ef8d18757d41ebaba11bd9f90a543f58fd7a"
+
 ng2-ui-auth@^8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/ng2-ui-auth/-/ng2-ui-auth-8.0.1.tgz#a1ca5d20d65480669712452ff784f47009df908b"
@@ -4688,6 +4692,10 @@ ngx-bootstrap@^2.0.4:
 ngx-drag-scroll@^1.7.7:
   version "1.7.7"
   resolved "https://registry.yarnpkg.com/ngx-drag-scroll/-/ngx-drag-scroll-1.7.7.tgz#a81c450cfbdb61f4e063c8e4be755a99c51c0fe5"
+
+ngx-progressbar@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-2.1.1.tgz#cecd88435ac660be445caeaded19b85f4a1e47be"
 
 no-case@^2.2.0:
   version "2.3.1"

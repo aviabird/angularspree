@@ -1,11 +1,12 @@
 <div class="selected-theme">
   <section>
+    <ng-progress [speed]="200" [color]="'#fc6fb1'" [showSpinner]="false" [ease]="'easeOutQuad'" [trickleSpeed]="250"></ng-progress>
+    <ng2-toasty [position]="'top-right'"></ng2-toasty>
+
     <app-header *ngIf="currentUrl && !isCheckoutRoute()"></app-header>
     <app-checkout-header [currentStep]="currentStep" *ngIf="currentUrl && isCheckoutRoute()"></app-checkout-header>
-    <app-loading-indicator></app-loading-indicator>
-    <app-notification></app-notification>
 
-    <main class="body container">
+    <main class="main-body">
       <router-outlet></router-outlet>
     </main>
 

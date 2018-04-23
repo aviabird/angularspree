@@ -1,11 +1,5 @@
-// -- Theme Colors here --
-// Default theme colors
-$theme-default-text-color: #ee5f73 + 50;
-$theme-default-subtext-color: #ee5f73;
-$theme-default-secondary-color: rgba(white,0.98);
-$theme-default-header-background-color: $theme-default-secondary-color;
-$theme-default-border: 2px solid #aaa;
-
+// selected-theme is the main theme class add to top level main html component
+// <div class="selected-theme">...
 .selected-theme {
   @import "header";
   @import "badge";

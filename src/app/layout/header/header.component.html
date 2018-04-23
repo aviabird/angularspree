@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container">
-
     <a class="navbar-brand" routerLink="/">
       <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
         class="d-inline-block align-top" alt="">
@@ -14,6 +13,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <app-header-search></app-header-search>
+      <app-header-help-dropdown></app-header-help-dropdown>
       <app-profile-dropdown class="pr-2" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
       <app-header-cart class="pl-2 border-left" [totalCartItems]="totalCartItems | async"></app-header-cart>
     </div>
