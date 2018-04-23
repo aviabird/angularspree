@@ -1,9 +1,7 @@
-<section class="row">
-  <carousel>
-    <slide *ngFor="let banner of banners">
-      <a href="{{banner.link_url}}">
-        <img src={{banner.image_link}} alt="" style="display: block; width: 100%;">
-      </a>
-    </slide>
-  </carousel>
-</section>
+<carousel class="mb-5" showIndicators="false">
+  <slide *ngFor="let banner of banners">
+    <a href="{{banner.link_url}}">
+      <img src={{banner.image_link}} alt="" style="display: block; width: 100%;">
+    </a>
+  </slide>
+</carousel>
