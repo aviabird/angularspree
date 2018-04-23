@@ -126,24 +126,6 @@ export class AuthService {
     );
   }
 
-  updatePassword(data): Observable<any> {
-    return this.http.put(
-      'api/passwords',
-      { spree_user: data }
-    ).map((res: Response) => {
-      data = res.json();
-      if (!data.errors) {
-        this.store.dispatch(this.actions.updatePasswordSuccess());
-      } else {
-        this.http.loading.next({
-          loading: false,
-          hasError: true,
-          hasMsg: 'Something went wrong'
-        });
-      }
-      return res.json();
-    });
-  }
 
   /**
    *
