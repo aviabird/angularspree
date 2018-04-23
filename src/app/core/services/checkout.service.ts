@@ -100,12 +100,14 @@ export class CheckoutService {
       'X-Spree-Token': user && user.spree_api_key
     });
 
-    return this.http.post<Order>(
-      'spree/api/v1/orders.json', {}, { headers }
-    ).map(order => {
-      this.setOrderTokenInLocalStorage({ order_token: order.token });
-      return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
-    });
+    return (
+      this.http
+        .post<Order>('spree/api/v1/orders', {}, { headers })
+        .map(order => {
+          this.setOrderTokenInLocalStorage({ order_token: order.token });
+          return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
+        })
+    );
   }
 
   /**
