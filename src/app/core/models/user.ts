@@ -5,6 +5,11 @@
 
 import { Address } from './address';
 
+export interface Authenticate {
+  name?: string;
+  email: string;
+  password: string;
+}
 export class User {
   id: string;
   email: string;
@@ -15,4 +20,5 @@ export class User {
   payment_sources: [any];
   bill_address: [Address];
   ship_address: [Address];
+  error?: {error: string, errors: Object};
 }
