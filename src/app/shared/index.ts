@@ -1,30 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ToastyModule } from 'ng2-toasty';
 
 // Pipes
 import { KeysPipe } from './pipes/keys.pipe';
 import { HumanizePipe } from '../core/pipes/humanize.pipe';
 
 // components
-import { LoadingIndicatorComponent } from './components/loading-indicator/loading-indicator.component';
 // imports
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
     // components
-    LoadingIndicatorComponent,
-    NotificationComponent,
     // pipes
     KeysPipe,
     HumanizePipe
   ],
   exports: [
     // components
-    LoadingIndicatorComponent,
-    NotificationComponent,
     // modules
     CommonModule,
     BsDropdownModule,
@@ -32,13 +27,15 @@ import { NotificationComponent } from './components/notification/notification.co
     ReactiveFormsModule,
     // pipes
     KeysPipe,
-    HumanizePipe
+    HumanizePipe,
+    ToastyModule
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ToastyModule.forRoot(),
   ]
 })
 export class SharedModule {}

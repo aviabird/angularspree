@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpService } from '../../core/services/http';
 import { UserActions } from '../actions/user.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class UserService {
 
   constructor(
-    private http: HttpService,
+    private http: HttpClient,
     private actions: UserActions,
     private store: Store<AppState>
   ) { }
@@ -24,23 +24,17 @@ export class UserService {
    *
    * @memberof UserService
    */
-  getOrders(): Observable<Order[]> {
-    return this.http.get('api/orders')
-      .map((res: Response) => res.json());
-  }
+  getOrders(): Observable<Array<Order>> { return this.http.get<Array<Order>>('api/orders') }
 
   /**
    *
    *
-   * @param {any} orderNumber
+   * @param {string} orderNumber
    * @returns {Observable<Order>}
    *
    * @memberof UserService
    */
-  getOrderDetail(orderNumber): Observable<Order> {
-    return this.http.get(`spree/api/v1/orders/${orderNumber}`)
-      .map((res: Response) => res.json());
-  }
+  getOrderDetail(orderNumber: string): Observable<Order> { return this.http.get<Order>(`spree/api/v1/orders/${orderNumber}`) }
 
   /**
    *
@@ -51,8 +45,7 @@ export class UserService {
    */
   getUser(): Observable<User> {
     const user_id = JSON.parse(localStorage.getItem('user')).id;
-    return this.http.get(`spree/api/v1/users/${user_id}`)
-      .map(res => res.json());
+    return this.http.get<User>(`spree/api/v1/users/${user_id}`);
   }
 
 }

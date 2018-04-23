@@ -42,14 +42,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     const keys = Object.keys(values);
 
     if (this.signInForm.valid) {
-      this.loginSubs = this.authService.login(values).subscribe(data => {
-        const error = data.error;
-        if (error) {
+      this.loginSubs = this.authService
+        .login(values)
+        .do(_ => _, (user) => {
+          const errors = user.error.error || 'Something went wrong';
           keys.forEach(val => {
-            this.pushErrorFor(val, error);
+            this.pushErrorFor(val, errors);
           });
-        }
-      });
+        }).subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.signInForm.controls[val];
