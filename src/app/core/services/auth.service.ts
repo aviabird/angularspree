@@ -156,7 +156,7 @@ export class AuthService {
         // Setting token after login
         localStorage.removeItem('user');
         this.store.dispatch(this.actions.logoutSuccess());
-        return res.json();
+        return res;
       });
   }
 
