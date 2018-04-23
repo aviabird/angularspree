@@ -98,7 +98,7 @@ export class AuthService {
 
   forgetPassword(data): Observable<any> {
     return this.http.post(
-      'api/passwords',
+      'api/passwords/#{data.id}',
       { spree_user: data }
     ).map((res: Response) => {
       data = res.json();
@@ -116,21 +116,12 @@ export class AuthService {
   }
 
   updatePassword(data): Observable<any> {
+    console.log(data)
     return this.http.put(
       'api/passwords',
       { spree_user: data }
     ).map((res: Response) => {
-      data = res.json();
-      if (!data.errors) {
-        this.store.dispatch(this.actions.updatePasswordSuccess());
-      } else {
-        this.http.loading.next({
-          loading: false,
-          hasError: true,
-          hasMsg: 'Something went wrong'
-        });
-      }
-      return res.json();
+      res.json();
     });
   }
 
