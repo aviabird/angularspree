@@ -40,14 +40,14 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.formSubmit = true;
 
     if (this.signUpForm.valid) {
-      this.registerSubs = this.authService.register(values).subscribe(data => {
-        const errors = data.errors;
-        if (errors) {
+      this.registerSubs = this.authService
+        .register(values)
+        .do(_ => _, (user) => {
+          const errors = user.error.errors || {};
           keys.forEach(val => {
             if (errors[val]) { this.pushErrorFor(val, errors[val][0]); };
           });
-        }
-      });
+        }).subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.signUpForm.controls[val];

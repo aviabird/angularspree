@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs/Observable';
-import { Response } from '@angular/http';
-import { HttpService } from './http';
 import { AppState } from '../../interfaces';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '../../auth/actions/auth.actions';
 import { AuthService as OauthService } from 'ng2-ui-auth';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Authenticate, User } from '../models/user';
+import { ToastyService } from 'ng2-toasty';
 
 @Injectable()
 export class AuthService {
@@ -20,41 +21,28 @@ export class AuthService {
    * @memberof AuthService
    */
   constructor(
-    private http: HttpService,
+    private http: HttpClient,
     private actions: AuthActions,
     private store: Store<AppState>,
-    private oAuthService: OauthService
+    private oAuthService: OauthService,
+    private toastyService: ToastyService
   ) {
 
   }
 
-  /**
-   *
-   *
-   * @param {any} data
-   * @returns {Observable<any>}
-   *
-   * @memberof AuthService
-   */
-  login(data): Observable<any> {
-    return this.http.post(
-      'spree/login.json',
-      { spree_user: data }
-    ).map((res: Response) => {
-      data = res.json();
-      if (!data.error) {
-        // Setting token after login
-        this.setTokenInLocalStorage(data);
+  login({ email, password }: Authenticate): Observable<any> {
+    const params = { spree_user: { email, password } };
+    return (
+      this.http.post<User>('spree/login.json', params)
+      .map(user => {
+        this.setTokenInLocalStorage(user);
         this.store.dispatch(this.actions.loginSuccess());
-      } else {
-        this.http.loading.next({
-          loading: false,
-          hasError: true,
-          hasMsg: 'Please enter valid Credentials'
-        });
-      }
-      return data;
-    });
+        return user;
+      })
+      .do(_ => _, user => this.toastyService.error({
+        title: 'ERROR!!', msg: user.error.error
+      }))
+    )
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
@@ -69,25 +57,19 @@ export class AuthService {
    *
    * @memberof AuthService
    */
-  register(data): Observable<any> {
-    return this.http.post(
-      'api/account',
-      { spree_user: data }
-    ).map((res: Response) => {
-      data = res.json();
-      if (!data.errors) {
-        // Setting token after login
-        this.setTokenInLocalStorage(res.json());
+  register(data: User): Observable<any> {
+    const params = { spree_user: data };
+    return (
+      this.http.post<User>('api/account', params)
+      .map((user) => {
+        this.setTokenInLocalStorage(user);
         this.store.dispatch(this.actions.loginSuccess());
-      } else {
-        this.http.loading.next({
-          loading: false,
-          hasError: true,
-          hasMsg: 'Please enter valid Credentials'
-        });
-      }
-      return res.json();
-    });
+        return user;
+      })
+      .do(_ => _, _ => this.toastyService.error({
+        title: 'ERROR!!', msg: 'Invalid/Existing data'
+      }))
+    )
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
@@ -104,7 +86,7 @@ export class AuthService {
   authorized(): Observable<any> {
     return this.http
       .get('spree/api/v1/users')
-      .map((res: Response) => res.json());
+      .map((res: Response) => res);
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
@@ -131,6 +113,26 @@ export class AuthService {
   /**
    *
    *
+   * @returns {{}}
+   * @memberof AuthService
+   */
+  getTokenHeader(): HttpHeaders {
+    const user = ['undefined', null]
+      .indexOf(localStorage.getItem('user')) === -1 ?
+      JSON.parse(localStorage.getItem('user')) : {};
+
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'token-type': 'Bearer',
+      'access_token': user.access_token || [],
+      'client': user.client || [],
+      'uid': user.uid || []
+    });
+  }
+
+  /**
+   *
+   *
    * @private
    * @param {any} user_data
    *
@@ -146,11 +148,11 @@ export class AuthService {
       this.setTokenInLocalStorage(res);
       return res;
     }).catch((res: Response) => {
-      this.http.loading.next({
-        loading: false,
-        hasError: true,
-        hasMsg: `Could not login with ${provider}. Error: ${res}`
-      });
+      // this.http.loading.next({
+      //   loading: false,
+      //   hasError: true,
+      //   hasMsg: `Could not login with ${provider}. Error: ${res}`
+      // });
       return Observable.of('Social login failed');
     });
   }
