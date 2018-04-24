@@ -1,3 +1,6 @@
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BrandMenuDropdownComponent } from './header/components/brand-menu-dropdown/brand-menu-dropdown.component';
+import { TypeMenuDropdownComponent } from './header/components/type-menu-dropdown/type-menu-dropdown.component';
 import { NgModule } from '@angular/core';
 
 // Components
@@ -20,6 +23,8 @@ import { RouterModule } from '@angular/router';
     HeaderCartComponent,
     HeaderHelpDropdownComponent,
     FooterComponent,
+    TypeMenuDropdownComponent,
+    BrandMenuDropdownComponent,
 
     // sub components
     ProfileDropdownComponent
@@ -32,7 +37,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     SharedModule,
-    RouterModule
+    RouterModule,
+  TabsModule.forRoot()
   ]
 })
 export class LayoutModule {}

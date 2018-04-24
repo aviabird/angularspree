@@ -4,18 +4,27 @@
       <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
         class="d-inline-block align-top" alt="">
     </a>
-    
+
     <a *ngIf="this.headerConfig.showGithubRibon" href="https://github.com/aviabird/angularspree">
       <img style="position: absolute; top: 0; right: 0; border: 0; height: 130px" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
-      alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+        alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
     </a>
-    
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <app-header-search></app-header-search>
       <app-header-help-dropdown></app-header-help-dropdown>
       <app-profile-dropdown class="pr-2" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
       <app-header-cart class="pl-2 border-left" [totalCartItems]="totalCartItems | async"></app-header-cart>
+    </div>
+  </div>
+
+</nav>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <div class="collapse navbar-collapse left-content-start">
+      <app-type-menu-dropdown></app-type-menu-dropdown>
+      <app-brand-menu-dropdown align="center"></app-brand-menu-dropdown>
     </div>
   </div>
 </nav>

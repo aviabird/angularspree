@@ -1,0 +1,13 @@
+<div class="btn-group" dropdown [autoClose]="false" container="body">
+    <button id="button-nested" dropdownToggle type="button" class="btn bg-white dropdown-toggle" aria-controls="dropdown-nested">
+      Shop By Brand
+      <span class="caret"></span>
+    </button>
+    <div id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
+      <tabset vertical="true" class="d-flex">
+        <tab heading="Brand">Brand</tab>
+        <tab heading="Brand 1">Brand 1</tab>
+        <tab heading="Brand 2">Brand 2</tab>
+      </tabset>
+    </div>
+  </div>
