@@ -167,7 +167,7 @@ export class AuthService {
    * @memberof AuthService
    */
   getTokenHeader(): HttpHeaders {
-    const user = ['undefined', null]
+    const user: User = ['undefined', null]
       .indexOf(localStorage.getItem('user')) === -1 ?
       JSON.parse(localStorage.getItem('user')) : {};
 
@@ -176,7 +176,8 @@ export class AuthService {
       'token-type': 'Bearer',
       'access_token': user.access_token || [],
       'client': user.client || [],
-      'uid': user.uid || []
+      'uid': user.uid || [],
+      'X-Spree-Token': user.spree_api_key || []
     });
   }
 
@@ -188,22 +189,22 @@ export class AuthService {
    *
    * @memberof AuthService
    */
-  private setTokenInLocalStorage(user_data): void {
+  private setTokenInLocalStorage(user_data: any): void {
     const jsonData = JSON.stringify(user_data);
     localStorage.setItem('user', jsonData);
   }
 
   socialLogin(provider: string) {
-    return this.oAuthService.authenticate(provider).map((res: Response) => {
-      this.setTokenInLocalStorage(res);
-      return res;
-    }).catch((res: Response) => {
-      // this.http.loading.next({
-      //   loading: false,
-      //   hasError: true,
-      //   hasMsg: `Could not login with ${provider}. Error: ${res}`
-      // });
-      return Observable.of('Social login failed');
-    });
+    return (
+      this.oAuthService
+        .authenticate<User>(provider)
+        .map(user => {
+          this.setTokenInLocalStorage(user);
+          return user;
+        })
+        .catch(_ => {
+          return Observable.of('Social login failed');
+        })
+    );
   }
 }
