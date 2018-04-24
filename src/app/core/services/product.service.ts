@@ -42,4 +42,12 @@ export class ProductService {
    * @memberof ProductService
    */
   getProducts(): any { return this.http.get<Array<Product>>(`/spree/api/v1/products`) }
+
+  markAsFavorite(id: number): Observable<{}> { return this.http.post<{}>(`/spree/favorite_products`, {id: id}) }
+
+  removeFromFavorite(id: number): Observable<{}> { return this.http.delete<{}>(`/spree/favorite_products/${id}`) }
+
+  getFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`/spree/favorite_products`) }
+
+
 }
