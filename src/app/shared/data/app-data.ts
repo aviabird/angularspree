@@ -28,19 +28,5 @@ export const APP_DATA = {
   promo_banner: {
     image_link: 'assets/custom/banner/promo/promo.png',
     link_url: '#'
-  },
-
-  type_drop: [{
-    name: 'Dog',
-    Food: [
-      {
-        Name: 'Dog Food',
-      },
-      {
-        Name: 'Dog Biscut'
-      }
-    ]
   }
-  ]
-
 }

@@ -1,3 +1,4 @@
+import { ProductActions } from './../../product/actions/product-actions';
 import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
 import { SearchActions } from './../../home/reducers/search.actions';
@@ -77,9 +78,11 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private authActions: AuthActions,
     private searchActions: SearchActions,
+    private actions: ProductActions,
     private router: Router
   ) {
     this.taxonomies$ = this.store.select(getTaxonomies);
+    this.store.dispatch(this.actions.getAllTaxonomies());
   }
 
   ngOnInit() {
@@ -92,5 +95,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/');
     this.store.dispatch(this.searchActions.addFilter(taxon));
   }
+
 
 }

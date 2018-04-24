@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-brand-menu-dropdown',
@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brand-menu-dropdown.component.scss']
 })
 export class BrandMenuDropdownComponent implements OnInit {
-
+  @Input() taxonomies;
   constructor() { }
 
   ngOnInit() {
   }
-
 }
