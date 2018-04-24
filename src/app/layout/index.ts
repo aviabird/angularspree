@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // tslint:disable-next-line:max-line-length
 import { BrandLogoComponent } from './header/components/categories-menu-dropdown/categories-components/categories-details/brand-logo/brand-logo.component';
+=======
+>>>>>>> effe3e4... Added Header Drop down for Shop by categeory
 import { BrandListComponent } from './header/components/brand-menu-dropdown/brand-componant/brand-list/brand-list.component';
 // tslint:disable-next-line:max-line-length
 import { CategoriesListComponent } from './header/components/categories-menu-dropdown/categories-components/categories-details/categories-list/categories-list.component';
