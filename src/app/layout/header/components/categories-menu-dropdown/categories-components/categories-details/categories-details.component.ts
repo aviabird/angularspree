@@ -6,13 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './categories-details.component.html',
   styleUrls: ['./categories-details.component.scss']
 })
-export class CategoriesDetailsComponent implements OnInit, OnChanges {
-@Input() taxons;
-  constructor() { }
+export class CategoriesDetailsComponent implements OnInit {
+  @Input() taxons;
 
+  constructor() { }
   ngOnInit() {
   }
-  ngOnChanges() {
-    console.log('categeory', this.taxons)
-  }
+
 }

@@ -4,11 +4,11 @@
     <span *ngIf="taxonomies.length!==0">{{taxonomies[0].name}}</span>
     <span class="caret"></span>
   </button>
-  <div id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
-    <tabset class="d-flex">
-      <tab heading="{{taxon.name}}" *ngFor="let taxon of taxonomies[0].root.taxons">
-        <app-brand-list [taxons]="taxon.taxons"></app-brand-list>
-      </tab>
-    </tabset>
-  </div>
+    <div id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
+      <tabset class="d-flex">
+        <tab heading="A" >
+          <app-brand-list [taxons]="taxon" *ngFor="let taxon of (taxonomies.length!==0 ? taxonomies[0].root.taxons : 0)"></app-brand-list>
+        </tab>
+      </tabset>
+    </div>
 </div>

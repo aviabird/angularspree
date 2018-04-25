@@ -7,7 +7,7 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
   templateUrl: './categories-menu-dropdown.component.html',
   styleUrls: ['./categories-menu-dropdown.component.scss']
 })
-export class CategoriesMenuDropdownComponent implements OnInit, OnChanges {
+export class CategoriesMenuDropdownComponent implements OnInit {
   @Input() taxonomies;
 
   constructor() {
@@ -16,11 +16,5 @@ export class CategoriesMenuDropdownComponent implements OnInit, OnChanges {
 
   ngOnInit() {
 
-
-  }
-
-  ngOnChanges() {
-    console.log('categeory', this.taxonomies)
-    console.log('taxon', this.taxonomies[0].root.taxons)
   }
 }

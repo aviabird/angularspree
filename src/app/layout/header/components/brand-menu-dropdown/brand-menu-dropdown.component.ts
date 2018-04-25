@@ -7,8 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BrandMenuDropdownComponent implements OnInit {
   @Input() taxonomies;
-  constructor() { }
 
+  constructor() { }
   ngOnInit() {
   }
 }

@@ -6,9 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./categories-list.component.scss']
 })
 export class CategoriesListComponent implements OnInit {
-@Input () taxons;
-  constructor() { }
+  @Input() taxons;
 
+  constructor() { }
   ngOnInit() {
   }
 }
