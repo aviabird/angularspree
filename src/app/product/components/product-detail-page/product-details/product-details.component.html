@@ -23,6 +23,10 @@
       <button (click)="addToCart()" class="pdp-add-to-bag pdp-button">ADD TO BAG</button>
     </div>
 
+    <div>
+      <button (click)="markAsFavorite()" class="btn btn-primary">Mark as favorite</button>
+    </div>
+
     <app-product-description 
       [description]="product.description" 
       class="row">
