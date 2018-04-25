@@ -1,14 +1,15 @@
 <div class="btn-group" dropdown [autoClose]="false" container="body">
   <button id="button-nested" dropdownToggle type="button" class="btn bg-white dropdown-toggle" aria-controls="dropdown-nested">
     Shop By
-    <span *ngIf="taxonomies.length!==0">{{taxonomies[0].name}}</span>
+    <span *ngIf="taxonomies[0]; let brands_taxonomy">{{brands_taxonomy.name}}</span>
     <span class="caret"></span>
   </button>
-    <div id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
-      <tabset class="d-flex">
-        <tab heading="A" >
-          <app-brand-list [taxons]="taxon" *ngFor="let taxon of (taxonomies.length!==0 ? taxonomies[0].root.taxons : 0)"></app-brand-list>
-        </tab>
-      </tabset>
-    </div>
+  <div id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
+    <tabset class="d-flex" *ngIf="taxonomies[0]; let brands_taxonomy">
+      <!-- to do -->
+      <tab heading="A">
+        <app-brand-list [taxons]="taxon" *ngFor="let taxon of brands_taxonomy.root.taxons"></app-brand-list>
+      </tab>
+    </tabset>
+  </div>
 </div>
