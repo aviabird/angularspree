@@ -2,13 +2,13 @@
   <button id="button-nested" dropdownToggle categories="button" class="btn bg-white dropdown-toggle" aria-controls="dropdown-nested"
     data-hover="dropdown">
     Shop By
-    <span *ngIf="taxonomies[0]; let brands_taxonomy">{{brands_taxonomy.name}}</span>
+    <span *ngIf="taxonomies[0]; let catgeory_taxonomy">{{catgeory_taxonomy.name}}</span>
     <span class=" caret "></span>
   </button>
   <div id="dropdown-nested " *dropdownMenu class="dropdown-menu " role="menu " aria-labelledby="button-nested ">
-    <tabset vertical="true " class="d-flex" *ngIf="taxonomies[0]; let brands_taxonomy">
-      <tab heading="{{taxon.name}} " *ngFor="let taxon of brands_taxonomy.root.taxons">
-        <app-categories-details [taxons]="taxon.taxons "></app-categories-details>
+    <tabset vertical="true " class="d-flex" *ngIf="taxonomies[0]; let catgeory_taxonomy">
+      <tab heading="{{taxon.name}} " *ngFor="let taxon of catgeory_taxonomy.root.taxons">
+        <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [taxons]="taxon.taxons" [taxonName]="taxon.name"></app-categories-details>
       </tab>
     </tabset>
   </div>

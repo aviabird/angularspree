@@ -1,3 +1,4 @@
+import { BrandLogoComponent } from './header/components/categories-menu-dropdown/categories-components/categories-details/brand-logo/brand-logo.component';
 import { BrandListComponent } from './header/components/brand-menu-dropdown/brand-componant/brand-list/brand-list.component';
 // tslint:disable-next-line:max-line-length
 import { CategoriesListComponent } from './header/components/categories-menu-dropdown/categories-components/categories-details/categories-list/categories-list.component';
@@ -33,6 +34,7 @@ import { RouterModule } from '@angular/router';
     CategoriesDetailsComponent,
     CategoriesListComponent,
     BrandListComponent,
+    BrandLogoComponent,
 
     // sub components
     ProfileDropdownComponent
