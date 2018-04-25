@@ -1,3 +1,11 @@
+import { BrandListComponent } from './header/components/brand-menu-dropdown/brand-componant/brand-list/brand-list.component';
+// tslint:disable-next-line:max-line-length
+import { CategoriesListComponent } from './header/components/categories-menu-dropdown/categories-components/categories-details/categories-list/categories-list.component';
+// tslint:disable-next-line:max-line-length
+import { CategoriesDetailsComponent } from './header/components/categories-menu-dropdown/categories-components/categories-details/categories-details.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BrandMenuDropdownComponent } from './header/components/brand-menu-dropdown/brand-menu-dropdown.component';
+import { CategoriesMenuDropdownComponent } from './header/components/categories-menu-dropdown/categories-menu-dropdown.component';
 import { NgModule } from '@angular/core';
 
 // Components
@@ -20,6 +28,11 @@ import { RouterModule } from '@angular/router';
     HeaderCartComponent,
     HeaderHelpDropdownComponent,
     FooterComponent,
+    CategoriesMenuDropdownComponent,
+    BrandMenuDropdownComponent,
+    CategoriesDetailsComponent,
+    CategoriesListComponent,
+    BrandListComponent,
 
     // sub components
     ProfileDropdownComponent
@@ -32,7 +45,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     SharedModule,
-    RouterModule
+    RouterModule,
+  TabsModule.forRoot()
   ]
 })
 export class LayoutModule {}

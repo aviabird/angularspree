@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let taxon of taxons">
+      <div>
+        <a href=#>
+          <b>{{taxon.name}}</b>
+        </a>
+        <app-categories-list [taxons]="taxon.taxons"></app-categories-list>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      Populare Brands
+    </div>
+  </div>
+</div>
