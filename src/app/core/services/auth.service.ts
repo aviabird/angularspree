@@ -119,7 +119,7 @@ export class AuthService {
       this.http
         .put(`api/passwords/${data.id}`, { spree_user: data })
         .map(_ => this.toastyService.success({ title: 'Success', msg: 'Password updated success fully!' }),
-          this.router.navigate(['/auth/login']))
+        this.router.navigate(['/auth/login']))
         .do(_ => _, _ => this.toastyService.error({
           title: 'ERROR!', msg: 'Unable to update password'
         }))
