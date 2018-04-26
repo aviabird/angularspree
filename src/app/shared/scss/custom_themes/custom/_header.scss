@@ -1,19 +1,20 @@
 .navbar {
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   color: $white;
-  @extend .bg-primary;
+  background-color: $theme-main-color;
 
   .header-cart {
     .fa-shopping-bag {
-      color: $orange + 50;
+      color: $theme-action-color;
     }
     .badge {
-      background-color: $pink + 20;
+      background-color: $theme-action-color - 50;
     }
   }
 
   .btn {
-    @extend .btn-primary, .h6;
+    background-color: $theme-main-color;
+    @extend .h6;
     margin-bottom: 0 !important;
   }
 }
