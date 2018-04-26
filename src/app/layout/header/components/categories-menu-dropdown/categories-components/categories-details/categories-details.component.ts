@@ -16,7 +16,7 @@ export class CategoriesDetailsComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
-  getImage() {
-    return this.taxon[this.taxonName].image_link;
+  get brand() {
+    return this.taxon[this.taxonName];
   }
 }

@@ -1,10 +1,10 @@
-<section class="row">
-  <div class="content">
+<section>
+  <div class="row">
     <h3>
       <a href=#>watch & learn</a>
     </h3>
-    <div class="row" dragScroll drag-scroll-y-disabled="true" #nav>
-      <video width="350" height="230" controls *ngFor="let video of videos">
+    <div class="d-flex" dragScroll drag-scroll-y-disabled="true" #nav>
+      <video class="col-3 mx-1" height="180" controls *ngFor="let video of videos">
         <source src={{video.link}} type={{video.type}}> Your browser does not support HTML5 video.
         <h4>{{video.title}}</h4>
       </video>

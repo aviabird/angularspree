@@ -1,3 +1,4 @@
+import { FavoriteProductsComponent } from './components/favorite-products/favorite-products.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { UserComponent } from './user.component';
 import { OrdersComponent } from './components/orders/orders.component';
@@ -13,7 +14,8 @@ export const UserRoutes = [
       { path: 'overview', component: OverviewComponent, redirectTo: 'orders' },
       { path: 'orders', component: OrdersComponent },
       { path: 'orders/detail/:number', component: OrderDetailComponent },
-      { path: 'addresses', component: AddressesComponent, redirectTo: 'orders' }
+      { path: 'addresses', component: AddressesComponent, redirectTo: 'orders' },
+      { path: 'favorite-products', component: FavoriteProductsComponent }
     ]
   },
 ];
