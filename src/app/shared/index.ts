@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ToastyModule } from 'ng2-toasty';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 // Pipes
 import { KeysPipe } from './pipes/keys.pipe';
@@ -28,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     // pipes
     KeysPipe,
     HumanizePipe,
-    ToastyModule
+    ToastyModule,
+    DragScrollModule
   ],
   imports: [
     FormsModule,
@@ -36,6 +38,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     BsDropdownModule.forRoot(),
     ToastyModule.forRoot(),
+    DragScrollModule
   ]
 })
 export class SharedModule {}
