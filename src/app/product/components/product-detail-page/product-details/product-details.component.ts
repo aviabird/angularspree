@@ -6,6 +6,8 @@ import { VariantRetriverService } from './../../../../core/services/variant-retr
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from './../../../../core/models/product';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
+import { ProductService } from './../../../../core/services/product.service';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-product-details',
@@ -22,11 +24,14 @@ export class ProductDetailsComponent implements OnInit {
   correspondingOptions: any;
   variantId: any;
 
-  constructor(private variantParser: VariantParserService,
-              private variantRetriver: VariantRetriverService,
-              private checkoutActions: CheckoutActions,
-              private store: Store<AppState>) {
-  }
+  constructor(
+    private variantParser: VariantParserService,
+    private variantRetriver: VariantRetriverService,
+    private checkoutActions: CheckoutActions,
+    private store: Store<AppState>,
+    private productService: ProductService,
+    private toastyService: ToastyService
+  ) {}
 
   ngOnInit() {
     this.description = this.product.description;
@@ -80,4 +85,11 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(product: Product) {
     this.store.dispatch(this.checkoutActions.addToCart(this.variantId));
   }
+
+  markAsFavorite() {
+    this.productService.markAsFavorite(this.product.id).subscribe((res) => {
+      alert(res['message']);
+    });
+  }
+
 }

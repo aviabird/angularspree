@@ -1,3 +1,4 @@
+import { Product } from './../../core/models/product';
 import { AppState } from './../../interfaces';
 import { createSelector } from 'reselect';
 import { UserState } from './user.state';
@@ -26,5 +27,10 @@ const fetchUserOrders = function(state: UserState): Order[] {
     return state.orders.toJS();
 };
 
+const fetchUserFavoriteProducts = function(state: UserState): Product[] {
+    return state.favorite_products.toJS();
+}
+
 // *************************** PUBLIC API's ****************************
 export const getUserOrders = createSelector(getUserState, fetchUserOrders);
+export const getUserFavoriteProducts = createSelector(getUserState, fetchUserFavoriteProducts);
