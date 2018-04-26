@@ -1,8 +1,8 @@
-import { CUSTOM_CONFIG } from '../config/custom';
+import { CUSTOM_CONFIG } from './../config/custom';
 
 export const environment = {
   production: false,
-  apiEndpoint: 'http://localhost:3000/',
+  apiEndpoint: CUSTOM_CONFIG.prodApiEndpoint || 'http://localhost:3000/',
   appName: CUSTOM_CONFIG.appName,
   config: CUSTOM_CONFIG
 };
