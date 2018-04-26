@@ -11,6 +11,8 @@ import { Component, OnInit, Input, ViewChild, Renderer2, ElementRef } from '@ang
 export class LpProductListComponent implements OnInit {
 
   @Input() products;
+  @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
+
   constructor() {
 
   }
@@ -21,13 +23,7 @@ export class LpProductListComponent implements OnInit {
   getProductImageUrl(url) {
     return environment.apiEndpoint + url;
   }
-  @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
-  moveLeft() {
-    this.ds.moveLeft();
-  }
-
-  moveRight() {
-    this.ds.moveRight();
-  }
+  moveLeft() { this.ds.moveLeft() }
+  moveRight() { this.ds.moveRight() }
 }

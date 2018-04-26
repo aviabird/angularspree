@@ -1,6 +1,12 @@
 <app-lp-banner></app-lp-banner>
-<app-lp-product-list [products]="products$ | async"> </app-lp-product-list>
-<app-lp-favorites [products]="products$ | async"></app-lp-favorites>
-<app-lp-promo> </app-lp-promo>
-<app-lp-brands [products]="products$ | async"></app-lp-brands>
-<app-lp-videos></app-lp-videos>
+<div class="container my-5">
+  <app-lp-product-list [products]="products$ | async"> </app-lp-product-list>
+  <hr>
+  <app-lp-favorites [products]="products$ | async"></app-lp-favorites>
+  <hr>
+  <app-lp-promo> </app-lp-promo>
+  <hr>
+  <app-lp-brands [products]="products$ | async"></app-lp-brands>
+  <hr>
+  <app-lp-videos></app-lp-videos>
+</div>
