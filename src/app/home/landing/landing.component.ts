@@ -34,7 +34,7 @@ export class LandingComponent implements OnInit {
     this.products$ = this.store.select(getProducts);
 
     this.productService.getTaxonByName(this.dealsType)
-      .flatMap(response => {
+      .switchMap(response => {
         this.taxon_by_name = response;
         this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
         return this.productService.getProducts_by_taxon(this.taxons_id);
