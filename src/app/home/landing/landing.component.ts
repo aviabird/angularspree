@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import { APP_DATA } from './../../shared/data/app-data';
 import { ProductService } from './../../core/services/product.service';
-=======
->>>>>>> 63fd9a9... Added Modified landing page
-=======
-import { APP_DATA } from './../../shared/data/app-data';
-import { ProductService } from './../../core/services/product.service';
->>>>>>> f760142... Landing Page Changes
 import { LpPromoComponent } from './lp-promo/lp-promo.component';
 import { LpVideosComponent } from './lp-videos/lp-videos.component';
 import { LpBrandsComponent } from './lp-brands/lp-brands.component';
@@ -35,17 +28,23 @@ export class LandingComponent implements OnInit {
   favoriteProducts: any;
   dealsType = APP_DATA.Deals.type;
 
+
   // dealsType is taxonomi whose value is set in app-data.ts;
 
   constructor(private store: Store<AppState>, private actions: ProductActions, private productService: ProductService) {
     this.store.dispatch(this.actions.getAllProducts());
     this.products$ = this.store.select(getProducts);
 
-    this.productService.getTaxonByName(this.dealsType)
+
+    const result = this.productService.getTaxonByName(this.dealsType)
       .switchMap(response => {
         this.taxon_by_name = response;
-        this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
-        return this.productService.getProducts_by_taxon(this.taxons_id);
+        if (this.taxon_by_name.count > 0) {
+          this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
+          return this.productService.getProducts_by_taxon(this.taxons_id);
+        } else {
+          return []
+        }
       })
       .subscribe(response => this.products_by_taxons = response);
 

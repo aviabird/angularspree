@@ -10,10 +10,10 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 })
 export class LpProductListComponent implements OnInit {
 
-  @Input() products;
+  @Input() productsByTaxons;
+  @Input() dealsType;
+  
   constructor() {
-
-  }
 
   }
 
