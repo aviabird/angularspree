@@ -8,14 +8,12 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
   styleUrls: ['./lp-favorites.component.scss']
 })
 export class LpFavoritesComponent implements OnInit {
-  @Input() products;
+  @Input() favoriteProducts;
   constructor() { }
 
   ngOnInit() {
   }
-  getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
-  }
+  
   @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
   moveLeft() {

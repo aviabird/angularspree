@@ -1,3 +1,4 @@
+import { getTaxonomies } from './../../product/reducers/selectors';
 import { Taxonomy } from './../models/taxonomy';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -43,11 +44,18 @@ export class ProductService {
    */
   getProducts(): any { return this.http.get<Array<Product>>(`/spree/api/v1/products`) }
 
-  markAsFavorite(id: number): Observable<{}> { return this.http.post<{}>(`/spree/favorite_products`, {id: id}) }
+  markAsFavorite(id: number): Observable<{}> { return this.http.post<{}>(`/spree/favorite_products`, { id: id }) }
 
   removeFromFavorite(id: number): Observable<{}> { return this.http.delete<{}>(`/spree/favorite_products/${id}`) }
 
   getFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`/spree/favorite_products`) }
 
+  // tslint:disable-next-line:max-line-length
+  getProducts_by_taxon(id: number): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(`/spree/api/v1/taxons/products?id=${id}`)
+  }
 
+  getTaxonByName(name: string): Observable<Array<Taxonomy>> {
+    return this.http.get<Array<Taxonomy>>(`/spree/api/v1/taxonomies?q[name_cont]=${name}`)
+  }
 }

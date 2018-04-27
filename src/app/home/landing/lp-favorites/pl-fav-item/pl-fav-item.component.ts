@@ -10,7 +10,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PlFavItemComponent implements OnInit {
 
   @Input() product: Product;
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
   }
