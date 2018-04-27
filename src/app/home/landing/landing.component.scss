@@ -1,0 +1,58 @@
+@import "../../shared/scss/_selected_theme_variables.scss";
+:host {
+    /deep/ .section-title {
+        color: $black;
+        text-transform: capitalize;
+        font-weight: 600;
+    }
+    /deep/ .scrollbar-hidden {
+      overflow: hidden !important;
+    }
+    /deep/ .slider-section {
+      position: relative;
+      .slider-control {
+        position: absolute;
+        right: 0;
+        top: 0;
+        .slider-btn {
+        margin: 0 3px;
+        border: 2px solid $theme-action-color;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: block;
+        text-indent: -9999px;
+        float: left;
+        background: $white;
+          &.next {
+            background-image: url(../../../../src/assets/custom/arrow-right.png);
+            background-position: 12px;
+            background-repeat: no-repeat;
+            background-size: 10px;
+          }
+          &.prv {
+            background-image: url(../../../../src/assets/custom/arrow-left.png);
+            background-position: 9px;
+            background-repeat: no-repeat;
+            background-size: 10px;
+          }
+        }
+      }
+    }
+    /deep/ .product-tile {
+      text-align: center;
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+    /deep/ .product-box {
+      border-radius: 5px;
+      border: 1px solid transparent;
+      &:hover {
+        border-color: $black - 200;
+      }
+    }
+}
