@@ -1,3 +1,4 @@
+import { getTaxonomies } from './../../product/reducers/selectors';
 import { Taxonomy } from './../models/taxonomy';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -49,5 +50,12 @@ export class ProductService {
 
   getFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`favorite_products`) }
 
+  // tslint:disable-next-line:max-line-length
+  getProducts_by_taxon(id: number): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(`api/v1/taxons/products?id=${id}`)
+  }
 
+  getTaxonByName(name: string): Observable<Array<Taxonomy>> {
+    return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?q[name_cont]=${name}`)
+  }
 }

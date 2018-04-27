@@ -1,3 +1,5 @@
+import { APP_DATA } from './../../shared/data/app-data';
+import { ProductService } from './../../core/services/product.service';
 import { LpPromoComponent } from './lp-promo/lp-promo.component';
 import { LpVideosComponent } from './lp-videos/lp-videos.component';
 import { LpBrandsComponent } from './lp-brands/lp-brands.component';
@@ -19,10 +21,28 @@ import { DragScrollDirective } from 'ngx-drag-scroll';
 })
 export class LandingComponent implements OnInit {
   products$: Observable<any>;
+  products_by_taxons: any;
+  taxon_by_name: any;
+  taxons_id: number;
+  favoriteProducts: any;
+  dealsType = APP_DATA.Deals.type;
 
-  constructor(private store: Store<AppState>, private actions: ProductActions) {
+  // dealsType is taxonomi whose value is set in app-data.ts;
+
+  constructor(private store: Store<AppState>, private actions: ProductActions, private productService: ProductService) {
     this.store.dispatch(this.actions.getAllProducts());
     this.products$ = this.store.select(getProducts);
+
+    this.productService.getTaxonByName(this.dealsType)
+      .flatMap(response => {
+        this.taxon_by_name = response;
+        this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
+        return this.productService.getProducts_by_taxon(this.taxons_id);
+      })
+      .subscribe(response => this.products_by_taxons = response);
+
+    this.productService.getFavoriteProducts()
+      .subscribe(response => this.favoriteProducts = response)
   }
 
   ngOnInit() {

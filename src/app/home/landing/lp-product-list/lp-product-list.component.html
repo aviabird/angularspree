@@ -1,8 +1,8 @@
-<section>
+<section *ngIf="productsByTaxons">
   <div class="row slider-section">
     <h3>
-      <a href=# class="section-title">Todays' Deal</a>
-      <p *ngIf="products.length === 0">No Products found for this category</p>
+      <a href=# class="section-title">{{dealsType}}</a>
+      <p *ngIf="productsByTaxons.products.length === 0">No Products found for this category</p>
     </h3>
     <div class="slider-control">
       <button button color="primary " (click)="moveLeft() " class="slider-btn prv">left</button>
@@ -10,6 +10,7 @@
     </div>
   </div>
   <div class="d-flex scrollbar-hidden" #nav dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true">
-    <app-pl-item class="col product-box" *ngFor="let product of products | slice:0:10" [product]="product"></app-pl-item>
+    <app-pl-item class="col product-box" *ngFor="let product of productsByTaxons.products | slice:0:10" [product]="product"></app-pl-item>
   </div>
+  <hr>
 </section>
