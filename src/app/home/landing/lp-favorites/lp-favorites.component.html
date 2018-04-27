@@ -1,4 +1,4 @@
-<section class="mt-3">
+<section class="mt-3" *ngIf="favoriteProducts">
   <div class="row slider-section">
     <h3>
       <a href=# class="section-title">Customer Favorites</a>
@@ -12,4 +12,5 @@
   <div class="d-flex scrollbar-hidden" dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true" #nav>
     <app-pl-fav-item class="col product-box" *ngFor="let product of favoriteProducts | slice:0:10" [product]="product"></app-pl-fav-item>
   </div>
+  <hr>
 </section>

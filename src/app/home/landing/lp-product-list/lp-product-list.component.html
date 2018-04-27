@@ -1,4 +1,4 @@
-<section ngIf="productsByTaxons">
+<section *ngIf="productsByTaxons">
   <div class="row slider-section">
     <h3>
       <a href=# class="section-title">{{dealsType}}</a>
@@ -12,4 +12,5 @@
   <div class="d-flex scrollbar-hidden" #nav dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true">
     <app-pl-item class="col product-box" *ngFor="let product of productsByTaxons.products | slice:0:10" [product]="product"></app-pl-item>
   </div>
+  <hr>
 </section>
