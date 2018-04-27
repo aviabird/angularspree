@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="d-flex scrollbar-hidden" #nav dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true">
-    <app-pl-item class="col product-box" *ngFor="let product of productsByTaxons.products | slice:0:10" [product]="product"></app-pl-item>
+    <app-pl-item class="col-md-2 product-box" *ngFor="let product of productsByTaxons.products | slice:0:10" [product]="product"></app-pl-item>
   </div>
   <hr>
 </section>

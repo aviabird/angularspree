@@ -27,7 +27,6 @@ export class LandingComponent implements OnInit {
   favoriteProducts: any;
   dealsType = APP_DATA.Deals.type;
 
-
   // dealsType is taxonomi whose value is set in app-data.ts;
 
   constructor(private store: Store<AppState>, private actions: ProductActions, private productService: ProductService) {

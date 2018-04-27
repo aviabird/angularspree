@@ -1,6 +1,6 @@
 export const DEFAULT_CONFIG = {
   // Add Your custom configs here
-  prodApiEndpoint: 'https://my-prod.api.example.com/',
+  prodApiEndpoint: 'https://angularspree-new.herokuapp.com/',
   appName: 'Angularspree',
   header: {
     brand: {
