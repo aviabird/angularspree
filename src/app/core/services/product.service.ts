@@ -24,7 +24,7 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getProduct(id: string): Observable<any> { return this.http.get<Product>(`/spree/api/v1/products/${id}`) }
+  getProduct(id: string): Observable<any> { return this.http.get<Product>(`api/v1/products/${id}`) }
 
   /**
    *
@@ -33,7 +33,7 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`/spree/api/v1/taxonomies?set=nested`) }
+  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?set=nested`) }
 
   /**
    *
@@ -42,20 +42,20 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getProducts(): any { return this.http.get<Array<Product>>(`/spree/api/v1/products`) }
+  getProducts(): any { return this.http.get<Array<Product>>(`api/v1/products`) }
 
-  markAsFavorite(id: number): Observable<{}> { return this.http.post<{}>(`/spree/favorite_products`, { id: id }) }
+  markAsFavorite(id: number): Observable<{}> { return this.http.post<{}>(`favorite_products`, {id: id}) }
 
-  removeFromFavorite(id: number): Observable<{}> { return this.http.delete<{}>(`/spree/favorite_products/${id}`) }
+  removeFromFavorite(id: number): Observable<{}> { return this.http.delete<{}>(`favorite_products/${id}`) }
 
-  getFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`/spree/favorite_products`) }
+  getFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`favorite_products`) }
 
   // tslint:disable-next-line:max-line-length
   getProducts_by_taxon(id: number): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`/spree/api/v1/taxons/products?id=${id}`)
+    return this.http.get<Array<Product>>(`api/v1/taxons/products?id=${id}`)
   }
 
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
-    return this.http.get<Array<Taxonomy>>(`/spree/api/v1/taxonomies?q[name_cont]=${name}`)
+    return this.http.get<Array<Taxonomy>>(`/api/v1/taxonomies?q[name_cont]=${name}`)
   }
 }
