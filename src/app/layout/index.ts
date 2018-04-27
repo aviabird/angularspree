@@ -1,3 +1,8 @@
+import { FooterQuickLinksComponent } from './footer/component/footer-quick-links/footer-quick-links.component';
+import { FooterSocialLinksComponent } from './footer/component/footer-social-links/footer-social-links.component';
+import { FooterContactInfoComponent } from './footer/component/footer-contact-info/footer-contact-info.component';
+
+// tslint:disable-next-line:max-line-length
 import { BrandLogoComponent } from './header/components/categories-menu-dropdown/categories-components/categories-details/brand-logo/brand-logo.component';
 import { BrandListComponent } from './header/components/brand-menu-dropdown/brand-componant/brand-list/brand-list.component';
 // tslint:disable-next-line:max-line-length
@@ -35,6 +40,9 @@ import { RouterModule } from '@angular/router';
     CategoriesListComponent,
     BrandListComponent,
     BrandLogoComponent,
+    FooterContactInfoComponent,
+    FooterSocialLinksComponent,
+    FooterQuickLinksComponent,
 
     // sub components
     ProfileDropdownComponent
@@ -48,7 +56,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     SharedModule,
     RouterModule,
-  TabsModule.forRoot()
+    TabsModule.forRoot()
   ]
 })
-export class LayoutModule {}
+export class LayoutModule { }
