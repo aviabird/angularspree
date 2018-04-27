@@ -11,7 +11,6 @@ export class CategoriesDetailsComponent implements OnInit {
   @Input() taxonName;
   @Input() BTaxon;
 
-  catgeroy_wise_brands_logos = APP_DATA.catgeroy_wise_brands_logo;
   taxon = APP_DATA;
   constructor() { }
   ngOnInit() {

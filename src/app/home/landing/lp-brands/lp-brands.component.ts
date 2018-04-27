@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./lp-brands.component.scss']
 })
 export class LpBrandsComponent implements OnInit {
-  @Input() products;
+  @Input() brands;
   constructor() { }
 
   ngOnInit() {

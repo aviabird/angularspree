@@ -1,7 +1,8 @@
-<section class="row">
+<section *ngIf="promo_banners">
   <div class="row">
     <a href={{promo_banners.link_url}}>
       <img src={{promo_banners.image_link}} class="img-fluid">
     </a>
   </div>
+  <hr>
 </section>

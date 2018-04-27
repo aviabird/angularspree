@@ -1,8 +1,8 @@
-<section class="mt-3">
+<section class="mt-3" *ngIf="favoriteProducts">
   <div class="row slider-section">
     <h3>
       <a href=# class="section-title">Customer Favorites</a>
-      <p *ngIf="products.length === 0">No Products found for this category</p>
+      <p *ngIf="favoriteProducts.length === 0">No Products found for this category</p>
     </h3>
     <div class="slider-control">
       <button button color="primary " (click)="moveLeft() " class="slider-btn prv">left</button>
@@ -10,6 +10,7 @@
     </div>
   </div>
   <div class="d-flex scrollbar-hidden" dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true" #nav>
-    <app-pl-fav-item class="col product-box" *ngFor="let product of products | slice:0:10" [product]="product"></app-pl-fav-item>
+    <app-pl-fav-item class="col product-box" *ngFor="let product of favoriteProducts | slice:0:10" [product]="product"></app-pl-fav-item>
   </div>
+  <hr>
 </section>

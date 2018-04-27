@@ -1,7 +1,7 @@
 import { PlItemComponent } from './pl-item/pl-item.component';
 import { DragScrollDirective } from 'ngx-drag-scroll';
 import { environment } from './../../../../environments/environment';
-import { Component, OnInit, Input, ViewChild, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-lp-product-list',
@@ -10,7 +10,9 @@ import { Component, OnInit, Input, ViewChild, Renderer2, ElementRef } from '@ang
 })
 export class LpProductListComponent implements OnInit {
 
-  @Input() products;
+  @Input() productsByTaxons;
+  @Input() dealsType;
+  
   @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
   constructor() {
@@ -18,10 +20,6 @@ export class LpProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
   }
 
   moveLeft() { this.ds.moveLeft() }
