@@ -12,7 +12,7 @@ export class LpProductListComponent implements OnInit {
 
   @Input() productsByTaxons;
   @Input() dealsType;
-  
+
   @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
   constructor() {
