@@ -10,11 +10,11 @@
     }
     /deep/ .slider-section {
       position: relative;
-      /deep/ .slider-control {
+      .slider-control {
         position: absolute;
         right: 0;
         top: 0;
-        /deep/ .slider-btn {
+        .slider-btn {
         margin: 0 3px;
         border: 2px solid $theme-action-color;
         -webkit-border-radius: 50%;
