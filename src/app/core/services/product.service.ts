@@ -56,6 +56,6 @@ export class ProductService {
   }
 
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
-    return this.http.get<Array<Taxonomy>>(`/api/v1/taxonomies?q[name_cont]=${name}`)
+    return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?q[name_cont]=${name}`)
   }
 }
