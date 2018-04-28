@@ -36,14 +36,14 @@ export class LandingComponent implements OnInit {
     const result = this.productService.getTaxonByName(this.dealsType)
       .switchMap(response => {
         this.taxon_by_name = response;
-        if (this.taxon_by_name.count < 0) {
+        if (this.taxon_by_name.count > 0) {
           this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
           return this.productService.getProducts_by_taxon(this.taxons_id);
         } else {
           return []
         }
       })
-    result.subscribe(response => this.products_by_taxons = response);
+      .subscribe(response => this.products_by_taxons = response);
 
     this.productService.getFavoriteProducts()
       .subscribe(response => this.favoriteProducts = response)
