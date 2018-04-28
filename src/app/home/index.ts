@@ -15,7 +15,7 @@ import { NgModule } from '@angular/core';
 import { ProductActions } from './../product/actions/product-actions';
 import { SearchActions } from './reducers/search.actions';
 import { SharedModule } from './../shared/index';
-import { CarouselModule } from 'ngx-bootstrap';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 // Components
