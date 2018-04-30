@@ -28,7 +28,7 @@ export class UserEffects {
   @Effect()
   GetUserFavoriteProducts$: Observable<Action> = this.actions$
     .ofType(UserActions.GET_USER_FAVORITE_PRODUCTS)
-    .switchMap(() => this.productService.getFavoriteProducts())
+    .switchMap(() => this.productService.getUserFavoriteProducts())
     .map((products) => this.userActions.getUserFavoriteProductsSuccess(products));
 
 }
