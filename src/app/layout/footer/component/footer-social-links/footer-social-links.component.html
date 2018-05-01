@@ -1,0 +1,9 @@
+<section>
+  <ul class="line">
+    <li class="line" *ngFor="let social of social_links">
+      <a href={{social.link_url}} target="_blank">
+        <i class="{{social.icon}} fa-2x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</section>

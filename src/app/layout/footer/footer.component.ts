@@ -1,3 +1,4 @@
+import { APP_DATA } from './../../shared/data/app-data';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
+  contact_info = APP_DATA.contact_info;
   constructor() { }
 
   ngOnInit() {
