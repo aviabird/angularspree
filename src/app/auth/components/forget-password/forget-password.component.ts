@@ -43,7 +43,7 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
         .forgetPassword(values)
         .do(_ => {
           this.emailSent = true,
-          this.sentEmail = values.email
+            this.sentEmail = values.email
         }, (user) => {
           const errors = user.error.error || 'Something went wrong';
           keys.forEach(val => {
