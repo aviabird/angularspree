@@ -71,7 +71,7 @@ export class AuthService {
   register(data: User): Observable<User> {
     const params = { spree_user: data };
     return (
-      this.http.post<User>('api/account', params)
+      this.http.post<User>('auth/accounts.json', params)
         .map((user) => {
           this.setTokenInLocalStorage(user);
           this.store.dispatch(this.actions.loginSuccess());
@@ -98,7 +98,7 @@ export class AuthService {
   forgetPassword(data: User): Observable<any> {
     return (
       this.http
-        .post('api/passwords', { spree_user: data })
+        .post('auth/passwords.json', { spree_user: data })
         .map(_ => this.toastyService.success({ title: 'Success', msg: 'Password reset link has be sent to your email.' }),
       )
         .do(_ => _, _ => this.toastyService.error({
@@ -117,7 +117,7 @@ export class AuthService {
   updatePassword(data: User): Observable<void> {
     return (
       this.http
-        .put(`api/passwords/${data.id}`, { spree_user: data })
+        .put(`auth/passwords/${data.id}.json`, { spree_user: data })
         .map(_ => this.toastyService.success({ title: 'Success', msg: 'Password updated success fully!' }),
         this.router.navigate(['/auth/login']))
         .do(_ => _, _ => this.toastyService.error({
