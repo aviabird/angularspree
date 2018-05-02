@@ -1,6 +1,8 @@
 <tr>
+  <td>
+    <img [src]="getProductImageUrl()" width="150px" height="150px">
+  </td>
   <td>{{ product.name }}</td>
-  <td>{{ product.description }}</td>
   <td>
     <button (click)="removeFromFavorite(product.id)" class="btn btn-primary">Remove</button>
   </td>
