@@ -1,3 +1,4 @@
+import { getUserFavoriteProducts } from './../../user/reducers/selector';
 import { getTaxonomies } from './../../product/reducers/selectors';
 import { Taxonomy } from './../models/taxonomy';
 import { HttpClient } from '@angular/common/http';
@@ -48,7 +49,9 @@ export class ProductService {
 
   removeFromFavorite(id: number): Observable<{}> { return this.http.delete<{}>(`favorite_products/${id}`) }
 
-  getFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`favorite_products`) }
+  getFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`favorite_products.json`) }
+
+  getUserFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`spree/user_favorite_products.json`) }
 
   // tslint:disable-next-line:max-line-length
   getProducts_by_taxon(id: number): Observable<Array<Product>> {
