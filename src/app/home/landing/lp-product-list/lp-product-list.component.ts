@@ -13,14 +13,13 @@ export class LpProductListComponent implements OnInit {
   @Input() productsByTaxons;
   @Input() dealsType;
   
-  @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
-
   constructor() {
 
   }
 
   ngOnInit() {
   }
+  @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
   moveLeft() { this.ds.moveLeft() }
   moveRight() { this.ds.moveRight() }
