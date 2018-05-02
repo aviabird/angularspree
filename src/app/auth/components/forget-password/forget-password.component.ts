@@ -16,6 +16,8 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
   forgetPasswordForm: FormGroup;
   forgetPasswordSubs: Subscription;
   returnUrl: string;
+  emailSent = false;
+  sentEmail = '';
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +26,9 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
     private router: Router,
     private actions: AuthActions,
     private authService: AuthService
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
     this.initForm();
@@ -37,7 +41,10 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
     if (this.forgetPasswordForm.valid) {
       this.forgetPasswordSubs = this.authService
         .forgetPassword(values)
-        .do(_ => _, (user) => {
+        .do(_ => {
+          this.emailSent = true,
+            this.sentEmail = values.email
+        }, (user) => {
           const errors = user.error.error || 'Something went wrong';
           keys.forEach(val => {
             this.pushErrorFor(val, errors);

@@ -1,3 +1,4 @@
+import { DragScrollModule } from 'ngx-drag-scroll';
 import { LpPromoComponent } from './landing/lp-promo/lp-promo.component';
 import { PlFavItemComponent } from './landing/lp-favorites/pl-fav-item/pl-fav-item.component';
 import { PlItemComponent } from './landing/lp-product-list/pl-item/pl-item.component';
@@ -68,6 +69,7 @@ import { reducers } from './reducers/index';
   imports: [
     RouterModule.forChild(routes),
     CarouselModule,
+    DragScrollModule,
 
     /**
      * StoreModule.forFeature is used for composing state
