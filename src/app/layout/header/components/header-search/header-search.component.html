@@ -1,6 +1,7 @@
-<form class="desktop-query form-inline my-2 my-lg-0">
-  <input class="desktop-searchBar bg-white" type="search" placeholder="Find the best for your pets..." aria-label="Search">
+<form class="desktop-query form-inline my-2 my-lg-0" >
+  <input class="desktop-searchBar bg-white" type="search" 
+  placeholder="Find the best for your pets..." aria-label="Search" #box (keyup.enter)="onSearch(box.value)">
   <a class="desktop-submit bg-white">
-    <span class="web-sprite desktop-iconSearch sprites-search"></span>
+    <span class="web-sprite desktop-iconSearch sprites-search" (click)="onSearch(box.value)"></span>
   </a>
 </form>
