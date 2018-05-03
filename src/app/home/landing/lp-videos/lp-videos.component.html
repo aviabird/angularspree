@@ -9,7 +9,7 @@
       <button button color="primary " (click)="moveRight() " class="slider-btn next">right</button>
     </div>
     <div class="d-flex scrollbar-hidden" dragScroll drag-scroll-y-disabled="true" #nav>
-      <video class="col-11 col-sm-5 col-lg-3 mx-1 bg-secondary" height="180" controls *ngFor="let video of videos">
+      <video class="col-11 col-sm-5 col-lg-3 mx-2 bg-secondary" height="180" controls *ngFor="let video of videos">
         <source src={{video.link}} type={{video.type}}> Your browser does not support HTML5 video.
         <h4>{{video.title}}</h4>
       </video>
