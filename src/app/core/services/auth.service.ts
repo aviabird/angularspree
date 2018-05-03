@@ -50,7 +50,7 @@ export class AuthService {
           this.store.dispatch(this.actions.loginSuccess());
           return user;
         })
-        .do(_ => _, user => this.toastyService.error({
+        .do(_ => this.router.navigate(['/']), user => this.toastyService.error({
           title: 'ERROR!!', msg: user.error.error
         }))
     )
@@ -71,7 +71,7 @@ export class AuthService {
   register(data: User): Observable<User> {
     const params = { spree_user: data };
     return (
-      this.http.post<User>('api/account', params)
+      this.http.post<User>('auth/accounts', params)
         .map((user) => {
           this.setTokenInLocalStorage(user);
           this.store.dispatch(this.actions.loginSuccess());
@@ -98,8 +98,11 @@ export class AuthService {
   forgetPassword(data: User): Observable<any> {
     return (
       this.http
-        .post('api/passwords', { spree_user: data })
-        .map(_ => this.toastyService.success({ title: 'Success', msg: 'Password reset link has be sent to your email.' }),
+        .post('auth/passwords', { spree_user: data })
+        .map(_ => this.toastyService.success({
+          title: 'Success',
+          msg: 'Password reset link has be sent to your email.'
+        }),
       )
         .do(_ => _, _ => this.toastyService.error({
           title: 'ERROR!!', msg: 'Not a valid email/user'
@@ -117,9 +120,11 @@ export class AuthService {
   updatePassword(data: User): Observable<void> {
     return (
       this.http
-        .put(`api/passwords/${data.id}`, { spree_user: data })
-        .map(_ => this.toastyService.success({ title: 'Success', msg: 'Password updated success fully!' }),
-        this.router.navigate(['/auth/login']))
+        .put(`auth/passwords/${data.id}`, { spree_user: data })
+        .map(_ => this.toastyService.success({
+          title: 'Success',
+          msg: 'Password updated success fully!'
+        }))
         .do(_ => _, _ => this.toastyService.error({
           title: 'ERROR!', msg: 'Unable to update password'
         }))

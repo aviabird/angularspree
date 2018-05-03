@@ -19,6 +19,7 @@ export class UpdatePasswordComponent implements OnInit {
   token: string;
   email: string;
   id: string;
+  passwordReset = false;
 
   constructor(
     private fb: FormBuilder,
@@ -45,7 +46,7 @@ export class UpdatePasswordComponent implements OnInit {
     if (this.updatePasswordForm.valid) {
       this.updatePasswordSubs = this.authService
         .updatePassword(values)
-        .do(_ => _, (user) => {
+        .do(_ => this.passwordReset = true, (user) => {
           const errors = user.error.error || 'Something went wrong';
           keys.forEach(val => {
             this.pushErrorFor(val, errors);
