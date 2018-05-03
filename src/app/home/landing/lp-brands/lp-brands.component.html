@@ -9,7 +9,7 @@
     <div class="col-6 col-md-2 my-2" *ngFor="let product of brands | slice:0:12">
       <div class="card">
         <a [routerLink]="['/product/', product.slug]">
-          <img class="card-img-top w-100" [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+          <img class="card-img-top" height="200" [src]="getProductImageUrl(product.master.images[0]?.large_url)">
         </a>
       </div>
     </div>
