@@ -1,9 +1,9 @@
 <section class="mt-3" *ngIf="favoriteProducts">
   <div class="row slider-section">
-    <h3>
-      <a href=# class="section-title">Customer Favorites</a>
+    <div>
+      <a href=# class="section-title h3">Customer Favorites</a>
       <p *ngIf="favoriteProducts.length === 0">No Products found for this category</p>
-    </h3>
+    </div>
     <div class="slider-control">
       <button button color="primary " (click)="moveLeft() " class="slider-btn prv">left</button>
       <button button color="primary " (click)="moveRight() " class="slider-btn next">right</button>
