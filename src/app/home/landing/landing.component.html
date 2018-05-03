@@ -1,7 +1,7 @@
 <app-lp-banner></app-lp-banner>
 <div class="container my-5">
   <app-lp-product-list [productsByTaxons]="products_by_taxons" [dealsType]="dealsType"> </app-lp-product-list>
-  <app-lp-favorites [favoriteProducts]="products$ | async"></app-lp-favorites>
+  <app-lp-favorites [favoriteProducts]="favoriteProducts"></app-lp-favorites>
   <app-lp-promo> </app-lp-promo>
   <app-lp-brands [brands]="products$ | async"></app-lp-brands>
   <app-lp-videos></app-lp-videos>

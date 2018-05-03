@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header-search.component.scss']
 })
 export class HeaderSearchComponent implements OnInit {
-
+  values = '';
   constructor() { }
 
   ngOnInit() {
   }
-
+  onSearch(keyword: string) {
+    console.log(keyword);
+  }
 }

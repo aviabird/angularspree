@@ -11,13 +11,14 @@ export class PlFavItemComponent implements OnInit {
 
   @Input() product: Product;
   constructor() {
-   }
+  }
 
   ngOnInit() {
   }
 
-  getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+  getProductImageUrl() {
+    // tslint:disable-next-line:max-line-length
+    return environment.apiEndpoint + `/spree/products/${this.product.master.images[0].id}/product/${this.product.master.images[0].attachment_file_name}`
   }
 
 }
