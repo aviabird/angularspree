@@ -1,8 +1,8 @@
 <ul class="nav navbar-nav navbar-right">
 
-  <div class="btn-group" dropdown *ngIf="!isAuthenticated">
+  <div class="btn-group" dropdown *ngIf="!email">
     <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle" aria-controls="dropdown-basic">
-      <i class="fa fa-user" aria-hidden="true"></i>
+        <strong>Login & SignUp</strong>
       <span class="caret"></span>
     </button>
     <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
@@ -16,9 +16,10 @@
     </ul>
   </div>
 
-  <div class="btn-group" dropdown *ngIf="isAuthenticated">
+  <div class="btn-group" dropdown *ngIf="email">
     <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle" aria-controls="dropdown-basic">
       <i class="fa fa-user" aria-hidden="true"></i>
+      <strong>{{email}}</strong>
       <span class="caret"></span>
     </button>
     <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">

@@ -1,26 +1,25 @@
 import { DragScrollDirective } from 'ngx-drag-scroll';
-import { environment } from './../../../../environments/environment';
 import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-lp-product-list',
-  templateUrl: './lp-product-list.component.html',
-  styleUrls: ['./lp-product-list.component.scss'],
+  selector: 'app-lp-top-rated',
+  templateUrl: './lp-top-rated.component.html',
+  styleUrls: ['./lp-top-rated.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LpProductListComponent implements OnInit {
+export class LpTopRatedComponent implements OnInit {
 
-  @Input() productsByTaxons;
-  @Input() dealsType;
-  
-  constructor() {
+  @Input() topRatedBrands;
 
-  }
+  constructor() { }
 
   ngOnInit() {
   }
+
+  // tslint:disable-next-line:member-ordering
   @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
   moveLeft() { this.ds.moveLeft() }
   moveRight() { this.ds.moveRight() }
+
 }

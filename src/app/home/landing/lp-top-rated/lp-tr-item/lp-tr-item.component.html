@@ -1,0 +1,11 @@
+<div class="product-tile">
+  <a [routerLink]="['/product/', product.slug]">
+    <img width="150" height="200" [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+    <p> {{ product.name }} </p>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+  </a>
+</div>

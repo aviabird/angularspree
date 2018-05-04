@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LpVideosComponent } from './lp-videos.component';
+import { LpTrItemComponent } from './lp-tr-item.component';
 
-describe('LpVideosComponent', () => {
-  let component: LpVideosComponent;
-  let fixture: ComponentFixture<LpVideosComponent>;
+describe('LpTrItemComponent', () => {
+  let component: LpTrItemComponent;
+  let fixture: ComponentFixture<LpTrItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LpVideosComponent ]
+      declarations: [ LpTrItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LpVideosComponent);
+    fixture = TestBed.createComponent(LpTrItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
