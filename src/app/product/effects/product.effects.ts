@@ -44,5 +44,12 @@ export class ProductEffects {
     .ofType(SearchActions.GET_PRODUCTS_BY_KEYWORD)
     .switchMap((action: any) => this.productService.getproductsByKeyword(action.payload))
     .map((data: any) => this.searchActions.getProducsByKeywordSuccess({ products: data }))
+
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  GetProductsByTaxons$: Observable<Action> = this.actions$
+    .ofType(SearchActions.GET_PRODUCTS_BY_TAXON)
+    .switchMap((action: any) => this.productService.getProducts_by_taxon(action.payload))
+    .map((data: any) => this.searchActions.getProducsByKeywordSuccess({ products: data }))
 }
 

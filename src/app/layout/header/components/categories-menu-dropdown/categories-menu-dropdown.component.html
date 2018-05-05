@@ -8,7 +8,7 @@
   <div id="dropdown-nested " *dropdownMenu class="dropdown-menu " role="menu " aria-labelledby="button-nested ">
     <tabset vertical="true " class="d-flex" *ngIf="taxonomies[0]; let catgeory_taxonomy">
       <tab heading="{{taxon.name}} " *ngFor="let taxon of catgeory_taxonomy.root.taxons">
-        <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [taxons]="taxon.taxons" [taxonName]="taxon.name"></app-categories-details>
+        <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [taxons]="taxon.taxons" [taxonName]="taxon.name" (click)="get_categeory()"></app-categories-details>
       </tab>
     </tabset>
   </div>
