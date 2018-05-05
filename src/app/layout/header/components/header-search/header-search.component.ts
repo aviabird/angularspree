@@ -27,4 +27,5 @@ export class HeaderSearchComponent implements OnInit {
       localStorage.setItem('searchKeyword', keyword);
     }
   }
+
 }
