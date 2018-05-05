@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 
@@ -8,10 +9,10 @@ import { AuthService } from '../../../../core/services/auth.service';
 })
 export class ProfileDropdownComponent implements OnInit, OnChanges {
   @Input() isAuthenticated;
-  email = this.isAuthenticated;
+  email = '';
   currentUser: any;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
@@ -21,15 +22,16 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
     this.currentUser = JSON.parse(localStorage.getItem('user'))
     if (this.currentUser) {
       this.email = this.currentUser.email
-    } else {
-      this.email = false;
     }
   }
 
   logout() {
-    this.authService.logout().subscribe(
-      data => console.log(data)
-    );
+    this.authService.logout().
+      subscribe(data => console.log(data));
+  }
+
+  login() {
+    this.router.navigate(['/auth/login'])
   }
 
 }

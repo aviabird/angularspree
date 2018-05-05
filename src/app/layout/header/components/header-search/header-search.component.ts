@@ -1,3 +1,6 @@
+import { SearchActions } from './../../../../home/reducers/search.actions';
+import { AppState } from './../../../../interfaces';
+import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderSearchComponent implements OnInit {
   values = '';
-  constructor() { }
+  constructor(
+    private store: Store<AppState>,
+    private searchActions: SearchActions
+  ) { }
 
   ngOnInit() {
   }
   onSearch(keyword: string) {
-    console.log(keyword);
+    if (keyword !== '') {
+      this.store.dispatch(this.searchActions.getproductsByKeyword(keyword));
+    }
   }
+
 }
