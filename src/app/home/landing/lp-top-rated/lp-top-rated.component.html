@@ -1,0 +1,16 @@
+<section *ngIf="topRatedBrands">
+  <div class="row slider-section">
+    <div>
+      <a href=# class="section-title h3">Top-Rated Brands</a>
+      <p *ngIf="topRatedBrands.length === 0">No Products found for this category</p>
+    </div>
+    <div class="slider-control">
+      <button button color="primary " (click)="moveLeft() " class="slider-btn prv">left</button>
+      <button button color="primary " (click)="moveRight() " class="slider-btn next">right</button>
+    </div>
+  </div>
+  <div class="d-flex scrollbar-hidden" #nav dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true">
+  <app-lp-tr-item class="col-md-2 product-box" *ngFor="let product of topRatedBrands | slice:0:10" [product]="product"></app-lp-tr-item>
+  </div>
+  <hr>
+</section>

@@ -1,11 +1,12 @@
 import { DragScrollDirective } from 'ngx-drag-scroll';
 import { environment } from './../../../../environments/environment';
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-lp-favorites',
   templateUrl: './lp-favorites.component.html',
-  styleUrls: ['./lp-favorites.component.scss']
+  styleUrls: ['./lp-favorites.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LpFavoritesComponent implements OnInit {
   @Input() favoriteProducts;
