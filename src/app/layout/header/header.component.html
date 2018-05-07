@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <app-header-search></app-header-search>
       <app-header-help-dropdown></app-header-help-dropdown>
-      <app-profile-dropdown class="pr-2" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
+      <app-profile-dropdown class="pr-2" [isAuthenticated]="isAuthenticated | async" ></app-profile-dropdown>
       <app-header-cart class="pl-2 border-left" [totalCartItems]="totalCartItems | async"></app-header-cart>
     </div>
   </div>
