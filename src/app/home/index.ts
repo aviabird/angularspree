@@ -1,8 +1,9 @@
+import { LpTrItemComponent } from './landing/lp-top-rated/lp-tr-item/lp-tr-item.component';
+import { LpTopRatedComponent } from './landing/lp-top-rated/lp-top-rated.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { LpPromoComponent } from './landing/lp-promo/lp-promo.component';
 import { PlFavItemComponent } from './landing/lp-favorites/pl-fav-item/pl-fav-item.component';
 import { PlItemComponent } from './landing/lp-product-list/pl-item/pl-item.component';
-import { LpVideosComponent } from './landing/lp-videos/lp-videos.component';
 import { LpBrandsComponent } from './landing/lp-brands/lp-brands.component';
 import { LpFavoritesComponent } from './landing/lp-favorites/lp-favorites.component';
 import { LpProductListComponent } from './landing/lp-product-list/lp-product-list.component';
@@ -57,10 +58,11 @@ import { reducers } from './reducers/index';
     LpProductListComponent,
     LpFavoritesComponent,
     LpBrandsComponent,
-    LpVideosComponent,
     PlItemComponent,
     PlFavItemComponent,
     LpPromoComponent,
+    LpTopRatedComponent,
+    LpTrItemComponent,
     // pipes
     FilterPipe
   ],
@@ -96,4 +98,4 @@ import { reducers } from './reducers/index';
     SearchActions
   ]
 })
-export class HomeModule {}
+export class HomeModule { }

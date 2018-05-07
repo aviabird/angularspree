@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   isAuthenticated: Observable<boolean>;
   totalCartItems: Observable<number>;
   taxonomies$: Observable<any>;
+  user$: Observable<any>;
   headerConfig = environment.config.header;
   taxonList = [{
     'id': 4,
@@ -30,7 +31,8 @@ export class HeaderComponent implements OnInit {
     'permalink': 'categories/mugs',
     'parent_id': 1,
     'taxonomy_id': 1,
-    'taxons': null},
+    'taxons': null
+  },
   {
     'id': 3,
     'name': 'Bags',
@@ -48,7 +50,7 @@ export class HeaderComponent implements OnInit {
     'taxonomy_id': 2,
     'taxons': null
   }, {
-     'id': 9,
+    'id': 9,
     'name': 'Apache',
     'pretty_name': 'Brand -> Apache',
     'permalink': 'brand/apache',
@@ -87,6 +89,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(this.authActions.authorize());
+    this.store.dispatch(this.authActions.login());
     this.isAuthenticated = this.store.select(getAuthStatus);
     this.totalCartItems = this.store.select(getTotalCartItems);
   }
