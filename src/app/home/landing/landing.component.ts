@@ -26,7 +26,9 @@ export class LandingComponent implements OnInit {
 
   // dealsType is taxonomi whose value is set in app-data.ts;
 
-  constructor(private store: Store<AppState>, private actions: ProductActions, private productService: ProductService) {
+  constructor(private store: Store<AppState>,
+    private actions: ProductActions,
+    private productService: ProductService) {
     this.store.dispatch(this.actions.getAllProducts());
     this.products$ = this.store.select(getProducts);
 

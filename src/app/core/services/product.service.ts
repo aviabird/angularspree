@@ -45,7 +45,7 @@ export class ProductService {
    */
   getProducts(): any { return this.http.get<Array<Product>>(`api/v1/products`) }
 
-  markAsFavorite(id: number): Observable<{}> { return this.http.post<{}>(`favorite_products`, {id: id}) }
+  markAsFavorite(id: number): Observable<{}> { return this.http.post<{}>(`favorite_products`, { id: id }) }
 
   removeFromFavorite(id: number): Observable<{}> { return this.http.delete<{}>(`favorite_products/${id}`) }
 
@@ -60,5 +60,9 @@ export class ProductService {
 
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?q[name_cont]=${name}`)
+  }
+
+  getproductsByKeyword(keyword: string): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(`api/v1/products?q[name_cont]=${keyword}`)
   }
 }

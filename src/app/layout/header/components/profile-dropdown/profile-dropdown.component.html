@@ -2,12 +2,12 @@
 
   <div class="btn-group" dropdown *ngIf="!email">
     <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle" aria-controls="dropdown-basic">
-        <strong>Login & SignUp</strong>
+      <strong>Login & SignUp</strong>
       <span class="caret"></span>
     </button>
     <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
       <li role="menuitem">
-        <a class="dropdown-item" [routerLink]="['/auth', 'login']">Login</a>
+        <a class="dropdown-item" (click)="login()">Login</a>
       </li>
       <li class="divider dropdown-divider"></li>
       <li role="menuitem">
