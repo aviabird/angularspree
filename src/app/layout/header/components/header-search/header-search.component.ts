@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
@@ -12,15 +13,18 @@ export class HeaderSearchComponent implements OnInit {
   values = '';
   constructor(
     private store: Store<AppState>,
-    private searchActions: SearchActions
+    private searchActions: SearchActions,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
   onSearch(keyword: string) {
     if (keyword !== '') {
+      keyword = keyword.trim();
       this.store.dispatch(this.searchActions.getproductsByKeyword(keyword));
+      this.router.navigate(['/products']);
+      localStorage.setItem('searchKeyword', keyword);
     }
   }
-
 }

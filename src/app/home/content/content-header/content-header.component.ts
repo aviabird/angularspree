@@ -1,22 +1,32 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
   styleUrls: ['./content-header.component.scss']
 })
-export class ContentHeaderComponent implements OnInit {
+export class ContentHeaderComponent implements OnInit, OnChanges {
   @Output() toggleSize = new EventEmitter();
-  selectedSize: string = 'COZY';
 
+  @Input() count;
+  @Input() total_count;
+
+  selectedSize: string = 'COZY';
+  searchKeyword = ''
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  ngOnChanges() {
+    this.searchKeyword = localStorage.getItem('searchKeyword')
   }
 
   toggleView(view) {
     this.selectedSize = view;
-    this.toggleSize.emit({size: view});
+    this.toggleSize.emit({ size: view });
   }
 
   isSmallSelected(): boolean {

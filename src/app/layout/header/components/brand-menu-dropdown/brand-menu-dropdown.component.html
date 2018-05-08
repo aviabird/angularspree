@@ -8,7 +8,7 @@
     <tabset class="d-flex" *ngIf="taxonomies[0]; let brands_taxonomy">
       <!-- to do -->
       <tab heading="A">
-        <app-brand-list [taxons]="taxon" *ngFor="let taxon of brands_taxonomy.root.taxons"></app-brand-list>
+        <app-brand-list [taxons]="taxon" *ngFor="let taxon of brands_taxonomy.root.taxons" (click)="get_brands()"></app-brand-list>
       </tab>
     </tabset>
   </div>

@@ -45,7 +45,7 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
       }) as SearchState;
 
     case SearchActions.GET_PRODUCTS_BY_KEYWORD_SUCCESS:
-      const _productsByKeyword: Product[] = payload.products.products;
+      const _productsByKeyword: Product[] = payload.products;
       return state.merge({
         productsByKeyword: _productsByKeyword
       }) as SearchState;
