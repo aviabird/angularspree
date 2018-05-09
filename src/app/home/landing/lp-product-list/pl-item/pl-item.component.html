@@ -1,6 +1,6 @@
 <div class="product-tile">
   <a [routerLink]="['/product/', product.slug]">
-    <img width="150" height="200" [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+    <img width="150" height="200" [src]="getProductImageUrl(product.master.images[0]?.product_url)">
     <p> {{ product.name }} </p>
   </a>
 </div>

@@ -6,7 +6,7 @@
         itemscope itemtype="https://schema.org/Product">
         <div class="product-thumbShim"></div>
         <a itemprop="url" [routerLink]="['/product/', product.slug]">
-          <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+          <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.product_url)">
           <div class="product-productMetaInfo">
             <div itemprop="name" class="product-brand">{{ product.name }}</div>
             <h2 class="product-product">{{ product.description }}</h2>
