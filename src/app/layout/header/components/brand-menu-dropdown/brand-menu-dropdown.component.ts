@@ -27,15 +27,22 @@ export class BrandMenuDropdownComponent implements OnInit {
         this.queryParams = params
       });
   }
+
   ngOnInit() {
   }
+
   get_brands() {
     const search = new URLSearchParams();
     search.set('q[name_cont]', this.queryParams['q[name_cont]'])
     search.set('id', this.queryParams.id);
     const options = new RequestOptions({ search: search });
-    this.http.get(this.apiUrl, options)
-      .subscribe(data => this.store.dispatch(
-        this.searchActions.getProducsByKeywordSuccess({ products: data.json() }))
+
+    this.http
+      .get(this.apiUrl, options)
+      .subscribe(data =>
+        this.store.dispatch(
+          this.searchActions.getProducsByKeywordSuccess({ products: data.json() })
+        )
+      )
   }
 }
