@@ -12,7 +12,7 @@ export class ContentHeaderComponent implements OnInit, OnChanges {
   @Input() count;
   @Input() total_count;
 
-  selectedSize: string = 'COZY';
+  selectedSize = 'COZY';
   searchKeyword = ''
   constructor() { }
 

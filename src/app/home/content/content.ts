@@ -5,8 +5,8 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   selector: 'app-content',
   template: `
     <app-content-header (toggleSize)="toggleSize($event)"
-     [count]="products.count"
-     [total_count]="products.total_count"></app-content-header>
+     [count]="products.length"
+     [total_count]="products.length"></app-content-header>
     <app-filter-summary></app-filter-summary>
     <app-customize></app-customize>
     <app-product-list [(toggleLayout)]='toggleLayout' [products]='products' [taxonIds]="taxonIds"></app-product-list>
