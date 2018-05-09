@@ -1,15 +1,12 @@
 <div class="row-base" style="display: -webkit-flex">
   <section>
     <ul class="results-base">
-      <p *ngIf="products.length === 0">No Products found for this category</p>
-      <li *ngFor="let product of products | filter : selectedTaxonIds; trackBy: trackByFn" class="product-base" [style.margin]="getMargin()" itemscope
-        itemtype="https://schema.org/Product">
+      <h3 *ngIf="products.total_count === 0">Sorry, no results found! Please check the spelling or try searching for something else.</h3>
+      <li *ngFor="let product of products.products | filter : selectedTaxonIds; trackBy: trackByFn" class="product-base" [style.margin]="getMargin()"
+        itemscope itemtype="https://schema.org/Product">
         <div class="product-thumbShim"></div>
         <a itemprop="url" [routerLink]="['/product/', product.slug]">
-          <img itemprop="image"
-            class="product-thumb"
-            alt="{{product.name}}" 
-            [src]="getProductImageUrl(product.master.images[0]?.large_url)">
+          <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.large_url)">
           <div class="product-productMetaInfo">
             <div itemprop="name" class="product-brand">{{ product.name }}</div>
             <h2 class="product-product">{{ product.description }}</h2>
@@ -20,9 +17,11 @@
                 <!-- Original price -->
                 <!--<span class="product-strike"> react-text: 485 Rs.  /react-text  react-text: 486 1699 /react-text </span>-->
               </span>
-              <!--Percentage off --><!--<span class="product-discountPercentage">(40% OFF)</span>-->
+              <!--Percentage off -->
+              <!--<span class="product-discountPercentage">(40% OFF)</span>-->
             </div>
-            <!-- Product Size --><!--<div class="product-sizes">Sizes: S, M, L, XL, XXL</div>-->
+            <!-- Product Size -->
+            <!--<div class="product-sizes">Sizes: S, M, L, XL, XXL</div>-->
           </div>
         </a>
         <div class="product-sizeDisplayDiv">

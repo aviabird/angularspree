@@ -15,6 +15,7 @@ export class AuthenticationEffects {
     private authActions: AuthActions
   ) { }
 
+  // tslint:disable-next-line:member-ordering
   @Effect()
   Authorized$: Observable<Action> = this.actions$
     .ofType(AuthActions.AUTHORIZE)
@@ -22,6 +23,7 @@ export class AuthenticationEffects {
     .filter((data) => !data.error && data.count)
     .map(() => this.authActions.loginSuccess());
 
+  // tslint:disable-next-line:member-ordering
   @Effect()
   OAuthLogin: Observable<Action> = this.actions$
     .ofType(AuthActions.O_AUTH_LOGIN)

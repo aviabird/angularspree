@@ -1,6 +1,7 @@
-<div class="content">
+<div class="content" *ngIf=count>
   <div itemprop="name" class="queried-for">
-    <h4 title="men casual shirts" class="q">Displaying available products</h4>
+    <h4 title="men casual shirts" class="q">Showing {{count}} of {{total_count}} results for "{{searchKeyword}}"
+    </h4>
     <span>&nbsp;</span>
   </div>
 
@@ -15,7 +16,7 @@
       <li data-sortkey=":popularity">Popular</li>
       <li data-sortkey=":new">New</li>
       <li data-sortkey=":discount">Discount</li>
-      <label>Price: 
+      <label>Price:
         <li data-sortkey=":low">Low</li>
         <li data-sortkey=":high">High</li>
       </label>
