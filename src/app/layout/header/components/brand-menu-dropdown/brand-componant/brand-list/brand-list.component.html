@@ -1,5 +1,5 @@
 <div class="row">
   <div class="col-md-3">
-    <a [routerLink]="['/products']">{{taxons.name}} </a>
+    <a [routerLink]="['/products']" [queryParams]="{'q[name_cont]': taxons.name, id: taxons.id}">{{taxons.name}} </a>
   </div>
 </div>
