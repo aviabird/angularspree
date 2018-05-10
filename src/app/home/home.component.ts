@@ -7,20 +7,21 @@ import { AppState } from './../interfaces';
 import { getProducts, getTaxonomies } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../core/models/product';
 
 @Component({
   selector: 'app-home',
   template: `
     <!--<app-breadcrumb [taxonomies]="taxonomies$ | async"></app-breadcrumb> -->
-    <div class="col-xs-12">
-      <div class="col-xs-3">
-     <!-- <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons> -->
+    <div class=row>
+      <div class="col-md-3">
+      <!-- <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons> -->
+      <app-categories [taxonomiList]="taxonomies$ | async"></app-categories>
       </div>
-      <div class="col-xs-9">
+      <div class="col-md-9">
         <app-content
-          [products]="productsBykeyword$ | async"
+          [productsList]="productsBykeyword$ | async"
           [taxonIds]="selectedTaxonIds$ | async" >
         </app-content>
       </div>
@@ -42,8 +43,8 @@ export class HomeComponent implements OnInit {
     this.taxonomies$ = this.store.select(getTaxonomies);
     this.selectedTaxonIds$ = this.store.select(getSelectedTaxonIds);
     this.productsBykeyword$ = this.store.select(getProductsByKeyword);
+
   }
 
   ngOnInit() { }
-
 }
