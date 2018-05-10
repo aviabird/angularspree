@@ -18,6 +18,7 @@ import { Product } from '../core/models/product';
       <div class="col-md-3">
       <!-- <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons> -->
       <app-categories [taxonomiList]="taxonomies$ | async"></app-categories>
+      <app-brand-filter [taxonomiList]="taxonomies$ | async"></app-brand-filter>
       </div>
       <div class="col-md-9">
         <app-content
