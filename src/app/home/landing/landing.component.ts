@@ -38,7 +38,7 @@ export class LandingComponent implements OnInit {
         this.taxon_by_name = response;
         if (this.taxon_by_name.count > 0) {
           this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
-          return this.productService.getProducts_by_taxon(`id=${this.taxons_id}`);
+          return this.productService.getProductsByTaxon(`id=${this.taxons_id}`);
         } else {
           return []
         }
