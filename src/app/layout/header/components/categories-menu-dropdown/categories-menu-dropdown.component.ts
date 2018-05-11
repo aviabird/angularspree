@@ -14,6 +14,8 @@ import { Http, RequestOptions, URLSearchParams } from '@angular/http'
 })
 export class CategoriesMenuDropdownComponent implements OnInit {
   @Input() taxonomies;
+  @Input () isScrolled;
+  
   queryParams: any;
   apiUrl = environment.apiEndpoint + 'api/v1/taxons/products';
 

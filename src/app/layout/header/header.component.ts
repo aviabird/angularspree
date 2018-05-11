@@ -16,6 +16,9 @@ import { AuthActions } from '../../auth/actions/auth.actions';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  host: {
+    '(window:scroll)': 'updateHeader($event)'
+  },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
@@ -24,6 +27,11 @@ export class HeaderComponent implements OnInit {
   taxonomies$: Observable<any>;
   user$: Observable<any>;
   headerConfig = environment.config.header;
+  isScrolled = false;
+  currPos: Number = 0;
+  startPos: Number = 0;
+  changePos: Number = 100;
+
   taxonList = [{
     'id': 4,
     'name': 'Mugs',
@@ -98,6 +106,15 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/');
     this.store.dispatch(this.searchActions.addFilter(taxon));
   }
+
+  updateHeader(evt) {
+    this.currPos = (window.pageYOffset || evt.target.scrollTop) - (evt.target.clientTop || 0);
+    if(this.currPos >= this.changePos ) {
+        this.isScrolled = true;
+    } else {
+        this.isScrolled = false;
+    }
+}
 
 
 }

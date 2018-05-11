@@ -1,8 +1,10 @@
-<div class="btn-group" dropdown [autoClose]="false" container="body">
+<div class="btn-group" dropdown [autoClose]="true" container="body">
   <button id="button-nested" dropdownToggle categories="button" class="btn dropdown-toggle" aria-controls="dropdown-nested"
     data-hover="dropdown">
-    Shop By
-    <span *ngIf="taxonomies[0]; let catgeory_taxonomy">{{catgeory_taxonomy.name}}</span>
+    <i class="fa fa-list-ul fa-2x" *ngIf="isScrolled"></i>
+    <strong *ngIf="!isScrolled">Shop By
+      <span *ngIf="taxonomies[0]; let catgeory_taxonomy">{{catgeory_taxonomy.name}}</span>
+    </strong>
     <span class=" caret "></span>
   </button>
   <div id="dropdown-nested " *dropdownMenu class="dropdown-menu " role="menu " aria-labelledby="button-nested ">
