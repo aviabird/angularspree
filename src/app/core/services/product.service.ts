@@ -54,8 +54,8 @@ export class ProductService {
   getUserFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`spree/user_favorite_products.json`) }
 
   // tslint:disable-next-line:max-line-length
-  getProducts_by_taxon(id: number): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`api/v1/taxons/products?id=${id}`)
+  getProducts_by_taxon(id: string): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(`api/v1/taxons/products?${id}`)
   }
 
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
@@ -63,6 +63,6 @@ export class ProductService {
   }
 
   getproductsByKeyword(keyword: string): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`api/v1/products?q[name_cont]=${keyword}`)
+    return this.http.get<Array<Product>>(`api/v1/products?${keyword}`)
   }
 }

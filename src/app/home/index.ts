@@ -1,3 +1,5 @@
+import { BrandFilterComponent } from './sidebar/brand-filter/brand-filter.component';
+import { CategoriesComponent } from './sidebar/categories/categories.component';
 import { LpTrItemComponent } from './landing/lp-top-rated/lp-tr-item/lp-tr-item.component';
 import { LpTopRatedComponent } from './landing/lp-top-rated/lp-top-rated.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
@@ -63,6 +65,9 @@ import { reducers } from './reducers/index';
     LpPromoComponent,
     LpTopRatedComponent,
     LpTrItemComponent,
+    CategoriesComponent,
+    BrandFilterComponent,
+
     // pipes
     FilterPipe
   ],

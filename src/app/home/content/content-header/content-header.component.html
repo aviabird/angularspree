@@ -1,6 +1,6 @@
-<div class="content" *ngIf=count>
+<div class="content" *ngIf=productsCount>
   <div itemprop="name" class="queried-for">
-    <h4 title="men casual shirts" class="q">Showing {{count}} of {{total_count}} results for "{{searchKeyword}}"
+    <h4 title="men casual shirts" class="q">Showing {{productsCount}} of {{productsTotal_count}} results.
     </h4>
     <span>&nbsp;</span>
   </div>
@@ -11,7 +11,7 @@
       <li (click)="toggleView('COMPACT')" [ngClass]="{'big': true, 'selected': isBigSelected()}"></li>
       <li (click)="toggleView('COZY')" [ngClass]="{'small': true, 'selected': isSmallSelected()}"></li>
     </ul>
-    <ul class="sort">
+    <!-- <ul class="sort">
       <label>Sort:</label>
       <li data-sortkey=":popularity">Popular</li>
       <li data-sortkey=":new">New</li>
@@ -20,6 +20,6 @@
         <li data-sortkey=":low">Low</li>
         <li data-sortkey=":high">High</li>
       </label>
-    </ul>
+    </ul> -->
   </div>
 </div>

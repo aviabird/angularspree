@@ -4,8 +4,7 @@ import { SearchActions } from './../../../../home/reducers/search.actions';
 import { environment } from './../../../../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
-import { Http, Response, RequestOptions, Headers } from '@angular/http'
-import { URLSearchParams } from '@angular/http';
+import { Http, RequestOptions, URLSearchParams } from '@angular/http'
 
 @Component({
   selector: 'app-brand-menu-dropdown',

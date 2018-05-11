@@ -5,16 +5,16 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   selector: 'app-content',
   template: `
     <app-content-header (toggleSize)="toggleSize($event)"
-     [count]="products.length"
-     [total_count]="products.length"></app-content-header>
+     [productsCount]="productsList.count"
+     [productsTotal_count]="productsList.total_count"></app-content-header>
     <app-filter-summary></app-filter-summary>
     <app-customize></app-customize>
-    <app-product-list [(toggleLayout)]='toggleLayout' [products]='products' [taxonIds]="taxonIds"></app-product-list>
+    <app-product-list [(toggleLayout)]='toggleLayout' [products]='productsList' [taxonIds]="taxonIds"></app-product-list>
   `,
   //   styleUrls: ['./content-header.component.scss']
 })
 export class ContentComponent implements OnInit {
-  @Input() products: Product[];
+  @Input() productsList;
   @Input() taxonIds;
   toggleLayout = { size: 'COZY' };
 
