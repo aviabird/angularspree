@@ -54,7 +54,7 @@ export class ProductService {
   getUserFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`spree/user_favorite_products.json`) }
 
   // tslint:disable-next-line:max-line-length
-  getProducts_by_taxon(id: string): Observable<Array<Product>> {
+  getProductsByTaxon(id: string): Observable<Array<Product>> {
     return this.http.get<Array<Product>>(`api/v1/taxons/products?${id}`)
   }
 
