@@ -1,0 +1,8 @@
+.navbar {
+  transition: all 500ms;
+  &.page-scroll-header {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+  }
+}

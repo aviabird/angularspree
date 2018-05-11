@@ -1,4 +1,3 @@
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
@@ -6,11 +5,11 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   templateUrl: './content-header.component.html',
   styleUrls: ['./content-header.component.scss']
 })
-export class ContentHeaderComponent implements OnInit, OnChanges {
+export class ContentHeaderComponent implements OnInit {
   @Output() toggleSize = new EventEmitter();
 
-  @Input() count;
-  @Input() total_count;
+  @Input() productsCount;
+  @Input() productsTotal_count;
 
   selectedSize = 'COZY';
   searchKeyword = ''
@@ -18,10 +17,6 @@ export class ContentHeaderComponent implements OnInit, OnChanges {
 
   ngOnInit() {
 
-  }
-
-  ngOnChanges() {
-    this.searchKeyword = localStorage.getItem('searchKeyword')
   }
 
   toggleView(view) {

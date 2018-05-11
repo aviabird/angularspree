@@ -7,6 +7,7 @@ export class SearchActions {
   static REMOVE_FILTER = 'REMOVE_FILTER';
   static GET_PRODUCTS_BY_KEYWORD = 'GET_PRODUCTS_BY_KEYWORD';
   static GET_PRODUCTS_BY_KEYWORD_SUCCESS = 'GET_PRODUCTS_BY_KEYWORD_SUCCESS';
+  static GET_PRODUCTS_BY_TAXON = 'GET_PRODUCTS_BY_TAXON'
 
   /**
    * @method getAllFtilers
@@ -54,6 +55,13 @@ export class SearchActions {
     return {
       type: SearchActions.GET_PRODUCTS_BY_KEYWORD_SUCCESS,
       payload: products
+    }
+  }
+
+  getProducsByTaxon(taxonId: any) {
+    return {
+      type: SearchActions.GET_PRODUCTS_BY_TAXON,
+      payload: taxonId
     }
   }
 }

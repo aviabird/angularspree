@@ -1,0 +1,8 @@
+<div *ngIf="taxonomiList">
+  <ul *ngIf="taxonomiList[0]; let catgeory_taxonomy">
+    <strong> Catgeories</strong>
+    <li *ngFor="let categoryItem of catgeory_taxonomy.root.taxons" (click)="catgeoryFilter(categoryItem.name)">
+      <a [routerLink]="['/products']" [queryParams]="{'q[name_cont]': categoryItem.name, id: categoryItem.id}">{{categoryItem.name}}</a>
+    </li>
+  </ul>
+</div>

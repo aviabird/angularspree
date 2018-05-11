@@ -19,7 +19,7 @@ export class LandingComponent implements OnInit {
   products$: Observable<any>;
   products_by_taxons: any;
   taxon_by_name: any;
-  taxons_id: number;
+  taxons_id: string;
   favoriteProducts: any;
   dealsType = APP_DATA.Deals.type;
 
@@ -38,7 +38,7 @@ export class LandingComponent implements OnInit {
         this.taxon_by_name = response;
         if (this.taxon_by_name.count > 0) {
           this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
-          return this.productService.getProducts_by_taxon(this.taxons_id);
+          return this.productService.getProducts_by_taxon(`id=${this.taxons_id}`);
         } else {
           return []
         }
