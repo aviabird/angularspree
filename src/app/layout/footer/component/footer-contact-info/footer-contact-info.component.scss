@@ -1,3 +1,5 @@
+@import "../../../../shared/scss/_selected_theme_variables.scss";
+
 .line {
   display: inline;
   padding: 10px;
@@ -7,9 +9,35 @@
 .col-md-2 {
   padding: 10px;
 }
-.contact-info{  background-color: #a3d032;
+.contact-info{ background-color: #a3d032;
 padding: 1rem;
 color:#fff;
 font-size: 1.2em;
 font-weight: 700;
+  a{
+    padding:.7rem;
+    color:#fff;
+  }
+  a:hover{ background-color:#a3d032 - 40;border-radius: 4px;}
+  .backtopbtn { background-color:#a3d032 - 40;border-radius: 4px;text-decoration: none;    padding: 0.7rem 1.8rem;}
+}
+
+@media screen and(min-width: 320px) and(max-width: 768px){
+  .contact-info{    
+      a{
+        padding:0rem;
+        color:#fff;
+      }
+      .backtopbtn { background-color:#a3d032 - 40;border-radius: 4px;text-decoration: none;    padding: 0.7rem 1.8rem;}
+    }
+    
+
+}
+@media screen and(min-width: 320px) and(max-width: 480px){
+  .contact-info{    
+     
+      .backtopbtn { margin-top:5px; padding: 0.7rem 1.8rem;display: block}
+    }
+    
+
 }

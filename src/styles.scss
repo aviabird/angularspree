@@ -9,7 +9,10 @@ body {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.btn:focus, .btn.focus {
+  outline: 0;
+  box-shadow:None;
+}
 .col-centered {
   float: none;
   margin: 0 auto;

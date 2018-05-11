@@ -1,7 +1,9 @@
-<section>
-  <ul class="line">
-    <li class="line" *ngFor="let page of footer_pages">
-      <a href="{{page.link_url}}" target="_self">{{page.name}}</a>
-    </li>
+<section class="">
+  <ul class=" p-0" >
+    <li class="line" *ngFor="let page of footer_pages; let first = first; let last = last"
+    [class.first-item]="pl-0"
+    [class.last-item]="last">
+    <a href="{{page.link_url}}" target="_self">{{page.name}}</a>
+  </li>`
   </ul>
 </section>
