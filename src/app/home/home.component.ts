@@ -14,10 +14,12 @@ import { Product } from '../core/models/product';
   selector: 'app-home',
   template: `
     <!--<app-breadcrumb [taxonomies]="taxonomies$ | async"></app-breadcrumb> -->
+    <br><br>
     <div class=row>
       <div class="col-md-3" *ngIf="isProducts">
       <!-- <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons> -->
       <app-categories [taxonomiList]="taxonomies$ | async"></app-categories>
+      <br>
       <app-brand-filter [taxonomiList]="taxonomies$ | async"></app-brand-filter>
       </div>
       <div class="col-md-9">

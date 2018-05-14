@@ -1,8 +1,8 @@
 <div *ngIf="taxonomiList">
-  <ul *ngIf="taxonomiList[0]; let catgeory_taxonomy">
-    <strong> Catgeories</strong>
+  <ul class="list-group" *ngIf="taxonomiList[0]; let catgeory_taxonomy">
+    <h4> Catgeories</h4>
     <li *ngFor="let categoryItem of catgeory_taxonomy.root.taxons" (click)="catgeoryFilter(categoryItem.name)">
-      <a [routerLink]="['/products']" [queryParams]="{'q[name_cont]': categoryItem.name, id: categoryItem.id}">{{categoryItem.name}}</a>
+      <a class="list-group-item list-group-item-action" [routerLink]="['/products']" [queryParams]="{'q[name_cont]': categoryItem.name, id: categoryItem.id}">{{categoryItem.name}}</a>
     </li>
   </ul>
 </div>
