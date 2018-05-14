@@ -2,7 +2,10 @@
   display: inline;
   padding: 10px;
 }
+
 $break-small: 320px;
-@media screen and (min-width: $break-small) and (max-width: 767px){
-.social-link{text-align: center}
+@media screen and (min-width: $break-small) and (max-width: 767px) {
+  .social-link {
+    text-align: center
+  }
 }

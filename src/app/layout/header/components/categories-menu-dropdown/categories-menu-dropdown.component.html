@@ -1,4 +1,4 @@
-<div class="btn-group dpbtn" dropdown [autoClose]="true" container="body">
+<div class="btn-group dpbtn petdropdown" dropdown [autoClose]="true" container="body">
   <button id="button-nested" dropdownToggle categories="button" class="btn dropdown-toggle" aria-controls="dropdown-nested"
     data-hover="dropdown">
     <i class="fa fa-list-ul fa-2x" *ngIf="isScrolled"></i>
@@ -8,10 +8,22 @@
     <span class=" caret "></span>
   </button>
   <div id="dropdown-nested " *dropdownMenu class="dropdown-menu " role="menu " aria-labelledby="button-nested ">
-    <tabset vertical="true " class="d-flex" *ngIf="taxonomies[0]; let catgeory_taxonomy">
+    <!--tabset vertical="true " class="d-flex" *ngIf="taxonomies[0]; let catgeory_taxonomy">
       <tab heading="{{taxon.name}} " *ngFor="let taxon of catgeory_taxonomy.root.taxons">
         <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [taxons]="taxon.taxons" [taxonName]="taxon.name" (click)="get_categeory()"></app-categories-details>
       </tab>
-    </tabset>
+    </tabset-->
+     <div class="row" *ngIf="taxonomies[0]; let catgeory_taxonomy">
+       <div class="col-md-3 p-0 no-gutters">
+         <ul>
+           <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (mouseenter)="ckicked(i)">{{taxon.name}}</li>
+         </ul>
+       </div>
+       <div class="col-md-9 no-gutters detailcontainer" *ngIf="menuTaxons">
+        <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [taxons]="menuTaxons.taxons" [taxonName]="menuTaxons.name" (click)="get_categeory()"></app-categories-details> 
+      </div>
+     </div>
   </div>
 </div>
+
+

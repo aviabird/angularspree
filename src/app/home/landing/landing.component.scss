@@ -39,7 +39,10 @@
           background-size: 8px;
         }
       }
-      .slider-btn:hover{background-color:$theme-action-color - 40;color:#fff; }
+      .slider-btn:hover {
+        background-color: $theme-action-color - 40;
+        color: #fff;
+      }
     }
   }
   /deep/ .product-tile {
@@ -57,6 +60,12 @@
       border-color: $black - 200;
     }
   }
-  /deep/.product-tile p{ margin-bottom:0px;white-space: normal;margin-top:10px;}
-  /deep/.dropdown-toggle::after {vertical-align: 0.055em!important;}
+  /deep/.product-tile p {
+    margin-bottom: 0px;
+    white-space: normal;
+    margin-top: 10px;
+  }
+  /deep/.dropdown-toggle::after {
+    vertical-align: 0.055em !important;
+  }
 }

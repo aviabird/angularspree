@@ -15,6 +15,8 @@ import { Http, RequestOptions, URLSearchParams } from '@angular/http'
 export class CategoriesMenuDropdownComponent implements OnInit {
   @Input() taxonomies;
   @Input () isScrolled;
+
+  menuTaxons: any; 
   
   queryParams: any;
   apiUrl = environment.apiEndpoint + 'api/v1/taxons/products';
@@ -31,6 +33,13 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   }
   ngOnInit() {
 
+  }
+
+  ckicked(i){
+
+    this.menuTaxons = this.taxonomies[0].root.taxons[i];
+    console.log('data', this.menuTaxons)
+  
   }
 
   get_categeory() {
