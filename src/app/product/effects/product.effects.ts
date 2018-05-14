@@ -49,7 +49,7 @@ export class ProductEffects {
   @Effect()
   GetProductsByTaxons$: Observable<Action> = this.actions$
     .ofType(SearchActions.GET_PRODUCTS_BY_TAXON)
-    .switchMap((action: any) => this.productService.getProducts_by_taxon(action.payload))
+    .switchMap((action: any) => this.productService.getProductsByTaxon(action.payload))
     .map((data: any) => this.searchActions.getProducsByKeywordSuccess({ products: data }))
 }
 
