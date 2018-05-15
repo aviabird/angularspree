@@ -7,24 +7,35 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 export const getHomeState = createFeatureSelector<HomeState>('home');
 
 export const getSearchState = createSelector(
-    getHomeState,
-    (state: HomeState) => state.search
+  getHomeState,
+  (state: HomeState) => state.search
 );
 
 /******************* Individual selectors ******************/
 function fetchSelectedFilters(state: SearchState) {
-    return state.selectedFilters.toJS();
+  return state.selectedFilters.toJS();
 };
 
 function fetchSelectedTaxonIds(state: SearchState) {
-    return state.selectedTaxonIds.toJS();
+  return state.selectedTaxonIds.toJS();
 }
 
 function fetchProductsByKeyword(state: SearchState) {
-    return state.productsByKeyword.toJS();
+  return state.productsByKeyword.toJS();
 }
+
+function fetchChildTaxons(state: SearchState) {
+  return state.getChildTaxons.toJS();
+}
+
+function fetchCategeoryLevel(state: SearchState) {
+  return state.categeoryLevel.toJS();
+}
+
 
 /******************* Public Selector API's ******************/
 export const getFilters = createSelector(getSearchState, fetchSelectedFilters);
 export const getSelectedTaxonIds = createSelector(getSearchState, fetchSelectedTaxonIds);
 export const getProductsByKeyword = createSelector(getSearchState, fetchProductsByKeyword);
+export const getChildTaxons = createSelector(getSearchState, fetchChildTaxons);
+export const categeoryLevel = createSelector(getSearchState, fetchCategeoryLevel);
