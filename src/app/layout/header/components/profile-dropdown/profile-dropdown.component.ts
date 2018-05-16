@@ -11,17 +11,18 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
   @Input() isAuthenticated;
   email = '';
   currentUser: any;
-  subnav : boolean;
+  subnav: boolean;
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
   }
+
   ngOnChanges() {
     this.currentUser = JSON.parse(localStorage.getItem('user'))
     if (this.currentUser) {
-      this.email = this.currentUser.email
+      this.email = this.currentUser.email.split('@')[0];
     }
   }
 
