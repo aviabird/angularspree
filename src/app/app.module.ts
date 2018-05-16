@@ -24,7 +24,7 @@ import { reducers, metaReducers } from './app.reducers';
 import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-header.component';
 import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // adding rx operators
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
@@ -39,11 +39,11 @@ import 'rxjs/add/observable/of';
     AppComponent,
     CheckoutHeaderComponent,
     CheckoutFooterComponent,
-    
+
   ],
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, { metaReducers }), 
 
     /**
      * Store devtools instrument the store retaining past versions of state
@@ -65,7 +65,7 @@ import 'rxjs/add/observable/of';
      * See: https://github.com/ngrx/platform/blob/master/docs/effects/api.md#forroot
      */
     EffectsModule.forRoot([]),
-
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,

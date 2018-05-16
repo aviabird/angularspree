@@ -5,11 +5,11 @@
     <span class="caret"></span>
   </button>
   <div id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
-    <tabset class="d-flex" *ngIf="taxonomies[0]; let brands_taxonomy">
+    <div class="d-flex" *ngIf="taxonomies[0]; let brands_taxonomy">
       <!-- to do -->
-      <tab heading="A">
+     
         <app-brand-list [taxons]="taxon" *ngFor="let taxon of brands_taxonomy.root.taxons" (click)="getBrands()"></app-brand-list>
-      </tab>
-    </tabset>
+    
+    </div>
   </div>
 </div>

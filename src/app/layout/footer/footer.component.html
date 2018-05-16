@@ -1,6 +1,6 @@
 <footer class="border-top">
   <app-footer-contact-info></app-footer-contact-info>
-  <div class="container">
+  <div class="container quicklinks ">
     <div class="row">
       <div class=col-md-6>
         <app-footer-quick-links></app-footer-quick-links>
@@ -10,20 +10,20 @@
       </div>
     </div>
   </div>
-  <section>
-    <div class="container">
+  <section class="cpy">
+    <div class="container cpy1">
       <div class="row">
-        <div class="col-md-6">
-          <ul class="line">
-            <li class="line">{{contact_info.copyright}}</li>
+        <div class="col-md-6 col-xs-12 text-left">
+          <ul class="p-0 copy">
+            <li class="pl-0 pr-0">{{contact_info.copyright}}</li>
           </ul>
         </div>
-        <div class="col-md-6">
-          <ul class="line">
-            <li class="line">
+        <div class="col-md-6 col-xs-12 text-right">
+          <ul class="text-right term">
+            <li>
               <a href="#">Terms Of Use</a>
             </li>
-            <li class="line">
+            <li class="pr-0">
               <a href="#">Privacy Policy</a>
             </li>
           </ul>
@@ -31,5 +31,4 @@
       </div>
     </div>
   </section>
-
 </footer>

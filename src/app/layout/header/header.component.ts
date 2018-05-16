@@ -17,7 +17,8 @@ import { AuthActions } from '../../auth/actions/auth.actions';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   host: {
-    '(window:scroll)': 'updateHeader($event)'
+    '(window:scroll)': 'updateHeader($event)',
+
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -32,6 +33,7 @@ export class HeaderComponent implements OnInit {
   startPos: Number = 0;
   changePos: Number = 100;
 
+  screenwidth: any;
   taxonList = [{
     'id': 4,
     'name': 'Mugs',
@@ -100,21 +102,30 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(this.authActions.login());
     this.isAuthenticated = this.store.select(getAuthStatus);
     this.totalCartItems = this.store.select(getTotalCartItems);
+    this.screenwidth = window.outerWidth;
+
+    this.test()
   }
 
+  test() {
+    if (this.screenwidth <= 1000) {
+      this.isScrolled = true;
+    }
+  }
   selectTaxon(taxon) {
     this.router.navigateByUrl('/');
     this.store.dispatch(this.searchActions.addFilter(taxon));
   }
 
+
   updateHeader(evt) {
-    this.currPos = (window.pageYOffset || evt.target.scrollTop) - (evt.target.clientTop || 0);
-    if(this.currPos >= this.changePos ) {
+    if (this.screenwidth >= 1000) {
+      this.currPos = (window.pageYOffset || evt.target.scrollTop) - (evt.target.clientTop || 0);
+      if (this.currPos >= this.changePos) {
         this.isScrolled = true;
-    } else {
+      } else {
         this.isScrolled = false;
+      }
     }
-}
-
-
+  }
 }

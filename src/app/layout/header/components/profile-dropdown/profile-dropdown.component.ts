@@ -11,13 +11,13 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
   @Input() isAuthenticated;
   email = '';
   currentUser: any;
+  subnav : boolean;
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
   }
-
   ngOnChanges() {
     this.currentUser = JSON.parse(localStorage.getItem('user'))
     if (this.currentUser) {
@@ -26,6 +26,8 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
   }
 
   logout() {
+
+    this.subnav = !this.subnav;
     this.authService.logout().
       subscribe(data => console.log(data));
   }

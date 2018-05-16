@@ -2,3 +2,17 @@
   display: inline;
   padding: 10px;
 }
+
+ul {
+  list-style: none
+}
+
+$break-small: 320px;
+@media screen and (min-width: $break-small) and (max-width: 767px) {
+  .qlinks li {
+    widows: 100%;
+    padding: 10px;
+    display: inline-block;
+    text-align: left;
+  }
+}

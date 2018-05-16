@@ -3,18 +3,51 @@ import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
+
+
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
 import { URLSearchParams } from '@angular/http'
+
 
 @Component({
   selector: 'app-categories-menu-dropdown',
   templateUrl: './categories-menu-dropdown.component.html',
-  styleUrls: ['./categories-menu-dropdown.component.scss']
+  styleUrls: ['./categories-menu-dropdown.component.scss'],
+  animations: [
+    trigger('popOverState', [
+      state('show', style({
+        opacity:1
+      })),
+      state('hide', style({
+        opacity:1
+      })),
+      transition('show => hide', animate('600ms ease-out')),
+      transition('hide => show', animate('1000ms ease-in'))
+    ])
+  ]
 })
 export class CategoriesMenuDropdownComponent implements OnInit {
   @Input() taxonomies;
   @Input() isScrolled;
 
+  @Input() screenwidth;
+  dropdownWidth: any;
+  menuTaxons: any;
+  autoclose: boolean;
+
   queryParams: any;
+  show = false;
+  get stateName() {
+    return this.show ? 'show' : 'hide'
+  }
+
 
   constructor(
     private route: ActivatedRoute,
@@ -22,11 +55,30 @@ export class CategoriesMenuDropdownComponent implements OnInit {
     private store: Store<AppState>) {
     this.route.queryParams
       .subscribe(params => {
-        this.queryParams = params
+        this.queryParams = params;
       });
   }
   ngOnInit() {
 
+    if (this.screenwidth <= 1000) {
+      this.dropdownWidth = this.screenwidth - 10 + 'px';
+      this.autoclose = false;
+    }
+    else {
+      this.autoclose = true;
+    }
+  }
+
+  showCategory(i) {
+    this.show = !this.show;
+    this.menuTaxons = this.taxonomies[0].root.taxons[i];
+
+  }
+  showCategoryonclick(i) {
+
+    if (this.screenwidth <= 1000) {
+      this.menuTaxons = this.taxonomies[0].root.taxons[i];
+    }
   }
 
   getCategeory() {
