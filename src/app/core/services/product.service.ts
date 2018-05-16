@@ -65,4 +65,9 @@ export class ProductService {
   getproductsByKeyword(keyword: string): Observable<Array<Product>> {
     return this.http.get<Array<Product>>(`api/v1/products?${keyword}`)
   }
+
+  getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
+    return this.http.get<Array<Taxonomy>>(`/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`)
+  }
+
 }

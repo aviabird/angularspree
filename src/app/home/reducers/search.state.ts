@@ -1,3 +1,4 @@
+import { Taxonomy } from './../../core/models/taxonomy';
 import { Product } from './../../core/models/product';
 /** Search state
  * [{
@@ -16,10 +17,14 @@ export interface SearchState extends Map<string, any> {
   selectedFilters: List<Map<string, any>>;
   selectedTaxonIds: List<number>;
   productsByKeyword: List<Product>;
+  getChildTaxons: List<Taxonomy>;
+  categeoryLevel: List<string>;
 }
 
 export const SearchStateRecord = Record({
   selectedFilters: List([]),
   selectedTaxonIds: List([]),
-  productsByKeyword: List([])
+  productsByKeyword: List([]),
+  getChildTaxons: List([]),
+  categeoryLevel: List([]),
 });
