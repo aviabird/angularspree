@@ -1,67 +1,64 @@
 .cart-section {
-	max-width: 980px;
-	margin: auto;
-	margin-top: -90px;
-	.left	{
-		display: inline-block;
+  .left {
+    display: inline-block;
     width: 70%;
     padding-right: 40px;
     border-right: 1px solid #f5f5f6;
     min-height: 500px;
-		.checkout-header-container {
-			.checkout-header {
-				display: inline-block;
-				padding: 30px 0;
-				.text {
-					font-size: 18px;
-    			font-weight: 600;
-					color: #535766;
-					font-family: "Whitney-semi-bold";
-				}
-			}
-			.total-price {
-				float: right;
-				padding: 30px 0;
-				display: inline-block;
-				font-size: 18px;
-				color: #535766;
-			}
-		}
-		.prod-set {
-			width: 100%;
-			display: inline-block;
-			height: 100%;
-			overflow: auto;
-			padding-left: 1px;
-			.wishlist-link {
-				cursor: pointer;
-				.icon {
-					width: 12px;
-					height: 16px;
-					background-position: -689px 0;
-					display: inline-block;
-					overflow: hidden;
-					background-repeat: no-repeat;
-					background-size: 4250px 153px;
-					vertical-align: middle;
-					background-image: url(/assets/checkout_sprite.png);
-					margin-right: 5px;
-				}
-				text-align: center;
-				display: block;
-				height: 40px;
-    		padding-top: 10px;
-    		background: #fff;
-    		color: #535766;
-    		border: 1px solid #eaeaec;
-			}
-		}
-	}
-	.right{
-		display: inline-block;
+    .checkout-header-container {
+      .checkout-header {
+        display: inline-block;
+        padding: 30px 0;
+        .text {
+          font-size: 18px;
+          font-weight: 600;
+          color: #535766;
+          font-family: "Whitney-semi-bold";
+        }
+      }
+      .total-price {
+        float: right;
+        padding: 30px 0;
+        display: inline-block;
+        font-size: 18px;
+        color: #535766;
+      }
+    }
+    .prod-set {
+      width: 100%;
+      display: inline-block;
+      height: 100%;
+      overflow: auto;
+      padding-left: 1px;
+      .wishlist-link {
+        cursor: pointer;
+        .icon {
+          width: 12px;
+          height: 16px;
+          background-position: -689px 0;
+          display: inline-block;
+          overflow: hidden;
+          background-repeat: no-repeat;
+          background-size: 4250px 153px;
+          vertical-align: middle;
+          background-image: url(/assets/checkout_sprite.png);
+          margin-right: 5px;
+        }
+        text-align: center;
+        display: block;
+        height: 40px;
+        padding-top: 10px;
+        background: #fff;
+        color: #535766;
+        border: 1px solid #eaeaec;
+      }
+    }
+  }
+  .right {
+    display: inline-block;
     width: 29%;
     vertical-align: top;
     margin-top: 52px;
     padding-left: 35px;
-	}
+  }
 }

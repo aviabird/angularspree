@@ -5,10 +5,5 @@
  ul{list-style: none}
  $break-small: 320px;
  @media screen and (min-width: $break-small) and (max-width: 767px){
-  .line[_ngcontent-c26] {
-    display: inline-block;
-    padding: 10px;
-    text-align: left;
-    width: 50%;
-  }
+   .qlinks li{widows: 100%;  padding: 10px;display: inline-block; text-align: left;}
 }
