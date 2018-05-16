@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target='_blank'>
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="http://res.cloudinary.com/mally/image/upload/v1490186051/Angular_spree_hqgwtq.png" width="200">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="https://res.cloudinary.com/mally/image/upload/v1490186051/Angular_spree_hqgwtq.png" width="200">
   </a>
 </p>
 
@@ -14,7 +14,8 @@
 
 <p align="center">
   <a href="/CONTRIBUTING.md" target='_blank'><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg"></a>
-  <a href="https://www.pivotaltracker.com/n/projects/1985365" target='_blank'><img alt="Pivotal Project page" src="http://res.cloudinary.com/zeus999/image/upload/c_limit,h_1041,w_1487/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
+  <a href="https://gitter.im/aviabird/angularspree"><img src="https://badges.gitter.im/aviabird/angularspree.svg"/></a>
+  <a href="https://www.pivotaltracker.com/n/projects/2165435" target='_blank'><img alt="Pivotal Project page" src="https://res.cloudinary.com/zeus999/image/upload/c_limit,h_1041,w_1487/v1486457388/Yatrum%20Logo/pt-badge_ss3dyt.svg"></a>
 </p>
 
 <p align="center">
@@ -32,13 +33,6 @@ AngularSpree is an open source Angular(2.x+) front-end application for [Spree Co
 **Bootstrap 4 Compatible**
 
 Go ahead use it the way you want to or let us know at `hello@aviabird.com` if you need any help with this project.
-
-<p align="center">
-  <a href="https://angular-spree.herokuapp.com/" target='_blank'>
-    <img alt="Slack invite Logo" title="Slack invite Logo" src="http://res.cloudinary.com/yatrum/image/upload/v1490434825/slack_vmaait.png" width="300">
-  </a>
-</p>
-
 
 ## Why did we build it?
 
@@ -131,7 +125,7 @@ On this page user can filter products as per category. Change layout of the prod
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="https://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
   </a>
 </p>
 
@@ -141,7 +135,7 @@ Cart page displays all the line items or items in the cart which the user has ad
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="https://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
   </a>
 </p>
 
@@ -151,7 +145,7 @@ Display's the detailed product information of a particular product.
 
 <p align="center">
   <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="http://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
+    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="https://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
   </a>
 </p>
 
