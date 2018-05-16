@@ -8,6 +8,9 @@ export class SearchActions {
   static GET_PRODUCTS_BY_KEYWORD = 'GET_PRODUCTS_BY_KEYWORD';
   static GET_PRODUCTS_BY_KEYWORD_SUCCESS = 'GET_PRODUCTS_BY_KEYWORD_SUCCESS';
   static GET_PRODUCTS_BY_TAXON = 'GET_PRODUCTS_BY_TAXON'
+  static GET_CHILD_TAXONS = 'GET_CHILD_TAXONS'
+  static GET_CHILD_TAXONS_SUCCESS = 'GET_CHILD_TAXONS_SUCCESS'
+  static CLEAR_SELECTED_CATAGEORY = 'CLEAR_SELECTED_CATAGEORY'
 
   /**
    * @method getAllFtilers
@@ -62,6 +65,26 @@ export class SearchActions {
     return {
       type: SearchActions.GET_PRODUCTS_BY_TAXON,
       payload: taxonId
+    }
+  }
+
+  getChildTaxons(taxonomiesId: any, taxonId: any) {
+    return {
+      type: SearchActions.GET_CHILD_TAXONS,
+      payload: { taxonomiesId, taxonId }
+    }
+  }
+
+  getChildTaxonsSuccess(taxonList: any) {
+    return {
+      type: SearchActions.GET_CHILD_TAXONS_SUCCESS,
+      payload: taxonList
+    }
+  }
+
+  clearCategeoryLevel() {
+    return {
+      type: SearchActions.CLEAR_SELECTED_CATAGEORY
     }
   }
 }

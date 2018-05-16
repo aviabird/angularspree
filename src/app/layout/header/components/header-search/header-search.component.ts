@@ -16,7 +16,6 @@ export class HeaderSearchComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private searchActions: SearchActions,
-    private productService: ProductService,
     private router: Router,
     private activatedRouter: ActivatedRoute
   ) {
@@ -33,7 +32,7 @@ export class HeaderSearchComponent implements OnInit {
     if (keyword !== '') {
       keyword = keyword.trim();
       const search = new URLSearchParams();
-      search.set('q[name_cont_all]', keyword)
+      search.set('q[name_cont]', keyword)
       this.store.dispatch(this.searchActions.getproductsByKeyword(search.toString()));
       this.router.navigate(['/products'], { queryParams: { 'q[name_cont_all]': keyword } });
     }
