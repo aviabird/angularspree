@@ -43,7 +43,7 @@ import 'rxjs/add/observable/of';
   ],
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-    StoreModule.forRoot(reducers, { metaReducers }), BrowserAnimationsModule,
+    StoreModule.forRoot(reducers, { metaReducers }), 
 
     /**
      * Store devtools instrument the store retaining past versions of state
@@ -65,7 +65,7 @@ import 'rxjs/add/observable/of';
      * See: https://github.com/ngrx/platform/blob/master/docs/effects/api.md#forroot
      */
     EffectsModule.forRoot([]),
-
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
