@@ -1,7 +1,7 @@
 <section *ngIf="productsByTaxons">
   <div class="slider-section">
     <div>
-      <a href=# class="section-title h3">{{dealsType}}</a>
+      <a [routerLink]="['/products']" [queryParams]="{'q[name_cont]': dealsType, id: dealsId}" class="section-title h3" (click)="getDeals()" >{{dealsType}}</a>
       <p *ngIf="productsByTaxons.products.length === 0">No Products found for this category</p>
     </div>
     <div class="slider-control">

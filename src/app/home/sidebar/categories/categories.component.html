@@ -1,8 +1,34 @@
-<div *ngIf="taxonomiList">
-  <ul *ngIf="taxonomiList[0]; let catgeory_taxonomy">
-    <strong> Catgeories</strong>
-    <li *ngFor="let categoryItem of catgeory_taxonomy.root.taxons" (click)="catgeoryFilter(categoryItem.name)">
-      <a [routerLink]="['/products']" [queryParams]="{'q[name_cont]': categoryItem.name, id: categoryItem.id}">{{categoryItem.name}}</a>
+<ul class="list-group" *ngIf="taxonomiList[0]; let catgeory_taxonomy">
+  <h4> Catgeories</h4>
+  <li *ngFor="let categoryItem of catgeory_taxonomy.root.taxons" (click)="emitSelection(categoryItem.id)">
+    <a class="list-group-item list-group-item-action" [routerLink]="['/products']" [queryParams]="{'q[name_cont]': categoryItem.name, id: categoryItem.id}">
+      {{categoryItem.name}}
+    </a>
+  </li>
+</ul>
+<!-- </div> -->
+
+<div *ngIf="isFilterOn">
+  <ul class="list-group" *ngIf="taxonomiList; let child_taxonomy">
+    <h4> Catgeories</h4>
+    <li *ngIf="level.length > 0">
+      <a href=#>
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        <strong>All Pets</strong>
+      </a>
+    </li>
+    <li *ngFor="let levels of level">
+      <a href=#>
+        <i class="fa fa-chevron-left" aria-hidden="true">{{levels}}</i>
+      </a>
+    </li>
+    <li>
+      <strong>{{child_taxonomy.name}}</strong>
+      <ul *ngIf="child_taxonomy.taxons">
+        <li *ngFor="let childs of child_taxonomy.taxons" (click)="emitSelection(childs.id)">
+          <a class="list-group-item list-group-item-action" [routerLink]="['/products']" [queryParams]="{'q[name_cont]': childs.name, id: childs.id}">{{childs.name}}</a>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>

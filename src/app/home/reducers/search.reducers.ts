@@ -1,3 +1,4 @@
+import { Taxonomy } from './../../core/models/taxonomy';
 import { Product } from './../../core/models/product';
 import { List } from 'immutable';
 import { SearchActions } from './search.actions';
@@ -50,6 +51,20 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
         productsByKeyword: _productsByKeyword
       }) as SearchState;
 
+    case SearchActions.GET_CHILD_TAXONS_SUCCESS:
+      const selectedCategory = payload.taxonList.name
+      let _categeoryLevel = state.categeoryLevel
+      _categeoryLevel = _categeoryLevel.push(selectedCategory);
+      const _getChildTaxons: Taxonomy = payload.taxonList;
+      return state.merge({
+        getChildTaxons: _getChildTaxons,
+        categeoryLevel: _categeoryLevel
+      }) as SearchState;
+
+    case SearchActions.CLEAR_SELECTED_CATAGEORY:
+      return state.merge({
+        categeoryLevel: []
+      }) as SearchState;
 
     default:
       return state;
