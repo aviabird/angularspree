@@ -23,10 +23,10 @@ import { URLSearchParams } from '@angular/http'
   animations: [
     trigger('popOverState', [
       state('show', style({
-        left: 0
+        opacity:1
       })),
       state('hide', style({
-        left: -200 + 'px'
+        opacity:1
       })),
       transition('show => hide', animate('600ms ease-out')),
       transition('hide => show', animate('1000ms ease-in'))
