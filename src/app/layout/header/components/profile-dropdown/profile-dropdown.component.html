@@ -18,9 +18,9 @@
 
   <div class="btn-group" dropdown *ngIf="isAuthenticated">
     <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle" aria-controls="dropdown-basic">
-      <i class="fa fa-user" aria-hidden="true"></i>
-      <strong>{{email}}</strong>
-      <span class="caret"></span>
+      <i class="fa fa-user mr-2" aria-hidden="true"></i>
+      <strong>{{email}}  <span class="caret"></span></strong>
+     
     </button>
     <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
       <li role="menuitem">

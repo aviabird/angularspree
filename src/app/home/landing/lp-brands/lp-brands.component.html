@@ -1,12 +1,12 @@
 <section *ngIf="brands">
-  <div class="row slider-section">
+  <div class="slider-section">
     <div>
       <a href=# class="section-title h3">100+ Brands in Stock!</a>
       <p *ngIf="brands.length === 0">No Products found for this category</p>
     </div>
   </div>
   <div class="row">
-    <div class="col-6 col-md-2 my-2" *ngFor="let product of brands | slice:0:12">
+    <div class="col-6 col-sm-2  col-md-3 col-lg-2 my-2" *ngFor="let product of brands | slice:0:12">
       <div class="card">
         <a [routerLink]="['/product/', product.slug]">
           <img class="card-img-top" height="200" [src]="getProductImageUrl(product.master.images[0]?.product_url)">

@@ -1,11 +1,17 @@
 @import "../../../shared/scss/selected_theme_variables";
+.loginwindow {
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 10px 0;
+}
 
 .panel {
   margin-bottom: 20px;
-  background-color: #fff;
+  background-color: #fcfcfc;
   border: none;
-  border-radius: 0;
-  box-shadow: 0 2px 15px rgba(0,0,0,.1);
+  border-radius: 4px;
+  border: 1px solid #eee;
+  box-shadow: none;
   .panel-heading {
     padding: 30px 0 0;
     border-bottom: 1px solid transparent;
@@ -53,7 +59,6 @@ fieldset {
   box-sizing: border-box;
   text-align: center;
   position: relative;
-  padding-bottom: 40px;
 }
 
 .login-user-input-email {
@@ -114,8 +119,8 @@ fieldset {
 }
 
 .login-login-button {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: bold;
   letter-spacing: 2px;
   padding: 15px;
   display: block;
@@ -123,15 +128,20 @@ fieldset {
   border: 0;
   text-transform: uppercase;
   border-radius: 3px;
+  background-color: #a3d032 - 50;
+  color: #fff;
 }
 
 .login-link-container {
-  text-align: left;
-  padding: 20px;
+  text-align: right;
+  padding: 0px 20px 12px;
+  font-size: 14px;
 }
 
 .login-link {
   text-decoration: none;
+  font-size: 15px;
+  color: $theme-action-color !important;
 }
 
 .login-right-links {
@@ -141,11 +151,6 @@ fieldset {
 .login-info-text {
   color: #94969f;
   font-size: 12px;
-}
-
-.login-link-container {
-  text-align: left;
-  padding: 20px;
 }
 
 .login-create-account-link {
@@ -177,8 +182,8 @@ a {
 
 @media (min-width: 360px) {
   .login-facebook {
-      margin-right: 15px;
-      margin-bottom: 0;
+    margin-right: 15px;
+    margin-bottom: 0;
   }
 }
 
@@ -194,7 +199,7 @@ a {
 }
 
 .login-button {
-  max-width: 162px;
+  width: 100%;
   padding-left: 18%;
   position: relative;
   font-size: 13px;
@@ -206,27 +211,42 @@ a {
   text-align: left;
 }
 
-[type=reset], [type=submit], button, html [type=button] {
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
   -webkit-appearance: button;
 }
 
-[type=button], [type=reset], [type=submit], button {
+[type=button],
+[type=reset],
+[type=submit],
+button {
   cursor: pointer;
 }
 
-button, select {
+button,
+select {
   text-transform: none;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   margin: 0;
 }
 
-button, input, select {
+button,
+input,
+select {
   overflow: visible;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -236,7 +256,8 @@ button, input, select, textarea {
   display: inline-block;
 }
 
-.login-fb-logo, .login-gplus-logo {
+.login-fb-logo,
+.login-gplus-logo {
   height: 29px;
   position: absolute;
   left: 15px;
@@ -275,8 +296,8 @@ button, input, select, textarea {
   transition-property: all;
   -webkit-transition-duration: .5s;
   transition-duration: .5s;
-  -webkit-transition-timing-function: cubic-bezier(0,1,.5,1);
-  transition-timing-function: cubic-bezier(0,1,.5,1);
+  -webkit-transition-timing-function: cubic-bezier(0, 1, .5, 1);
+  transition-timing-function: cubic-bezier(0, 1, .5, 1);
 }
 
 p {
@@ -289,7 +310,13 @@ p {
 
 .login-input-container {
   &:hover {
-    border: 1px solid $danger;
-    box-shadow: 0 2px 5px $danger + 100;
+    border: 1px solid $theme-main-color;
+    box-shadow: 0.1px 0.2px 0.4px $theme-main-color - 100;
   }
+}
+
+.createacc {
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
 }

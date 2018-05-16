@@ -1,27 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 ">
       <div class="row">
-        <div class="col-md-3" *ngFor="let taxon of taxons">
+        <div class="col-md-5 p-0" *ngFor="let taxon of taxons">
           <div>
             <a [routerLink]="['/products']" [queryParams]="{id: taxon.id}">
-              <b>{{taxon.name}}</b>
+              <b class="sucathead">{{taxon.name}}</b>
             </a>
             <app-categories-list [taxons]="taxon.taxons"></app-categories-list>
           </div>
         </div>
       </div>
+
       <div class="row">
-        <h5>Popular Brands</h5>
-        <div class="row">
-          <div class="col-md-2" *ngFor="let brand of BTaxon">
+        <div class="col-md-6 p-0">
+          <h5>Popular Brands</h5>
+          <div *ngFor="let brand of BTaxon">
             <app-brand-logo [brand]="(brand.taxons[0].name == taxonName)? brand.name : x "></app-brand-logo>
           </div>
         </div>
       </div>
     </div>
     <!-- to do -->
-    <div class="col-md-4">
+    <div class="col-md-4 imgcon">
       <img [src]="brand?.image_link" alt="" style="display: block; width: 100%;">
     </div>
   </div>
