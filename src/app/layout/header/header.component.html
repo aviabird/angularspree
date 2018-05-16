@@ -1,7 +1,7 @@
 <div class="header">
-<nav class="navbar navbar-expand-lg" id="main" [ngClass]="{'page-scroll-header': isScrolled}">
+  <nav class="navbar navbar-expand-lg" id="main" [ngClass]="{'page-scroll-header': isScrolled}">
     <div class="container">
-        <app-categories-menu-dropdown [taxonomies]="taxonomies$| async" [screenwidth] = "screenwidth" [isScrolled]="isScrolled" *ngIf="isScrolled"></app-categories-menu-dropdown>
+      <app-categories-menu-dropdown [taxonomies]="taxonomies$| async" [screenwidth]="screenwidth" [isScrolled]="isScrolled" *ngIf="isScrolled"></app-categories-menu-dropdown>
       <a class="navbar-brand" routerLink="/">
         <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
           class="d-inline-block align-top" alt="">
@@ -24,7 +24,7 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <div class="collapse navbar-collapse left-content-start">
-        <app-categories-menu-dropdown [screenwidth] = "screenwidth" [taxonomies]="taxonomies$| async"></app-categories-menu-dropdown>
+        <app-categories-menu-dropdown [screenwidth]="screenwidth" [taxonomies]="taxonomies$| async"></app-categories-menu-dropdown>
         <app-brand-menu-dropdown [taxonomies]="taxonomies$| async | slice:1:2"></app-brand-menu-dropdown>
       </div>
     </div>

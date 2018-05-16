@@ -69,13 +69,9 @@
     vertical-align: 0.055em !important;
   }
   $break-small: 320px;
-  @media screen and (min-width: $break-small) and (max-width: 767px){
-    /deep/ .section-title {   
+  @media screen and (min-width: $break-small) and (max-width: 767px) {
+    /deep/ .section-title {
       font-size: 1.4em;
     }
   }
-
-  
 }
-
-

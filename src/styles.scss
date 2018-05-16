@@ -1,13 +1,8 @@
 @import "app/shared/scss/themes";
 @import '../node_modules/ng2-toasty/bundles/style-default.css';
-
 $theme-main-color: #a3d032;
 $theme-action-color: #fe9700;
 $break-small: 320px;
-
-
-
-
 body {
   font-size: 15px;
   line-height: 1.5;
@@ -16,15 +11,17 @@ body {
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.btn:focus, .btn.focus {
+
+.btn:focus,
+.btn.focus {
   outline: 0;
-  box-shadow:None;
+  box-shadow: None;
 }
+
 .col-centered {
   float: none;
   margin: 0 auto;
 }
-
 
 .row-base {
   display: flex;
@@ -49,5 +46,5 @@ body {
 }
 
 html {
-overflow-y: scroll;
+  overflow-y: scroll;
 }

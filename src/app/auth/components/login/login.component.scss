@@ -59,7 +59,6 @@ fieldset {
   box-sizing: border-box;
   text-align: center;
   position: relative;
- 
 }
 
 .login-user-input-email {
@@ -132,19 +131,23 @@ fieldset {
   background-color: #a3d032 - 50;
   color: #fff;
 }
+
 .login-link-container {
   text-align: right;
   padding: 0px 20px 12px;
   font-size: 14px;
 }
+
 .login-link {
   text-decoration: none;
   font-size: 15px;
-  color:$theme-action-color!important;
+  color: $theme-action-color !important;
 }
+
 .login-right-links {
   float: right;
 }
+
 .login-info-text {
   color: #94969f;
   font-size: 12px;
@@ -311,4 +314,9 @@ p {
     box-shadow: 0.1px 0.2px 0.4px $theme-main-color - 100;
   }
 }
-.createacc{display:flex;align-items: center;padding-left: 3rem;}
+
+.createacc {
+  display: flex;
+  align-items: center;
+  padding-left: 3rem;
+}

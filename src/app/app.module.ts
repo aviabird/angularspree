@@ -39,11 +39,11 @@ import 'rxjs/add/observable/of';
     AppComponent,
     CheckoutHeaderComponent,
     CheckoutFooterComponent,
-    
+
   ],
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-    StoreModule.forRoot(reducers, { metaReducers }),BrowserAnimationsModule,
+    StoreModule.forRoot(reducers, { metaReducers }), BrowserAnimationsModule,
 
     /**
      * Store devtools instrument the store retaining past versions of state

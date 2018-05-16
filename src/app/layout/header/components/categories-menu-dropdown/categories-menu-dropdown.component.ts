@@ -23,8 +23,8 @@ import {
       state('show', style({
         left: 0
       })),
-      state('hide',   style({
-        left:-200 +'px' 
+      state('hide', style({
+        left: -200 + 'px'
       })),
       transition('show => hide', animate('600ms ease-out')),
       transition('hide => show', animate('1000ms ease-in'))
@@ -70,9 +70,9 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   }
 
   showCategory(i) {
-    this.show = !this.show;    
+    this.show = !this.show;
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
-    
+
   }
   showCategoryonclick(i) {
 

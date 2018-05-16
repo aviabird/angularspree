@@ -44,8 +44,8 @@
 
 .register-register-button {
   font-size: 14px;
-  font-weight:BOLD;
-  color:#fff;
+  font-weight: BOLD;
+  color: #fff;
   letter-spacing: 2px;
   padding: 15px;
   display: block;
@@ -53,7 +53,7 @@
   border: 0;
   text-transform: uppercase;
   border-radius: 3px;
-  background-color:$theme-main-color;
+  background-color: $theme-main-color;
 }
 
 .register-input-item {
@@ -134,7 +134,8 @@ legend {
   margin-right: 5px;
 }
 
-[type=checkbox], [type=radio] {
+[type=checkbox],
+[type=radio] {
   box-sizing: border-box;
   padding: 0;
 }
@@ -179,9 +180,10 @@ fieldset {
 
 .register-link {
   text-decoration: none;
-  color:$theme-action-color!important;
+  color: $theme-action-color !important;
   font-size: 15px;
 }
+
 a {
   background-color: transparent;
 }
@@ -220,29 +222,43 @@ a {
   text-align: left;
 }
 
-[type=reset], [type=submit], button, html [type=button] {
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
   -webkit-appearance: button;
 }
 
-[type=button], [type=reset], [type=submit], button {
+[type=button],
+[type=reset],
+[type=submit],
+button {
   cursor: pointer;
 }
+
 /* For Firefox */
+
 input[type='number'] {
-    -moz-appearance:textfield;
-}
-/* Webkit browsers like Safari and Chrome */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -moz-appearance: textfield;
 }
 
-button, select {
+/* Webkit browsers like Safari and Chrome */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button,
+select {
   text-transform: none;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -276,7 +292,8 @@ button, input, select, textarea {
   top: 10px;
 }
 
-.register-fb-logo, .register-gplus-logo {
+.register-fb-logo,
+.register-gplus-logo {
   height: 29px;
   position: absolute;
   left: 15px;
@@ -321,8 +338,8 @@ button, input, select, textarea {
   transition-property: all;
   -webkit-transition-duration: .5s;
   transition-duration: .5s;
-  -webkit-transition-timing-function: cubic-bezier(0,1,.5,1);
-  transition-timing-function: cubic-bezier(0,1,.5,1);
+  -webkit-transition-timing-function: cubic-bezier(0, 1, .5, 1);
+  transition-timing-function: cubic-bezier(0, 1, .5, 1);
 }
 
 .register-gender-error-icon {

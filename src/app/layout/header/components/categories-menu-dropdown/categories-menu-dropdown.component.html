@@ -7,19 +7,17 @@
     </strong>
     <span class=" caret "></span>
   </button>
-  <div id="dropdown-nested " *dropdownMenu class="dropdown-menu" [style.width]="dropdownWidth"  role="menu " aria-labelledby="button-nested ">
-   
-     <div class="row" *ngIf="taxonomies[0]; let catgeory_taxonomy">
-       <div class="col-md-3 p-0 no-gutters" [@popOverState]="stateName">
-         <ul>
-           <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)">{{taxon.name}}</li>
-         </ul>
-       </div>
-       <div class="col-md-9 no-gutters detailcontainer" *ngIf="menuTaxons">
-        <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [taxons]="menuTaxons.taxons" [taxonName]="menuTaxons.name" (click)="get_categeory()"></app-categories-details> 
+  <div id="dropdown-nested " *dropdownMenu class="dropdown-menu" [style.width]="dropdownWidth" role="menu " aria-labelledby="button-nested ">
+
+    <div class="row" *ngIf="taxonomies[0]; let catgeory_taxonomy">
+      <div class="col-md-3 p-0 no-gutters" [@popOverState]="stateName">
+        <ul>
+          <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)">{{taxon.name}}</li>
+        </ul>
       </div>
-     </div>
+      <div class="col-md-9 no-gutters detailcontainer" *ngIf="menuTaxons">
+        <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [taxons]="menuTaxons.taxons" [taxonName]="menuTaxons.name" (click)="get_categeory()"></app-categories-details>
+      </div>
+    </div>
   </div>
 </div>
-
-

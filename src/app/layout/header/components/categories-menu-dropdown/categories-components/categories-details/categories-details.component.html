@@ -10,15 +10,15 @@
             <app-categories-list [taxons]="taxon.taxons"></app-categories-list>
           </div>
         </div>
-      </div>    
-       
-        <div class="row">
-            <div class="col-md-6 p-0">
-            <h5>Popular Brands</h5>
-              <div  *ngFor="let brand of BTaxon">
-                <app-brand-logo [brand]="(brand.taxons[0].name == taxonName)? brand.name : x "></app-brand-logo>
-              </div>
-           </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 p-0">
+          <h5>Popular Brands</h5>
+          <div *ngFor="let brand of BTaxon">
+            <app-brand-logo [brand]="(brand.taxons[0].name == taxonName)? brand.name : x "></app-brand-logo>
+          </div>
+        </div>
       </div>
     </div>
     <!-- to do -->
