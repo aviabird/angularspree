@@ -15,9 +15,11 @@ import { getChildTaxons } from '../../reducers/selectors';
 export class CategoriesComponent implements OnInit {
   @Input() taxonomiList;
   @Input() isFilterOn;
-  @Input() level;
+  @Input() categoryLevel;
+  brands: any;
 
-  @Output() onSelected = new EventEmitter<String>();
+
+  @Output() onSelected = new EventEmitter<Object>();
   queryParams: any;
   isItemSelected: any;
 
@@ -34,8 +36,10 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.searchActions.clearCategeoryLevel());
+
   }
+
+
 
 
   /**
@@ -49,11 +53,9 @@ export class CategoriesComponent implements OnInit {
     this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
   }
 
-  emitSelection(selection: string) {
+  emitSelection() {
     this.catgeoryFilter()
-    this.onSelected.emit(selection);
+    this.onSelected.emit({ id: this.queryParams.id, name: this.queryParams['q[name_cont]'] });
   }
-
-
 }
 

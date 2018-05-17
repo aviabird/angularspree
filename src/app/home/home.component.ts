@@ -1,5 +1,5 @@
 import { SearchActions } from './reducers/search.actions';
-import { getSelectedTaxonIds, getProductsByKeyword, getChildTaxons, categeoryLevel } from './reducers/selectors';
+import { getSelectedTaxonIds, getProductsByKeyword, getChildTaxons, categeoryLevel, taxonomiByName } from './reducers/selectors';
 import { Taxonomy } from './../core/models/taxonomy';
 import { environment } from './../../environments/environment';
 import { ProductActions } from './../product/actions/product-actions';
@@ -22,10 +22,10 @@ import { Product } from '../core/models/product';
         [taxonomiList]="taxonomies$ | async"
         (onSelected)= "OnCategeorySelected($event)"
         [isFilterOn]= "isFilterOn"
-        [level]= "level$ | async" >
+        [categoryLevel]= "categoryLevel$ | async" >
       </app-categories>
       <br>
-      <app-brand-filter [taxonomiList]="brands$ | async"></app-brand-filter>
+      <app-brand-filter [taxonomiList]="brands$ | async" [isFilterOn]= "isFilterOn"></app-brand-filter>
       </div>
       <div class="col-md-9">
         <app-content
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   taxonomies$: Observable<any>;
   brands$: Observable<any>;
   selectedTaxonIds$: Observable<number[]>;
-  level$: Observable<any>;
+  categoryLevel$: Observable<any>;
   products: any;
   isProducts = false;
   isFilterOn = false;
@@ -63,11 +63,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() { }
-  OnCategeorySelected(catageoryId) {
+  OnCategeorySelected(event) {
     // TODO: Here taxonomies_id is hardcoded for now.
-    this.store.dispatch(this.searchActions.getChildTaxons('5', catageoryId));
+    this.store.dispatch(this.searchActions.getChildTaxons('5', event.id));
     this.taxonomies$ = this.store.select(getChildTaxons)
-    this.level$ = this.store.select(categeoryLevel)
+    this.categoryLevel$ = this.store.select(categeoryLevel)
+    // ToDo: Here Brands are hardcoded For now.
+    this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', event.name));
+    this.brands$ = this.store.select(taxonomiByName)
     this.isFilterOn = true
   }
 }
