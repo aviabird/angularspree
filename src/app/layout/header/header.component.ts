@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   currPos: Number = 0;
   startPos: Number = 0;
   changePos: Number = 100;
-
+  devicewidth: any;
   screenwidth: any;
   taxonList = [{
     'id': 4,
@@ -110,6 +110,7 @@ export class HeaderComponent implements OnInit {
   test() {
     if (this.screenwidth <= 1000) {
       this.isScrolled = true;
+      this.devicewidth = this.screenwidth
     }
   }
   selectTaxon(taxon) {

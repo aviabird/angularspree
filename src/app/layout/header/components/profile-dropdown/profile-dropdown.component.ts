@@ -10,8 +10,9 @@ import { AuthService } from '../../../../core/services/auth.service';
 export class ProfileDropdownComponent implements OnInit, OnChanges {
   @Input() isAuthenticated;
   email = '';
+  @Input() devicewidth;
   currentUser: any;
-  subnav : boolean;
+  subnav: boolean;
 
   constructor(private authService: AuthService, private router: Router) {
   }

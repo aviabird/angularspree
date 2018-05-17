@@ -2,7 +2,8 @@
   <nav class="navbar navbar-expand-lg" id="main" [ngClass]="{'page-scroll-header': isScrolled}">
     <div class="container">
       <app-categories-menu-dropdown [taxonomies]="taxonomies$| async" [screenwidth]="screenwidth" [isScrolled]="isScrolled" *ngIf="isScrolled"></app-categories-menu-dropdown>
-      <a class="navbar-brand" routerLink="/">
+
+      <a class="navbar-brand" routerLink="/" *ngIf="!devicewidth">
         <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
           class="d-inline-block align-top" alt="">
       </a>
@@ -18,6 +19,23 @@
         <app-header-help-dropdown></app-header-help-dropdown>
         <app-profile-dropdown class="pr-2" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
         <app-header-cart class="pl-2 border-left" [totalCartItems]="totalCartItems | async"></app-header-cart>
+      </div>
+      <div class="resheader row hidden-md hidden-lg" *ngIf="devicewidth">
+        <div class="search">
+          <app-header-search [devicewidth]="devicewidth"></app-header-search>
+        </div>
+        <div class="mlogo">
+          <a class="navbar-brand small-logo" routerLink="/" *ngIf="devicewidth">
+            <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
+              class="d-inline-block align-top" alt="">
+          </a>
+        </div>
+        <div class="profile">
+          <app-profile-dropdown [devicewidth]="devicewidth" class="pr-2" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
+        </div>
+        <div class="cart">
+          <app-header-cart class="pl-2 border-left" [devicewidth]="devicewidth" [totalCartItems]="totalCartItems | async"></app-header-cart>
+        </div>
       </div>
     </div>
   </nav>
