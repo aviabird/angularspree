@@ -11,7 +11,10 @@ export class SearchActions {
   static GET_CHILD_TAXONS = 'GET_CHILD_TAXONS'
   static GET_CHILD_TAXONS_SUCCESS = 'GET_CHILD_TAXONS_SUCCESS'
   static CLEAR_SELECTED_CATAGEORY = 'CLEAR_SELECTED_CATAGEORY'
+  static GET_TAXONOMIES_BY_NAME = 'GET_TAXONOMIES_BY_NAME'
+  static GET_TAXONOMIES_BY_NAME_SUCCESS = 'GET_TAXONOMIES_BY_NAME_SUCCESS'
 
+  category: any;
   /**
    * @method getAllFtilers
    * Fetches all the filters that have been getSelectedProduct
@@ -85,6 +88,22 @@ export class SearchActions {
   clearCategeoryLevel() {
     return {
       type: SearchActions.CLEAR_SELECTED_CATAGEORY
+    }
+  }
+
+  getTaxonomiesByName(taxonomyName: string, categoryName: string) {
+    this.category = categoryName
+    return {
+      type: SearchActions.GET_TAXONOMIES_BY_NAME,
+      payload: taxonomyName
+    }
+  }
+
+  getTaxonomiesByNameSuccess(taxonomiList: any) {
+    const category = this.category
+    return {
+      type: SearchActions.GET_TAXONOMIES_BY_NAME_SUCCESS,
+      payload: { taxonomiList, category }
     }
   }
 }
