@@ -6,7 +6,8 @@ import { ActionReducer, Action } from '@ngrx/store';
 import { SearchState, SearchStateRecord } from './search.state';
 
 export const initialState: SearchState = new SearchStateRecord() as SearchState;
-
+let isUpdated: boolean;
+let updatedCategory: any;
 export function reducer(state = initialState, { type, payload }: any): SearchState {
   switch (type) {
     case SearchActions.ADD_FILTER:
@@ -52,9 +53,20 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
       }) as SearchState;
 
     case SearchActions.GET_CHILD_TAXONS_SUCCESS:
-      const selectedCategory = payload.taxonList.name
+      const selectedCategory = { 'id': payload.taxonList.id, 'name': payload.taxonList.name }
       let _categeoryLevel = state.categeoryLevel
-      _categeoryLevel = _categeoryLevel.push(selectedCategory);
+      state.categeoryLevel.forEach((categeory, i) => {
+        if (categeory.id === selectedCategory.id) {
+          isUpdated = true
+          updatedCategory = _categeoryLevel.slice(0, i + 1)
+          _categeoryLevel = updatedCategory
+        } else {
+          isUpdated = false
+        }
+      });
+      if (isUpdated !== true) {
+        _categeoryLevel = _categeoryLevel.push(selectedCategory);
+      }
       const _getChildTaxons: Taxonomy = payload.taxonList;
       return state.merge({
         getChildTaxons: _getChildTaxons,
@@ -64,6 +76,24 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
     case SearchActions.CLEAR_SELECTED_CATAGEORY:
       return state.merge({
         categeoryLevel: []
+      }) as SearchState;
+
+    case SearchActions.GET_TAXONOMIES_BY_NAME_SUCCESS:
+      let _taxonomiByName: Taxonomy[] = payload.taxonomiList.taxonomiList.taxonomies;
+      let brandArray = [];
+      const brandsRoot = _taxonomiByName[0].root;
+      const lengthBrands = brandsRoot.taxons.length;
+      for (let i = 0; i < lengthBrands; i++) {
+        const lengthCategory = brandsRoot.taxons[i].taxons.length;
+        for (let j = 0; j < lengthCategory; j++) {
+          if (brandsRoot.taxons[i].taxons[j].name === payload.category) {
+            brandArray.push(brandsRoot.taxons[i].name)
+          }
+        }
+      }
+      _taxonomiByName = brandArray
+      return state.merge({
+        taxonomiByName: _taxonomiByName
       }) as SearchState;
 
     default:
