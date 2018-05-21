@@ -1,10 +1,11 @@
+import { ProductService } from './../core/services/product.service';
 import { SearchActions } from './reducers/search.actions';
 import { getSelectedTaxonIds, getProductsByKeyword, getChildTaxons, categeoryLevel, taxonomiByName } from './reducers/selectors';
 import { Taxonomy } from './../core/models/taxonomy';
 import { environment } from './../../environments/environment';
 import { ProductActions } from './../product/actions/product-actions';
 import { AppState } from './../interfaces';
-import { getProducts, getTaxonomies } from './../product/reducers/selectors';
+import { getProducts, getTaxonomies, showAllProducts } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
@@ -21,6 +22,7 @@ import { Product } from '../core/models/product';
       <app-categories
         [taxonomiList]="taxonomies$ | async"
         (onSelected)= "OnCategeorySelected($event)"
+        (showAllProducts)="showAllProducts()"
         [isFilterOn]= "isFilterOn"
         [categoryLevel]= "categoryLevel$ | async" >
       </app-categories>
@@ -47,9 +49,13 @@ export class HomeComponent implements OnInit {
   isProducts = false;
   isFilterOn = false;
 
-  constructor(private store: Store<AppState>, private actions: ProductActions, private searchActions: SearchActions) {
+  constructor(
+    private store: Store<AppState>,
+    private actions: ProductActions,
+    private searchActions: SearchActions,
+    private productService: ProductService) {
     // Get all products for the product list component
-    // this.store.dispatch(this.actions.getAllProducts());
+    this.store.dispatch(this.actions.getAllProducts());
     this.store.dispatch(this.actions.getAllTaxonomies());
     // this.products$ = this.store.select(getProducts);
     this.taxonomies$ = this.store.select(getTaxonomies);
@@ -63,14 +69,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() { }
-  OnCategeorySelected(event) {
+  OnCategeorySelected(category) {
     // TODO: Here taxonomies_id is hardcoded for now.
-    this.store.dispatch(this.searchActions.getChildTaxons('5', event.id));
+    this.store.dispatch(this.searchActions.getChildTaxons('5', category.id));
     this.taxonomies$ = this.store.select(getChildTaxons)
     this.categoryLevel$ = this.store.select(categeoryLevel)
     // ToDo: Here Brands are hardcoded For now.
-    this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', event.name));
+    this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', category.name));
     this.brands$ = this.store.select(taxonomiByName)
     this.isFilterOn = true
+  }
+  showAllProducts() {
+    this.store.select(showAllProducts)
+      .subscribe(data => this.products = data)
   }
 }

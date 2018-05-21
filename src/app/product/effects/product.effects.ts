@@ -66,3 +66,4 @@ export class ProductEffects {
     .switchMap((action: any) => this.productService.getTaxonByName(action.payload))
     .map((data: any) => this.searchActions.getTaxonomiesByNameSuccess({ taxonomiList: data }));
 }
+
