@@ -92,6 +92,7 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
         }
       }
       _taxonomiByName = brandArray
+
       return state.merge({
         taxonomiByName: _taxonomiByName
       }) as SearchState;

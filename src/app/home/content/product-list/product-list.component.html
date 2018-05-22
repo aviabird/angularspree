@@ -9,7 +9,7 @@
           <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.product_url)">
           <div class="product-productMetaInfo">
             <div itemprop="name" class="product-brand">{{ product.name }}</div>
-            <h2 class="product-product">{{ product.description }}</h2>
+            <div class="product-product" innerHTML="{{ product.description }}"></div>
             <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
               <span>
                 <!-- Discounted price -->
