@@ -32,6 +32,10 @@ function fetchCategeoryLevel(state: SearchState) {
   return state.categeoryLevel.toJS();
 }
 
+function fetchMenustate(state: SearchState) {
+  return state.isMenuOpen;
+}
+
 
 /******************* Public Selector API's ******************/
 export const getFilters = createSelector(getSearchState, fetchSelectedFilters);
@@ -39,3 +43,4 @@ export const getSelectedTaxonIds = createSelector(getSearchState, fetchSelectedT
 export const getProductsByKeyword = createSelector(getSearchState, fetchProductsByKeyword);
 export const getChildTaxons = createSelector(getSearchState, fetchChildTaxons);
 export const categeoryLevel = createSelector(getSearchState, fetchCategeoryLevel);
+export const isMenuOpen = createSelector(getSearchState, fetchMenustate);

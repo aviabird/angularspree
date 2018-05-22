@@ -45,8 +45,6 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   get stateName() {
     return this.show ? 'show' : 'hide'
   }
-
-
   constructor(
     private route: ActivatedRoute,
     private searchActions: SearchActions,
@@ -72,6 +70,11 @@ export class CategoriesMenuDropdownComponent implements OnInit {
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
 
   }
+
+  menuState($event){
+    this.store.dispatch(this.searchActions.changeMenuState($event))
+  }
+
   showCategoryonclick(i) {
     this.show = !this.show;
     if (this.screenwidth <= 1000) {
@@ -86,8 +89,6 @@ export class CategoriesMenuDropdownComponent implements OnInit {
     search.set('id', this.queryParams.id);
     this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()))
   }
-
-
   childCatLoaded(status) {
     this.backBtnShow = status;
   }

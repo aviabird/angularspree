@@ -66,6 +66,13 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
         categeoryLevel: []
       }) as SearchState;
 
+    case SearchActions.CHANGE_MENU_STATE:
+      const _isMenuOpen: boolean = payload.value
+      console.log('menu', payload)
+      return state.merge({
+        isMenuOpen: _isMenuOpen
+      }) as SearchState
+
     default:
       return state;
   }

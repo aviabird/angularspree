@@ -1,36 +1,30 @@
 <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row padding-top">
 
-  <app-image-container 
-    [images]="images" 
-    [selectedImage]="images[0]"
-    class="col-md-6">
-  </app-image-container>
-
+  <div class="col-md-6">
+    <div class="fav-icon-sontainer">
+      <a (click)="markAsFavorite()" class="favorite">
+        <i class="fa fa-heart"></i>
+      </a>
+    </div>
+    <app-image-container [images]="images" [selectedImage]="images[0]">
+    </app-image-container>
+  </div>
   <div class="col-md-6">
 
     <app-product-price-info [product]="product" class="row">
     </app-product-price-info>
 
-    <app-product-variants
-      [customOptionTypesHash]="customOptionTypesHash"
-      [currentSelectedOptions]="currentSelectedOptions" 
-      (onOptionClickEvent)="onOptionClick($event)"
-      [correspondingOptions]="correspondingOptions"
-      [mainOptions]="mainOptions"
-      class="row"></app-product-variants>  
+    <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
+      [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row"></app-product-variants>
 
-    <div>
+    <div class="row">
       <button (click)="addToCart()" class="pdp-add-to-bag pdp-button">ADD TO BAG</button>
     </div>
 
-    <div>
-      <button (click)="markAsFavorite()" class="btn btn-primary">Mark as favorite</button>
-    </div>
 
-    <app-product-description 
-      [description]="product.description" 
-      class="row">
-    </app-product-description>  
+
+    <app-product-description [description]="product.description" class="row">
+    </app-product-description>
   </div>
 
 </div>

@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
   changePos: Number = 100;
   devicewidth: any;
   screenwidth: any;
+
   taxonList = [{
     'id': 4,
     'name': 'Mugs',
@@ -103,6 +104,8 @@ export class HeaderComponent implements OnInit {
     this.isAuthenticated = this.store.select(getAuthStatus);
     this.totalCartItems = this.store.select(getTotalCartItems);
     this.screenwidth = window.outerWidth;
+    
+    
 
     this.test()
   }

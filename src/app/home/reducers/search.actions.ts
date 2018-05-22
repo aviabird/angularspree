@@ -11,7 +11,7 @@ export class SearchActions {
   static GET_CHILD_TAXONS = 'GET_CHILD_TAXONS'
   static GET_CHILD_TAXONS_SUCCESS = 'GET_CHILD_TAXONS_SUCCESS'
   static CLEAR_SELECTED_CATAGEORY = 'CLEAR_SELECTED_CATAGEORY'
-
+  static CHANGE_MENU_STATE = 'CHANGE_MENU_STATE'
   /**
    * @method getAllFtilers
    * Fetches all the filters that have been getSelectedProduct
@@ -85,6 +85,13 @@ export class SearchActions {
   clearCategeoryLevel() {
     return {
       type: SearchActions.CLEAR_SELECTED_CATAGEORY
+    }
+  }
+
+  changeMenuState(value: boolean) {
+    return {
+      type: SearchActions.CHANGE_MENU_STATE,
+      payload: value
     }
   }
 }

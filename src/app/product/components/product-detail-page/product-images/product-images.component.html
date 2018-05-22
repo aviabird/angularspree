@@ -3,7 +3,7 @@
     <button class="thumbnails-thumbnail-button" *ngFor="let image of images">
       <img class="thumbnails-thumbnail" 
            [src]="getProductImageUrl(image.small_url)"
-           [alt]="image.alt"
+           [alt]="image.alt" class="img-fliud"
            (mouseover)="onMouseOver(image)">
   </button>
   </div>

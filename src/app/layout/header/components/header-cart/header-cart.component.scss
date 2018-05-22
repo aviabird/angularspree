@@ -1,4 +1,8 @@
-.header-cart {
-  font-size: 24px !important;
-  padding: 0px 10px !important;
+
+@media screen and(min-width: 320px) and(max-width: 768px) {
+  .header-cart {
+    font-size: 24px !important;
+    padding: 0px 10px !important;
+  }
+
 }
