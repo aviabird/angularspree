@@ -32,5 +32,4 @@ export class BrandFilterComponent implements OnInit {
     search.set('id', this.queryParams.id);
     this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
   }
-
 }

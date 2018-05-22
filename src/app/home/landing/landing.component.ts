@@ -47,6 +47,7 @@ export class LandingComponent implements OnInit {
 
     this.productService.getFavoriteProducts()
       .subscribe(response => this.favoriteProducts = response)
+
   }
 
   ngOnInit() {

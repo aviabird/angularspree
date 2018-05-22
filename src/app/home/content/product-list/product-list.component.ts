@@ -8,6 +8,7 @@ import { Product } from './../../../core/models/product';
 import { environment } from './../../../../environments/environment';
 import { Component, OnInit, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -17,6 +18,8 @@ export class ProductListComponent implements OnInit {
   @Input() products;
   @Input('taxonIds') selectedTaxonIds;
   @Input() toggleLayout;
+
+
 
   constructor(
     private checkoutService: CheckoutService,
@@ -41,5 +44,4 @@ export class ProductListComponent implements OnInit {
   trackByFn(index, item) {
     return index;
   }
-
 }

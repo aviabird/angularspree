@@ -26,7 +26,12 @@ export class HeaderSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if ('q[name_cont_all]' in this.queryParams) {
+      this.onSearch(this.queryParams['q[name_cont_all]'])
+    }
+    if ('id' in this.queryParams) {
+      this.catgeoryFilter()
+    }
   }
   onSearch(keyword: string) {
     if (keyword !== '') {
@@ -37,5 +42,11 @@ export class HeaderSearchComponent implements OnInit {
       this.router.navigate(['/products'], { queryParams: { 'q[name_cont_all]': keyword } });
       this.store.dispatch(this.searchActions.clearCategeoryLevel());
     }
+  }
+
+  catgeoryFilter() {
+    const search = new URLSearchParams();
+    search.set('id', this.queryParams.id);
+    this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
   }
 }

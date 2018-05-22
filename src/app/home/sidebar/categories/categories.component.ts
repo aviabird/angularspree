@@ -1,3 +1,4 @@
+import { ProductActions } from './../../../product/actions/product-actions';
 import { ProductService } from './../../../core/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppState } from './../../../interfaces';
@@ -6,6 +7,7 @@ import { SearchActions } from './../../reducers/search.actions';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
 import { getChildTaxons } from '../../reducers/selectors';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-categories',
@@ -20,6 +22,7 @@ export class CategoriesComponent implements OnInit {
 
 
   @Output() onSelected = new EventEmitter<Object>();
+  @Output() showAllProducts = new EventEmitter<Object>();
   queryParams: any;
   isItemSelected: any;
 
@@ -27,7 +30,8 @@ export class CategoriesComponent implements OnInit {
     private searchActions: SearchActions,
     private store: Store<AppState>,
     private router: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private productActions: ProductActions,
   ) {
     this.router.queryParams
       .subscribe(params => {
@@ -36,11 +40,13 @@ export class CategoriesComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if ('id' in this.queryParams) {
+      this.catgeoryFilter();
+    }
   }
-
-
-
+  showAllProduct() {
+    this.showAllProducts.emit()
+  }
 
   /**
    *
