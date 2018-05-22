@@ -1,13 +1,15 @@
 <div class="image-container" *ngIf="images">
-  <div class="thumbnails-vertical-container">
-    <button class="thumbnails-thumbnail-button" *ngFor="let image of images">
-      <img class="thumbnails-thumbnail" 
-           [src]="getProductImageUrl(image.small_url)"
-           [alt]="image.alt" class="img-fliud"
-           (mouseover)="onMouseOver(image)">
-  </button>
+  <div class="row">
+    <div class="col-1">
+      <div class="thumbnails-vertical-container">
+        <button class="thumbnails-thumbnail-button" *ngFor="let image of images">
+          <img class="thumbnails-thumbnail img-fluid" [src]="getProductImageUrl(image.small_url)" [alt]="image.alt" (mouseover)="onMouseOver(image)">
+        </button>
+      </div>
+    </div>
+    <div class="col-11">
+      <img itemprop="image" [src]="getProductImageUrl(selectedImage.large_url)" [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid"
+      />
+    </div>
   </div>
-  <img itemprop="image" [src]="getProductImageUrl(selectedImage.large_url)" 
-       [alt]="selectedImage.alt"
-       class="thumbnails-selected-image" />
 </div>
