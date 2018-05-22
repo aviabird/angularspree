@@ -1,5 +1,3 @@
-import { ProductActions } from './../../../product/actions/product-actions';
-import { ProductService } from './../../../core/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
@@ -7,7 +5,7 @@ import { SearchActions } from './../../reducers/search.actions';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
 import { getChildTaxons } from '../../reducers/selectors';
-import { debug } from 'util';
+
 
 @Component({
   selector: 'app-categories',
@@ -18,20 +16,17 @@ export class CategoriesComponent implements OnInit {
   @Input() taxonomiList;
   @Input() isFilterOn;
   @Input() categoryLevel;
-  brands: any;
-
 
   @Output() onSelected = new EventEmitter<Object>();
-  @Output() showAllProducts = new EventEmitter<Object>();
+  @Output() showAll = new EventEmitter<Object>();
+
   queryParams: any;
   isItemSelected: any;
-
+  brands: any;
   constructor(
     private searchActions: SearchActions,
     private store: Store<AppState>,
-    private router: ActivatedRoute,
-    private productService: ProductService,
-    private productActions: ProductActions,
+    private router: ActivatedRoute
   ) {
     this.router.queryParams
       .subscribe(params => {
@@ -44,8 +39,10 @@ export class CategoriesComponent implements OnInit {
       this.catgeoryFilter();
     }
   }
-  showAllProduct() {
-    this.showAllProducts.emit()
+  showAllCategory() {
+    window.location.reload();
+    this.isFilterOn = false
+    this.showAll.emit()
   }
 
   /**
@@ -55,6 +52,9 @@ export class CategoriesComponent implements OnInit {
    */
   catgeoryFilter() {
     const search = new URLSearchParams();
+    if ('page' in this.queryParams) {
+      search.set('page', this.queryParams.page);
+    }
     search.set('id', this.queryParams.id);
     this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
   }
@@ -64,4 +64,3 @@ export class CategoriesComponent implements OnInit {
     this.onSelected.emit({ id: this.queryParams.id, name: this.queryParams['q[name_cont]'] });
   }
 }
-

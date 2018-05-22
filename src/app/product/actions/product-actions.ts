@@ -12,8 +12,11 @@ export class ProductActions {
   static GET_ALL_TAXONOMIES_SUCCESS = 'GET_ALL_TAXONOMIES_SUCCESS';
   static GET_ALL_PRODUCTS_SEARCH_SUCCESS = 'GET_ALL_PRODUCTS_SEARCH_SUCCESS';
 
-  getAllProducts() {
-    return { type: ProductActions.GET_ALL_PRODUCTS };
+  getAllProducts(pageNumber: number) {
+    return {
+      type: ProductActions.GET_ALL_PRODUCTS,
+      payload: pageNumber
+    };
   }
 
   getProductDetail(id: string) {
