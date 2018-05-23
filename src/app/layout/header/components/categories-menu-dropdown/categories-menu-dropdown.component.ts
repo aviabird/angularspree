@@ -59,8 +59,7 @@ export class CategoriesMenuDropdownComponent implements OnInit {
     if (this.screenwidth <= 1000) {
       this.dropdownWidth = this.screenwidth - 10 + 'px';
       this.autoclose = false;
-    }
-    else {
+    } else {
       this.autoclose = true;
     }
   }
@@ -69,10 +68,6 @@ export class CategoriesMenuDropdownComponent implements OnInit {
 
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
 
-  }
-
-  menuState($event){
-    this.store.dispatch(this.searchActions.changeMenuState($event))
   }
 
   showCategoryonclick(i) {
