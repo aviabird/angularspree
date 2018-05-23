@@ -19,10 +19,11 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
 
   ngOnInit() {
   }
+
   ngOnChanges() {
     this.currentUser = JSON.parse(localStorage.getItem('user'))
     if (this.currentUser) {
-      this.email = this.currentUser.email
+      this.email = this.currentUser.email.split('@')[0];
     }
   }
 

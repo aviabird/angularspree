@@ -16,7 +16,7 @@
         </ul>
       </div>
       <div class="col-md-9 no-gutters detailcontainer" *ngIf="menuTaxons">
-        <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [taxons]="menuTaxons.taxons" [taxonName]="menuTaxons.name" (click)="get_categeory()"></app-categories-details>
+        <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [taxons]="menuTaxons.taxons" [taxonName]="menuTaxons.name" (click)="getCategeory()"></app-categories-details>
       </div>
     </div>
   </div>

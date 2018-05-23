@@ -2627,7 +2627,7 @@ follow-redirects@^1.0.0:
   dependencies:
     debug "^3.1.0"
 
-font-awesome@latest:
+font-awesome@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
 
@@ -4663,6 +4663,10 @@ ngx-bootstrap@^2.0.4:
 ngx-drag-scroll@^1.7.7:
   version "1.7.8"
   resolved "https://registry.yarnpkg.com/ngx-drag-scroll/-/ngx-drag-scroll-1.7.8.tgz#9b6828bdf208eaed0da5c9bb143898665ed05d46"
+
+ngx-pagination@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-3.1.1.tgz#fcde5cb5fd4a1bd6aa785ff062a55f3deefcd3ac"
 
 ngx-progressbar@^2.1.1:
   version "2.1.1"

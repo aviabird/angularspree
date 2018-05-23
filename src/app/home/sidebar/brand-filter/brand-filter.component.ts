@@ -12,6 +12,7 @@ import { URLSearchParams } from '@angular/http'
 })
 export class BrandFilterComponent implements OnInit {
   @Input() taxonomiList;
+  @Input() isFilterOn;
   queryParams: any;
   constructor(
     private searchActions: SearchActions,
@@ -31,5 +32,4 @@ export class BrandFilterComponent implements OnInit {
     search.set('id', this.queryParams.id);
     this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
   }
-
 }

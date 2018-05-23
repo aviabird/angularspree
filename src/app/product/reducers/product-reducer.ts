@@ -16,22 +16,25 @@ export function reducer(state = initialState, { type, payload }: any): ProductSt
 
     case ProductActions.GET_ALL_PRODUCTS_SUCCESS:
       const _products: Product[] = payload.products.products;
+      const _showAllProducts: Product[] = payload.products;
       const productIds: number[] = _products.map(product => product.id);
       const productEntities = _products.reduce((products: { [id: number]: Product }, product: Product) => {
         return Object.assign(products, {
           [product.id]: product
         });
-      }, { });
+      }, {});
+
       return state.merge({
         productIds: productIds,
-        productEntities: productEntities
+        productEntities: productEntities,
+        showAllProducts: _showAllProducts
       }) as ProductState;
 
-   case ProductActions.GET_ALL_TAXONOMIES_SUCCESS:
-    const _taxonomies: Taxonomy[] = payload.taxonomies.taxonomies;
-    return state.merge({
-      taxonomies: _taxonomies
-    }) as ProductState;
+    case ProductActions.GET_ALL_TAXONOMIES_SUCCESS:
+      const _taxonomies: Taxonomy[] = payload.taxonomies.taxonomies;
+      return state.merge({
+        taxonomies: _taxonomies
+      }) as ProductState;
 
     default:
       return state;

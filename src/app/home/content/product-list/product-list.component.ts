@@ -1,12 +1,11 @@
 import { getSelectedTaxonIds } from './../../reducers/selectors';
-import { Observable } from 'rxjs/Observable';
-import { CheckoutService } from './../../../core/services/checkout.service';
 import { CheckoutActions } from './../../../checkout/actions/checkout.actions';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { Product } from './../../../core/models/product';
 import { environment } from './../../../../environments/environment';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -17,11 +16,19 @@ export class ProductListComponent implements OnInit {
   @Input() products;
   @Input('taxonIds') selectedTaxonIds;
   @Input() toggleLayout;
+  page: number;
+  queryParams: any;
 
   constructor(
-    private checkoutService: CheckoutService,
     private store: Store<AppState>,
-    private checkoutActions: CheckoutActions) { }
+    private checkoutActions: CheckoutActions,
+    private router: ActivatedRoute,
+    private routernomal: Router) {
+    this.router.queryParams
+      .subscribe(params => {
+        this.queryParams = params
+      });
+  }
 
   ngOnInit() { }
 
@@ -42,4 +49,13 @@ export class ProductListComponent implements OnInit {
     return index;
   }
 
+  pageChanged(event: any): void {
+    this.page = event.page;
+    const urlTree = this.routernomal.createUrlTree([], {
+      queryParams: { page: this.page },
+      queryParamsHandling: 'merge',
+      preserveFragment: true
+    });
+    this.routernomal.navigateByUrl(urlTree);
+  }
 }

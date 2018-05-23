@@ -43,31 +43,30 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getProducts(): any { return this.http.get<Array<Product>>(`api/v1/products`) }
+  getProducts(pageNumber: number): Observable<{}> { return this.http.get<Array<Product>>(`api/v1/products?page=${pageNumber}&per_page=20`) }
 
   markAsFavorite(id: number): Observable<{}> { return this.http.post<{}>(`favorite_products`, { id: id }) }
 
   removeFromFavorite(id: number): Observable<{}> { return this.http.delete<{}>(`favorite_products/${id}`) }
 
-  getFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`favorite_products.json`) }
+  getFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`favorite_products.json?per_page=20`) }
 
   getUserFavoriteProducts(): Observable<Array<Product>> { return this.http.get<Array<Product>>(`spree/user_favorite_products.json`) }
 
   // tslint:disable-next-line:max-line-length
   getProductsByTaxon(id: string): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`api/v1/taxons/products?${id}`)
+    return this.http.get<Array<Product>>(`api/v1/taxons/products?${id}&per_page=20`)
   }
 
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
-    return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?q[name_cont]=${name}`)
+    return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?q[name_cont]=${name}&set=nested`)
   }
 
   getproductsByKeyword(keyword: string): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`api/v1/products?${keyword}`)
+    return this.http.get<Array<Product>>(`api/v1/products?${keyword}&per_page=20`)
   }
 
   getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(`/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`)
   }
-
 }

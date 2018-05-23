@@ -18,8 +18,8 @@ export interface SearchState extends Map<string, any> {
   selectedTaxonIds: List<number>;
   productsByKeyword: List<Product>;
   getChildTaxons: List<Taxonomy>;
-  categeoryLevel: List<string>;
-  isMenuOpen: Boolean;
+  categeoryLevel: List<any>;
+  taxonomiByName: List<any>;
 }
 
 export const SearchStateRecord = Record({
@@ -28,5 +28,5 @@ export const SearchStateRecord = Record({
   productsByKeyword: List([]),
   getChildTaxons: List([]),
   categeoryLevel: List([]),
-  isMenuOpen: false
+  taxonomiByName: List([])
 });

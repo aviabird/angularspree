@@ -21,7 +21,7 @@ export class ProductEffects {
   @Effect()
   GetAllProducts$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_ALL_PRODUCTS)
-    .switchMap((action: any) => this.productService.getProducts())
+    .switchMap((action: any) => this.productService.getProducts(action.payload))
     .map((data: any) => this.productActions.getAllProductsSuccess({ products: data }));
 
   // tslint:disable-next-line:member-ordering
@@ -58,5 +58,11 @@ export class ProductEffects {
     .ofType(SearchActions.GET_CHILD_TAXONS)
     .switchMap((action: any) => this.productService.getChildTaxons(action.payload.taxonomiesId, action.payload.taxonId))
     .map((data: any) => this.searchActions.getChildTaxonsSuccess({ taxonList: data }));
-}
 
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  GetTaxonomiByName$: Observable<Action> = this.actions$
+    .ofType(SearchActions.GET_TAXONOMIES_BY_NAME)
+    .switchMap((action: any) => this.productService.getTaxonByName(action.payload))
+    .map((data: any) => this.searchActions.getTaxonomiesByNameSuccess({ taxonomiList: data }));
+}

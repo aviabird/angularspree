@@ -25,6 +25,7 @@ export class HeaderSearchComponent implements OnInit{
     this.activatedRouter.queryParams
       .subscribe(params => {
         this.queryParams = params
+        this.loadPage()
       });
       this.flag = this.store.select(isMenuOpen)
   }
@@ -36,14 +37,40 @@ export class HeaderSearchComponent implements OnInit{
   showsearch() {
     this.flag = !this.flag;
 
+    this.loadPage();
   }
   onSearch(keyword: string) {
     if (keyword !== '') {
       keyword = keyword.trim();
       const search = new URLSearchParams();
       search.set('q[name_cont]', keyword)
+      if ('page' in this.queryParams) {
+        search.set('page', this.queryParams.page)
+      }
       this.store.dispatch(this.searchActions.getproductsByKeyword(search.toString()));
-      this.router.navigate(['/products'], { queryParams: { 'q[name_cont_all]': keyword } });
+      this.router.navigate(['/products'], { queryParams: { 'q[name_cont_all]': keyword, 'page': this.queryParams.page } });
+      this.store.dispatch(this.searchActions.clearCategeoryLevel());
+    }
+  }
+
+  catgeoryFilter() {
+    const search = new URLSearchParams();
+    search.set('id', this.queryParams.id);
+    search.set('page', this.queryParams.page)
+    this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
+  }
+
+  loadPage() {
+    if ('q[name_cont_all]' in this.queryParams && 'page' in this.queryParams) {
+      this.onSearch(this.queryParams['q[name_cont_all]'])
+    } else if ('q[name_cont_all]' in this.queryParams) {
+      this.onSearch(this.queryParams['q[name_cont_all]'])
+    }
+
+    if ('id' in this.queryParams && 'page' in this.queryParams) {
+      this.catgeoryFilter()
+    } else if ('id' in this.queryParams) {
+      this.catgeoryFilter()
     }
   }
 }
