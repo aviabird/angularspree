@@ -1,7 +1,19 @@
-<form class="desktop-query form-inline my-2 my-lg-0">
-  <input class="desktop-search-bar bg-white" type="search" placeholder="Find the best for your pets..."
-    aria-label="Search" #box (keyup.enter)="onSearch(box.value)">
+<form class="desktop-query form-inline my-2 my-lg-0" *ngIf="!devicewidth">
+  <input class="desktop-search-bar bg-white" type="search" placeholder="Find the best for your pets..." aria-label="Search"
+    #box (keyup.enter)="onSearch(box.value)">
   <a class="desktop-submit bg-white">
     <span class="web-sprite desktop-iconSearch sprites-search" (click)="onSearch(box.value)"></span>
   </a>
+</form>
+
+<form class="desktop-query form-inline my-2 my-lg-0" *ngIf="devicewidth" [ngClass]="{
+  'bg-white desktop-query-updated':flag }">
+  <a class="desktop-submit" [ngClass]="{
+    'themecolor':flag }">
+    <i class="fa fa-search" (click)="showsearch()"></i>
+  </a>
+  <div (click)="onSearch(box.value)" *ngIf="flag" class="searchinput">
+    <input class="desktop-search-bar bg-white" type="search" placeholder="Find the best for your pets..." aria-label="Search"
+      #box (keyup.enter)="onSearch(box.value)">
+  </div>
 </form>

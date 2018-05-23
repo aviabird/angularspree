@@ -7,10 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HeaderCartComponent implements OnInit {
   @Input() totalCartItems: number;
-
+  @Input() devicewidth;
   constructor() { }
-
   ngOnInit() {
+
   }
 
 }

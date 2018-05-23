@@ -1,4 +1,13 @@
+<div *ngIf="!screenwidth">
+    <div *ngFor="let taxon of taxons">
+        <a [routerLink]="['/products']" [queryParams]="{id: taxon.id}">{{taxon.name}} </a>
+    </div>
+</div>
+<div class="subbandmenu" *ngIf="screenwidth">
+    <ul>
+        <li *ngFor="let taxon of taxons">
+            <a [routerLink]="['/products']" [queryParams]="{id: taxon.id}">{{taxon.name}} </a>
 
-<div *ngFor="let taxon of taxons">
-    <a [routerLink]="['/products']" [queryParams]="{id: taxon.id}">{{taxon.name}} </a>
+        </li>
+    </ul>
 </div>

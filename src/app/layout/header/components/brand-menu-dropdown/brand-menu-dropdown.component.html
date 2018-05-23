@@ -7,9 +7,9 @@
   <div id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
     <div class="d-flex" *ngIf="taxonomies[0]; let brands_taxonomy">
       <!-- to do -->
-     
-        <app-brand-list [taxons]="taxon" *ngFor="let taxon of brands_taxonomy.root.taxons" (click)="getBrands()"></app-brand-list>
-    
+
+
+      <app-brand-list [taxons]="taxon" *ngFor="let taxon of brands_taxonomy.root.taxons" (click)="getBrands()"></app-brand-list>
     </div>
   </div>
 </div>
