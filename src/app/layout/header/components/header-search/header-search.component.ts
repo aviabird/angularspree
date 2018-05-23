@@ -45,7 +45,7 @@ export class HeaderSearchComponent implements OnInit {
         search.set('page', this.queryParams.page)
       }
       this.store.dispatch(this.searchActions.getproductsByKeyword(search.toString()));
-      this.router.navigate(['/products'], { queryParams: { 'q[name_cont_all]': keyword, 'page': this.queryParams.page } });
+      this.router.navigate(['/search'], { queryParams: { 'q[name_cont_all]': keyword, 'page': this.queryParams.page } });
       this.store.dispatch(this.searchActions.clearCategeoryLevel());
     }
   }
