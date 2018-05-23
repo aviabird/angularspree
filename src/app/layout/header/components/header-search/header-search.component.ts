@@ -3,16 +3,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { URLSearchParams } from '@angular/http'
+import { isMenuOpen } from '../../../../home/reducers/selectors';
 @Component({
   selector: 'app-header-search',
   templateUrl: './header-search.component.html',
   styleUrls: ['./header-search.component.scss']
 })
-export class HeaderSearchComponent implements OnInit {
+export class HeaderSearchComponent implements OnInit{
   queryParams: any;
-
+  @Input() devicewidth;
+  flag: any = false;
+  
   constructor(
     private store: Store<AppState>,
     private searchActions: SearchActions,
@@ -24,9 +27,16 @@ export class HeaderSearchComponent implements OnInit {
         this.queryParams = params
         this.loadPage()
       });
+      this.flag = this.store.select(isMenuOpen)
   }
 
   ngOnInit() {
+   
+  }
+
+  showsearch() {
+    this.flag = !this.flag;
+
     this.loadPage();
   }
   onSearch(keyword: string) {

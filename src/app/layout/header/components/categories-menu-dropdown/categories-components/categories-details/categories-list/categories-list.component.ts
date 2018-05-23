@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CategoriesListComponent implements OnInit {
   @Input() taxons;
-
+  @Input() screenwidth
   constructor() { }
   ngOnInit() {
   }

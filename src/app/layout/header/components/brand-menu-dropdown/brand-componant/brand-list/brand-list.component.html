@@ -1,10 +1,6 @@
-<div class="row">
-  <div>
-    <ul>
-      <li>
-        <a [routerLink]="['/products']" [queryParams]="{'q[name_cont]': taxons.name, id: taxons.id}">{{taxons.name}} </a>
-      </li>
-    </ul>
+<ul class="flex-container wrap">
+  <li class="flex-item">
+    <a [routerLink]="['/products']" [queryParams]="{'q[name_cont]': taxons.name, id: taxons.id}">{{taxons.name}} </a>
+  </li>
 
-  </div>
-</div>
+</ul>

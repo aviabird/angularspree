@@ -9,7 +9,7 @@
 
 ul {
   list-style: none;
-  padding: 0.5rem 0 0.5rem 0.5rem;
+  padding: 0.5rem 0 0.5rem 1.5rem;
   margin: 0px;
   background-color: #adadad;
   li {
@@ -45,12 +45,45 @@ ul {
     }
   }
 }
+
 .detailcontainer {
   padding: 0.5rem
 }
 
 @media screen and(min-width: 320px) and(max-width: 768px) {
-  .dropdown-menu {
-    left: -2px;
+  .dropup,
+  .dropright,
+  .dropdown,
+  .dropleft {
+    left: 20px !important;
   }
+  .dropdown-menu {
+    padding: 0px;
+    margin: 0px;
+    left: -2px;
+    background: transparent;
+    border: 0px;
+    margin-top: 10px;
+  }
+  .petdropdown .btn {
+    padding: 0px 0 0 5px;
+  }
+}
+
+@media screen and(min-width: 628px) and(max-width: 768px) {
+  .petdropdown {
+    left: -20px;
+  }
+  .petdropdown .btn {
+    padding: 0px 0 0 5px;
+  }
+}
+
+.petmenu {
+  width: 207%;
+  display: flex
+}
+
+.petdropdown .btn-group>.btn:first-child {
+  margin-left: -17px;
 }

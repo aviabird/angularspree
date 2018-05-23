@@ -1,10 +1,111 @@
 .sucathead {
-  color: #000;
-  text-decoration: underline;
+  color: #282828;
+  text-decoration: none;
   font-size: 14px;
 }
 
-a {
-  color: #747474;
+.brandsmenu a {
+  color: #fff;
   text-decoration: None;
+}
+
+.brandsmenu a:hover {
+  color: #a3d032;
+  text-decoration: underline;
+}
+
+.brandsmenu {
+  ul {
+    list-style: none;
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    margin: 0px;
+    background-color: #adadad;
+    li {
+      padding: 0.5rem 0.4rem;
+      background-color: #adadad;
+      border-bottom: 1px solid #ccc;
+      color: #fff;
+      cursor: pointer;
+      &::after {
+        font-family: 'FontAwesome';
+        content: "\f105";
+        width: 20px;
+        height: 57px;
+        margin-right: 12px;
+        right: 0px;
+        position: absolute;
+        background-size: 10px;
+      }
+      &:hover::after {
+        color: #a3d032
+      }
+      &:hover {
+        background-color: #fff;
+        color: #a3d032 !important;
+        border-radius: 4px 0px 0px 4px;
+      }
+      uL>LI {
+        POSITION: absolute;
+        LEFT: 20%;
+        WIDTH: 78%;
+        TOP: 0PX;
+        display: NONE;
+      }
+    }
+  }
+}
+
+.catadjustwidth {
+  width: 220%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 332x) {
+  .sucathead {
+    color: #fff;
+  }
+  .catadjustwidth {
+    width: 220%;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 413px) {
+  .sucathead {
+    color: #fff;
+  }
+  .catadjustwidth {
+    width: 216%;
+  }
+}
+
+@media screen and (min-width: 414px) and (max-width: 627px) {
+  .sucathead {
+    color: #fff;
+  }
+  .catadjustwidth {
+    width: 215%;
+  }
+}
+
+@media screen and (min-width: 628px) and (max-width: 767px) {
+  .sucathead {
+    color: #fff;
+  }
+  .catadjustwidth {
+    width: 215%;
+  }
+}
+
+@media screen and(min-width: 628px) and(max-width: 768px) {
+  .catadjustwidth {
+    width: 310%;
+  }
+  .brandsmenu a {
+    color: #fff !important;
+  }
+  .catcon {
+    padding: 0px;
+  }
+  .catconinner {
+    padding: 0px;
+  }
 }

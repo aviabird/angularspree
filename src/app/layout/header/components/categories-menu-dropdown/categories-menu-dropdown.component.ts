@@ -3,8 +3,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
-
-
 import {
   trigger,
   state,
@@ -23,13 +21,13 @@ import { URLSearchParams } from '@angular/http'
   animations: [
     trigger('popOverState', [
       state('show', style({
-        opacity: 1
+        left: -100 + '%'
       })),
       state('hide', style({
-        opacity: 1
+        left: 0
       })),
-      transition('show => hide', animate('600ms ease-out')),
-      transition('hide => show', animate('1000ms ease-in'))
+      transition('show => hide', animate('100ms ease-out')),
+      transition('hide => show', animate('200ms ease-in'))
     ])
   ]
 })
@@ -41,14 +39,12 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   dropdownWidth: any;
   menuTaxons: any;
   autoclose: boolean;
-
   queryParams: any;
   show = false;
+  backBtnShow = false;
   get stateName() {
     return this.show ? 'show' : 'hide'
   }
-
-
   constructor(
     private route: ActivatedRoute,
     private searchActions: SearchActions,
@@ -70,20 +66,30 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   }
 
   showCategory(i) {
-    this.show = !this.show;
+
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
 
   }
-  showCategoryonclick(i) {
 
+  menuState($event){
+    this.store.dispatch(this.searchActions.changeMenuState($event))
+  }
+
+  showCategoryonclick(i) {
+    this.show = !this.show;
     if (this.screenwidth <= 1000) {
       this.menuTaxons = this.taxonomies[0].root.taxons[i];
     }
   }
-
+  backtolist() {
+    this.show = !this.show;
+  }
   getCategeory() {
     const search = new URLSearchParams();
     search.set('id', this.queryParams.id);
     this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()))
+  }
+  childCatLoaded(status) {
+    this.backBtnShow = status;
   }
 }

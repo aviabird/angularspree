@@ -1,9 +1,15 @@
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
 @import "app/shared/scss/themes";
 @import '../node_modules/ng2-toasty/bundles/style-default.css';
 $theme-main-color: #a3d032;
 $theme-action-color: #fe9700;
 $break-small: 320px;
-Ol,ul{list-style: none;}
+Ol,
+ul {
+  list-style: none;
+}
+
 body {
   font-size: 15px;
   line-height: 1.5;

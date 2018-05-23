@@ -6,8 +6,8 @@
   width: 60%;
   text-align: center;
   padding: 10px 0;
-  background-color: #20bd99;
-  border: 1px solid #20bd99;
+  background-color: #a3d032;
+  border: 1px solid #a3d032;
   color: #fff;
 }
 
@@ -18,4 +18,28 @@
   padding: 10px 30px;
   font-size: 15px;
   min-height: 22px;
+  margin-bottom: 10px;
+}
+
+.fav-icon-sontainer {
+  position: relative;
+  .favorite {
+    position: absolute;
+    right: 8px;
+    top: -24px;
+    background-color: #a3d032;
+    color: #fff;
+    padding: 10px 13px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 8px #282828;
+    z-index: 20;
+  }
+}
+
+@media screen and(min-width: 310px) and(max-width: 768px) {
+  .fav-icon-sontainer {
+    .favorite {
+      top: 50px;
+    }
+  }
 }
