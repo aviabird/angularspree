@@ -43,7 +43,7 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getProducts(): any { return this.http.get<Array<Product>>(`api/v1/products?per_page=20`) }
+  getProducts(pageNumber: number): Observable<{}> { return this.http.get<Array<Product>>(`api/v1/products?page=${pageNumber}&per_page=20`) }
 
   markAsFavorite(id: number): Observable<{}> { return this.http.post<{}>(`favorite_products`, { id: id }) }
 
@@ -63,11 +63,10 @@ export class ProductService {
   }
 
   getproductsByKeyword(keyword: string): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`api/v1/products?${keyword}`)
+    return this.http.get<Array<Product>>(`api/v1/products?${keyword}&per_page=20`)
   }
 
   getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(`/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`)
   }
-
 }

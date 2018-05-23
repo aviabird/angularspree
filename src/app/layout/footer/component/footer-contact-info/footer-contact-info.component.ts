@@ -12,5 +12,7 @@ export class FooterContactInfoComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  scollTop() {
+    window.scrollTo(0, 0)
+  }
 }

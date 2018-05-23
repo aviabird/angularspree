@@ -1,3 +1,4 @@
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BrandFilterComponent } from './sidebar/brand-filter/brand-filter.component';
 import { CategoriesComponent } from './sidebar/categories/categories.component';
 import { LpTrItemComponent } from './landing/lp-top-rated/lp-tr-item/lp-tr-item.component';
@@ -77,6 +78,7 @@ import { reducers } from './reducers/index';
     RouterModule.forChild(routes),
     CarouselModule,
     DragScrollModule,
+    PaginationModule.forRoot(),
 
     /**
      * StoreModule.forFeature is used for composing state
