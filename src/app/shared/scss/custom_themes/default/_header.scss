@@ -1,5 +1,20 @@
 .navbar {
-  background-color: $theme-header-background-color;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-  color: $gray-600;
+  color: $gray-700;
+  background-color: $theme-main-color;
+
+  .header-cart {
+    .fa-shopping-bag {
+      color: $theme-action-color;
+    }
+    .badge {
+      background-color: $theme-action-color - 50;
+    }
+  }
+
+  .btn {
+    background-color: $theme-main-color;
+    @extend .h6;
+    margin-bottom: 0 !important;
+  }
 }
