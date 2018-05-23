@@ -34,7 +34,6 @@ export class HeaderSearchComponent implements OnInit {
 
   showsearch() {
     this.flag = !this.flag;
-
     this.loadPage();
   }
   onSearch(keyword: string) {
