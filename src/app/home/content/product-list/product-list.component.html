@@ -45,5 +45,7 @@
         </div>
       </li>
     </ul>
+    <pagination *ngIf="products.total_count > products.per_page" [totalItems]="products.total_count" [itemsPerPage]="products.per_page"
+      [(ngModel)]="products.current_page" (pageChanged)="pageChanged($event)"></pagination>
   </section>
 </div>

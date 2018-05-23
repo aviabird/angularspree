@@ -21,7 +21,7 @@ export class ProductEffects {
   @Effect()
   GetAllProducts$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_ALL_PRODUCTS)
-    .switchMap((action: any) => this.productService.getProducts())
+    .switchMap((action: any) => this.productService.getProducts(action.payload))
     .map((data: any) => this.productActions.getAllProductsSuccess({ products: data }));
 
   // tslint:disable-next-line:member-ordering
@@ -66,4 +66,3 @@ export class ProductEffects {
     .switchMap((action: any) => this.productService.getTaxonByName(action.payload))
     .map((data: any) => this.searchActions.getTaxonomiesByNameSuccess({ taxonomiList: data }));
 }
-

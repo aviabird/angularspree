@@ -22,7 +22,7 @@ import { Product } from '../core/models/product';
       <app-categories
         [taxonomiList]="taxonomies$ | async"
         (onSelected)= "OnCategeorySelected($event)"
-        (showAllProducts)="showAllProducts()"
+        (showAll)="showAll()"
         [isFilterOn]= "isFilterOn"
         [categoryLevel]= "categoryLevel$ | async" >
       </app-categories>
@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
   products: any;
   isProducts = false;
   isFilterOn = false;
+  gopal = false;
 
   constructor(
     private store: Store<AppState>,
@@ -55,7 +56,7 @@ export class HomeComponent implements OnInit {
     private searchActions: SearchActions,
     private productService: ProductService) {
     // Get all products for the product list component
-    this.store.dispatch(this.actions.getAllProducts());
+    this.store.dispatch(this.actions.getAllProducts(1));
     this.store.dispatch(this.actions.getAllTaxonomies());
     // this.products$ = this.store.select(getProducts);
     this.taxonomies$ = this.store.select(getTaxonomies);
@@ -79,8 +80,7 @@ export class HomeComponent implements OnInit {
     this.brands$ = this.store.select(taxonomiByName)
     this.isFilterOn = true
   }
-  showAllProducts() {
-    this.store.select(showAllProducts)
-      .subscribe(data => this.products = data)
+  showAll() {
+    this.isFilterOn = false
   }
 }

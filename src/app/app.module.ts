@@ -9,6 +9,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+
 // Components
 import { AppComponent } from './app.component';
 // Routes
@@ -43,7 +44,8 @@ import 'rxjs/add/observable/of';
   ],
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
-    StoreModule.forRoot(reducers, { metaReducers }), 
+    StoreModule.forRoot(reducers, { metaReducers }),
+    
 
     /**
      * Store devtools instrument the store retaining past versions of state
