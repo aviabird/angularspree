@@ -29,12 +29,11 @@ export class HeaderSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.loadPage()
   }
 
   showsearch() {
     this.flag = !this.flag;
-    this.loadPage();
   }
   onSearch(keyword: string) {
     if (keyword !== '') {
