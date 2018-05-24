@@ -12,6 +12,7 @@
 
 <div *ngIf="isFilterOn">
   <ul class="list-group" *ngIf="taxonomiList; let child_taxonomy">
+    <p>{{taxonomiList.pretty_name}}</p>
     <h4 *ngIf="categoryLevel.length > 0"> Catgeories</h4>
     <li *ngIf="categoryLevel.length > 0">
       <i class="fa fa-chevron-left" aria-hidden="true"></i>

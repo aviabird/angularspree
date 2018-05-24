@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
@@ -11,9 +12,19 @@ export class ContentHeaderComponent implements OnInit {
   @Input() productsCount;
   @Input() productsTotal_count;
 
+  options = [
+    { name: 'Relevance', value: 0 },
+    { name: 'Newest', value: 1 },
+    { name: 'A To Z', value: 2 },
+    { name: 'Z To A', value: 3 }
+  ]
+
+  selectedOption: string;
+  printedOption: string;
+
   selectedSize = 'COZY';
   searchKeyword = ''
-  constructor() { }
+  constructor(private routernomal: Router) { }
 
   ngOnInit() {
 
@@ -32,4 +43,38 @@ export class ContentHeaderComponent implements OnInit {
     return this.selectedSize === 'COMPACT';
   }
 
+  sortFilter() {
+    if (this.selectedOption === 'Newest') {
+      const urlTree = this.routernomal.createUrlTree([], {
+        queryParams: { 'q[s]': 'updated_at+asc' },
+        queryParamsHandling: 'merge',
+        preserveFragment: true
+      });
+      this.routernomal.navigateByUrl(urlTree);
+    }
+    if (this.selectedOption === 'Relevance') {
+      const urlTree = this.routernomal.createUrlTree([], {
+        queryParams: { 'q[s]': '' },
+        queryParamsHandling: 'merge',
+        preserveFragment: true
+      });
+      this.routernomal.navigateByUrl(urlTree);
+    }
+    if (this.selectedOption === 'A To Z') {
+      const urlTree = this.routernomal.createUrlTree([], {
+        queryParams: { 'q[s]': 'name+asc' },
+        queryParamsHandling: 'merge',
+        preserveFragment: true
+      });
+      this.routernomal.navigateByUrl(urlTree);
+    }
+    if (this.selectedOption === 'Z To A') {
+      const urlTree = this.routernomal.createUrlTree([], {
+        queryParams: { 'q[s]': 'name+desc' },
+        queryParamsHandling: 'merge',
+        preserveFragment: true
+      });
+      this.routernomal.navigateByUrl(urlTree);
+    }
+  }
 }
