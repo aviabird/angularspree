@@ -5,7 +5,7 @@
       <li *ngFor="let product of products.products | filter : selectedTaxonIds; trackBy: trackByFn" class="product-base" [style.margin]="getMargin()"
         itemscope itemtype="https://schema.org/Product">
         <div class="product-thumbShim"></div>
-        <a itemprop="url" [routerLink]="['/product/', product.slug]">
+        <a itemprop="url" [routerLink]="['/', product.slug]">
           <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.product_url)">
           <div class="product-productMetaInfo">
             <div itemprop="name" class="product-brand">{{ product.name }}</div>

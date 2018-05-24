@@ -1,9 +1,9 @@
-<div class="header-cart btn" [routerLink]="['/checkout']" *ngIf="!devicewidth">
-  <i class="fa fa-shopping-cart" aria-hidden="true"></i> Bag
+<div class="header-cart btn" [routerLink]="['/checkout/cart']" *ngIf="!devicewidth">
+  <i class="fa fa-shopping-cart" aria-hidden="true"></i> your cart
   <span class="badge badge-pill">{{totalCartItems}}</span>
 </div>
 
-<div class="header-cart btn" [routerLink]="['/checkout']" *ngIf="devicewidth">
+<div class="header-cart btn" [routerLink]="['/checkout/cart']" *ngIf="devicewidth">
   <i class="fa fa-shopping-cart" aria-hidden="true"></i>
   <span class="badge badge-pill">{{totalCartItems}}</span>
 </div>
