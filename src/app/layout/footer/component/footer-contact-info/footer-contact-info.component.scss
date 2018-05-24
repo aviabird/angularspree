@@ -10,21 +10,21 @@
 }
 
 .contact-info {
-  background-color: #a3d032;
+  background-color: $theme-main-color;
   padding: 1rem;
   color: #fff;
-  font-size: 1.2em;
-  font-weight: 700;
+  font-size: 1em;
+  font-weight: normal;
   a {
     padding: .7rem;
     color: #fff;
   }
   a:hover {
-    background-color: #a3d032 - 40;
+    background-color: $theme-main-color - 40;
     border-radius: 4px;
   }
   .backtopbtn {
-    background-color: #a3d032 - 40;
+    background-color: $theme-main-color - 40;
     border-radius: 4px;
     text-decoration: none;
     padding: 0.7rem 1.8rem;
@@ -38,7 +38,7 @@
       color: #fff;
     }
     .backtopbtn {
-      background-color: #a3d032 - 40;
+      background-color: $theme-main-color - 40;
       border-radius: 4px;
       text-align: center;
       text-decoration: none;

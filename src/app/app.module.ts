@@ -9,7 +9,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-
 // Components
 import { AppComponent } from './app.component';
 // Routes
@@ -39,8 +38,7 @@ import 'rxjs/add/observable/of';
   declarations: [
     AppComponent,
     CheckoutHeaderComponent,
-    CheckoutFooterComponent,
-
+    CheckoutFooterComponent,   
   ],
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
@@ -77,6 +75,7 @@ import 'rxjs/add/observable/of';
     DragScrollModule,
     CoreModule,
     SharedModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

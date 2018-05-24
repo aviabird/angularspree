@@ -2,6 +2,7 @@
 @import '~bootstrap/scss/bootstrap-grid';
 @import "app/shared/scss/themes";
 @import '../node_modules/ng2-toasty/bundles/style-default.css';
+@import "app/shared/scss/selected_theme_variables";
 $theme-main-color: #a3d032;
 $theme-action-color: #fe9700;
 $break-small: 320px;
@@ -17,6 +18,7 @@ body {
   background-color: #fff;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: $primary-font;
 }
 
 .btn:focus,
