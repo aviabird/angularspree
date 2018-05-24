@@ -17,20 +17,20 @@ export class ProductDetailPageComponent implements OnInit {
   productId: any;
 
   constructor(private productService: ProductService,
-              private route: ActivatedRoute) {
+    private route: ActivatedRoute) {
 
-  /**On Init
-   * 1. Parse route params
-   * 2. Retrive product id
-   * 3. Ask for the product detail based on product id
-   * */
+    /**On Init
+     * 1. Parse route params
+     * 2. Retrive product id
+     * 3. Ask for the product detail based on product id
+     * */
     this.actionsSubscription = this.route.params.subscribe(
       (params: any) => {
         this.productId = params['id'];
         this.productService
           .getProduct(this.productId)
           .subscribe(response => this.product$ = response);
-     }
+      }
     );
   };
 
@@ -42,7 +42,7 @@ export class ProductDetailPageComponent implements OnInit {
    * Action To be dispatched
    * when added to cart
    */
-  addToCart(){
+  addToCart() {
     return;
   }
 
