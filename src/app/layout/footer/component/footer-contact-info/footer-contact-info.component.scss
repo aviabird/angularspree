@@ -1,4 +1,4 @@
-@import "../../../../shared/scss/_selected_theme_variables.scss";
+@import "../../../../shared/scss/selected_theme_variables";
 .line {
   display: inline;
   padding: 10px;
@@ -12,22 +12,23 @@
 .contact-info {
   background-color: $theme-main-color;
   padding: 1rem;
-  color: #fff;
+  color: $white;
   font-size: 1em;
   font-weight: normal;
   a {
     padding: .7rem;
-    color: #fff;
+    color: $white;
   }
   a:hover {
     background-color: $theme-main-color - 40;
     border-radius: 4px;
   }
   .backtopbtn {
-    background-color: $theme-main-color - 40;
+    background-color: $theme-main-color + 40;    
     border-radius: 4px;
     text-decoration: none;
     padding: 0.7rem 1.8rem;
+    color: $theme-action-color;
   }
 }
 
@@ -38,11 +39,12 @@
       color: #fff;
     }
     .backtopbtn {
-      background-color: $theme-main-color - 40;
+      background-color: $theme-main-color + 40;
       border-radius: 4px;
       text-align: center;
       text-decoration: none;
       padding: 0.7rem 1.8rem;
+      color: $theme-action-color;
     }
   }
 }
