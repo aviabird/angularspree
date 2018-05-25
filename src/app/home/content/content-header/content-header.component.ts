@@ -18,9 +18,14 @@ export class ContentHeaderComponent implements OnInit {
     { name: 'A To Z', value: 2 },
     { name: 'Z To A', value: 3 }
   ]
+  queryMap = {
+    Newest: 'updated_at+asc',
+    Relevance: '',
+    'A To Z': 'name+asc',
+    'Z To A': 'name+desc',
+  }
 
   selectedOption: string;
-  printedOption: string;
 
   selectedSize = 'COZY';
   searchKeyword = ''
@@ -44,37 +49,11 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   sortFilter() {
-    if (this.selectedOption === 'Newest') {
-      const urlTree = this.routernomal.createUrlTree([], {
-        queryParams: { 'q[s]': 'updated_at+asc' },
-        queryParamsHandling: 'merge',
-        preserveFragment: true
-      });
-      this.routernomal.navigateByUrl(urlTree);
-    }
-    if (this.selectedOption === 'Relevance') {
-      const urlTree = this.routernomal.createUrlTree([], {
-        queryParams: { 'q[s]': '' },
-        queryParamsHandling: 'merge',
-        preserveFragment: true
-      });
-      this.routernomal.navigateByUrl(urlTree);
-    }
-    if (this.selectedOption === 'A To Z') {
-      const urlTree = this.routernomal.createUrlTree([], {
-        queryParams: { 'q[s]': 'name+asc' },
-        queryParamsHandling: 'merge',
-        preserveFragment: true
-      });
-      this.routernomal.navigateByUrl(urlTree);
-    }
-    if (this.selectedOption === 'Z To A') {
-      const urlTree = this.routernomal.createUrlTree([], {
-        queryParams: { 'q[s]': 'name+desc' },
-        queryParamsHandling: 'merge',
-        preserveFragment: true
-      });
-      this.routernomal.navigateByUrl(urlTree);
-    }
+    const urlTree = this.routernomal.createUrlTree([], {
+      queryParams: { 'q[s]': this.queryMap[this.selectedOption] },
+      queryParamsHandling: 'merge',
+      preserveFragment: true
+    });
+    this.routernomal.navigateByUrl(urlTree);
   }
 }
