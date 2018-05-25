@@ -1,52 +1,49 @@
+@import '../../../../shared/scss/_selected_theme_variables';
 .size-buttons-size-header {
-   overflow: auto;
+  overflow: auto;
+  color: $gray-900;
+  span{font-weight: bold;font-size:1em;}
 }
-
-
 .option-buttons {
-  /*Font Weight ?*/
-  /*font-weight: 500;*/
+  display: inline-block;
   background-color: #fff;
-  border: 1px solid #282c3f;
-  border-radius: 50px;
-  padding: 0;
-  min-width: 50px;
-  height: 50px;
+  border: 1px solid $gray-900;
+  border-radius: 4px;
+  padding: .5rem 1rem;
   text-align: center;
-  margin-top: 10px;
   margin-right: 10px;
+  margin-bottom: 15px;
   cursor: pointer;
-  color: #282c3f;
+  color: $gray-900;
   &.disabled {
-      position: relative;
-      color: #282c3f;
-      border: 1px solid #d5d6d9;
-      cursor: red;
-      pointer-events: none;
-      .strike {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background-color: #d5d6d9;
-      }
-
+    position: relative;
+    color: $gray-900;
+    border: 1px solid $gray-10;
+    cursor: $red;
+    pointer-events: none;
+    .strike {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: $gray-10;
+    }
   }
- 
   p {
     margin: 0;
   }
-
-  &:hover {
-    color: #fff;
+  &:hover,
+  &.active {
+    color: $white;
     font-weight: 500;
-    background-color: #282c3f;
+    background-color: $theme-action-sub-color4;
+    border: 1px solid $theme-main-sub-color3 +10
   }
 }
 
 .selected {
-  color: #fff;
+  color: $white;
   font-weight: 500;
-  background-color: #282c3f;  
+  background-color: $gray-900;
 }

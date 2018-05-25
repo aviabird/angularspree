@@ -10,7 +10,7 @@
 }
 
 .contact-info {
-  background-color: $theme-main-color;
+  background-color: $theme-main-sub-color1;
   padding: 1rem;
   color: $white;
   font-size: 1em;
@@ -24,11 +24,12 @@
     border-radius: 4px;
   }
   .backtopbtn {
-    background-color: $theme-main-color + 40;    
+    background-color: $theme-main-sub-color2;    
     border-radius: 4px;
     text-decoration: none;
     padding: 0.7rem 1.8rem;
-    color: $theme-action-color;
+    color: $white;
+    cursor: pointer;
   }
 }
 

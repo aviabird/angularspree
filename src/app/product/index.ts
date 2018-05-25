@@ -13,8 +13,10 @@ import { ProductDetailsComponent } from './components/product-detail-page/produc
 import { ProductDescriptionComponent } from './components/product-detail-page/product-description/product-description.component';
 import { ProductImagesComponent } from './components/product-detail-page/product-images/product-images.component';
 import { ProductPriceInfoComponent } from './components/product-detail-page/product-price-info/product-price-info.component';
+import{ ProductCountComponent } from './components/product-detail-page/product-price-info/product-count/product-count.component';
 import { ProductVariantsComponent } from './components/product-detail-page/product-variants/product-variants.component';
 import { ProductComponent } from './product.component';
+
 
 // Routes
 import { ProductRoutes as routes } from './product.routes';
@@ -33,7 +35,8 @@ import { ProductEffects } from './effects/product.effects';
     ProductImagesComponent,
     ProductPriceInfoComponent,
     ProductDescriptionComponent,
-    ProductVariantsComponent
+    ProductVariantsComponent,
+    ProductCountComponent
     // pipes
   ],
   exports: [
@@ -43,7 +46,8 @@ import { ProductEffects } from './effects/product.effects';
     ProductImagesComponent,
     ProductPriceInfoComponent,
     ProductDescriptionComponent,
-    ProductVariantsComponent
+    ProductVariantsComponent,
+    ProductCountComponent
   ],
   imports: [
     SharedModule,
