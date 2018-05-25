@@ -1,19 +1,16 @@
 // Used to import variables in components
 @import "custom_bootstrap_variables";
-
 // -- Theme Colors here --
 // Custom theme colors
 // Refer _default_variables to generate colors
 $theme-main-color: white;
-$theme-action-color: $pink + 50;
+$theme-action-color: $pink+50;
 $primary-font: "Whitney";
-
 $theme-action-sub-color1:#F54196;
-$theme-action-sub-color4: #FF6EB1;
-$theme-action-sub-color4:#FF1D83;
+$theme-action-sub-color2: #FF6EB1;
 $theme-action-sub-color3: #F57CB2;
-
+$theme-action-sub-color4:#FF1D83;
 $theme-main-sub-color1:#404040;
-$theme-main-sub-color2: #7F7F7F;
+$theme-main-sub-color2: rgb(99, 44, 44);
 $theme-main-sub-color3: #bfbfbf;
 $theme-main-sub-color4: #E5E5E5
