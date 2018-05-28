@@ -39,7 +39,7 @@ export class HeaderSearchComponent implements OnInit {
     if (keyword !== '') {
       keyword = keyword.trim();
       const search = new URLSearchParams();
-      search.set('q[name_cont]', keyword)
+      search.set('q[name_cont_any]', keyword)
 
       if ('page' in this.queryParams) {
         search.set('page', this.queryParams.page)
@@ -51,7 +51,7 @@ export class HeaderSearchComponent implements OnInit {
       this.router.navigate(
         ['/search'], {
           queryParams: {
-            'q[name_cont_all]': keyword,
+            'q[name_cont_any]': keyword,
             'page': this.queryParams.page,
             'q[s]': this.queryParams['q[s]']
           }
@@ -71,10 +71,10 @@ export class HeaderSearchComponent implements OnInit {
   }
 
   loadPage() {
-    if ('q[name_cont_all]' in this.queryParams && 'page' in this.queryParams) {
-      this.onSearch(this.queryParams['q[name_cont_all]'])
-    } else if ('q[name_cont_all]' in this.queryParams) {
-      this.onSearch(this.queryParams['q[name_cont_all]'])
+    if ('q[name_cont_any]' in this.queryParams && 'page' in this.queryParams) {
+      this.onSearch(this.queryParams['q[name_cont_any]'])
+    } else if ('q[name_cont_any]' in this.queryParams) {
+      this.onSearch(this.queryParams['q[name_cont_any]'])
     }
 
     if ('id' in this.queryParams && 'page' in this.queryParams) {
@@ -85,8 +85,8 @@ export class HeaderSearchComponent implements OnInit {
       this.catgeoryFilter()
     }
 
-    if ('q[s]' in this.queryParams && 'q[name_cont_all]' in this.queryParams) {
-      this.onSearch(this.queryParams['q[name_cont_all]'])
+    if ('q[s]' in this.queryParams && 'q[name_cont_any]' in this.queryParams) {
+      this.onSearch(this.queryParams['q[name_cont_any]'])
     }
   }
 }

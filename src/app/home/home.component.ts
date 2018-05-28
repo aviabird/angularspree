@@ -48,7 +48,6 @@ export class HomeComponent implements OnInit {
   products: any;
   isProducts = false;
   isFilterOn = false;
-  gopal = false;
 
   constructor(
     private store: Store<AppState>,

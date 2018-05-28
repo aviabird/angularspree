@@ -13,7 +13,6 @@ export class ContentHeaderComponent implements OnInit {
   @Input() productsTotal_count;
 
   options = [
-    { name: 'Relevance', value: 0 },
     { name: 'Newest', value: 1 },
     { name: 'A To Z', value: 2 },
     { name: 'Z To A', value: 3 }
@@ -21,11 +20,11 @@ export class ContentHeaderComponent implements OnInit {
   queryMap = {
     Newest: 'updated_at+asc',
     Relevance: '',
-    'A To Z': 'name+asc',
+    'A To Z': 'ascend_by_master_price',
     'Z To A': 'name+desc',
   }
 
-  selectedOption: string;
+  selectedOption: 'Relevance';
 
   selectedSize = 'COZY';
   searchKeyword = ''
