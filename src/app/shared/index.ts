@@ -12,12 +12,16 @@ import { HumanizePipe } from '../core/pipes/humanize.pipe';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Directives
+import { ZoomableDirective } from './directives/zoomable.directive';
+
 @NgModule({
   declarations: [
     // components
     // pipes
     KeysPipe,
-    HumanizePipe
+    HumanizePipe,
+    ZoomableDirective
   ],
   exports: [
     // components
@@ -30,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     KeysPipe,
     HumanizePipe,
     ToastyModule,
-    DragScrollModule
+    DragScrollModule,
+    ZoomableDirective
   ],
   imports: [
     FormsModule,
