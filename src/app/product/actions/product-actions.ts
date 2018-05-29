@@ -12,7 +12,7 @@ export class ProductActions {
   static GET_ALL_TAXONOMIES_SUCCESS = 'GET_ALL_TAXONOMIES_SUCCESS';
   static GET_ALL_PRODUCTS_SEARCH_SUCCESS = 'GET_ALL_PRODUCTS_SEARCH_SUCCESS';
 
-  getAllProducts(pageNumber= 1) {
+  getAllProducts(pageNumber = 1) {
     return {
       type: ProductActions.GET_ALL_PRODUCTS,
       payload: pageNumber

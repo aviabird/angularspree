@@ -2,7 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { SearchActions } from './../../reducers/search.actions';
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
 import { getChildTaxons } from '../../reducers/selectors';
 
