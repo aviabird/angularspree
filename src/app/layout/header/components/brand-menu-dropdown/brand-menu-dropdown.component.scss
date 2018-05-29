@@ -1,4 +1,23 @@
 .dropdown-menu {
   width: 50rem;
   padding: 10px;
+  .col-2 {
+    flex: 0 0 16.66666667%;
+    max-width: 18.466667%;
+  }
+}
+
+li {
+  background: tomato;
+  padding: 5px;
+  margin: 5px;
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  float: left;
+  line-height: 1.5em;
+  height: 100px;
+  vertical-align: middle;
 }

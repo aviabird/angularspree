@@ -35,6 +35,9 @@
 #buybox {
   float: left;
   width: 40%;
+  @media only screen and (min-width: 320px) and (max-width: 767px){
+    width:100%
+  }
   .cw-btn--action {
     background-color: $theme-action-sub-color3;
     background: -webkit-gradient(linear, left top, left bottom, from($theme-action-sub-color3), color-stop(45%, $theme-action-sub-color3), to($theme-action-sub-color1));

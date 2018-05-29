@@ -1,5 +1,4 @@
 ul {
-  margin-left: -36px;
   li {
     .product-thumbShim {
       position: absolute;
@@ -8,21 +7,20 @@ ul {
       width: 101%;
       height: 100%;
       background-color: #282c3f;
-      -webkit-transition: visibility 0s,opacity .5s linear;
-      transition: visibility 0s,opacity .5s linear;
+      -webkit-transition: visibility 0s, opacity .5s linear;
+      transition: visibility 0s, opacity .5s linear;
       visibility: hidden;
       opacity: 0;
     }
     &.product-base {
-      width: 180px;
+      width: 15vw;
       height: 332px;
       text-align: center;
       position: relative;
       vertical-align: top;
       overflow: hidden;
       display: inline-block;
-      transition: all 500ms;
-      // margin: 0 30px 20px 0;
+      transition: all 500ms; // margin: 0 30px 20px 0;
       a {
         text-decoration: none;
         background-color: transparent;
@@ -41,7 +39,8 @@ ul {
           background: #fff;
           height: 100%;
           padding: 0 5px;
-          .product-brand, .product-product {
+          .product-brand,
+          .product-product {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -149,15 +148,15 @@ ul {
       width: 101%;
       height: 100%;
       background-color: #282c3f;
-      -webkit-transition: visibility 0s,opacity .5s linear;
-      transition: visibility 0s,opacity .5s linear;
+      -webkit-transition: visibility 0s, opacity .5s linear;
+      transition: visibility 0s, opacity .5s linear;
       visibility: hidden;
       opacity: 0;
-    }  
+    }
   }
   li.product-base:hover {
     outline: 1px solid #eaeaec;
-    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
     .product-actions {
       z-index: 10;
     }

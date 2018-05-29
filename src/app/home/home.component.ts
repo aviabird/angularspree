@@ -13,30 +13,7 @@ import { Product } from '../core/models/product';
 
 @Component({
   selector: 'app-home',
-  template: `
-    <!--<app-breadcrumb [taxonomies]="taxonomies$ | async"></app-breadcrumb> -->
-    <br><br>
-    <div class=row>
-      <div class="col-md-3" *ngIf="isProducts">
-      <!-- <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons> -->
-      <app-categories
-        [taxonomiList]="taxonomies$ | async"
-        (onSelected)= "OnCategeorySelected($event)"
-        (showAll)="showAll()"
-        [isFilterOn]= "isFilterOn"
-        [categoryLevel]= "categoryLevel$ | async" >
-      </app-categories>
-      <br>
-      <app-brand-filter [taxonomiList]="brands$ | async" [isFilterOn]= "isFilterOn"></app-brand-filter>
-      </div>
-      <div class="col-md-9">
-        <app-content
-          [productsList]="products">
-         <!-- [taxonIds]="selectedTaxonIds$ | async"  -->
-        </app-content>
-      </div>
-    </div>
-  `,
+  templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {

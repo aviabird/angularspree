@@ -1,6 +1,2 @@
-<ul class="flex-container wrap">
-  <li class="flex-item">
-    <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': taxons.name, id: taxons.id}">{{taxons.name}} </a>
-  </li>
-
-</ul>
+<a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': taxons.name, id: taxons.id}">
+  {{taxons.name}} </a>

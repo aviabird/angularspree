@@ -59,9 +59,9 @@
 }
 
 .desktop-query-updated {
-  margin: 10px 1px 0px !important;
-  padding: 4px 10px 20px 0;
-  border-radius: 5px 5px 0px 0px;
+  margin: 0px 1px 0px !important;
+  padding: 0px 10px 15px 0;
+  border-radius: 5px 5px 0px 0px
 }
 
 @media screen and(min-width: 769px) and(max-width: 1024px) {
@@ -74,7 +74,7 @@
   position: absolute;
   width: 100%;
   left: 0%;
-  bottom: -48px;
+  bottom: -46px;
   background-color: #a3d032;
   padding: 0px 10px 10px 10px;
   .input.desktop-search-bar {
@@ -86,7 +86,8 @@
 @media screen and(min-width: 320px) and(max-width: 768px) {
   .desktop-query input.desktop-search-bar {
     width: 94%;
-    border-radius: 0px;
+    border-top: 0px solid red;
+    border-radius: 7px;
   }
   .desktop-query {
     a.desktop-submit {
