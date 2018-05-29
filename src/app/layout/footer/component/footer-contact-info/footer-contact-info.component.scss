@@ -1,4 +1,4 @@
-@import "../../../../shared/scss/_selected_theme_variables.scss";
+@import "../../../../shared/scss/selected_theme_variables";
 .line {
   display: inline;
   padding: 10px;
@@ -10,24 +10,26 @@
 }
 
 .contact-info {
-  background-color: #a3d032;
+  background-color: $theme-main-sub-color1;
   padding: 1rem;
-  color: #fff;
-  font-size: 1.2em;
-  font-weight: 700;
+  color: $white;
+  font-size: 1em;
+  font-weight: normal;
   a {
     padding: .7rem;
-    color: #fff;
+    color: $white;
   }
   a:hover {
-    background-color: #a3d032 - 40;
+    background-color: $theme-main-color - 40;
     border-radius: 4px;
   }
   .backtopbtn {
-    background-color: #a3d032 - 40;
+    background-color: $theme-main-sub-color2;    
     border-radius: 4px;
     text-decoration: none;
     padding: 0.7rem 1.8rem;
+    color: $white;
+    cursor: pointer;
   }
 }
 
@@ -38,11 +40,12 @@
       color: #fff;
     }
     .backtopbtn {
-      background-color: #a3d032 - 40;
+      background-color: $theme-main-color + 40;
       border-radius: 4px;
       text-align: center;
       text-decoration: none;
       padding: 0.7rem 1.8rem;
+      color: $theme-action-color;
     }
   }
 }

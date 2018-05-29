@@ -1,22 +1,209 @@
+@import "../../../../shared/scss/selected_theme_variables";
 .title {
-  color: #696e79;
-  margin-top: 0;
-  margin-bottom: 5px;
-  padding-top: 5px;
-  font-size: 16px;
-}
+  color: $gray-800;
 
+  padding-top: 5px;
+  font-weight: 600;
+  font-size: 2em;
+  line-height: 1.5em;
+  font-family: $primary-font;
+  display: inline;  
+}
+.product-subtitle {
+  display: inline-block;
+  font-size: 1.5em;
+  margin-left: 10px
+}
 .selling-price {
   font-size: 16px;
   margin: 10px 0;
 }
-
 .vatInfo {
   color: #7e818c;
   font-size: 13px;
 }
 
-strong {
-  font-family: Whitney-SemiBold,Whitney;
-  color: #282c3f;
+
+.product-header-extras {
+  .ugc {
+    float: left;
+    margin: 3px 0;
+    padding: 0px 10px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    color: $gray-800;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1em;
+  }
+  .product-header-extras__qna {
+    float: left;
+    font-size: 1em;
+    line-height: 1em;
+    border-left: 1px solid $gray-10;
+    padding-left: 10px;
+    margin-top: 5px;
+    padding-right: 10px;
+  }
+}
+
+.cw-btn {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: none;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 13px 35px 15px;
+  margin-right: 15px;
+  outline: none;
+  border: 1px solid transparent;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: all, .4s, ease-out;
+  transition: all, .4s, ease-out;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.buybox-wrapper {
+  color: $gray-800;
+  #product-vitals {
+    float: left;
+    width: 60%;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    .product-pricing {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-right: 0;
+      padding-left: 0;
+      list-style-type: none;
+      border-bottom: 1px solid $gray-10;
+      padding: 5px 0 15px;
+      overflow: hidden;
+      li:first-child,
+      li:last-child {
+        padding-bottom: 0;
+      }
+      li {
+        margin: 0;
+        padding-bottom: 25px;
+      }
+      .title {
+        font-size: 1em;
+        line-height: 1;
+        color: $gray-600;
+        font-weight: normal;
+        width: auto;
+        width: 85px;
+        float: left;
+        margin: 0;
+      }
+      .list-price .price {
+        font-size: 1.4rem;
+        line-height: 1;
+        color: $black;
+        text-decoration: line-through;
+      }
+      .price {
+        margin-left: 85px;
+        display: block;
+      }
+      p {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+      .our-price {
+        .price {
+          font-size: 1.6em;
+          font-weight: 600;
+          color: $theme-action-sub-color4;
+          line-height: 12px;
+          padding-top: 11px;
+          span {
+            float: left;
+            display: grid;
+          }
+        }
+        .title {
+          padding-top: 10px;
+        }
+      }
+      .free-shipping {
+        font-size: 12px;
+        line-height: 13px;
+        font-weight: 500;
+        color:$gray-800;
+        margin: -8px 0 0 10px;
+        text-transform: uppercase;
+      }
+      .you-save {
+        .title {
+          margin-bottom: 0;
+        }
+        .price {
+          font-size: 1.4rem;
+          margin-bottom: 0;
+          line-height: 1;
+          color: $theme-action-sub-color4;
+        }
+      }
+    }
+    #featured-promotions {
+      .promotion {
+        margin: 5px 0;
+        text-align: left;
+        .title {
+          font-size: 1em;
+          font-weight: 600;
+          text-align: right;
+          color: $theme-action-sub-color2 - 40;
+          padding: 11px 5px 0 0;
+          line-height: 1;
+          width: auto;
+          width: 85px;
+          float: left;
+        }
+        .value {
+          margin-left: 85px;
+          display: block;
+        }
+        .autoship-pricing {
+          font-weight: 600;
+          color: $theme-action-sub-color4;
+          font-size: 1.714em;
+          margin: 0;
+          .autoship-percent {
+            font-size: 14px;
+            font-weight: 400;
+            padding-left: 5px;
+          }
+        }
+        .title span {
+          color: $theme-action-color;
+          font-size: 0.8em;
+        }
+        
+      }
+    }
+  }
+  #buybox {
+    float: left;
+    width: 40%;
+  }
 }

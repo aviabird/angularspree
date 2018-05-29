@@ -1,3 +1,9 @@
+@import "../../../../shared/scss/selected_theme_variables";
+
+a {
+  color: $gray-700;
+}
+
 .line {
   display: inline;
   padding: 10px;

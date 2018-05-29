@@ -1,30 +1,39 @@
-<div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row padding-top mt-5 pt-5">
+<div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-5">
 
-  <div class="col-12 col-md-6">
-    <div class="fav-icon-sontainer">
+  <div class="col-12 col-md-5">
+    <!-- <div class="fav-icon-sontainer">
       <a (click)="markAsFavorite()" class="favorite">
         <i class="fa fa-heart"></i>
       </a>
-    </div>
+    </div> -->
     <app-image-container [images]="images" class="col-12" [selectedImage]="images[0]">
     </app-image-container>
   </div>
-  <div class="col-md-6 col-12">
+  <div class="col-md-7 col-12">
 
     <app-product-price-info [product]="product" class="row">
     </app-product-price-info>
 
-    <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
-      [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row"></app-product-variants>
+     <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
+      [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row"></app-product-variants> 
 
-    <div class="row col-12">
+    <!-- <div class="row col-12">
       <button (click)="addToCart()" class="pdp-add-to-bag pdp-button">ADD TO BAG</button>
-    </div>
+    </div> -->
 
 
 
-    <app-product-description [description]="product.description" class="row">
-    </app-product-description>
+    
   </div>
 
 </div>
+<div class="row">
+  <div class="col-12">
+    <h1>
+      Description
+    </h1>
+      <app-product-description [description]="product.description" class="row">
+        </app-product-description>
+  </div>
+</div>
+

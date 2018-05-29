@@ -1,0 +1,125 @@
+@import "../../../../../shared/scss/selected_theme_variables";
+.cw-btn {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: none;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 13px 35px 15px;
+  margin-right: 15px;
+  outline: none;
+  border: 1px solid transparent;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: all, .4s, ease-out;
+  transition: all, .4s, ease-out;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#buybox {
+  float: left;
+  width: 40%;
+  .cw-btn--action {
+    background-color: $theme-action-sub-color3;
+    background: -webkit-gradient(linear, left top, left bottom, from($theme-action-sub-color3), color-stop(45%, $theme-action-sub-color3), to($theme-action-sub-color1));
+    background: linear-gradient(180deg, $theme-action-sub-color3 0, ef$theme-action-sub-color3 45%, $theme-action-sub-color1);
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 1px 0 0 $gray-12;
+    box-shadow: 0 1px 0 0 $gray-12;
+    width: 100%;
+  }
+  .bordered {
+    background-color: $gray-100;
+    border: 1px solid $gray-10;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    .buybox__favorite {
+      font-size: 1.1rem;
+      display: block;
+      text-align: center;
+      padding: 16px 20px;
+      background: $white;
+      border-top: 1px solid $gray-10;
+      -webkit-border-radius: 0 0 5px 5px;
+      border-radius: 0 0 5px 5px;
+    }
+    .buybox__purchase {
+      padding: 20px;
+      .buy-quantity {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid $gray-10;
+        -webkit-box-shadow: 0 1px 0 $gray-10;
+        box-shadow: 0 1px 0 $gray-10;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        overflow: hidden;
+        .quantity-input {
+          width: 33.33333%;
+          float: left;
+          border: 1px solid;
+          border-color: $white;
+          background-color: $white;
+          position: relative;
+          .quantity-number {
+            top: 0;
+            bottom: auto;
+            font-size: 1.2em;
+          }
+          span {
+            display: block;
+            text-align: center;
+            font-size: .8em;
+            color: $gray-800;
+          }
+        }
+        a.quantity-minus {
+          font-size: 2.4em;
+          line-height: 1.3em;
+        }
+        a.disabled {
+          cursor: default;
+          background: #f2f2f2;
+          color: #ddd;
+        }
+        a {
+          width: 33.33333%;
+          float: left;
+          height: 50px;
+          padding: 0;
+          margin: 0;
+          line-height: 50px;
+          font-weight: 400;
+          font-size: 1.7em;
+          border: none;
+          -webkit-box-shadow: none;
+          box-shadow: none;
+          -webkit-border-radius: 0;
+          border-radius: 0;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+      }
+    }
+  }
+}

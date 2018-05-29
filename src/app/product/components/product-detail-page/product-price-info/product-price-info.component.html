@@ -1,7 +1,80 @@
-<div class="col-12">
+<div class="col-12 p-0">
   <h1 itemprop="name" class="title">{{product.name}}</h1>
-  <p itemprop="price" class="selling-price">
-    <strong>{{product.display_price}}</strong>
-  </p>
-  <p class="vatInfo">Additional VAT may apply; charged at checkout</p>
+  <div class="product-subtitle">
+    <a href="#">
+      By
+      <span itemprop="brand">Nutro</span>
+    </a>
+  </div>
+
+</div>
+<div>
+  <div class="product-header-extras">
+    <div class="ugc">
+      <a href="#" class="hide-phone js-revScrollTo">
+        266 Reviews
+      </a>
+    </div>
+    <div class="product-header-extras__qna">
+      <a href="#">18 Answered Questions</a>
+    </div>
+  </div>
+</div>
+<div class="col-12">
+  <div class="buybox-wrapper">
+    <div id="product-vitals">
+      <div id="pricing">
+        <ul class="product-pricing">
+          <li class="list-price">
+            <p class="title">
+              List Price:</p>
+            <p class="price">
+              $54.99</p>
+          </li>
+          <li class="our-price">
+            <p class="title">Price:</p>
+            <p class="price">
+              <span class="ga-eec__price">
+                $52.92</span>
+              <span class="free-shipping">FREE 1-2 Day
+                <span>Shipping on this item</span>
+              </span>
+            </p>
+          </li>
+          <li class="you-save">
+            <p class="title">You Save:</p>
+            <p class="price">
+              $2.07 (4%)
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div id="featured-promotions">
+        <div class="promotion autoship-discount">
+          <div class="title">
+            <p>
+              Autoship:
+              <span>&amp;Save</span>
+            </p>
+          </div>
+          <div class="value">
+            <p class="autoship-pricing">
+              $50.27
+              <span class="autoship-percent">(Save an extra 5%)</span>
+            </p>
+            <p class="autoship-message">Simply select Autoship at checkout
+              <span>for easy regular deliveries</span>
+            </p>
+          </div>
+        </div>
+
+        <hr class="">
+      </div>
+
+
+    </div>
+    <div id="buybox" class="">
+      <app-product-count></app-product-count>
+    </div>
+  </div>
 </div>
