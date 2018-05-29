@@ -39,12 +39,23 @@ export class HeaderSearchComponent implements OnInit {
     if (keyword !== '') {
       keyword = keyword.trim();
       const search = new URLSearchParams();
-      search.set('q[name_cont]', keyword)
+      search.set('q[name_cont_any]', keyword)
+
       if ('page' in this.queryParams) {
         search.set('page', this.queryParams.page)
       }
+      if ('q[s]' in this.queryParams) {
+        search.set('q[s]', this.queryParams['q[s]'])
+      }
       this.store.dispatch(this.searchActions.getproductsByKeyword(search.toString()));
-      this.router.navigate(['/search'], { queryParams: { 'q[name_cont_all]': keyword, 'page': this.queryParams.page } });
+      this.router.navigate(
+        ['/search'], {
+          queryParams: {
+            'q[name_cont_any]': keyword,
+            'page': this.queryParams.page,
+            'q[s]': this.queryParams['q[s]']
+          }
+        });
       this.store.dispatch(this.searchActions.clearCategeoryLevel());
     }
   }
@@ -53,20 +64,29 @@ export class HeaderSearchComponent implements OnInit {
     const search = new URLSearchParams();
     search.set('id', this.queryParams.id);
     search.set('page', this.queryParams.page)
+    if ('q[s]' in this.queryParams) {
+      search.set('q[s]', this.queryParams['q[s]'])
+    }
     this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
   }
 
   loadPage() {
-    if ('q[name_cont_all]' in this.queryParams && 'page' in this.queryParams) {
-      this.onSearch(this.queryParams['q[name_cont_all]'])
-    } else if ('q[name_cont_all]' in this.queryParams) {
-      this.onSearch(this.queryParams['q[name_cont_all]'])
+    if ('q[name_cont_any]' in this.queryParams && 'page' in this.queryParams) {
+      this.onSearch(this.queryParams['q[name_cont_any]'])
+    } else if ('q[name_cont_any]' in this.queryParams) {
+      this.onSearch(this.queryParams['q[name_cont_any]'])
     }
 
     if ('id' in this.queryParams && 'page' in this.queryParams) {
       this.catgeoryFilter()
+    } else if ('id' in this.queryParams && 'q[s]' in this.queryParams) {
+      this.catgeoryFilter()
     } else if ('id' in this.queryParams) {
       this.catgeoryFilter()
+    }
+
+    if ('q[s]' in this.queryParams && 'q[name_cont_any]' in this.queryParams) {
+      this.onSearch(this.queryParams['q[name_cont_any]'])
     }
   }
 }

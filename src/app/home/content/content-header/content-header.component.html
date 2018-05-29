@@ -21,5 +21,14 @@
         <li data-sortkey=":high">High</li>
       </label>
     </ul> -->
+   
+    <form>
+      <strong>Sort by</strong><select [(ngModel)]="selectedOption" name="Relevance" (click)="sortFilter()">
+        <option [ngValue] = "Relevance">Relevance</option>
+        <option *ngFor="let opt of options">
+          {{opt.name}}
+        </option>
+      </select>
+    </form>
   </div>
 </div>

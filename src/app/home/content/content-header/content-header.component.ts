@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
@@ -11,9 +12,23 @@ export class ContentHeaderComponent implements OnInit {
   @Input() productsCount;
   @Input() productsTotal_count;
 
+  options = [
+    { name: 'Newest', value: 1 },
+    { name: 'A To Z', value: 2 },
+    { name: 'Z To A', value: 3 }
+  ]
+  queryMap = {
+    Newest: 'updated_at+asc',
+    Relevance: '',
+    'A To Z': 'ascend_by_master_price',
+    'Z To A': 'name+desc',
+  }
+
+  selectedOption: 'Relevance';
+
   selectedSize = 'COZY';
   searchKeyword = ''
-  constructor() { }
+  constructor(private routernomal: Router) { }
 
   ngOnInit() {
 
@@ -32,4 +47,12 @@ export class ContentHeaderComponent implements OnInit {
     return this.selectedSize === 'COMPACT';
   }
 
+  sortFilter() {
+    const urlTree = this.routernomal.createUrlTree([], {
+      queryParams: { 'q[s]': this.queryMap[this.selectedOption] },
+      queryParamsHandling: 'merge',
+      preserveFragment: true
+    });
+    this.routernomal.navigateByUrl(urlTree);
+  }
 }

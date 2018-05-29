@@ -104,8 +104,6 @@ export class HeaderComponent implements OnInit {
     this.isAuthenticated = this.store.select(getAuthStatus);
     this.totalCartItems = this.store.select(getTotalCartItems);
     this.screenwidth = window.outerWidth;
-    
-    
 
     this.test()
   }
