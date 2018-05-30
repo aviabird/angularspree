@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-product-count',
@@ -8,20 +8,18 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 })
 export class ProductCountComponent implements OnInit {
   @Input() product;
-  count: number = 1;
-  flag: any;
+  @Output() onAddToCart = new EventEmitter<Object>();
+  @Output() onMarkAsFavorites = new EventEmitter<Object>();
+
+  count = 1;
 
   constructor() { }
 
   ngOnInit() {
-
   }
 
   increseCount() {
-    console.log(this.count)
-
     this.count += 1;
-
   }
 
   /**
@@ -30,16 +28,17 @@ export class ProductCountComponent implements OnInit {
    * @memberof ProductcountComponent
    */
   decreaseCount() {
-
-    if (this.count = 1) {
-      this.flag = true;
-
-    }
     if (this.count > 1) {
       this.count -= 1;
     }
+  }
 
+  addToCart() {
+    this.onAddToCart.emit()
+  }
 
+  markAsFavorites() {
+    this.onMarkAsFavorites.emit()
   }
 
 }

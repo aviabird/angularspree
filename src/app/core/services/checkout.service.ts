@@ -104,14 +104,14 @@ export class CheckoutService {
 
     return (
       this.http
-        .post<Order>('api/v1/orders', {}, { headers })
+        .post<Order>('api/v1/orders.json', { headers })
         .map(order => {
           this.setOrderTokenInLocalStorage({ order_token: order.token });
           return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
         })
         .do(
-          _ => _,
-          _ => this.toastyService.error({title: 'ERROR!!', msg: 'Unable to create empty order'})
+        _ => _,
+        _ => this.toastyService.error({ title: 'ERROR!!', msg: 'Unable to create empty order' })
         )
     );
   }

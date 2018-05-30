@@ -74,7 +74,10 @@
 
     </div>
     <div id="buybox" class="">
-      <app-product-count></app-product-count>
+      <app-product-count
+      (onAddToCart)="addToCart()"
+      (onMarkAsFavorites) = "markAsFavorites()"
+      ></app-product-count>
     </div>
   </div>
 </div>
