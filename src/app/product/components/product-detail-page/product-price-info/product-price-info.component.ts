@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product-price-info',
@@ -7,9 +7,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductPriceInfoComponent implements OnInit {
   @Input() product;
+  @Output() onAddToCart = new EventEmitter<Object>();
+  @Output() onMarkAsFavorites = new EventEmitter<Object>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  addToCart() {
+    this.onAddToCart.emit()
+  }
+
+  markAsFavorites() {
+    this.onMarkAsFavorites.emit()
+  }
 }

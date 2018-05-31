@@ -34,7 +34,7 @@ export class UserService {
    *
    * @memberof UserService
    */
-  getOrderDetail(orderNumber: string): Observable<Order> { return this.http.get<Order>(`spree/api/v1/orders/${orderNumber}`) }
+  getOrderDetail(orderNumber: string): Observable<Order> { return this.http.get<Order>(`api/v1/orders/${orderNumber}`) }
 
   /**
    *
@@ -45,7 +45,7 @@ export class UserService {
    */
   getUser(): Observable<User> {
     const user_id = JSON.parse(localStorage.getItem('user')).id;
-    return this.http.get<User>(`spree/api/v1/users/${user_id}`);
+    return this.http.get<User>(`api/v1/users/${user_id}`);
   }
 
 }
