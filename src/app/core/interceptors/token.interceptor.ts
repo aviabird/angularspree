@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
     const auth = this.injector.get(AuthService);
 
     const clonedRequest = request.clone({
-      headers: auth.getTokenHeader(),
+      headers: auth.getTokenHeader(request),
       url: this.fixUrl(request.url)
     });
 

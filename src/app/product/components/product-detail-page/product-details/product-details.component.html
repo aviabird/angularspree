@@ -11,7 +11,7 @@
   </div>
   <div class="col-md-7 col-12">
 
-    <app-product-price-info [product]="product" (onAddToCart)="addToCart()" (onMarkAsFavorites)="markAsFavorite()" class="row">
+    <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" class="row">
     </app-product-price-info>
 
     <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
