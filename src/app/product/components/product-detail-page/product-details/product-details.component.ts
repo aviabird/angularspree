@@ -23,7 +23,8 @@ export class ProductDetailsComponent implements OnInit {
   mainOptions: any;
   correspondingOptions: any;
   variantId: any;
-
+  productID :any
+  productdata: any;
   constructor(
     private variantParser: VariantParserService,
     private variantRetriver: VariantRetriverService,
@@ -41,6 +42,12 @@ export class ProductDetailsComponent implements OnInit {
       .getOptionsToDisplay(this.product.variants, this.product.option_types);
     this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
     this.correspondingOptions = this.mainOptions;
+    this.productID = this.product.id;
+    this.productService.getRecentlyViewedProducts().
+    subscribe(productdata => {
+      this.productdata = productdata
+     
+    });
   }
 
   /**

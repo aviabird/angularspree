@@ -42,7 +42,7 @@ export class ProductListComponent implements OnInit {
   }
 
   getMargin() {
-    return this.toggleLayout.size === 'COZY' ? '0 15px 20px 0' : '0 80px 20px 0';
+    return this.toggleLayout.size === 'COZY' ? '0 7.5px 20px 7.5px' : '0 80px 20px 0';
   }
 
   trackByFn(index, item) {
