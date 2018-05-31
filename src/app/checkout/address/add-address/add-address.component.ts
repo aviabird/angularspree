@@ -17,17 +17,23 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   addressForm: FormGroup;
   emailForm: FormGroup;
   isAuthenticated: boolean;
+  states: any;
 
   constructor(
     private fb: FormBuilder, private authActions: AuthActions,
     private checkoutService: CheckoutService,
     private addrService: AddressService,
     private store: Store<AppState>) {
-      this.addressForm = addrService.initAddressForm();
-      this.emailForm = addrService.initEmailForm();
-      this.store.select(getAuthStatus).subscribe((auth) => {
-        this.isAuthenticated = auth;
-      });
+    this.addressForm = addrService.initAddressForm();
+    this.emailForm = addrService.initEmailForm();
+    this.store.select(getAuthStatus).subscribe((auth) => {
+      this.isAuthenticated = auth;
+    });
+
+    this.addrService.getAllStates()
+      .subscribe(data => {
+        this.states = data.states;
+      })
   }
 
   ngOnInit() {
