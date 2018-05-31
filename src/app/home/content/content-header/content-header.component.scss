@@ -1,17 +1,12 @@
+@import '../../../shared/scss/selected_theme_variables';
 .content {
-  background-color: #fff;
-  width: 759px;
-  display: inline-block;
-  vertical-align: top;
   .queried-for {
     display: inline;
-    overflow: hidden;
-    // display: inline-block;
+    overflow: hidden; // display: inline-block;
     font-size: 18px;
     font-weight: 500;
     text-transform: capitalize;
-    color: #282c3f;
-    width: 50%;
+    color: $gray-900;
     .q {
       font-weight: 900;
       display: inline-block;
@@ -23,24 +18,25 @@
     }
     span {
       line-height: 39px; // Temporary hack fix it later
-      color: #282c3f;
+      color: $gray-900;
       font-weight: 400;
       font-size: 18px;
       font-style: normal;
     }
   }
-
   .options {
     position: relative;
-    float: right;
     text-align: right;
-    margin: 12px 0 0 5px;
     display: inline-block;
+    .form-control,
+    .form-control:focus {
+      box-shadow: none;
+      border-color: $gray-400;
+    }
     ul.img-size {
       display: inline-block;
-      margin-right: 10px;
       label {
-        color: #696b79;
+        color: $gray-900;
         font-weight: 400;
       }
       li {
@@ -62,36 +58,34 @@
           background-position: -311px -160px;
           &.selected {
             background-position: -311px -180px;
-            cursor: default;  
+            cursor: default;
           }
         }
-        
       }
     }
     ul.sort {
       display: inline-block;
       position: relative;
-      color: #282c3f;
+      color: $gray-900;
       label {
         margin-left: 5px;
         font-weight: 400;
       }
       label:first-child {
-        color: #3e4152;
+        color: $gray-900;
       }
       li {
         display: inline-block;
         margin-left: 5px;
         text-decoration: none;
         cursor: pointer;
-        
       }
       li:after {
         content: ' ';
         display: inline-block;
         height: 11px;
         width: 1px;
-        border-left: 1px solid #3e4152;
+        border-left: 1px solid $gray-400;
         margin-left: 5px;
         margin-bottom: -1px;
       }
@@ -106,14 +100,15 @@
         }
       }
     }
-    ul.sort:before, ul.sort:after {
+    ul.sort:before,
+    ul.sort:after {
       content: "";
       display: table;
     }
   }
-  .options:before, .options:after {
+  .options:before,
+  .options:after {
     content: "";
     display: table;
   }
 }
-

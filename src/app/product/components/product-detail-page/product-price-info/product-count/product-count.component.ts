@@ -28,17 +28,17 @@ export class ProductCountComponent implements OnInit {
    * @memberof ProductcountComponent
    */
   decreaseCount() {
-    if (this.count > 1) {
-      this.count -= 1;
+    this.count -= 1;
+    if (this.count <= 1) {
+      this.count = 1;
     }
   }
 
   addToCart() {
-    this.onAddToCart.emit()
+    this.onAddToCart.emit();
   }
 
   markAsFavorites() {
-    this.onMarkAsFavorites.emit()
+    this.onMarkAsFavorites.emit();
   }
-
 }
