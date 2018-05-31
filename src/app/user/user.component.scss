@@ -1,8 +1,9 @@
+@import '../shared/scss/selected_theme_variables';
 p a {
   color: #697071;
   text-decoration: none;
   &.active {
-    font-family: Whitney-semi-bold;
+    font-family: $primary-font;
     color: #20bd99;
     font-weight: 500;
     background-color: transparent;

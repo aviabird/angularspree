@@ -1,3 +1,4 @@
+@import '../../../shared/scss/selected_theme_variables';
 .items {
 	.address-row {
 		background: #f4fdfb;
@@ -13,7 +14,7 @@
 		position: relative;
 		cursor: pointer;
 		.name {
-			font-family: "Whitney-semi-bold";
+			font-family: $primary-font;;
 			font-weight: 600;
     	font-size: 15px;
     	color: #596062;
@@ -30,7 +31,7 @@
 					padding: 8px 0;
 					.mob-no {
 						font-weight: 600;
-						font-family: "Whitney-semi-bold";
+						font-family: $primary-font;;
 					}
 				}
 			}

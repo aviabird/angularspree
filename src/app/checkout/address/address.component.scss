@@ -1,3 +1,4 @@
+@import '../../shared/scss/selected_theme_variables';
 .address-section {
 	max-width: 980px;
 	margin: 0 auto;
@@ -18,7 +19,7 @@
 				color: #535766;
 				font-size: 14px;
 				font-weight: 600;
-				font-family: "Whitney-semi-bold";
+				font-family: $primary-font;;
 			}
 		}
 		.edit-address {
@@ -29,7 +30,7 @@
 				font-size: 17px;
 				color: #596062;
 				font-weight: 600;
-				font-family: "Whitney-semi-bold";
+				font-family: $primary-font;;
 			}
 		}
 	}
@@ -47,7 +48,7 @@
 			box-shadow: none;
 			width: 100%;
 			color: #fff;
-			font-family: "Whitney-semi-bold";
+			font-family: $primary-font;;
 			font-size: 14px;
 			margin: 10px auto;
 		}

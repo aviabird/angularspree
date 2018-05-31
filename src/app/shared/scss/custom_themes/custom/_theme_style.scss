@@ -1,5 +1,6 @@
 // selected-theme is the main theme class add to top level main html component
 // <div class="selected-theme">...
+@import '../../selected_theme_variables';
 .selected-theme {
   @import "header";
   @import "badge";
@@ -16,7 +17,7 @@
   }
 
   .strong {
-    font-family: Whitney-semi-bold;
+    font-family: $primary-font;
     font-weight: 800;
   }
 

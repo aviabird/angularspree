@@ -1,0 +1,50 @@
+
+@import '../../../../shared/scss/selected_theme_variables';
+ul {
+  width: 100vw;
+  list-style: none;
+  padding: 0.5rem 0 0.5rem 0;
+  margin: 0px;
+ 
+  li {
+    padding: 0.8rem 1.1rem;
+    
+   
+    border-bottom: 1px solid #ccc;
+    color: $gray-900;
+    cursor: pointer;
+    &::after {
+      font-family: 'FontAwesome';
+      content: "\f105";
+      width: 20px;
+      height: 57px;
+      margin-right: 12px;
+      right: 0px;
+      position: absolute;
+      background-size: 10px;
+    }
+   
+    uL>LI {
+      POSITION: absolute;
+      LEFT: 20%;
+      WIDTH: 78%;
+      TOP: 0PX;
+      display: NONE;
+    }
+  }
+}
+
+.parrent-catgory {
+  width: 100vw;
+  left: 0vw;
+  position: relative;
+}
+
+.sub-catgory {
+  @extend .parrent-catgory;
+  left: -100vw;
+}
+
+.sub-sub-catgory {
+  @extend .parrent-catgory;
+}

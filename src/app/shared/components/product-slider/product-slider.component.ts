@@ -12,16 +12,15 @@ export class ProductSlider implements OnInit, OnChanges {
   @Input() productlist;
   productlist2 :any;
   constructor() {
-    console.log("THis is slider sadt2",this.productlist);
-
+   
    }
    ngOnChanges(){
-    console.log("THis is slider sadt5",this.productlist);
+   
 
    }
 
   ngOnInit() {
-    console.log('slider component')
+   
     this.productlist2 = this.productlist;
       }
   

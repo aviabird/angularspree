@@ -12,7 +12,9 @@ import {
 } from '@angular/animations';
 
 import { URLSearchParams } from '@angular/http'
-
+import { TemplateRef } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-categories-menu-dropdown',
@@ -42,17 +44,24 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   queryParams: any;
   show = false;
   backBtnShow = false;
+  modalRef: BsModalRef;
   get stateName() {
     return this.show ? 'show' : 'hide'
   }
   constructor(
     private route: ActivatedRoute,
-    private searchActions: SearchActions,
+    private searchActions: SearchActions,private modalService: BsModalService,
     private store: Store<AppState>) {
     this.route.queryParams
       .subscribe(params => {
         this.queryParams = params;
       });
+  }
+  openModalWithClass(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'cat-mobile' })
+    );
   }
   ngOnInit() {
 
