@@ -85,6 +85,9 @@
   #product-vitals {
     float: left;
     width: 60%;
+    @media only screen and (min-width: 320px) and (max-width: 767px){
+      width:100%
+    }
     padding-right: 15px;
     margin-bottom: 10px;
     .product-pricing {
@@ -205,5 +208,8 @@
   #buybox {
     float: left;
     width: 40%;
+    @media only screen and (min-width: 320px) and (max-width: 767px){
+      width:100%
+    }
   }
 }

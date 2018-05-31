@@ -1,34 +1,31 @@
-<div class="content" *ngIf=productsCount>
-  <div itemprop="name" class="queried-for">
-    <h4 title="men casual shirts" class="q">Showing {{productsCount}} of {{productsTotal_count}} results.
-    </h4>
-    <span>&nbsp;</span>
-  </div>
+<div class="container content">
+  <div class="row" *ngIf=productsCount>
+    <div itemprop="name" class="queried-for col-7">
+      <h4 title="men casual shirts">Showing {{productsCount}} of {{productsTotal_count}} results.
+      </h4>
+      <span>&nbsp;</span>
+    </div>
+    <div class="options col-5 p-0">
+      <ul class="img-size">
+        <label>View:</label>
+        <li (click)="toggleView('COMPACT')" [ngClass]="{'big': true, 'selected': isBigSelected()}"></li>
+        <li (click)="toggleView('COZY')" [ngClass]="{'small': true, 'selected': isSmallSelected()}"></li>
+      </ul>
 
-  <div class="options">
-    <ul class="img-size">
-      <label>View:</label>
-      <li (click)="toggleView('COMPACT')" [ngClass]="{'big': true, 'selected': isBigSelected()}"></li>
-      <li (click)="toggleView('COZY')" [ngClass]="{'small': true, 'selected': isSmallSelected()}"></li>
-    </ul>
-    <!-- <ul class="sort">
-      <label>Sort:</label>
-      <li data-sortkey=":popularity">Popular</li>
-      <li data-sortkey=":new">New</li>
-      <li data-sortkey=":discount">Discount</li>
-      <label>Price:
-        <li data-sortkey=":low">Low</li>
-        <li data-sortkey=":high">High</li>
-      </label>
-    </ul> -->
-   
-    <form>
-      <strong>Sort by</strong><select [(ngModel)]="selectedOption" name="Relevance" (click)="sortFilter()">
-        <option [ngValue] = "Relevance">Relevance</option>
-        <option *ngFor="let opt of options">
-          {{opt.name}}
-        </option>
-      </select>
-    </form>
+      <form class="container">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-4 col-form-label">Sort by</label>
+          <div class="col-sm-8 p-0">
+            <select [(ngModel)]="selectedOption" class="form-control" name="Relevance" (click)="sortFilter()">
+              <option [ngValue]="Relevance">Relevance</option>
+              <option *ngFor="let opt of options">
+                {{opt.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </form>
+
+    </div>
   </div>
 </div>
