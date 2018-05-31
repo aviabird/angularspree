@@ -36,10 +36,10 @@ export class ProductListComponent implements OnInit {
     return environment.apiEndpoint + url;
   }
 
-  addToCart(product: Product) {
-    const variant_id = product.master.id;
-    this.store.dispatch(this.checkoutActions.addToCart(variant_id));
-  }
+  // addToCart(product: Product) {
+  //   const variant_id = product.master.id;
+  //   this.store.dispatch(this.checkoutActions.addToCart(variant_id));
+  // }
 
   getMargin() {
     return this.toggleLayout.size === 'COZY' ? '0 7.5px 20px 7.5px' : '0 80px 20px 0';
