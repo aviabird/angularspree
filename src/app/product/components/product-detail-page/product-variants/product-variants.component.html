@@ -2,7 +2,7 @@
   <div *ngFor="let variant of (customOptionTypesHash | keys)">
     <div class="size-buttons-size-header">
       <h6>{{ variant.key }}
-        <span>{{selectedItem.key  }}</span>
+        <span *ngIf="selectedItem">{{selectedItem.key  }}</span>
       </h6>
     </div>
     <ul>

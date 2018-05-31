@@ -1,59 +1,27 @@
-<div class="container col-12">
-  <div class="container">
-
-    <div class="row">
-
-      <section>
-        <ul class="results-base">
-          <h3 *ngIf="products.total_count === 0">Sorry, no results found! Please check the spelling or try searching for something else.</h3>
-          <li *ngFor="let product of products.products | filter : selectedTaxonIds; trackBy: trackByFn" class="product-base" [style.margin]="getMargin()"
-            itemscope itemtype="https://schema.org/Product">
-            <div class="product-thumbShim"></div>
-            <a itemprop="url" [routerLink]="['/', product.slug]">
-              <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.product_url)">
-              <div class="product-productMetaInfo">
-                <div itemprop="name" class="product-brand">{{ product.name }}</div>
-                <div class="product-product" innerHTML="{{ product.description }}"></div>
-                <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
-                  <span>
-                    <!-- Discounted price -->
-                    <span itemprop="price" class="product-discountedPrice">&#8377; {{ product.price }}</span>
-                    <!-- Original price -->
-                    <!--<span class="product-strike"> react-text: 485 Rs.  /react-text  react-text: 486 1699 /react-text </span>-->
-                  </span>
-                  <!--Percentage off -->
-                  <!--<span class="product-discountPercentage">(40% OFF)</span>-->
-                </div>
-                <!-- Product Size -->
-                <!--<div class="product-sizes">Sizes: S, M, L, XL, XXL</div>-->
-              </div>
-            </a>
-            <div class="product-sizeDisplayDiv">
-              <div class="product-sizeDisplayHeader">
-                <span>Select a size</span>
-                <span class="myntraweb-sprite product-sizeDisplayRemoveMark sprites-remove"></span>
-              </div>
-              <div class="product-sizeButtonsContaier">
-                <button class="product-sizeButton">S</button>
-                <button class="product-sizeButton">M</button>
-                <button class="product-sizeButton">L</button>
-                <button class="product-sizeButton">XL</button>
-                <button class="product-sizeButton">XXL</button>
-              </div>
+<div class="container ">
+  
+    <div class="row results-base">
+      <div class="col-12 col-md-3 col-sm-3 col-lg-3 product-base" *ngFor="let product of products.products | filter : selectedTaxonIds; trackBy: trackByFn"
+        [style.margin]="getMargin()" itemscope itemtype="https://schema.org/Product">
+        <div class="product-thumbShim"></div>
+        <a itemprop="url" [routerLink]="['/', product.slug]">
+          <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product.master.images[0]?.product_url)">
+          <div class="product-productMetaInfo">
+            <div class="morechoices">
+              More Choices Available
             </div>
-            <div class="product-actions">
-              <span class="product-actionsButton product-wishlist coming-soon">save</span>
-              <span class="product-actionsButton product-addToBag">
-                <span (click)="addToCart(product)">Add to bag</span>
+            <div itemprop="name" class="product-brand">{{ product.name }}</div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
+              <span>
+                <span itemprop="price" class="product-discountedPrice">&#8377; {{ product.price }}</span>
               </span>
             </div>
-          </li>
-        </ul>
-        <pagination *ngIf="products.total_count > products.per_page" [totalItems]="products.total_count" [itemsPerPage]="products.per_page"
-          [(ngModel)]="products.current_page" (pageChanged)="pageChanged($event)"></pagination>
-      </section>
-
-    </div>
-  </div>
+            <p class="shipping">
+              FREE 1-2 day shipping on this item
+            </p>
+          </div>
+        </a>
+      </div>
 
 </div>
+<!-- <div class="product-product" innerHTML="{{ product.description }}"></div> -->

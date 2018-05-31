@@ -69,4 +69,7 @@ export class ProductService {
   getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(`/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`)
   }
+  getRecentlyViewedProducts() {
+    return this.http.get(`api/v1/products?per_page=20`);
+  }
 }

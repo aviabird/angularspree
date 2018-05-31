@@ -1,7 +1,8 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .padding-top {
   padding-top: 50px;
 }
-
+h1{font-size: 1.7em;color:$gray-900}
 .pdp-add-to-bag {
   width: 60%;
   text-align: center;
@@ -33,6 +34,15 @@
     border-radius: 50%;
     box-shadow: 0px 0px 8px #282828;
     z-index: 20;
+  }
+}
+
+.slider {
+  margin-top: 1vw;
+  padding-top: 1vw;
+  h2 {
+    font-size: 1.7em;
+    color:$gray-900;
   }
 }
 

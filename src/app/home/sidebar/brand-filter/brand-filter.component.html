@@ -1,4 +1,4 @@
-<div *ngIf="!isFilterOn">
+<div *ngIf="!isFilterOn" class="catgeory">
   <ul class="list-group" *ngIf="taxonomiList[1]; let brands_taxonomy">
     <h4>Brands</h4>
     <li *ngFor="let brandItem of brands_taxonomy.root.taxons" (click)="brandFilter(brandItem.name)">
