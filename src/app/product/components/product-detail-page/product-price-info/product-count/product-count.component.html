@@ -12,12 +12,12 @@
         </div>
       </div>
       <div class="buttons">
-        <input type="submit" class="cw-btn cw-btn--action cw-btn--full js-add-cart" value="Add to Cart">
+        <input type="submit" class="cw-btn cw-btn--action cw-btn--full js-add-cart" value="Add to Cart" (click)="addToCart()">
       </div>
     </form>
   </div>
-  <a href="#" class="buybox__favorite">
-    <span class="">
+  <a  class="buybox__favorite" (click)="markAsFavorites()">
+    <span>
       <i class="fa fa-heart"></i> Add to Favorites</span>
   </a>
 </div>
