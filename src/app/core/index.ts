@@ -40,7 +40,7 @@ import { CanActivateViaAuthGuard } from './guards/auth.guard';
     EffectsModule.forFeature([
       AuthenticationEffects,
       ProductEffects,
-      CheckoutEffects,
+      // CheckoutEffects,
       UserEffects
     ]),
     NgProgressModule
@@ -61,4 +61,4 @@ import { CanActivateViaAuthGuard } from './guards/auth.guard';
     { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true },
   ]
 })
-export class CoreModule {}
+export class CoreModule { }
