@@ -1,0 +1,12 @@
+<section class="mt-3" *ngIf="productlist">
+  <div class="slider-section">
+    <div class="slider-control">
+      <button button color="primary " (click)="moveLeft() " class="slider-btn prv">left</button>
+      <button button color="primary " (click)="moveRight() " class="slider-btn next">right</button>
+    </div>
+  </div>
+  <div class="d-flex scrollbar-hidden" dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true" #nav>
+    <app-inner-product class="col-6  col-sm-2  col-md-3 col-lg-2 product-box" *ngFor="let product of productlist.products " [product]="product"></app-inner-product>
+  </div>
+  <hr>
+</section>

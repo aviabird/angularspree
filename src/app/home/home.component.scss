@@ -1,4 +1,9 @@
+@import '../shared/scss/selected_theme_variables';
 .home {
-  padding-top: 8vh;
-  padding-bottom: 8vh;
+  background-color: #fcfcfc;
+  .sidebar {
+    background-color:$gray-100;
+    padding:3.5vh 2vw;
+  }
+  h1{font-size: 1.7em;color:$gray-900}
 }

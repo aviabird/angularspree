@@ -1,0 +1,77 @@
+@import "../../scss/selected_theme_variables";
+:host {
+  /deep/ .section-title {
+    color: $black;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  /deep/ .scrollbar-hidden {
+    overflow: hidden !important;
+  }
+  /deep/ .slider-section {
+    position: relative;
+    .slider-control {
+      position: absolute;
+      right: 0;
+      top: -60px;
+      .slider-btn {
+        margin: 0 3px;
+        border: 1.5px solid $theme-action-color;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: block;
+        text-indent: -9999px;
+        float: left;
+        cursor: pointer;
+        background: $white;
+        &.next {
+          background-image: url(../../../../assets/custom/arrow-right.png);
+          background-position: 10px;
+          background-repeat: no-repeat;
+          background-size: 8px;
+        }
+        &.prv {
+          background-image: url(../../../../assets/custom/arrow-left.png);
+          background-position: 7px;
+          background-repeat: no-repeat;
+          background-size: 8px;
+        }
+      }
+      .slider-btn:hover {
+        background-color: $theme-action-color - 40;
+        color: #fff;
+      }
+    }
+  }
+  /deep/ .product-tile {
+    text-align: center;
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  /deep/ .product-box {
+    border-radius: 5px;
+    border: 1px solid transparent;
+    &:hover {
+      border-color: $black - 200;
+    }
+  }
+  /deep/.product-tile p {
+    margin-bottom: 0px;
+    white-space: normal;
+    margin-top: 10px;
+  }
+  /deep/.dropdown-toggle::after {
+    vertical-align: 0.055em !important;
+  }
+  $break-small: 320px;
+  @media screen and (min-width: $break-small) and (max-width: 767px) {
+    /deep/ .section-title {
+      font-size: 1.4em;
+    }
+  }
+}

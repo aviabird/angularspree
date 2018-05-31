@@ -11,20 +11,12 @@
   </div>
   <div class="col-md-7 col-12">
 
-    <app-product-price-info 
-    [product]="product"
-    (onAddToCart)= "addToCart()"
-    (onMarkAsFavorites) = "markAsFavorite()"
-    class="row">
+    <app-product-price-info [product]="product" (onAddToCart)="addToCart()" (onMarkAsFavorites)="markAsFavorite()" class="row">
     </app-product-price-info>
 
     <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
       [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row"></app-product-variants>
 
-     <div class="row col-12">
-      <button  class="pdp-add-to-bag pdp-button">ADD TO BAG</button>
-    </div> 
-    
   </div>
 </div>
 <div class="row">
@@ -35,4 +27,16 @@
     <app-product-description [description]="product.description" class="row">
     </app-product-description>
   </div>
+</div>
+<div class="slider">
+  <h2>
+    Similar products
+  </h2>
+  <app-product-slider [productlist]="productdata"></app-product-slider>
+</div>
+<div class="slider">
+  <h2>
+    Related products
+  </h2>
+  <app-product-slider [productlist]="productdata"></app-product-slider>
 </div>

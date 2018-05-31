@@ -41,7 +41,7 @@ export class ZoomableDirective implements OnInit {
       zIndex: '999'
     },
     settings: {
-      zoom: 4,
+      zoom: 3,
       gap: 20
     }
   };
@@ -53,7 +53,7 @@ export class ZoomableDirective implements OnInit {
     settings?: {}
   };
 
-  @Input('zoomableSrc') sourceImage? = '';
+  @Input('zoomableSrc') sourceImage?= '';
 
   constructor(private el: ElementRef, private renderer: Renderer) { }
 
@@ -104,22 +104,22 @@ export class ZoomableDirective implements OnInit {
   // TODO: Try doing this with observables
   private assignHoverListeners() {
     this.listeners.push(
-        this.renderer.listen(this.hoverView, 'mouseenter', (event: MouseEvent) => {
-          // peep view related tasks
-          this.createPeepView();
-          this.stylePeepView();
-          this.positionPeepView(event);
+      this.renderer.listen(this.hoverView, 'mouseenter', (event: MouseEvent) => {
+        // peep view related tasks
+        this.createPeepView();
+        this.stylePeepView();
+        this.positionPeepView(event);
 
-          // zoom view related tasks
-          this.createZoomView();
-          this.styleZoomView();
-          this.positionZoomView();
-        }),
-        this.renderer.listen(this.hoverView, 'mouseleave', () => this.destroyViews()),
-        this.renderer.listen(this.hoverView, 'mousemove', (event: MouseEvent) => {
-          this.positionPeepView(event);
-          this.positionZoomBackground(event);
-        })
+        // zoom view related tasks
+        this.createZoomView();
+        this.styleZoomView();
+        this.positionZoomView();
+      }),
+      this.renderer.listen(this.hoverView, 'mouseleave', () => this.destroyViews()),
+      this.renderer.listen(this.hoverView, 'mousemove', (event: MouseEvent) => {
+        this.positionPeepView(event);
+        this.positionZoomBackground(event);
+      })
     );
   }
 
@@ -202,8 +202,20 @@ export class ZoomableDirective implements OnInit {
     });
 
     Object.keys(props)
+
       .forEach(key => {
+        console.log(key)
+        if (key == 'top') {
+          props[key] = -20;
+        }
+        // if (key == 'width') {
+        //   props[key] = 500;
+        // }
+        // if (key == 'height') {
+        //   props[key] = 600;
+        // }
         this.renderer.setElementStyle(this.zoomView, key, `${props[key]}px`);
+
       });
   }
 
@@ -227,7 +239,6 @@ export class ZoomableDirective implements OnInit {
       listener();
     }
     this.listeners = [];
-
     this.hoverView.parentNode.removeChild(this.hoverView);
     this.zoomView.parentNode.removeChild(this.zoomView);
     this.hoverView = null;

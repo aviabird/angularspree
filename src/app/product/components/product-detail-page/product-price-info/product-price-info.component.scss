@@ -1,49 +1,58 @@
 @import "../../../../shared/scss/selected_theme_variables";
 .title {
   color: $gray-800;
-
   padding-top: 5px;
   font-weight: 600;
   font-size: 2em;
   line-height: 1.5em;
   font-family: $primary-font;
-  display: inline;  
+  display: inline;
 }
+
 .product-subtitle {
   display: inline-block;
   font-size: 1.5em;
-  margin-left: 10px
+  margin-left: 10px;
+  a {
+    color: $theme-main-sub-color4 - 100;
+  }
 }
+
 .selling-price {
   font-size: 16px;
   margin: 10px 0;
 }
+
 .vatInfo {
   color: #7e818c;
   font-size: 13px;
 }
 
-
 .product-header-extras {
   .ugc {
     float: left;
+    a {
+      color: $theme-main-sub-color4 - 100
+    }
     margin: 3px 0;
-    padding: 0px 10px;
-    font-family: Roboto, sans-serif;
+    color:$theme-main-sub-color4;
+    font-family: Roboto,
+    sans-serif;
     font-weight: 400;
     font-size: 10px;
-    color: $gray-800;
     -webkit-font-smoothing: antialiased;
     font-size: 1em;
   }
   .product-header-extras__qna {
     float: left;
+    a {
+      color: $theme-main-sub-color4 - 100
+    }
+    color:$theme-main-sub-color4;
     font-size: 1em;
     line-height: 1em;
     border-left: 1px solid $gray-10;
-    padding-left: 10px;
     margin-top: 5px;
-    padding-right: 10px;
   }
 }
 
@@ -85,7 +94,7 @@
   #product-vitals {
     float: left;
     width: 60%;
-    @media only screen and (min-width: 320px) and (max-width: 767px){
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
       width:100%
     }
     padding-right: 15px;
@@ -151,7 +160,7 @@
         font-size: 12px;
         line-height: 13px;
         font-weight: 500;
-        color:$gray-800;
+        color: $gray-800;
         margin: -8px 0 0 10px;
         text-transform: uppercase;
       }
@@ -201,14 +210,13 @@
           color: $theme-action-color;
           font-size: 0.8em;
         }
-        
       }
     }
   }
   #buybox {
     float: left;
     width: 40%;
-    @media only screen and (min-width: 320px) and (max-width: 767px){
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
       width:100%
     }
   }

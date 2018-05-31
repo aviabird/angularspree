@@ -1,164 +1,87 @@
-ul {
-  li {
-    .product-thumbShim {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 101%;
-      height: 100%;
-      background-color: #282c3f;
-      -webkit-transition: visibility 0s, opacity .5s linear;
-      transition: visibility 0s, opacity .5s linear;
-      visibility: hidden;
-      opacity: 0;
+@import '../../../shared/scss/selected_theme_variables';
+.product-thumbShim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 101%;
+  height: 100%;
+  background-color: #282c3f;
+  -webkit-transition: visibility 0s, opacity .5s linear;
+  transition: visibility 0s, opacity .5s linear;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.product-base {
+  flex: 0 0 23%;
+  max-width: 23%;
+  text-align: left;
+  position: relative;
+  background-color: $white;
+  border-radius: 5px;
+  padding: .6rem;
+  overflow: hidden;
+  display: inline-block;
+  transition: all 500ms;
+  border: 1px solid $gray-600; // margin: 0 30px 20px 0;
+  box-shadow: 0px 0px 1px #ccc;
+  &:hover{
+    box-shadow: 0px 0px 3px #ccc;
+  }
+  a {
+    text-decoration: none;
+    background-color: transparent;
+    color: #282c3f;
+    .product-thumb {
+      height: 240px;
+      display: block;
+      background-color: transparent;
+      opacity: 1;
+      width: 100%;
+      object-fit: contain;
     }
-    &.product-base {
-      width: 15vw;
-      height: 332px;
-      text-align: center;
+    .product-productMetaInfo {
       position: relative;
-      vertical-align: top;
-      overflow: hidden;
-      display: inline-block;
-      transition: all 500ms; // margin: 0 30px 20px 0;
-      a {
-        text-decoration: none;
-        background-color: transparent;
-        color: #282c3f;
-        .product-thumb {
-          height: 240px;
-          display: block;
-          background-color: transparent;
-          opacity: 1;
-          width: 100%;
-          object-fit: contain;
-        }
-        .product-productMetaInfo {
-          position: relative;
-          z-index: 2;
-          background: #fff;
-          height: 100%;
-          padding: 0 5px;
-          .product-brand,
-          .product-product {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-size: 13px;
-            font-weight: 500;
-            line-height: 14px;
-            color: #282c3f;
-            text-transform: capitalize;
-            margin-top: 10px;
-          }
-          .product-price {
-            font-size: 13px;
-            line-height: 15px;
-            color: #282c3f;
-            margin: 10px 0 0;
-            white-space: nowrap;
-            font-weight: 500;
-          }
-          .product-sizes {
-            font-size: 11px;
-            display: none;
-            color: #3e4152;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            margin-top: 6px;
-          }
-        }
-      }
-      .product-sizeDisplayDiv {
-        z-index: 1;
-        width: 100%;
-        max-width: 100%;
-        position: absolute;
-        bottom: 91px;
-        background: #fff;
-        margin-bottom: -161px;
-        -webkit-transition: all .2s ease-out;
-        transition: all .2s ease-out;
-        .product-sizeDisplayHeader {
-          border-bottom: 1px solid #eaeaec;
-          border-top: 1px solid #eaeaec;
-          padding: 8px;
-          text-align: left;
-          font-size: 14px;
-          color: #535766;
-        }
-      }
-      .product-sizeButtonsContaier {
-        text-align: center;
-        padding: 10px;
-        overflow-y: scroll;
-        box-sizing: border-box;
-        max-height: 108px;
-        .product-sizeButton {
-          border-radius: 20px;
-          margin: 5px;
-          min-width: 34px;
-          height: 34px;
-          background-color: #fff;
-          border: 1px solid #696e79;
-          outline: none;
-          font-size: 12px;
-          color: #696e79;
-          box-sizing: border-box;
-          padding: 5px;
-        }
-      }
-      .product-actions {
-        position: absolute;
-        left: 0;
-        bottom: 40px;
-        border-bottom: 1px solid #eaeaec;
-        border-top: 1px solid #eaeaec;
-        background: #fff;
-        width: 100%;
-        .product-actionsButton {
-          line-height: 20px;
-          margin: 10px 0;
-          font-weight: 800;
-          font-size: 11px;
-          color: #526cd0;
-          text-transform: uppercase;
-          display: inline-block;
-          cursor: pointer;
-          &.product-wishlist {
-            float: left;
-            width: 40%;
-          }
-          &.product-addToBag {
-            width: 60%;
-            float: left;
-            span {
-              border-left: 1px dotted #d4d5d9;
-              display: block;
-            }
-          }
-        }
-      }
-    }
-    .product-thumbShim {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 101%;
+      z-index: 2;
+      background: #fff;
       height: 100%;
-      background-color: #282c3f;
-      -webkit-transition: visibility 0s, opacity .5s linear;
-      transition: visibility 0s, opacity .5s linear;
-      visibility: hidden;
-      opacity: 0;
+      padding: 0 5px;
+      .product-brand,
+      .product-product {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1em;
+        font-weight: 500;
+        line-height: 1.5em;
+        color: $gray-800;
+        text-transform: capitalize;
+        margin-top: 10px;
+      }
+      .product-price {
+        font-size: 1.7em;
+        line-height: 1.2em;
+        color: $theme-action-sub-color2;
+        margin: 10px 0 0;
+        white-space: nowrap;
+        font-weight: 500;
+      }
     }
   }
-  li.product-base:hover {
-    outline: 1px solid #eaeaec;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-    .product-actions {
-      z-index: 10;
-    }
-  }
+}
+.morechoices {
+  background-color: $gray-400;
+  color: $white;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: .2rem;
+  text-align: center;
+}
+.shipping {
+  font-size: 0.8em;
+  font-weight: 400;
+  text-align: left;
+  margin-top: 15px;
+  color: #000;
+  margin-bottom: 0px;
 }
