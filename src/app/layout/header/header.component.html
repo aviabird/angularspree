@@ -30,7 +30,8 @@
       </div>
       <div class="resheader row hidden-md hidden-lg" *ngIf="devicewidth">          
         <div class="search">
-          <app-header-search [devicewidth]="devicewidth" [flag] ="flag" [isModalShown]="isModalShown"></app-header-search>
+          <app-header-search [devicewidth]="devicewidth" (onSubCatClicked)="childCatLoaded($event)"
+           [flag] ="flag" ></app-header-search>
         </div>
         <div class="mlogo">
           <a class="navbar-brand small-logo" routerLink="/" *ngIf="devicewidth">

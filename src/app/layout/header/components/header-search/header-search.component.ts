@@ -13,7 +13,6 @@ import { URLSearchParams } from '@angular/http'
 export class HeaderSearchComponent implements OnInit {
   queryParams: any;
   @Input() devicewidth;
-  @Input() isModalShown;
   @Input() flag;
   @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -30,12 +29,12 @@ export class HeaderSearchComponent implements OnInit {
       });
   }
   ngOnInit() {
-  console.log(this.flag);
-  console.log(this.isModalShown);
+ 
   }
   showsearch() {  
       this.flag = !this.flag;  
       this.onSubCatClicked.emit(false);  
+    
   }
   onSearch(keyword: string) {
     if (keyword !== '') {
@@ -93,4 +92,5 @@ export class HeaderSearchComponent implements OnInit {
    
    
   }
+  
 }

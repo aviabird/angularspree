@@ -154,4 +154,10 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
+  childCatLoaded(status) {
+   
+    console.log(status);
+    this.isModalShown = status;
+    this.flag =!status;
+  }
 }
