@@ -15,8 +15,8 @@ export class ProductPriceInfoComponent implements OnInit {
   ngOnInit() {
   }
 
-  addToCart() {
-    this.onAddToCart.emit()
+  addToCart(event) {
+    this.onAddToCart.emit(event)
   }
 
   markAsFavorites() {

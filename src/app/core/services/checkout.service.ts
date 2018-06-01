@@ -43,12 +43,15 @@ export class CheckoutService {
    *
    * @memberof CheckoutService
    */
-  createNewLineItem(variant_id: number) {
+  createNewLineItem(variant_id: number, quantity: number) {
     const
-      params = { line_item: { variant_id, quantity: 1 } },
+      params = { line_item: { variant_id: variant_id, quantity: quantity } },
       url = `api/v1/orders/${this.orderNumber}/line_items?order_token=${this.getOrderToken()}`;
 
-    return this.http.post<LineItem>(url, params);
+    return this.http.post<LineItem>(url, params)
+      .do(_ => this.toastyService.success({
+        title: 'Success!', msg: 'Product Successfully Added to Cart!'
+      }), _ => this.toastyService.success({ title: 'Failed', msg: 'Something went wrong!' }))
   }
 
   /**
@@ -97,14 +100,11 @@ export class CheckoutService {
    */
   createEmptyOrder() {
     const user = JSON.parse(localStorage.getItem('user'));
-    const headers = new HttpHeaders({
-      'Content-Type': 'text/plain',
-      'X-Spree-Token': user && user.spree_api_key
-    });
+    const headers = new HttpHeaders().set('Content-Type', 'text/plain');
 
     return (
       this.http
-        .post<Order>('api/v1/orders.json', { headers })
+        .post<Order>('api/v1/orders.json', {}, { headers: headers })
         .map(order => {
           this.setOrderTokenInLocalStorage({ order_token: order.token });
           return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));

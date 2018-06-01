@@ -34,8 +34,8 @@ export class ProductCountComponent implements OnInit {
     }
   }
 
-  addToCart() {
-    this.onAddToCart.emit();
+  addToCart(count: number) {
+    this.onAddToCart.emit(count);
   }
 
   markAsFavorites() {

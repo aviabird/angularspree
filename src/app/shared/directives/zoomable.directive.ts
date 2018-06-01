@@ -68,7 +68,7 @@ export class ZoomableDirective implements OnInit {
   }
 
   ngOnInit() {
-    let {
+    const {
       peepView: peepViewCustomOptions = {},
       zoomView: zoomViewCustomOptions = {},
       settings: customSettings = {}
@@ -131,7 +131,7 @@ export class ZoomableDirective implements OnInit {
   }
 
   private stylePeepView() {
-    let dimensions = this.getPeepViewDimensions(),
+    const dimensions = this.getPeepViewDimensions(),
       props = Object.assign({
         width: `${dimensions.width}px`,
         height: `${dimensions.height}px`
@@ -174,7 +174,7 @@ export class ZoomableDirective implements OnInit {
   }
 
   private getPeepViewCoords(event: MouseEvent): { top: number, left: number } {
-    let dimensions = this.getPeepViewDimensions(),
+    const dimensions = this.getPeepViewDimensions(),
       mouseX = event.clientX,
       mouseY = event.clientY,
       borderWidth = parseInt(this.options.peepView.borderWidth, 10) * 2,
@@ -191,21 +191,20 @@ export class ZoomableDirective implements OnInit {
   }
 
   private positionPeepView(event: MouseEvent) {
-    let coords = this.getPeepViewCoords(event);
+    const coords = this.getPeepViewCoords(event);
     this.renderer.setElementStyle(this.peepView, 'top', `${coords.top}px`);
     this.renderer.setElementStyle(this.peepView, 'left', `${coords.left}px`);
   }
 
   private positionZoomView() {
-    let props = Object.assign({}, this.hoverViewPosition, {
+    const props = Object.assign({}, this.hoverViewPosition, {
       left: this.hoverViewPosition.left + this.imgRect.width + this.options.settings.gap
     });
 
     Object.keys(props)
 
       .forEach(key => {
-        console.log(key)
-        if (key == 'top') {
+        if (key === 'top') {
           props[key] = -20;
         }
         // if (key == 'width') {
@@ -220,7 +219,7 @@ export class ZoomableDirective implements OnInit {
   }
 
   private positionZoomBackground(event: MouseEvent) {
-    let coords = this.getPeepViewCoords(event),
+    const coords = this.getPeepViewCoords(event),
       zoom = this.options.settings.zoom,
       bgWidth = this.imgRect.width * zoom,
       bgHeight = this.imgRect.height * zoom,
@@ -235,7 +234,7 @@ export class ZoomableDirective implements OnInit {
 
   private destroyViews() {
     // remove all event listeners
-    for (let listener of this.listeners) {
+    for (const listener of this.listeners) {
       listener();
     }
     this.listeners = [];

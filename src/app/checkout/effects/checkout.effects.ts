@@ -10,18 +10,19 @@ import { Injectable } from '@angular/core';
 export class CheckoutEffects {
 
   constructor(private actions$: Actions,
-  private checkoutService: CheckoutService,
-  private actions: CheckoutActions) {}
+    private checkoutService: CheckoutService,
+    private actions: CheckoutActions) { }
 
   // tslint:disable-next-line:member-ordering
   @Effect()
-    AddToCart$ = this.actions$
+  AddToCart$ = this.actions$
     .ofType(CheckoutActions.ADD_TO_CART)
     .switchMap((action: any) => {
-      return this.checkoutService.createNewLineItem(action.payload);
+      return this.checkoutService.createNewLineItem(action.payload.variant_id,
+        action.payload.quantity);
     })
     .map((lineItem: LineItem) => this.actions.addToCartSuccess(lineItem));
-  }
+}
   // @Effect()
     // FetchCurrentOrder$ = this.actions$
     // .ofType(CartActions.FETCH_CURRENT_ORDER)
