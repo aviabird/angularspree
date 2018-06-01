@@ -10,6 +10,6 @@ export const DEFAULT_CONFIG = {
       height: '40',
       width: '112'
     },
-    showGithubRibon: true
+    showGithubRibon: false
   }
 };

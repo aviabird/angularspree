@@ -1,6 +1,9 @@
 <div class="checkout-header">
   <div class="full-container">
-    <a class="navbar-brand" routerLink="/"><img src="assets/logo.png" alt="Angular Spree"></a>
+    <a class="navbar-brand" routerLink="/">
+      <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
+        class="d-inline-block align-top" alt="">
+    </a>
     <ol class="checkout-steps">
       <li class="step step1">
         <a [ngClass]="{'can-click': checkIfClickable('cart'), 'active': isActiveRoute('cart')}" [routerLink]="getRouterLink('cart')">Bag</a>
