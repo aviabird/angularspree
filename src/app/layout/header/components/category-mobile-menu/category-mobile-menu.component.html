@@ -1,0 +1,38 @@
+<!-- <div class="row" *ngIf="taxonomies[0]; let catgeory_taxonomy">
+    <div class="col-12 p-0 no-gutters">
+        <ul>
+            <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategory(i)">{{taxon.name}}</li>
+        </ul>
+    </div>
+    <div class="col-12 p-0 no-gutters" >
+        <ul *ngIf="menuTaxons">          
+            <li *ngFor="let taxon of menuTaxons.taxons; let i= index" (click)="showSubCategory(i)">{{taxon.name}}</li>
+        </ul>
+    </div>
+    <div class="col-12 p-0 no-gutters" >
+        <ul *ngIf="subChild">          
+            <li *ngFor="let taxon of subChild.taxons; let i= index">{{taxon.name}}</li>
+        </ul>
+    </div>
+</div> -->
+
+<div class="d-flex  my-flex-container" *ngIf="taxonomies[0]; let catgeory_taxonomy">
+  <div class="p-0 no-gutters" class="parrent-catgory" [@popOverState]="stateName">
+    <ul>
+      <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategory(i)">{{taxon.name}}</li>
+    </ul>
+  </div>
+  <div class="p-0 no-gutters" class="sub-catgory" [@popOverState]="stateName" [@subCatgory]="stateName1">
+    <ul *ngIf="menuTaxons">
+      <li (click)="parrentBack()">Back</li>
+
+      <li *ngFor="let taxon of menuTaxons.taxons; let i= index" (click)="showSubCategory(i)">{{taxon.name}}</li>
+    </ul>
+  </div>
+  <div class="p-0 no-gutters" class="sub-sub-catgory" [@subCatgory]="stateName1">
+    <ul *ngIf="subChild">
+        <li (click)="childBack()">Back</li>
+      <li *ngFor="let taxon of subChild.taxons; let i= index">{{taxon.name}}</li>
+    </ul>
+  </div>
+</div>

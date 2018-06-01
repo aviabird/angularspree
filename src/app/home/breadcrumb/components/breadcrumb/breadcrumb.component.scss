@@ -1,3 +1,4 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .bread_crumb {
   color: red;
   position: relative;
@@ -24,7 +25,7 @@
   li:last-child {
     font-weight: 500;
     margin-right: 0;
-    font-family: Whitney-semi-bold;
+    font-family: $primary-font;
   }
   li:last-child:after {
     content: '';

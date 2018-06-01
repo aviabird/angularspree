@@ -1,7 +1,7 @@
 <div class="btn-group dpbtn petdropdown" dropdown [autoClose]=autoclose container="body" *ngIf="!dropdownWidth">
   <button id="button-nested" dropdownToggle categories="button" class="btn dropdown-toggle aba" aria-controls="dropdown-nested"
-    data-hover="dropdown">
-    <i class="fa fa-list-ul fa-2x" *ngIf="isScrolled"></i>
+    data-hover="dropdown" >
+    <i class="fa fa-2x fa-bars" *ngIf="isScrolled"></i>   
     <strong *ngIf="!isScrolled">Shop By
       <span *ngIf="taxonomies[0]; let catgeory_taxonomy">{{catgeory_taxonomy.name}}</span>
     </strong>
@@ -22,32 +22,23 @@
   </div>
 </div>
 
-<div class="btn-group dpbtn petdropdown" dropdown  [autoClose]=autoclose container="body" *ngIf="dropdownWidth">
-  <button id="button-nested" dropdownToggle categories="button" class="btn dropdown-toggle" aria-controls="dropdown-nested"
-    data-hover="dropdown">
-    <i class="fa fa-list-ul fa-2x" *ngIf="isScrolled"></i>
-    <strong *ngIf="!isScrolled">Shop By
-      <span *ngIf="taxonomies[0]; let catgeory_taxonomy">{{catgeory_taxonomy.name}}</span>
-    </strong>
-    <span class=" caret "></span>
-  </button>
-  <div id="dropdown-nested " *dropdownMenu class="dropdown-menu" [style.width]="dropdownWidth" role="menu " aria-labelledby="button-nested ">
-    <div class="row" *ngIf="taxonomies[0]; let catgeory_taxonomy" style="overflow: hidden;">
 
-      <div class="petmenu">
-        <div class="col-12 col-sm-12 p-0 no-gutters" [@popOverState]="stateName">
-          <ul>
-            <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)">{{taxon.name}}</li>
-          </ul>
-        </div>
-        <div class="col-12 col-sm-12 no-gutters detailcontainer p-0" *ngIf="menuTaxons" [@popOverState]="stateName">
-          <ul class="pb-0" [hidden]="backBtnShow">
-            <li (click)="backtolist()">Back</li>
-          </ul>
-          <app-categories-details [BTaxon]="taxonomies[1].root.taxons" [screenwidth]="dropdownWidth" [taxons]="menuTaxons.taxons" [taxonName]="menuTaxons.name"
-            (click)="get_categeory()" (onSubCatClicked)="childCatLoaded($event)"></app-categories-details>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-group dpbtn petdropdown" dropdown  [autoClose]=autoclose container="body" *ngIf="dropdownWidth">
+
+
 </div>

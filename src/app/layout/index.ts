@@ -13,6 +13,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BrandMenuDropdownComponent } from './header/components/brand-menu-dropdown/brand-menu-dropdown.component';
 import { CategoriesMenuDropdownComponent } from './header/components/categories-menu-dropdown/categories-menu-dropdown.component';
 import { NgModule } from '@angular/core';
+import { ModalModule } from 'ngx-bootstrap';
 
 // Components
 import { HeaderComponent } from './header/header.component';
@@ -21,7 +22,7 @@ import { ProfileDropdownComponent } from './header/components/profile-dropdown/p
 import { HeaderSearchComponent } from './header/components/header-search/header-search.component';
 import { HeaderCartComponent } from './header/components/header-cart/header-cart.component';
 import { HeaderHelpDropdownComponent } from './header/components/header-help-dropdown/header-help-dropdown.component';
-
+import { CategoryMobileMenuComponent } from './header/components/category-mobile-menu/category-mobile-menu.component'
 // Modules
 import { SharedModule } from '../shared/index';
 import { RouterModule } from '@angular/router';
@@ -43,7 +44,7 @@ import { RouterModule } from '@angular/router';
     FooterContactInfoComponent,
     FooterSocialLinksComponent,
     FooterQuickLinksComponent,
-
+    CategoryMobileMenuComponent,
     // sub components
     ProfileDropdownComponent
 
@@ -56,7 +57,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     SharedModule,
     RouterModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ModalModule.forRoot()
   ]
 })
 export class LayoutModule { }

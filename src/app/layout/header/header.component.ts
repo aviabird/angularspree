@@ -11,7 +11,9 @@ import { getAuthStatus } from '../../auth/reducers/selectors';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../../core/services/auth.service';
 import { AuthActions } from '../../auth/actions/auth.actions';
-
+import { TemplateRef } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -34,7 +36,7 @@ export class HeaderComponent implements OnInit {
   changePos: Number = 100;
   devicewidth: any;
   screenwidth: any;
-
+  modalRef: BsModalRef;
   taxonList = [{
     'id': 4,
     'name': 'Mugs',
@@ -92,12 +94,17 @@ export class HeaderComponent implements OnInit {
     private authActions: AuthActions,
     private searchActions: SearchActions,
     private actions: ProductActions,
-    private router: Router
+    private router: Router,private modalService: BsModalService
   ) {
     this.taxonomies$ = this.store.select(getTaxonomies);
     this.store.dispatch(this.actions.getAllTaxonomies());
   }
-
+  openModalWithClass(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'cat-mobile' })
+    );
+  }
   ngOnInit() {
     this.store.dispatch(this.authActions.authorize());
     this.store.dispatch(this.authActions.login());

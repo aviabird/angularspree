@@ -1,3 +1,4 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .cod-block {
 	.section-help {
 		padding: 23px 0px 36px!important;
@@ -10,7 +11,7 @@
     	font-size: 16px;
 			display: block;
 			font-weight: 600;
-			font-family: "Whitney-semi-bold";
+			font-family: $primary-font;;
 		}
 		.sub-lbl {
 			display: block;
@@ -26,7 +27,7 @@
     font-size: 14px;
     margin-bottom: 20px;
 		margin-top: 20px;
-		font-family: "Whitney-semi-bold";
+		font-family: $primary-font;;
 	}
 }
 
@@ -34,7 +35,7 @@
 	.pay-btn {
 		font-size: 14px;
 		font-weight: 600;
-		font-family: "Whitney-semi-bold";
+		font-family: $primary-font;;
     height: 48px;
     background: #0bc6a0;
 		width: 100%;

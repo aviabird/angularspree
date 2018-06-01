@@ -1,3 +1,4 @@
+@import '../../shared/scss/selected_theme_variables';	
 .payment-section {
 	width: 980px;
 	margin: 9px auto;
@@ -17,14 +18,14 @@
 				font-weight: 600;
     		font-size: 16px;
     		color: #535766;
-				font-family: "Whitney-semi-bold";
+				font-family: $primary-font;;
 			}
 			.amt.you-pay {
 				float: right;
 				.amt, .you-pay {
     			font-weight: 600;
 					font-size: 14px;
-					font-family: "Whitney-semi-bold";
+					font-family: $primary-font;;
 				}
 				.amt {
 					padding-right: 10px;
@@ -52,7 +53,7 @@
 			.lbl {
 				font-size: 12px;
 				font-weight: 600;
-				font-family: "Whitney-semi-bold";
+				font-family: $primary-font;;
 				color: #94969f;
 				height: 35px;
 				line-height: 48px;
@@ -60,7 +61,7 @@
 			.items {
 				font-size: 12px;
 				font-weight: 600;
-				font-family: "Whitney-semi-bold";
+				font-family: $primary-font;;
 				padding-top: 5px;
 			}
 			.order-total, .shipping {
@@ -92,7 +93,7 @@
 			.pay-lbl, .pay-total {
     		font-weight: 600;
 				font-size: 14px;
-				font-family: "Whitney-semi-bold";
+				font-family: $primary-font;;
 			}
 			.pay-total {
 				float: right;
@@ -105,13 +106,13 @@
 				color: #94969f;
 				padding-top: 30px;
 				padding-bottom: 5px;
-				font-family: "Whitney-semi-bold";
+				font-family: $primary-font;;
 			}
 			.name {
 				color: #29303f;
     		margin-top: 5px;
     		font-weight: 600;
-				font-family: "Whitney-semi-bold";
+				font-family: $primary-font;;
 			}
 			.add-info {
 				color: #858e8f;
