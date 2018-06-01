@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit {
   mainOptions: any;
   correspondingOptions: any;
   variantId: any;
-  productID :any
+  productID: any
   productdata: any;
   constructor(
     private variantParser: VariantParserService,
@@ -32,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
     private store: Store<AppState>,
     private productService: ProductService,
     private toastyService: ToastyService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.description = this.product.description;
@@ -44,10 +44,10 @@ export class ProductDetailsComponent implements OnInit {
     this.correspondingOptions = this.mainOptions;
     this.productID = this.product.id;
     this.productService.getRecentlyViewedProducts().
-    subscribe(productdata => {
-      this.productdata = productdata
-     
-    });
+      subscribe(productdata => {
+        this.productdata = productdata
+
+      });
   }
 
   /**
@@ -57,12 +57,12 @@ export class ProductDetailsComponent implements OnInit {
    */
   onOptionClick(option) {
     const result = new VariantRetriverService()
-                    .getVariant(this.currentSelectedOptions,
-                                this.customOptionTypesHash,
-                                option, this.product);
+      .getVariant(this.currentSelectedOptions,
+      this.customOptionTypesHash,
+      option, this.product);
 
     this.createNewCorrespondingOptions(result.newCorrespondingOptions,
-                                       option.value.optionValue.option_type_name);
+      option.value.optionValue.option_type_name);
 
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
@@ -89,8 +89,8 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  addToCart(product: Product) {
-    this.store.dispatch(this.checkoutActions.addToCart(this.variantId));
+  addToCart(quantitiy) {
+    this.store.dispatch(this.checkoutActions.addToCart(this.variantId, quantitiy));
   }
 
   markAsFavorite() {

@@ -10,6 +10,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Authenticate, User } from '../models/user';
 import { ToastyService } from 'ng2-toasty';
 import { delay } from 'q';
+import { HttpRequest } from '@angular/common/http/src/request';
 
 @Injectable()
 export class AuthService {
@@ -172,13 +173,13 @@ export class AuthService {
    * @returns {{}}
    * @memberof AuthService
    */
-  getTokenHeader(): HttpHeaders {
+  getTokenHeader(request: HttpRequest<any>): HttpHeaders {
     const user: User = ['undefined', null]
       .indexOf(localStorage.getItem('user')) === -1 ?
       JSON.parse(localStorage.getItem('user')) : {};
 
     return new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type': request.headers.get('Content-Type') || 'application/json',
       'token-type': 'Bearer',
       'access_token': user.access_token || [],
       'client': user.client || [],
