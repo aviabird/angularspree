@@ -1,3 +1,4 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .cart-empty {
 	min-height: 500px;
 	padding-top: 85px;
@@ -12,7 +13,7 @@
 		font-size: 20px;
     color: #535766;
     font-weight: 600;
-		font-family: "Whitney-semi-bold";
+		font-family: $primary-font;;
 		line-height: 120px;
 		margin: 15px 0;
 	}

@@ -1,3 +1,4 @@
+@import '../../../shared/scss/selected_theme_variables';
 .pay-modes {
 	display: inline-block;
 	width: 32%;
@@ -7,7 +8,7 @@
 		height: 60px;
 		font-size: 14px;
 		font-weight: 600;
-		font-family: "Whitney-semi-bold";
+		font-family: $primary-font;;
 		text-transform: uppercase;
     color: #535766;
     padding-top: 22px;

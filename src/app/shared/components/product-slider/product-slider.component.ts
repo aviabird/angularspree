@@ -13,7 +13,7 @@ export class ProductSlider implements OnInit {
   productlist2: any;
   constructor() {
   }
-
+  
   ngOnInit() {
     this.productlist2 = this.productlist;
   }
