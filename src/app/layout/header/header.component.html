@@ -1,8 +1,7 @@
 
 
 
-<div class="header">
-  
+<div class="header">  
   <nav class="navbar navbar-expand-lg" id="main" [ngClass]="{'page-scroll-header': isScrolled}">
     <div class="container">
       <app-categories-menu-dropdown [taxonomies]="taxonomies$| async" [screenwidth]="screenwidth" [isScrolled]="isScrolled" *ngIf="isScrolled"></app-categories-menu-dropdown>
@@ -10,8 +9,12 @@
       <a class="navbar-brand" routerLink="/" *ngIf="!devicewidth">
         <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
           class="d-inline-block align-top" alt="">
+      </a>     
+      
+  
+      <a (click)="showModal()" for="main-nav-state" class="main-nav-trigger" [ngClass]="{'main-nav-trigger-open':isModalShown}">
+          <span></span>
       </a>
-      <a  (click)="openModalWithClass(template)"  *ngIf="devicewidth"><i class="fa fa-2x fa-bars"></i></a>
 
       <a *ngIf="this.headerConfig.showGithubRibon" href="https://github.com/aviabird/angularspree">
         <img style="position: absolute; top: 0; right: 0; border: 0; height: 130px; z-index: 9999;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
@@ -27,7 +30,7 @@
       </div>
       <div class="resheader row hidden-md hidden-lg" *ngIf="devicewidth">          
         <div class="search">
-          <app-header-search [devicewidth]="devicewidth"></app-header-search>
+          <app-header-search [devicewidth]="devicewidth" [flag] ="flag" [isModalShown]="isModalShown"></app-header-search>
         </div>
         <div class="mlogo">
           <a class="navbar-brand small-logo" routerLink="/" *ngIf="devicewidth">
@@ -53,16 +56,20 @@
     </div>
   </nav>
 </div>
-
- <ng-template #template>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Header</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+<div *ngIf="isModalShown" [config]="{ show: true ,backdrop:false}" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal"
+     class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
+  <div class="modal-dialog  cat-mobile ">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h4 id="dialog-auto-name" class="modal-title pull-left">Auto shown modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <app-category-mobile-menu [taxonomies]="taxonomies$| async"></app-category-mobile-menu>
+      </div>
     </div>
-    <div class="modal-body">
-     <app-category-mobile-menu [taxonomies]="taxonomies$| async"></app-category-mobile-menu>
-    </div>
-  </ng-template>
+  </div>
+</div>
 

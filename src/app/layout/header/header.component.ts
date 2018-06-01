@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { SearchActions } from './../../home/reducers/search.actions';
 import { getTaxonomies } from './../../product/reducers/selectors';
 import { getTotalCartItems } from './../../checkout/reducers/selectors';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy,ViewChild  } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
 import { getAuthStatus } from '../../auth/reducers/selectors';
@@ -14,17 +14,21 @@ import { AuthActions } from '../../auth/actions/auth.actions';
 import { TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Directive, Renderer2, ElementRef} from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   host: {
     '(window:scroll)': 'updateHeader($event)',
-
   },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('autoShownModal') autoShownModal: ModalDirective;
+  isModalShown: boolean = false;
+  flag :boolean = true
   isAuthenticated: Observable<boolean>;
   totalCartItems: Observable<number>;
   taxonomies$: Observable<any>;
@@ -37,6 +41,10 @@ export class HeaderComponent implements OnInit {
   devicewidth: any;
   screenwidth: any;
   modalRef: BsModalRef;
+  config = {
+    backdrop: false,
+    ignoreBackdropClick:false
+  };
   taxonList = [{
     'id': 4,
     'name': 'Mugs',
@@ -94,15 +102,16 @@ export class HeaderComponent implements OnInit {
     private authActions: AuthActions,
     private searchActions: SearchActions,
     private actions: ProductActions,
-    private router: Router,private modalService: BsModalService
-  ) {
+    private router: Router,private modalService: BsModalService,private renderer: Renderer2 ) {
     this.taxonomies$ = this.store.select(getTaxonomies);
     this.store.dispatch(this.actions.getAllTaxonomies());
   }
+
   openModalWithClass(template: TemplateRef<any>) {
+    this.renderer.addClass(document.body, 'cat-mobile-open');
     this.modalRef = this.modalService.show(
       template,
-      Object.assign({}, { class: 'cat-mobile' })
+      Object.assign({}, { class: 'cat-mobile' },this.config)
     );
   }
   ngOnInit() {
@@ -111,11 +120,9 @@ export class HeaderComponent implements OnInit {
     this.isAuthenticated = this.store.select(getAuthStatus);
     this.totalCartItems = this.store.select(getTotalCartItems);
     this.screenwidth = window.outerWidth;
-
-    this.test()
+    this.calculateInnerWidth()
   }
-
-  test() {
+  calculateInnerWidth() {
     if (this.screenwidth <= 1000) {
       this.isScrolled = true;
       this.devicewidth = this.screenwidth
@@ -125,7 +132,17 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/');
     this.store.dispatch(this.searchActions.addFilter(taxon));
   }
-
+ showModal(): void {
+    this.isModalShown = !this.isModalShown;
+    this.flag = !this.flag;
+  }
+ 
+  hideModal(): void {
+    this.autoShownModal.hide();
+  } 
+  onHidden(): void {
+    this.isModalShown = false;
+  }
 
   updateHeader(evt) {
     if (this.screenwidth >= 1000) {
