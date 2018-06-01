@@ -1,7 +1,4 @@
-
-
-
-<div class="header">  
+<div class="header">
   <nav class="navbar navbar-expand-lg" id="main" [ngClass]="{'page-scroll-header': isScrolled}">
     <div class="container">
       <app-categories-menu-dropdown [taxonomies]="taxonomies$| async" [screenwidth]="screenwidth" [isScrolled]="isScrolled" *ngIf="isScrolled"></app-categories-menu-dropdown>
@@ -15,6 +12,7 @@
       <a (click)="showModal()" for="main-nav-state" class="main-nav-trigger" [ngClass]="{'main-nav-trigger-open':isModalShown}">
           <span></span>
       </a>
+      <a  (click)="openModalWithClass(template)"  *ngIf="devicewidth"><i class="fa fa-2x fa-bars"></i></a>
 
       <a *ngIf="this.headerConfig.showGithubRibon" href="https://github.com/aviabird/angularspree">
         <img style="position: absolute; top: 0; right: 0; border: 0; height: 130px; z-index: 9999;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
