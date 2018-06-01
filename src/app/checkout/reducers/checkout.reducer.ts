@@ -47,9 +47,18 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
         _lineItem = payload;
         _lineItemId = _lineItem.id;
 
+        // TODO : @Refactor this code later
         // return the same state if the item is already included.
         if (state.lineItemIds.includes(_lineItemId)) {
-          return state;
+          _totalCartItems = state.totalCartItems + _lineItem.quantity - state.lineItemEntities.toJS()[_lineItemId].quantity;
+          _totalCartValue = state.totalCartValue + parseFloat(_lineItem.total) - state.lineItemEntities.toJS()[_lineItemId].total;
+          _lineItemEntity = { [_lineItemId]: _lineItem };
+
+          return state.merge({
+            lineItemEntities: state.lineItemEntities.merge(_lineItemEntity),
+            totalCartItems: _totalCartItems,
+            totalCartValue: _totalCartValue
+          }) as CheckoutState;
         }
 
         _totalCartItems = state.totalCartItems + _lineItem.quantity;

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-checkout-header',
@@ -10,6 +11,8 @@ export class CheckoutHeaderComponent implements OnInit {
 
   @Input() currentStep: string;
   private checkoutStep = ['cart', 'address', 'payment'];
+  public headerConfig = environment.config.header;
+
   constructor(private router: Router) {
   }
 

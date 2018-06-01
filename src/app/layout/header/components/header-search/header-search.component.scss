@@ -1,3 +1,5 @@
+@import '../../../../shared/scss/selected_theme_variables';
+
 :host {
   width: 100%;
 }
@@ -6,7 +8,7 @@
   margin: 4px 10px 20px 0;
   input.desktop-search-bar {
     width: 75%;
-    font-family: Whitney;
+    font-family: $primary-font;
     display: inline-block;
     font-size: 16px;
     height: 20px;
@@ -53,7 +55,7 @@
 }
 .themecolor {
   color: #a3d032 !important;
- 
+
 }
 .desktop-query-updated {
   background-color: #fff;
@@ -83,7 +85,7 @@
   }
   .desktop-query {
     padding: 0px 7px 5.9px 4px;
-    
+
     margin-right: 8px;
     margin-top: 2.2px;
     border-radius: 4px 4px 0px 0px;
