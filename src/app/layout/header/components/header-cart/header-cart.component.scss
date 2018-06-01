@@ -4,5 +4,16 @@
     font-size: 24px !important;
     padding: 0px 10px !important;
   }
+  .btn .badge {
+    position: relative;
+    top: -10px;
+    left: -5px;
+}
+.badge-pill {
+  padding-right: 0.5em;
+  padding-left: 0.4em;
+  border-radius: 11.2rem;
+  font-size: 0.6em;
+}
 
 }

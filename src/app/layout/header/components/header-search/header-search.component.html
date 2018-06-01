@@ -5,8 +5,7 @@
     <span class="web-sprite desktop-iconSearch sprites-search" (click)="onSearch(box.value)"></span>
   </a>
 </form>
-
-<form class="desktop-query form-inline my-2 my-lg-0" *ngIf="devicewidth" [ngClass]="{
+<form class="desktop-query form-inline  my-lg-0" *ngIf="devicewidth" [ngClass]="{
   'bg-white desktop-query-updated':flag }">
   <a class="desktop-submit" [ngClass]="{
     'themecolor':flag }">
