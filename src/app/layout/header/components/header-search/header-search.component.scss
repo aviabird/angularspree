@@ -53,12 +53,10 @@
 }
 .themecolor {
   color: #a3d032 !important;
-  padding: 5px 0px 5px 8px !important
+ 
 }
 .desktop-query-updated {
-  margin: 0px 1px 0px !important;
-  padding: 0px 10px 15px 0;
-  border-radius: 5px 5px 0px 0px
+  background-color: #fff;
 }
 @media screen and(min-width: 769px) and(max-width: 1024px) {
   input.desktop-search-bar {
@@ -69,7 +67,7 @@
   position: absolute;
   width: 100%;
   left: 0%;
-  bottom: -46px;
+  bottom: -48px;
   background-color: #a3d032;
   padding: 0px 10px 10px 10px;
   .input.desktop-search-bar {
@@ -81,16 +79,23 @@
   .desktop-query input.desktop-search-bar {
     width: 94%;
     border-top: 0px solid red;
-    border-radius: 7px;
+    border-radius: 3px;
   }
   .desktop-query {
+    padding: 0px 7px 5.9px 4px;
+    
+    margin-right: 8px;
+    margin-top: 2.2px;
+    border-radius: 4px 4px 0px 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
     a.desktop-submit {
-      height: 30px;
-      width: 30px;
+      color: #fff;
+      height: 28px;
+      width: 19px;
       text-align: center;
       font-size: 24px;
-      padding: 5px;
-      color: #fff;
+      padding: 5px 5px 1px 5px;
       background: transparent !important;
       border: 0px solid #d4d5d9;
       border-left: none;

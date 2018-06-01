@@ -1,3 +1,4 @@
+@import '../../shared/scss/selected_theme_variables';
 .navbar {
   transition: all 500ms;
   &.page-scroll-header {
@@ -93,4 +94,121 @@
   .profile {
     flex: 0.1;
   }
+}
+.modal {
+  top: 2.7rem;
+  .cat-mobile {
+    border-radius: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw !important;
+    .modal-content {
+      border-radius: 0px;
+      border: 0px solid red;
+      height: 100vh;
+    }
+    .modal-body {
+      padding: 0px;
+    }
+  }
+}
+
+.main-nav-trigger,
+  {
+  ms-touch-action: manipulation;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+.main-nav-trigger {
+  left: -3px;
+  position: relative;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.main-nav-trigger,
+.menu-items__links a {
+  display: block;
+  width: 40px;
+  height: 37px;
+  margin: 0;
+}
+
+label {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+
+.main-nav-trigger:after,
+.main-nav-trigger:before {
+  content: "";
+  width: 20px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-transition: transform .4s ease-out, transform-origin .4s ease-out;
+  transition: transform .4s ease-out, transform-origin .4s ease-out;
+}
+
+.main-nav-trigger:before {
+  top: 13px;
+}
+
+.main-nav-trigger:after {
+  bottom: 7px;
+}
+
+.main-nav-trigger span {
+  top: 20px;
+  left: 10px;
+  right: 11px;
+  opacity: 1;
+  width: 20px;
+}
+
+.main-nav-trigger:after,
+.main-nav-trigger:before,
+.main-nav-trigger span {
+  display: block;
+  height: 3px;
+  background: #fff;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  position: absolute;
+}
+
+.main-nav-trigger-open {
+  background: #fff;
+  -webkit-box-shadow: 0 1px 0 #fff;
+  box-shadow: 0 1px 0 #fff;
+}
+
+.main-nav-trigger-open:before {
+  -webkit-transform: translateX(-7px) rotate(45deg);
+  -ms-transform: translateX(-7px) rotate(45deg);
+  transform: translateX(-7px) rotate(45deg);
+  -webkit-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  background: $theme-main-sub-color1;
+}
+
+.main-nav-trigger-open span {
+  opacity: 0;
+}
+
+.main-nav-trigger-open:after {
+  -webkit-transform: translateX(-7px) rotate(-45deg);
+  -ms-transform: translateX(-7px) rotate(-45deg);
+  transform: translateX(-7px) rotate(-45deg);
+  -webkit-transform-origin: bottom left;
+  -ms-transform-origin: bottom left;
+  transform-origin: bottom left;
+  background: $theme-main-sub-color1;
 }
