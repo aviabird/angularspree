@@ -12,7 +12,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./line-item.component.scss']
 })
 export class LineItemComponent implements OnInit {
-
   image: string;
   name: string;
   quantity: number;
@@ -20,10 +19,16 @@ export class LineItemComponent implements OnInit {
 
   @Input() lineItem: LineItem;
 
-  constructor(private store: Store<AppState>, private actions: CheckoutActions, private checkoutService: CheckoutService) { }
+  constructor(
+    private store: Store<AppState>,
+    private actions: CheckoutActions,
+    private checkoutService: CheckoutService
+  ) {}
 
   ngOnInit() {
-    this.image = environment.apiEndpoint + this.lineItem.variant.images[0].product_url;
+    this.image = this.lineItem.variant.images[0]
+      ? this.lineItem.variant.images[0].product_url
+      : 'http://via.placeholder.com/200x250';
     this.name = this.lineItem.variant.name;
     this.quantity = this.lineItem.quantity;
     this.amount = this.lineItem.display_amount;
@@ -33,8 +38,6 @@ export class LineItemComponent implements OnInit {
   // Follow this linke to know more about this issue https://github.com/angular/angular/issues/12869
   removeLineItem() {
     // this.store.dispatch(this.actions.removeLineItem(this.lineItem.id));
-    this.checkoutService.deleteLineItem(this.lineItem)
-      .subscribe();
+    this.checkoutService.deleteLineItem(this.lineItem).subscribe();
   }
-
 }

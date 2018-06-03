@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from './../../../../core/models/product';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
 import { ProductService } from './../../../../core/services/product.service';
-import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-product-details',
@@ -31,8 +30,7 @@ export class ProductDetailsComponent implements OnInit {
     private checkoutActions: CheckoutActions,
     private store: Store<AppState>,
     private productService: ProductService,
-    private toastyService: ToastyService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.description = this.product.description;

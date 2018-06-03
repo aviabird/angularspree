@@ -1,3 +1,5 @@
+
+import {tap} from 'rxjs/operators';
 import { AuthActions } from './../../actions/auth.actions';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { environment } from '../../../../environments/environment';
@@ -7,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
 import { Router, ActivatedRoute } from '@angular/router';
 import { getAuthStatus } from '../../reducers/selectors';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -43,13 +45,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     if (this.signInForm.valid) {
       this.loginSubs = this.authService
-        .login(values)
-        .do(_ => _, (user) => {
+        .login(values).pipe(
+        tap(_ => _, (user) => {
           const errors = user.error.error || 'Something went wrong';
           keys.forEach(val => {
             this.pushErrorFor(val, errors);
           });
-        }).subscribe();
+        })).subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.signInForm.controls[val];

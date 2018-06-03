@@ -1,7 +1,9 @@
 
+import {switchMap} from 'rxjs/operators';
+
 import { APP_DATA } from './../../shared/data/app-data';
 import { ProductService } from './../../core/services/product.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { getProducts, getTaxonomies } from './../../product/reducers/selectors';
 import { ProductActions } from './../../product/actions/product-actions';
 import { Store } from '@ngrx/store';
@@ -33,8 +35,8 @@ export class LandingComponent implements OnInit {
     this.products$ = this.store.select(getProducts);
 
 
-    const result = this.productService.getTaxonByName(this.dealsType)
-      .switchMap(response => {
+    const result = this.productService.getTaxonByName(this.dealsType).pipe(
+      switchMap(response => {
         this.taxon_by_name = response;
         if (this.taxon_by_name.count > 0) {
           this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
@@ -42,7 +44,7 @@ export class LandingComponent implements OnInit {
         } else {
           return []
         }
-      })
+      }))
       .subscribe(response => this.products_by_taxons = response);
 
     this.productService.getFavoriteProducts()

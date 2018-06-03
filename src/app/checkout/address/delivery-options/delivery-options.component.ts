@@ -1,7 +1,7 @@
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { getTotalCartValue, getTotalCartItems } from './../../reducers/selectors';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Order } from './../../../core/models/order';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { Component, OnInit, Input } from '@angular/core';

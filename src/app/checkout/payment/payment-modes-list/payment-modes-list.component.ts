@@ -1,3 +1,5 @@
+
+import {tap} from 'rxjs/operators';
 import { getAuthStatus } from './../../../auth/reducers/selectors';
 import { CheckoutActions } from './../../actions/checkout.actions';
 import { AppState } from './../../../interfaces';
@@ -49,13 +51,13 @@ export class PaymentModesListComponent implements OnInit {
 
   makePayment() {
     const paymentModeId = this.selectedMode.id;
-    this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount)
-      .do(() => {
+    this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
+      tap(() => {
         this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
         this.redirectToNewPage();
         this.checkoutService.createEmptyOrder()
           .subscribe();
-      })
+      }))
       .subscribe();
   }
 

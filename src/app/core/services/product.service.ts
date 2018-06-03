@@ -2,7 +2,7 @@ import { getUserFavoriteProducts } from './../../user/reducers/selector';
 import { getTaxonomies } from './../../product/reducers/selectors';
 import { Taxonomy } from './../models/taxonomy';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 
@@ -34,7 +34,7 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?set=nested`) }
+  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies`) }
 
   /**
    *
