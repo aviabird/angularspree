@@ -1,10 +1,12 @@
+import { ToastrService } from 'ngx-toastr';
 import { getUserFavoriteProducts } from './../../user/reducers/selector';
 import { getTaxonomies } from './../../product/reducers/selectors';
 import { Taxonomy } from './../models/taxonomy';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
+import { catchError, map, tap } from 'rxjs/operators';
+import { of as observableOf, Observable } from 'rxjs';
 
 @Injectable()
 export class ProductService {
@@ -15,7 +17,8 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private toastrService: ToastrService) { }
 
   /**
    *
@@ -71,5 +74,19 @@ export class ProductService {
   }
   getRecentlyViewedProducts() {
     return this.http.get(`api/v1/products?per_page=20`);
+  }
+
+  submitReview(productId: any, params: any) {
+    return this.http.post(`products/${productId}/reviews`, params)
+      .pipe(
+      map(_ => this.toastrService.success(
+        'Review Submitted.',
+        'Success')
+      ),
+      tap(
+        _ => _,
+        _ => this.toastrService.error('something went wrong (reviws)', 'ERROR!!')
+      )
+      )
   }
 }

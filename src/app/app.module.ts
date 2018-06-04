@@ -27,6 +27,7 @@ import { DragScrollModule } from 'ngx-drag-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,7 @@ import { ToastrModule } from 'ngx-toastr';
     Ng2UiAuthModule.forRoot(myAuthConfig),
     DragScrollModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      timeOut: 1500,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
       progressBar: true,
@@ -78,4 +79,4 @@ import { ToastrModule } from 'ngx-toastr';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

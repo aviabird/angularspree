@@ -1,3 +1,5 @@
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { CheckoutActions } from './../../../../checkout/actions/checkout.actions';
@@ -24,13 +26,16 @@ export class ProductDetailsComponent implements OnInit {
   variantId: any;
   productID: any
   productdata: any;
+
   constructor(
     private variantParser: VariantParserService,
     private variantRetriver: VariantRetriverService,
     private checkoutActions: CheckoutActions,
     private store: Store<AppState>,
     private productService: ProductService,
-  ) {}
+    private router: Router,
+    private toastrService: ToastrService
+  ) { }
 
   ngOnInit() {
     this.description = this.product.description;
@@ -93,8 +98,15 @@ export class ProductDetailsComponent implements OnInit {
 
   markAsFavorite() {
     this.productService.markAsFavorite(this.product.id).subscribe((res) => {
-      alert(res['message']);
+      this.toastrService.info(res['message'], 'info')
     });
   }
 
+  showReviewForm() {
+    this.router.navigate([this.product.slug, 'write_review'], { queryParams: { 'prodId': this.productID } });
+  }
+
 }
+
+
+
