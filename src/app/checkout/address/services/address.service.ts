@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
 
@@ -27,25 +27,25 @@ export class AddressService {
 
   initEmailForm() {
     return this.fb.group({
-      'email': ['', Validators.required]
+      email: ['', Validators.required]
     });
   }
 
   createAddresAttributes(address) {
     return {
-      'order': {
-        'bill_address_attributes': address,
-        'ship_address_attributes': address
+      order: {
+        bill_address_attributes: address,
+        ship_address_attributes: address
       }
     };
   }
 
   createGuestAddressAttributes(address, email) {
     return {
-      'order': {
-        'email': email,
-        'bill_address_attributes': address,
-        'ship_address_attributes': address
+      order: {
+        email: email,
+        bill_address_attributes: address,
+        ship_address_attributes: address
       }
     };
   }

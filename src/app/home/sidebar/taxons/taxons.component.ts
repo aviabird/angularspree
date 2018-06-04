@@ -1,6 +1,6 @@
 import { SearchActions } from './../../reducers/search.actions';
 import { getFilters } from './../../reducers/selectors';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../interfaces';
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';

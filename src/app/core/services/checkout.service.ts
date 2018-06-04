@@ -1,14 +1,15 @@
-import { ToastyService } from 'ng2-toasty';
+import { map, tap } from 'rxjs/operators';
 import { Payment } from './../models/payment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { getOrderNumber } from './../../checkout/reducers/selectors';
 import { CheckoutActions } from './../../checkout/actions/checkout.actions';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { LineItem } from './../models/line_item';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Order } from '../models/order';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class CheckoutService {
@@ -26,10 +27,11 @@ export class CheckoutService {
     private http: HttpClient,
     private actions: CheckoutActions,
     private store: Store<AppState>,
-    private toastyService: ToastyService
+    private toastyService: ToastrService
   ) {
-    this.store.select(getOrderNumber)
-      .subscribe(number => this.orderNumber = number);
+    this.store
+      .select(getOrderNumber)
+      .subscribe(number => (this.orderNumber = number));
   }
 
   //  Change below methods once angular releases RC4, so that this methods can be called from effects
@@ -44,14 +46,25 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   createNewLineItem(variant_id: number, quantity: number) {
-    const
-      params = { line_item: { variant_id: variant_id, quantity: quantity } },
-      url = `api/v1/orders/${this.orderNumber}/line_items?order_token=${this.getOrderToken()}`;
+    const params = {
+        line_item: { variant_id: variant_id, quantity: quantity }
+      },
+      url = `api/v1/orders/${
+        this.orderNumber
+      }/line_items?order_token=${this.getOrderToken()}`;
 
-    return this.http.post<LineItem>(url, params)
-      .do(_ => this.toastyService.success({
-        title: 'Success!', msg: 'Product Successfully Added to Cart!'
-      }), _ => this.toastyService.success({ title: 'Failed', msg: 'Something went wrong!' }))
+    return this.http
+      .post<LineItem>(url, params)
+      .pipe(
+        tap(
+          _ =>
+            this.toastyService.success(
+              'Success!',
+              'Product Successfully Added to Cart!'
+            ),
+          _ => this.toastyService.success('Something went wrong!', 'Failed')
+        )
+      );
   }
 
   /**
@@ -65,16 +78,18 @@ export class CheckoutService {
     return (
       this.http
         .get<Order>('api/v1/orders/current')
-        .map(order => {
-          if (order) {
-            const token = order.token;
-            this.setOrderTokenInLocalStorage({ order_token: token });
-            return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
-          } else {
-            this.createEmptyOrder()
-              .subscribe();
-          }
-        })
+        .pipe(
+          map(order => {
+            if (order) {
+              const token = order.token;
+              this.setOrderTokenInLocalStorage({ order_token: token });
+              return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
+            } else {
+              this.createEmptyOrder()
+                .subscribe();
+            }
+          })
+        )
     )
   }
 
@@ -90,7 +105,6 @@ export class CheckoutService {
     return this.http.get<Order>(url);
   }
 
-
   /**
    *
    *
@@ -102,18 +116,21 @@ export class CheckoutService {
     const user = JSON.parse(localStorage.getItem('user'));
     const headers = new HttpHeaders().set('Content-Type', 'text/plain');
 
-    return (
-      this.http
-        .post<Order>('api/v1/orders.json', {}, { headers: headers })
-        .map(order => {
+    return this.http
+      .post<Order>('api/v1/orders.json', null, { headers: headers })
+      .pipe(
+        map((order: Order) => {
           this.setOrderTokenInLocalStorage({ order_token: order.token });
-          return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
-        })
-        .do(
-        _ => _,
-        _ => this.toastyService.error({ title: 'ERROR!!', msg: 'Unable to create empty order' })
+          return this.store.dispatch(
+            this.actions.fetchCurrentOrderSuccess(order)
+          );
+        }),
+        tap(
+          _ => _,
+          _ =>
+            this.toastyService.error('Unable to create empty order', 'ERROR!!')
         )
-    );
+      );
   }
 
   /**
@@ -125,11 +142,16 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   deleteLineItem(lineItem: LineItem) {
-    const url = `api/v1/orders/${this.orderNumber}/line_items/${lineItem.id}?order_token=${this.getOrderToken()}`;
-    return (
-      this.http
-        .delete(url)
-        .map(() => this.store.dispatch(this.actions.removeLineItemSuccess(lineItem))));
+    const url = `api/v1/orders/${this.orderNumber}/line_items/${
+      lineItem.id
+    }?order_token=${this.getOrderToken()}`;
+    return this.http
+      .delete(url)
+      .pipe(
+        map(() =>
+          this.store.dispatch(this.actions.removeLineItemSuccess(lineItem))
+        )
+      );
   }
 
   /**
@@ -140,12 +162,16 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   changeOrderState() {
-    const url = `api/v1/checkouts/${this.orderNumber}/next.json?order_token=${this.getOrderToken()}`;
-    return (
-      this.http
-        .put<Order>(url, {})
-        .map(order => this.store.dispatch(this.actions.changeOrderStateSuccess(order)))
-    );
+    const url = `api/v1/checkouts/${
+      this.orderNumber
+    }/next.json?order_token=${this.getOrderToken()}`;
+    return this.http
+      .put<Order>(url, {})
+      .pipe(
+        map(order =>
+          this.store.dispatch(this.actions.changeOrderStateSuccess(order))
+        )
+      );
   }
 
   /**
@@ -157,12 +183,16 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   updateOrder(params: any) {
-    const url = `api/v1/checkouts/${this.orderNumber}.json?order_token=${this.getOrderToken()}`;
-    return (
-      this.http
-        .put<Order>(url, params)
-        .map(order => this.store.dispatch(this.actions.updateOrderSuccess(order)))
-    );
+    const url = `api/v1/checkouts/${
+      this.orderNumber
+    }.json?order_token=${this.getOrderToken()}`;
+    return this.http
+      .put<Order>(url, params)
+      .pipe(
+        map(order =>
+          this.store.dispatch(this.actions.updateOrderSuccess(order))
+        )
+      );
   }
 
   /**
@@ -173,7 +203,9 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   availablePaymentMethods() {
-    const url = `api/v1/orders/${this.orderNumber}/payments/new?order_token=${this.getOrderToken()}`;
+    const url = `api/v1/orders/${
+      this.orderNumber
+    }/payments/new?order_token=${this.getOrderToken()}`;
     return this.http.get<any>(url);
   }
 
@@ -186,15 +218,19 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   createNewPayment(paymentModeId: number, paymentAmount: number) {
-    return this.http.post(
-      `api/v1/orders/${this.orderNumber}/payments?order_token=${this.getOrderToken()}`,
-      {
-        payment: {
-          payment_method_id: paymentModeId,
-          amount: paymentAmount
+    return this.http
+      .post(
+        `api/v1/orders/${
+          this.orderNumber
+        }/payments?order_token=${this.getOrderToken()}`,
+        {
+          payment: {
+            payment_method_id: paymentModeId,
+            amount: paymentAmount
+          }
         }
-      }
-    ).map(_ => this.changeOrderState().subscribe());
+      )
+      .pipe(map(_ => this.changeOrderState().subscribe()));
   }
 
   /**

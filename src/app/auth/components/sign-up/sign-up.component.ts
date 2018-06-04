@@ -1,3 +1,5 @@
+
+import {tap} from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
@@ -6,7 +8,7 @@ import { AppState } from '../../../interfaces';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { getAuthStatus } from '../../reducers/selectors';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { AuthActions } from '../../actions/auth.actions';
 
 @Component({
@@ -41,13 +43,13 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
     if (this.signUpForm.valid) {
       this.registerSubs = this.authService
-        .register(values)
-        .do(_ => _, (user) => {
+        .register(values).pipe(
+        tap(_ => _, (user) => {
           const errors = user.error.errors || {};
           keys.forEach(val => {
             if (errors[val]) { this.pushErrorFor(val, errors[val][0]); };
           });
-        }).subscribe();
+        })).subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.signUpForm.controls[val];

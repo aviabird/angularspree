@@ -7,7 +7,7 @@ import { ProductActions } from './../product/actions/product-actions';
 import { AppState } from './../interfaces';
 import { getProducts, getTaxonomies, showAllProducts } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../core/models/product';
 

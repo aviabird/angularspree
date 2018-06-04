@@ -1,9 +1,11 @@
+
+import {tap} from 'rxjs/operators';
 import { AuthService } from './../../../core/services/auth.service';
 import { AuthActions } from './../../actions/auth.actions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../interfaces';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
@@ -40,8 +42,8 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
 
     if (this.forgetPasswordForm.valid) {
       this.forgetPasswordSubs = this.authService
-        .forgetPassword(values)
-        .do(_ => {
+        .forgetPassword(values).pipe(
+        tap(_ => {
           this.emailSent = true,
             this.sentEmail = values.email
         }, (user) => {
@@ -49,7 +51,7 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
           keys.forEach(val => {
             this.pushErrorFor(val, errors);
           });
-        }).subscribe();
+        })).subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.forgetPasswordForm.controls[val];

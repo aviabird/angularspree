@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { getTotalCartValue, getOrderState, getTotalCartItems } from './../reducers/selectors';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { CheckoutService } from './../../core/services/checkout.service';
 import { CheckoutActions } from './../actions/checkout.actions';
 import { AppState } from './../../interfaces';

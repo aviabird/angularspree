@@ -6,7 +6,7 @@ import { AppState } from '../../interfaces';
 import { Order } from '../../core/models/order';
 import { Response } from '@angular/http';
 import { User } from '../../core/models/user';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {

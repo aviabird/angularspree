@@ -25,25 +25,17 @@ import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-heade
 import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// adding rx operators
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/finally';
-import 'rxjs/add/observable/of';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckoutHeaderComponent,
-    CheckoutFooterComponent,   
+    CheckoutFooterComponent
   ],
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     StoreModule.forRoot(reducers, { metaReducers }),
-
 
     /**
      * Store devtools instrument the store retaining past versions of state
@@ -73,11 +65,17 @@ import 'rxjs/add/observable/of';
     LayoutModule,
     Ng2UiAuthModule.forRoot(myAuthConfig),
     DragScrollModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar: true,
+      progressAnimation: 'increasing'
+    }),
     CoreModule,
-    SharedModule,
-    
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

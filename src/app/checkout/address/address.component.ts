@@ -1,3 +1,5 @@
+
+import {tap} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CheckoutService } from './../../core/services/checkout.service';
 import { getShipAddress, getOrderState, getOrderNumber } from './../reducers/selectors';
@@ -5,8 +7,7 @@ import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import { Subscription ,  Observable } from 'rxjs';
 
 @Component({
   selector: 'app-address',
@@ -34,10 +35,10 @@ export class AddressComponent implements OnInit, OnDestroy {
 
   checkoutToPayment() {
     if (this.orderState === 'delivery' || this.orderState === 'address') {
-      this.checkoutService.changeOrderState()
-        .do(() => {
+      this.checkoutService.changeOrderState().pipe(
+        tap(() => {
           this.router.navigate(['/checkout', 'payment']);
-        })
+        }))
         .subscribe();
     } else {
       this.router.navigate(['/checkout', 'payment']);

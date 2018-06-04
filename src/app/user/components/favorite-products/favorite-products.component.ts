@@ -1,7 +1,7 @@
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../interfaces';
 import { UserActions } from './../../actions/user.actions';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Product } from './../../../core/models/product';
 import { ProductService } from './../../../core/services/product.service';
 import { Component, OnInit } from '@angular/core';
