@@ -1,7 +1,6 @@
 <div class="selected-theme">
   <section>
-    <ng-progress [speed]="200" [color]="'#fc6fb1'" [showSpinner]="false" [ease]="'easeOutQuad'" [trickleSpeed]="250"></ng-progress>
-    <ng2-toasty [position]="'top-right'"></ng2-toasty>
+    <ng-progress [color]="'red'" [spinner]="false"></ng-progress>
 
     <app-header *ngIf="currentUrl && !isCheckoutRoute()"></app-header>
     <app-checkout-header [currentStep]="currentStep" *ngIf="currentUrl && isCheckoutRoute()"></app-checkout-header>

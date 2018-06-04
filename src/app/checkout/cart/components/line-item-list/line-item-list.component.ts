@@ -3,7 +3,7 @@ import { CheckoutActions } from './../../../actions/checkout.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { LineItem } from './../../../../core/models/line_item';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

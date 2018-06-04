@@ -5,8 +5,7 @@ import { UserActions } from '../../../actions/user.actions';
 import { UserService } from '../../../services/user.service';
 import { Order } from '../../../../core/models/order';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import { Subscription ,  Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { LineItem } from '../../../../core/models/line_item';
 

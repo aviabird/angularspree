@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ToastyModule } from 'ng2-toasty';
 import { DragScrollModule } from 'ngx-drag-scroll';
 
 // Pipes
@@ -36,17 +35,16 @@ import { ZoomableDirective } from './directives/zoomable.directive';
      // pipes
     KeysPipe,
     HumanizePipe,
-    ToastyModule,
     DragScrollModule,
     ZoomableDirective,
-    ProductSlider
+    ProductSlider,
+    DragScrollModule
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
     BsDropdownModule.forRoot(),
-    ToastyModule.forRoot(),
     DragScrollModule
   ]
 })

@@ -1,8 +1,9 @@
 @import '~bootstrap/scss/bootstrap-reboot';
 @import '~bootstrap/scss/bootstrap-grid';
 @import "app/shared/scss/themes";
-@import '../node_modules/ng2-toasty/bundles/style-default.css';
 @import "app/shared/scss/selected_theme_variables";
+@import "~ngx-toastr/toastr-bs4-alert";
+
 $theme-main-color: #a3d032;
 $theme-action-color: #fe9700;
 $break-small: 320px;
@@ -71,7 +72,7 @@ html {
   }
   .modal-body{
     padding: 0px;
-  } 
+  }
 }
 
 @media screen and(min-width: 1100px) and(max-width: 1400px) {

@@ -3,7 +3,9 @@ import { CheckoutActions } from './../checkout/actions/checkout.actions';
 import { CheckoutService } from './services/checkout.service';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { HttpClientModule } from '@angular/common/http';
+import { NgProgressHttpModule } from '@ngx-progressbar/http';
 // Components
 
 // Services
@@ -43,7 +45,11 @@ import { CanActivateViaAuthGuard } from './guards/auth.guard';
       // CheckoutEffects,
       UserEffects
     ]),
-    NgProgressModule
+    HttpClientModule,
+    NgProgressModule.forRoot({
+      meteor: false
+    }),
+    NgProgressHttpModule,
   ],
   providers: [
     VariantParserService,
@@ -58,7 +64,6 @@ import { CanActivateViaAuthGuard } from './guards/auth.guard';
     UserService,
     CanActivateViaAuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true },
   ]
 })
 export class CoreModule { }

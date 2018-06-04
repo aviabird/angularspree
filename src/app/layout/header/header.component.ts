@@ -8,7 +8,7 @@ import { Component, OnInit, ChangeDetectionStrategy,ViewChild  } from '@angular/
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
 import { getAuthStatus } from '../../auth/reducers/selectors';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
 import { AuthActions } from '../../auth/actions/auth.actions';
 import { TemplateRef } from '@angular/core';
@@ -27,8 +27,8 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('autoShownModal') autoShownModal: ModalDirective;
-  isModalShown: boolean = false;
-  flag :boolean = true
+  isModalShown = false;
+  flag = true
   isAuthenticated: Observable<boolean>;
   totalCartItems: Observable<number>;
   taxonomies$: Observable<any>;
@@ -136,10 +136,10 @@ export class HeaderComponent implements OnInit {
     this.isModalShown = !this.isModalShown;
     this.flag = !this.flag;
   }
- 
+
   hideModal(): void {
     this.autoShownModal.hide();
-  } 
+  }
   onHidden(): void {
     this.isModalShown = false;
   }
@@ -155,7 +155,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   childCatLoaded(status) {
-   
+
     console.log(status);
     this.isModalShown = status;
     this.flag =!status;
