@@ -95,6 +95,11 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(quantitiy) {
     this.store.dispatch(this.checkoutActions.addToCart(this.variantId, quantitiy));
   }
+// TO DO (to add the daynamic quantity)
+  buyNow(){
+
+    this.store.dispatch(this.checkoutActions.addToCart(this.variantId, 1)); 
+  }
 
   markAsFavorite() {
     this.productService.markAsFavorite(this.product.id).subscribe((res) => {

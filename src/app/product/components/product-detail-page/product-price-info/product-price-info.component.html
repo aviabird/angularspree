@@ -20,7 +20,7 @@
     </div>
   </div>
 </div>
-<div class="">
+<div class="col-12 p-0">
   <div class="buybox-wrapper">
     <div id="product-vitals">
       <div id="pricing">
@@ -49,8 +49,12 @@
           </li>
         </ul>
       </div>
-      <div id="featured-promotions">
-        <div class="promotion autoship-discount">
+      <div id="featured-promotions" class="pt-3">
+        <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
+          [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row"></app-product-variants>
+
+
+        <!-- <div class="promotion autoship-discount">
           <div class="title">
             <p>
               Autoship:
@@ -66,7 +70,7 @@
               <span>for easy regular deliveries</span>
             </p>
           </div>
-        </div>
+        </div> -->
 
         <hr class="">
       </div>
@@ -74,10 +78,7 @@
 
     </div>
     <div id="buybox" class="">
-      <app-product-count
-      (onAddToCart)="addToCart($event)"
-      (onMarkAsFavorites) = "markAsFavorites()"
-      ></app-product-count>
+      <app-product-count (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorites()"></app-product-count>
     </div>
   </div>
 </div>

@@ -12,10 +12,11 @@ h1 {
   width: 60%;
   text-align: center;
   padding: 10px 0;
-  background-color: #a3d032;
-  border: 1px solid #a3d032;
-  color: #fff;
+  background-color: $theme-main-color;
+  border: 1px solid $theme-main-color;
+  color: $white;
 }
+
 
 .pdp-button {
   border-radius: 3px;
@@ -33,11 +34,11 @@ h1 {
     position: absolute;
     right: 8px;
     top: -24px;
-    background-color: #a3d032;
-    color: #fff;
+    background-color: $theme-main-color;
+    color:$white;
     padding: 10px 13px;
     border-radius: 50%;
-    box-shadow: 0px 0px 8px #282828;
+    box-shadow: 0px 0px 8px $gray-900;
     z-index: 20;
   }
 }
@@ -58,3 +59,48 @@ h1 {
     }
   }
 }
+
+.cw-btn {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: none;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 13px 35px 15px;
+  margin-right: 15px;
+  outline: none;
+  border: 1px solid transparent;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: all, .4s, ease-out;
+  transition: all, .4s, ease-out;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ .cw-btn--action {
+  background-color: $theme-action-sub-color2;
+  background: linear-gradient(180deg, $theme-action-sub-color2  0, ef #FFAC2E 45%, $theme-action-sub-color2);
+  color: $white;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 0 0 $gray-10;
+  width: 100%;
+}
+
+
+
