@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, Input , Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
 @Component({
   selector: 'app-header-search',
@@ -13,7 +13,7 @@ import { URLSearchParams } from '@angular/http'
 export class HeaderSearchComponent implements OnInit {
   queryParams: any;
   @Input() devicewidth;
-  @Input() flag;
+  @Input() isSearchopen;
   @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
@@ -29,12 +29,12 @@ export class HeaderSearchComponent implements OnInit {
       });
   }
   ngOnInit() {
- 
+
   }
-  showsearch() {  
-      this.flag = !this.flag;  
-      this.onSubCatClicked.emit(false);  
-    
+  showsearch() {
+    this.isSearchopen = !this.isSearchopen;
+    this.onSubCatClicked.emit(false);
+
   }
   onSearch(keyword: string) {
     if (keyword !== '') {
@@ -89,8 +89,8 @@ export class HeaderSearchComponent implements OnInit {
     if ('q[s]' in this.queryParams && 'q[name_cont_any]' in this.queryParams) {
       this.onSearch(this.queryParams['q[name_cont_any]'])
     }
-   
-   
+
+
   }
-  
+
 }

@@ -12,8 +12,6 @@ import {
 } from '@angular/animations';
 
 import { URLSearchParams } from '@angular/http'
-
-
 @Component({
   selector: 'app-categories-menu-dropdown',
   templateUrl: './categories-menu-dropdown.component.html',
@@ -63,13 +61,11 @@ export class CategoriesMenuDropdownComponent implements OnInit {
       this.autoclose = true;
     }
   }
-
   showCategory(i) {
 
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
 
   }
-
   showCategoryonclick(i) {
     this.show = !this.show;
     if (this.screenwidth <= 1000) {

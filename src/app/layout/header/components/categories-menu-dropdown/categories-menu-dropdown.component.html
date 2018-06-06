@@ -1,14 +1,13 @@
 <div class="btn-group dpbtn petdropdown" dropdown [autoClose]=autoclose container="body" *ngIf="!dropdownWidth">
   <button id="button-nested" dropdownToggle categories="button" class="btn dropdown-toggle aba" aria-controls="dropdown-nested"
-    data-hover="dropdown" >
-    <i class="fa fa-2x fa-bars" *ngIf="isScrolled"></i>   
+    data-hover="dropdown">
+    <i class="fa fa-2x fa-bars" *ngIf="isScrolled"></i>
     <strong *ngIf="!isScrolled">Shop By
       <span *ngIf="taxonomies[0]; let catgeory_taxonomy">{{catgeory_taxonomy.name}}</span>
     </strong>
     <span class=" caret "></span>
   </button>
   <div id="dropdown-nested " *dropdownMenu class="dropdown-menu" [style.width]="dropdownWidth" role="menu " aria-labelledby="button-nested ">
-
     <div class="row" *ngIf="taxonomies[0]; let catgeory_taxonomy">
       <div class="col-md-3 p-0 no-gutters">
         <ul>
@@ -21,24 +20,5 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="btn-group dpbtn petdropdown" dropdown  [autoClose]=autoclose container="body" *ngIf="dropdownWidth">
-
-
+<div class="btn-group dpbtn petdropdown" dropdown [autoClose]=autoclose container="body" *ngIf="dropdownWidth">
 </div>

@@ -23,7 +23,6 @@
         <strong class="text-capitalize">{{email}}
           <span class="caret"></span>
         </strong>
-
       </button>
       <ul id="dropdown-split" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-split">
         <li role="menuitem">
@@ -48,6 +47,32 @@
     </div>
   </ul>
 </div>
-<div *ngIf="devicewidth" class="mobileusericon">
-  <i class="fa fa-user mr-2" (click)="login()" aria-hidden="true"></i>
+<div *ngIf="devicewidth" class="mobileusericon" >
+  <i class="fa fa-user mr-2" (click)="login()" aria-hidden="true" *ngIf="!isAuthenticated"></i>
+  <div class="btn-group" dropdown *ngIf="isAuthenticated">
+    <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle pr-0 pl-0" aria-controls="dropdown-basic">
+      <i class="fa fa-user mr-2" aria-hidden="true"></i>
+      
+    </button>
+    <ul id="dropdown-split" *dropdownMenu class="dropdown-menu mobile-profile" role="menu" aria-labelledby="button-split">
+      <li role="menuitem">
+        <a class="dropdown-item" routerLink="/user">My Profile</a>
+      </li>
+      <li class="divider dropdown-divider"></li>
+
+      <li role="menuitem">
+        <a class="dropdown-item" routerLink="/user/orders">My Orders</a>
+      </li>
+      <li role="menuitem">
+        <a class="dropdown-item" routerLink="/user/addresses">Saved Addresses</a>
+      </li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem">
+        <a class="dropdown-item" href="#">Edit Profile</a>
+      </li>
+      <li role="menuitem">
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
 </div>
