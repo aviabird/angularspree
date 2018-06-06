@@ -16,7 +16,7 @@ import { ProductPriceInfoComponent } from './components/product-detail-page/prod
 import { ProductCountComponent } from './components/product-detail-page/product-price-info/product-count/product-count.component';
 import { ProductVariantsComponent } from './components/product-detail-page/product-variants/product-variants.component';
 import { ProductComponent } from './product.component';
-
+import { WriteProductReviewComponent } from './components/product-detail-page/write-product-review/write-product-review.component';
 
 // Routes
 import { ProductRoutes as routes } from './product.routes';
@@ -24,7 +24,7 @@ import { ProductRoutes as routes } from './product.routes';
 // Effects
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './effects/product.effects';
-
+import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { ProductEffects } from './effects/product.effects';
     ProductPriceInfoComponent,
     ProductDescriptionComponent,
     ProductVariantsComponent,
-    ProductCountComponent
+    ProductCountComponent,
+    WriteProductReviewComponent
     // pipes
   ],
   exports: [
@@ -52,8 +53,10 @@ import { ProductEffects } from './effects/product.effects';
   imports: [
     SharedModule,
     RouterModule.forChild(routes),
+    NgxInputStarRatingModule,
+
   ],
   providers: [
   ]
 })
-export class ProductModule {}
+export class ProductModule { }
