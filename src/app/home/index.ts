@@ -21,8 +21,8 @@ import { ProductActions } from './../product/actions/product-actions';
 import { SearchActions } from './reducers/search.actions';
 import { SharedModule } from './../shared/index';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-
-
+import { ModalModule } from 'ngx-bootstrap';
+import { AccordionModule } from 'ngx-bootstrap';
 // Components
 import { HomeComponent } from './home.component';
 // Breadcrumb components
@@ -38,6 +38,7 @@ import { ContentComponent } from './content/content';
 // Sidebar components
 import { TaxonsComponent } from './sidebar/taxons/taxons.component';
 import { FilterComponent } from './sidebar/filter/filter.component';
+import {filterMobileMenuComponent } from './filter-mobile-menu/filter-mobile-menu.component'
 // Routes
 import { HomeRoutes as routes } from './home.routes';
 
@@ -68,6 +69,7 @@ import { reducers } from './reducers/index';
     LpTrItemComponent,
     CategoriesComponent,
     BrandFilterComponent,
+    filterMobileMenuComponent,
 
     // pipes
     FilterPipe
@@ -79,6 +81,8 @@ import { reducers } from './reducers/index';
     CarouselModule,
     DragScrollModule,
     PaginationModule.forRoot(),
+    ModalModule.forRoot(),
+    AccordionModule.forRoot(),
 
     /**
      * StoreModule.forFeature is used for composing state

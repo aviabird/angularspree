@@ -1,3 +1,4 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .dropdown-menu {
   width: 50rem;
   padding: 0px;
@@ -11,12 +12,12 @@ ul {
   list-style: none;
   padding: 0.5rem 0 0.5rem 1.5rem;
   margin: 0px;
-  background-color: #adadad;
+  background-color: $gray-10;
   li {
     padding: 0.5rem 0.4rem;
-    background-color: #adadad;
-    border-bottom: 1px solid #ccc;
-    color: #fff;
+    background-color: $gray-10;
+    border-bottom: 1px solid $gray-10;
+    color: $white;
     cursor: pointer;
     &::after {
       font-family: 'FontAwesome';
@@ -29,11 +30,11 @@ ul {
       background-size: 10px;
     }
     &:hover::after {
-      color: #a3d032
+      color: $theme-main-color
     }
     &:hover {
-      background-color: #fff;
-      color: #a3d032;
+      background-color: $white;
+      color: $theme-main-color;
       border-radius: 4px 0px 0px 4px;
     }
     uL>LI {
