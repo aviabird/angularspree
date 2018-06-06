@@ -53,11 +53,11 @@ export class CategoryMobileMenuComponent implements OnInit {
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
     this.showParrent = !this.showParrent;
   }
-  get stateName() {
+  get getparrentState() {
     return this.showParrent ? 'show' : 'hide'
   }
 
-  get stateName1() {
+  get getChildState() {
     return this.showChild ? 'show' : 'hide'
   }
 
