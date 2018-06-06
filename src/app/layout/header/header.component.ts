@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { SearchActions } from './../../home/reducers/search.actions';
 import { getTaxonomies } from './../../product/reducers/selectors';
 import { getTotalCartItems } from './../../checkout/reducers/selectors';
-import { Component, OnInit, ChangeDetectionStrategy,ViewChild  } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
 import { getAuthStatus } from '../../auth/reducers/selectors';
@@ -14,7 +14,7 @@ import { AuthActions } from '../../auth/actions/auth.actions';
 import { TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { Directive, Renderer2, ElementRef} from '@angular/core';
+import { Directive, Renderer2, ElementRef } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-header',
@@ -28,7 +28,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class HeaderComponent implements OnInit {
   @ViewChild('autoShownModal') autoShownModal: ModalDirective;
   isModalShown = false;
-  flag = true
+  isSearchopen = true
   isAuthenticated: Observable<boolean>;
   totalCartItems: Observable<number>;
   taxonomies$: Observable<any>;
@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
   modalRef: BsModalRef;
   config = {
     backdrop: false,
-    ignoreBackdropClick:false
+    ignoreBackdropClick: false
   };
   taxonList = [{
     'id': 4,
@@ -102,7 +102,7 @@ export class HeaderComponent implements OnInit {
     private authActions: AuthActions,
     private searchActions: SearchActions,
     private actions: ProductActions,
-    private router: Router,private modalService: BsModalService,private renderer: Renderer2 ) {
+    private router: Router, private modalService: BsModalService, private renderer: Renderer2) {
     this.taxonomies$ = this.store.select(getTaxonomies);
     this.store.dispatch(this.actions.getAllTaxonomies());
   }
@@ -111,7 +111,7 @@ export class HeaderComponent implements OnInit {
     this.renderer.addClass(document.body, 'cat-mobile-open');
     this.modalRef = this.modalService.show(
       template,
-      Object.assign({}, { class: 'cat-mobile' },this.config)
+      Object.assign({}, { class: 'cat-mobile' }, this.config)
     );
   }
   ngOnInit() {
@@ -132,9 +132,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/');
     this.store.dispatch(this.searchActions.addFilter(taxon));
   }
- showModal(): void {
+  showModal(): void {
     this.isModalShown = !this.isModalShown;
-    this.flag = !this.flag;
+    this.isSearchopen = !this.isSearchopen;
   }
 
   hideModal(): void {
@@ -156,8 +156,7 @@ export class HeaderComponent implements OnInit {
   }
   childCatLoaded(status) {
 
-    console.log(status);
     this.isModalShown = status;
-    this.flag =!status;
+    this.isSearchopen = !status;
   }
 }

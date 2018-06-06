@@ -1,6 +1,6 @@
-@import '../../../../shared/scss/selected_theme_variables';
+@import '../../shared/scss/selected_theme_variables';
 ul {
-  width: 100vw;
+ 
   list-style: none;
   padding: 0.5rem 0 0.5rem 0;
   margin: 0px;
@@ -19,13 +19,7 @@ ul {
       position: absolute;
       background-size: 10px;
     }
-    uL>LI {
-      position: absolute;
-      left: 20%;
-      width: 78%;
-      top: 0PX;
-      display: NONE;
-    }
+    
   }
 }
 
@@ -43,3 +37,18 @@ ul {
 .sub-sub-catgory {
   @extend .parrent-catgory;
 }
+
+.radio-pink [type="radio"]:checked+label:after {
+  border-color: #e91e63;
+  background-color: #e91e63;
+}
+/*Gap*/
+
+.radio-pink-gap [type="radio"].with-gap:checked+label:before {
+  border-color: #e91e63;
+}
+
+.radio-pink-gap [type="radio"]:checked+label:after {
+  border-color: #e91e63;
+  background-color: #e91e63;
+}                

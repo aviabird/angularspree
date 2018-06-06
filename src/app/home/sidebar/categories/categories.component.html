@@ -24,7 +24,7 @@
     <li *ngFor="let levels of categoryLevel; let index =i" (click)="emitSelection()">
       <a [routerLink]="['.']" class="list-group-item list-group-item-action" [queryParams]="{'q[name_cont]': levels.name, id: levels.id}">
        <span class="maninname">
-          {{levels.name}}
+          {{levels.c}}
        </span> 
       </a>
     </li>
