@@ -19,7 +19,7 @@ export class ProductPriceInfoComponent implements OnInit {
   @Input() product;
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
-  
+
 
 
   customOptionTypesHash: any;
@@ -54,7 +54,7 @@ export class ProductPriceInfoComponent implements OnInit {
 
       });
   }
- 
+
   onOptionClick(option) {
     const result = new VariantRetriverService()
       .getVariant(this.currentSelectedOptions,
