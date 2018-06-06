@@ -7,3 +7,15 @@
   }
   h1{font-size: 1.7em;color:$gray-900}
 }
+
+.filter-mobile-menu{
+  width:100Vw;
+ 
+  margin:0px;
+  margin-top: 20vh;
+  .modal-content{
+    border:0px solid $gray-100;
+    border-radius:0px;
+  }
+  accordion-group{cursor: pointer;}
+}

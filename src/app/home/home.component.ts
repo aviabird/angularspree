@@ -8,7 +8,12 @@ import { AppState } from './../interfaces';
 import { getProducts, getTaxonomies, showAllProducts } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
+import { TemplateRef } from '@angular/core';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Directive, Renderer2, ElementRef} from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Product } from '../core/models/product';
 
 @Component({
@@ -25,7 +30,10 @@ export class HomeComponent implements OnInit {
   products: any;
   isProducts = false;
   isFilterOn = false;
-
+  isBrandOpen = false;
+  isCategoryOpen = true;
+  fillterList :any;
+  
   constructor(
     private store: Store<AppState>,
     private actions: ProductActions,
@@ -43,9 +51,31 @@ export class HomeComponent implements OnInit {
         this.products = data
         if (this.products.count) { this.isProducts = true } else { this.isProducts = false }
       })
+      this.store.select(getTaxonomies)
+      .subscribe(data => {
+        this.fillterList = data; 
+        console.log(this.fillterList);
+      })
   }
 
-  ngOnInit() { }
+  @ViewChild('autoShownModal') autoShownModal: ModalDirective;
+  isModalShown: boolean = false;
+ 
+  showModal(): void {
+    this.isModalShown = true;
+  }
+ 
+  hideModal(): void {
+    this.autoShownModal.hide();
+  }
+ 
+  onHidden(): void {
+    this.isModalShown = false;
+  }
+  ngOnInit() { 
+    console.log(this.fillterList);
+  }
+
   OnCategeorySelected(category) {
     // TODO: Here taxonomies_id is hardcoded for now.
     this.store.dispatch(this.searchActions.getChildTaxons('5', category.id));
@@ -59,4 +89,10 @@ export class HomeComponent implements OnInit {
   showAll() {
     this.isFilterOn = false
   }
+  
+ isOpenChangeaccourdian()
+ {
+   this.isCategoryOpen =! this.isCategoryOpen;
+   console.log(this.isCategoryOpen);
+ }
 }

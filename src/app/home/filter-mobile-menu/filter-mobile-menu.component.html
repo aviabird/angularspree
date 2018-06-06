@@ -1,0 +1,69 @@
+<!-- <div class="d-flex  my-flex-container" *ngIf="fillterList[0]; let catgeory_taxonomy">
+  <div class="p-0 no-gutters" class="parrent-catgory" [@popOverState]="stateName">
+    <ul>
+      <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategory(i)">{{taxon.name}}</li>
+    </ul>
+  </div>
+  <div class="p-0 no-gutters" class="sub-catgory" [@popOverState]="stateName" [@subCatgory]="stateName1">
+    <ul *ngIf="menuTaxons">
+      <li (click)="parrentBack()">Back</li>
+
+      <li *ngFor="let taxon of menuTaxons.taxons; let i= index" (click)="showSubCategory(i)">{{taxon.name}}</li>
+    </ul>
+  </div>
+  <div class="p-0 no-gutters" class="sub-sub-catgory" [@subCatgory]="stateName1">
+    <ul *ngIf="subChild">
+        <li (click)="childBack()">Back</li>
+      <li *ngFor="let taxon of subChild.taxons; let i= index">{{taxon.name}}</li>
+    </ul>
+  </div>
+</div> -->
+
+<input name="options"  [(ngModel)]="options" type="radio" [value]="true" [checked]="options"/> Yes
+
+<input name="options" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options"/> No
+<h2 *ngIf="options">Supply</h2>
+<h2 *ngIf="!options">Demand</h2>
+
+
+<accordion [closeOthers]="true">
+  <accordion-group>
+    <div accordion-heading class="clearfix">
+      I can have markup!
+      <span class="badge badge-secondary float-right pull-right">Some HTML here</span>
+    </div>
+    <accordion [closeOthers]="true">
+    <div class="d-flex  my-flex-container" *ngIf="fillterList[0]; let catgeory_taxonomy">
+      <div class="p-0 no-gutters" class="parrent-catgory">
+        <accordion-group *ngFor="let taxon of catgeory_taxonomy.root.taxons">
+          
+          <div accordion-heading class="clearfix">
+              {{taxon.name}}
+              <span class="badge badge-secondary float-right pull-right">Some HTML here</span>
+            </div>
+          <div>
+              <accordion [closeOthers]="true">
+            <accordion-group *ngFor="let subtaxon of taxon.taxons">
+              <div accordion-heading class="clearfix">
+                {{subtaxon.name}}
+              </div>
+              <div *ngFor="let subsubtaxon of subtaxon.taxons">
+                {{ subsubtaxon.name }}
+              </div>
+            </accordion-group>
+            </accordion>
+          </div>
+        </accordion-group>
+       
+      </div>
+    </div>
+  </accordion>
+
+  </accordion-group>
+  <accordion-group>
+    <div accordion-heading>
+      I can have markup, too!
+    </div>
+    <span class="badge badge-secondary center">And some HTML here</span>
+  </accordion-group>
+</accordion>

@@ -13,7 +13,7 @@
 }
 
 .header {
-  background-color: #a3d032;
+  background-color: $theme-main-color;
   .resheader {
     width: 90%
   }
@@ -22,7 +22,6 @@
 .profile {
   padding-top: 15px;
   flex: 0.2;
-  /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -30,7 +29,6 @@
 
 .mlogo {
   flex: 4;
-  /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +38,6 @@
   padding-top: 6px;
   padding-right: 10px;
   flex: .5;
-  /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -49,7 +46,6 @@
 .search {
   padding-top: 4px;
   flex: 0.2;
-  /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -95,6 +91,7 @@
     flex: 0.1;
   }
 }
+
 .modal {
   top: 2.7rem;
   .cat-mobile {
@@ -114,14 +111,10 @@
   }
 }
 
-.main-nav-trigger,
-  {
+.main-nav-trigger {
   ms-touch-action: manipulation;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-}
-
-.main-nav-trigger {
   left: -3px;
   position: relative;
   -webkit-border-radius: 5px 5px 0 0;
@@ -144,71 +137,78 @@ label {
   font-size: 12px;
 }
 
-.main-nav-trigger:after,
-.main-nav-trigger:before {
-  content: "";
-  width: 20px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  -webkit-transition: transform .4s ease-out, transform-origin .4s ease-out;
-  transition: transform .4s ease-out, transform-origin .4s ease-out;
+.main-nav-trigger {
+  &:after,
+  &:before {
+    content: "";
+    width: 20px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-transition: transform .4s ease-out, transform-origin .4s ease-out;
+    transition: transform .4s ease-out, transform-origin .4s ease-out;
+  }
 }
 
-.main-nav-trigger:before {
-  top: 13px;
+.main-nav-trigger {
+  &:before {
+    top: 13px;
+  }
 }
 
-.main-nav-trigger:after {
-  bottom: 7px;
+.main-nav-trigger {
+  &:after {
+    bottom: 7px;
+  }
 }
 
-.main-nav-trigger span {
-  top: 20px;
-  left: 10px;
-  right: 11px;
-  opacity: 1;
-  width: 20px;
+.main-nav-trigger {
+  span {
+    top: 20px;
+    left: 10px;
+    right: 11px;
+    opacity: 1;
+    width: 20px;
+  }
 }
 
-.main-nav-trigger:after,
-.main-nav-trigger:before,
-.main-nav-trigger span {
-  display: block;
-  height: 3px;
-  background: #fff;
-  -webkit-border-radius: 1px;
-  border-radius: 1px;
-  position: absolute;
+.main-nav-trigger {
+  &:after,
+  &:before,
+  span {
+    display: block;
+    height: 3px;
+    background: $white;
+    -webkit-border-radius: 1px;
+    border-radius: 1px;
+    position: absolute;
+  }
 }
 
 .main-nav-trigger-open {
-  background: #fff;
-  -webkit-box-shadow: 0 1px 0 #fff;
-  box-shadow: 0 1px 0 #fff;
-}
-
-.main-nav-trigger-open:before {
-  -webkit-transform: translateX(-7px) rotate(45deg);
-  -ms-transform: translateX(-7px) rotate(45deg);
-  transform: translateX(-7px) rotate(45deg);
-  -webkit-transform-origin: top left;
-  -ms-transform-origin: top left;
-  transform-origin: top left;
-  background: $theme-main-sub-color1;
-}
-
-.main-nav-trigger-open span {
-  opacity: 0;
-}
-
-.main-nav-trigger-open:after {
-  -webkit-transform: translateX(-7px) rotate(-45deg);
-  -ms-transform: translateX(-7px) rotate(-45deg);
-  transform: translateX(-7px) rotate(-45deg);
-  -webkit-transform-origin: bottom left;
-  -ms-transform-origin: bottom left;
-  transform-origin: bottom left;
-  background: $theme-main-sub-color1;
+  background: $white;
+  -webkit-box-shadow: 0 1px 0 $white;
+  box-shadow: 0 1px 0 $white;
+  &:before {
+    -webkit-transform: translateX(-7px) rotate(45deg);
+    -ms-transform: translateX(-7px) rotate(45deg);
+    transform: translateX(-7px) rotate(45deg);
+    -webkit-transform-origin: top left;
+    -ms-transform-origin: top left;
+    transform-origin: top left;
+    background: $theme-main-sub-color1;
+  }
+  &:after {
+    -webkit-transform: translateX(-7px) rotate(-45deg);
+    -ms-transform: translateX(-7px) rotate(-45deg);
+    transform: translateX(-7px) rotate(-45deg);
+    -webkit-transform-origin: bottom left;
+    -ms-transform-origin: bottom left;
+    transform-origin: bottom left;
+    background: $theme-main-sub-color1;
+  }
+  span {
+    opacity: 0;
+  }
 }

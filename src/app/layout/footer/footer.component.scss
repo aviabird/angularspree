@@ -1,7 +1,13 @@
 @import "../../shared/scss/_selected_theme_variables.scss";
 footer {
   height: 50px;
+  position: absolute;
+  right: 0;
+  bottom: -60px;
+  left: 0;
 
+  background-color: #efefef;
+  text-align: center;
 }
 
 .quicklinks {

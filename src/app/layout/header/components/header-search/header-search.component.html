@@ -6,12 +6,12 @@
   </a>
 </form>
 <form class="desktop-query form-inline  my-lg-0" *ngIf="devicewidth" [ngClass]="{
-  'bg-white desktop-query-updated':flag }">
+  'bg-white desktop-query-updated':isSearchopen }">
   <a class="desktop-submit" [ngClass]="{
-    'themecolor':flag }">
+    'themecolor':isSearchopen }">
     <i class="fa fa-search" (click)="showsearch()"></i>
   </a>
-  <div (click)="onSearch(box.value)" *ngIf="flag" class="searchinput">
+  <div (click)="onSearch(box.value)" *ngIf="isSearchopen" class="searchinput">
     <input class="desktop-search-bar bg-white" type="search" placeholder="Find the best for your pets..." aria-label="Search"
       #box (keyup.enter)="onSearch(box.value)">
   </div>

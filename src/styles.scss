@@ -3,7 +3,6 @@
 @import "app/shared/scss/themes";
 @import "app/shared/scss/selected_theme_variables";
 @import "~ngx-toastr/toastr-bs4-alert";
-
 $theme-main-color: #a3d032;
 $theme-action-color: #fe9700;
 $break-small: 320px;
@@ -12,16 +11,6 @@ ul {
   list-style: none;
   padding: 0px;
   margin: 0px;
-}
-
-body {
-  font-size: 15px;
-  line-height: 1.5;
-  color: #697071;
-  background-color: #fff;
-  -webkit-font-smoothing: subpixel-antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: $primary-font;
 }
 
 .btn:focus,
@@ -61,16 +50,32 @@ html {
   overflow-y: scroll;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 32vw;
+  position: relative;
+  color: #697071;
+  background-color: #fff;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: $primary-font;
+}
+
 .cat-mobile {
   background-color: floralwhite;
   border-radius: 0px;
   margin: 0px;
   width: 100vw;
-  max-width: 100vw!important;
+  max-width: 100vw !important;
   .modal-content {
     border-radius: 0px;
   }
-  .modal-body{
+  .modal-body {
     padding: 0px;
   }
 }
