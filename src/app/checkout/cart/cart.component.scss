@@ -1,10 +1,9 @@
 @import '../../shared/scss/selected_theme_variables';
 .cart-section {
   .left {
-    display: inline-block;
-    width: 70%;
+   
     padding-right: 40px;
-    border-right: 1px solid #f5f5f6;
+    border-right: 1px solid $gray-11;
     min-height: 500px;
     .checkout-header-container {
       .checkout-header {
@@ -13,7 +12,7 @@
         .text {
           font-size: 18px;
           font-weight: 600;
-          color: #535766;
+          color:$gray-900;
           font-family: $primary-font;;
         }
       }
@@ -22,7 +21,7 @@
         padding: 30px 0;
         display: inline-block;
         font-size: 18px;
-        color: #535766;
+        color: $gray-900;
       }
     }
     .prod-set {
@@ -49,15 +48,15 @@
         display: block;
         height: 40px;
         padding-top: 10px;
-        background: #fff;
-        color: #535766;
-        border: 1px solid #eaeaec;
+        background: $white;
+        color: $gray-900;
+        border: 1px solid $gray-10;
+        font-size: 1.7em;
       }
     }
   }
-  .right {
-    display: inline-block;
-    width: 29%;
+  .right { 
+   
     vertical-align: top;
     margin-top: 52px;
     padding-left: 35px;
