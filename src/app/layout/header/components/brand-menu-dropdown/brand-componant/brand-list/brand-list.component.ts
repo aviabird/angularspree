@@ -8,12 +8,15 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 })
 export class BrandListComponent implements OnInit {
   @Input() taxons;
-
+  // To do : Finding alternateway to show image.
+  image = '../../../../../../../assets/default/no-image-available.png'
   constructor() { }
   ngOnInit() {
   }
 
-  getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+  getBrandImageUrl(url) {
+    if (url) {
+      return environment.apiEndpoint + url;
+    } else { return this.image }
   }
 }

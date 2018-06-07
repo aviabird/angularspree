@@ -1,5 +1,5 @@
 import { environment } from './../../../../environments/environment';
-import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-lp-brands',
@@ -9,13 +9,16 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@a
 })
 export class LpBrandsComponent implements OnInit {
   @Input() brands;
+  // To do : Finding alternate way to show image.
+  image = '../../../../../../../assets/default/no-image-available.png'
   constructor() { }
 
   ngOnInit() {
   }
 
-  getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+  getBrandImageUrl(url) {
+    if (url) {
+      return environment.apiEndpoint + url;
+    } else { return this.image }
   }
-
 }
