@@ -26,6 +26,7 @@ export class ProductDetailsComponent implements OnInit {
   variantId: any;
   productID: any
   productdata: any;
+  
 
   constructor(
     private variantParser: VariantParserService,
@@ -94,6 +95,13 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart(quantitiy) {
     this.store.dispatch(this.checkoutActions.addToCart(this.variantId, quantitiy));
+  }
+ 
+
+// TO DO (to add the daynamic quantity)
+  buyNow(){
+
+    this.store.dispatch(this.checkoutActions.addToCart(this.variantId, 1)); 
   }
 
   markAsFavorite() {
