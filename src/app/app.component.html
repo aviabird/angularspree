@@ -2,14 +2,12 @@
   <section>
     <ng-progress [color]="'red'" [spinner]="false"></ng-progress>
 
-    <app-header *ngIf="currentUrl && !isCheckoutRoute()"></app-header>
-    <app-checkout-header [currentStep]="currentStep" *ngIf="currentUrl && isCheckoutRoute()"></app-checkout-header>
-
+    <app-header *ngIf="currentUrl"></app-header>
+    
     <main class="main-body">
       <router-outlet></router-outlet>
-    </main>
-
-    <app-checkout-footer *ngIf="currentUrl && isCheckoutRoute()"></app-checkout-footer>
-    <app-footer *ngIf="currentUrl && !isCheckoutRoute()"></app-footer>
+    </main>   
+    <app-footer *ngIf="currentUrl"></app-footer>
+    
   </section>
 </div>
