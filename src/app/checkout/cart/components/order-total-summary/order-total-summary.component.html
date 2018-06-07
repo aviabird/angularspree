@@ -1,34 +1,17 @@
 <div class="order-total-summary">
-  <div class="coupon-section">
-    <span class="text-label">Coupons</span>
-    <a class="apply-coupon coming-soon"></a>
-  </div>
-  <div class="gift-wrap-order">
-    <span class="gift-wrap-checkbox coming-soon"></span>
-    <a href="" class="gift-card-lbl">Gift wrap for </a>
-    <span class="gift-card-price">$1</span>
-    <span class="not-cod">Cash/Card On Delivery not available</span>
+  <div class="order-total footer">
+    <div class="place-order">
+      <button (click)="placeOrder()" class="order-btn">Proceed to Checkout</button>
+    </div>
   </div>
   <div class="order-summary-span">
     <div class="bag-total">
-      <span>Bag Total</span>
-      <span class="value">${{totalCartValue | number:'1.2-2'}}</span>
-    </div>
-    <div class="coupon">
-      <span>Coupon Discount</span>
-      <span class="apply-coupon c-blue coming-soon">Apply Coupon</span>
+      <span>Sub Total</span>
+      <span class="value"> ${{totalCartValue | number:'1.2-2'}} </span>
     </div>
     <div class="shipping">
-      <span>Delivery</span>
+      <span>Flat-Rate Shipping</span>
       <span class="shipping-fee c-green">FREE</span>
-    </div>
-  </div>
-  <div class="order-total footer">
-    <div class="place-order">
-      <button (click)="placeOrder()" class="order-btn">PLACE ORDER</button>
-    </div>
-    <div class="total-amount">
-      <span class="total-rupees">${{totalCartValue | number:'1.2-2'}}</span>
     </div>
   </div>
 </div>
