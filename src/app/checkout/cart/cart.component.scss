@@ -1,19 +1,18 @@
 @import '../../shared/scss/selected_theme_variables';
 .cart-section {
+  position: relative;
   .left {
-   
-    padding-right: 40px;
-    border-right: 1px solid $gray-11;
-    min-height: 500px;
+    padding-right: 40px;   
     .checkout-header-container {
       .checkout-header {
         display: inline-block;
-        padding: 30px 0;
+        padding: 3rem 0 0.8rem;
         .text {
-          font-size: 18px;
-          font-weight: 600;
-          color:$gray-900;
-          font-family: $primary-font;;
+          font-size: 1.8em;
+          font-weight: normal;
+          color: $gray-900;
+          font-family: $primary-font;
+          ;
         }
       }
       .total-price {
@@ -27,9 +26,11 @@
     .prod-set {
       width: 100%;
       display: inline-block;
-      height: 100%;
       overflow: auto;
-      padding-left: 1px;
+      padding: 1rem;
+      background-color: $white;
+      border-radius: 4px;
+      box-shadow: 0px 0px 3px #ccc;
       .wishlist-link {
         cursor: pointer;
         .icon {
@@ -55,10 +56,14 @@
       }
     }
   }
-  .right { 
-   
+  .right {
     vertical-align: top;
-    margin-top: 52px;
-    padding-left: 35px;
+    position: absolute;
+    right:0;
+    margin-top: 15.3vh;  
+    background-color:$white;
+    border-radius:4px ;
+    box-shadow:0px 0px 4px $gray-10;
+    padding: 0.9rem 1.4rem;
   }
 }

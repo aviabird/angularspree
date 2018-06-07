@@ -1,26 +1,25 @@
 <div class="cart-section container">
-  <div>
-    <div *ngIf="(totalCartItems$ | async) > 0 else emptyCart" class="row">
-      <div class="left col-md-8">
-        <div class="checkout-header-container">
-          <div class="checkout-header">
-            <span class="text">Your Shopping Cart</span>
-          </div>
-          <div class="total-price">Total: ${{totalCartValue$ | async | number:'1.2-2'}}</div>
-        </div>
-        <div class="prod-set">
-          <app-line-item-list></app-line-item-list>
-          <a class="wishlist-link">
-            <span class="icon"></span>
-            <span class="coming-soon">Add more from wishlist</span>
-          </a>
+
+  <div *ngIf="(totalCartItems$ | async) > 0 else emptyCart" class="row">
+    <div class="left col-md-9">
+      <div class="checkout-header-container">
+        <div class="checkout-header">
+          <span class="text">Your Shopping Cart</span>
         </div>
       </div>
-      <div class="right col-md-4">
-        <app-order-total-summary [totalCartValue]="totalCartValue$ | async"></app-order-total-summary>
+      <div class="prod-set">
+        <app-line-item-list></app-line-item-list>
+        <!-- <a class="wishlist-link">
+          <span class="icon"></span>
+          <span class="coming-soon">Add more from wishlist</span>
+        </a> -->
       </div>
     </div>
+    <div class="right col-md-3">
+      <app-order-total-summary [totalCartValue]="totalCartValue$ | async"></app-order-total-summary>
+    </div>
   </div>
+
   <ng-template #emptyCart>
     <app-empty-cart></app-empty-cart>
   </ng-template>
