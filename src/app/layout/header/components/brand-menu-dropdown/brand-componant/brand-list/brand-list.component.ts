@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { environment } from './../../../../../../../environments/environment';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-brand-list',
@@ -12,4 +13,7 @@ export class BrandListComponent implements OnInit {
   ngOnInit() {
   }
 
+  getProductImageUrl(url) {
+    return environment.apiEndpoint + url;
+  }
 }

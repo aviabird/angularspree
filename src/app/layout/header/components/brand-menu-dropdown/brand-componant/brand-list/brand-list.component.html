@@ -1,2 +1,3 @@
 <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': taxons.name, id: taxons.id}">
-  {{taxons.name}} </a>
+  <img [src]="getProductImageUrl(taxons.icon)">
+</a>
