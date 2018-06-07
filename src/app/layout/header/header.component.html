@@ -20,7 +20,7 @@
         <app-header-help-dropdown></app-header-help-dropdown>
         <app-profile-dropdown class="pr-2" [isAuthenticated]="isAuthenticated | async"></app-profile-dropdown>
         <app-header-cart class="pl-2 border-left" [totalCartItems]="totalCartItems | async"></app-header-cart>
-      </div>
+      </div>      
       <div class="resheader row hidden-md hidden-lg" *ngIf="devicewidth">
         <div class="search">
           <app-header-search [devicewidth]="devicewidth" (onSubCatClicked)="childCatLoaded($event)" [isSearchopen]="isSearchopen"></app-header-search>

@@ -14,9 +14,12 @@
     <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" class="row">
     </app-product-price-info>
 
-    <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
-      [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row"></app-product-variants>
-    <button (click)="showReviewForm()">Write Review</button>
+   
+     <div class="row">
+        <button (click)="showReviewForm()" class="cw-btn cw-btn--action col-3">Write Review</button>
+       
+     </div>
+     
   </div>
 </div>
 <div class="row">

@@ -89,6 +89,16 @@
   box-sizing: border-box;
 }
 
+#buybox .cw-btn--action {
+  background-color: $theme-action-sub-color2;
+  background: linear-gradient(180deg, $theme-action-sub-color2  0, ef #FFAC2E 45%, $theme-action-sub-color2);
+  color: $white;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 0 0$gray-10;
+  width: 100%;
+}
+
 .buybox-wrapper {
   color: $gray-800;
   #product-vitals {
