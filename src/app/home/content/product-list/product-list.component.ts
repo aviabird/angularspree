@@ -32,8 +32,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.products)
-  }
+     }
 
   getProductImageUrl(url) {
     return environment.apiEndpoint + url;
