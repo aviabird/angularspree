@@ -1,3 +1,4 @@
+import { environment } from './../../../../../../../environments/environment';
 import { APP_DATA } from './../../../../../../shared/data/app-data';
 import { Component, OnInit, Input, OnChanges, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import {
@@ -31,6 +32,7 @@ export class CategoriesDetailsComponent implements OnInit {
   @Input() taxonName;
   @Input() BTaxon;
   @Input() screenwidth;
+  @Input() taxonImageLink;
   menuTaxons: any;
   @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -55,6 +57,10 @@ export class CategoriesDetailsComponent implements OnInit {
 
   }
   get brand() {
-    return this.taxon[this.taxonName];
+    return this.taxonImageLink;
+  }
+
+  getProductImageUrl() {
+    return environment.apiEndpoint + this.taxonImageLink;
   }
 }

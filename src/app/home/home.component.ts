@@ -8,11 +8,11 @@ import { AppState } from './../interfaces';
 import { getProducts, getTaxonomies, showAllProducts } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { Directive, Renderer2, ElementRef} from '@angular/core';
+import { Directive, Renderer2, ElementRef } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Product } from '../core/models/product';
 
@@ -32,8 +32,8 @@ export class HomeComponent implements OnInit {
   isFilterOn = false;
   isBrandOpen = false;
   isCategoryOpen = true;
-  fillterList :any;
-  
+  fillterList: any;
+
   constructor(
     private store: Store<AppState>,
     private actions: ProductActions,
@@ -51,29 +51,27 @@ export class HomeComponent implements OnInit {
         this.products = data
         if (this.products.count) { this.isProducts = true } else { this.isProducts = false }
       })
-      this.store.select(getTaxonomies)
+    this.store.select(getTaxonomies)
       .subscribe(data => {
-        this.fillterList = data; 
-        console.log(this.fillterList);
+        this.fillterList = data;
       })
   }
 
   @ViewChild('autoShownModal') autoShownModal: ModalDirective;
   isModalShown: boolean = false;
- 
+
   showModal(): void {
     this.isModalShown = true;
   }
- 
+
   hideModal(): void {
     this.autoShownModal.hide();
   }
- 
+
   onHidden(): void {
     this.isModalShown = false;
   }
-  ngOnInit() { 
-    console.log(this.fillterList);
+  ngOnInit() {
   }
 
   OnCategeorySelected(category) {
@@ -89,10 +87,8 @@ export class HomeComponent implements OnInit {
   showAll() {
     this.isFilterOn = false
   }
-  
- isOpenChangeaccourdian()
- {
-   this.isCategoryOpen =! this.isCategoryOpen;
-   console.log(this.isCategoryOpen);
- }
+
+  isOpenChangeaccourdian() {
+    this.isCategoryOpen = !this.isCategoryOpen;
+  }
 }
