@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs';
+import { getProductsByKeyword } from './../../../../home/reducers/selectors';
+import { SearchActions } from './../../../../home/reducers/search.actions';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AppState } from './../../../../interfaces';
@@ -26,6 +29,8 @@ export class ProductDetailsComponent implements OnInit {
   variantId: any;
   productID: any
   productdata: any;
+  similarProducts$: Observable<any>;
+
 
   constructor(
     private variantParser: VariantParserService,
@@ -34,7 +39,8 @@ export class ProductDetailsComponent implements OnInit {
     private store: Store<AppState>,
     private productService: ProductService,
     private router: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private searchActions: SearchActions,
   ) { }
 
   ngOnInit() {
@@ -49,8 +55,10 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getRecentlyViewedProducts().
       subscribe(productdata => {
         this.productdata = productdata
-
       });
+
+    this.store.dispatch(this.searchActions.getProducsByTaxon(`id=${this.product.taxon_ids[0]}`))
+    this.similarProducts$ = this.store.select(getProductsByKeyword)
   }
 
   /**
@@ -97,7 +105,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
-// TO DO (to add the daynamic quantity)
+  // TO DO (to add the daynamic quantity)
   buyNow() {
     this.store.dispatch(this.checkoutActions.addToCart(this.variantId, 1));
   }
@@ -111,7 +119,6 @@ export class ProductDetailsComponent implements OnInit {
   showReviewForm() {
     this.router.navigate([this.product.slug, 'write_review'], { queryParams: { 'prodId': this.productID } });
   }
-
 }
 
 
