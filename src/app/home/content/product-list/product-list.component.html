@@ -1,8 +1,4 @@
-<div class="container ">
-  
-
-  
-  <div class="row results-base">
+<div class="container "><div class="row results-base">
     <div class="col-12 col-md-3 col-sm-3 col-lg-3 product-base" *ngFor="let product of products.products | filter : selectedTaxonIds; trackBy: trackByFn"
       [style.margin]="getMargin()" itemscope itemtype="https://schema.org/Product">
 
@@ -17,7 +13,9 @@
           <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
             <span>
               <span itemprop="price" class="product-discountedPrice">&#8377; {{ product.price }}</span>
-              <span *ngIf="product.master.cost_price"> <span itemprop="price"  class="disableprize">&#8377;  {{product.master.cost_price}}</span></span>
+              <span *ngIf="product.master.cost_price">
+                <span itemprop="price" class="disableprize">&#8377; {{product.master.cost_price}}</span>
+              </span>
             </span>
           </div>
           <p class="shipping">

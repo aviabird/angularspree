@@ -29,7 +29,7 @@
   display: inline-block;
   transition: all 500ms;
   border: 1px solid $gray-600; // margin: 0 30px 20px 0;
-  box-shadow: 0px 0px 1px $gray-10 ;
+  box-shadow: 0px 0px 1px $gray-10;
   &:hover {
     box-shadow: 0px 0px 3px $gray-10;
   }
@@ -51,11 +51,13 @@
       background: $white;
       height: 100%;
       padding: 0 5px;
-      .ngrating {position: relative;left:-10px;}
+      .ngrating {
+        position: relative;
+        left: -10px;
+      }
       .product-brand,
       .product-product {
-        overflow: hidden;
-        // text-overflow: ellipsis;
+        overflow: hidden; // text-overflow: ellipsis;
         // white-space: nowrap;
         font-size: 1em;
         font-weight: 500;
@@ -94,10 +96,11 @@
   color: $black;
   margin-bottom: 0px;
 }
-.disableprize{
+
+.disableprize {
   font-size: 1rem;
-   line-height: 1;
-   color: $gray-700;
-   text-decoration: line-through;
-   margin-left:10px;
+  line-height: 1;
+  color: $gray-700;
+  text-decoration: line-through;
+  margin-left: 10px;
 }
