@@ -69,12 +69,9 @@ export class CategoryMobileMenuComponent implements OnInit {
     this.showParrent = !this.showParrent;
   }
   childBack() {
-    console.log(this.showChild);
     this.showChild = !this.showChild;
   }
 
-
   ngOnInit() {
-
   }
 }

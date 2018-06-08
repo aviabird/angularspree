@@ -1,5 +1,5 @@
 
-import {switchMap} from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 import { APP_DATA } from './../../shared/data/app-data';
 import { ProductService } from './../../core/services/product.service';
@@ -24,6 +24,7 @@ export class LandingComponent implements OnInit {
   taxons_id: string;
   favoriteProducts: any;
   dealsType = APP_DATA.Deals.type;
+  brands: any;
 
 
   // dealsType is taxonomi whose value is set in app-data.ts;
@@ -33,7 +34,11 @@ export class LandingComponent implements OnInit {
     private productService: ProductService) {
     this.store.dispatch(this.actions.getAllProducts());
     this.products$ = this.store.select(getProducts);
-
+    // #TO DO: Brands name hardcoded for now.
+    this.brands = this.productService.getTaxonByName('Brands')
+      .subscribe(data => {
+        this.brands = data
+      })
 
     const result = this.productService.getTaxonByName(this.dealsType).pipe(
       switchMap(response => {
@@ -49,10 +54,8 @@ export class LandingComponent implements OnInit {
 
     this.productService.getFavoriteProducts()
       .subscribe(response => this.favoriteProducts = response)
-
   }
 
   ngOnInit() {
-
   }
 }
