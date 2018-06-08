@@ -14,6 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   @Input() products;
+  // tslint:disable-next-line:no-input-rename
   @Input('taxonIds') selectedTaxonIds;
   @Input() toggleLayout;
   page: number;
@@ -30,7 +31,9 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.products)
+  }
 
   getProductImageUrl(url) {
     return environment.apiEndpoint + url;
