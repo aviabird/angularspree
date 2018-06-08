@@ -1,25 +1,14 @@
 <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-5">
-
   <div class="col-12 col-md-5">
-    <!-- <div class="fav-icon-sontainer">
-      <a (click)="markAsFavorite()" class="favorite">
-        <i class="fa fa-heart"></i>
-      </a>
-    </div> -->
     <app-image-container [images]="images" class="col-12" [selectedImage]="images[0]">
     </app-image-container>
   </div>
   <div class="col-md-7 col-12">
-
     <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" class="row">
     </app-product-price-info>
-
-
     <div class="row">
       <button (click)="showReviewForm()" class="cw-btn cw-btn--action col-3">Write Review</button>
-
     </div>
-
   </div>
 </div>
 <div class="row">
@@ -31,15 +20,15 @@
     </app-product-description>
   </div>
 </div>
-<div class="slider">
+<div class="slider" *ngIf="similarProducts$">
   <h2>
     Similar products
   </h2>
   <app-product-slider [productlist]="similarProducts$ | async"></app-product-slider>
 </div>
-<div class="slider">
+<div class="slider" *ngIf="relatedProducts$">
   <h2>
     Related products
   </h2>
-  <app-product-slider [productlist]="productdata"></app-product-slider>
+  <app-product-slider [productlist]="relatedProducts$ | async"></app-product-slider>
 </div>

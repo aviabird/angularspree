@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from './../../../../core/models/product';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
 
@@ -9,7 +9,8 @@ interface CurrentSelectedOptionsType {
 @Component({
   selector: 'app-product-variants',
   templateUrl: './product-variants.component.html',
-  styleUrls: ['./product-variants.component.scss']
+  styleUrls: ['./product-variants.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductVariantsComponent implements OnInit {
   @Input() customOptionTypesHash: any;

@@ -36,6 +36,12 @@ export function reducer(state = initialState, { type, payload }: any): ProductSt
         taxonomies: _taxonomies
       }) as ProductState;
 
+    case ProductActions.GET_RELETED_PRODUCT_SUCCESS:
+      const _relatedProducts: Product[] = payload
+      return state.merge({
+        relatedProducts: _relatedProducts
+      }) as ProductState;
+
     default:
       return state;
   }
