@@ -1,3 +1,5 @@
+import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { DragScrollModule } from 'ngx-drag-scroll';
@@ -10,8 +12,8 @@ import { HumanizePipe } from '../core/pipes/humanize.pipe';
 // imports
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {ProductSlider} from './components/product-slider/product-slider.component'
-import {InnerIproduct} from './components/product-slider/inner-product/inner-product.component'
+import { ProductSlider } from './components/product-slider/product-slider.component'
+import { InnerIproduct } from './components/product-slider/inner-product/inner-product.component'
 // Directives
 import { ZoomableDirective } from './directives/zoomable.directive';
 
@@ -23,7 +25,7 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     HumanizePipe,
     ZoomableDirective,
     ProductSlider,
-    InnerIproduct
+    InnerIproduct,
   ],
   exports: [
     // components
@@ -32,7 +34,7 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     BsDropdownModule,
     FormsModule,
     ReactiveFormsModule,
-     // pipes
+    // pipes
     KeysPipe,
     HumanizePipe,
     DragScrollModule,
@@ -45,7 +47,9 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     ReactiveFormsModule,
     CommonModule,
     BsDropdownModule.forRoot(),
-    DragScrollModule
+    DragScrollModule,
+    RouterModule,
+    NgxInputStarRatingModule
   ]
 })
-export class SharedModule {}
+export class SharedModule { }
