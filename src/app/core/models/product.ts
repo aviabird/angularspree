@@ -30,4 +30,5 @@ export class Product {
   option_types: OptionType[];
   product_properties: ProductProperty[];
   classifications: Classification[];
+  avg_rating: number
 }
