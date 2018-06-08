@@ -17,7 +17,6 @@ h1 {
   color: $white;
 }
 
-
 .pdp-button {
   border-radius: 3px;
   outline: 0;
@@ -35,7 +34,7 @@ h1 {
     right: 8px;
     top: -24px;
     background-color: $theme-main-color;
-    color:$white;
+    color: $white;
     padding: 10px 13px;
     border-radius: 50%;
     box-shadow: 0px 0px 8px $gray-900;
@@ -92,9 +91,10 @@ h1 {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
- .cw-btn--action {
+
+.cw-btn--action {
   background-color: $theme-action-sub-color2;
-  background: linear-gradient(180deg, $theme-action-sub-color2  0, ef #FFAC2E 45%, $theme-action-sub-color2);
+  background: linear-gradient(180deg, $theme-action-sub-color2 0, ef #FFAC2E 45%, $theme-action-sub-color2);
   color: $white;
   font-weight: 500;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -102,5 +102,52 @@ h1 {
   width: 100%;
 }
 
+.cust-reviews {
+  .avg-review {
+    padding: 1rem 0 3rem;
+    .out-review {
+      border-left: 1px solid $gray-10;
+    }
+  }
+  .rataingpercentage {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    .progress-container {
+      .progress {
+        display: flex;
+        height: 1.6rem;
+      }
+    }
+  }
+  .review-display {
+    .rating-inner {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $gray-10;
+      margin-bottom: 1rem;
+      .rating-head {      
+        font-weight: 700;
+        color: $gray-900;
+        position: relative;
+        left: -5px;
+        text-transform: capitalize;
+      }
+    }
+    .rating-by {
+      font-size: 1em;
+      color: $gray-700 + 50;
+    }
+    .description {
+      padding-top: 1rem;
+      text-align: justify;
+    }
+  }
+  .review-sort-filter{
+    border-top: 1px solid $gray-10;
+    border-top: 1px solid $gray-10;
+    background-color:$gray-200;
+    padding: 1rem ;
+  
+    
 
-
+  }
+}

@@ -17,7 +17,7 @@ import { ProductCountComponent } from './components/product-detail-page/product-
 import { ProductVariantsComponent } from './components/product-detail-page/product-variants/product-variants.component';
 import { ProductComponent } from './product.component';
 import { WriteProductReviewComponent } from './components/product-detail-page/write-product-review/write-product-review.component';
-
+import { ProgressbarModule } from 'ngx-bootstrap';
 // Routes
 import { ProductRoutes as routes } from './product.routes';
 
@@ -54,6 +54,7 @@ import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
     SharedModule,
     RouterModule.forChild(routes),
     NgxInputStarRatingModule,
+    ProgressbarModule.forRoot()
 
   ],
   providers: [
