@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-product-count',
   templateUrl: './product-count.component.html',
   styleUrls: ['./product-count.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 export class ProductCountComponent implements OnInit {
@@ -11,13 +12,10 @@ export class ProductCountComponent implements OnInit {
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
 
-
-  count: any = 1;
-
+  count = 1;
   constructor() { }
 
   ngOnInit() {
-
   }
 
   increseCount() {

@@ -1,6 +1,6 @@
 import { DragScrollDirective } from 'ngx-drag-scroll';
 import { environment } from './../../../../environments/environment';
-import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-product-slider',

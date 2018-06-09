@@ -1,11 +1,12 @@
 import { environment } from './../../../../../environments/environment';
 import { Product } from './../../../../core/models/product';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-inner-product',
   templateUrl: './inner-product.component.html',
-  styleUrls: ['./inner-product.component.scss']
+  styleUrls: ['./inner-product.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InnerIproduct implements OnInit {
 
@@ -16,7 +17,8 @@ export class InnerIproduct implements OnInit {
   ngOnInit() {
   }
 
-  getProductImageUrl(url) {
+  getProductImageUrl() {
+    const url = `/spree/products/${this.product.master.images[0].id}/product/${this.product.master.images[0].attachment_file_name}`
     return environment.apiEndpoint + url;
   }
 }
