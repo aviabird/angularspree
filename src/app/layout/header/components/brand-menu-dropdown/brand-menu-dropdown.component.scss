@@ -1,18 +1,57 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .dropdown-menu {
   width: 50rem;
-  padding: 10px;
+  padding: 0px;
+  left: -0.1rem !important;
+  top: 3rem !important;
+  min-height:36.5vw ;
+  z-index: 10;
+  padding: .7rem;
+  border-radius: 0px;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -9.5px;
+    left: 9.9rem;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid $white;
+    z-index: 3;
+  }
   .col-2 {
     flex: 0 0 16.66666667%;
     max-width: 18.466667%;
   }
 }
 
+.dpmenu {
+  position: relative
+}
+
+.cust-menu-btn {
+  font-size: 1.2em;
+  padding: 0.7rem 1.2em 0.7em 0.7em;
+  border-radius: 7px 7px 0px 0px;
+  cursor: pointer;
+  margin-right: 2em;
+  
+  position: relative;
+  left: -2px;
+  &:hover {
+    background-color: $theme-main-color - 20;
+  }
+}
+
+.open {
+  background-color: $theme-main-color - 20;
+}
+
 li {
-  background: tomato;
   padding: 5px;
   margin: 5px;
   line-height: 100px;
-  color: white;
   font-weight: bold;
   font-size: 1em;
   text-align: center;

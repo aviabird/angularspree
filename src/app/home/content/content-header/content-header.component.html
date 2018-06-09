@@ -1,4 +1,4 @@
-<div class="container content">
+<div class="container content p-1">
   <div class="row" *ngIf=productsCount>
     <div itemprop="name" class="queried-for col-7">
       <h4 title="men casual shirts">Showing {{productsCount}} of {{productsTotal_count}} results.
@@ -11,7 +11,6 @@
         <li (click)="toggleView('COMPACT')" [ngClass]="{'big': true, 'selected': isBigSelected()}"></li>
         <li (click)="toggleView('COZY')" [ngClass]="{'small': true, 'selected': isSmallSelected()}"></li>
       </ul>
-
       <form class="container">
         <div class="form-group row">
           <label for="inputEmail3" class="col-sm-4 col-form-label">Sort by</label>

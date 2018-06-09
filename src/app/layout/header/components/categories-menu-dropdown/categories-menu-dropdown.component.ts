@@ -40,6 +40,10 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   queryParams: any;
   show = false;
   backBtnShow = false;
+  isOpen: boolean;
+  subIsopen: boolean;
+  index: any;
+  selectedItem: any;
   get stateName() {
     return this.show ? 'show' : 'hide'
   }
@@ -53,7 +57,6 @@ export class CategoriesMenuDropdownComponent implements OnInit {
       });
   }
   ngOnInit() {
-
     if (this.screenwidth <= 1000) {
       this.dropdownWidth = this.screenwidth - 10 + 'px';
       this.autoclose = false;
@@ -62,10 +65,10 @@ export class CategoriesMenuDropdownComponent implements OnInit {
     }
   }
   showCategory(i) {
-
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
-
+    this.selectedItem = i;
   }
+
   showCategoryonclick(i) {
     this.show = !this.show;
     if (this.screenwidth <= 1000) {
@@ -83,4 +86,8 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   childCatLoaded(status) {
     this.backBtnShow = status;
   }
+  onOpenChange(data: boolean): void {
+   this.isOpen = ! this.isOpen;
+  }
+
 }
