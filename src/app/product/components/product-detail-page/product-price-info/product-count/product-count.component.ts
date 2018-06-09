@@ -23,8 +23,8 @@ export class ProductCountComponent implements OnInit {
   }
 
   /**
-   * 
-   * 
+   *
+   *
    * @memberof ProductcountComponent
    */
   decreaseCount() {

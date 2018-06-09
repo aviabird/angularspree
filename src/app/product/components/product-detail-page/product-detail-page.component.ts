@@ -14,6 +14,8 @@ export class ProductDetailPageComponent implements OnInit {
   product$: Product = null;
   routeSubs: Subscription;
   productId: any;
+  reviewList: any;
+  review: any;
 
   constructor(private productService: ProductService,
     private route: ActivatedRoute) {
@@ -31,6 +33,11 @@ export class ProductDetailPageComponent implements OnInit {
           .subscribe(response => this.product$ = response);
       }
     );
+    this.productService.getProductReviews(this.productId).
+      subscribe(data => {
+        this.reviewList = data;
+        this.review = this.reviewList.reviews;
+      });
   };
 
 
