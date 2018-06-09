@@ -11,6 +11,8 @@ export class ProductActions {
   static GET_ALL_TAXONOMIES = 'GET_ALL_TAXONOMIES';
   static GET_ALL_TAXONOMIES_SUCCESS = 'GET_ALL_TAXONOMIES_SUCCESS';
   static GET_ALL_PRODUCTS_SEARCH_SUCCESS = 'GET_ALL_PRODUCTS_SEARCH_SUCCESS';
+  static GET_RELETED_PRODUCT = 'GET_RELETED_PRODUCT';
+  static GET_RELETED_PRODUCT_SUCCESS = 'GET_RELETED_PRODUCT_SUCCESS';
 
   getAllProducts(pageNumber = 1) {
     return {
@@ -54,5 +56,19 @@ export class ProductActions {
       type: ProductActions.GET_ALL_TAXONOMIES_SUCCESS,
       payload: taxonomies
     };
+  }
+
+  getRelatedProduct(product_id: any) {
+    return {
+      type: ProductActions.GET_RELETED_PRODUCT,
+      payload: product_id
+    }
+  }
+
+  getRelatedProductSuccess(products: any) {
+    return {
+      type: ProductActions.GET_RELETED_PRODUCT_SUCCESS,
+      payload: products
+    }
   }
 }

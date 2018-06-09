@@ -75,18 +75,6 @@ export class ProductService {
   getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(`/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`)
   }
-  getRecentlyViewedProducts() {
-    return this.http.get(`api/v1/products?per_page=20`);
-  }
-
-  markAsRecentlyViewed(id: any) {
-    return this.http.get(`recently_viewed_products?product_id=${id}`,
-      { headers: { 'Content_type': 'application/json' } })
-  }
-
-  getRecentlyViewedProducts1() {
-    return this.http.get(`recently_viewed_products`);
-  }
 
   submitReview(productId: any, params: any) {
     return this.http.post(`products/${productId}/reviews`, params)
@@ -98,5 +86,9 @@ export class ProductService {
         _ => this.toastrService.error('something went wrong (reviews)', 'ERROR!!')
       )
       )
+  }
+
+  getReletedProducts(productId: any): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(`api/products/${productId}/relations`)
   }
 }
