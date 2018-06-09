@@ -5,7 +5,7 @@
   left: 0;
   width: 101%;
   height: 100%;
-  background-color: #282c3f;
+  background-color: $gray-900;
   -webkit-transition: visibility 0s, opacity .5s linear;
   transition: visibility 0s, opacity .5s linear;
   visibility: hidden;
@@ -29,14 +29,14 @@
   display: inline-block;
   transition: all 500ms;
   border: 1px solid $gray-600; // margin: 0 30px 20px 0;
-  box-shadow: 0px 0px 1px #ccc;
+  box-shadow: 0px 0px 1px $gray-10;
   &:hover {
-    box-shadow: 0px 0px 3px #ccc;
+    box-shadow: 0px 0px 3px $gray-10;
   }
   a {
     text-decoration: none;
     background-color: transparent;
-    color: #282c3f;
+    color: $gray-900;
     .product-thumb {
       height: 240px;
       display: block;
@@ -48,13 +48,16 @@
     .product-productMetaInfo {
       position: relative;
       z-index: 2;
-      background: #fff;
+      background: $white;
       height: 100%;
       padding: 0 5px;
+      .ngrating {
+        position: relative;
+        left: -10px;
+      }
       .product-brand,
       .product-product {
-        overflow: hidden;
-        // text-overflow: ellipsis;
+        overflow: hidden; // text-overflow: ellipsis;
         // white-space: nowrap;
         font-size: 1em;
         font-weight: 500;
@@ -65,9 +68,9 @@
         height: 4.6vw;
       }
       .product-price {
-        font-size: 1.7em;
+        font-size: 1.3em;
         line-height: 1.2em;
-        color: $theme-action-sub-color2;
+        color: $theme-action-sub-color2 - 50;
         margin: 10px 0 0;
         white-space: nowrap;
         font-weight: 500;
@@ -92,4 +95,12 @@
   margin-top: 15px;
   color: $black;
   margin-bottom: 0px;
+}
+
+.disableprize {
+  font-size: 1rem;
+  line-height: 1;
+  color: $gray-700;
+  text-decoration: line-through;
+  margin-left: 10px;
 }
