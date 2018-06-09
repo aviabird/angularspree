@@ -23,6 +23,7 @@ import { SharedModule } from './../shared/index';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap';
 import { AccordionModule } from 'ngx-bootstrap';
+import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 // Components
 import { HomeComponent } from './home.component';
 // Breadcrumb components
@@ -83,6 +84,7 @@ import { reducers } from './reducers/index';
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
+    NgxInputStarRatingModule,
 
     /**
      * StoreModule.forFeature is used for composing state
