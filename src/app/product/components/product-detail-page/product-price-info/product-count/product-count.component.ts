@@ -12,22 +12,21 @@ export class ProductCountComponent implements OnInit {
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
 
 
-  count:number = 1;
+  count: any = 1;
 
   constructor() { }
 
   ngOnInit() {
-   
+
   }
 
   increseCount() {
     this.count += 1;
-    
   }
 
   /**
-   * 
-   * 
+   *
+   *
    * @memberof ProductcountComponent
    */
   decreaseCount() {
@@ -35,7 +34,7 @@ export class ProductCountComponent implements OnInit {
     if (this.count <= 1) {
       this.count = 1;
     }
-   
+
   }
 
   addToCart(count: number) {

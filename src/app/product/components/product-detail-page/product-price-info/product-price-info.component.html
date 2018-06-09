@@ -11,9 +11,11 @@
 <div>
   <div class="product-header-extras">
     <div class="ugc pr-3">
-      <a href="#" class="hide-phone js-revScrollTo">
-        266 Reviews
+      <a class="hide-phone js-revScrollTo">
+        <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" required></ngx-input-star-rating>
+        {{product.reviews_count }} Reviews
       </a>
+
     </div>
     <div class="product-header-extras__qna pr-3 pl-3">
       <a href="#">18 Answered Questions</a>
@@ -78,7 +80,7 @@
 
     </div>
     <div id="buybox" class="">
-      <app-product-count (onAddToCart)="addToCart($event)"   (onMarkAsFavorites)="markAsFavorites()"></app-product-count>
+      <app-product-count (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorites()"></app-product-count>
     </div>
   </div>
 </div>
