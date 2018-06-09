@@ -13,7 +13,7 @@
 
     <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" class="row">
     </app-product-price-info>
-
+    
   </div>
 </div>
 <div class="row">
@@ -29,7 +29,7 @@
   <h2>
     Similar products
   </h2>
-  <app-product-slider [productlist]="productdata"></app-product-slider>
+  <app-product-slider [productlist]="similarProducts$ | async"></app-product-slider>
 </div>
 <div class="slider">
   <h2>

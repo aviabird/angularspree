@@ -79,16 +79,23 @@ export class ProductService {
     return this.http.get(`api/v1/products?per_page=20`);
   }
 
+  markAsRecentlyViewed(id: any) {
+    return this.http.get(`recently_viewed_products?product_id=${id}`,
+      { headers: { 'Content_type': 'application/json' } })
+  }
+
+  getRecentlyViewedProducts1() {
+    return this.http.get(`recently_viewed_products`);
+  }
+
   submitReview(productId: any, params: any) {
     return this.http.post(`products/${productId}/reviews`, params)
       .pipe(
-      map(_ => this.toastrService.success(
-        'Review Submitted.',
-        'Success')
+      map(_ => this.toastrService.success('Review Submitted.', 'Success')
       ),
       tap(
         _ => _,
-        _ => this.toastrService.error('something went wrong (reviws)', 'ERROR!!')
+        _ => this.toastrService.error('something went wrong (reviews)', 'ERROR!!')
       )
       )
   }

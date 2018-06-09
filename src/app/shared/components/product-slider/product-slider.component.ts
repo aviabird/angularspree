@@ -10,12 +10,11 @@ import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy, OnChanges
 })
 export class ProductSlider implements OnInit {
   @Input() productlist;
-  productlist2: any;
+
   constructor() {
   }
-  
+
   ngOnInit() {
-    this.productlist2 = this.productlist;
   }
 
   @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;

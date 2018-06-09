@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs';
+import { getProductsByKeyword } from './../../../../home/reducers/selectors';
+import { SearchActions } from './../../../../home/reducers/search.actions';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AppState } from './../../../../interfaces';
@@ -37,6 +40,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   ratingTodal: any = 0;
   percent: number[] = new Array(5);
   NAMES = [];
+  similarProducts$: Observable<any>;
 
   constructor(
     private variantParser: VariantParserService,
@@ -45,10 +49,9 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     private store: Store<AppState>,
     private productService: ProductService,
     private router: Router,
-    private toastrService: ToastrService
-  ) {
-
-  }
+    private toastrService: ToastrService,
+    private searchActions: SearchActions,
+  ) { }
 
   ngOnInit() {
     this.description = this.product.description;
@@ -63,6 +66,9 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
       subscribe(productdata => {
         this.productdata = productdata
       });
+
+    this.store.dispatch(this.searchActions.getProducsByTaxon(`id=${this.product.taxon_ids[0]}`))
+    this.similarProducts$ = this.store.select(getProductsByKeyword)
   }
   ngOnChanges() {
       // for (let i = 1; i < 100; i++) {
@@ -163,6 +169,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   addToCart(quantitiy) {
     this.store.dispatch(this.checkoutActions.addToCart(this.variantId, quantitiy));
   }
+
   // TO DO (to add the daynamic quantity)
   buyNow() {
     this.store.dispatch(this.checkoutActions.addToCart(this.variantId, 1));
@@ -175,7 +182,6 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   showReviewForm() {
     this.router.navigate([this.product.slug, 'write_review'], { queryParams: { 'prodId': this.productID } });
   }
-
 }
 
 
