@@ -6,18 +6,19 @@
   top: 3rem !important;
   z-index: 1;
   border-radius: 0px;
-  &:before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: -9.5px;
-    left: 8.6rem;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid $gray-10;
-    z-index: 3;
-  }
+ 
+}
+.notscrolled:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -9.5px;
+  left: 8.6rem;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid $gray-10;
+  z-index: 3;
 }
 
 .dpmenu {
@@ -89,7 +90,7 @@ ul {
 }
 
 .detailcontainer {
-  padding: 0.2em 0.5rem
+  padding: 0.9em 0.5rem
 }
 
 .main-nav-trigger {
