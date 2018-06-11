@@ -1,5 +1,8 @@
-<div>
-  <a href=#>
-    <span class="badge badge-success">{{brand}}</span>
-  </a>
+<div class="row" *ngIf="brandList">
+  <h3>Popular Brands</h3>
+  <div *ngFor="let brand of brandList">
+    <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': brand.name, 'id': brand.id}">
+      <img [src]="getBrandImageUrl(brand.icon)">
+    </a>
+  </div>
 </div>
