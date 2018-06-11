@@ -61,11 +61,11 @@ export class CategoriesMenuDropdownComponent implements OnInit {
       this.autoclose = true;
     }
   }
+
   showCategory(i) {
-
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
-
   }
+
   showCategoryonclick(i) {
     this.show = !this.show;
     if (this.screenwidth <= 1000) {
