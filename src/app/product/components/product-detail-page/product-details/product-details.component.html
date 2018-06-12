@@ -64,7 +64,7 @@
         </div>
         <div class="col-8 pr-0 pl-0">
           <div class="mb-2 progress-container">
-            <progressbar  [value]="dynamic" type="warning"></progressbar>
+            <progressbar [value]="dynamic" type="warning"></progressbar>
 
           </div>
         </div>
@@ -79,7 +79,7 @@
         </div>
         <div class="col-8 pr-0 pl-0">
           <div class="mb-2 progress-container">
-            <progressbar  [value]="dynamic" type="warning"></progressbar>
+            <progressbar [value]="dynamic" type="warning"></progressbar>
 
           </div>
         </div>
@@ -94,7 +94,7 @@
         </div>
         <div class="col-8 pr-0 pl-0">
           <div class="mb-2 progress-container">
-            <progressbar  [value]="dynamic" type="warning"></progressbar>
+            <progressbar [value]="dynamic" type="warning"></progressbar>
           </div>
         </div>
         <div class="col-2 pl-2">
@@ -122,7 +122,7 @@
         </div>
         <div class="col-8 pr-0 pl-0">
           <div class="mb-2 progress-container">
-            <progressbar  [value]="dynamic" type="warning"></progressbar>
+            <progressbar [value]="dynamic" type="warning"></progressbar>
 
           </div>
         </div>
@@ -137,48 +137,48 @@
       </div>
     </div>
   </div>
-  
+
   <div class="review-display">
     <div class="row">
       <div class="col-md-8">
-          <div class="review-sort-filter mt-5 mb-4">
-              <div class="row">
-                <div class="float-left col-md-4 pt-2">Showing 1-10 of 1738 Reviews</div>
-                <div class="float-right col-md-8">
-                  <form>
-                    <div class="form-group row mb-0">
-                      <label for="staticEmail" class="col-sm-2 col-form-label">Filter By</label>
-                      <div class="col-sm-4">
-                        <select class="form-control">
-                          <option value="ALL_STARS" selected="selected">All stars</option>
-                          <option value="RATING5">5 stars only</option>
-                          <option value="RATING4">4 stars only</option>
-                          <option value="RATING3">3 stars only</option>
-                          <option value="RATING2">2 stars only</option>
-                          <option value="RATING1">1 star only</option>
-                          <option value="POSITIVE">All positive</option>
-                          <option value="NEGATIVE">All critical</option>
-                        </select>
-                      </div>
-                      <label  class="col-sm-2 col-form-label">Sort By</label>
-                      <div class="col-sm-4">
-                        <select class="form-control">
-                            <option value="MOST_RELEVANT" selected="selected">Most relevant</option>
-                            <option value="NEWEST">Newest</option>
-                            <option value="TOP_CONTRIBUTOR">Top contributors</option>
-                            <option value="FEATURED">Featured reviews</option>
-                            <option value="OLDEST">Oldest</option>
-                            <option value="HIGHEST_RATING">Highest rating</option>
-                            <option value="LOWEST_RATING">Lowest rating</option>
-                            <option value="PHOTOS">Photo reviews</option>
-                        </select>
-                      </div>
-                    </div>
-          
-                  </form>
+        <div class="review-sort-filter mt-5 mb-4">
+          <div class="row">
+            <div class="float-left col-md-4 pt-2">Showing 1-10 of 1738 Reviews</div>
+            <div class="float-right col-md-8">
+              <form>
+                <div class="form-group row mb-0">
+                  <label for="staticEmail" class="col-sm-2 col-form-label">Filter By</label>
+                  <div class="col-sm-4">
+                    <select class="form-control">
+                      <option value="ALL_STARS" selected="selected">All stars</option>
+                      <option value="RATING5">5 stars only</option>
+                      <option value="RATING4">4 stars only</option>
+                      <option value="RATING3">3 stars only</option>
+                      <option value="RATING2">2 stars only</option>
+                      <option value="RATING1">1 star only</option>
+                      <option value="POSITIVE">All positive</option>
+                      <option value="NEGATIVE">All critical</option>
+                    </select>
+                  </div>
+                  <label class="col-sm-2 col-form-label">Sort By</label>
+                  <div class="col-sm-4">
+                    <select class="form-control">
+                      <option value="MOST_RELEVANT" selected="selected">Most relevant</option>
+                      <option value="NEWEST">Newest</option>
+                      <option value="TOP_CONTRIBUTOR">Top contributors</option>
+                      <option value="FEATURED">Featured reviews</option>
+                      <option value="OLDEST">Oldest</option>
+                      <option value="HIGHEST_RATING">Highest rating</option>
+                      <option value="LOWEST_RATING">Lowest rating</option>
+                      <option value="PHOTOS">Photo reviews</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
+
+              </form>
             </div>
+          </div>
+        </div>
         <div *ngIf="reviewList">
           <div *ngFor="let item of reviewList" class="rating-inner">
             <div class="rating-head">

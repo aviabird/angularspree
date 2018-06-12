@@ -65,60 +65,6 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
       });
   }
   ngOnChanges() {
-      // for (let i = 1; i < 100; i++) {
-      //   this.NAMES.push[i]('text');
-      // }
-      console.log(this.NAMES[20]);
-    if (this.ratingFivwStar) {
-      for (let index = 0; index < this.percent.length; index++) {
-        const element = this.percent[index];
-        if (this.percent[index] = 0) {
-          this.percent[index] = (this.ratingOneStar / this.ratingTodal) * 100;
-        }
-        if (this.percent[index] = 1) {
-          this.percent[index] = (this.ratingTwoStar / this.ratingTodal) * 100;
-        }
-        if (this.percent[index] = 2) {
-          this.percent[index] = (this.ratingThreeStar / this.ratingTodal) * 100;
-        }
-        if (this.percent[index] = 3) {
-          this.percent[index] = (this.ratingFourStar / this.ratingTodal) * 100;
-        }
-        if (this.percent[index] = 4) {
-          this.percent[index] = (this.ratingFivwStar / this.ratingTodal) * 100;
-          console.log(this.percent[index]);
-        }
-      }
-    }
-    console.log(this.percent[3]);
-    for (const key in this.reviewList) {
-      if (this.reviewList.hasOwnProperty(key)) {
-        const element = this.reviewList[key];
-        switch (element.rating) {
-          case element.rating = 1: {
-            this.ratingOneStar += 1;
-            break;
-          }
-          case element.rating = 2: {
-            this.ratingTwoStar += 1;
-            break;
-          }
-          case element.rating = 3: {
-            this.ratingThreeStar += 1;
-            break;
-          }
-          case element.rating = 4: {
-            this.ratingFourStar += 1;
-            break;
-          }
-          case element.rating = 5: {
-            this.ratingFivwStar += 1;
-            break;
-          }
-        }
-        this.ratingTodal += element.rating;
-      }
-    }
   }
 
   /**
