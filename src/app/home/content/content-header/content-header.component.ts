@@ -44,14 +44,11 @@ export class ContentHeaderComponent implements OnInit {
   showModal() {
     this.modal.show();
   }
-
   onSelectionChange(entry) {
     this.selectedEntry = entry;
-    console.log(this.selectedEntry.name)
     this.sortFilter(this.selectedEntry.name);
     this.modal.hide();
   }
-
   ngOnInit() {
     if (window.screen.width <= 768) {
       this.screenWidth = window.screen.width;
@@ -72,7 +69,6 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   sortFilter(i) {
-
     const urlTree = this.routernomal.createUrlTree([], {
       queryParams: { 'q[s]': this.queryMap[i] },
       queryParamsHandling: 'merge',
