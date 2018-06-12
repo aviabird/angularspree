@@ -14,7 +14,7 @@ export class ProductActions {
   static GET_RELETED_PRODUCT = 'GET_RELETED_PRODUCT';
   static GET_RELETED_PRODUCT_SUCCESS = 'GET_RELETED_PRODUCT_SUCCESS';
   static GET_REVIEWS = 'GET_REVIEWS'
-  static  GET_REVIEWS_SUCCESS = 'GET_REVIEWS_SUCCESS'
+  static GET_REVIEWS_SUCCESS = 'GET_REVIEWS_SUCCESS'
 
   getAllProducts(pageNumber = 1) {
     return {

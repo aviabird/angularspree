@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal'
+import { ModalDirective } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
@@ -44,12 +44,14 @@ export class ContentHeaderComponent implements OnInit {
   showModal() {
     this.modal.show();
   }
+
   onSelectionChange(entry) {
     this.selectedEntry = entry;
     console.log(this.selectedEntry.name)
     this.sortFilter(this.selectedEntry.name);
     this.modal.hide();
   }
+
   ngOnInit() {
     if (window.screen.width <= 768) {
       this.screenWidth = window.screen.width;

@@ -6,7 +6,10 @@
 .desktop-query {
   line-height: 0;
   margin: 4px 10px 20px 0;
-  @media screen and(width: 768px){margin-left: -45px!important;margin-right:26px!important}
+  @media screen and(width: 768px) {
+    margin-left: -45px !important;
+    margin-right: 26px !important
+  }
   input.desktop-search-bar {
     width: 75%;
     font-family: $primary-font;
@@ -23,7 +26,9 @@
     border-radius: 4px 0 0 4px;
     border-right: 0;
     background: $gray-200;
-    @media screen and(width: 768px){width:97.2% !important}
+    @media screen and(width: 768px) {
+      width:97.2% !important
+    }
     &:focus,
     &:focus+a.desktop-submit {
       background-color: $white;
