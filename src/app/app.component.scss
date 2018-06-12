@@ -7,6 +7,21 @@
 .main-body {
   background-color: #fcfcfc;
 }
+:host /deep/.ngx-input-star-rating__btn {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  position: relative;
+  width: 26px;
+  height: 8px;
+}
+
+:host /deep/.ngx-input-star-rating__btn svg {
+  position: absolute;
+  top: -12px;
+  left: 5px;
+}
+
 
 :host /deep/.ngx-input-star-rating__btn {
   background-color: transparent;
@@ -21,6 +36,12 @@
   position: absolute;
   top: -12px;
   left: 5px;
+
+:host /deep/ngx-input-star-rating {
+  display: inline-block;
+  --color-star-default: #a3d032;
+  --color-star-highlight: #fe9700;
+
 }
 
 :host /deep/ngx-input-star-rating {

@@ -87,7 +87,11 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
         const lengthCategory = brandsRoot.taxons[i].taxons.length;
         for (let j = 0; j < lengthCategory; j++) {
           if (brandsRoot.taxons[i].taxons[j].name === payload.category) {
-            brandArray.push(brandsRoot.taxons[i].name)
+            brandArray.push({
+              icon: brandsRoot.taxons[i].icon,
+              id: brandsRoot.taxons[i].id,
+              name: brandsRoot.taxons[i].name
+            })
           }
         }
       }

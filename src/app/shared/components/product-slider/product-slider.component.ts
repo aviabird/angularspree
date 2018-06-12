@@ -1,6 +1,6 @@
 import { DragScrollDirective } from 'ngx-drag-scroll';
 import { environment } from './../../../../environments/environment';
-import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-product-slider',
@@ -10,12 +10,11 @@ import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy, OnChanges
 })
 export class ProductSlider implements OnInit {
   @Input() productlist;
-  productlist2: any;
+
   constructor() {
   }
-  
+
   ngOnInit() {
-    this.productlist2 = this.productlist;
   }
 
   @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;

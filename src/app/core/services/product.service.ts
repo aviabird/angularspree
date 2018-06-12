@@ -75,13 +75,11 @@ export class ProductService {
   getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(`/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`)
   }
-  getRecentlyViewedProducts() {
-    return this.http.get(`api/v1/products?per_page=20`);
-  }
 
   submitReview(productId: any, params: any) {
     return this.http.post(`products/${productId}/reviews`, params)
       .pipe(
+
         map(_ => this.toastrService.success(
           'Review Submitted.',
           'Success')
@@ -90,6 +88,11 @@ export class ProductService {
           _ => _,
           _ => this.toastrService.error('something went wrong (reviws)', 'ERROR!!')
         )
+
       )
+  }
+
+  getReletedProducts(productId: any): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(`api/products/${productId}/relations`)
   }
 }

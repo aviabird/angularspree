@@ -1,3 +1,8 @@
+import { relatedProducts } from './../../../reducers/selectors';
+import { ProductActions } from './../../../actions/product-actions';
+import { Observable } from 'rxjs';
+import { getProductsByKeyword } from './../../../../home/reducers/selectors';
+import { SearchActions } from './../../../../home/reducers/search.actions';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AppState } from './../../../../interfaces';
@@ -5,7 +10,9 @@ import { Store } from '@ngrx/store';
 import { CheckoutActions } from './../../../../checkout/actions/checkout.actions';
 import { Variant } from './../../../../core/models/variant';
 import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+
+import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+
 import { Product } from './../../../../core/models/product';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
 import { ProductService } from './../../../../core/services/product.service';
@@ -14,7 +21,8 @@ import { forEach } from '@angular/router/src/utils/collection';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  styleUrls: ['./product-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailsComponent implements OnInit, OnChanges {
   @Input() product: Product;
@@ -38,6 +46,9 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   percent: number[] = new Array(5);
   NAMES = [];
 
+  similarProducts$: Observable<any>;
+  relatedProducts$: Observable<any>;
+
   constructor(
     private variantParser: VariantParserService,
     private variantRetriver: VariantRetriverService,
@@ -45,10 +56,12 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     private store: Store<AppState>,
     private productService: ProductService,
     private router: Router,
-    private toastrService: ToastrService
-  ) {
 
-  }
+    private toastrService: ToastrService,
+    private searchActions: SearchActions,
+    private productsActions: ProductActions
+  ) { }
+
 
   ngOnInit() {
     this.description = this.product.description;
@@ -59,10 +72,77 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
     this.correspondingOptions = this.mainOptions;
     this.productID = this.product.id;
-    this.productService.getRecentlyViewedProducts().
-      subscribe(productdata => {
+
+
+    this.productService.getReletedProducts(this.productID)
+      .subscribe(productdata => {
+
         this.productdata = productdata
       });
+
+    if (this.product.taxon_ids[0]) {
+      this.store.dispatch(this.searchActions.getProducsByTaxon(`id=${this.product.taxon_ids[0]}`))
+      this.similarProducts$ = this.store.select(getProductsByKeyword)
+    }
+
+    this.store.dispatch(this.productsActions.getRelatedProduct(this.productID))
+    this.relatedProducts$ = this.store.select(relatedProducts)
+  }
+  ngOnChanges() {
+      // for (let i = 1; i < 100; i++) {
+      //   this.NAMES.push[i]('text');
+      // }
+      console.log(this.NAMES[20]);
+    if (this.ratingFivwStar) {
+      for (let index = 0; index < this.percent.length; index++) {
+        const element = this.percent[index];
+        if (this.percent[index] = 0) {
+          this.percent[index] = (this.ratingOneStar / this.ratingTodal) * 100;
+        }
+        if (this.percent[index] = 1) {
+          this.percent[index] = (this.ratingTwoStar / this.ratingTodal) * 100;
+        }
+        if (this.percent[index] = 2) {
+          this.percent[index] = (this.ratingThreeStar / this.ratingTodal) * 100;
+        }
+        if (this.percent[index] = 3) {
+          this.percent[index] = (this.ratingFourStar / this.ratingTodal) * 100;
+        }
+        if (this.percent[index] = 4) {
+          this.percent[index] = (this.ratingFivwStar / this.ratingTodal) * 100;
+          console.log(this.percent[index]);
+        }
+      }
+    }
+    console.log(this.percent[3]);
+    for (const key in this.reviewList) {
+      if (this.reviewList.hasOwnProperty(key)) {
+        const element = this.reviewList[key];
+        switch (element.rating) {
+          case element.rating = 1: {
+            this.ratingOneStar += 1;
+            break;
+          }
+          case element.rating = 2: {
+            this.ratingTwoStar += 1;
+            break;
+          }
+          case element.rating = 3: {
+            this.ratingThreeStar += 1;
+            break;
+          }
+          case element.rating = 4: {
+            this.ratingFourStar += 1;
+            break;
+          }
+          case element.rating = 5: {
+            this.ratingFivwStar += 1;
+            break;
+          }
+        }
+        this.ratingTodal += element.rating;
+      }
+    }
   }
   ngOnChanges() {
   }
@@ -109,6 +189,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   addToCart(quantitiy) {
     this.store.dispatch(this.checkoutActions.addToCart(this.variantId, quantitiy));
   }
+
   // TO DO (to add the daynamic quantity)
   buyNow() {
     this.store.dispatch(this.checkoutActions.addToCart(this.variantId, 1));
@@ -121,7 +202,6 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   showReviewForm() {
     this.router.navigate([this.product.slug, 'write_review'], { queryParams: { 'prodId': this.productID } });
   }
-
 }
 
 

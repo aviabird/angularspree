@@ -1,16 +1,9 @@
 <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-5">
-
   <div class="col-12 col-md-5">
-    <!-- <div class="fav-icon-sontainer">
-      <a (click)="markAsFavorite()" class="favorite">
-        <i class="fa fa-heart"></i>
-      </a>
-    </div> -->
     <app-image-container [images]="images" class="col-12" [selectedImage]="images[0]">
     </app-image-container>
   </div>
   <div class="col-md-7 col-12">
-
     <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" class="row">
     </app-product-price-info>
 
@@ -25,17 +18,17 @@
     </app-product-description>
   </div>
 </div>
-<div class="slider">
+<div class="slider" *ngIf="similarProducts$">
   <h2>
     Similar products
   </h2>
-  <app-product-slider [productlist]="productdata"></app-product-slider>
+  <app-product-slider [productlist]="similarProducts$ | async"></app-product-slider>
 </div>
-<div class="slider">
+<div class="slider" *ngIf="relatedProducts$">
   <h2>
     Related products
   </h2>
-  <app-product-slider [productlist]="productdata"></app-product-slider>
+  <app-product-slider [productlist]="relatedProducts$ | async"></app-product-slider>
 </div>
 
 <div class="cust-reviews">
@@ -64,7 +57,9 @@
         </div>
         <div class="col-8 pr-0 pl-0">
           <div class="mb-2 progress-container">
+
             <progressbar [value]="dynamic" type="warning"></progressbar>
+
 
           </div>
         </div>
@@ -79,7 +74,9 @@
         </div>
         <div class="col-8 pr-0 pl-0">
           <div class="mb-2 progress-container">
+
             <progressbar [value]="dynamic" type="warning"></progressbar>
+
 
           </div>
         </div>
@@ -94,7 +91,9 @@
         </div>
         <div class="col-8 pr-0 pl-0">
           <div class="mb-2 progress-container">
+
             <progressbar [value]="dynamic" type="warning"></progressbar>
+
           </div>
         </div>
         <div class="col-2 pl-2">
@@ -122,7 +121,9 @@
         </div>
         <div class="col-8 pr-0 pl-0">
           <div class="mb-2 progress-container">
+
             <progressbar [value]="dynamic" type="warning"></progressbar>
+
 
           </div>
         </div>
@@ -137,6 +138,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="review-display">
     <div class="row">
@@ -179,6 +181,8 @@
             </div>
           </div>
         </div>
+
+
         <div *ngIf="reviewList">
           <div *ngFor="let item of reviewList" class="rating-inner">
             <div class="rating-head">

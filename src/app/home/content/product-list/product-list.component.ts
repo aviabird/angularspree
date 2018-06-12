@@ -31,7 +31,8 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+     }
 
   getProductImageUrl(url) {
     return environment.apiEndpoint + url;
