@@ -57,8 +57,10 @@ export class HomeComponent implements OnInit {
       })
   }
 
+  // tslint:disable-next-line:member-ordering
   @ViewChild('autoShownModal') autoShownModal: ModalDirective;
-  isModalShown: boolean = false;
+  // tslint:disable-next-line:member-ordering
+  isModalShown = false;
 
   showModal(): void {
     this.isModalShown = true;

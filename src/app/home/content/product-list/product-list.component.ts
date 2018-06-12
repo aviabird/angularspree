@@ -14,6 +14,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   @Input() products;
+  // tslint:disable-next-line:no-input-rename
   @Input('taxonIds') selectedTaxonIds;
   @Input() toggleLayout;
   page: number;
