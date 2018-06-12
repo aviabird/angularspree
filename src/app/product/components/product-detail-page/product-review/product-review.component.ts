@@ -1,6 +1,7 @@
 
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from './../../../../core/models/product';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-review',
   templateUrl: './product-review.component.html',
@@ -18,50 +19,18 @@ export class ProductReviewComponent implements OnInit {
   ratingTodal: any = 0;
   percent: number[] = new Array(5);
   review: any
+  productID: any
 
-  constructor() {
-
-  }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    this.productID = this.product.id;
   }
 
-  getStarprogress() {
-
-    for (const key in this.reviewList) {
-      if (this.reviewList.hasOwnProperty(key)) {
-        const element = this.reviewList[key];
-        switch (element.rating) {
-          case element.rating = 1: {
-            this.ratingOneStar += 1;
-            break;
-          }
-          case element.rating = 2: {
-            this.ratingTwoStar += 1;
-            break;
-          }
-          case element.rating = 3: {
-            this.ratingThreeStar += 1;
-            break;
-          }
-          case element.rating = 4: {
-            this.ratingFourStar += 1;
-            break;
-          }
-          case element.rating = 5: {
-            this.ratingFivwStar += 1;
-            break;
-          }
-        }
-        this.ratingTodal += element.rating;
-      }
-    }
-    console.log(this.ratingOneStar);
-    console.log(this.ratingTwoStar);
-    console.log(this.ratingThreeStar);
-    console.log(this.ratingFourStar);
-    console.log(this.ratingFivwStar);
-    console.log(this.ratingTodal);
+  showReviewForm() {
+    this.router.navigate([this.product.slug, 'write_review'], { queryParams: { 'prodId': this.productID } });
   }
 
 
