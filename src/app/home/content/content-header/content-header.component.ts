@@ -44,11 +44,13 @@ export class ContentHeaderComponent implements OnInit {
   showModal() {
     this.modal.show();
   }
+
   onSelectionChange(entry) {
     this.selectedEntry = entry;
     this.sortFilter(this.selectedEntry.name);
     this.modal.hide();
   }
+
   ngOnInit() {
     if (window.screen.width <= 768) {
       this.screenWidth = window.screen.width;
