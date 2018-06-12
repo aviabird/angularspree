@@ -4,6 +4,9 @@
   .sidebar {
     background-color:$gray-100;
     padding:3.5vh 2vw;
+    @media screen and(width: 768px){
+      padding:2.5vh 2vw;
+    }
   }
   h1{font-size: 1.7em;color:$gray-900}
 }

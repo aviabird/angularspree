@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-
+import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal'
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
@@ -8,14 +8,19 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class ContentHeaderComponent implements OnInit {
   @Output() toggleSize = new EventEmitter();
-
   @Input() productsCount;
   @Input() productsTotal_count;
-
+  screenWidth: any;
   options = [
     { name: 'Newest', value: 1 },
     { name: 'A To Z', value: 2 },
     { name: 'Z To A', value: 3 }
+  ]
+  optionsMobile = [
+    { name: 'Relevance', value: 1 },
+    { name: 'Newest', value: 2 },
+    { name: 'A To Z', value: 3 },
+    { name: 'Z To A', value: 4 }
   ]
   queryMap = {
     Newest: 'updated_at+asc',
@@ -25,13 +30,30 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   selectedOption: 'Relevance';
-
+  deviceWidth: any;
   selectedSize = 'COZY';
-  searchKeyword = ''
+  searchKeyword = '';
+  selectedEntry;
+  defaultselectedEntry = 'Relevance';
   constructor(private routernomal: Router) { }
 
-  ngOnInit() {
+  // tslint:disable-next-line:member-ordering
+  @ViewChild(ModalDirective) modal: ModalDirective;
 
+
+  showModal() {
+    this.modal.show();
+  }
+  onSelectionChange(entry) {
+    this.selectedEntry = entry;
+    console.log(this.selectedEntry.name)
+    this.sortFilter(this.selectedEntry.name);
+    this.modal.hide();
+  }
+  ngOnInit() {
+    if (window.screen.width <= 768) {
+      this.screenWidth = window.screen.width;
+    }
   }
 
   toggleView(view) {
@@ -47,9 +69,10 @@ export class ContentHeaderComponent implements OnInit {
     return this.selectedSize === 'COMPACT';
   }
 
-  sortFilter() {
+  sortFilter(i) {
+    console.log(i);
     const urlTree = this.routernomal.createUrlTree([], {
-      queryParams: { 'q[s]': this.queryMap[this.selectedOption] },
+      queryParams: { 'q[s]': this.queryMap[i] },
       queryParamsHandling: 'merge',
       preserveFragment: true
     });

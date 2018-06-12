@@ -23,55 +23,63 @@ export class ProductEffects {
   @Effect()
   GetAllProducts$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_ALL_PRODUCTS).pipe(
-    switchMap((action: any) => this.productService.getProducts(action.payload)),
-    map((data: any) => this.productActions.getAllProductsSuccess({ products: data })), );
+      switchMap((action: any) => this.productService.getProducts(action.payload)),
+      map((data: any) => this.productActions.getAllProductsSuccess({ products: data })), );
 
   // tslint:disable-next-line:member-ordering
   @Effect()
   GetAllTaxonomies$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_ALL_TAXONOMIES).pipe(
-    switchMap((action: any) => this.productService.getTaxonomies()),
-    map((data: any) => this.productActions.getAllTaxonomiesSuccess({ taxonomies: data })), );
+      switchMap((action: any) => this.productService.getTaxonomies()),
+      map((data: any) => this.productActions.getAllTaxonomiesSuccess({ taxonomies: data })), );
 
   // tslint:disable-next-line:member-ordering
   @Effect()
   GetProductDetail$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_PRODUCT_DETAIL).pipe(
-    switchMap((action: any) => this.productService.getProduct(action.payload)),
-    map((data: any) => this.productActions.getProductDetailSuccess(data)), );
+      switchMap((action: any) => this.productService.getProduct(action.payload)),
+      map((data: any) => this.productActions.getProductDetailSuccess(data)), );
 
   // tslint:disable-next-line:member-ordering
   @Effect()
   GetProductsByKeyword$: Observable<Action> = this.actions$
     .ofType(SearchActions.GET_PRODUCTS_BY_KEYWORD).pipe(
-    switchMap((action: any) => this.productService.getproductsByKeyword(action.payload)),
-    map((data: any) => this.searchActions.getProducsByKeywordSuccess({ products: data })), )
+      switchMap((action: any) => this.productService.getproductsByKeyword(action.payload)),
+      map((data: any) => this.searchActions.getProducsByKeywordSuccess({ products: data })), )
 
   // tslint:disable-next-line:member-ordering
   @Effect()
   GetProductsByTaxons$: Observable<Action> = this.actions$
     .ofType(SearchActions.GET_PRODUCTS_BY_TAXON).pipe(
-    switchMap((action: any) => this.productService.getProductsByTaxon(action.payload)),
-    map((data: any) => this.searchActions.getProducsByKeywordSuccess({ products: data })), )
+      switchMap((action: any) => this.productService.getProductsByTaxon(action.payload)),
+      map((data: any) => this.searchActions.getProducsByKeywordSuccess({ products: data })), )
 
   // tslint:disable-next-line:member-ordering
   @Effect()
   GetChildTaxons$: Observable<Action> = this.actions$
     .ofType(SearchActions.GET_CHILD_TAXONS).pipe(
-    switchMap((action: any) => this.productService.getChildTaxons(action.payload.taxonomiesId, action.payload.taxonId)),
-    map((data: any) => this.searchActions.getChildTaxonsSuccess({ taxonList: data })), );
+      switchMap((action: any) => this.productService.getChildTaxons(action.payload.taxonomiesId, action.payload.taxonId)),
+      map((data: any) => this.searchActions.getChildTaxonsSuccess({ taxonList: data })), );
 
   // tslint:disable-next-line:member-ordering
   @Effect()
   GetTaxonomiByName$: Observable<Action> = this.actions$
     .ofType(SearchActions.GET_TAXONOMIES_BY_NAME).pipe(
-    switchMap((action: any) => this.productService.getTaxonByName(action.payload)),
-    map((data: any) => this.searchActions.getTaxonomiesByNameSuccess({ taxonomiList: data })), );
+      switchMap((action: any) => this.productService.getTaxonByName(action.payload)),
+      map((data: any) => this.searchActions.getTaxonomiesByNameSuccess({ taxonomiList: data })), );
 
   // tslint:disable-next-line:member-ordering
   @Effect()
+
   GetRelatedProducts$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_RELETED_PRODUCT).pipe(
-    switchMap((action: any) => this.productService.getReletedProducts(action.payload)),
-    map((data: any) => this.productActions.getRelatedProductSuccess({ products: data })), );
+      switchMap((action: any) => this.productService.getReletedProducts(action.payload)),
+      map((data: any) => this.productActions.getRelatedProductSuccess({ products: data })), );
+
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  GetReview$: Observable<Action> = this.actions$
+    .ofType(ProductActions.GET_REVIEWS).pipe(
+      switchMap((action: any) => this.productService.getProductReviews(action.payload)),
+      map((data: any) => this.productActions.getReviewsProductSuccess({ reviews: data })), );
 }

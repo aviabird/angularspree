@@ -7,7 +7,6 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
     <app-content-header (toggleSize)="toggleSize($event)"
      [productsCount]="productsList.count"
      [productsTotal_count]="productsList.total_count"></app-content-header>
-   
     <app-product-list [(toggleLayout)]='toggleLayout' [products]='productsList' [taxonIds]="taxonIds"></app-product-list>
   `,
   //   styleUrls: ['./content-header.component.scss'] <app-filter-summary></app-filter-summary>

@@ -13,12 +13,16 @@
 }
 
 .product-base {
-  flex: 0 0 23%;
-  max-width: 23%;
+  flex: 0 0 23.3%;
+  max-width: 23.3%;
   @media screen and (min-width: 320px) and (max-width: 767px) {
     margin:.5rem 0px !important;
     flex: 0 0 100%;
     max-width: 100%;
+  }
+  @media screen and(width: 768px) {
+    flex: 0 0 30.5%;
+    max-width: 30.5%;
   }
   text-align: left;
   position: relative;

@@ -1,31 +1,59 @@
-<div class="container content">
-  <div class="row" *ngIf=productsCount>
-    <div itemprop="name" class="queried-for col-7">
+<div class="container content" *ngIf="!screenWidth">
+  <div class="row " *ngIf=productsCount>
+    <div itemprop="name" class="queried-for col-7 pl-1 ">
       <h4 title="men casual shirts">Showing {{productsCount}} of {{productsTotal_count}} results.
       </h4>
       <span>&nbsp;</span>
     </div>
-    <div class="options col-5 p-0">
-      <ul class="img-size">
-        <label>View:</label>
-        <li (click)="toggleView('COMPACT')" [ngClass]="{'big': true, 'selected': isBigSelected()}"></li>
-        <li (click)="toggleView('COZY')" [ngClass]="{'small': true, 'selected': isSmallSelected()}"></li>
-      </ul>
-
-      <form class="container">
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-4 col-form-label">Sort by</label>
-          <div class="col-sm-8 p-0">
-            <select [(ngModel)]="selectedOption" class="form-control" name="Relevance" (click)="sortFilter()">
-              <option [ngValue]="Relevance">Relevance</option>
-              <option *ngFor="let opt of options">
+    <div class="options col-5 p-0 pr-2">
+      <form class=" container ">
+        <div class="form-group row mb-0 ">
+          <label for="inputEmail3 " class="col-sm-5 col-md-5 col-form-label ">Sort by</label>
+          <div class="col-sm-7 col-md-7 p-0 ">
+            <select [(ngModel)]="selectedOption " class="form-control " name="Relevance " (click)="sortFilter(selectedOption) ">
+              <option [ngValue]="Relevance ">Relevance</option>
+              <option *ngFor="let opt of options ">
                 {{opt.name}}
               </option>
             </select>
           </div>
         </div>
       </form>
-
+    </div>
+  </div>
+</div>
+<div class="container content " *ngIf="screenWidth ">
+  <div class="row" *ngIf=productsCount>
+    <div class="col-6 button-container text-right">
+      <button (click)="showModal()" type="button" class="btn btn-secondary">
+        <i class="fa fa-sort mr-2"></i>
+        <span *ngIf="!selectedEntry">{{defaultselectedEntry}}</span>
+        <span *ngIf="selectedEntry">{{selectedEntry.name}}</span>
+      </button>
+      <div class="modal fade" bsModal #modal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-events-name">
+        <div class="modal-dialog sort-mobile">
+          <div class="modal-content">
+            <div class="modal-body">
+              <ul>
+                <li>
+                  <span class="sort">Sort</span>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </li>
+                <li *ngFor="let entry of optionsMobile; let idx = index">
+                  <input type="radio" name="radiogroup" id="test{{idx}}" [checked]="idx === 0" [value]="entry.id" (change)="onSelectionChange(entry)">
+                  <label for="test{{idx}}">{{ entry.name }}</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 button-container text-left">
+      <button type="button" class="btn btn-secondary">
+        <i class="fa fa-filter mr-2"></i>Filter By</button>
     </div>
   </div>
 </div>
