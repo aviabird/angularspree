@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="d-flex scrollbar-hidden" #nav dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true">
-    <app-lp-tr-item class=" col-sm-2  col-md-3 col-lg-2 product-box" *ngFor="let product of topRatedBrands | slice:0:10" [product]="product"></app-lp-tr-item>
+    <app-lp-tr-item class=" col-sm-2 col-6 col-md-3 col-lg-2 product-box" *ngFor="let product of topRatedBrands | slice:0:10" [product]="product"></app-lp-tr-item>
   </div>
   <hr>
 </section>
