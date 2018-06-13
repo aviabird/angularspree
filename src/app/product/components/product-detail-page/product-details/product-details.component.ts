@@ -144,8 +144,6 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
       }
     }
   }
-  ngOnChanges() {
-  }
 
   /**
    * @param: option: { key: "small",
