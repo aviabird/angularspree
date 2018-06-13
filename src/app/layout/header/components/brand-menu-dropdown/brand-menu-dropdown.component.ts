@@ -13,7 +13,7 @@ import { URLSearchParams } from '@angular/http'
 export class BrandMenuDropdownComponent implements OnInit {
   @Input() taxonomies;
   queryParams: any;
-
+  isOpen: any;
   constructor(
     private route: ActivatedRoute,
     private searchActions: SearchActions,
@@ -32,4 +32,7 @@ export class BrandMenuDropdownComponent implements OnInit {
     search.set('id', this.queryParams.id);
     this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
   }
+  onOpenChange(data: boolean): void {
+    this.isOpen = ! this.isOpen;
+   }
 }

@@ -7,4 +7,5 @@ export class Taxon {
   taxonomy_id: number;
   checked: boolean = false;
   taxons: Taxon[];
+  icon: string;
 }

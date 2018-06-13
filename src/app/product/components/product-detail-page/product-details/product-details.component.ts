@@ -10,7 +10,9 @@ import { Store } from '@ngrx/store';
 import { CheckoutActions } from './../../../../checkout/actions/checkout.actions';
 import { Variant } from './../../../../core/models/variant';
 import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
+
 import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+
 import { Product } from './../../../../core/models/product';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
 import { ProductService } from './../../../../core/services/product.service';
@@ -42,6 +44,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   ratingFivwStar: any = 0;
   ratingTodal: any = 0;
   percent: number[] = new Array(5);
+
   similarProducts$: Observable<any>;
   relatedProducts$: Observable<any>;
   reviewProducts$: Observable<any>;
@@ -52,10 +55,12 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     private store: Store<AppState>,
     private productService: ProductService,
     private router: Router,
+
     private toastrService: ToastrService,
     private searchActions: SearchActions,
     private productsActions: ProductActions
   ) { }
+
 
   ngOnInit() {
     this.description = this.product.description;
@@ -67,8 +72,10 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     this.correspondingOptions = this.mainOptions;
     this.productID = this.product.id;
 
+
     this.productService.getReletedProducts(this.productID)
       .subscribe(productdata => {
+
         this.productdata = productdata
       });
     if (this.product.taxon_ids[0]) {
@@ -86,6 +93,8 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
 
+  }
+  ngOnChanges() {
   }
 
   /**
