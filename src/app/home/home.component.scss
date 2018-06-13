@@ -2,20 +2,27 @@
 .home {
   background-color: #fcfcfc;
   .sidebar {
-    background-color:$gray-100;
-    padding:3.5vh 2vw;
+    background-color: $gray-100;
+    padding: 3.5vh 2vw;
+    @media screen and(width: 768px) {
+      padding:2.5vh 2vw;
+    }
   }
-  h1{font-size: 1.7em;color:$gray-900}
+  h1 {
+    font-size: 1.7em;
+    color: $gray-900
+  }
 }
 
-.filter-mobile-menu{
-  width:100Vw;
- 
-  margin:0px;
+.filter-mobile-menu {
+  width: 100Vw;
+  margin: 0px;
   margin-top: 20vh;
-  .modal-content{
-    border:0px solid $gray-100;
-    border-radius:0px;
+  .modal-content {
+    border: 0px solid $gray-100;
+    border-radius: 0px;
   }
-  accordion-group{cursor: pointer;}
+  accordion-group {
+    cursor: pointer;
+  }
 }

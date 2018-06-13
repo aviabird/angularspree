@@ -134,6 +134,7 @@
 }
 
 .main-nav-trigger {
+  @media screen and(width: 768px){ left: -2rem!important;}
   ms-touch-action: manipulation;
   -ms-touch-action: manipulation;
   touch-action: manipulation;

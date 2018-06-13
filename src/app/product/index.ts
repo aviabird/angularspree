@@ -3,6 +3,7 @@ import { SharedModule } from './../shared/index';
 
 import { RouterModule } from '@angular/router';
 
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar'
 // For Temp Puropose
 // TODO: Remove this from here
 import { ProductService } from './../core/services/product.service';
@@ -17,7 +18,7 @@ import { ProductCountComponent } from './components/product-detail-page/product-
 import { ProductVariantsComponent } from './components/product-detail-page/product-variants/product-variants.component';
 import { ProductComponent } from './product.component';
 import { WriteProductReviewComponent } from './components/product-detail-page/write-product-review/write-product-review.component';
-import { ProgressbarModule } from 'ngx-bootstrap';
+import { ProductReviewComponent } from './components/product-detail-page/product-review/product-review.component'
 // Routes
 import { ProductRoutes as routes } from './product.routes';
 
@@ -37,7 +38,8 @@ import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
     ProductDescriptionComponent,
     ProductVariantsComponent,
     ProductCountComponent,
-    WriteProductReviewComponent
+    WriteProductReviewComponent,
+    ProductReviewComponent
     // pipes
   ],
   exports: [

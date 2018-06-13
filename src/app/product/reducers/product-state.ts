@@ -19,6 +19,7 @@ export interface ProductState extends Map<string, any> {
   taxonomies: List<Taxonomy>;
   showAllProducts: List<Product>;
   relatedProducts: List<Product>;
+  productReviews: List<any>;
 }
 
 export const ProductStateRecord = Record({
@@ -28,5 +29,6 @@ export const ProductStateRecord = Record({
   selectedProduct: Map({}),
   taxonomies: List([]),
   showAllProducts: List([]),
-  relatedProducts: List([])
+  relatedProducts: List([]),
+  productReviews: List([])
 });
