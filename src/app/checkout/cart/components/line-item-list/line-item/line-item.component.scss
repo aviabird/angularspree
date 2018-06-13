@@ -18,9 +18,7 @@
     display: inline-block;
     padding: 10px 10px 10px 25px;
     min-height: 145px;
-	position: relative;
-	
-	
+    position: relative;
     .prod-name {
       display: inline-block;
       overflow: hidden;
@@ -47,20 +45,20 @@
     .size-qty-wrap {
       display: inline-block;
       margin: 5px 0;
-	  color: $gray-400;
-	  text-align: right;
+      color: $gray-400;
+      text-align: right;
       .size-qty {
         margin: 0 0 4px;
         padding-right: 10px;
-		display: inline-block;
-		
+        display: inline-block;
         .size,
         .qty {
           color: $gray-400;
           cursor: pointer;
           margin-right: 20px;
           font-size: 1.7em;
-          .gray,.value {
+          .gray,
+          .value {
             color: $gray-900;
           }
           .icon {
@@ -81,14 +79,14 @@
       position: absolute;
       right: 20px;
       top: 0;
-	  color: $gray-11;
-	  right: -14px;
+      color: $gray-11;
+      right: -14px;
       top: -8px;
       .delete-item,
-      .move-item {              
+      .move-item {
         margin: 0 15px 0 0;
-		cursor: pointer;
-		font-size: 1em;
+        cursor: pointer;
+        font-size: 1em;
       }
       .move-item {
         color: $gray-200;
