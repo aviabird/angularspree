@@ -36,7 +36,7 @@ export class AddAddressComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onSubmit() {
     const address = this.addressForm.value;
@@ -63,5 +63,5 @@ export class AddAddressComponent implements OnInit, OnDestroy {
     return this.emailForm.value.email;
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 }
