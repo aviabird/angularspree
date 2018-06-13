@@ -20,6 +20,7 @@ export class ProductReviewComponent implements OnInit {
   percent: number[] = new Array(5);
   review: any
   productID: any
+  dynamic = 70;
 
   constructor(
     private router: Router,
