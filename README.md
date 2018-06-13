@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  AngularSpree Plug and play frontend application for SPREE E-Commerce API built with ❤️ using Angular2, Redux, Observables & ImmutableJs.
+  AngularSpree Plug and play frontend application for SPREE E-Commerce API built with ❤️ using Angular6, Redux, Observables & ImmutableJs.
 </p>
 
 <p align="center">
@@ -27,12 +27,16 @@
 
 ## What is AngularSpree?
 
-AngularSpree is an open source Angular(2.x+) front-end application for [Spree Commerce](https://github.com/spree/spree). 
+AngularSpree is an open source Angular(6.x+) front-end application for [Spree Commerce](https://github.com/spree/spree). 
 **It's free and always will be**. 
 
 **Bootstrap 4 Compatible**
 
 Go ahead use it the way you want to or let us know at `hello@aviabird.com` if you need any help with this project.
+
+### Quick Links
+[Gitter](https://gitter.im/aviabird/angularspree) | [Contributing](https://github.com/aviabird/angularspree/blob/master/CONTRIBUTING.md) | [Wiki](https://github.com/aviabird/angularspree/wiki) | 
+|---|---|---|
 
 ## Why did we build it?
 
@@ -45,7 +49,7 @@ We decided to give it a try. Hence, AngularSpree was born as a front-end framewo
 
 If you are looking to build a project similar to this one with all the ready-made setup, then I highly encourage you to look at this [starter seed project](https://github.com/aviabird/angular-seed) by [Aviabird Team](https://aviabird.com).
 
-**[AngularSeed](https://github.com/aviabird/angular-seed) is a Plug and play Seed project built with ❤️ using Angular 5, Redux/ngrx-store 4, Observables & ImmutableJs. We are commited to keeping this project upto date with all the latest versions of all the libs and components.**
+**[AngularSeed](https://github.com/aviabird/angular-seed) is a Plug and play Seed project built with ❤️ using Angular 6+, Redux/ngrx-store 6, Observables & ImmutableJs. We are commited to keeping this project upto date with all the latest versions of all the libs and components.**
 
 🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
@@ -54,18 +58,26 @@ If you are looking to build a project similar to this one with all the ready-mad
 Currently, this is a fairly basic vesion of the application. We are calling it a pre-alpha release.
 
 ### What's working and ready to be deployed?
+
 * Add/Remove products to cart.
 * Select/Clear filters based on category.
 * Support for product variants.
 * Cart checkout feature.
 * Cash on delivery option.
 * Authentication (Login/Signup)
+* More sorting features(Relevance, Newest, Price[low,high], Name[A-Z/Z-A])
+* google login support.
+* Add to favourite products.
+* New landing page
+* Search page and feature
+* Product image zoomer
+* Product Review and Rating feature
 
 ### What's coming very soon?
+
 * __Angular Universal__ support for better SEO and [much more](https://github.com/angular/angular/issues/13822).
 * __Payment__ options credit/debit cards.
 * __Multilanguage__ Support i18n.
-* More sorting features(new/popular, Discount, Price[low,high]).
 * Support for further types of products(size, pattern, collar, etc).
 * Support for further options in types eg. size(32, 34, 36) etc. etc.
 * Ability to add more than one addresses.
@@ -73,9 +85,9 @@ Currently, this is a fairly basic vesion of the application. We are calling it a
 
 There is a long way to go... keep an eye on this [project](https://github.com/aviabird/angularspree/) here on github.
 
-## Angular 2 Fundamentals course
+## Angular 6 Fundamentals course
 
-Based on this application and **[other applications](https://github.com/aviabird/yatrum)** we have built in past we are working on a full blown Angular 2 fundamentals course on udemy. Throughout this course you'll learn how to build yatrum from ground up.
+Based on this application and **[other applications](https://github.com/aviabird/yatrum)** we have built in past we are working on a full blown Angular 6 fundamentals course on udemy. Throughout this course you'll learn how to build yatrum from ground up.
 
 ### Course curriculum
 
@@ -96,12 +108,12 @@ __[Subscribe to this course here](https://upscri.be/a00eaf/)__
 
 We've built AngularSpree keeping scaling in mind leveraging the best technologies out there.
 
-As of now, the application has 7 major modules, `products`, `core`, `home`, `user`, `checkout`, `auth`, `shared`.
+As of now, the application has 7 major modules, `products`, `core`, `search`, `user`, `checkout`, `auth`, `shared`.
 
 We are working on documentation and we can share that once we are looking at a more stable release.
 
 * Exclusively using @ngrx libraries(store, effects, actions), showcasing common patterns and best practices.
-* Fully Observable approach using RxJS 5.0.1(latest beta).
+* Fully Observable approach using RxJS 6.
 * Uses @ngrx/store to manage the state of the app and to cache requests made to the Backend API, 
 * @angular/router to manage navigation between routes, 
 * @ngrx/effects to isolate side effects.
@@ -111,88 +123,14 @@ We are working on documentation and we can share that once we are looking at a m
 * ImmutableJs to create and safeguard objects againts mutability.
 * Project is divided into modules which are more or less independant of each other except core module.
 
-__Current version of Angular is latest release [4.0.0](https://github.com/angular/angular/releases/tag/4.0.0).__
+__Current version of Angular is latest release [6.0.3](https://github.com/angular/angular/releases/tag/6.0.3).__
 
-__Current version of Angular-cli is [1.0.0](https://github.com/angular/angular-cli/releases/tag/v1.0.0).__
+__Current version of Angular-cli is [6.0.3](https://github.com/angular/angular-cli/releases/tag/v6.0.3).__
 
 We try to make sure that we keep the repository upto date with the angular release every weekend.
 
-## Screenshots
-
-### Home Page
-
-On this page user can filter products as per category. Change layout of the products(cozy, comfortable) etc.
-
-<p align="center">
-  <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="https://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188458/screen_home.png">
-  </a>
-</p>
-
-### Cart Page
-
-Cart page displays all the line items or items in the cart which the user has added while browsing the website.
-
-<p align="center">
-  <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="https://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188642/screen_cart.png">
-  </a>
-</p>
-
-### Product detail page
-
-Display's the detailed product information of a particular product.
-
-<p align="center">
-  <a href="https://angularspree.firebaseapp.com/" target="_blank">
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" width="80%" src="https://res.cloudinary.com/yatrum/image/upload/c_limit,h_1041,w_1487/v1490188748/screen_product_page.png">
-  </a>
-</p>
-
-
-
-### Package Manager [Yarn](https://yarnpkg.com/en/)
-
-We are using Yarn as a package manager in this project though you can also use `npm` if you like to.
-
-## Backend for this project?
-
-
-**Start the API for this project to work successfully.
-
-We have a very thin and custom [repo](https://github.com/aviabird/angularspree-api/) which is the backend for this project. 
-Clone it and run the server. We have updated the readme on how to setup the backend API project.
-
-## Contributing to AngularSpree
-
-Where to start
-
-There are many different ways to contribute to AngularSpree's development, just find the one that best fits with your skills. Examples of contributions we would love to receive include:
-
-* Code patches
-* Documentation improvements
-* Translations(yet to come)
-* Bug reports
-* Patch reviews
-* UI enhancements
-
-Big features are also welcome but if you want to see your contributions included in AngularSpree's codebase we strongly recommend you start by initiating a chat on our __[slack channel](https://angular-spree.herokuapp.com/)__.
-
-## Development server & Mock Api
-
-Run `npm start:mock-ng-spree` for a dev server with 'mock' api. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files and will fetch data from mock api;
-
-## Development server
-
-Run `npm start:dev-ng-spree` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Development server with Service Worker
-
-Run `npm run build:prod-ng-spree` to build in production with service worker pre-cache and then `npm run static-serve` to serve.
-
-## Build with Service Worker
-
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `npm run build--prod` for a production build.
+## DEMO
+Video coming soon
 
 ## Who are we?
 
