@@ -1,3 +1,8 @@
+import { Observable } from 'rxjs';
+import { taxonomiByName } from './../../../../../../home/reducers/selectors';
+import { SearchActions } from './../../../../../../home/reducers/search.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from './../../../../../../interfaces';
 import { environment } from './../../../../../../../environments/environment';
 import { APP_DATA } from './../../../../../../shared/data/app-data';
 import { Component, OnInit, Input, OnChanges, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
@@ -27,22 +32,25 @@ import {
     ])
   ]
 })
-export class CategoriesDetailsComponent implements OnInit {
+export class CategoriesDetailsComponent implements OnInit, OnChanges {
   @Input() taxons;
   @Input() taxonName;
-  @Input() BTaxon;
   @Input() screenwidth;
   @Input() taxonImageLink;
-  menuTaxons: any;
   @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  menuTaxons: any;
+  brandLists$: Observable<any>;
   show = false;
+
   get stateName() {
     return this.show ? 'show' : 'hide'
   }
 
   taxon = APP_DATA;
-  constructor() { }
+  constructor(private store: Store<AppState>,
+    private searchActions: SearchActions) {
+  }
 
   showCategoryonclick(taxon) {
     this.show = !this.show;
@@ -53,14 +61,19 @@ export class CategoriesDetailsComponent implements OnInit {
     this.show = !this.show;
     this.onSubCatClicked.emit(false);
   }
-  ngOnInit() {
 
+  ngOnInit() {
   }
+
   get brand() {
     return this.taxonImageLink;
   }
 
   getProductImageUrl() {
     return environment.apiEndpoint + this.taxonImageLink;
+  }
+  ngOnChanges() {
+    this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', this.taxonName));
+    this.brandLists$ = this.store.select(taxonomiByName);
   }
 }

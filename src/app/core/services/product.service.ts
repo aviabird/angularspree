@@ -30,6 +30,9 @@ export class ProductService {
    */
   getProduct(id: string): Observable<any> { return this.http.get<Product>(`api/v1/products/${id}`) }
 
+  getProductReviews(products): Observable<any> {
+    return this.http.get(`products/${products}/reviews`)
+  }
   /**
    *
    *
@@ -72,21 +75,20 @@ export class ProductService {
   getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(`/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`)
   }
-  getRecentlyViewedProducts() {
-    return this.http.get(`api/v1/products?per_page=20`);
-  }
 
   submitReview(productId: any, params: any) {
     return this.http.post(`products/${productId}/reviews`, params)
       .pipe(
-      map(_ => this.toastrService.success(
-        'Review Submitted.',
-        'Success')
+      map(_ => this.toastrService.success('Review Submitted.', 'Success')
       ),
       tap(
         _ => _,
-        _ => this.toastrService.error('something went wrong (reviws)', 'ERROR!!')
+        _ => this.toastrService.error('something went wrong (reviews)', 'ERROR!!')
       )
       )
+  }
+
+  getReletedProducts(productId: any): Observable<Array<Product>> {
+    return this.http.get<Array<Product>>(`api/products/${productId}/relations`)
   }
 }
