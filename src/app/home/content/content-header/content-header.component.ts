@@ -47,7 +47,6 @@ export class ContentHeaderComponent implements OnInit {
 
   onSelectionChange(entry) {
     this.selectedEntry = entry;
-    console.log(this.selectedEntry.name)
     this.sortFilter(this.selectedEntry.name);
     this.modal.hide();
   }
@@ -72,7 +71,6 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   sortFilter(i) {
-
     const urlTree = this.routernomal.createUrlTree([], {
       queryParams: { 'q[s]': this.queryMap[i] },
       queryParamsHandling: 'merge',

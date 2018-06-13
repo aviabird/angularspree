@@ -20,7 +20,7 @@ export function fetchAllTaxonomies(state: ProductState) {
   return state.taxonomies.toJS();
 }
 
-const fetchSelectedProduct = function (state: ProductState): Product {
+const fetchSelectedProduct = function (state: ProductState) {
   return state.selectedProduct;
 };
 

@@ -44,7 +44,6 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   ratingFivwStar: any = 0;
   ratingTodal: any = 0;
   percent: number[] = new Array(5);
-
   similarProducts$: Observable<any>;
   relatedProducts$: Observable<any>;
   reviewProducts$: Observable<any>;

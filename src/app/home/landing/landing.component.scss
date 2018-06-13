@@ -48,6 +48,11 @@
   /deep/ .product-tile {
     text-align: center;
     a {
+      img {
+        object-fit: scale-down;
+        height: 200px;
+        width: 100%;
+      }
       &:hover {
         text-decoration: none;
       }
