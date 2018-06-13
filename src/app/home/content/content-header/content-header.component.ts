@@ -72,7 +72,7 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   sortFilter(i) {
-    console.log(i);
+
     const urlTree = this.routernomal.createUrlTree([], {
       queryParams: { 'q[s]': this.queryMap[i] },
       queryParamsHandling: 'merge',

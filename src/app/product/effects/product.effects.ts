@@ -81,5 +81,5 @@ export class ProductEffects {
   GetReview$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_REVIEWS).pipe(
       switchMap((action: any) => this.productService.getProductReviews(action.payload)),
-      map((data: any) => this.productActions.getReviewsProductSuccess({ reviews: data })), );
+      map((data: any) => this.productActions.getProductReviewsSuccess({ reviews: data })), );
 }

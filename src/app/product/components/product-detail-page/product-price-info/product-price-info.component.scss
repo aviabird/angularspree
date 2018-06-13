@@ -56,7 +56,7 @@
   }
 }
 
-.cw-btn {
+.primary-btn {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -89,7 +89,7 @@
   box-sizing: border-box;
 }
 
-#buybox .cw-btn--action {
+#buybox .primary-btn--action {
   background-color: $theme-action-sub-color2;
   background: linear-gradient(180deg, $theme-action-sub-color2  0, ef #FFAC2E 45%, $theme-action-sub-color2);
   color: $white;

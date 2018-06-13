@@ -1,5 +1,5 @@
 <h3>Write Review</h3>
-<div class="wirte-review">
+<div class="write-review">
   <div class="col-2">
 
   </div>
@@ -24,14 +24,14 @@
               <label for="exampleFormControlTextarea1">Content</label>
               <textarea class="form-control" rows="3" placeholder="Your review" formControlName="review" required></textarea>
             </div>
-            <button type="submit" class="cw-btn cw-btn--action">Submit Review</button>
+            <button type="submit" class="primary-btn primary-btn--action">Submit Review</button>
           </form>
         </div>
         <div class="col-12" *ngIf="showThanks">
           <h3>Thanks for your review!</h3>
           <i class="fa fa-check-circle fa-3x"></i>
           <p>Your review has been submitted.Please note that your review may take up to 48 hours to appear.</p>
-          <button type="normal" class="cw-btn cw-btn--action" (click)="goToProduct()">Continew Shopping</button>
+          <button type="normal" class="primary-btn primary-btn--action" (click)="goToProduct()">Continue Shopping</button>
         </div>
       </div>
     </div>

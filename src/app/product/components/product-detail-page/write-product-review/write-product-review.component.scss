@@ -1,5 +1,5 @@
 @import '../../../../shared/scss/selected_theme_variables';
-.cw-btn {
+.primary-btn {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -32,9 +32,8 @@
   box-sizing: border-box;
 }
 
-.cw-btn--action {
-  background-color: $theme-action-sub-color2;
-  background: linear-gradient(180deg, $theme-action-sub-color2 0, ef #FFAC2E 45%, $theme-action-sub-color2);
+.primary-btn--action {
+  background-color: $theme-action-sub-color2; 
   color: $white;
   font-weight: 500;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -42,7 +41,7 @@
   width: 100%;
 }
 
-.wirte-review {
+.write-review {
   margin: 0 auto;
   padding: 2em 0
 }

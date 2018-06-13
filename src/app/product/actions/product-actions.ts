@@ -74,18 +74,17 @@ export class ProductActions {
     }
   }
 
-  getReviewsProduct(product_id: any) {
-
+  getProductReviews(product_id: any) {
     return {
       type: ProductActions.GET_REVIEWS,
       payload: product_id
     }
   }
 
-  getReviewsProductSuccess(products: any) {
+  getProductReviewsSuccess(reviews: any) {
     return {
       type: ProductActions.GET_REVIEWS_SUCCESS,
-      payload: products
+      payload: reviews
     }
   }
 }

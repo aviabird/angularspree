@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/index';
 
 import { RouterModule } from '@angular/router';
-import { ProgressbarModule } from 'ngx-bootstrap';
+
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar'
 // For Temp Puropose
 // TODO: Remove this from here
 import { ProductService } from './../core/services/product.service';

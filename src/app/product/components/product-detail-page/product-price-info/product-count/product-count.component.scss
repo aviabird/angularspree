@@ -1,5 +1,5 @@
 @import "../../../../../shared/scss/selected_theme_variables";
-.cw-btn {
+.primary-btn {
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -37,7 +37,7 @@
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     width:100%
   }
-  .cw-btn--action {
+  .primary-btn--action {
     background-color: $theme-action-sub-color2;
     color: $white;
     font-weight: 500;
@@ -46,7 +46,7 @@
     box-shadow: 0 1px 0 0 $gray-12;
     width: 100%;
   }
-  .cw-btn--action-buy {
+  .primary-btn--action-buy {
     background-color: $theme-action-sub-color2 - 20;
   }
   .bordered {

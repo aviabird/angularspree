@@ -79,15 +79,10 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     this.store.dispatch(this.productsActions.getRelatedProduct(this.productID))
     this.relatedProducts$ = this.store.select(relatedProducts)
 
-    this.store.dispatch(this.productsActions.getReviewsProduct(this.productID))
+    this.store.dispatch(this.productsActions.getProductReviews(this.productID))
     this.reviewProducts$ = this.store.select(productReviews)
 
 
-    // this.productService.getProductReviews(this.productID).
-    // subscribe(data => {
-    //   this.reviewList = data;
-    //   this.review = this.reviewList.reviews;
-    // });
   }
   ngOnChanges() {
 
