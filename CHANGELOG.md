@@ -13,9 +13,21 @@
 
 ## [`v0.2`][tag-0_2] (2018-06-12)
 
-### Core
+### Core Pacakges updated
 * Angular 5.2.0
 * NgRx 4.1.1
 
+## [`v0.1.0`][tag-0_1_0] (2018-06-12)
+
+### Core
+* Angular 2+, ngrx
+* Pages added
+  * Home
+  * Product Detail
+  * Cart
+  * Address
+  * My Orders
+
 [tag-1_0_0-alpha]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-alpha
 [tag-0_2]: https://github.com/aviabird/angularspree/releases/tag/v0.2
+[tag-0_1_0]: https://github.com/aviabird/angularspree/releases/tag/v0.1.0
