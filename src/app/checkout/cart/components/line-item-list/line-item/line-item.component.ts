@@ -23,7 +23,7 @@ export class LineItemComponent implements OnInit {
     private store: Store<AppState>,
     private actions: CheckoutActions,
     private checkoutService: CheckoutService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.image = environment.apiEndpoint + this.lineItem.variant.images[0].product_url;

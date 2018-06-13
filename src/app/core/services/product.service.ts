@@ -79,12 +79,16 @@ export class ProductService {
   submitReview(productId: any, params: any) {
     return this.http.post(`products/${productId}/reviews`, params)
       .pipe(
-      map(_ => this.toastrService.success('Review Submitted.', 'Success')
-      ),
-      tap(
-        _ => _,
-        _ => this.toastrService.error('something went wrong (reviews)', 'ERROR!!')
-      )
+
+        map(_ => this.toastrService.success(
+          'Review Submitted.',
+          'Success')
+        ),
+        tap(
+          _ => _,
+          _ => this.toastrService.error('something went wrong (reviws)', 'ERROR!!')
+        )
+
       )
   }
 

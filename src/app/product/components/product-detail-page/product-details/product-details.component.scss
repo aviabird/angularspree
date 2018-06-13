@@ -124,7 +124,7 @@ h1 {
       padding-bottom: 1rem;
       border-bottom: 1px solid $gray-10;
       margin-bottom: 1rem;
-      .rating-head {      
+      .rating-head {
         font-weight: 700;
         color: $gray-900;
         position: relative;
@@ -141,13 +141,12 @@ h1 {
       text-align: justify;
     }
   }
-  .review-sort-filter{
+
+  .review-sort-filter {
     border-top: 1px solid $gray-10;
     border-top: 1px solid $gray-10;
-    background-color:$gray-200;
-    padding: 1rem ;
-  
-    
+    background-color: $gray-200;
+    padding: 1rem;
 
   }
 }
