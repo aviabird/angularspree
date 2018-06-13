@@ -87,7 +87,7 @@ export class CategoriesMenuDropdownComponent implements OnInit {
     this.backBtnShow = status;
   }
   onOpenChange(data: boolean): void {
-   this.isOpen = ! this.isOpen;
+    this.isOpen = !this.isOpen;
   }
 
 }
