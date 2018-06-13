@@ -1,13 +1,18 @@
-a,
+@import '../../../../../../shared/scss/selected_theme_variables';
+a
 a:focus {
-  color: #000;
+  color: $black;
   text-decoration: None;
   &:hover {
-    color: #a3d032;
+    color: 	$theme-main-color;
     text-decoration: underline;
   }
 }
-
+.img-fit{
+  max-width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
 .flex-container {
   padding: 0;
   margin: 0;
@@ -34,7 +39,7 @@ a:focus {
   height: 100px;
   margin: 10px;
   line-height: 100px;
-  color: white;
+  color: $white;
   font-weight: bold;
   font-size: 2em;
   text-align: center;

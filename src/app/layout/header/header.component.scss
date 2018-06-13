@@ -1,11 +1,27 @@
 @import '../../shared/scss/selected_theme_variables';
 .navbar {
   transition: all 500ms;
+  padding: 0px;
+  padding-top: 1rem;
   &.page-scroll-header {
     position: fixed;
     z-index: 100;
     width: 100%;
   }
+}
+
+.page-scroll-header {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+:host /deep/ .page-scroll-header .cust-menu-btn {
+  border-radius: 0px;
+  margin-right: 10px;
+}
+
+:host /deep/ .dropdown-menu {
+  top: 3.1em !important
 }
 
 .selected-theme .navbar {
@@ -61,6 +77,9 @@
   .navbar {
     padding: 0px;
   }
+  :host /deep/ .page-scroll-header .cust-menu-btn {
+    display: none;
+  }
   .navbar .btn {
     padding: 0px;
   }
@@ -77,6 +96,9 @@
     height: 20px;
     width: 80px;
     margin-top: 6px;
+  }
+  :host /deep/ .page-scroll-header .cust-menu-btn {
+    display: none;
   }
   .search {
     flex: 0.1;

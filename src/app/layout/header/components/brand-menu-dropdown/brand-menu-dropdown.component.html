@@ -1,17 +1,19 @@
-<div class="btn-group" dropdown [autoClose]="true" container="body">
-  <button id="button-nested" dropdownToggle type="button" class="btn dropdown-toggle" aria-controls="dropdown-nested">
-    Shop By
-    <span *ngIf="taxonomies[0]; let brands_taxonomy">{{brands_taxonomy.name}}</span>
-    <span class="caret"></span>
-  </button>
-  <div id="dropdown-nested" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-nested">
-    <div *ngIf="taxonomies[0]; let brands_taxonomy">
-      <ul>
-        <li *ngFor="let taxon of brands_taxonomy.root.taxons" class="col-2" (click)="getBrands()">
-          <app-brand-list [taxons]="taxon"></app-brand-list>
-        </li>
-      </ul>
-
+<div class="dpmenu">
+    <div  class="cust-menu-btn" [ngClass]="[isOpen ? 'open':'']" (mouseenter)="dropdown.show()" (mouseleave)="dropdown.hide()">
+        Shop By
+        <span *ngIf="taxonomies[0]; let brands_taxonomy">{{brands_taxonomy.name}} <i class="fa pl-3 fa-chevron-down"></i></span>
+        
+    </div>
+    <div  dropdown #dropdown="bs-dropdown" [autoClose]="false" (isOpenChange)="onOpenChange($event)" (mouseenter)="dropdown.show()" (mouseleave)="dropdown.hide()" >
+      <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-triggers-manual">
+        <div *ngIf="taxonomies[0]; let brands_taxonomy">
+            <ul>
+              <li *ngFor="let taxon of brands_taxonomy.root.taxons" class="col-2" (click)="getBrands()">
+                <app-brand-list [taxons]="taxon"></app-brand-list>
+              </li>
+            </ul>
+      
+          </div>
+      </div>
     </div>
   </div>
-</div>
