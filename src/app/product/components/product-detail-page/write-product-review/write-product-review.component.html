@@ -1,7 +1,6 @@
-
 <div class="container pt-5 pb-5">
   <h3>Write Review</h3>
-  <div class="wirte-review">
+  <div class="write-review" *ngIf="product">
     <div class="row">
       <div class="col-2 pl-4">
          <img [src]="getProductImageUrl(product.master.images[0].product_url)">      
@@ -28,11 +27,13 @@
                   <label for="exampleFormControlTextarea1">Content</label>
                   <textarea class="form-control" rows="3" placeholder="Your review" formControlName="review" required></textarea>
                 </div>
-                <button type="submit" class="cw-btn cw-btn--action col-5">Submit Review</button>
+                <button type="submit" class="primary-btn primary-btn--action col-5">Submit Review</button>
               </form>
             </div>
             <div class="col-12" *ngIf="showThanks">
               <h3>Thanks for your review!</h3>
+
+
               <div class="float-left">
                 <i class="fa fa-check-circle fa-2x text-success"></i>
               </div>
@@ -42,25 +43,29 @@
               <div class="clearfix"></div>
 
 
-              <button type="normal" class="cw-btn cw-btn--action col-5 mt-4" (click)="goToProduct()">Continew Shopping</button>
+              <button type="normal" class="primary-btn primary-btn--action col-5 mt-4" (click)="goToProduct()">Continew Shopping</button>
             </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Title</label>
-              <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Headline for your review" formControlName="title"
-                required>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Content</label>
-              <textarea class="form-control" rows="3" placeholder="Your review" formControlName="review" required></textarea>
-            </div>
-            <button type="submit" class="primary-btn primary-btn--action">Submit Review</button>
-          </form>
+          </div>
         </div>
-        <div class="col-12" *ngIf="showThanks">
-          <h3>Thanks for your review!</h3>
-          <i class="fa fa-check-circle fa-3x"></i>
-          <p>Your review has been submitted.Please note that your review may take up to 48 hours to appear.</p>
-          <button type="normal" class="primary-btn primary-btn--action" (click)="goToProduct()">Continue Shopping</button>
+      </div>
+      <div class="col-3" *ngIf="submitReview">
+        <div class="guideline">
+          <h4>Writing Guidelines</h4>
+          <ul>
+            <li>
+              Please refrain from mentioning competitors or the specific price you paid for the product
+            </li>
+            <li>
+              Do not include any personally identifiable information, such as full names
+            </li>
+          </ul>
+          <h4>Media Guidelines</h4>
+          <ul>
+            <li>
+              Confirm you hold the copyright for the media
+            </li>
+
+          </ul>
         </div>
       </div>
     </div>

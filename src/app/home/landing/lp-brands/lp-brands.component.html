@@ -5,10 +5,10 @@
     </div>
   </div>
   <div class="row" *ngIf="brands.taxonomies">
-    <div class="col-6 col-sm-2  col-md-3 col-lg-2 my-2" *ngFor="let brand of brands.taxonomies[0].root.taxons">
+    <div class="col-6 col-sm-2  col-md-3 col-lg-2 my-1 p-1" *ngFor="let brand of brands.taxonomies[0].root.taxons">
       <div class="card">
         <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': brand.name, id: brand.id}">
-          <img class="card-img-top" height="200" widht="100" [src]="getBrandImageUrl(brand.icon)">
+          <img class="card-img-top" [src]="getBrandImageUrl(brand.icon)">
         </a>
       </div>
     </div>
