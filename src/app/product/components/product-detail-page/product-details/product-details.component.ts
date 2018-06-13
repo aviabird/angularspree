@@ -1,4 +1,4 @@
-import { relatedProducts } from './../../../reducers/selectors';
+import { relatedProducts, productReviews } from './../../../reducers/selectors';
 import { ProductActions } from './../../../actions/product-actions';
 import { Observable } from 'rxjs';
 import { getProductsByKeyword } from './../../../../home/reducers/selectors';
@@ -26,7 +26,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 export class ProductDetailsComponent implements OnInit, OnChanges {
   @Input() product: Product;
-  @Input() reviewList;
+
   dynamic = 50;
   customOptionTypesHash: any;
   currentSelectedOptions = {};
@@ -44,11 +44,10 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   ratingFivwStar: any = 0;
   ratingTodal: any = 0;
   percent: number[] = new Array(5);
-  NAMES = [];
 
   similarProducts$: Observable<any>;
   relatedProducts$: Observable<any>;
-
+  reviewProducts$: Observable<any>;
   constructor(
     private variantParser: VariantParserService,
     private variantRetriver: VariantRetriverService,
@@ -79,7 +78,6 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
 
         this.productdata = productdata
       });
-
     if (this.product.taxon_ids[0]) {
       this.store.dispatch(this.searchActions.getProducsByTaxon(`id=${this.product.taxon_ids[0]}`))
       this.similarProducts$ = this.store.select(getProductsByKeyword)
@@ -87,62 +85,14 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
 
     this.store.dispatch(this.productsActions.getRelatedProduct(this.productID))
     this.relatedProducts$ = this.store.select(relatedProducts)
+
+    this.store.dispatch(this.productsActions.getProductReviews(this.productID))
+    this.reviewProducts$ = this.store.select(productReviews)
+
+
   }
   ngOnChanges() {
-      // for (let i = 1; i < 100; i++) {
-      //   this.NAMES.push[i]('text');
-      // }
-      console.log(this.NAMES[20]);
-    if (this.ratingFivwStar) {
-      for (let index = 0; index < this.percent.length; index++) {
-        const element = this.percent[index];
-        if (this.percent[index] = 0) {
-          this.percent[index] = (this.ratingOneStar / this.ratingTodal) * 100;
-        }
-        if (this.percent[index] = 1) {
-          this.percent[index] = (this.ratingTwoStar / this.ratingTodal) * 100;
-        }
-        if (this.percent[index] = 2) {
-          this.percent[index] = (this.ratingThreeStar / this.ratingTodal) * 100;
-        }
-        if (this.percent[index] = 3) {
-          this.percent[index] = (this.ratingFourStar / this.ratingTodal) * 100;
-        }
-        if (this.percent[index] = 4) {
-          this.percent[index] = (this.ratingFivwStar / this.ratingTodal) * 100;
-          console.log(this.percent[index]);
-        }
-      }
-    }
-    console.log(this.percent[3]);
-    for (const key in this.reviewList) {
-      if (this.reviewList.hasOwnProperty(key)) {
-        const element = this.reviewList[key];
-        switch (element.rating) {
-          case element.rating = 1: {
-            this.ratingOneStar += 1;
-            break;
-          }
-          case element.rating = 2: {
-            this.ratingTwoStar += 1;
-            break;
-          }
-          case element.rating = 3: {
-            this.ratingThreeStar += 1;
-            break;
-          }
-          case element.rating = 4: {
-            this.ratingFourStar += 1;
-            break;
-          }
-          case element.rating = 5: {
-            this.ratingFivwStar += 1;
-            break;
-          }
-        }
-        this.ratingTodal += element.rating;
-      }
-    }
+
   }
 
   /**

@@ -1,12 +1,13 @@
 @import '../../../shared/scss/selected_theme_variables';
 .content {
   .queried-for {
-    display: inline;
     overflow: hidden; // display: inline-block;
     font-size: 18px;
     font-weight: 500;
     text-transform: capitalize;
     color: $gray-900;
+    display: flex;
+    align-items: baseline;
     .q {
       font-weight: 900;
       display: inline-block;
@@ -110,5 +111,90 @@
   .options:after {
     content: "";
     display: table;
+  }
+}
+
+.sort-mobile {
+  width: 100.5%;
+  max-width: 300%;
+  margin: -2px;
+  height: 100vh;
+  .modal-content {
+    border-radius: 0px;
+    box-shadow: none;
+    height: 100vh;
+  }
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
+  position: relative;
+  padding-left: 40px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: $gray-900;
+}
+
+[type="radio"]:checked+label:before,
+[type="radio"]:not(:checked)+label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 25px;
+  height: 25px;
+  border: 1px solid $gray-10;
+  border-radius: 100%;
+  background: $white;
+}
+
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after {
+  content: "";
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: $theme-action-color;
+  position: absolute;
+  top: 2.7px;
+  left: 7px;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked)+label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+ul {
+  list-style: none;
+  padding: 0 0 0.5rem 0;
+  margin: 0px;
+  li {
+    .sort {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: $gray-900;
+    }
+    padding: 0.8rem 1.1rem;
+    border-bottom: 1px solid $gray-10;
+    color: $gray-900;
+    cursor: pointer;
+    text-align: left;
   }
 }

@@ -38,8 +38,15 @@ export function reducer(state = initialState, { type, payload }: any): ProductSt
 
     case ProductActions.GET_RELETED_PRODUCT_SUCCESS:
       const _relatedProducts: Product[] = payload
+
       return state.merge({
         relatedProducts: _relatedProducts
+      }) as ProductState;
+
+    case ProductActions.GET_REVIEWS_SUCCESS:
+      const _productReviews = payload.reviews
+      return state.merge({
+        productReviews: _productReviews
       }) as ProductState;
 
     default:

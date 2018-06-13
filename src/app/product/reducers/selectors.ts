@@ -31,6 +31,9 @@ const fetchAllProductSearch = function (state: ProductState) {
 const fetchReletedProducts = function (state: ProductState) {
   return state.relatedProducts.toJS();
 };
+const fetchProductReviews = function (state: ProductState) {
+  return state.productReviews.toJS();
+};
 
 // *************************** PUBLIC API's ****************************
 export const getSelectedProduct = createSelector(getProductState, fetchSelectedProduct);
@@ -38,3 +41,4 @@ export const getProducts = createSelector(getProductState, fetchProducts);
 export const getTaxonomies = createSelector(getProductState, fetchAllTaxonomies);
 export const showAllProducts = createSelector(getProductState, fetchAllProductSearch);
 export const relatedProducts = createSelector(getProductState, fetchReletedProducts);
+export const productReviews = createSelector(getProductState, fetchProductReviews);
