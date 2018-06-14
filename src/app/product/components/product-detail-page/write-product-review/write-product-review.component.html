@@ -3,14 +3,13 @@
   <div class="write-review" *ngIf="product">
     <div class="row">
       <div class="col-2 pl-4">
-         <img [src]="getProductImageUrl(product.master.images[0].product_url)">      
+        <img [src]="getProductImageUrl(product.master.images[0].product_url)">
       </div>
       <div class="col-7">
         <div class="container">
           <div class="row">
             <div class="col-12" *ngIf="!showThanks">
               <h2>{{product.name}}</h2>
-            
               <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()" data-toggle="validator">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Rate this product</label>
@@ -32,18 +31,13 @@
             </div>
             <div class="col-12" *ngIf="showThanks">
               <h3>Thanks for your review!</h3>
-
-
               <div class="float-left">
                 <i class="fa fa-check-circle fa-2x text-success"></i>
               </div>
               <div class="float-right">
                 <p class="w-75 text-success">Your review has been submitted.Please note that your review may take up to 48 hours to appear.</p>
               </div>
-              <div class="clearfix"></div>
-
-
-              <button type="normal" class="primary-btn primary-btn--action col-5 mt-4" (click)="goToProduct()">Continew Shopping</button>
+              <button type="normal" class="primary-btn primary-btn--action col-5 mt-4" (click)="goToProduct()">Continue Shopping</button>
             </div>
           </div>
         </div>
@@ -64,7 +58,6 @@
             <li>
               Confirm you hold the copyright for the media
             </li>
-
           </ul>
         </div>
       </div>
