@@ -142,7 +142,7 @@ export class AuthService {
    * @memberof AuthService
    */
   authorized(): Observable<any> {
-    return this.http.get('api/v1/users').pipe(map((res: Response) => res));
+    return this.http.get('auth/authenticated').pipe(map((res: Response) => res));
     // catch should be handled here with the http observable
     // so that only the inner obs dies and not the effect Observable
     // otherwise no further login requests will be fired
@@ -184,7 +184,7 @@ export class AuthService {
       access_token: user.access_token || [],
       client: user.client || [],
       uid: user.uid || [],
-      'X-Spree-Token': user.spree_api_key || []
+      'Auth-Token': user.spree_api_key || []
     });
   }
 
