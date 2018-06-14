@@ -1,14 +1,14 @@
 export const DEFAULT_CONFIG = {
   // Add Your custom configs here
-  prodApiEndpoint: 'https://prod.server.com',
+  prodApiEndpoint: 'https://ofypets.indiepet.co.in/',
   appName: 'Angularspree',
   fevicon: 'http://via.placeholder.com/350x150',
   header: {
     brand: {
-      logo: '/assets/default/logo.png',
+      logo: '/assets/default/logo.svg',
       name: 'Angularspree',
-      height: '40',
-      width: '112'
+      height: '42',
+      width: '140'
     },
     showGithubRibon: false
   }

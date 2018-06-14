@@ -11,7 +11,7 @@
     margin-right: 26px !important
   }
   input.desktop-search-bar {
-    width: 75%;
+    width: 85%;
     font-family: $primary-font;
     display: inline-block;
     font-size: 16px;
@@ -19,10 +19,10 @@
     line-height: 24px;
     color: $gray-900;
     box-sizing: content-box;
-    padding: 8px 10px 10px;
+    padding: 9px 10px 9px;
     margin: 0;
     outline: 0;
-    border: 1px solid $gray-10;
+    border: none;
     border-radius: 4px 0 0 4px;
     border-right: 0;
     background: $gray-200;
@@ -39,11 +39,11 @@
     box-sizing: content-box;
     display: inline-block;
     height: 28px;
-    width: 40px;
+    width: 5%;
     text-align: center;
     padding: 8px 0 2px;
     background: $gray-200;
-    border: 1px solid $gray-10;
+    border: none;
     border-left: none;
     border-radius: 0 4px 4px 0;
     .desktop-iconSearch {
@@ -84,7 +84,7 @@
   padding: 0px 10px 10px 10px;
   .input.desktop-search-bar {
     width: 100%;
-    border: 1px solid $gray-10;
+    border: none;
   }
 }
 

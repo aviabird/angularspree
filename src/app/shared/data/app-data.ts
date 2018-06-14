@@ -22,11 +22,19 @@ export const APP_DATA = {
     }
   ],
   landing_page_banner: [{
-    image_link: 'assets/custom/banner/page1.png',
+    image_link: 'assets/custom/banner/page1.jpg',
     link_url: '#'
   },
   {
-    image_link: 'assets/custom/banner/page2.png',
+    image_link: 'assets/custom/banner/page2.jpg',
+    link_url: '#'
+  },
+  {
+    image_link: 'assets/custom/banner/page3.jpg',
+    link_url: '#'
+  },
+  {
+    image_link: 'assets/custom/banner/page4.jpg',
     link_url: '#'
   }
   ],
@@ -48,7 +56,7 @@ export const APP_DATA = {
 
   footer_page_links: [
     {
-      name: 'About_us',
+      name: 'About Us',
       link_url: '#'
     },
     {
@@ -104,5 +112,5 @@ export const APP_DATA = {
     contact_no: '917-6031-568',
     copyright: 'Copyright © 2018 Ofypets, Inc.'
   }
- 
+
 }
