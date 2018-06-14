@@ -54,8 +54,9 @@ export class CheckoutService {
       }/line_items?order_token=${this.getOrderToken()}`;
 
     return this.http
-      .post<LineItem>(url, params)
+      .post<{line_item: LineItem}>(url, params)
       .pipe(
+        map(data => data.line_item),
         tap(
           _ =>
             this.toastyService.success(
@@ -75,22 +76,20 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   fetchCurrentOrder() {
-    return (
-      this.http
-        .get<Order>('api/v1/orders/current')
-        .pipe(
-          map(order => {
-            if (order) {
-              const token = order.token;
-              this.setOrderTokenInLocalStorage({ order_token: token });
-              return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
-            } else {
-              this.createEmptyOrder()
-                .subscribe();
-            }
-          })
-        )
-    )
+    return this.http.get<{ order: Order }>('api/v1/orders/current').pipe(
+      map(data => {
+        if (data) {
+          const order = data.order;
+          const token = order.token;
+          this.setOrderTokenInLocalStorage({ order_token: token });
+          return this.store.dispatch(
+            this.actions.fetchCurrentOrderSuccess(order)
+          );
+        } else {
+          this.createEmptyOrder().subscribe();
+        }
+      })
+    );
   }
 
   /**
@@ -117,9 +116,10 @@ export class CheckoutService {
     const headers = new HttpHeaders().set('Content-Type', 'text/plain');
 
     return this.http
-      .post<Order>('api/v1/orders.json', null, { headers: headers })
+      .post<{ order: Order }>('api/v1/orders.json', null, { headers: headers })
       .pipe(
-        map((order: Order) => {
+        map(data => {
+          const order = data.order;
           this.setOrderTokenInLocalStorage({ order_token: order.token });
           return this.store.dispatch(
             this.actions.fetchCurrentOrderSuccess(order)
@@ -166,10 +166,10 @@ export class CheckoutService {
       this.orderNumber
     }/next.json?order_token=${this.getOrderToken()}`;
     return this.http
-      .put<Order>(url, {})
+      .put<{order: Order}>(url, {})
       .pipe(
-        map(order =>
-          this.store.dispatch(this.actions.changeOrderStateSuccess(order))
+        map(data =>
+          this.store.dispatch(this.actions.changeOrderStateSuccess(data.order))
         )
       );
   }
@@ -187,10 +187,10 @@ export class CheckoutService {
       this.orderNumber
     }.json?order_token=${this.getOrderToken()}`;
     return this.http
-      .put<Order>(url, params)
+      .put<{order: Order}>(url, params)
       .pipe(
-        map(order =>
-          this.store.dispatch(this.actions.updateOrderSuccess(order))
+        map(data =>
+          this.store.dispatch(this.actions.updateOrderSuccess(data.order))
         )
       );
   }

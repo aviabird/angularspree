@@ -21,7 +21,7 @@ export class AuthenticationEffects {
     .ofType(AuthActions.AUTHORIZE)
     .pipe(
       switchMap(() => this.authService.authorized()),
-      filter(data => !data.error && data.count),
+      filter(data => data.status !== 'unauthorized'),
       map(() => this.authActions.loginSuccess())
     );
 
