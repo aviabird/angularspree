@@ -1,6 +1,5 @@
 import { LineItem } from './../../core/models/line_item';
 import { environment } from './../../../environments/environment';
-import { orderDetails } from './../reducers/selectors';
 import { CheckoutActions } from './../actions/checkout.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../interfaces';
