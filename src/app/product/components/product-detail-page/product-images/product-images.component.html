@@ -1,7 +1,7 @@
 <div class="image-container" *ngIf="images">
   <div class="row">
     <div class="col-1">
-      <div class="thumbnails-vertical-container">
+      <div class="thumbnails-vertical-container d-none d-lg-block">
         <button class="thumbnails-thumbnail-button" *ngFor="let image of images">
           <img class="thumbnails-thumbnail img-fluid" [src]="getProductImageUrl(image.small_url)" [alt]="image.alt" (mouseover)="onMouseOver(image)">
         </button>
