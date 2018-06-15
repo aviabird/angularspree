@@ -19,7 +19,7 @@ export class BrandLogoComponent implements OnInit {
 
   getBrandImageUrl(url) {
     if (url) {
-      return environment.apiEndpoint + url;
+      return url;
     } else { return this.image }
   }
 }

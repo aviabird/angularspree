@@ -14,6 +14,6 @@ export class LpTrItemComponent implements OnInit {
   ngOnInit() {
   }
   getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+    return url;
   }
 }

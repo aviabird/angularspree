@@ -15,6 +15,6 @@ export class PlItemComponent implements OnInit {
   }
 
   getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+    return url;
   }
 }
