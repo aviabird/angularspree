@@ -91,6 +91,6 @@ export const DEFAULT_APP_DATA = {
   ],
   contact_info: {
     contact_no: '917-6031-568',
-    copyright: 'Copyright © 2018 angularspree, Inc.'
+    copyright: 'Copyright © 2018 AngularSpree, Inc.'
   }
 };
