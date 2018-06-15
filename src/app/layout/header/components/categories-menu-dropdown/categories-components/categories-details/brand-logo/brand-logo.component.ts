@@ -1,5 +1,4 @@
 import { environment } from './../../../../../../../../environments/environment';
-import { APP_DATA } from './../../../../../../../shared/data/app-data';
 import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({

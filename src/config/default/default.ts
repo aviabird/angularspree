@@ -1,3 +1,5 @@
+import { DEFAULT_APP_DATA } from './app-data';
+
 export const DEFAULT_CONFIG = {
   // Add Your custom configs here
   prodApiEndpoint: 'https://ofypets.indiepet.co.in/',
@@ -11,5 +13,6 @@ export const DEFAULT_CONFIG = {
       width: '140'
     },
     showGithubRibon: false
-  }
+  },
+  ...DEFAULT_APP_DATA
 };

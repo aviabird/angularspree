@@ -1,4 +1,4 @@
-import { APP_DATA } from './../../../../shared/data/app-data';
+import { environment } from './../../../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer-social-links.component.scss']
 })
 export class FooterSocialLinksComponent implements OnInit {
-  social_links = APP_DATA.footer_social_links;
+  social_links = environment.config.footer_social_links;
   constructor() { }
 
   ngOnInit() {

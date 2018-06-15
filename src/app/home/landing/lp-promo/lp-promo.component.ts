@@ -1,4 +1,4 @@
-import { APP_DATA } from './../../../shared/data/app-data';
+import { environment } from './../../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lp-promo.component.scss']
 })
 export class LpPromoComponent implements OnInit {
-  promo_banners = APP_DATA.promo_banner;
+  promo_banners = environment.config.promo_banner;
   constructor() { }
 
   ngOnInit() {

@@ -11,7 +11,7 @@
     margin-right: 26px !important
   }
   input.desktop-search-bar {
-    width: 85%;
+    width: 82%;
     font-family: $primary-font;
     display: inline-block;
     font-size: 16px;
@@ -22,7 +22,7 @@
     padding: 9px 10px 9px;
     margin: 0;
     outline: 0;
-    border: none;
+    border: 1px solid $theme-main-color;
     border-radius: 4px 0 0 4px;
     border-right: 0;
     background: $gray-200;
@@ -32,7 +32,7 @@
     &:focus,
     &:focus+a.desktop-submit {
       background-color: $white;
-      border-color: #14cda8;
+      box-shadow: 0 0 3px -1px $theme-main-color + 50;
     }
   }
   a.desktop-submit {
@@ -41,9 +41,9 @@
     height: 28px;
     width: 5%;
     text-align: center;
-    padding: 8px 0 2px;
+    padding: 8px 10px 2px;
     background: $gray-200;
-    border: none;
+    border: 1px solid $theme-main-color;
     border-left: none;
     border-radius: 0 4px 4px 0;
     .desktop-iconSearch {
@@ -84,7 +84,7 @@
   padding: 0px 10px 10px 10px;
   .input.desktop-search-bar {
     width: 100%;
-    border: none;
+    border: 1px solid $theme-main-color;
   }
 }
 
@@ -101,6 +101,7 @@
     border-radius: 4px 4px 0px 0px;
     margin-bottom: 0px;
     margin-left: 0px;
+    border: 1px solid $theme-main-color;
     a.desktop-submit {
       color: $white;
       height: 28px;

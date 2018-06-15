@@ -1,7 +1,7 @@
+import { environment } from './../../../environments/environment';
 
 import { switchMap } from 'rxjs/operators';
 
-import { APP_DATA } from './../../shared/data/app-data';
 import { ProductService } from './../../core/services/product.service';
 import { Observable } from 'rxjs';
 import { getProducts, getTaxonomies } from './../../product/reducers/selectors';
@@ -23,7 +23,7 @@ export class LandingComponent implements OnInit {
   taxon_by_name: any;
   taxons_id: string;
   favoriteProducts: any;
-  dealsType = APP_DATA.Deals.type;
+  dealsType = environment.config.Deals.type;
   brands: any;
 
 
