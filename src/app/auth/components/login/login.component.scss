@@ -7,10 +7,10 @@
 
 .panel {
   margin-bottom: 20px;
-  background-color: #fcfcfc;
+  background-color: $gray-200;
   border: none;
   border-radius: 4px;
-  border: 1px solid #eee;
+  border: 1px solid $gray-10;
   box-shadow: none;
   .panel-heading {
     padding: 30px 0 0;
@@ -23,7 +23,7 @@
       margin-top: 0;
       margin-bottom: 0;
       font-size: 28px;
-      color: #666;
+      color: $gray-900;
       font-weight: 400;
     }
   }
@@ -31,7 +31,7 @@
 
 .login-input-container {
   margin: 20px;
-  border: 1px solid #bfc0c6;
+  border: 1px solid $gray-10;
   border-radius: 5px;
   padding: 0;
 }
@@ -67,14 +67,14 @@ fieldset {
 }
 
 .login-user-input-password {
-  border-top: 1px solid #d5d6d9 !important;
+  border-top: 1px solid $gray-10 !important;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
 .login-user-input {
   display: block;
-  color: #282c3f;
+  color: $gray-900;
   padding-right: 40px;
   font-size: 15px;
   width: 100%;
@@ -84,7 +84,7 @@ fieldset {
 
 input {
   -webkit-appearance: textfield;
-  background-color: white;
+  background-color: $white;
   -webkit-rtl-ordering: logical;
   user-select: text;
   cursor: auto;
@@ -107,7 +107,7 @@ input {
 }
 
 fieldset {
-  border: 1px solid silver;
+  border: 1px solid $gray-10;
   margin: 0 2px;
   padding: .35em .625em .75em;
 }
@@ -128,8 +128,8 @@ fieldset {
   border: 0;
   text-transform: uppercase;
   border-radius: 3px;
-  background-color: #a3d032 - 50;
-  color: #fff;
+  background-color: $theme-action-color - 50;
+  color: $white;
 }
 
 .login-link-container {
@@ -149,7 +149,7 @@ fieldset {
 }
 
 .login-info-text {
-  color: #94969f;
+  color: $gray-700;
   font-size: 12px;
 }
 
@@ -171,7 +171,7 @@ a {
 }
 
 .login-info-text {
-  color: #94969f;
+  color: $gray-700;
   font-size: 12px;
 }
 
@@ -205,8 +205,8 @@ a {
   font-size: 13px;
   font-weight: 500;
   height: 50px;
-  border: 1px solid #bfc0c6;
-  background-color: #fff;
+  border: 1px solid $gray-10;
+  background-color: $white;
   border-radius: 5px;
   text-align: left;
 }
