@@ -1,4 +1,4 @@
-import { DEFAULT_CONFIG } from './../config/default';
+import { DEFAULT_CONFIG } from '../config/default/default';
 
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do

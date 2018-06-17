@@ -1,4 +1,4 @@
-import { APP_DATA } from './../../../../shared/data/app-data';
+import { environment } from './../../../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer-quick-links.component.scss']
 })
 export class FooterQuickLinksComponent implements OnInit {
-  footer_pages = APP_DATA.footer_page_links;
+  footer_pages = environment.config.footer_page_links;
 
   constructor() { }
 

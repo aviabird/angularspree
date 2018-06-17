@@ -1,4 +1,4 @@
-import { CUSTOM_CONFIG } from '../config/custom';
+import { CUSTOM_CONFIG } from '../config/custom/custom';
 
 export const environment = {
   production: false,

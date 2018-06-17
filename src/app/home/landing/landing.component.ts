@@ -1,7 +1,7 @@
+import { environment } from './../../../environments/environment';
 
 import { switchMap } from 'rxjs/operators';
 
-import { APP_DATA } from './../../shared/data/app-data';
 import { ProductService } from './../../core/services/product.service';
 import { Observable } from 'rxjs';
 import { getProducts, getTaxonomies } from './../../product/reducers/selectors';
@@ -9,13 +9,14 @@ import { ProductActions } from './../../product/actions/product-actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../interfaces';
 import { Product } from './../../core/models/product';
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DragScrollDirective } from 'ngx-drag-scroll';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  styleUrls: ['./landing.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingComponent implements OnInit {
   products$: Observable<any>;
@@ -23,7 +24,7 @@ export class LandingComponent implements OnInit {
   taxon_by_name: any;
   taxons_id: string;
   favoriteProducts: any;
-  dealsType = APP_DATA.Deals.type;
+  dealsType = environment.config.Deals.type;
   brands: any;
 
 

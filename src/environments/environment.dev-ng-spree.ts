@@ -1,4 +1,4 @@
-import { DEFAULT_CONFIG } from './../config/default';
+import { DEFAULT_CONFIG } from '../config/default/default';
 
 export const environment = {
   production: false,

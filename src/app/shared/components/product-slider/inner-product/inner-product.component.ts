@@ -18,7 +18,6 @@ export class InnerIproduct implements OnInit {
   }
 
   getProductImageUrl() {
-    const url = `/spree/products/${this.product.master.images[0].id}/product/${this.product.master.images[0].attachment_file_name}`
-    return environment.apiEndpoint + url;
+    return this.product.master.images[0].product_url;
   }
 }

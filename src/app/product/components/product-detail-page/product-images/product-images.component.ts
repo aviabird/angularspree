@@ -22,7 +22,7 @@ export class ProductImagesComponent implements OnInit {
   ngOnInit() { }
 
   getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+    return url;
   }
 
   onMouseOver(image: Image) {
