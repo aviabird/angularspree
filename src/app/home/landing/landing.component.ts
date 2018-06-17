@@ -9,13 +9,14 @@ import { ProductActions } from './../../product/actions/product-actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../interfaces';
 import { Product } from './../../core/models/product';
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DragScrollDirective } from 'ngx-drag-scroll';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  styleUrls: ['./landing.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingComponent implements OnInit {
   products$: Observable<any>;
