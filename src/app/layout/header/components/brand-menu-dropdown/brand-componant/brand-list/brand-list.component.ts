@@ -15,8 +15,6 @@ export class BrandListComponent implements OnInit {
   }
 
   getBrandImageUrl(url) {
-    if (url) {
-      return environment.apiEndpoint + url;
-    } else { return this.image }
+    return url || this.image;
   }
 }

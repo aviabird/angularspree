@@ -4,7 +4,6 @@ import { SearchActions } from './../../../../../../home/reducers/search.actions'
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../../../interfaces';
 import { environment } from './../../../../../../../environments/environment';
-import { APP_DATA } from './../../../../../../shared/data/app-data';
 import { Component, OnInit, Input, OnChanges, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import {
   trigger,
@@ -47,7 +46,7 @@ export class CategoriesDetailsComponent implements OnInit, OnChanges {
     return this.show ? 'show' : 'hide'
   }
 
-  taxon = APP_DATA;
+  taxon = environment.config;
   constructor(private store: Store<AppState>,
     private searchActions: SearchActions) {
   }

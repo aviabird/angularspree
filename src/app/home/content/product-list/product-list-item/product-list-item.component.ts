@@ -16,6 +16,6 @@ export class ProductListItemComponent implements OnInit {
   }
 
   getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+    return url;
   }
 }

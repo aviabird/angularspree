@@ -11,3 +11,8 @@
       border-color: $black - 200;
     }
   }
+
+img {
+  width: 100%;
+  object-fit: contain;
+}

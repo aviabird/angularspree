@@ -68,7 +68,7 @@ export class WriteProductReviewComponent implements OnInit {
     );
   }
   getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+    return url;
   }
 
 
