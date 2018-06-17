@@ -6,7 +6,7 @@
   top: 3rem !important;
   z-index: 1;
   border-radius: 0px;
- 
+
 }
 .notscrolled:before {
   content: "";
@@ -68,7 +68,7 @@ ul {
       background-size: 10px;
     }
     &:hover::after {
-      color: $theme-main-color
+      color: $header-font-color;
     } // &:hover {
     //   background-color: $white;
     //   color: $theme-main-color;
@@ -84,7 +84,7 @@ ul {
   }
   .active {
     background-color: $white !important;
-    color: $black !important;
+    color: $header-font-color !important;
     border-radius: 4px 0px 0px 4px !important;
   }
 }

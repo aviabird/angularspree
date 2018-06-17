@@ -35,7 +35,7 @@ export class ProductListComponent implements OnInit {
   }
 
   getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+    return url;
   }
 
   getMargin() {

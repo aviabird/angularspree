@@ -1,34 +1,21 @@
 export const APP_DATA = {
-  videos: [
+  landing_page_banner: [
     {
-      link: 'https://dl3.webmfiles.org/big-buck-bunny_trailer.webm',
-      type: 'video/webm',
-      title: 'bunny vedio'
+      image_link: 'assets/custom/banner/page1.jpg',
+      link_url: '#'
     },
     {
-      link: 'https://dl3.webmfiles.org/elephants-dream.webm',
-      type: 'video/webm',
-      title: 'sample vedio'
+      image_link: 'assets/custom/banner/page2.jpg',
+      link_url: '#'
     },
     {
-      link: 'https://dl3.webmfiles.org/elephants-dream.webm',
-      type: 'video/webm',
-      title: 'sample vedio'
+      image_link: 'assets/custom/banner/page3.jpg',
+      link_url: '#'
     },
     {
-      link: 'https://dl3.webmfiles.org/elephants-dream.webm',
-      type: 'video/webm',
-      title: 'sample vedio'
+      image_link: 'assets/custom/banner/page4.jpg',
+      link_url: '#'
     }
-  ],
-  landing_page_banner: [{
-    image_link: 'assets/custom/banner/page1.png',
-    link_url: '#'
-  },
-  {
-    image_link: 'assets/custom/banner/page2.png',
-    link_url: '#'
-  }
   ],
   promo_banner: {
     image_link: 'assets/custom/banner/promo/promo.png',
@@ -43,12 +30,13 @@ export const APP_DATA = {
   },
 
   Cat: {
-    image_link: 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350'
+    image_link:
+      'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350'
   },
 
   footer_page_links: [
     {
-      name: 'About_us',
+      name: 'About Us',
       link_url: '#'
     },
     {
@@ -66,31 +54,32 @@ export const APP_DATA = {
     {
       name: 'Testimonials',
       link_url: '#'
-    },
+    }
   ],
   footer_social_links: [
     {
-      link_url: 'https://twitter.com/Ofypet',
+      link_url: 'https://twitter.com/angularspree',
       name: 'Twitter',
       icon: 'fa fa-twitter-square'
     },
     {
-      link_url: 'https://www.instagram.com/ofypets/',
+      link_url: 'https://www.instagram.com/angularspree/',
       name: 'Instagram',
       icon: 'fa fa-instagram'
     },
     {
-      link_url: 'https://plus.google.com/b/110371544800340671090/110371544800340671090',
+      link_url:
+        'https://plus.google.com/b/110371544800340671090/110371544800340671090',
       name: 'Google +',
       icon: 'fa fa-google-plus-square'
     },
     {
-      link_url: 'https://in.pinterest.com/ofypets/',
+      link_url: 'https://in.pinterest.com/angularspree/',
       name: 'Pinterest',
       icon: 'fa fa-pinterest-square'
     },
     {
-      link_url: 'https://www.facebook.com/ofypets/',
+      link_url: 'https://www.facebook.com/angularspree/',
       name: 'Facebook',
       icon: 'fa fa-facebook-square'
     },
@@ -102,7 +91,6 @@ export const APP_DATA = {
   ],
   contact_info: {
     contact_no: '917-6031-568',
-    copyright: 'Copyright © 2018 Ofypets, Inc.'
+    copyright: 'Copyright © 2018 angularspree, Inc.'
   }
- 
-}
+};

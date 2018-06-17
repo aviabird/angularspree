@@ -1,11 +1,12 @@
 import { environment } from './../../../../../environments/environment';
 import { Product } from './../../../../core/models/product';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-pl-fav-item',
   templateUrl: './pl-fav-item.component.html',
-  styleUrls: ['./pl-fav-item.component.scss']
+  styleUrls: ['./pl-fav-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlFavItemComponent implements OnInit {
 

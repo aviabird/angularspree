@@ -1,11 +1,12 @@
 import { Product } from './../../../../core/models/product';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-pl-item',
   templateUrl: './pl-item.component.html',
-  styleUrls: ['./pl-item.component.scss']
+  styleUrls: ['./pl-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlItemComponent implements OnInit {
   @Input() product: Product;
@@ -15,6 +16,6 @@ export class PlItemComponent implements OnInit {
   }
 
   getProductImageUrl(url) {
-    return environment.apiEndpoint + url;
+    return url;
   }
 }

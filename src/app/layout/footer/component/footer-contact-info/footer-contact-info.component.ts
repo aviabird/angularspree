@@ -1,4 +1,4 @@
-import { APP_DATA } from './../../../../shared/data/app-data';
+import { environment } from './../../../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer-contact-info.component.scss']
 })
 export class FooterContactInfoComponent implements OnInit {
-  contact_info = APP_DATA.contact_info
+  contact_info = environment.config.contact_info
   constructor() { }
 
   ngOnInit() {

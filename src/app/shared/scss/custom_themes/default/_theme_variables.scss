@@ -3,14 +3,19 @@
 // -- Theme Colors here --
 // Custom theme colors
 // Refer _default_variables to generate colors
-$theme-main-color: white;
-$theme-action-color: $pink+50;
+$theme-main-color: $gray-200;
+$theme-action-color: #EB7F00 + 100;
 $primary-font: "Whitney";
-$theme-action-sub-color1:#F54196;
-$theme-action-sub-color2: #FF6EB1;
-$theme-action-sub-color3: #F57CB2;
-$theme-action-sub-color4:#FF1D83;
-$theme-main-sub-color1:#404040;
-$theme-main-sub-color2: rgb(99, 44, 44);
-$theme-main-sub-color3: #bfbfbf;
-$theme-main-sub-color4: #E5E5E5
+$header-font-color: $gray-600;
+
+$theme-action-sub-color1: #EB7F00;
+$theme-action-sub-color2: $theme-action-sub-color1 - 30;
+$theme-action-sub-color3: $theme-action-sub-color2 - 20;
+$theme-action-sub-color4: $theme-action-sub-color3 -10;
+
+$theme-main-sub-color1: $gray-200;
+$theme-main-sub-color2: $gray-300;
+$theme-main-sub-color3: $gray-500;
+$theme-main-sub-color4: $gray-700;
+
+$footer-font-color: $header-font-color;

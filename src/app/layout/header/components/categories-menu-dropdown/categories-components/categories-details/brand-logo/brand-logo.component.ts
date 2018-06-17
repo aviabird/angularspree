@@ -1,5 +1,4 @@
 import { environment } from './../../../../../../../../environments/environment';
-import { APP_DATA } from './../../../../../../../shared/data/app-data';
 import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -20,7 +19,7 @@ export class BrandLogoComponent implements OnInit {
 
   getBrandImageUrl(url) {
     if (url) {
-      return environment.apiEndpoint + url;
+      return url;
     } else { return this.image }
   }
 }

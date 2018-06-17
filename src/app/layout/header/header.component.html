@@ -3,7 +3,7 @@
     <div class="container">
       <app-categories-menu-dropdown [taxonomies]="taxonomies$| async" [screenwidth]="screenwidth" [isScrolled]="isScrolled" *ngIf="!devicewidth && isScrolled"></app-categories-menu-dropdown>
       <a class="navbar-brand" routerLink="/" *ngIf="!devicewidth">
-        <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
+        <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" [height]="this.headerConfig.brand.height"
           class="d-inline-block align-top" alt="">
       </a>
       <a (click)="showModal()" for="main-nav-state" class="main-nav-trigger" *ngIf="devicewidth" [ngClass]="{'main-nav-trigger-open':isModalShown}">
