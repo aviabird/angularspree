@@ -6,8 +6,8 @@
   top: 3rem !important;
   z-index: 1;
   border-radius: 0px;
-
 }
+
 .notscrolled:before {
   content: "";
   position: absolute;
@@ -84,7 +84,7 @@ ul {
   }
   .active {
     background-color: $white !important;
-    color: $header-font-color !important;
+    color: $gray-600 !important;
     border-radius: 4px 0px 0px 4px !important;
   }
 }
@@ -94,7 +94,6 @@ ul {
 }
 
 .main-nav-trigger {
-  ms-touch-action: manipulation;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   left: -3px;

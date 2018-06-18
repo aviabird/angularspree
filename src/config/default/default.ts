@@ -13,6 +13,7 @@ export const DEFAULT_CONFIG = {
       height: '42',
       width: '140'
     },
+    searchPlaceholder: 'Find good furniture for me',
     showGithubRibon: false
   },
   ...DEFAULT_APP_DATA

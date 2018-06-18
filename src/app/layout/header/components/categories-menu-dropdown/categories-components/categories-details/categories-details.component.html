@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-7 ">
       <div class="row">
-        <div class="col-md-5 p-0" *ngFor="let taxon of taxons">
+        <div class="col-md-3 p-0" *ngFor="let taxon of taxons">
           <div>
             <a [routerLink]="['/search']" [queryParams]="{id: taxon.id}">
               <b class="sucathead">{{taxon.name}}</b>
