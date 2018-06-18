@@ -4,7 +4,7 @@ import { SearchActions } from './../../../../../../home/reducers/search.actions'
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../../../interfaces';
 import { environment } from './../../../../../../../environments/environment';
-import { Component, OnInit, Input, OnChanges, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import {
   trigger,
   state,
@@ -29,7 +29,8 @@ import {
       transition('show => hide', animate('100ms ease-out')),
       transition('hide => show', animate('200ms ease-in'))
     ])
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoriesDetailsComponent implements OnInit, OnChanges {
   @Input() taxons;
@@ -41,12 +42,12 @@ export class CategoriesDetailsComponent implements OnInit, OnChanges {
   menuTaxons: any;
   brandLists$: Observable<any>;
   show = false;
+  taxon = environment.config;
 
   get stateName() {
     return this.show ? 'show' : 'hide'
   }
 
-  taxon = environment.config;
   constructor(private store: Store<AppState>,
     private searchActions: SearchActions) {
   }
@@ -56,6 +57,7 @@ export class CategoriesDetailsComponent implements OnInit, OnChanges {
     this.menuTaxons = taxon.taxons;
     this.onSubCatClicked.emit(true);
   }
+
   backtolist() {
     this.show = !this.show;
     this.onSubCatClicked.emit(false);
@@ -64,13 +66,6 @@ export class CategoriesDetailsComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  get brand() {
-    return this.taxonImageLink;
-  }
-
-  getProductImageUrl() {
-    return environment.apiEndpoint + this.taxonImageLink;
-  }
   ngOnChanges() {
     this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', this.taxonName));
     this.brandLists$ = this.store.select(taxonomiByName);

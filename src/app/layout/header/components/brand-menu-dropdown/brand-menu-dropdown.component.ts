@@ -2,13 +2,14 @@ import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
 
 @Component({
   selector: 'app-brand-menu-dropdown',
   templateUrl: './brand-menu-dropdown.component.html',
-  styleUrls: ['./brand-menu-dropdown.component.scss']
+  styleUrls: ['./brand-menu-dropdown.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrandMenuDropdownComponent implements OnInit {
   @Input() taxonomies;

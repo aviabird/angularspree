@@ -1,19 +1,21 @@
+const cdn_url = 'http://res.cloudinary.com/aviabird/image/upload/v1529305518/angularspree/';
+
 export const DEFAULT_APP_DATA = {
   landing_page_banner: [
     {
-      image_link: 'http://res.cloudinary.com/aviabird/image/upload/v1529041774/banner-1.png',
+      image_link: `${cdn_url}banner-1.png`,
       link_url: '#'
     },
     {
-      image_link: 'http://res.cloudinary.com/aviabird/image/upload/v1529041774/banner-2.png',
+      image_link: `${cdn_url}banner-2.png`,
       link_url: '#'
     },
     {
-      image_link: 'http://res.cloudinary.com/aviabird/image/upload/v1529041774/banner-3.png',
+      image_link: `${cdn_url}banner-3.png`,
       link_url: '#'
     },
     {
-      image_link: 'http://res.cloudinary.com/aviabird/image/upload/v1529041774/banner-4.png',
+      image_link: `${cdn_url}banner-4.png`,
       link_url: '#'
     }
   ],
