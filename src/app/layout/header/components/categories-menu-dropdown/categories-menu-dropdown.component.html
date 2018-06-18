@@ -10,12 +10,12 @@
 
   </div>
   <div dropdown #dropdown="bs-dropdown" [autoClose]="false" (isOpenChange)="onOpenChange($event)" (mouseenter)="dropdown.show()"
-    (mouseleave)="dropdown.hide()">
+  (mouseleave)="dropdown.hide()">
     <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu" [ngClass]="[isScrolled ? '':'notscrolled']" role="menu"
       aria-labelledby="button-triggers-manual">
       <div class="row" *ngIf="taxonomies[0]; let catgeory_taxonomy">
         <div class="col-md-3">
-          <ul>
+          <ul class="h-100">
             <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)"
               [ngClass]="{'active': selectedItem == i}">{{taxon.name}}</li>
           </ul>

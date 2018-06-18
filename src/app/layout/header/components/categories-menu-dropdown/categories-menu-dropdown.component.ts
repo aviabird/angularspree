@@ -2,7 +2,7 @@ import { SearchActions } from './../../../../home/reducers/search.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import {
   trigger,
   state,
@@ -27,7 +27,8 @@ import { URLSearchParams } from '@angular/http'
       transition('show => hide', animate('100ms ease-out')),
       transition('hide => show', animate('200ms ease-in'))
     ])
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoriesMenuDropdownComponent implements OnInit {
   @Input() taxonomies;

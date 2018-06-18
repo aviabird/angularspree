@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-categories-list',
   templateUrl: './categories-list.component.html',
-  styleUrls: ['./categories-list.component.scss']
+  styleUrls: ['./categories-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoriesListComponent implements OnInit {
   @Input() taxons;
