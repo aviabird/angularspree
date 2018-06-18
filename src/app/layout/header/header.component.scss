@@ -73,8 +73,8 @@
 
 .small-logo img {
   height: 30px;
-  width: 110px;
-  margin-top: 8px;
+  width: 80px;
+  margin-top: 0;
 }
 
 @media screen and(min-width: 321px) and(max-width: 768px) {
@@ -95,11 +95,6 @@
 @media screen and(min-width: 310px) and(max-width: 320px) {
   .navbar {
     padding: 0px;
-  }
-  .small-logo img {
-    height: 20px;
-    width: 80px;
-    margin-top: 6px;
   }
   :host /deep/ .page-scroll-header .cust-menu-btn {
     display: none;
@@ -142,7 +137,7 @@
   ms-touch-action: manipulation;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  left: -3px;
+  left: 3px;
   position: relative;
   -webkit-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;

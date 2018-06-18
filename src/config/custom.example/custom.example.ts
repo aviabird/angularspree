@@ -8,8 +8,9 @@ export const CUSTOM_EXAMPLE_CONFIG = {
       logo: 'http://via.placeholder.com/350x150',
       name: 'Custom',
       height: '40',
-      width: '112'
+      width: '112',
     },
+    searchPlaceholder: 'Search',
     showGithubRibon: false,
   }
 };

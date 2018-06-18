@@ -8,7 +8,7 @@ $theme-action-color: #EB7F00 + 100;
 $primary-font: "Whitney";
 $header-font-color: $gray-600;
 
-$theme-action-sub-color1: #EB7F00;
+$theme-action-sub-color1: $theme-action-color - 50;
 $theme-action-sub-color2: $theme-action-sub-color1 - 30;
 $theme-action-sub-color3: $theme-action-sub-color2 - 20;
 $theme-action-sub-color4: $theme-action-sub-color3 -10;

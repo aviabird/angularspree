@@ -1,21 +1,23 @@
+@import "../../../../../../../shared/scss/selected_theme_variables";
 a {
-  color: #484848;
+  color: $gray-600;
+  font-size: 0.9rem;
+  &:hover {
+    color: $theme-action-sub-color1;
+    text-decoration: underline;
+  }
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    color: #fff;
+  }
 }
 
-a:hover {
-  color: #a3d032;
-  text-decoration: underline;
-}
-
-.subbandmenu {
+.subbrandmenu {
   ul {
     list-style: none;
     padding: 0.5rem 0 0.5rem 1.5rem;
     margin: 0px;
-    background-color: #adadad;
     li {
       padding: 0.5rem 0.4rem;
-      background-color: #adadad;
       border-bottom: 1px solid #ccc;
       color: #fff;
       cursor: pointer;
@@ -40,19 +42,13 @@ a:hover {
       a:hover {
         color: #a3d032;
       }
-      uL>LI {
-        POSITION: absolute;
-        LEFT: 20%;
-        WIDTH: 78%;
-        TOP: 0PX;
-        display: NONE;
+      ul>li {
+        position: absolute;
+        left: 20%;
+        width: 78%;
+        top: 0PX;
+        display: none;
       }
     }
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  a {
-    color: #fff;
   }
 }

@@ -1,11 +1,8 @@
-@media screen and(min-width: 320px) and(max-width: 768px) {
-  .main-body {
-    margin-top: 80px;
-  }
-}
-
 .main-body {
   background-color: #fcfcfc;
+  @media screen and(min-width: 320px) and(max-width: 768px) {
+    margin-top: 48px;
+  }
 }
 
 :host /deep/.ngx-input-star-rating__btn {
