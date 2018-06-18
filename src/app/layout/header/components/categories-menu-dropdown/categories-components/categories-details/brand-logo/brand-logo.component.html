@@ -1,9 +1,8 @@
 <div class="row pl-3" *ngIf="brandList">
-  
   <div class="clearfix"></div>
-  <div *ngFor="let brand of brandList">
+  <div *ngFor="let brand of brandList" class="menu-popular-brand-list-item mr-1">
     <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': brand.name, 'id': brand.id}">
-      <img [src]="getBrandImageUrl(brand.icon)" class="img-fluid w-75 h-75 ">
+      <img [src]="getBrandImageUrl(brand.icon)" class="img-fluid border p-1">
     </a>
   </div>
 </div>
