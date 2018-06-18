@@ -1,6 +1,6 @@
 <div class="container" *ngIf="!screenwidth">
   <div class="row">
-    <div class="col-md-8 ">
+    <div class="col-md-7 ">
       <div class="row">
         <div class="col-md-5 p-0" *ngFor="let taxon of taxons">
           <div>
@@ -20,8 +20,8 @@
       </div>
     </div>
     <!-- to do -->
-    <div class="col-md-4 imgcon">
-      <img [src]="getProductImageUrl()" alt="">
+    <div class="col-md-5 imgcon">
+      <img class="w-100" [src]="taxonImageLink" alt="">
     </div>
   </div>
 </div>

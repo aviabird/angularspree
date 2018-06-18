@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import {
   trigger,
   state,
@@ -32,7 +32,8 @@ import {
       transition('hide => show', animate('200ms ease-in'))
     ])
 
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryMobileMenuComponent implements OnInit {
 

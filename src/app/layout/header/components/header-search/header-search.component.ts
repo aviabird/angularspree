@@ -3,12 +3,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
 @Component({
   selector: 'app-header-search',
   templateUrl: './header-search.component.html',
-  styleUrls: ['./header-search.component.scss']
+  styleUrls: ['./header-search.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderSearchComponent implements OnInit {
   queryParams: any;

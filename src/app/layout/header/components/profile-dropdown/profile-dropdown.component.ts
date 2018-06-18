@@ -1,11 +1,12 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-profile-dropdown',
   templateUrl: './profile-dropdown.component.html',
-  styleUrls: ['./profile-dropdown.component.scss']
+  styleUrls: ['./profile-dropdown.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileDropdownComponent implements OnInit, OnChanges {
   @Input() isAuthenticated;

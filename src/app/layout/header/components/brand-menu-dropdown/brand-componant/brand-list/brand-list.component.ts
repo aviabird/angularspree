@@ -1,10 +1,11 @@
 import { environment } from './../../../../../../../environments/environment';
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-brand-list',
   templateUrl: './brand-list.component.html',
-  styleUrls: ['./brand-list.component.scss']
+  styleUrls: ['./brand-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrandListComponent implements OnInit {
   @Input() taxons;
