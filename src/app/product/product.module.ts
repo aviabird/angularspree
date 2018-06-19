@@ -19,13 +19,12 @@ import { ProductVariantsComponent } from './components/product-detail-page/produ
 import { ProductComponent } from './product.component';
 import { WriteProductReviewComponent } from './components/product-detail-page/write-product-review/write-product-review.component';
 import { ProductReviewComponent } from './components/product-detail-page/product-review/product-review.component'
-// Routes
-import { ProductRoutes as routes } from './product.routes';
 
 // Effects
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './effects/product.effects';
 import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
+import { ProductRoutingModule } from './product-routing.module';
 
 @NgModule({
   declarations: [
@@ -54,7 +53,7 @@ import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
   ],
   imports: [
     SharedModule,
-    RouterModule.forChild(routes),
+    ProductRoutingModule,
     NgxInputStarRatingModule,
     ProgressbarModule.forRoot()
 

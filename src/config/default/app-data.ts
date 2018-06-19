@@ -1,4 +1,4 @@
-const cdn_url = 'http://res.cloudinary.com/aviabird/image/upload/v1529305518/angularspree/';
+const cdn_url = 'http://res.cloudinary.com/aviabird/image/upload/v1529433193/angularspree/';
 
 export const DEFAULT_APP_DATA = {
   landing_page_banner: [
@@ -20,11 +20,11 @@ export const DEFAULT_APP_DATA = {
     }
   ],
   promo_banner: {
-    image_link: 'assets/custom/banner/promo/promo.png',
+    image_link: `${cdn_url}secondary-banner-1.png`,
     link_url: '#'
   },
   Deals: {
-    type: 'Today\'s deals'
+    type: 'Today\'s Deals'
   },
 
   Dog: {

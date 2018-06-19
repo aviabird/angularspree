@@ -9,7 +9,7 @@
     width: 100%;
   }
   &:not(#main), &.page-scroll-header {
-    box-shadow: 0 8px 10px -8px $gray-500;
+    box-shadow: 0 8px 6px -8px $gray-900;
     z-index: 1;
   }
 }
