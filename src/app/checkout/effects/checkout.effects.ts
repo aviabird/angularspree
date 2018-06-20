@@ -24,7 +24,7 @@ export class CheckoutEffects {
         action.payload.quantity
       );
     }),
-    map((lineItem: LineItem) => this.actions.addToCartSuccess(lineItem))
+    map((data) => this.actions.addToCartSuccess(data.line_item))
   );
 }
 // @Effect()
