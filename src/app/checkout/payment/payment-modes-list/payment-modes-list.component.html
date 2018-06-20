@@ -5,10 +5,10 @@
 </div>
 
 <div class="selected-mode" [ngSwitch]="selectedMode.name">
-  <ng-template [ngSwitchCase]="'Credit Card'"> 
-     <app-credit-card></app-credit-card>   
-   </ng-template>      
-   <ng-template [ngSwitchCase]="'Check'" ngSwitchDefault> 
-      <app-cash-on-delivery (payOnDelivery)="makePayment()"></app-cash-on-delivery>
+  <ng-template [ngSwitchCase]="'Credit Card'">
+    <app-credit-card></app-credit-card>
+  </ng-template>
+  <ng-template [ngSwitchCase]="'Check'" ngSwitchDefault>
+    <app-cash-on-delivery (payOnDelivery)="makePayment()"></app-cash-on-delivery>
   </ng-template>
 </div>

@@ -1,5 +1,5 @@
 
-import {tap} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { getAuthStatus } from './../../../auth/reducers/selectors';
 import { CheckoutActions } from './../../actions/checkout.actions';
 import { AppState } from './../../../interfaces';
@@ -22,15 +22,16 @@ export class PaymentModesListComponent implements OnInit {
   paymentModes: PaymentMode[];
   selectedMode: PaymentMode = new PaymentMode;
   isAuthenticated: boolean;
+  showOrderSuccess = false;
 
   constructor(private checkoutService: CheckoutService,
     private paymentService: PaymentService,
     private router: Router,
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions) {
-      this.store.select(getAuthStatus).subscribe((auth) => {
-        this.isAuthenticated = auth;
-      });
+    this.store.select(getAuthStatus).subscribe((auth) => {
+      this.isAuthenticated = auth;
+    });
   }
 
   ngOnInit() {
@@ -63,7 +64,8 @@ export class PaymentModesListComponent implements OnInit {
 
   private redirectToNewPage() {
     if (this.isAuthenticated) {
-      this.router.navigate(['/user', 'orders', 'detail', this.orderNumber]);
+      this.router.navigate(['checkout', 'order-success'],
+        { queryParams: { orderReferance: this.orderNumber } });
     } else {
       this.router.navigate(['/']);
     }
