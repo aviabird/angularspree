@@ -12,17 +12,19 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./line-item.component.scss']
 })
 export class LineItemComponent implements OnInit {
+
+  @Input() lineItem: LineItem;
   image: string;
   name: string;
   quantity: number;
   amount: number;
-
-  @Input() lineItem: LineItem;
+  quantityCount: any;
 
   constructor(
     private store: Store<AppState>,
     private actions: CheckoutActions,
-    private checkoutService: CheckoutService
+    private checkoutService: CheckoutService,
+    private checkoutActions: CheckoutActions,
   ) { }
 
   ngOnInit() {
@@ -30,12 +32,27 @@ export class LineItemComponent implements OnInit {
     this.name = this.lineItem.variant.name;
     this.quantity = this.lineItem.quantity;
     this.amount = this.lineItem.display_amount;
+    this.quantityCount = this.quantity;
   }
 
-  // Change this method once angular releases RC4
-  // Follow this linke to know more about this issue https://github.com/angular/angular/issues/12869
   removeLineItem() {
-    // this.store.dispatch(this.actions.removeLineItem(this.lineItem.id));
     this.checkoutService.deleteLineItem(this.lineItem).subscribe();
+  }
+
+  removeQuantity() {
+    this.quantityCount -= 1;
+    if (this.quantityCount <= 1) {
+      this.quantityCount = 1;
+      if (this.quantity > 1) {
+        this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, -1));
+      }
+    } else if (this.quantityCount > 1) {
+      this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, -1));
+    }
+  }
+
+  addQuantity() {
+    this.quantityCount += 1;
+    this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, 1));
   }
 }

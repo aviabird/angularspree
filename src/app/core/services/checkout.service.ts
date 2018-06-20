@@ -34,9 +34,6 @@ export class CheckoutService {
       .subscribe(number => (this.orderNumber = number));
   }
 
-  //  Change below methods once angular releases RC4, so that this methods can be called from effects
-  //  Follow this linke to know more about this issue https://github.com/angular/angular/issues/12869
-
   /**
    *
    *
@@ -47,24 +44,23 @@ export class CheckoutService {
    */
   createNewLineItem(variant_id: number, quantity: number) {
     const params = {
-        line_item: { variant_id: variant_id, quantity: quantity }
-      },
+      line_item: { variant_id: variant_id, quantity: quantity }
+    },
       url = `api/v1/orders/${
         this.orderNumber
-      }/line_items?order_token=${this.getOrderToken()}`;
+        }/line_items?order_token=${this.getOrderToken()}`;
 
     return this.http
       .post<{line_item: LineItem}>(url, params)
       .pipe(
-        map(data => data.line_item),
-        tap(
-          _ =>
-            this.toastyService.success(
-              'Success!',
-              'Product Successfully Added to Cart!'
-            ),
-          _ => this.toastyService.success('Something went wrong!', 'Failed')
-        )
+      tap(
+        _ =>
+          this.toastyService.success(
+            'Success!',
+            'Cart updated!'
+          ),
+        _ => this.toastyService.error('Something went wrong!', 'Failed')
+      )
       );
   }
 
@@ -144,13 +140,13 @@ export class CheckoutService {
   deleteLineItem(lineItem: LineItem) {
     const url = `api/v1/orders/${this.orderNumber}/line_items/${
       lineItem.id
-    }?order_token=${this.getOrderToken()}`;
+      }?order_token=${this.getOrderToken()}`;
     return this.http
       .delete(url)
       .pipe(
-        map(() =>
-          this.store.dispatch(this.actions.removeLineItemSuccess(lineItem))
-        )
+      map(() =>
+        this.store.dispatch(this.actions.removeLineItemSuccess(lineItem))
+      )
       );
   }
 
@@ -164,7 +160,7 @@ export class CheckoutService {
   changeOrderState() {
     const url = `api/v1/checkouts/${
       this.orderNumber
-    }/next.json?order_token=${this.getOrderToken()}`;
+      }/next.json?order_token=${this.getOrderToken()}`;
     return this.http
       .put<{order: Order}>(url, {})
       .pipe(
@@ -185,7 +181,7 @@ export class CheckoutService {
   updateOrder(params: any) {
     const url = `api/v1/checkouts/${
       this.orderNumber
-    }.json?order_token=${this.getOrderToken()}`;
+      }.json?order_token=${this.getOrderToken()}`;
     return this.http
       .put<{order: Order}>(url, params)
       .pipe(
@@ -205,7 +201,7 @@ export class CheckoutService {
   availablePaymentMethods() {
     const url = `api/v1/orders/${
       this.orderNumber
-    }/payments/new?order_token=${this.getOrderToken()}`;
+      }/payments/new?order_token=${this.getOrderToken()}`;
     return this.http.get<any>(url);
   }
 
@@ -220,15 +216,15 @@ export class CheckoutService {
   createNewPayment(paymentModeId: number, paymentAmount: number) {
     return this.http
       .post(
-        `api/v1/orders/${
-          this.orderNumber
-        }/payments?order_token=${this.getOrderToken()}`,
-        {
-          payment: {
-            payment_method_id: paymentModeId,
-            amount: paymentAmount
-          }
+      `api/v1/orders/${
+      this.orderNumber
+      }/payments?order_token=${this.getOrderToken()}`,
+      {
+        payment: {
+          payment_method_id: paymentModeId,
+          amount: paymentAmount
         }
+      }
       )
       .pipe(map(_ => this.changeOrderState().subscribe()));
   }
