@@ -1,14 +1,13 @@
-import { environment } from './../../../environments/environment';
+import { environment } from './../../environments/environment';
 
 import { switchMap } from 'rxjs/operators';
 
-import { ProductService } from './../../core/services/product.service';
+import { ProductService } from './../core/services/product.service';
 import { Observable } from 'rxjs';
-import { getProducts, getTaxonomies } from './../../product/reducers/selectors';
-import { ProductActions } from './../../product/actions/product-actions';
+import { getProducts, getTaxonomies } from './../product/reducers/selectors';
+import { ProductActions } from './../product/actions/product-actions';
 import { Store } from '@ngrx/store';
-import { AppState } from './../../interfaces';
-import { Product } from './../../core/models/product';
+import { AppState } from './../interfaces';
 import { Component, OnInit, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DragScrollDirective } from 'ngx-drag-scroll';
 
