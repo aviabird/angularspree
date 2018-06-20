@@ -24,13 +24,13 @@ export class UserEffects {
     .ofType(UserActions.GET_USER_ORDERS).pipe(
     switchMap(() => this.userService.getOrders()),
     filter((orders) => orders.length > 0),
-    map((orders) => this.userActions.getUserOrdersSuccess(orders)),);
+    map((orders) => this.userActions.getUserOrdersSuccess(orders)));
 
   // tslint:disable-next-line:member-ordering
   @Effect()
   GetUserFavoriteProducts$: Observable<Action> = this.actions$
     .ofType(UserActions.GET_USER_FAVORITE_PRODUCTS).pipe(
     switchMap(() => this.productService.getUserFavoriteProducts()),
-    map((products) => this.userActions.getUserFavoriteProductsSuccess(products)),);
+    map((products) => this.userActions.getUserFavoriteProductsSuccess(products)));
 
 }
