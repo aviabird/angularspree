@@ -44,12 +44,12 @@ export class WriteProductReviewComponent implements OnInit {
             this.product = response
             this.images = this.product.master.images.product_url;
           }
-        );
+          );
       })
-      //   this.store.dispatch(this.productsActions.getReviewsProduct(this.queryParams.prodId))
-      //  this.store.select(getSelectedProduct)
-      //  .subscribe(data => console.log(data))
-      // });
+    //   this.store.dispatch(this.productsActions.getReviewsProduct(this.queryParams.prodId))
+    //  this.store.select(getSelectedProduct)
+    //  .subscribe(data => console.log(data))
+    // });
   }
 
 
@@ -94,7 +94,7 @@ export class WriteProductReviewComponent implements OnInit {
 
         })
     } else {
-      this.toastrService.error('Enter data in all fields', 'Error!')
+      this.toastrService.info('All fields are rquired', 'Invalid!')
     }
   }
   goToProduct() {

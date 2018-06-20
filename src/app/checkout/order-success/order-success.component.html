@@ -1,0 +1,85 @@
+<div class="container" *ngIf="orderDetails">
+  <div class=col-12>
+    <h1>Thank you for your order!</h1>
+    <div class="float-left">
+      <i class="fa fa-check-circle fa-3x text-success"></i>
+    </div>
+    <div>
+      <p class="w-75 text-success">Your order has been placed and is being processed. When the item(s) are shipped,you will receive an email with the
+        details.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+      <h3>Order Details</h3>
+      <table>
+        <tr>
+          <th>Order ID:</th>
+          <td>{{orderDetails.number}}({{orderDetails.total_quantity}} Item(s))</td>
+        </tr>
+        <tr>
+          <th>Order Date:</th>
+          <td>{{orderDetails.created_at}}</td>
+        </tr>
+        <tr>
+          <th>Total Amount:</th>
+          <td>{{orderDetails.display_total}} through {{orderDetails.payments[0].payment_method.name}}</td>
+        </tr>
+        <tr>
+          <th>Payment Status:</th>
+          <td>
+            <b>{{orderDetails.payment_state}}</b>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-sm">
+      <h3>Delivery Address</h3>
+      <table>
+        <tr>
+          <th>Name: </th>
+          <td>{{orderDetails.ship_address.full_name}}</td>
+        </tr>
+        <tr>
+          <th>Address:</th>
+          <td>{{orderDetails.ship_address.address1}}, {{orderDetails.ship_address.address2}}, {{orderDetails.ship_address.city}}</td>
+        </tr>
+        <tr>
+          <th>Pincode:</th>
+          <td>{{orderDetails.ship_address.zipcode}}</td>
+        </tr>
+        <tr>
+          <th>Phone:</th>
+          <td>{{orderDetails.ship_address.phone}}</td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>{{orderDetails.email}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <h3>Item(s)</h3>
+      <div class="row" *ngFor="let line_item of orderDetails.line_items">
+        <a [routerLink]="['/', line_item.variant.slug]">
+          <img [src]="getProductImageUrl(line_item)">
+        </a>
+        <div class="col-sm">
+          <p>{{line_item.variant.name}}</p>
+          <p>Qty: {{line_item.quantity}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <h3>Shipping</h3>
+      <div class="col-sm">
+        <p>Shipping Status: </p>
+        <b>{{orderDetails.shipment_state}}</b>
+      </div>
+    </div>
+  </div>
+</div>

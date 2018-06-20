@@ -1,6 +1,5 @@
 <div class="prod-item pb-3">
   <div class="col1 col-2 col-sm-2 col-md-2 col-lg-2">
-    <!--<img [src]="'http://assets.myntassets.com/h_128,q_100,w_96/v1/assets/images/1714052/2017/3/6/11488792709467-HRX-by-Hrithik-Roshan-Men-Black-Printed-Round-Neck-T-Shirt-191488792709172-1.jpg'">-->
     <img [src]="image" alt="">
   </div>
   <div class="col2 col-10 col-sm-10 col-md-10 col-lg-10">
@@ -15,9 +14,15 @@
           <span class="qty">
             <span class="gray">Qty:</span>
             <span class="value">{{quantity}}</span>
+            <form>
+              <div class="form-group">
+                <a class="cw-btn  quantity-minus" (click)="removeQuantity()">-</a>
+                <input type="text" class="form-control" value="{{quantityCount}}" id="quantity" required>
+                <a class="cw-btn  quantity-plus" (click)="addQuantity()">+</a>
+              </div>
+            </form>
           </span>
         </div>
-        <!-- <div class="seller">Sold by: Proleague</div> -->
       </div>
     </div>
 
@@ -29,7 +34,6 @@
         <span (click)="removeLineItem()" class="delete-item">
           <i class="fa fa-times"></i>
         </span>
-        <!-- <span class="move-item coming-soon">MOVE TO WISHLIST</span> -->
       </div>
     </div>
   </div>

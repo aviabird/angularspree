@@ -16,6 +16,8 @@ export class CheckoutActions {
   static UPDATE_ORDER = 'UPDATE_ORDER';
   static UPDATE_ORDER_SUCCESS = 'UPDATE_ORDER_SUCCESS';
   static ORDER_COMPLETE_SUCCESS = 'ORDER_COMPLETE_SUCCESS';
+  static GET_ORDER_DETAILS = 'GET_ORDER_DETAILS';
+  static GET_ORDER_DETAILS_SUCCESS = 'GET_ORDER_DETAILS_SUCCESS';
 
   fetchCurrentOrder() {
     return { type: CheckoutActions.FETCH_CURRENT_ORDER };
@@ -31,7 +33,7 @@ export class CheckoutActions {
   addToCart(variant_id: number, quantity: number) {
     return {
       type: CheckoutActions.ADD_TO_CART,
-      payload: {variant_id, quantity}
+      payload: { variant_id, quantity }
     };
   }
 
@@ -93,4 +95,17 @@ export class CheckoutActions {
     return { type: CheckoutActions.ORDER_COMPLETE_SUCCESS };
   }
 
+  getOrderDetails(order_number: any) {
+    return {
+      type: CheckoutActions.GET_ORDER_DETAILS,
+      payload: order_number
+    }
+  }
+
+  getOrderDetailsSuccess(order: Order) {
+    return {
+      type: CheckoutActions.GET_ORDER_DETAILS,
+      payload: order
+    }
+  }
 }
