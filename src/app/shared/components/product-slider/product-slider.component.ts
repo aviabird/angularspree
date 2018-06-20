@@ -8,16 +8,15 @@ import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy } from '@a
   styleUrls: ['./product-slider.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductSlider implements OnInit {
+export class ProductSliderComponent implements OnInit {
   @Input() productlist;
+  @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
   constructor() {
   }
 
   ngOnInit() {
   }
-
-  @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
   moveLeft() {
     this.ds.moveLeft();

@@ -1,10 +1,14 @@
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { CanActivateViaAuthGuard } from './core/guards/auth.guard';
 
 
 export const routes: Routes = [
   {
     path: '',
+    loadChildren: './landing/landing.module#LandingModule'
+  },
+  {
+    path: 'search',
     loadChildren: './home/index#HomeModule' },
   {
     path: 'checkout',
@@ -15,11 +19,11 @@ export const routes: Routes = [
     canActivate: [ CanActivateViaAuthGuard ]
   },
   {
-    path: 'product',
-    loadChildren: './product/index#ProductModule'
-  },
-  {
     path: 'auth',
     loadChildren: './auth/auth.module#AuthModule'
+  },
+  {
+    path: '',
+    loadChildren: './product/product.module#ProductModule'
   }
 ];

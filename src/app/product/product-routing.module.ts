@@ -1,11 +1,15 @@
 import { WriteProductReviewComponent } from './components/product-detail-page/write-product-review/write-product-review.component';
-import { Routes } from '@angular/router';
 import { ProductDetailPageComponent } from './components/product-detail-page/product-detail-page.component';
-import { ProductComponent } from './product.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-export const ProductRoutes: Routes = [
-  { path: '', component: ProductComponent, pathMatch: 'full' },
+const routes: Routes = [
   { path: ':id', component: ProductDetailPageComponent },
   { path: ':id/write_review', component: WriteProductReviewComponent }
 ];
 
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class ProductRoutingModule { }

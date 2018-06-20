@@ -1,6 +1,6 @@
-import { Product } from './../../../../core/models/product';
+import { Product } from './../../../core/models/product';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { environment } from '../../../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-pl-item',
