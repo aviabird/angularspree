@@ -1,7 +1,7 @@
-<section *ngIf="productsByTaxons">
+<section *ngIf="products">
   <div class="slider-section">
     <div>
-      <a *ngIf="productsByTaxons.products.length != 0" [routerLink]="['/search']" [queryParams]="{'q[name_cont]': dealsType, id: dealsId}"
+      <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': dealsType, id: dealsId}"
         class="section-title h3" (click)="getDeals()">{{dealsType}}</a>
     </div>
     <div class="slider-control">
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="d-flex scrollbar-hidden" #nav dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true">
-    <app-pl-item class=" col-sm-2 col-6 col-md-3 col-lg-2 product-box" *ngFor="let product of productsByTaxons.products"
+    <app-pl-item class=" col-sm-2 col-6 col-md-3 col-lg-2 product-box" *ngFor="let product of products"
       [product]="product"></app-pl-item>
   </div>
   <hr>

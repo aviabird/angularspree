@@ -1,18 +1,7 @@
+import { ProductEffects } from './../product/effects/product.effects';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BrandFilterComponent } from './sidebar/brand-filter/brand-filter.component';
 import { CategoriesComponent } from './sidebar/categories/categories.component';
-import { LpTrItemComponent } from './landing/lp-top-rated/lp-tr-item/lp-tr-item.component';
-import { LpTopRatedComponent } from './landing/lp-top-rated/lp-top-rated.component';
-import { DragScrollModule } from 'ngx-drag-scroll';
-import { LpPromoComponent } from './landing/lp-promo/lp-promo.component';
-import { PlFavItemComponent } from './landing/lp-favorites/pl-fav-item/pl-fav-item.component';
-import { PlItemComponent } from './landing/lp-product-list/pl-item/pl-item.component';
-import { LpBrandsComponent } from './landing/lp-brands/lp-brands.component';
-import { LpFavoritesComponent } from './landing/lp-favorites/lp-favorites.component';
-import { LpProductListComponent } from './landing/lp-product-list/lp-product-list.component';
-import { LpBannerComponent } from './landing/lp-banner/lp-banner.component';
-import { LandingComponent } from './landing/landing.component';
-import { ProductEffects } from './../product/effects/product.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RouterModule } from '@angular/router';
@@ -20,7 +9,6 @@ import { NgModule } from '@angular/core';
 import { ProductActions } from './../product/actions/product-actions';
 import { SearchActions } from './reducers/search.actions';
 import { SharedModule } from './../shared/index';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ModalModule } from 'ngx-bootstrap';
 import { AccordionModule } from 'ngx-bootstrap';
 import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
@@ -58,16 +46,6 @@ import { reducers } from './reducers/index';
     CustomizeComponent,
     FilterSummaryComponent,
     ContentComponent,
-    LandingComponent,
-    LpBannerComponent,
-    LpProductListComponent,
-    LpFavoritesComponent,
-    LpBrandsComponent,
-    PlItemComponent,
-    PlFavItemComponent,
-    LpPromoComponent,
-    LpTopRatedComponent,
-    LpTrItemComponent,
     CategoriesComponent,
     BrandFilterComponent,
     filterMobileMenuComponent,
@@ -79,8 +57,6 @@ import { reducers } from './reducers/index';
   ],
   imports: [
     RouterModule.forChild(routes),
-    CarouselModule,
-    DragScrollModule,
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),

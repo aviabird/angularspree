@@ -1,4 +1,4 @@
-import { environment } from './../../../../environments/environment';
+import { environment } from './../../../environments/environment';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({

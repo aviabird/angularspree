@@ -1,4 +1,4 @@
-@import "../../shared/scss/_selected_theme_variables.scss";
+@import "../shared/scss/_selected_theme_variables.scss";
 :host {
   /deep/ .section-title {
     color: $black;
@@ -27,13 +27,13 @@
         cursor: pointer;
         background: $white;
         &.next {
-          background-image: url(../../../../src/assets/custom/arrow-right.png);
+          background-image: url(../../../src/assets/custom/arrow-right.png);
           background-position: 10px;
           background-repeat: no-repeat;
           background-size: 8px;
         }
         &.prv {
-          background-image: url(../../../../src/assets/custom/arrow-left.png);
+          background-image: url(../../../src/assets/custom/arrow-left.png);
           background-position: 7px;
           background-repeat: no-repeat;
           background-size: 8px;
@@ -47,7 +47,7 @@
   }
   /deep/ .product-tile {
     text-align: center;
- 
+
     a {
       img {
         object-fit: scale-down;
