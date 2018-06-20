@@ -1,26 +1,26 @@
-const cdn_url = 'http://res.cloudinary.com/aviabird/image/upload/v1529433193/angularspree/';
+const cdn_url = 'http://res.cloudinary.com/aviabird/image/upload/q_60/v1529433193/angularspree/';
 
 export const DEFAULT_APP_DATA = {
   landing_page_banner: [
     {
-      image_link: `${cdn_url}banner-1.webp`,
+      image_link: `${cdn_url}banner-1.jpg`,
       link_url: '#'
     },
     {
-      image_link: `${cdn_url}banner-2.webp`,
+      image_link: `${cdn_url}banner-2.jpg`,
       link_url: '#'
     },
     {
-      image_link: `${cdn_url}banner-3.webp`,
+      image_link: `${cdn_url}banner-3.jpg`,
       link_url: '#'
     },
     {
-      image_link: `${cdn_url}banner-4.webp`,
+      image_link: `${cdn_url}banner-4.jpg`,
       link_url: '#'
     }
   ],
   promo_banner: {
-    image_link: `${cdn_url}secondary-banner-1.webp`,
+    image_link: `${cdn_url}secondary-banner-1.jpg`,
     link_url: '#'
   },
   Deals: {
