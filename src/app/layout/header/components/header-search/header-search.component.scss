@@ -78,36 +78,47 @@
 .searchinput {
   position: absolute;
   width: 100%;
-  left: 0%;
-  bottom: -48px;
+  left: 0;
+  bottom: -47px;
   background-color: $theme-main-color;
-  padding: 0px 10px 10px 10px;
-  .input.desktop-search-bar {
-    width: 100%;
-    border: 1px solid $theme-main-color;
+  padding: 0px 7px 10px 7px;
+  .search-container {
+    border-radius: 4px;
+    background-color: $white;
+    .input.desktop-search-bar {
+      width: 100%;
+      border: 1px solid $theme-main-color;
+    }
+    .gobtn {
+      padding: 13px 9px 12px;
+      border-radius: 4px;
+      border: 0px;
+      background-color: $theme-action-sub-color1;
+    }
   }
 }
 
 @media screen and(min-width: 320px) and(max-width: 768px) {
   .desktop-query input.desktop-search-bar {
-    width: 94%;
-    border-top: 0px solid $theme-main-color;
-    border-radius: 3px;
+    width: 78%;
+    border: 0px solid $theme-main-color;
+    border-radius: 4px 0px 0px 4px;
   }
   .desktop-query {
     padding: 0px 7px 5.9px 4px;
-    margin-right: 8px;
+    margin-right: 13px;
     margin-top: 2.2px;
-    border-radius: 4px 4px 0px 0px;
     margin-bottom: 0px;
     margin-left: 0px;
+    // @include border-radius($radius: 5px);
+    @include border-top-radius($radius: 5px);  
     border: 1px solid $theme-main-color;
     a.desktop-submit {
       color: $white;
       height: 28px;
-      width: 19px;
+      width:21 px;
       text-align: center;
-      font-size: 24px;
+      font-size: 20px;
       padding: 5px 5px 1px 5px;
       background: transparent !important;
       border: 0px solid $gray-10;

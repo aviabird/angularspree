@@ -8,7 +8,8 @@
     z-index: 100;
     width: 100%;
   }
-  &:not(#main), &.page-scroll-header {
+  &:not(#main),
+  &.page-scroll-header {
     box-shadow: 0 8px 6px -8px $gray-900;
     z-index: 1;
   }
@@ -29,14 +30,19 @@
 }
 
 .selected-theme .navbar {
-  box-shadow: None !important;
+  box-shadow: none !important;
 }
 
 .header {
   background-color: $theme-main-color;
   .resheader {
-    width: 90%
+    width: calc(100vw - 12vw);
+    @media screen and(width: 768px) {
+      width: calc(100vw - 12vw);
+    }
   }
+  
+
 }
 
 .profile {
@@ -64,7 +70,7 @@
 }
 
 .search {
-  padding-top: 4px;
+  padding-top: 2px;
   flex: 0.2;
   display: flex;
   justify-content: flex-start;
@@ -72,14 +78,17 @@
 }
 
 .small-logo img {
-  height: 30px;
-  width: 80px;
+  width: 120px;
   margin-top: 0;
 }
 
 @media screen and(min-width: 321px) and(max-width: 768px) {
   .navbar {
     padding: 0px;
+  }
+  .cart {
+    padding-top: 0;
+    padding-right: 0;
   }
   :host /deep/ .page-scroll-header .cust-menu-btn {
     display: none;
@@ -96,20 +105,24 @@
   .navbar {
     padding: 0px;
   }
+  .cart {
+    padding-top: 0;
+    padding-right: 0;
+  }
   :host /deep/ .page-scroll-header .cust-menu-btn {
     display: none;
   }
   .search {
-    flex: 0.1;
+    flex: 1;
   }
   .cart {
-    flex: .1;
+    flex: 1;
   }
   .mlogo {
-    flex: .2;
+    flex: 39;
   }
   .profile {
-    flex: 0.1;
+    flex: 1;
   }
 }
 
@@ -123,7 +136,7 @@
     max-width: 100vw !important;
     .modal-content {
       border-radius: 0px;
-      border: 0px solid red;
+      border: 0px solid transparent;
       height: 100vh;
     }
     .modal-body {
@@ -133,7 +146,8 @@
 }
 
 .main-nav-trigger {
-  @media screen and(width: 768px){ left: -2rem!important;}
+
+  
   ms-touch-action: manipulation;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
@@ -150,6 +164,8 @@
   width: 40px;
   height: 37px;
   margin: 0;
+  top: -4.5px;
+  left: 6px
 }
 
 label {
@@ -181,7 +197,7 @@ label {
 
 .main-nav-trigger {
   &:after {
-    bottom: 7px;
+    bottom: 8px;
   }
 }
 
@@ -200,7 +216,7 @@ label {
   &:before,
   span {
     display: block;
-    height: 3px;
+    height: 2px;
     background: $white;
     -webkit-border-radius: 1px;
     border-radius: 1px;
@@ -209,6 +225,7 @@ label {
 }
 
 .main-nav-trigger-open {
+  top: 1.5px;
   background: $white;
   -webkit-box-shadow: 0 1px 0 $white;
   box-shadow: 0 1px 0 $white;
