@@ -1,18 +1,19 @@
 @import '../../../../../../shared/scss/selected_theme_variables';
-a
-a:focus {
+a a:focus {
   color: $black;
   text-decoration: None;
   &:hover {
-    color: 	$theme-main-color;
+    color: $theme-main-color;
     text-decoration: underline;
   }
 }
-.img-fit{
+
+.img-fit {
   max-width: 100%;
   height: 100%;
   object-fit: scale-down;
 }
+
 .flex-container {
   padding: 0;
   margin: 0;
@@ -30,8 +31,7 @@ a:focus {
   flex-wrap: wrap;
 }
 
-.wrap li {
-}
+.wrap li {}
 
 .flex-item {
   padding: 5px;

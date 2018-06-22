@@ -7,7 +7,7 @@ a {
     text-decoration: underline;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {
-    color: #fff;
+    color: $white;
   }
 }
 
@@ -18,8 +18,8 @@ a {
     margin: 0px;
     li {
       padding: 0.5rem 0.4rem;
-      border-bottom: 1px solid #ccc;
-      color: #fff;
+      border-bottom: 1px solid $gray-10;
+      color: $white;
       cursor: pointer;
       &::after {
         font-family: 'FontAwesome';
@@ -32,15 +32,15 @@ a {
         background-size: 10px;
       }
       &:hover::after {
-        color: #a3d032
+        color: $theme-main-color;
       }
       &:hover {
-        background-color: #fff;
-        color: #a3d032;
+        background-color: $white;
+        color: $theme-main-color;
         border-radius: 4px 0px 0px 4px;
       }
       a:hover {
-        color: #a3d032;
+        color: $theme-main-color;
       }
       ul>li {
         position: absolute;
