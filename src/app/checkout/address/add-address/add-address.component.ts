@@ -44,9 +44,11 @@ export class AddAddressComponent implements OnInit, OnDestroy {
     for (const state of this.states) {
       if (state.name === address.state_name) {
         address['state_id'] = state.id;
+        address['country_id'] = state.country_id
         break;
       }
     }
+
     if (this.isAuthenticated) {
       addressAttributes = this.addrService.createAddresAttributes(address);
     } else {

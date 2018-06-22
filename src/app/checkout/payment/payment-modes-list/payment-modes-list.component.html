@@ -1,14 +1,25 @@
-<div class="pay-modes">
+<!-- <div class="pay-modes">
   <div class="mode" [ngClass]="{'selected': mode.id == selectedMode.id, 'coming-soon': mode.id != selectedMode.id}" *ngFor="let mode of paymentModes">
     {{mode.name}}
   </div>
-</div>
+</div> -->
 
-<div class="selected-mode" [ngSwitch]="selectedMode.name">
+<!-- <div class="selected-mode" [ngSwitch]="selectedMode.name">
   <ng-template [ngSwitchCase]="'Credit Card'">
     <app-credit-card></app-credit-card>
   </ng-template>
   <ng-template [ngSwitchCase]="'Check'" ngSwitchDefault>
     <app-cash-on-delivery (payOnDelivery)="makePayment()"></app-cash-on-delivery>
   </ng-template>
+</div> -->
+
+<div>
+  <tabset>
+    <tab heading="Card Payment" id="tab1">
+      <app-credit-card [orderNumber]="orderNumber" [paymentAmount]=paymentAmount></app-credit-card>
+    </tab>
+    <tab heading="COD">
+      <app-cash-on-delivery (payOnDelivery)="makePayment()"></app-cash-on-delivery>
+    </tab>
+  </tabset>
 </div>

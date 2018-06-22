@@ -9,6 +9,7 @@ import { PaymentModeComponent } from './payment-modes-list/payment-mode/payment-
 import { CreditCardComponent } from './payment-modes-list/credit-card/credit-card.component';
 import { NetBankingComponent } from './payment-modes-list/net-banking/net-banking.component';
 import { CashOnDeliveryComponent } from './payment-modes-list/cash-on-delivery/cash-on-delivery.component';
+import { TabsModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CashOnDeliveryComponent } from './payment-modes-list/cash-on-delivery/c
     RouterModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabsModule.forRoot()
   ],
   providers: [
     PaymentService
