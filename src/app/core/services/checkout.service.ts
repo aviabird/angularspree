@@ -223,7 +223,6 @@ export class CheckoutService {
   }
 
   makePayment(params: any) {
-    console.log(params)
     const header = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     let body = new HttpParams();
     body = body.set('key', params.key);
