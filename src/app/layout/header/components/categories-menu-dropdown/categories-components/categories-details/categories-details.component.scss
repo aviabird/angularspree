@@ -1,16 +1,17 @@
+@import "../../../../../../shared/scss/selected_theme_variables";
 .sucathead {
-  color: #282828;
+  color: $gray-900;
   text-decoration: none;
   font-size: 14px;
 }
 
 .brandsmenu a {
-  color: #fff;
+  color: $white;
   text-decoration: None;
 }
 
 .brandsmenu a:hover {
-  color: #a3d032;
+  color: $theme-main-color;
   text-decoration: underline;
 }
 
@@ -19,12 +20,12 @@
     list-style: none;
     padding: 0.5rem 0 0.5rem 1.5rem;
     margin: 0px;
-    background-color: #adadad;
+    background-color: $gray-10;
     li {
       padding: 0.5rem 0.4rem;
-      background-color: #adadad;
-      border-bottom: 1px solid #ccc;
-      color: #fff;
+      background-color: $gray-10;
+      border-bottom: 1px solid $gray-10;
+      color: $gray-10;
       cursor: pointer;
       &::after {
         font-family: 'FontAwesome';
@@ -37,11 +38,11 @@
         background-size: 10px;
       }
       &:hover::after {
-        color: #a3d032
+        color: $theme-main-color
       }
       &:hover {
-        background-color: #fff;
-        color: #a3d032 !important;
+        background-color: $white;
+        color: $theme-main-color !important;
         border-radius: 4px 0px 0px 4px;
       }
       uL>LI {
@@ -61,7 +62,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 332x) {
   .sucathead {
-    color: #fff;
+    color: $white;
   }
   .catadjustwidth {
     width: 220%;
@@ -70,7 +71,7 @@
 
 @media screen and (min-width: 375px) and (max-width: 413px) {
   .sucathead {
-    color: #fff;
+    color: $white;
   }
   .catadjustwidth {
     width: 216%;
@@ -79,7 +80,7 @@
 
 @media screen and (min-width: 414px) and (max-width: 627px) {
   .sucathead {
-    color: #fff;
+    color: $white;
   }
   .catadjustwidth {
     width: 215%;
@@ -88,7 +89,7 @@
 
 @media screen and (min-width: 628px) and (max-width: 767px) {
   .sucathead {
-    color: #fff;
+    color: $white;
   }
   .catadjustwidth {
     width: 215%;
@@ -100,7 +101,7 @@
     width: 310%;
   }
   .brandsmenu a {
-    color: #fff !important;
+    color: $white !important;
   }
   .catcon {
     padding: 0px;

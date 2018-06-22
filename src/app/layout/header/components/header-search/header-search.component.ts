@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
+import { Directive, Renderer2, ElementRef } from '@angular/core';
 import {
   Component,
   OnInit,
@@ -25,12 +26,14 @@ export class HeaderSearchComponent implements OnInit {
   @Output()
   onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   searchPlaceholder = environment.config.header.searchPlaceholder;
-
+  showGo = false;
   constructor(
     private store: Store<AppState>,
     private searchActions: SearchActions,
     private router: Router,
-    private activatedRouter: ActivatedRoute
+    private activatedRouter: ActivatedRoute,
+    private renderer: Renderer2,
+    private el: ElementRef
   ) {
     this.activatedRouter.queryParams.subscribe(params => {
       this.queryParams = params;
@@ -38,14 +41,20 @@ export class HeaderSearchComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   showsearch() {
     this.isSearchopen = !this.isSearchopen;
     this.onSubCatClicked.emit(false);
+    if (this.isSearchopen) {
+      this.renderer.addClass(document.body, 'issearchopen');
+    } else {
+      this.renderer.removeClass(document.body, 'issearchopen');
+    }
   }
 
   onSearch(keyword: string) {
+
     if (keyword !== '') {
       keyword = keyword.trim();
       const search = new URLSearchParams();
@@ -101,5 +110,11 @@ export class HeaderSearchComponent implements OnInit {
     if ('q[s]' in this.queryParams && 'q[name_cont_any]' in this.queryParams) {
       this.onSearch(this.queryParams['q[name_cont_any]']);
     }
+  }
+  onFoucs() {
+    this.showGo = true;
+  }
+  onFoucsOut() {
+    this.showGo = false;
   }
 }

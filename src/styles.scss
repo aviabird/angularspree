@@ -59,15 +59,20 @@ body {
   line-height: 1.5;
   min-height: 32vw;
   position: relative;
-  color: #697071;
-  background-color: #fff;
+  color: $gray-300;
+  background-color: $white;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: $primary-font;
 }
 
+.isModalShown {
+  margin: 0;
+  height: 100%;
+}
+
 .cat-mobile {
-  background-color: floralwhite;
+  background-color: $white;
   border-radius: 0px;
   margin: 0px;
   width: 100vw;
@@ -83,5 +88,11 @@ body {
 @media screen and(min-width: 1100px) and(max-width: 1400px) {
   .container {
     max-width: 1280px;
+  }
+}
+
+@media screen and(min-width: 320px) and(max-width: 768px) {
+  .container {
+    max-width: 100%;
   }
 }

@@ -34,6 +34,6 @@ export class BrandMenuDropdownComponent implements OnInit {
     this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
   }
   onOpenChange(data: boolean): void {
-    this.isOpen = ! this.isOpen;
-   }
+    this.isOpen = !this.isOpen;
+  }
 }
