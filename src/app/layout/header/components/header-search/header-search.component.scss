@@ -109,14 +109,13 @@
     margin-right: 13px;
     margin-top: 2.2px;
     margin-bottom: 0px;
-    margin-left: 0px;
-    // @include border-radius($radius: 5px);
-    @include border-top-radius($radius: 5px);  
+    margin-left: 0px; // @include border-radius($radius: 5px);
+    @include border-top-radius($radius: 5px);
     border: 1px solid $theme-main-color;
     a.desktop-submit {
       color: $white;
       height: 28px;
-      width:21 px;
+      width: 21 px;
       text-align: center;
       font-size: 20px;
       padding: 5px 5px 1px 5px;

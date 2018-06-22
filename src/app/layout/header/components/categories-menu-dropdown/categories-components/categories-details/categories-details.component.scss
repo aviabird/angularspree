@@ -20,7 +20,7 @@
     list-style: none;
     padding: 0.5rem 0 0.5rem 1.5rem;
     margin: 0px;
-    background-color:$gray-10;
+    background-color: $gray-10;
     li {
       padding: 0.5rem 0.4rem;
       background-color: $gray-10;
@@ -62,7 +62,7 @@
 
 @media screen and (min-width: 320px) and (max-width: 332x) {
   .sucathead {
-    color:$white;
+    color: $white;
   }
   .catadjustwidth {
     width: 220%;
@@ -71,7 +71,7 @@
 
 @media screen and (min-width: 375px) and (max-width: 413px) {
   .sucathead {
-    color:$white;
+    color: $white;
   }
   .catadjustwidth {
     width: 216%;
