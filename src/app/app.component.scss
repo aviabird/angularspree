@@ -3,7 +3,7 @@
   display: block;
 }
 
-.main-body {
+.issearchopen :host /deep/ .main-body {
   @media screen and(min-width: 320px) and(max-width: 768px) {
     margin-top: 48px;
   }

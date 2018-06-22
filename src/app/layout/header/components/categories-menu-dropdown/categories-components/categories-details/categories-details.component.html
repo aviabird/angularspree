@@ -11,10 +11,9 @@
           </div>
         </div>
       </div>
-
       <div class="row">
         <div class="col-md-9 p-0 my-3">
-            <h4>Popular Brands</h4>
+          <h4>Popular Brands</h4>
           <app-brand-logo [brandList]="brandLists$ |async"></app-brand-logo>
         </div>
       </div>
@@ -25,7 +24,6 @@
     </div>
   </div>
 </div>
-
 <div class="container catcon" *ngIf="screenwidth">
   <div class="row">
     <div class="col-md-8 catconinner">
@@ -46,14 +44,6 @@
           </ul>
           <app-categories-list [screenwidth]="screenwidth" [taxons]="menuTaxons"></app-categories-list>
         </div>
-        <!-- <div class="col-md-5 p-0" *ngFor="let taxon of taxons">
-          <div>
-            <a [routerLink]="['/search']" [queryParams]="{id: taxon.id}">
-              <b class="sucathead">{{taxon.name}}</b>
-            </a>
-            <app-categories-list [taxons]="taxon.taxons"></app-categories-list>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
