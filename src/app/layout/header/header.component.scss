@@ -36,7 +36,7 @@
 .header {
   background-color: $theme-main-color;
   .resheader {
-    width: calc(100vw - 12vw);
+    width: calc(100vw - 15vw);
     @media screen and(width: 768px) {
       width: calc(100vw - 12vw);
     }
