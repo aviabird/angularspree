@@ -1,13 +1,15 @@
+import { AppPreloadingStrategy } from './app_preloading_strategy';
 import { myAuthConfig } from './oauth_config';
 import { Ng2UiAuthModule } from 'ng2-ui-auth';
 import { EffectsModule } from '@ngrx/effects';
-import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 // Components
 import { AppComponent } from './app.component';
@@ -35,7 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     CheckoutFooterComponent
   ],
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, { preloadingStrategy: AppPreloadingStrategy }),
     StoreModule.forRoot(reducers, { metaReducers }),
 
     /**
@@ -74,9 +76,10 @@ import { ToastrModule } from 'ngx-toastr';
       progressAnimation: 'increasing'
     }),
     CoreModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [AppPreloadingStrategy],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
