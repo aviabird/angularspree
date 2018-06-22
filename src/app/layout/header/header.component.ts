@@ -25,6 +25,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  // tslint:disable-next-line:use-host-property-decorator
   host: {
     '(window:scroll)': 'updateHeader($event)'
   },
@@ -119,10 +120,14 @@ export class HeaderComponent implements OnInit {
   ) {
     this.taxonomies$ = this.store.select(getTaxonomies);
     this.store.dispatch(this.actions.getAllTaxonomies());
+    if (this.isSearchopen) {
+      this.renderer.addClass(document.body, 'issearchopen');
+    } else {
+      this.renderer.removeClass(document.body, 'issearchopen');
+    }
   }
 
   openModalWithClass(template: TemplateRef<any>) {
-    this.renderer.addClass(document.body, 'cat-mobile-open');
     this.modalRef = this.modalService.show(
       template,
       Object.assign({}, { class: 'cat-mobile' }, this.config)
@@ -149,6 +154,16 @@ export class HeaderComponent implements OnInit {
   showModal(): void {
     this.isModalShown = !this.isModalShown;
     this.isSearchopen = !this.isSearchopen;
+    if (this.isModalShown) {
+      this.renderer.addClass(document.body, 'isModalShown');
+    } else {
+      this.renderer.removeClass(document.body, 'isModalShown');
+    }
+    if (this.isSearchopen) {
+      this.renderer.addClass(document.body, 'issearchopen');
+    } else {
+      this.renderer.removeClass(document.body, 'issearchopen');
+    }
   }
 
   hideModal(): void {
