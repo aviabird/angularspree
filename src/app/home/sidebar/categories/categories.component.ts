@@ -56,7 +56,7 @@ export class CategoriesComponent implements OnInit {
       search.set('page', this.queryParams.page);
     }
     search.set('id', this.queryParams.id);
-    this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()));
+    this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()));
   }
 
   emitSelection() {

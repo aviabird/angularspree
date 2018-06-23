@@ -78,7 +78,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
         this.productdata = productdata
       });
     if (this.product.taxon_ids[0]) {
-      this.store.dispatch(this.searchActions.getProducsByTaxon(`id=${this.product.taxon_ids[0]}`))
+      this.store.dispatch(this.searchActions.getProductsByTaxon(`id=${this.product.taxon_ids[0]}`))
       this.similarProducts$ = this.store.select(getProductsByKeyword)
     }
 

@@ -15,7 +15,7 @@ export function reducer(state = initialState, { type, payload }: any): ProductSt
       }) as ProductState;
 
     case ProductActions.GET_ALL_PRODUCTS_SUCCESS:
-      const _products: Product[] = payload.products.products;
+      const _products: Product[] = payload.products;
       const _showAllProducts: Product[] = payload.products;
       const productIds: number[] = _products.map(product => product.id);
       const productEntities = _products.reduce((products: { [id: number]: Product }, product: Product) => {

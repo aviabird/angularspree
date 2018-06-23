@@ -25,7 +25,7 @@ export class SearchActions {
   }
 
   /**
-   * @method addFilter 
+   * @method addFilter
    * @param taxon Class Taxon
    * Get's triggered on checking the checkboxes in TaxonsComponent.
    */
@@ -38,7 +38,7 @@ export class SearchActions {
 
   /**
    * @method removeFilter
-   * @param taxon 
+   * @param taxon
    * Get's triggered at 2 places:-
    * 1. When user unchecks the checkbox.
    * 2. When user clears the selected filtes in filterSummaryComponent
@@ -64,7 +64,7 @@ export class SearchActions {
     }
   }
 
-  getProducsByTaxon(taxonId: any) {
+  getProductsByTaxon(taxonId: any) {
     return {
       type: SearchActions.GET_PRODUCTS_BY_TAXON,
       payload: taxonId

@@ -1,12 +1,12 @@
+import { JsonApiParserService } from './json-api-parser.service';
+import { CJsonApi } from './../models/jsonapi';
 import { ToastrService } from 'ngx-toastr';
-import { getUserFavoriteProducts } from './../../user/reducers/selector';
-import { getTaxonomies } from './../../product/reducers/selectors';
 import { Taxonomy } from './../models/taxonomy';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { catchError, map, tap } from 'rxjs/operators';
-import { of as observableOf, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProductService {
@@ -16,20 +16,24 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  constructor(private http: HttpClient, private toastrService: ToastrService) {}
+  constructor(
+    private http: HttpClient,
+    private toastrService: ToastrService,
+    private apiParser: JsonApiParserService
+  ) {}
 
   /**
    *
    *
    * @param {string} id
-   * @returns {Observable<any>}
+   * @returns {Observable<Product>}
    *
    * @memberof ProductService
    */
-  getProduct(id: string): Observable<any> {
+  getProduct(id: string): Observable<Product> {
     return this.http
-      .get<{ product: Product }>(`api/v1/products/${id}`)
-      .pipe(map(data => data.product));
+      .get<{ data: CJsonApi }>(`api/v1/products/${id}?data_set=large`)
+      .pipe(map(resp => this.apiParser.parseSingleObj(resp.data) as Product));
   }
 
   getProductReviews(products): Observable<any> {
@@ -53,10 +57,16 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getProducts(pageNumber: number): Observable<{}> {
-    return this.http.get<Array<Product>>(
-      `api/v1/products?page=${pageNumber}&per_page=20`
-    );
+  getProducts(pageNumber: number): Observable<Array<Product>> {
+    return this.http
+      .get<{ data: CJsonApi[] }>(
+        `api/v1/products?page=${pageNumber}&per_page=20&data_set=small`
+      )
+      .pipe(
+        map(
+          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+        )
+      );
   }
 
   markAsFavorite(id: number): Observable<{}> {
@@ -68,18 +78,40 @@ export class ProductService {
   }
 
   getFavoriteProducts(): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`favorite_products.json?per_page=20`);
+    return this.http
+      .get<{ data: CJsonApi[] }>(
+        `favorite_products.json?per_page=20&data_set=small`
+      )
+      .pipe(
+        map(
+          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+        )
+      );
   }
 
   getUserFavoriteProducts(): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`spree/user_favorite_products.json`);
+    return this.http
+      .get<{ data: CJsonApi[] }>(
+        `spree/user_favorite_products.json?data_set=small`
+      )
+      .pipe(
+        map(
+          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+        )
+      );
   }
 
   // tslint:disable-next-line:max-line-length
   getProductsByTaxon(id: string): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(
-      `api/v1/taxons/products?${id}&per_page=20`
-    );
+    return this.http
+      .get<{ data: CJsonApi[] }>(
+        `api/v1/taxons/products?${id}&per_page=20&data_set=small`
+      )
+      .pipe(
+        map(
+          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+        )
+      );
   }
 
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
@@ -89,9 +121,15 @@ export class ProductService {
   }
 
   getproductsByKeyword(keyword: string): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(
-      `api/v1/products?${keyword}&per_page=20`
-    );
+    return this.http
+      .get<{ data: CJsonApi[] }>(
+        `api/v1/products?${keyword}&per_page=20&data_set=small`
+      )
+      .pipe(
+        map(
+          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+        )
+      );
   }
 
   getChildTaxons(
@@ -104,19 +142,14 @@ export class ProductService {
   }
 
   submitReview(productId: any, params: any) {
-    return this.http.post(`products/${productId}/reviews`, params)
-      .pipe(
-
-        map(_ => this.toastrService.success(
-          'Review Submitted.',
-          'Success')
-        ),
-        tap(
-          _ => _,
-          _ => this.toastrService.error('something went wrong (reviws)', 'ERROR!!')
-        )
-
+    return this.http.post(`products/${productId}/reviews`, params).pipe(
+      map(_ => this.toastrService.success('Review Submitted.', 'Success')),
+      tap(
+        _ => _,
+        _ =>
+          this.toastrService.error('something went wrong (reviws)', 'ERROR!!')
       )
+    );
   }
 
   getReletedProducts(productId: any): Observable<Array<Product>> {

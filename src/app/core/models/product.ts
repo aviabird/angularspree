@@ -32,4 +32,5 @@ export class Product {
   classifications: Classification[];
   avg_rating: number;
   reviews_count: number;
+  product_url?: string;
 }
