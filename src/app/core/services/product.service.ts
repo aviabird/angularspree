@@ -120,14 +120,19 @@ export class ProductService {
     );
   }
 
-  getproductsByKeyword(keyword: string): Observable<Array<Product>> {
+  getproductsByKeyword(keyword: string): Observable<any> {
     return this.http
-      .get<{ data: CJsonApi[] }>(
+      .get<{ data: CJsonApi[], pagination: Object }>(
         `api/v1/products?${keyword}&per_page=20&data_set=small`
       )
       .pipe(
         map(
-          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+          resp => {
+            return {
+              pagination: resp.pagination,
+              products: this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+            }
+          }
         )
       );
   }

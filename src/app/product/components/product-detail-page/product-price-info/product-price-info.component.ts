@@ -76,4 +76,12 @@ export class ProductPriceInfoComponent implements OnInit {
   markAsFavorites() {
     this.onMarkAsFavorites.emit()
   }
+
+  get discount() {
+    return this.product.master.cost_price - this.product.price;
+  }
+
+  get discountPercent() {
+    return `%${Math.ceil(this.discount / this.product.master.cost_price * 100)}`;
+  }
 }

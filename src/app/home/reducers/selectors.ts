@@ -1,6 +1,5 @@
 import { HomeState } from './index';
 import { SearchState } from './search.state';
-import { AppState } from './../../interfaces';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 /******************* Base Search State ******************/
@@ -35,10 +34,15 @@ function fetchCategeoryLevel(state: SearchState) {
 function fetchTaxonomiByName(state: SearchState) {
   return state.taxonomiByName.toJS();
 }
+
+function fetchPaginationData(state: SearchState) {
+  return state.paginationData.toJS();
+}
 /******************* Public Selector API's ******************/
 export const getFilters = createSelector(getSearchState, fetchSelectedFilters);
 export const getSelectedTaxonIds = createSelector(getSearchState, fetchSelectedTaxonIds);
 export const getProductsByKeyword = createSelector(getSearchState, fetchProductsByKeyword);
+export const getPaginationData = createSelector(getSearchState, fetchPaginationData);
 export const getChildTaxons = createSelector(getSearchState, fetchChildTaxons);
 export const categeoryLevel = createSelector(getSearchState, fetchCategeoryLevel);
 export const taxonomiByName = createSelector(getSearchState, fetchTaxonomiByName);

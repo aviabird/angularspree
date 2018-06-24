@@ -1,10 +1,11 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
-  styleUrls: ['./content-header.component.scss']
+  styleUrls: ['./content-header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentHeaderComponent implements OnInit {
   @Output() toggleSize = new EventEmitter();

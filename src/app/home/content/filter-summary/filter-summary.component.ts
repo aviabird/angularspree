@@ -3,12 +3,13 @@ import { getFilters } from './../../reducers/selectors';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-filter-summary',
   templateUrl: './filter-summary.component.html',
-  styleUrls: ['./filter-summary.component.scss']
+  styleUrls: ['./filter-summary.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterSummaryComponent implements OnInit {
   filters$: Observable<any>;

@@ -1,4 +1,3 @@
-
 <div class="container content" *ngIf="!screenWidth">
   <div class="row " *ngIf=productsCount>
     <div itemprop="name" class="queried-for col-7 pl-1 ">
@@ -13,7 +12,7 @@
           <label for="inputEmail3 " class="col-sm-5 col-md-5 col-form-label ">Sort by</label>
           <div class="col-sm-7 col-md-7 p-0 ">
             <select [(ngModel)]="selectedOption " class="form-control " name="Relevance " (click)="sortFilter(selectedOption) ">
-              <option [ngValue]="Relevance ">Relevance</option>
+              <option ngValue="Relevance">Relevance</option>
               <option *ngFor="let opt of options ">
                 {{opt.name}}
               </option>
@@ -24,7 +23,7 @@
     </div>
   </div>
 </div>
-<div class="container content " *ngIf="screenWidth ">
+<div class="container content " *ngIf="screenWidth">
   <div class="row" *ngIf=productsCount>
     <div class="col-6 button-container text-right">
       <button (click)="showModal()" type="button" class="btn btn-secondary">

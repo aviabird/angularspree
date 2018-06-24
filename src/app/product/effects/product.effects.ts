@@ -63,8 +63,8 @@ export class ProductEffects {
       switchMap((action: any) =>
         this.productService.getproductsByKeyword(action.payload)
       ),
-      map((products: Product[]) =>
-        this.searchActions.getProducsByKeywordSuccess({ products })
+      map(({products, pagination}) =>
+        this.searchActions.getProducsByKeywordSuccess({ products, pagination })
       )
     );
 

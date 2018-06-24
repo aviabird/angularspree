@@ -48,8 +48,10 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
 
     case SearchActions.GET_PRODUCTS_BY_KEYWORD_SUCCESS:
       const productsByKeyword: Product[] = payload.products;
+      const paginationData = payload.pagination;
       return state.merge({
-        productsByKeyword: productsByKeyword
+        productsByKeyword: productsByKeyword,
+        paginationData: paginationData || {}
       }) as SearchState;
 
     case SearchActions.GET_CHILD_TAXONS_SUCCESS:
@@ -80,7 +82,7 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
 
     case SearchActions.GET_TAXONOMIES_BY_NAME_SUCCESS:
       let _taxonomiByName: Taxonomy[] = payload.taxonomiList.taxonomiList.taxonomies;
-      let brandArray = [];
+      const brandArray = [];
       const brandsRoot = _taxonomiByName[0].root;
       const lengthBrands = brandsRoot.taxons.length;
       for (let i = 0; i < lengthBrands; i++) {
