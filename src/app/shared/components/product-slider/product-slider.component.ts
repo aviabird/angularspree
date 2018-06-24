@@ -9,7 +9,7 @@ import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy } from '@a
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductSliderComponent implements OnInit {
-  @Input() productlist;
+  @Input() productlist = new Array(10);
   @ViewChild('nav', { read: DragScrollDirective }) ds: DragScrollDirective;
 
   constructor() {

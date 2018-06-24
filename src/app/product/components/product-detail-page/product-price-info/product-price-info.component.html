@@ -25,26 +25,25 @@
     <div id="product-vitals">
       <div id="pricing">
         <ul class="product-pricing">
-          <li class="list-price">
+          <li class="list-price" *ngIf="discount > 0">
             <p class="title">
               List Price:</p>
-            <p class="price">
-              $54.99</p>
+            <p class="price">{{product.currency}}{{product.master.cost_price}}</p>
           </li>
           <li class="our-price">
             <p class="title">Price:</p>
             <p class="price">
               <span class="ga-eec__price">
-                {{product.display_price}}</span>
+                {{product.currency}}{{product.price}}</span>
               <span class="free-shipping  d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
                 <span>Shipping on this item</span>
               </span>
             </p>
           </li>
-          <li class="you-save">
+          <li class="you-save" *ngIf="discount > 0">
             <p class="title">You Save:</p>
             <p class="price">
-              $2.07 (4%)
+              {{product.currency}}{{discount}} ({{discountPercent}})
             </p>
           </li>
         </ul>

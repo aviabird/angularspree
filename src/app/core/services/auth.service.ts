@@ -181,10 +181,11 @@ export class AuthService {
     return new HttpHeaders({
       'Content-Type': request.headers.get('Content-Type') || 'application/json',
       'token-type': 'Bearer',
-      access_token: user.access_token || [],
-      client: user.client || [],
-      uid: user.uid || [],
-      'Auth-Token': user.spree_api_key || []
+      'access_token': user.access_token || [],
+      'client': user.client || [],
+      'uid': user.uid || [],
+      'Auth-Token': user.spree_api_key || [],
+      'ng-api': 'true'
     });
   }
 

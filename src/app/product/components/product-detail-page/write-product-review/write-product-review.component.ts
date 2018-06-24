@@ -2,7 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from './../../../../core/services/product.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
 import { ProductActions } from '../../../actions/product-actions';
@@ -12,7 +12,7 @@ import { environment } from '../../../../../environments/environment';
   selector: 'app-write-product-review',
   templateUrl: './write-product-review.component.html',
   styleUrls: ['./write-product-review.component.scss'],
-
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WriteProductReviewComponent implements OnInit {
 

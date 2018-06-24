@@ -88,7 +88,7 @@ export class HeaderSearchComponent implements OnInit {
       search.set('q[s]', this.queryParams['q[s]']);
     }
     this.store.dispatch(
-      this.searchActions.getProducsByTaxon(search.toString())
+      this.searchActions.getProductsByTaxon(search.toString())
     );
   }
 
