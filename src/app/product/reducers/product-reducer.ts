@@ -36,11 +36,11 @@ export function reducer(state = initialState, { type, payload }: any): ProductSt
         taxonomies: _taxonomies
       }) as ProductState;
 
-    case ProductActions.GET_RELETED_PRODUCT_SUCCESS:
-      const _relatedProducts: Product[] = payload
+    case ProductActions.GET_RELATED_PRODUCT_SUCCESS:
+      const relatedProducts: Product[] = payload.products
 
       return state.merge({
-        relatedProducts: _relatedProducts
+        relatedProducts: relatedProducts
       }) as ProductState;
 
     case ProductActions.GET_REVIEWS_SUCCESS:

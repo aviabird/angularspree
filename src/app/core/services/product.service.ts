@@ -152,7 +152,13 @@ export class ProductService {
     );
   }
 
-  getReletedProducts(productId: any): Observable<Array<Product>> {
-    return this.http.get<Array<Product>>(`api/products/${productId}/relations`);
+  getRelatedProducts(productId: any): Observable<Array<Product>> {
+    return this.http
+      .get<{ data: CJsonApi[] }>(`api/products/${productId}/relations`)
+      .pipe(
+        map(
+          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+        )
+      );
   }
 }

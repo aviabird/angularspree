@@ -80,7 +80,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     this.productID = this.product.id;
 
     this.productService
-      .getReletedProducts(this.productID)
+      .getRelatedProducts(this.productID)
       .subscribe(productdata => {
         this.productdata = productdata;
       });
