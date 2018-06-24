@@ -103,8 +103,8 @@
         }
         a.disabled {
           cursor: default;
-          background: #f2f2f2;
-          color: #ddd;
+          background: $gray-200;
+          color: $gray-10;
         }
         a {
           width: 33.33333%;

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Subscription ,  Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from './../../../core/models/product';
@@ -7,15 +7,14 @@ import { ProductService } from './../../../core/services/product.service';
 @Component({
   selector: 'app-product-detail-page',
   templateUrl: './product-detail-page.component.html',
-  styleUrls: ['./product-detail-page.component.css'],
+  styleUrls: ['./product-detail-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductDetailPageComponent implements OnInit {
-  actionsSubscription: Subscription;
-  product$: Product = null;
+export class ProductDetailPageComponent implements OnInit, OnDestroy {
+  actionsSubscription$: Subscription;
+  product$: Observable<Product> = null;
   routeSubs: Subscription;
   productId: any;
-
 
   constructor(private productService: ProductService,
     private route: ActivatedRoute) {
@@ -25,18 +24,20 @@ export class ProductDetailPageComponent implements OnInit {
      * 2. Retrive product id
      * 3. Ask for the product detail based on product id
      * */
-    this.actionsSubscription = this.route.params.subscribe(
+    this.actionsSubscription$ = this.route.params.subscribe(
       (params: any) => {
         this.productId = params['id'];
-        this.productService
-          .getProduct(this.productId)
-          .subscribe(response => this.product$ = response);
+        this.product$ = this.productService.getProduct(this.productId)
       }
     );
   };
 
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.actionsSubscription$.unsubscribe();
   }
 
   /**

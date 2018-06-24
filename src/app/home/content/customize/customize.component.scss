@@ -1,3 +1,4 @@
+@import '../../../shared/scss/selected_theme_variables';
 .customize {
   ul.properties {
     margin-left: -40px; // This is a workaround for not proper alignment
@@ -14,15 +15,15 @@
       float: left;
       margin-right: 32px;
       margin-bottom: 5px;
-      border-bottom: 2px solid #fff;
+      border-bottom: 2px solid $white;
       display: inline-block;
-      color: #696b79;
+      color: $gray-800;
       list-style: none;
       &.selected:after {
         height: 2px;
         width: 100%;
         position: absolute;
-        background-color: #20bd99;
+        background-color: $theme-action-color;
         content: ' ';
         top: 108%;
         left: 0;
@@ -33,7 +34,7 @@
         height: 2px;
         width: 100%;
         position: absolute;
-        background-color: #696b79;
+        background-color: $gray-800;
         content: ' ';
         top: 108%;
         left: 0;
@@ -49,14 +50,14 @@
     margin-top: 12px;
     position: relative;
     padding-top: 10px;
-    border-top: 1px dotted #d4d5d9;
+    border-top: 1px dotted $gray-10;
     ul.options {
       padding-left: 0px; // This is a workaround
       text-align: right;
       margin: 5px 0 0 5px;
       text-transform: capitalize;
       display: block;
-      border-bottom: 1px dotted #d4d5d9;
+      border-bottom: 1px dotted $gray-10;
       max-height: 76px;
       position: relative;
       padding-bottom: 5px;
@@ -69,7 +70,7 @@
         width: 120px;
         font-size: 14px;
         text-align: left;
-        color: #3e4152;
+        color: $gray-700;
         float: left;
         list-style: none;
         label {
