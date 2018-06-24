@@ -13,7 +13,7 @@ import { HumanizePipe } from '../core/pipes/humanize.pipe';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductSliderComponent } from './components/product-slider/product-slider.component'
-import { InnerIproduct } from './components/product-slider/inner-product/inner-product.component'
+import { InnerIproductComponent } from './components/product-slider/inner-product/inner-product.component'
 // Directives
 import { ZoomableDirective } from './directives/zoomable.directive';
 
@@ -25,7 +25,7 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     HumanizePipe,
     ZoomableDirective,
     ProductSliderComponent,
-    InnerIproduct,
+    InnerIproductComponent,
   ],
   exports: [
     // components

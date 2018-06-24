@@ -1,25 +1,27 @@
 import { ProductService } from './../core/services/product.service';
 import { SearchActions } from './reducers/search.actions';
-import { getSelectedTaxonIds, getProductsByKeyword, getChildTaxons, categeoryLevel, taxonomiByName } from './reducers/selectors';
-import { Taxonomy } from './../core/models/taxonomy';
-import { environment } from './../../environments/environment';
+import {
+  getSelectedTaxonIds,
+  getProductsByKeyword,
+  getChildTaxons,
+  categeoryLevel,
+  taxonomiByName,
+  getPaginationData
+} from './reducers/selectors';
 import { ProductActions } from './../product/actions/product-actions';
 import { AppState } from './../interfaces';
-import { getProducts, getTaxonomies, showAllProducts } from './../product/reducers/selectors';
+import { getTaxonomies } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { TemplateRef } from '@angular/core';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { Directive, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Product } from '../core/models/product';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
   // products$: Observable<any>;
@@ -27,12 +29,11 @@ export class HomeComponent implements OnInit {
   brands$: Observable<any>;
   selectedTaxonIds$: Observable<number[]>;
   categoryLevel$: Observable<any>;
-  products: any;
-  isProducts = false;
+  products$: Observable<Product>;
+  pagination$: Observable<any>;
   isFilterOn = false;
   isBrandOpen = false;
   isCategoryOpen = true;
-  fillterList: any;
 
   constructor(
     private store: Store<AppState>,
@@ -46,15 +47,8 @@ export class HomeComponent implements OnInit {
     this.taxonomies$ = this.store.select(getTaxonomies);
     this.brands$ = this.store.select(getTaxonomies);
     this.selectedTaxonIds$ = this.store.select(getSelectedTaxonIds);
-    this.store.select(getProductsByKeyword)
-      .subscribe(data => {
-        this.products = data
-        if (this.products.count) { this.isProducts = true } else { this.isProducts = false }
-      })
-    this.store.select(getTaxonomies)
-      .subscribe(data => {
-        this.fillterList = data;
-      })
+    this.products$ = this.store.select(getProductsByKeyword);
+    this.pagination$ = this.store.select(getPaginationData);
   }
 
   // tslint:disable-next-line:member-ordering

@@ -44,7 +44,7 @@ export class LpProductListComponent implements OnInit {
     const search = new URLSearchParams();
     search.set('id', this.dealsId);
     this.store.dispatch(
-      this.searchActions.getProducsByTaxon(search.toString())
+      this.searchActions.getProductsByTaxon(search.toString())
     );
   }
 }

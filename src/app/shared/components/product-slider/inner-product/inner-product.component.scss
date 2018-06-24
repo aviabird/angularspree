@@ -1,16 +1,16 @@
 @import '../../../scss/selected_theme_variables';
 .product-box {
-    border-radius: 5px;
-    margin-top: 1rem;
-    border: 1px solid transparent;
-    @media screen and (min-width: 320px) and (max-width: 768px) {
-      margin-right: 1rem;
-      border: 1px solid $gray-10;
-    }
-    &:hover {
-      border-color: $black - 200;
-    }
+  border-radius: 5px;
+  margin-top: 1rem;
+  border: 1px solid transparent;
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    margin-right: 1rem;
+    border: 1px solid $gray-10;
   }
+  &:hover {
+    border-color: $black - 200;
+  }
+}
 
 img {
   width: 100%;

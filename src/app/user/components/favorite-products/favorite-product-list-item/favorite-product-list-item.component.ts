@@ -28,10 +28,4 @@ export class FavoriteProductListItemComponent implements OnInit {
       this.store.dispatch(this.userActions.removeFromFavoriteProducts(id));
     });
   }
-
-  getProductImageUrl() {
-    // tslint:disable-next-line:max-line-length
-    return environment.apiEndpoint + `/spree/products/${this.product.master.images[0].id}/product/${this.product.master.images[0].attachment_file_name}`
-  }
-
 }
