@@ -39,16 +39,16 @@ ul {
 }
 
 .radio-pink [type="radio"]:checked+label:after {
-  border-color: #e91e63;
-  background-color: #e91e63;
+  border-color: $theme-action-sub-color2;
+  background-color: $theme-action-sub-color2;
 }
 /*Gap*/
 
 .radio-pink-gap [type="radio"].with-gap:checked+label:before {
-  border-color: #e91e63;
+  border-color: $theme-action-sub-color2;
 }
 
 .radio-pink-gap [type="radio"]:checked+label:after {
-  border-color: #e91e63;
-  background-color: #e91e63;
+  border-color: $theme-action-sub-color2;
+  background-color:$theme-action-sub-color2;
 }                

@@ -1,6 +1,7 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .image-container {
   .thumbnails-selected-image {
-    background: rgb(245, 245, 246) none repeat scroll 0% 0% / auto padding-box border-box;
+    background:$white none repeat scroll 0% 0% / auto padding-box border-box;
   }
   .thumbnails-vertical-container {
     width: 60px;
@@ -9,7 +10,7 @@
     .thumbnails-thumbnail-button {
       outline: 0;
       margin-right: 15px;
-      background-color: #fff;
+      background-color:$white;
       border: 0;
       padding: 0;
       position: relative;

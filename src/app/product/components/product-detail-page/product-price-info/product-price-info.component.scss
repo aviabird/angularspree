@@ -24,7 +24,7 @@
 }
 
 .vatInfo {
-  color: #7e818c;
+  color: $gray-800;
   font-size: 13px;
 }
 
@@ -91,7 +91,6 @@
 
 #buybox .primary-btn--action {
   background-color: $theme-action-sub-color2;
-  background: linear-gradient(180deg, $theme-action-sub-color2  0, ef #FFAC2E 45%, $theme-action-sub-color2);
   color: $white;
   font-weight: 500;
   border: 1px solid rgba(0, 0, 0, 0.3);

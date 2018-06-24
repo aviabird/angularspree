@@ -1,7 +1,8 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .line_item_image {
   float: left;
 }
 
 .view-details-link {
-  color: #526cd0;
+  color: $theme-action-color;
 }

@@ -1,25 +1,25 @@
 @import '../../../../shared/scss/selected_theme_variables';
 .cart-empty {
-	min-height: 500px;
-	padding-top: 85px;
-	text-align: center;
-	.empty-cart-icon {
-		height: 85px;
+  min-height: 500px;
+  padding-top: 85px;
+  text-align: center;
+  .empty-cart-icon {
+    height: 85px;
     width: 85px;
     margin: 0 auto;
     background-image: url(/assets/shoppingbag.png);
-	}
-	.empty-cart-message {
-		font-size: 20px;
-    color: #535766;
+  }
+  .empty-cart-message {
+    font-size: 20px;
+    color: $gray-800;
     font-weight: 600;
-		font-family: $primary-font;;
-		line-height: 120px;
-		margin: 15px 0;
-	}
-	.empty-wishlist-link {
-		color: #526cd0;
+    font-family: $primary-font;
+    line-height: 120px;
+    margin: 15px 0;
+  }
+  .empty-wishlist-link {
+    color: $blue;
     font-size: 16px;
     font-weight: 500;
-	}
+  }
 }

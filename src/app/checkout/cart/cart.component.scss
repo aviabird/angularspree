@@ -2,7 +2,7 @@
 .cart-section {
   position: relative;
   .left {
-    padding-right: 40px;   
+    padding-right: 40px;
     .checkout-header-container {
       .checkout-header {
         display: inline-block;
@@ -30,7 +30,7 @@
       padding: 1rem;
       background-color: $white;
       border-radius: 4px;
-      box-shadow: 0px 0px 3px #ccc;
+      box-shadow: 0px 0px 3px $gray-10;
       .wishlist-link {
         cursor: pointer;
         .icon {
@@ -59,11 +59,11 @@
   .right {
     vertical-align: top;
     position: absolute;
-    right:0;
-    margin-top: 15.3vh;  
-    background-color:$white;
-    border-radius:4px ;
-    box-shadow:0px 0px 4px $gray-10;
+    right: 0;
+    margin-top: 15.3vh;
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px $gray-10;
     padding: 0.9rem 1.4rem;
   }
 }

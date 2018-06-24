@@ -1,7 +1,8 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .status {
-  color: #20bd99;
+  color: $theme-action-color;
 }
 
 .line_item_image {
-  border: 1px solid #eee;
+  border: 1px solid $gray-10;
 }

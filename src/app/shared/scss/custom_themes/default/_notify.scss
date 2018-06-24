@@ -2,26 +2,21 @@
   0% {
     top: -1000px;
   }
-
   10% {
     top: 100px;
   }
-
   15% {
     opacity: 1;
     top: 80px;
   }
-
   60% {
     opacity: 1;
     top: 80px;
   }
-  
   65% {
     opacity: 1;
     top: 100px;
   }
-  
   100% {
     opacity: 0;
     top: -1000px;
@@ -31,7 +26,7 @@
 .notify-container {
   position: fixed;
   top: 122px;
-  color: #fff;
+  color: $white;
   width: 100%;
   max-width: 980px;
   margin: 0 auto;
@@ -52,7 +47,7 @@
 }
 
 .notify-error {
-  background-color: #ff5722;
+  background-color: $theme-action-color;
 }
 
 .notify-content {
@@ -60,7 +55,7 @@
   width: 80%;
   padding: 10px 20px;
   border-radius: 3px;
-  box-shadow: 0 2px 10px rgba(40,44,64,.2);
+  box-shadow: 0 2px 10px rgba(40, 44, 64, .2);
   margin: 0 auto;
 }
 
@@ -71,7 +66,7 @@
 }
 
 .notify-icon {
-  border: 2px solid #fff;
+  border: 2px solid $white;
   padding: 0 7px;
   border-radius: 20px;
   position: absolute;

@@ -93,8 +93,7 @@ h1 {
 }
 
 .primary-btn--action {
-  background-color: $theme-action-sub-color2;
-  background: linear-gradient(180deg, $theme-action-sub-color2 0, ef #FFAC2E 45%, $theme-action-sub-color2);
+  background-color: $theme-action-sub-color2; 
   color: $white;
   font-weight: 500;
   border: 1px solid rgba(0, 0, 0, 0.3);
