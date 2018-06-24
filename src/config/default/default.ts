@@ -2,7 +2,7 @@ import { DEFAULT_APP_DATA } from './app-data';
 
 export const DEFAULT_CONFIG = {
   // Add Your custom configs hereh
-  prodApiEndpoint: 'http://ngspree-api.herokuapp.com/',
+  prodApiEndpoint: 'https://ngspree-api.herokuapp.com/',
   // prodApiEndpoint: 'http://localhost:3000/',
   appName: 'Angularspree',
   fevicon: 'http://via.placeholder.com/350x150',
