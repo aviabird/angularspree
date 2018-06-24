@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/index';
-
-import { RouterModule } from '@angular/router';
-
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar'
-// For Temp Puropose
-// TODO: Remove this from here
-import { ProductService } from './../core/services/product.service';
+import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
+import { ProductRoutingModule } from './product-routing.module';
 
 // Components
 import { ProductDetailPageComponent } from './components/product-detail-page/product-detail-page.component';
@@ -20,11 +16,6 @@ import { ProductComponent } from './product.component';
 import { WriteProductReviewComponent } from './components/product-detail-page/write-product-review/write-product-review.component';
 import { ProductReviewComponent } from './components/product-detail-page/product-review/product-review.component'
 
-// Effects
-import { EffectsModule } from '@ngrx/effects';
-import { ProductEffects } from './effects/product.effects';
-import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
-import { ProductRoutingModule } from './product-routing.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +47,6 @@ import { ProductRoutingModule } from './product-routing.module';
     ProductRoutingModule,
     NgxInputStarRatingModule,
     ProgressbarModule.forRoot()
-
   ],
   providers: [
   ]

@@ -7,10 +7,10 @@
 
 .panel {
   margin-bottom: 20px;
-  background-color: #fcfcfc;
+  background-color: $gray-100;
   border: none;
   border-radius: 4px;
-  border: 1px solid #eee;
+  border: 1px solid $gray-10;
   box-shadow: none;
   .panel-heading {
     padding: 30px 0 0;
@@ -23,7 +23,7 @@
       margin-top: 0;
       margin-bottom: 0;
       font-size: 28px;
-      color: #666;
+      color: $gray-10;
       font-weight: 400;
     }
   }
@@ -31,7 +31,7 @@
 
 .register-input-container {
   margin: 20px;
-  border: 1px solid #bfc0c6;
+  border: 1px solid $gray-10;
   border-radius: 5px;
   padding: 0;
 }
@@ -45,7 +45,7 @@
 .register-register-button {
   font-size: 14px;
   font-weight: BOLD;
-  color: #fff;
+  color: $white;
   letter-spacing: 2px;
   padding: 15px;
   display: block;
@@ -67,7 +67,7 @@
 
 .register-user-input {
   display: block;
-  color: #282c3f;
+  color: $gray-900;
   font-size: 15px;
   padding-right: 40px;
   width: 100%;
@@ -76,11 +76,11 @@
 }
 
 .register-user-input-password {
-  border-top: 1px solid #d5d6d9;
+  border-top: 1px solid $gray-10;
 }
 
 .register-user-input-mobile {
-  border-top: 1px solid #d5d6d9;
+  border-top: 1px solid $gray-10;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -89,11 +89,11 @@
   position: relative;
   border: 0;
   font-size: 13px;
-  color: #696e79;
+  color: $gray-800;
   text-align: left;
   padding: 15px;
   margin: 0;
-  border-top: 1px solid #d5d6d9;
+  border-top: 1px solid $gray-10;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -102,11 +102,11 @@
   position: relative;
   border: 0;
   font-size: 13px;
-  color: #696e79;
+  color: $gray-800;
   text-align: left;
   padding: 15px;
   margin: 0;
-  border-top: 1px solid #d5d6d9;
+  border-top: 1px solid $gray-10;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -170,7 +170,7 @@ fieldset {
 }
 
 .register-info-text {
-  color: #94969f;
+  color: $gray-800;
   font-size: 12px;
 }
 
@@ -198,7 +198,7 @@ a {
 }
 
 .register-info-text {
-  color: #94969f;
+  color: $gray-800;
   font-size: 12px;
 }
 
@@ -214,10 +214,10 @@ a {
   position: relative;
   font-size: 13px;
   font-weight: 500;
-  color: #696b79;
+  color: $gray-800;
   height: 50px;
-  border: 1px solid #bfc0c6;
-  background-color: #fff;
+  border: 1px solid $gray-10;
+  background-color: $white;
   border-radius: 5px;
   text-align: left;
 }
@@ -311,14 +311,14 @@ textarea {
 }
 
 .register-info-text {
-  color: #94969f;
+  color: $gray-800;
   font-size: 12px;
 }
 
 .register-error-icon {
-  border: 2px solid #ee5f73;
+  border: 2px solid $theme-action-sub-color2;
   padding: 0 7px;
-  color: #ee5f73;
+  color: $theme-action-sub-color2;
   display: inline-block;
   position: absolute;
   top: 12px;
@@ -330,7 +330,7 @@ textarea {
 .register-error-message {
   font-size: 11px;
   margin-left: 15px;
-  color: #ee5f73;
+  color: $theme-action-sub-color2;
   text-align: left;
   margin-top: -9px;
   max-height: 500px;

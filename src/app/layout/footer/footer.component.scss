@@ -5,8 +5,7 @@ footer {
   right: 0;
   bottom: -60px;
   left: 0;
-
-  background-color: #efefef;
+  background-color: $gray-10;
   text-align: center;
 }
 
@@ -15,7 +14,7 @@ footer {
 }
 
 .cpy {
-  border-top: 1px solid #a7a7a7;
+  border-top: 1px solid $gray-13;
 }
 
 .cpy1 {
@@ -27,7 +26,7 @@ footer {
       display: inline-block;
       padding: 1REM;
       a {
-        color: #697071;
+        color: $gray-600;
         font-size: 15PX;
       }
     }
