@@ -22,11 +22,11 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
       if (filterAlreadyPresent) {
         return state;
       } else {
-        const _selectedFilters = state.selectedFilters.concat([payload]);
-        const _selectedTaxonIds = state.selectedTaxonIds.concat(payload.id);
+        const selectedFilters = state.selectedFilters.concat([payload]);
+        const selectedTaxonIds = state.selectedTaxonIds.concat(payload.id);
         return state.merge({
-          selectedFilters: _selectedFilters,
-          selectedTaxonIds: _selectedTaxonIds,
+          selectedFilters: selectedFilters,
+          selectedTaxonIds: selectedTaxonIds,
         }) as SearchState;
       }
 
@@ -47,9 +47,9 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
       }) as SearchState;
 
     case SearchActions.GET_PRODUCTS_BY_KEYWORD_SUCCESS:
-      const _productsByKeyword: Product[] = payload.products;
+      const productsByKeyword: Product[] = payload.products;
       return state.merge({
-        productsByKeyword: _productsByKeyword
+        productsByKeyword: productsByKeyword
       }) as SearchState;
 
     case SearchActions.GET_CHILD_TAXONS_SUCCESS:
