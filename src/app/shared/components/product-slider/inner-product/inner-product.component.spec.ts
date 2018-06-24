@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InnerIproduct } from './inner-product.component';
+import { InnerIproductComponent } from './inner-product.component';
 
-describe('InnerIproduct', () => {
-  let component: InnerIproduct;
-  let fixture: ComponentFixture<InnerIproduct>;
+describe('InnerIproductComponent', () => {
+  let component: InnerIproductComponent;
+  let fixture: ComponentFixture<InnerIproductComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InnerIproduct ]
+      declarations: [ InnerIproductComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InnerIproduct);
+    fixture = TestBed.createComponent(InnerIproductComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

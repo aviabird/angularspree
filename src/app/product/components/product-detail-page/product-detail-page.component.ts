@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription ,  Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from './../../../core/models/product';
@@ -7,7 +7,8 @@ import { ProductService } from './../../../core/services/product.service';
 @Component({
   selector: 'app-product-detail-page',
   templateUrl: './product-detail-page.component.html',
-  styleUrls: ['./product-detail-page.component.css']
+  styleUrls: ['./product-detail-page.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailPageComponent implements OnInit {
   actionsSubscription: Subscription;

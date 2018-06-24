@@ -1,16 +1,14 @@
-import { getSelectedTaxonIds } from './../../reducers/selectors';
 import { CheckoutActions } from './../../../checkout/actions/checkout.actions';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
-import { Product } from './../../../core/models/product';
-import { environment } from './../../../../environments/environment';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductListComponent implements OnInit {
   @Input() products;
@@ -32,10 +30,6 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  getProductImageUrl(url) {
-    return url;
   }
 
   getMargin() {

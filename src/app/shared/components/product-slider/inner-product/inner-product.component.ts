@@ -8,16 +8,12 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@a
   styleUrls: ['./inner-product.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InnerIproduct implements OnInit {
-
+export class InnerIproductComponent implements OnInit {
   @Input() product: Product;
+
   constructor() {
   }
 
   ngOnInit() {
-  }
-
-  getProductImageUrl() {
-    return this.product.master.images[0].product_url;
   }
 }

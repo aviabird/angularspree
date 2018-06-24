@@ -84,7 +84,7 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   getCategeory() {
     const search = new URLSearchParams();
     search.set('id', this.queryParams.id);
-    this.store.dispatch(this.searchActions.getProducsByTaxon(search.toString()))
+    this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()))
   }
   childCatLoaded(status) {
     this.backBtnShow = status;
