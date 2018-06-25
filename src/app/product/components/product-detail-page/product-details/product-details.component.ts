@@ -79,13 +79,14 @@ export class ProductDetailsComponent implements OnInit {
     this.correspondingOptions = this.mainOptions;
     this.productID = this.product.id;
 
-    this.productService.getReletedProducts(this.productID)
+    this.productService.getRelatedProducts(this.productID)
       .subscribe(productdata => {
         this.productdata = productdata;
       });
+
     if (this.product.taxon_ids[0]) {
       this.store.dispatch(
-        this.searchActions.getProducsByTaxon(`id=${this.product.taxon_ids[0]}`)
+        this.searchActions.getProductsByTaxon(`id=${this.product.taxon_ids[0]}`)
       );
       this.similarProducts$ = this.store.select(getProductsByKeyword);
     }
