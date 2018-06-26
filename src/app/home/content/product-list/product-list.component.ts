@@ -17,7 +17,8 @@ export class ProductListComponent implements OnInit {
   @Input() toggleLayout;
   page: number;
   queryParams: any;
-
+  screenwidth;
+  devicewidth
   constructor(
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
@@ -30,6 +31,13 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.screenwidth = window.innerWidth;
+    this.calculateInnerWidth();
+  }
+  calculateInnerWidth() {
+    if (this.screenwidth <= 1000) {
+      this.devicewidth = this.screenwidth;
+    }
   }
 
   getMargin() {

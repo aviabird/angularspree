@@ -34,7 +34,8 @@ export class HomeComponent implements OnInit {
   isFilterOn = false;
   isBrandOpen = false;
   isCategoryOpen = true;
-
+  screenwidth;
+  devicewidth;
   constructor(
     private store: Store<AppState>,
     private actions: ProductActions,
@@ -59,7 +60,11 @@ export class HomeComponent implements OnInit {
   showModal(): void {
     this.isModalShown = true;
   }
-
+  calculateInnerWidth() {
+    if (this.screenwidth <= 1000) {
+      this.devicewidth = this.screenwidth;
+    }
+  }
   hideModal(): void {
     this.autoShownModal.hide();
   }
@@ -68,6 +73,8 @@ export class HomeComponent implements OnInit {
     this.isModalShown = false;
   }
   ngOnInit() {
+    this.screenwidth = window.innerWidth;
+    this.calculateInnerWidth();
   }
 
   OnCategeorySelected(category) {

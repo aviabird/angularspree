@@ -11,6 +11,7 @@ export class ContentHeaderComponent implements OnInit {
   @Output() toggleSize = new EventEmitter();
   @Input() productsCount;
   @Input() productsTotal_count;
+  @Input() fillterList;
   screenWidth: any;
   options = [
     { name: 'Newest', value: 1 },

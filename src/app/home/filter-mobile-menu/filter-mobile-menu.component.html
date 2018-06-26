@@ -1,41 +1,21 @@
-<!-- <accordion [closeOthers]="true">
-  <accordion-group>
-    <div accordion-heading class="clearfix">
-     
-      <span class="badge badge-secondary float-right pull-right">Some HTML here</span>
-    </div>
-    <accordion [closeOthers]="true">
-      <div class="d-flex  my-flex-container" *ngIf="fillterList[0]; let catgeory_taxonomy">
-        <div class="p-0 no-gutters" class="parrent-catgory">
-          <accordion-group *ngFor="let taxon of catgeory_taxonomy.root.taxons">
+<div class="d-flex  my-flex-container" *ngIf="fillterList[0]; let catgeory_taxonomy">
 
-            <div accordion-heading class="clearfix">
-              {{taxon.name}}
-              <span class="badge badge-secondary float-right pull-right"></span>
-            </div>
-            <div>
-              <accordion [closeOthers]="true">
-                <accordion-group *ngFor="let subtaxon of taxon.taxons">
-                  <div accordion-heading class="clearfix">
-                    {{subtaxon.name}}
-                  </div>
-                  <div *ngFor="let subsubtaxon of subtaxon.taxons">
-                    {{ subsubtaxon.name }}
-                  </div>
-                </accordion-group>
-              </accordion>
-            </div>
-          </accordion-group>
-
-        </div>
-      </div>
-    </accordion>
-
-  </accordion-group>
-  <accordion-group>
-    <div accordion-heading>
-    
-    </div>
-    <span class="badge badge-secondary center">/span>
-  </accordion-group>
-</accordion> -->
+  <div class="p-0 no-gutters" class="parrent-catgory">
+    <ul class="filter">
+      <li *ngFor="let taxon of catgeory_taxonomy.root.taxons" [ngClass]="{'active': selectedItem == taxon.name}" (click)="listClick($event, taxon.name)">
+        <a>{{taxon.name}}</a>
+        <ul>
+          <li *ngFor="let subtaxon of taxon.taxons">
+            <a>{{subtaxon.name}}</a>
+            <ul>
+              <li *ngFor="let subsubtaxon of subtaxon.taxons">
+                <a>{{ subsubtaxon.name }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <span class="badge badge-secondary center"></span>
+</div>

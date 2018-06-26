@@ -7,10 +7,15 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderHelpDropdownComponent implements OnInit {
-
+  isOpen: boolean;
   constructor() { }
+
 
   ngOnInit() {
   }
 
+  onOpenChange(data: boolean): void {
+
+    this.isOpen = !this.isOpen;
+  }
 }
