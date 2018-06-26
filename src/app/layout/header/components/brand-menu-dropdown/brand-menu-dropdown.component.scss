@@ -2,7 +2,7 @@
 .dropdown-menu {
   width: 50rem;
   padding: 0px;
-  left: -0.1rem !important;
+  left: -0.2rem !important;
   top: 3rem !important;
   min-height: 36.5vw;
   z-index: 10;
@@ -40,11 +40,13 @@
   left: -2px;
   &:hover {
     background-color: $theme-main-color - 20;
+    box-shadow: 0 3px 5px rgba(0,0,0,.6); 
   }
 }
 
 .open {
   background-color: $theme-main-color - 20;
+  box-shadow: 0 3px 5px rgba(0,0,0,.6); 
 }
 
 li {

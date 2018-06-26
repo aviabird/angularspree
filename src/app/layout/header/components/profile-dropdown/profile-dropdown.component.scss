@@ -1,5 +1,35 @@
+@import '../../../../shared/scss/selected_theme_variables';
 .dropdown-toggle::after {
   vertical-align: 0.055em !important;
+}
+
+.dropdown-menu {
+  top: -0.2rem !important;
+  border-radius: 0 0 5px 5px;
+  width: 12em;
+  left: 0.9em !important;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -6.9px;
+    left: 8.7rem;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid $gray-10;
+    z-index: 3;
+  }
+}
+
+.arrowalignement {
+  &:before {
+    left: 6.2rem;
+  }
+}
+
+.border-left {
+  border-left: 1px solid $gray-300 !important;
 }
 
 .mobileusericon {
@@ -12,4 +42,26 @@
   min-width: 101.7vw;
   left: -60.6vw !important;
   height: calc(100vw + 65vw);
+}
+
+.dpmenu {
+  position: relative;
+}
+
+.helpbtn {
+  font-size: 1.2em;
+  padding: 0.7rem 1.2em 0.7em 0.7em;
+  border-radius: 7px 7px 0px 0px;
+  cursor: pointer;
+  margin: 0 1em;
+  position: relative;
+  &:hover {
+    background-color: $theme-main-color - 20;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+  }
+}
+
+.openhelp {
+  background-color: $theme-main-color - 20 !important;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
 }

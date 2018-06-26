@@ -66,7 +66,7 @@ export class CategoryMobileMenuComponent implements OnInit {
     this.showChild = !this.showChild;
     this.subChild = this.menuTaxons.taxons[i];
   }
-  parrentBack() {
+  parrantBack() {
     this.showParrent = !this.showParrent;
   }
   childBack() {

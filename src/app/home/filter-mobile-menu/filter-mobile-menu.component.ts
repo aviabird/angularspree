@@ -34,12 +34,9 @@ import {
 
   ]
 })
-export class filterMobileMenuComponent implements OnInit {
+export class FilterMobileMenuComponent implements OnInit {
 
-  users = [
-    { name: "Anil Singh", qualification: ["B.Sc.", "MCA", "MCTS", "MCP"] },
-    { name: "Reena Singh", qualification: ["B A", "M A", "BTC"] }
-  ];
+
 
   @Input() fillterList;
   @Input() isScrolled;
@@ -53,6 +50,7 @@ export class filterMobileMenuComponent implements OnInit {
   showParrent = false;
   showChild = false;
   backBtnShow = false;
+  selectedItem
   constructor() { }
   showCategory(taxon) {
     this.menuTaxons = taxon.taxons;
@@ -74,6 +72,11 @@ export class filterMobileMenuComponent implements OnInit {
   }
   childBack() {
     this.showChild = !this.showChild;
+  }
+  listClick(event, newValue) {
+    console.log(newValue);
+    this.selectedItem = newValue;  // don't forget to update the model here
+    // ... do other stuff here ...
   }
   ngOnInit() {
 

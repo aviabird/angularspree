@@ -48,6 +48,7 @@
   /deep/ .product-tile {
     text-align: center;
     a {
+      color: $gray-900;
       &:hover {
         text-decoration: none;
       }

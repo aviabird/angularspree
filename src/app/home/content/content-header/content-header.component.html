@@ -1,7 +1,6 @@
 <div class="container content" *ngIf="!screenWidth">
   <div class="row " *ngIf=productsCount>
     <div itemprop="name" class="queried-for col-7 pl-1 ">
-
       <h4 title="men casual shirts">Showing {{productsCount}} of {{productsTotal_count}} results.
       </h4>
       <span>&nbsp;</span>
@@ -25,8 +24,8 @@
 </div>
 <div class="container content " *ngIf="screenWidth">
   <div class="row" *ngIf=productsCount>
-    <div class="col-6 button-container text-right">
-      <button (click)="showModal()" type="button" class="btn btn-secondary">
+    <div class="col-6 pl-1 pr-1  text-right">
+      <button (click)="showModal()" type="button" class="search-btns col-12 p-0 px-1 py-3 shadow-sm">
         <i class="fa fa-sort mr-2"></i>
         <span *ngIf="!selectedEntry">{{defaultselectedEntry}}</span>
         <span *ngIf="selectedEntry">{{selectedEntry.name}}</span>
@@ -52,9 +51,26 @@
         </div>
       </div>
     </div>
-    <div class="col-6 button-container text-left">
-      <button type="button" class="btn btn-secondary">
+    <div class="col-6 pr-1 pl-1 text-left">
+      <button type="button" class="col-12 px-1 py-3 search-btns shadow-sm" (click)="staticModal.show()">
         <i class="fa fa-filter mr-2"></i>Filter By</button>
+      <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+        <div class="modal-dialog sort-mobile">
+          <div class="modal-content">
+            <div class="modal-body">
+              <ul>
+                <li>
+                  <span class="sort">Filter</span>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </li>
+              </ul>
+              <app-filter-mobile-menu [fillterList]="fillterList"></app-filter-mobile-menu>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>

@@ -14,13 +14,17 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
   @Input() devicewidth;
   currentUser: any;
   subnav: boolean;
+  isOpen: boolean;
 
   constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit() {
   }
+  onOpenChange(data: boolean): void {
 
+    this.isOpen = !this.isOpen;
+  }
   ngOnChanges() {
     this.currentUser = JSON.parse(localStorage.getItem('user'))
     if (this.currentUser) {
