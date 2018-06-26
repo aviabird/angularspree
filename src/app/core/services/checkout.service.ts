@@ -1,10 +1,8 @@
 import { map, tap } from 'rxjs/operators';
-import { Payment } from './../models/payment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { getOrderNumber } from './../../checkout/reducers/selectors';
 import { CheckoutActions } from './../../checkout/actions/checkout.actions';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { LineItem } from './../models/line_item';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
@@ -50,11 +48,11 @@ export class CheckoutService {
         this.orderNumber
       }/line_items?order_token=${this.getOrderToken()}`;
 
-    return this.http.post<{ line_item: LineItem }>(url, params).pipe(
+    return this.http.post<LineItem>(url, params).pipe(
       tap(
-        data => {
+        lineItem => {
           this.toastyService.success('Success!', 'Cart updated!');
-          return data.line_item;
+          return lineItem;
         },
         _ => this.toastyService.error('Something went wrong!', 'Failed')
       )
@@ -69,10 +67,9 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   fetchCurrentOrder() {
-    return this.http.get<{ order: Order }>('api/v1/orders/current').pipe(
-      map(data => {
-        if (data) {
-          const order = data.order;
+    return this.http.get<Order>('api/v1/orders/current').pipe(
+      map(order => {
+        if (order) {
           const token = order.token;
           this.setOrderTokenInLocalStorage({ order_token: token });
           return this.store.dispatch(
@@ -109,10 +106,9 @@ export class CheckoutService {
     const headers = new HttpHeaders().set('Content-Type', 'text/plain');
 
     return this.http
-      .post<{ order: Order }>('api/v1/orders.json', null, { headers: headers })
+      .post<Order>('api/v1/orders.json', null, { headers: headers })
       .pipe(
-        map(data => {
-          const order = data.order;
+        map(order => {
           this.setOrderTokenInLocalStorage({ order_token: order.token });
           return this.store.dispatch(
             this.actions.fetchCurrentOrderSuccess(order)
@@ -159,10 +155,10 @@ export class CheckoutService {
       this.orderNumber
     }/next.json?order_token=${this.getOrderToken()}`;
     return this.http
-      .put<{ order: Order }>(url, {})
+      .put<Order>(url, {})
       .pipe(
-        map(data =>
-          this.store.dispatch(this.actions.changeOrderStateSuccess(data.order))
+        map(order =>
+          this.store.dispatch(this.actions.changeOrderStateSuccess(order))
         )
       );
   }
@@ -180,10 +176,10 @@ export class CheckoutService {
       this.orderNumber
     }.json?order_token=${this.getOrderToken()}`;
     return this.http
-      .put<{ order: Order }>(url, params)
+      .put<Order>(url, params)
       .pipe(
-        map(data =>
-          this.store.dispatch(this.actions.updateOrderSuccess(data.order))
+        map(order =>
+          this.store.dispatch(this.actions.updateOrderSuccess(order))
         )
       );
   }
