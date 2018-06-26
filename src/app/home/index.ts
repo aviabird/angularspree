@@ -27,7 +27,7 @@ import { ContentComponent } from './content/content';
 // Sidebar components
 import { TaxonsComponent } from './sidebar/taxons/taxons.component';
 import { FilterComponent } from './sidebar/filter/filter.component';
-import {filterMobileMenuComponent } from './filter-mobile-menu/filter-mobile-menu.component'
+import {FilterMobileMenuComponent } from './filter-mobile-menu/filter-mobile-menu.component'
 // Routes
 import { HomeRoutes as routes } from './home.routes';
 
@@ -48,7 +48,7 @@ import { reducers } from './reducers/index';
     ContentComponent,
     CategoriesComponent,
     BrandFilterComponent,
-    filterMobileMenuComponent,
+    FilterMobileMenuComponent,
 
     // pipes
     FilterPipe

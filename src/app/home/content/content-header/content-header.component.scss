@@ -1,5 +1,12 @@
 @import '../../../shared/scss/selected_theme_variables';
 .content {
+  .search-btns {
+    text-transform: uppercase;
+     @include button-size(10px, 10px, 1em, 1em, 7px);
+     color:$black;
+     border:1px solid $gray-600;
+     @include gradient-y($start-color: $gray-100, $end-color: $gray-300, $start-percent: 0%, $end-percent: 100%)
+  }
   .queried-for {
     overflow: hidden; // display: inline-block;
     font-size: 18px;
@@ -115,9 +122,9 @@
 }
 
 .sort-mobile {
-  width: 100.5%;
+  width: 100.3%;
   max-width: 300%;
-  margin: -2px;
+  margin: -1px 0px 0px -0.6px;
   height: 100vh;
   .modal-content {
     border-radius: 0px;

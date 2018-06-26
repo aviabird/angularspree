@@ -1,19 +1,31 @@
 <div class="d-flex  my-flex-container" *ngIf="taxonomies[0]; let catgeory_taxonomy">
   <div class="p-0 no-gutters" class="parrent-catgory" [@popOverState]="getparrentState">
-    <ul>
+    <ul class="bg-color">
       <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategory(i)">{{taxon.name}}</li>
+    </ul>
+    <ul class="otherlinks">
+      <li>
+        <a href="#">Account</a>
+      </li>
+      <li>
+        <a href="#">FAQs</a>
+      </li>
+      <li>
+        <a href="#">Blogs</a>
+      </li>
     </ul>
   </div>
   <div class="p-0 no-gutters" class="sub-catgory" [@popOverState]="getparrentState" [@subCatgory]="getChildState">
-    <ul *ngIf="menuTaxons">
-      <li (click)="parrentBack()">Back</li>
-
+    <ul class="bg-color" *ngIf="menuTaxons">
+      <li (click)="parrantBack()" class="backbtn"><i class="fa fa-chevron-left mr-2"></i>Back</li>
+      <div class="subhead">{{menuTaxons.name}}</div>
       <li *ngFor="let taxon of menuTaxons.taxons; let i= index" (click)="showSubCategory(i)">{{taxon.name}}</li>
     </ul>
   </div>
   <div class="p-0 no-gutters" class="sub-sub-catgory" [@subCatgory]="getChildState">
-    <ul *ngIf="subChild">
-      <li (click)="childBack()">Back</li>
+    <ul class="bg-color" *ngIf="subChild">
+      <li (click)="childBack()" class="backbtn"> <i class="fa fa-chevron-left mr-2"></i> Back</li>
+      <div class="subhead">{{subChild.name}}</div>
       <li *ngFor="let taxon of subChild.taxons; let i= index">{{taxon.name}}</li>
     </ul>
   </div>

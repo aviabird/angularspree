@@ -5,7 +5,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   selector: 'app-content',
   template: `
     <app-content-header (toggleSize)="toggleSize($event)"
-     [productsCount]="paginationData.count"
+     [productsCount]="paginationData.count" [fillterList]="fillterList"
      [productsTotal_count]="paginationData.total_count"></app-content-header>
     <app-product-list [(toggleLayout)]='toggleLayout' [products]='productsList' [taxonIds]="taxonIds"></app-product-list>
   `,
@@ -16,6 +16,7 @@ export class ContentComponent implements OnInit {
   @Input() productsList;
   @Input() paginationData;
   @Input() taxonIds;
+  @Input() fillterList;
   toggleLayout = { size: 'COZY' };
 
   constructor() { }

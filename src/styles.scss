@@ -4,6 +4,7 @@
 @import "app/shared/scss/selected_theme_variables";
 @import "~ngx-toastr/toastr-bs4-alert";
 
+
 $break-small: 320px;
 Ol,
 ul {
@@ -58,7 +59,6 @@ body {
   line-height: 1.5;
   min-height: 32vw;
   position: relative;
-  color: $gray-300;
   background-color: $white;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;

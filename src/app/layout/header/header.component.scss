@@ -15,6 +15,24 @@
   }
 }
 
+.shippingbtn {
+  font-size: 1.3em !important;
+ 
+  i {
+    font-size: 20px;
+    color:$white;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+  }
+  &:hover {
+    background-color: $theme-main-color - 20 !important;
+  }
+}
+
 .page-scroll-header {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -139,6 +157,7 @@
     }
     .modal-body {
       padding: 0px;
+      background-color: $white - 10
     }
   }
 }

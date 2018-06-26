@@ -2,9 +2,9 @@
 ul {
   width: 100vw;
   list-style: none;
-  padding: 0.5rem 0 0.5rem 0;
   margin: 0px;
   li {
+    cursor: pointer;
     padding: 0.8rem 1.1rem;
     border-bottom: 1px solid $gray-10;
     color: $gray-900;
@@ -29,6 +29,19 @@ ul {
   }
 }
 
+.otherlinks {
+  li {
+    border-bottom: 1px solid $gray-10;
+    a {
+      color: $gray-900
+    }
+    &::after {
+      font-family: 'FontAwesome';
+      content: " ";
+    }
+  }
+}
+
 .parrent-catgory {
   width: 100vw;
   left: 0vw;
@@ -42,4 +55,34 @@ ul {
 
 .sub-sub-catgory {
   @extend .parrent-catgory;
+}
+
+.bg-color {
+  background-color: $white
+}
+
+.subhead {
+  padding: 16px;
+  font-size: 1.4em;
+  font-weight: 700;
+  line-height: 1.3;
+  background-color: $white - 10;
+  border-bottom: 1px solid $gray-10;
+}
+.backbtn{
+  padding-left: 10px;
+  &::after {
+    font-family: 'FontAwesome';
+    content: "";
+    width: 20px;
+    height: 57px;
+    margin-right: 12px;
+    left: 11px;
+    top: 7px;
+    display:none; 
+    position: absolute;
+    background-size: 10px;
+    font-size: 20px;
+  }
+
 }

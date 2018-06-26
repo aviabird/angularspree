@@ -1,25 +1,34 @@
 @import '../../shared/scss/selected_theme_variables';
 ul {
- 
   list-style: none;
   padding: 0.5rem 0 0.5rem 0;
   margin: 0px;
   li {
-    padding: 0.8rem 1.1rem;
-    border-bottom: 1px solid $gray-10;
-    color: $gray-900;
-    cursor: pointer;
-    &::after {
-      font-family: 'FontAwesome';
-      content: "\f105";
-      width: 20px;
-      height: 57px;
-      margin-right: 12px;
-      right: 0px;
-      position: absolute;
-      background-size: 10px;
+    a {
+      padding: 0.8rem 1.1rem;
+      border-bottom: 1px solid $gray-10;
+      color: $gray-900;
+      display: block;
+      cursor: pointer;
+      &::after {
+        font-family: 'FontAwesome';
+        content: "\f105";
+        width: 20px;
+        height: 57px;
+        margin-right: 12px;
+        right: 0px;
+        position: absolute;
+        background-size: 10px;
+      }
     }
-    
+    ul{
+      display: none;
+      ul{display: none}
+    }
+   
+  }
+  .active{
+    ul{display: block}
   }
 }
 
@@ -42,6 +51,7 @@ ul {
   border-color: $theme-action-sub-color2;
   background-color: $theme-action-sub-color2;
 }
+
 /*Gap*/
 
 .radio-pink-gap [type="radio"].with-gap:checked+label:before {
@@ -50,5 +60,5 @@ ul {
 
 .radio-pink-gap [type="radio"]:checked+label:after {
   border-color: $theme-action-sub-color2;
-  background-color:$theme-action-sub-color2;
-}                
+  background-color: $theme-action-sub-color2;
+}

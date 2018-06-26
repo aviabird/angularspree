@@ -48,6 +48,7 @@
   /deep/ .product-tile {
     text-align: center;
     a {
+      color: $gray-900;
       img {
         object-fit: scale-down;
         height: 200px;
@@ -67,7 +68,9 @@
       border: 1px solid $gray-10;
     }
     &:hover {
-      border-color: $black - 200;
+      -webkit-box-shadow: 0 1px 0 $gray-10;
+      box-shadow: 0 1px 0 $gray-10;
+      border-color: $gray-10;
     }
   }
   /deep/.product-tile p {
