@@ -32,7 +32,7 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   selectedOption: 'Relevance';
-  deviceWidth: any;
+  isMobile: any;
   selectedSize = 'COZY';
   searchKeyword = '';
   selectedEntry;

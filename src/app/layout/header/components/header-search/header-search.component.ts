@@ -21,7 +21,7 @@ import { URLSearchParams } from '@angular/http';
 })
 export class HeaderSearchComponent implements OnInit {
   queryParams: any;
-  @Input() devicewidth;
+  @Input() isMobile;
   @Input() isSearchopen;
   @Output()
   onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();

@@ -1,4 +1,4 @@
-<div class="row results-base m-0" *ngIf="!devicewidth">
+<div class="row results-base m-0" *ngIf="!isMobile">
   <div class="col-12 col-md-3 col-sm-3 col-lg-3 product-base" *ngFor="let product of products | filter : selectedTaxonIds; trackBy: trackByFn"
     [style.margin]="getMargin()" itemscope itemtype="https://schema.org/Product">
     <a itemprop="url" [routerLink]="['/', product.slug]">
@@ -19,23 +19,23 @@
         <p class="shipping">
           FREE 1-2 day shipping on this item
         </p>
-        <div class="ngrating">
+        <div class="ngrating my-3">
           <ngx-input-star-rating value="{{product.avg_rating }}" disable="true" required></ngx-input-star-rating>
         </div>
       </div>
     </a>
   </div>
 </div>
-<div class="row results-base m-0" *ngIf="devicewidth">
-  <div class="col-12 product-base" *ngFor="let product of products | filter : selectedTaxonIds; trackBy: trackByFn"
-    [style.margin]="getMargin()" itemscope itemtype="https://schema.org/Product">
+<div class="row results-base m-0" *ngIf="isMobile">
+  <div class="col-12 product-base" *ngFor="let product of products | filter : selectedTaxonIds; trackBy: trackByFn" [style.margin]="getMargin()"
+    itemscope itemtype="https://schema.org/Product">
     <a itemprop="url" [routerLink]="['/', product.slug]">
       <div class="row">
         <div class="col-5 p-0 searchimg">
           <img itemprop="image" class="product-thumb img-fluid" alt="{{product.name}}" [src]="product.product_url">
           <div class="morechoices">
-              More Choices Available
-            </div>
+            More Choices Available
+          </div>
         </div>
         <div class="col-7 p-0">
           <div class="product-productMetaInfo">

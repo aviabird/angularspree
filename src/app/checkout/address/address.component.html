@@ -1,6 +1,6 @@
-<div class="address-section col-7">
+<div class="address-section col-12 col-md-7 col-lg-7">
 	<div *ngIf="(shipAddress$ | async)" class="row">
-		<div class="left col-8">
+		<div class="left col-12 col-md-8 col-lg-8">
 			<div class="edit-address">
 				<span class="edit-label">
 					Select Delivery Address
@@ -8,13 +8,13 @@
 			</div>
 			<app-delivery-address [address]="(shipAddress$ | async)"></app-delivery-address>
 		</div>
-		<div class="right col-4">
+		<div class="right col-12 col-md-4 col-lg-4">
 			<app-delivery-options [orderNumber]="orderNumber$ | async"></app-delivery-options>
 			<button (click)="checkoutToPayment()" class="pay-btn">CONTINUE TO PAYMENT</button>
 		</div>
 	</div>
 	<div *ngIf="!(shipAddress$ | async)" class="row">
-		<div class="left col-8 m-auto border-right-0">
+		<div class="left col-12 col-md-8 col-lg-8 m-auto border-right-0">
 			<div class="add-address">
 				<span class="add-label">
 					ADD NEW ADDRESS

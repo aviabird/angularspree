@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   isBrandOpen = false;
   isCategoryOpen = true;
   screenwidth;
-  devicewidth;
+  isMobile;
   constructor(
     private store: Store<AppState>,
     private actions: ProductActions,
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
   }
   calculateInnerWidth() {
     if (this.screenwidth <= 1000) {
-      this.devicewidth = this.screenwidth;
+      this.isMobile = this.screenwidth;
     }
   }
   hideModal(): void {

@@ -1,10 +1,10 @@
-<form class="desktop-query form-inline my-2 my-lg-0" *ngIf="!devicewidth">
+<form class="desktop-query form-inline my-2 my-lg-0" *ngIf="!isMobile">
   <input class="desktop-search-bar bg-white" type="search" placeholder="{{searchPlaceholder}}" aria-label="Search" #box (keyup.enter)="onSearch(box.value)">
   <a class="desktop-submit bg-white">
     <span class="web-sprite desktop-iconSearch sprites-search" (click)="onSearch(box.value)"></span>
   </a>
 </form>
-<form class="desktop-query form-inline  my-lg-0" *ngIf="devicewidth" [ngClass]="{
+<form class="desktop-query form-inline  my-lg-0" *ngIf="isMobile" [ngClass]="{
   'bg-white desktop-query-updated':isSearchopen }">
   <a class="desktop-submit" [ngClass]="{
     'themecolor':isSearchopen }">

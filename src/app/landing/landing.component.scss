@@ -1,4 +1,23 @@
 @import "../shared/scss/_selected_theme_variables.scss";
+.shippingbtn {
+  font-size: 1em !important;
+  width: 100%;
+  border-radius: 0;
+  i {
+    font-size: 20px;
+    color: $white;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+  }
+  &:hover {
+    background-color: $theme-main-color - 20 !important;
+  }
+}
+
 :host {
   /deep/ .section-title {
     color: $black;

@@ -14,7 +14,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
+  screenwidth;
+  isMobile;
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
 
@@ -24,6 +25,13 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.screenwidth = window.innerWidth;
+    this.calculateInnerWidth();
+  }
+  calculateInnerWidth() {
+    if (this.screenwidth <= 1000) {
+      this.isMobile = this.screenwidth;
+    }
   }
 
 }
