@@ -16,5 +16,9 @@ export const DEFAULT_CONFIG = {
     searchPlaceholder: 'Find good furniture for me',
     showGithubRibon: false
   },
+  //Following are the test crediantials for payubiz payment gateway.
+  payuBizSalt: 'eCwWELxi',
+  payuBizKey: 'gtKFFx',
+
   ...DEFAULT_APP_DATA
 };
