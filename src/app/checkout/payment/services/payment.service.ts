@@ -9,6 +9,7 @@ export class PaymentService {
       if (mode.name === 'Check') {
         selectedMode = mode;
       }
+
     });
     return selectedMode;
   }

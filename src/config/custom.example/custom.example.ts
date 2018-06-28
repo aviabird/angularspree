@@ -12,5 +12,8 @@ export const CUSTOM_EXAMPLE_CONFIG = {
     },
     searchPlaceholder: 'Search',
     showGithubRibon: false,
-  }
+  },
+  //Following are the test crediantials for payubiz payment gateway.
+  payuBizSalt: '***REMOVED***',
+  payuBizKey: '***REMOVED***',
 };

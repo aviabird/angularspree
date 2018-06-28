@@ -349,6 +349,10 @@
     semver "^5.3.0"
     semver-intersect "^1.1.2"
 
+"@types/crypto-js@^3.1.40":
+  version "3.1.40"
+  resolved "https://registry.yarnpkg.com/@types/crypto-js/-/crypto-js-3.1.40.tgz#4ce5f484af057b3013798bc28cd0516deba950d1"
+
 "@types/fs-extra@^5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-5.0.2.tgz#235a7e2b56452cc0a6a4809b53e1d1eaffff9c96"
@@ -1764,6 +1768,10 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
     randomfill "^1.0.3"
+
+crypto-js@^3.1.9-1:
+  version "3.1.9-1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
 
 crypto-random-string@^1.0.0:
   version "1.0.0"

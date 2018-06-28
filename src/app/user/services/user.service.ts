@@ -7,6 +7,7 @@ import { Order } from '../../core/models/order';
 import { Response } from '@angular/http';
 import { User } from '../../core/models/user';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -24,7 +25,12 @@ export class UserService {
    *
    * @memberof UserService
    */
-  getOrders(): Observable<Array<Order>> { return this.http.get<Array<Order>>('api/orders') }
+  getOrders(): Observable<Array<Order>> {
+    return this.http.get<{ orders: Array<Order> }>('api/orders?per_page=2')
+      .pipe(
+        map(data => data.orders)
+      )
+  }
 
   /**
    *

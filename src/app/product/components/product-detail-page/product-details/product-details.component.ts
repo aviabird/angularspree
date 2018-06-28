@@ -22,7 +22,7 @@ import {
 import { Product } from './../../../../core/models/product';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
 import { ProductService } from './../../../../core/services/product.service';
-import { forEach } from '@angular/router/src/utils/collection';
+import { CheckoutService } from '../../../../core/services/checkout.service';
 
 @Component({
   selector: 'app-product-details',
@@ -30,9 +30,8 @@ import { forEach } from '@angular/router/src/utils/collection';
   styleUrls: ['./product-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductDetailsComponent implements OnInit, OnChanges {
+export class ProductDetailsComponent implements OnInit {
   @Input() product: Product;
-
   dynamic = 50;
   customOptionTypesHash: any;
   currentSelectedOptions = {};
@@ -53,6 +52,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   similarProducts$: Observable<any>;
   relatedProducts$: Observable<any>;
   reviewProducts$: Observable<any>;
+
   constructor(
     private variantParser: VariantParserService,
     private variantRetriver: VariantRetriverService,
@@ -79,11 +79,11 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     this.correspondingOptions = this.mainOptions;
     this.productID = this.product.id;
 
-    this.productService
-      .getRelatedProducts(this.productID)
+    this.productService.getRelatedProducts(this.productID)
       .subscribe(productdata => {
         this.productdata = productdata;
       });
+
     if (this.product.taxon_ids[0]) {
       this.store.dispatch(
         this.searchActions.getProductsByTaxon(`id=${this.product.taxon_ids[0]}`)
