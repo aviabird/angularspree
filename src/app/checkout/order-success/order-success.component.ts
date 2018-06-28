@@ -1,5 +1,4 @@
 import { LineItem } from './../../core/models/line_item';
-import { environment } from './../../../environments/environment';
 import { CheckoutActions } from './../actions/checkout.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../interfaces';
@@ -39,13 +38,12 @@ export class OrderSuccessComponent implements OnInit {
       .getOrderDetail(this.queryParams.orderReferance)
       .subscribe(order => {
         this.orderDetails = order
-        console.log(this.orderDetails)
       })
   }
 
   getProductImageUrl(line_item: LineItem) {
     const image_url = line_item.variant.images[0].small_url;
-    return environment.apiEndpoint + image_url;
+    return image_url;
   }
 
 }
