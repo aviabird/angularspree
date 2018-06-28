@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { SearchActions } from './../../reducers/search.actions';
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
-import { getChildTaxons } from '../../reducers/selectors';
+import { searchFilterStatus } from '../../reducers/selectors';
 
 
 @Component({
@@ -40,9 +40,8 @@ export class CategoriesComponent implements OnInit {
     }
   }
   showAllCategory() {
-    window.location.reload();
-    this.isFilterOn = false
     this.showAll.emit()
+    window.location.reload();
   }
 
   /**
@@ -59,8 +58,8 @@ export class CategoriesComponent implements OnInit {
     this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()));
   }
 
-  emitSelection() {
+  emitSelection(rootId) {
     this.catgeoryFilter()
-    this.onSelected.emit({ id: this.queryParams.id, name: this.queryParams['q[name_cont]'] });
+    this.onSelected.emit({ id: this.queryParams.id, name: this.queryParams['q[name_cont]'], root: rootId });
   }
 }

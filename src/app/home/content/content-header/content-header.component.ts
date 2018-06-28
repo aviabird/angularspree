@@ -27,7 +27,7 @@ export class ContentHeaderComponent implements OnInit {
   queryMap = {
     Newest: 'updated_at+asc',
     Relevance: '',
-    'A To Z': 'ascend_by_master_price',
+    'A To Z': 'name+asc',
     'Z To A': 'name+desc',
   }
 

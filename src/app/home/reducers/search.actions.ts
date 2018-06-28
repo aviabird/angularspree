@@ -13,6 +13,8 @@ export class SearchActions {
   static CLEAR_SELECTED_CATAGEORY = 'CLEAR_SELECTED_CATAGEORY'
   static GET_TAXONOMIES_BY_NAME = 'GET_TAXONOMIES_BY_NAME'
   static GET_TAXONOMIES_BY_NAME_SUCCESS = 'GET_TAXONOMIES_BY_NAME_SUCCESS'
+  static SET_SEARCH_FILTER_ON = 'SET_SEARCH_FILTER_ON'
+  static SET_SEARCH_FILTER_OFF = 'SET_SEARCH_FILTER_OFF'
 
   category: any;
   /**
@@ -104,6 +106,18 @@ export class SearchActions {
     return {
       type: SearchActions.GET_TAXONOMIES_BY_NAME_SUCCESS,
       payload: { taxonomiList, category }
+    }
+  }
+
+  setSearchFilterOn() {
+    return {
+      type: SearchActions.SET_SEARCH_FILTER_ON
+    }
+  }
+
+  setSearchFilterOff() {
+    return {
+      type: SearchActions.SET_SEARCH_FILTER_OFF
     }
   }
 }
