@@ -6,9 +6,10 @@ export class PaymentService {
   setCODAsSelectedMode(modes) {
     let selectedMode;
     modes.forEach((mode) => {
-      if (mode.name === 'Credit Card') {
+      if (mode.name === 'Check') {
         selectedMode = mode;
       }
+
     });
     return selectedMode;
   }

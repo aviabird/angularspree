@@ -8,7 +8,7 @@
 			</span>
 		</div>
 		<div class="pay-body">
-			<app-payment-modes-list [orderNumber]="orderNumber$ | async" [paymentAmount]="totalCartValue$ | async"></app-payment-modes-list>
+			<app-payment-modes-list [orderNumber]="orderNumber$ | async" [paymentAmount]="totalCartValue$ | async" [address]="address$ | async"></app-payment-modes-list>
 		</div>
 	</div>
 	<div class="right">
@@ -34,7 +34,6 @@
 			<div class="add-info">{{(address$ | async).address1}}</div>
 			<div class="add-info">{{(address$ | async).address2}}</div>
 			<div class="add-info">{{(address$ | async).city}} - {{(address$ | async).zipcode}}</div>
-			<!--<div class="add-info">Maharashtra</div>-->
 			<div class="add-info">Mobile: {{(address$ | async).phone}}</div>
 		</div>
 	</div>
