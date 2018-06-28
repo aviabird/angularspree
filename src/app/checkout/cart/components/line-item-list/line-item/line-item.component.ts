@@ -12,7 +12,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./line-item.component.scss']
 })
 export class LineItemComponent implements OnInit {
-
+  @Input() isMobile;
   @Input() lineItem: LineItem;
   image: string;
   name: string;

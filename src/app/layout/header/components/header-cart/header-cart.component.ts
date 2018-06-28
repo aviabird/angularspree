@@ -8,7 +8,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class HeaderCartComponent implements OnInit {
   @Input() totalCartItems: number;
-  @Input() devicewidth;
+  @Input() isMobile;
   constructor() { }
   ngOnInit() {
 
