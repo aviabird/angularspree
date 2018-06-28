@@ -17,20 +17,20 @@
       <table>
         <tr>
           <th>Order ID:</th>
-          <td>{{orderDetails.order.number}}({{orderDetails.order.total_quantity}} Item(s))</td>
+          <td>{{orderDetails.number}}({{orderDetails.total_quantity}} Item(s))</td>
         </tr>
         <tr>
           <th>Order Date:</th>
-          <td>{{orderDetails.order.created_at}}</td>
+          <td>{{orderDetails.created_at}}</td>
         </tr>
         <tr>
           <th>Total Amount:</th>
-          <td>{{orderDetails.order.display_total}} through {{orderDetails.order.payments[0].payment_method.name}}</td>
+          <td>{{orderDetails.display_total}} through {{orderDetails.payments[0].payment_method.name}}</td>
         </tr>
         <tr>
           <th>Payment Status:</th>
           <td>
-            <b>{{orderDetails.order.payment_state}}</b>
+            <b>{{orderDetails.payment_state}}</b>
           </td>
         </tr>
       </table>
@@ -40,23 +40,23 @@
       <table>
         <tr>
           <th>Name: </th>
-          <td>{{orderDetails.order.ship_address.full_name}}</td>
+          <td>{{orderDetails.ship_address.full_name}}</td>
         </tr>
         <tr>
           <th>Address:</th>
-          <td>{{orderDetails.order.ship_address.address1}}, {{orderDetails.order.ship_address.address2}}, {{orderDetails.order.ship_address.city}}</td>
+          <td>{{orderDetails.ship_address.address1}}, {{orderDetails.ship_address.address2}}, {{orderDetails.ship_address.city}}</td>
         </tr>
         <tr>
           <th>Pincode:</th>
-          <td>{{orderDetails.order.ship_address.zipcode}}</td>
+          <td>{{orderDetails.ship_address.zipcode}}</td>
         </tr>
         <tr>
           <th>Phone:</th>
-          <td>{{orderDetails.order.ship_address.phone}}</td>
+          <td>{{orderDetails.ship_address.phone}}</td>
         </tr>
         <tr>
           <th>Email:</th>
-          <td>{{orderDetails.order.email}}</td>
+          <td>{{orderDetails.email}}</td>
         </tr>
       </table>
     </div>
@@ -64,7 +64,7 @@
   <div class="row">
     <div class="col-sm">
       <h3>Item(s)</h3>
-      <div class="row" *ngFor="let line_item of orderDetails.order.line_items">
+      <div class="row" *ngFor="let line_item of orderDetails.line_items">
         <a [routerLink]="['/', line_item.variant.slug]">
           <img [src]="getProductImageUrl(line_item)">
         </a>
@@ -78,7 +78,7 @@
       <h3>Shipping</h3>
       <div class="col-sm">
         <p>Shipping Status: </p>
-        <b>{{orderDetails.order.shipment_state}}</b>
+        <b>{{orderDetails.shipment_state}}</b>
       </div>
     </div>
   </div>

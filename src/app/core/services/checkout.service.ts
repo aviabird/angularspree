@@ -25,10 +25,8 @@ export class CheckoutService {
     private http: HttpClient,
     private actions: CheckoutActions,
     private store: Store<AppState>,
-    private toastyService: ToastrService
-  ) {
-    this.store
-      .select(getOrderNumber)
+    private toastyService: ToastrService) {
+    this.store.select(getOrderNumber)
       .subscribe(number => (this.orderNumber = number));
   }
 
@@ -44,9 +42,7 @@ export class CheckoutService {
     const params = {
       line_item: { variant_id: variant_id, quantity: quantity }
     },
-      url = `api/v1/orders/${
-        this.orderNumber
-        }/line_items?order_token=${this.getOrderToken()}`;
+      url = `api/v1/orders/${this.orderNumber}/line_items?order_token=${this.getOrderToken()}`;
 
     return this.http.post<LineItem>(url, params).pipe(
       tap(

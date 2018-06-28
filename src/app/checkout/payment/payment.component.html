@@ -28,13 +28,13 @@
 			<span class="pay-lbl">Total Payable</span>
 			<span class="pay-total">${{totalCartValue$ | async | number:'1.2-2'}}</span>
 		</div>
-		<div class="address-summary">
+		<div class="address-summary" *ngIf="address$ | async; let address">
 			<div class="address-lbl">DELIVER TO</div>
-			<div class="name">{{(address$ | async).full_name}}</div>
-			<div class="add-info">{{(address$ | async).address1}}</div>
-			<div class="add-info">{{(address$ | async).address2}}</div>
-			<div class="add-info">{{(address$ | async).city}} - {{(address$ | async).zipcode}}</div>
-			<div class="add-info">Mobile: {{(address$ | async).phone}}</div>
+			<div class="name">{{address.full_name}}</div>
+			<div class="add-info">{{address.address1}}</div>
+			<div class="add-info">{{address.address2}}</div>
+			<div class="add-info">{{address.city}} - {{address.zipcode}}</div>
+			<div class="add-info">Mobile: {{address.phone}}</div>
 		</div>
 	</div>
 </div>
