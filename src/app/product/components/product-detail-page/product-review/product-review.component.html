@@ -1,92 +1,32 @@
 <div class="cust-reviews">
   <h1>Customer Reviews</h1>
   <div class="row">
-    <div class="col-12 col-md-6 pl-4">
+    <div class="col-12 col-md-6 pl-4" *ngIf="reviewList">
       <div class="avg-review">
         <div class="row">
-          <div class="review col-5 p-0">
+          <div class="review col-12 col-md-5 col-lg-5 p-0">
             <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" required></ngx-input-star-rating>
             {{product.reviews_count }} Reviews
           </div>
-          <div class="out-review col-5">
+          <div class="out-review col-12 col-md-5 col-lg-5 ">
             {{product.avg_rating }} out of 5 star
           </div>
         </div>
-
       </div>
       <div class="write-review">
 
       </div>
-      <div class="row rataingpercentage">
-
-        <div class="col-2 pl-2 pr-0">
-          5 Stars
+      <div class="row rataingpercentage" *ngFor="let rating of reviewList.rating_summery; let i = index">
+        <div class="col-3 col-md-2 col-lg-2 pl-2 pr-0">
+          {{i}} Stars
         </div>
-        <div class="col-8 pr-0 pl-0">
+        <div class="col-7 col-md-8 col-lg-8 pr-0 pl-0">
           <div class="mb-2 progress-container">
-            <progressbar [value]="dynamic" type="warning"></progressbar>
+            <progressbar [value]="rating.percentage" type="warning"></progressbar>
           </div>
         </div>
-        <div class="col-2 pl-2">
-          <b>{{dynamic}}%</b>
-        </div>
-      </div>
-      <div class="row rataingpercentage">
-
-        <div class="col-2 pl-2 pr-0">
-          4 Stars
-        </div>
-        <div class="col-8 pr-0 pl-0">
-          <div class="mb-2 progress-container">
-            <progressbar [value]="dynamic" type="warning"></progressbar>
-
-          </div>
-        </div>
-        <div class="col-2 pl-2">
-          <b>{{dynamic}}%</b>
-        </div>
-      </div>
-      <div class="row rataingpercentage">
-
-        <div class="col-2 pl-2 pr-0">
-          3 Stars
-        </div>
-        <div class="col-8 pr-0 pl-0">
-          <div class="mb-2 progress-container">
-            <progressbar [value]="dynamic" type="warning"></progressbar>
-          </div>
-        </div>
-        <div class="col-2 pl-2">
-          <b>{{dynamic}}%</b>
-        </div>
-      </div>
-      <div class="row rataingpercentage">
-
-        <div class="col-2 pl-2 pr-0">
-          2 Stars
-        </div>
-        <div class="col-8 pr-0 pl-0">
-          <div class="mb-2 progress-container">
-            <progressbar [value]="dynamic" type="warning"></progressbar>
-          </div>
-        </div>
-        <div class="col-2 pl-2">
-          <b>{{dynamic}}%</b>
-        </div>
-      </div>
-      <div class="row rataingpercentage">
-
-        <div class="col-2 pl-2 pr-0">
-          1 Stars
-        </div>
-        <div class="col-8 pr-0 pl-0">
-          <div class="mb-2 progress-container">
-            <progressbar [value]="dynamic" type="warning"></progressbar>
-
-          </div>
-        </div>
-        <div class="col-2 pl-2">
-          <b>{{dynamic}}%</b>
+        <div class="col-2  col-md-2 col-lg-2 pl-2">
+          <b> {{rating.percentage}}%</b>
         </div>
       </div>
     </div>

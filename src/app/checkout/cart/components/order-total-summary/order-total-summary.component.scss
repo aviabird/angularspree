@@ -7,6 +7,10 @@
       {
       padding: 1rem 0;
       border-bottom: 1px solid $gray-10;
+      @media screen and(min-width: 320px) and(max-width: 768px) {
+        border-bottom: 0 solid $gray-10;
+        padding-bottom: 0;
+      }
       position: relative;
       span {
         color: $gray-900;
@@ -23,6 +27,9 @@
     .bag-total>.value,
     .coupon>.apply-coupon,
     .shipping>.shipping-fee {
+      @media screen and(min-width: 320px) and(max-width: 768px) {
+        position:static;
+      }
       position: absolute;
       right: 0;
       text-align: right;
@@ -56,9 +63,73 @@
         color: $white;
         font-family: "Roboto Regular";
         font-size: 1.4em;
-        margin: 10px auto;    
-
+        margin: 10px auto;
       }
+    }
+  }
+}
+
+.shippingbtn {
+  font-size: 0.8em !important;
+  width: 100%;
+  background-color: transparent;
+  i {
+    font-size: 20px;
+    color: $black;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+  }
+  &:hover {
+    background-color: $theme-main-color - 20 !important;
+  }
+}
+
+.shippingprogess {
+  position: relative;
+  text-transform: uppercase;
+  span {
+    width: 54px;
+    text-align: center;
+  }
+  .shipcount__bg__line {
+    width: 1px;
+    height: 11px;
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    top: 4px;
+    z-index: 1;
+    &:first-child {
+      left: 10vw;
+    }
+    &:nth-child(2) {
+      left: 25vw;
+    }
+    &:nth-child(3) {
+      left: 38vw;
+    }
+    &:nth-child(4) {
+      left: 52vw;
+    }
+    &:nth-child(5) {
+      left: 66vw;
+    }
+  }
+  .shipcount__bg__line:first-child {
+    left: 10vw;
+  }
+  .progress {
+    background-color: rgba(0, 0, 0, .1);
+    height: .9em;
+    top: 4px;
+    position: relative;
+    z-index: 0;
+    .progress-bar {
+      background-color: $red
     }
   }
 }

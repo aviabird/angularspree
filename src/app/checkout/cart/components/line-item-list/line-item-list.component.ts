@@ -4,7 +4,7 @@ import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { LineItem } from './../../../../core/models/line_item';
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-line-item-list',
@@ -12,12 +12,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./line-item-list.component.scss']
 })
 export class LineItemListComponent implements OnInit {
-
+  @Input() isMobile;
   lineItems$: Observable<LineItem[]>;
 
   constructor(private store: Store<AppState>, private actions: CheckoutActions) {
     this.lineItems$ = this.store.select(getLineItems);
-   }
+  }
 
   ngOnInit() {
   }

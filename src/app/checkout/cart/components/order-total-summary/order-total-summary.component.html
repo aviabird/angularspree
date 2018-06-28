@@ -1,4 +1,4 @@
-<div class="order-total-summary">
+<div class="order-total-summary" *ngIf="!isMobile">
   <div class="order-total footer">
     <div class="place-order">
       <button (click)="placeOrder()" class="order-btn">Proceed to Checkout</button>
@@ -7,11 +7,50 @@
   <div class="order-summary-span">
     <div class="bag-total">
       <span>Sub Total</span>
-      <span class="value"> ${{totalCartValue | number:'1.2-2'}} </span>
+      <span class="value">
+        <i class="fa fa-rupee ml-2"></i> {{totalCartValue | number:'1.2-2'}} </span>
     </div>
     <div class="shipping">
       <span>Flat-Rate Shipping</span>
       <span class="shipping-fee c-green">FREE</span>
     </div>
+  </div>
+</div>
+<div class="order-total-summary border-0" *ngIf="isMobile">
+  <div class="order-summary-span text-center">
+    <div class="bag-total">
+      <span>Sub Total :</span>
+      <span class="value">
+        <i class="fa fa-rupee ml-2"></i> {{totalCartValue | number:'1.2-2'}} </span>
+    </div>
+  </div>
+  <div class="order-total footer">
+    <div class="place-order">
+      <button (click)="placeOrder()" class="order-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+  <button type="button" class="btn shippingbtn" *ngIf="!enableshipping"> You qualify for FREE SHIPPING!
+    <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
+  </button>
+  <button type="button" class="btn shippingbtn" *ngIf="enableshipping"> Only
+    <span class="fa fa-rupee"></span> {{enableshippingvalue}} to go for FREE SHIPPING! &#8377;699!
+    <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
+  </button>
+
+  <div class="d-flex shippingprogess">
+    <span class="mr-2">
+      <i class="fa fa-rupee"></i> 0
+
+    </span>
+    <span class="shipcount__bg__line"></span>
+    <span class="shipcount__bg__line"></span>
+    <span class="shipcount__bg__line"></span>
+    <span class="shipcount__bg__line"></span>
+    <progressbar [value]="shippingProgress" type="success">
+    </progressbar>
+    <span class="ml-2">
+      <i class="fa fa-rupee"></i> 699
+
+    </span>
   </div>
 </div>

@@ -1,5 +1,4 @@
-<div class="cart-section container">
-
+<div class="cart-section container" *ngIf="!isMobile">
   <div *ngIf="(totalCartItems$ | async) > 0 else emptyCart" class="row">
     <div class="left col-md-9">
       <div class="checkout-header-container">
@@ -9,10 +8,6 @@
       </div>
       <div class="prod-set">
         <app-line-item-list></app-line-item-list>
-        <!-- <a class="wishlist-link">
-          <span class="icon"></span>
-          <span class="coming-soon">Add more from wishlist</span>
-        </a> -->
       </div>
     </div>
     <div class="right col-md-3">
@@ -20,6 +15,22 @@
     </div>
   </div>
 
+  <ng-template #emptyCart>
+    <app-empty-cart></app-empty-cart>
+  </ng-template>
+</div>
+<div class="cart-section container p-0" *ngIf="isMobile">
+
+  <div class="right col-12">
+    <app-order-total-summary [totalCartValue]="totalCartValue$ | async" [isMobile]="isMobile"></app-order-total-summary>
+  </div>
+  <div *ngIf="(totalCartItems$ | async) > 0 else emptyCart">
+    <div class="left col-12">
+      <div class="prod-set">
+        <app-line-item-list [isMobile]="isMobile"></app-line-item-list>
+      </div>
+    </div>
+  </div>
   <ng-template #emptyCart>
     <app-empty-cart></app-empty-cart>
   </ng-template>

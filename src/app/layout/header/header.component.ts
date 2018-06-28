@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
   currPos: Number = 0;
   startPos: Number = 0;
   changePos: Number = 100;
-  devicewidth = false;
+  isMobile = false;
   screenwidth: any;
   modalRef: BsModalRef;
   config = {
@@ -144,7 +144,7 @@ export class HeaderComponent implements OnInit {
   calculateInnerWidth() {
     if (this.screenwidth <= 1000) {
       this.isScrolled = false;
-      this.devicewidth = this.screenwidth;
+      this.isMobile = this.screenwidth;
     }
   }
   selectTaxon(taxon) {

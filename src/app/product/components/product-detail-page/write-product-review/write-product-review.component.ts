@@ -43,6 +43,7 @@ export class WriteProductReviewComponent implements OnInit {
           .subscribe(response => {
             this.product = response
             this.images = this.product.master.images.product_url;
+            console.log(this.product);
           }
           );
       })
