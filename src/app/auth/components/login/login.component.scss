@@ -309,6 +309,7 @@ p {
 }
 
 .login-input-container {
+  background-color: $white;
   &:hover {
     border: 1px solid $theme-main-color;
     box-shadow: 0.1px 0.2px 0.4px $theme-main-color - 100;

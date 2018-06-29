@@ -1,67 +1,77 @@
 <div class="container" *ngIf="orderDetails">
-  <div class=col-12>
-    <h1>Thank you for your order!</h1>
+  <div class="col-12 thankyou shadow-sm mt-5 mb-3">
+    <h1>thank you for your order!</h1>
     <div class="float-left">
-      <i class="fa fa-check-circle fa-3x text-success"></i>
+      <i class="fa fa-check-circle text-success"></i>
     </div>
     <div>
-      <p class="w-75 text-success">Your order has been placed and is being processed. When the item(s) are shipped,you will receive an email with the
+      <p class="w-75 text-success">Your order has been placed and is being processed. When tde item(s) are shipped,you will receive an email witd tde
         details.
       </p>
     </div>
   </div>
+  <div class="order shadow-sm">
+    <div class="row">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <h3>Order Details</h3>
 
-  <div class="row">
-    <div class="col-sm">
-      <h3>Order Details</h3>
-      <table>
-        <tr>
-          <th>Order ID:</th>
-          <td>{{orderDetails.number}}({{orderDetails.total_quantity}} Item(s))</td>
-        </tr>
-        <tr>
-          <th>Order Date:</th>
-          <td>{{orderDetails.created_at}}</td>
-        </tr>
-        <tr>
-          <th>Total Amount:</th>
-          <td>{{orderDetails.display_total}} through {{orderDetails.payments[0].payment_method.name}}</td>
-        </tr>
-        <tr>
-          <th>Payment Status:</th>
-          <td>
-            <b>{{orderDetails.payment_state}}</b>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-sm">
-      <h3>Delivery Address</h3>
-      <table>
-        <tr>
-          <th>Name: </th>
-          <td>{{orderDetails.ship_address.full_name}}</td>
-        </tr>
-        <tr>
-          <th>Address:</th>
-          <td>{{orderDetails.ship_address.address1}}, {{orderDetails.ship_address.address2}}, {{orderDetails.ship_address.city}}</td>
-        </tr>
-        <tr>
-          <th>Pincode:</th>
-          <td>{{orderDetails.ship_address.zipcode}}</td>
-        </tr>
-        <tr>
-          <th>Phone:</th>
-          <td>{{orderDetails.ship_address.phone}}</td>
-        </tr>
-        <tr>
-          <th>Email:</th>
-          <td>{{orderDetails.email}}</td>
-        </tr>
-      </table>
+        <table>
+          <tr>
+            <td>Order ID:</td>
+            <td>{{orderDetails.number}}({{orderDetails.total_quantity}} Item(s))</td>
+          </tr>
+          <tr>
+            <td>Order Date:</td>
+            <td>{{orderDetails.created_at}}</td>
+          </tr>
+          <tr>
+            <td>Total Amount:</td>
+            <td>{{orderDetails.display_total}} tdrough {{orderDetails.payments[0].payment_method.name}}</td>
+          </tr>
+          <tr>
+            <td>Payment Status:</td>
+            <td>
+              <b class="text-uppercase">{{orderDetails.payment_state}}</b>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <h3>Delivery Address</h3>
+        <table>
+          <tr>
+            <td>Name: </td>
+            <td>{{orderDetails.ship_address.full_name}}</td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td>{{orderDetails.ship_address.address1}}, {{orderDetails.ship_address.address2}}, {{orderDetails.ship_address.city}}</td>
+          </tr>
+          <tr>
+            <td>Pincode:</td>
+            <td>{{orderDetails.ship_address.zipcode}}</td>
+          </tr>
+          <tr>
+            <td>Phone:</td>
+            <td>{{orderDetails.ship_address.phone}}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{orderDetails.email}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <h3>Shipping</h3>
+        <div class="col-sm">
+          <p>Shipping Status: </p>
+          <b>{{orderDetails.shipment_state}}</b>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row">
+  <div class="order-items shadow-sm mt-3 mb-3">
     <div class="col-sm">
       <h3>Item(s)</h3>
       <div class="row" *ngFor="let line_item of orderDetails.line_items">
@@ -72,13 +82,6 @@
           <p>{{line_item.variant.name}}</p>
           <p>Qty: {{line_item.quantity}}</p>
         </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <h3>Shipping</h3>
-      <div class="col-sm">
-        <p>Shipping Status: </p>
-        <b>{{orderDetails.shipment_state}}</b>
       </div>
     </div>
   </div>

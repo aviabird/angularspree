@@ -1,40 +1,44 @@
-<div class="payment-section">
-	<div class="left">
-		<div class="payment-header">
-			<span class="lbl">Choose Payment Mode</span>
-			<span class="amt you-pay">
-				<span class="amt">You Pay</span>
-				<span class="you-pay">${{totalCartValue$ | async | number:'1.2-2'}}</span>
-			</span>
-		</div>
-		<div class="pay-body">
-			<app-payment-modes-list [orderNumber]="orderNumber$ | async" [paymentAmount]="totalCartValue$ | async" [address]="address$ | async"></app-payment-modes-list>
-		</div>
-	</div>
-	<div class="right">
-		<div class="mini-bag-summary">
-			<div class="lbl">ORDER SUMMARY</div>
-			<div class="items">{{totalCartItems$ | async}} ITEMS</div>
-			<div class="order-total">
-				<span>Order Total</span>
-				<span class="value">${{totalCartValue$ | async | number:'1.2-2'}}</span>
+<div class="payment-section container">
+	<div class="col-12 col-sm-9 col-md-9 col-lg-9 m-auto p-0">
+		<div class="row m-0">
+			<div class="left col-12 col-md-8 col-lg-8 m-0">
+				<div class="payment-header">
+					<span class="lbl">Choose Payment Mode</span>
+					<span class="amt you-pay">
+						<span class="amt">You Pay</span>
+						<span class="you-pay">${{totalCartValue$ | async | number:'1.2-2'}}</span>
+					</span>
+				</div>
+				<div class="pay-body">
+					<app-payment-modes-list [orderNumber]="orderNumber$ | async" [paymentAmount]="totalCartValue$ | async" [address]="address$ | async"></app-payment-modes-list>
+				</div>
 			</div>
-			<div class="shipping">
-				<span>Delivery</span>
-				<span class="shipping-fee c-green">FREE</span>
+			<div class="right col-12 col-md-4 col-lg-4 m-0">
+				<div class="mini-bag-summary">
+					<div class="lbl">ORDER SUMMARY</div>
+					<div class="items">{{totalCartItems$ | async}} ITEMS</div>
+					<div class="order-total">
+						<span>Order Total</span>
+						<span class="value">${{totalCartValue$ | async | number:'1.2-2'}}</span>
+					</div>
+					<div class="shipping">
+						<span>Delivery</span>
+						<span class="shipping-fee c-green">FREE</span>
+					</div>
+				</div>
+				<div class="pay-lbl-total">
+					<span class="pay-lbl">Total Payable</span>
+					<span class="pay-total">${{totalCartValue$ | async | number:'1.2-2'}}</span>
+				</div>
+				<div class="address-summary" *ngIf="address$ | async; let address">
+					<div class="address-lbl">DELIVER TO</div>
+					<div class="name">{{address.full_name}}</div>
+					<div class="add-info">{{address.address1}}</div>
+					<div class="add-info">{{address.address2}}</div>
+					<div class="add-info">{{address.city}} - {{address.zipcode}}</div>
+					<div class="add-info">Mobile: {{address.phone}}</div>
+				</div>
 			</div>
-		</div>
-		<div class="pay-lbl-total">
-			<span class="pay-lbl">Total Payable</span>
-			<span class="pay-total">${{totalCartValue$ | async | number:'1.2-2'}}</span>
-		</div>
-		<div class="address-summary" *ngIf="address$ | async; let address">
-			<div class="address-lbl">DELIVER TO</div>
-			<div class="name">{{address.full_name}}</div>
-			<div class="add-info">{{address.address1}}</div>
-			<div class="add-info">{{address.address2}}</div>
-			<div class="add-info">{{address.city}} - {{address.zipcode}}</div>
-			<div class="add-info">Mobile: {{address.phone}}</div>
 		</div>
 	</div>
 </div>
