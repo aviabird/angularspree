@@ -8,6 +8,7 @@ import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Order } from '../models/order';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CheckoutService {
@@ -232,7 +233,7 @@ export class CheckoutService {
     body = body.set('furl', params.furl)
     body = body.set('hash', params.hash)
 
-    return this.http.post(`https://test.payu.in/_payment`,
+    return this.http.post(`${environment.config.payuBizUrl}`,
       body, { headers: header, responseType: 'text', observe: 'response' }
     ).pipe(map(resp => {
       return resp;

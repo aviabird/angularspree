@@ -12,6 +12,7 @@ export class ProductPriceInfoComponent implements OnInit {
   @Input() product;
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
+  @Output() selectedVariant = new EventEmitter<Object>();
 
   customOptionTypesHash: any;
   currentSelectedOptions = {};
@@ -20,9 +21,9 @@ export class ProductPriceInfoComponent implements OnInit {
   mainOptions: any;
   correspondingOptions: any;
   variantId: any;
+  selectedVariantPrice: any;
 
   constructor(private variantParser: VariantParserService,
-    private variantRetriver: VariantRetriverService,
   ) { }
 
   ngOnInit() {
@@ -36,19 +37,25 @@ export class ProductPriceInfoComponent implements OnInit {
   }
 
   onOptionClick(option) {
-    const result = new VariantRetriverService()
-      .getVariant(this.currentSelectedOptions,
+    const result = new VariantRetriverService().getVariant(
+      this.currentSelectedOptions,
       this.customOptionTypesHash,
-      option, this.product);
+      option,
+      this.product
+    );
 
-    this.createNewCorrespondingOptions(result.newCorrespondingOptions,
-      option.value.optionValue.option_type_name);
+    this.createNewCorrespondingOptions(
+      result.newCorrespondingOptions,
+      option.value.optionValue.option_type_name
+    );
 
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
     this.variantId = newVariant.id;
     this.description = newVariant.description;
     this.images = newVariant.images;
+    this.product.display_price = result.variant.display_price
+    this.getSelectedVariant(result.variant);
   }
 
   makeGlobalOptinTypesHash(customOptionTypes) {
@@ -57,7 +64,7 @@ export class ProductPriceInfoComponent implements OnInit {
       if (customOptionTypes.hasOwnProperty(key)) {
         temp[key] = Object.keys(customOptionTypes[key]);
       }
-    };
+    }
     return temp;
   }
 
@@ -77,6 +84,9 @@ export class ProductPriceInfoComponent implements OnInit {
     this.onMarkAsFavorites.emit()
   }
 
+  getSelectedVariant(variant) {
+    this.selectedVariant.emit(variant)
+  }
   get discount() {
     return this.product.master.cost_price - this.product.price;
   }

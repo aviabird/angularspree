@@ -4,9 +4,9 @@
     </app-image-container>
   </div>
   <div class="col-md-7 col-12">
-    <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" class="row">
+    <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectedVariant($event)"
+      class="row">
     </app-product-price-info>
-
   </div>
 </div>
 <div class="row">
@@ -31,4 +31,3 @@
   <app-product-slider [productlist]="relatedProducts$ | async"></app-product-slider>
 </div>
 <app-product-review [product]="product" [reviewList]='reviewProducts$ | async'></app-product-review>
-

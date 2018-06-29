@@ -31,7 +31,7 @@
             <p class="title">Price:</p>
             <p class="price">
               <span class="ga-eec__price">
-                {{product.currency}}{{product.price}}</span>
+                {{product.display_price}}</span>
               <span class="free-shipping  d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
                 <span>Shipping on this item</span>
               </span>
@@ -48,10 +48,8 @@
       <div id="featured-promotions" class="pt-3">
         <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
           [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row"></app-product-variants>
-
         <hr class="">
       </div>
-
 
     </div>
     <div id="buybox" class="">
