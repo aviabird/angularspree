@@ -103,6 +103,12 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
         taxonomiByName: _taxonomiByName
       }) as SearchState;
 
+    case SearchActions.SET_SEARCH_FILTER_ON:
+      return state.merge({ searchFilter: true }) as SearchState;
+
+    case SearchActions.SET_SEARCH_FILTER_OFF:
+      return state.merge({ searchFilter: false }) as SearchState;
+
     default:
       return state;
   }
