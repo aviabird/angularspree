@@ -152,7 +152,7 @@ export class ProductService {
       tap(
         _ => _,
         _ =>
-          this.toastrService.error('something went wrong (reviws)', 'ERROR!!')
+          this.toastrService.error('something went wrong (reviews)', 'ERROR!!')
       )
     );
   }
