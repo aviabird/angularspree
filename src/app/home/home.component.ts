@@ -6,7 +6,8 @@ import {
   getChildTaxons,
   categeoryLevel,
   taxonomiByName,
-  getPaginationData
+  getPaginationData,
+  searchFilterStatus
 } from './reducers/selectors';
 import { ProductActions } from './../product/actions/product-actions';
 import { AppState } from './../interfaces';
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
   categoryLevel$: Observable<any>;
   products$: Observable<Product>;
   pagination$: Observable<any>;
-  isFilterOn = false;
+  isFilterOn$: Observable<Boolean>;
   isBrandOpen = false;
   isCategoryOpen = true;
   screenwidth;
@@ -41,15 +42,15 @@ export class HomeComponent implements OnInit {
     private actions: ProductActions,
     private searchActions: SearchActions,
     private productService: ProductService) {
-    // Get all products for the product list component
     this.store.dispatch(this.actions.getAllProducts(1));
     this.store.dispatch(this.actions.getAllTaxonomies());
-    // this.products$ = this.store.select(getProducts);
     this.taxonomies$ = this.store.select(getTaxonomies);
     this.brands$ = this.store.select(getTaxonomies);
     this.selectedTaxonIds$ = this.store.select(getSelectedTaxonIds);
     this.products$ = this.store.select(getProductsByKeyword);
     this.pagination$ = this.store.select(getPaginationData);
+    this.isFilterOn$ = this.store.select(searchFilterStatus)
+
   }
 
   // tslint:disable-next-line:member-ordering
@@ -79,16 +80,16 @@ export class HomeComponent implements OnInit {
 
   OnCategeorySelected(category) {
     // TODO: Here taxonomies_id is hardcoded for now.
-    this.store.dispatch(this.searchActions.getChildTaxons('5', category.id));
+    this.store.dispatch(this.searchActions.getChildTaxons('1', category.id));
     this.taxonomies$ = this.store.select(getChildTaxons)
     this.categoryLevel$ = this.store.select(categeoryLevel)
     // ToDo: Here Brands are hardcoded For now.
     this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', category.name));
     this.brands$ = this.store.select(taxonomiByName)
-    this.isFilterOn = true
+    this.store.dispatch(this.searchActions.setSearchFilterOn())
   }
   showAll() {
-    this.isFilterOn = false
+    this.store.dispatch(this.searchActions.setSearchFilterOff())
   }
 
   isOpenChangeaccourdian() {

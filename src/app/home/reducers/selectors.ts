@@ -38,6 +38,10 @@ function fetchTaxonomiByName(state: SearchState) {
 function fetchPaginationData(state: SearchState) {
   return state.paginationData.toJS();
 }
+
+function fetchSearchFliterStatus(state: SearchState) {
+  return state.searchFilter;
+}
 /******************* Public Selector API's ******************/
 export const getFilters = createSelector(getSearchState, fetchSelectedFilters);
 export const getSelectedTaxonIds = createSelector(getSearchState, fetchSelectedTaxonIds);
@@ -46,4 +50,5 @@ export const getPaginationData = createSelector(getSearchState, fetchPaginationD
 export const getChildTaxons = createSelector(getSearchState, fetchChildTaxons);
 export const categeoryLevel = createSelector(getSearchState, fetchCategeoryLevel);
 export const taxonomiByName = createSelector(getSearchState, fetchTaxonomiByName);
+export const searchFilterStatus = createSelector(getSearchState, fetchSearchFliterStatus);
 
