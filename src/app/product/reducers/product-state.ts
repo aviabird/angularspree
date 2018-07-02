@@ -1,5 +1,4 @@
 import { Taxonomy } from './../../core/models/taxonomy';
-import { Taxon } from './../../core/models/taxon';
 /**
  * Read more about Immutable Records here
  * 1. https://coderwall.com/p/vxk_tg/using-immutable-js-in-typescript
@@ -20,6 +19,7 @@ export interface ProductState extends Map<string, any> {
   showAllProducts: List<Product>;
   relatedProducts: List<Product>;
   productReviews: List<any>;
+  rootTaxonomyId: number;
 }
 
 export const ProductStateRecord = Record({
@@ -30,5 +30,6 @@ export const ProductStateRecord = Record({
   taxonomies: List([]),
   showAllProducts: List([]),
   relatedProducts: List([]),
-  productReviews: List([])
+  productReviews: List([]),
+  rootTaxonomyId: 0
 });
