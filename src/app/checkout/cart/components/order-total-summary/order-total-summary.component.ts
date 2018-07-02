@@ -55,7 +55,6 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
       if (this.totalCartValue < 699) {
         this.enableshipping = true;
         this.shippingProgress = (this.totalCartValue / 699) * 100;
-        console.log('Aftervalue', this.shippingProgress);
       } else {
         this.enableshipping = false;
         this.shippingProgress = 100;

@@ -1,4 +1,3 @@
-import { Product } from './../../core/models/product';
 import { AppState } from './../../interfaces';
 import { ProductState } from './product-state';
 import { createSelector } from 'reselect';
@@ -35,6 +34,10 @@ const fetchProductReviews = function (state: ProductState) {
   return state.productReviews.toJS();
 };
 
+const fetchRootTaxonId = function (state: ProductState) {
+  return state.rootTaxonomyId;
+};
+
 // *************************** PUBLIC API's ****************************
 export const getSelectedProduct = createSelector(getProductState, fetchSelectedProduct);
 export const getProducts = createSelector(getProductState, fetchProducts);
@@ -42,3 +45,5 @@ export const getTaxonomies = createSelector(getProductState, fetchAllTaxonomies)
 export const showAllProducts = createSelector(getProductState, fetchAllProductSearch);
 export const relatedProducts = createSelector(getProductState, fetchReletedProducts);
 export const productReviews = createSelector(getProductState, fetchProductReviews);
+export const rootTaxonomyId = createSelector(getProductState, fetchRootTaxonId);
+
