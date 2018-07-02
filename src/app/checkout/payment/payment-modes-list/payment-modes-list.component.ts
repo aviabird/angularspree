@@ -83,6 +83,7 @@ export class PaymentModesListComponent implements OnInit {
       email: JSON.parse(localStorage.getItem('user')).email,
     }
 
+    // tslint:disable-next-line:max-line-length
     const paramsList = `${hashParams.key}|${hashParams.txnid}|${hashParams.amount}|${hashParams.productinfo}|${hashParams.firstname}|${hashParams.email}|||||||||||${payUbizSalt}`;
     const encryptedHash = CryptoJS.SHA512(paramsList);
     const hashString = CryptoJS.enc.Hex.stringify(encryptedHash)
@@ -111,7 +112,7 @@ export class PaymentModesListComponent implements OnInit {
           })
         )
           .subscribe(res => {
-            window.open(response.url, "_self");
+            window.open(response.url, '_self');
           });
       })
   }

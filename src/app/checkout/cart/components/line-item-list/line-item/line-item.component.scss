@@ -51,8 +51,6 @@
       color: $gray-400;
       text-align: right;
       .size-qty {
-        margin: 0 0 4px;
-        padding-right: 10px;
         display: inline-block;
         .size,
         .qty {
@@ -130,6 +128,7 @@
     font-size: 2.4em;
     line-height: 1.3em;
     text-align: center;
+    width: 1em;
   }
   a.disabled {
     cursor: default;
