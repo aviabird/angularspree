@@ -1,13 +1,15 @@
 @import '../../shared/scss/selected_theme_variables';
 .payment-section {
-  width: 980px;
   margin: 9px auto;
   .left {
-    width: 70%;
-    display: inline-block;
     vertical-align: top;
     border-right: 1px solid $gray-10;
     padding-right: 30px;
+    @media screen and(min-width: 320px) and(max-width: 768px) {
+      padding:0;
+      border-radius: 0px;
+      border-right: 0px;
+    }
     .payment-header {
       background: $white;
       padding: 10px 0;
@@ -18,7 +20,10 @@
         font-size: 16px;
         color: $gray-800;
         font-family: $primary-font;
-        ;
+        @media screen and(min-width: 320px) and(max-width: 768px) {
+          font-weight: 200;
+          font-size: 13px;
+        }
       }
       .amt.you-pay {
         float: right;
@@ -27,7 +32,10 @@
           font-weight: 600;
           font-size: 14px;
           font-family: $primary-font;
-          ;
+          @media screen and(min-width: 320px) and(max-width: 768px) {
+            font-weight: 200;
+            font-size: 13px;
+          }
         }
         .amt {
           padding-right: 10px;
@@ -44,10 +52,12 @@
     }
   }
   .right {
-    width: 29%;
-    display: inline-block;
     padding-left: 30px;
     padding-top: 15px;
+    @media screen and(min-width: 320px) and(max-width: 768px) {    
+      width:100%;
+      padding: 0;
+    }
     .mini-bag-summary {
       position: relative;
       padding: none;
@@ -56,7 +66,6 @@
         font-size: 12px;
         font-weight: 600;
         font-family: $primary-font;
-        ;
         color: $gray-700;
         height: 35px;
         line-height: 48px;
@@ -65,7 +74,6 @@
         font-size: 12px;
         font-weight: 600;
         font-family: $primary-font;
-        ;
         padding-top: 5px;
       }
       .order-total,
@@ -114,14 +122,12 @@
         padding-top: 30px;
         padding-bottom: 5px;
         font-family: $primary-font;
-        ;
       }
       .name {
         color: $gray-900;
         margin-top: 5px;
         font-weight: 600;
         font-family: $primary-font;
-        ;
       }
       .add-info {
         color: $gray-700;

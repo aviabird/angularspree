@@ -40,9 +40,19 @@
 .mobile-profile {
   width: 100vw;
   min-width: 101.7vw;
-  left: -60.6vw !important;
-  height: calc(100vw + 65vw);
+  left: -76.6vw !important;
+  height: calc(100vh - 9vw);
+  top: 10vw !important;
+  &:before {
+   
+    left: 15.3rem;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid $white;
+  
+  }
 }
+
 
 .dpmenu {
   position: relative;

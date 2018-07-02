@@ -7,7 +7,11 @@
     display: inline-block;
     border-right: 1px solid $gray-10;
     vertical-align: top;
-    min-height: 521px;
+    @media screen and(min-width: 320px) and(max-width: 768px) {
+      min-height:auto;
+      border-right: 0 solid $gray-10;
+      padding: 0;
+    }
     .add-address {
       padding: 20px 10px 20px 0;
       border-bottom: 1px solid $gray-10;
@@ -17,7 +21,6 @@
         font-size: 14px;
         font-weight: 600;
         font-family: $primary-font;
-        
       }
     }
     .edit-address {
@@ -37,6 +40,9 @@
     display: inline-block;
     vertical-align: top;
     padding-left: 35px;
+    @media screen and(min-width: 320px) and(max-width: 768px) {
+      padding: 0;
+    }
     .pay-btn {
       border: none;
       border-radius: 3px;

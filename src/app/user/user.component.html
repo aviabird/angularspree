@@ -1,20 +1,23 @@
-<div class="row">
-  <div class="col-md-12">
-    <h4> My Account </h4>
-    <hr>
-  </div>
 
-  <div class="sidebar col-md-3">
-    <p><a routerLink="/user/overview" routerLinkActive="active">Overview</a></p>
-    <hr>
-    <p><a routerLink="/user/orders" routerLinkActive="active">My Orders</a></p>
-    <hr>
-    <p><a routerLink="/user/addresses" routerLinkActive="active">My Address</a></p>
-    <hr>
-    <p><a routerLink="/user/favorite-products" routerLinkActive="active">My Favorite Products</a></p>    
-  </div>
-
-  <div class="col-md-9">
-    <router-outlet></router-outlet>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 my-5">
+      <h4> My Account </h4>
+      <hr>
+    </div>
+  
+    <div class="sidebar col-md-3 d-none d-lg-block">
+      <!-- <p><a routerLink="/user/overview" routerLinkActive="active">Overview</a></p> -->
+      <!-- <hr> -->
+      <p><a routerLink="/user/orders" routerLinkActive="active">My Orders</a></p>
+      <hr>
+      <!-- <p><a routerLink="/user/addresses" routerLinkActive="active">My Address</a></p> -->
+      <!-- <hr> -->
+      <p><a routerLink="/user/favorite-products" routerLinkActive="active">My Favorite Products</a></p>    
+    </div>
+  
+    <div class="col-md-9">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

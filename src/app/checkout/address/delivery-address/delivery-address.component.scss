@@ -12,6 +12,17 @@
     margin-right: 25px;
     border-radius: 4px;
     position: relative;
+  
+    @media screen and(min-width: 320px) and(max-width: 768px) {
+      height: auto;
+      width: 100%;
+      margin-right: 0px;
+      border-radius: 4px;
+      position: relative;
+      min-height: auto;
+      border-radius: 0;
+      padding: 1.4em 3em 1.4em 3em;
+    }
     cursor: pointer;
     .name {
       font-family: $primary-font;
