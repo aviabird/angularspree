@@ -16,6 +16,7 @@ export class SearchActions {
   static SET_SEARCH_FILTER_ON = 'SET_SEARCH_FILTER_ON'
   static SET_SEARCH_FILTER_OFF = 'SET_SEARCH_FILTER_OFF'
 
+
   category: any;
   /**
    * @method getAllFtilers
