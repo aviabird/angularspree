@@ -2,6 +2,10 @@
 .pay-modes {
   display: inline-block;
   width: 32%;
+  @media screen and(min-width: 320px) and(max-width: 768px) {
+    padding: 0;
+    width: 100%;
+  }
   background: $gray-200;
   .mode {
     cursor: pointer;
@@ -9,13 +13,17 @@
     font-size: 14px;
     font-weight: 600;
     font-family: $primary-font;
-    ;
     text-transform: uppercase;
     color: $gray-800;
     padding-top: 22px;
     padding-left: 20px;
     border-left: 1px solid $gray-10;
     border-bottom: 1px solid $gray-10;
+    @media screen and(min-width: 320px) and(max-width: 768px) {
+      width: 50%;
+      float:left;
+      border-right: 1px solid $gray-10;
+    }
   }
   .selected {
     background-color: $white;
@@ -29,4 +37,8 @@
   width: 67%;
   vertical-align: top;
   padding-left: 40px;
+  @media screen and(min-width: 320px) and(max-width: 768px) {
+    padding: 0;
+    width: 100%;
+  }
 }

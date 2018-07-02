@@ -1,0 +1,28 @@
+@import '../../shared/scss/selected_theme_variables';
+.thankyou {
+  padding: 2em;
+  background-color: $gray-100;
+  h1 {
+    font-size: 1.7em;
+    text-transform: capitalize;
+  }
+}
+
+.order {
+  @extend .thankyou;
+  h3 {
+    font-size: 1.7em;
+    color: $gray-600;
+  }
+  td {
+    font-size: 14px;
+  }
+}
+
+.order-items {
+    @extend .thankyou;
+    h3 {
+        font-size: 1.7em;
+        color: $gray-600;
+      }
+}

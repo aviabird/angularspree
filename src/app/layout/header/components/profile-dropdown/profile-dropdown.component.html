@@ -67,7 +67,6 @@
   <div class="btn-group" dropdown *ngIf="isAuthenticated">
     <button id="button-basic" dropdownToggle type="button" class="btn pr-0 pl-0" aria-controls="dropdown-basic">
       <i class="fa fa-user mr-2" aria-hidden="true"></i>
-
     </button>
     <ul id="dropdown-split" *dropdownMenu class="dropdown-menu mobile-profile" role="menu" aria-labelledby="button-split">
       <li role="menuitem">
@@ -78,6 +77,7 @@
       <li role="menuitem">
         <a class="dropdown-item" routerLink="/user/orders">My Orders</a>
       </li>
+      <li class="divider dropdown-divider"></li>
       <li role="menuitem">
         <a class="dropdown-item" routerLink="/user/addresses">Saved Addresses</a>
       </li>
@@ -85,6 +85,8 @@
       <li role="menuitem">
         <a class="dropdown-item" href="#">Edit Profile</a>
       </li>
+
+      <li class="divider dropdown-divider"></li>
       <li role="menuitem">
         <a class="dropdown-item" (click)="logout()">Logout</a>
       </li>
