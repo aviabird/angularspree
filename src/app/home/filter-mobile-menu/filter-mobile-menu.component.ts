@@ -74,9 +74,7 @@ export class FilterMobileMenuComponent implements OnInit {
     this.showChild = !this.showChild;
   }
   listClick(event, newValue) {
-    console.log(newValue);
-    this.selectedItem = newValue;  // don't forget to update the model here
-    // ... do other stuff here ...
+    this.selectedItem = newValue; 
   }
   ngOnInit() {
 

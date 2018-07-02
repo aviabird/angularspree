@@ -1,4 +1,3 @@
-import { ProductService } from './../core/services/product.service';
 import { SearchActions } from './reducers/search.actions';
 import {
   getSelectedTaxonIds,
@@ -11,7 +10,7 @@ import {
 } from './reducers/selectors';
 import { ProductActions } from './../product/actions/product-actions';
 import { AppState } from './../interfaces';
-import { getTaxonomies } from './../product/reducers/selectors';
+import { getTaxonomies, rootTaxonomyId } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
@@ -37,11 +36,11 @@ export class HomeComponent implements OnInit {
   isCategoryOpen = true;
   screenwidth;
   isMobile;
+  rootTaxonomyId: any;
   constructor(
     private store: Store<AppState>,
     private actions: ProductActions,
-    private searchActions: SearchActions,
-    private productService: ProductService) {
+    private searchActions: SearchActions) {
     this.store.dispatch(this.actions.getAllProducts(1));
     this.store.dispatch(this.actions.getAllTaxonomies());
     this.taxonomies$ = this.store.select(getTaxonomies);
@@ -50,7 +49,8 @@ export class HomeComponent implements OnInit {
     this.products$ = this.store.select(getProductsByKeyword);
     this.pagination$ = this.store.select(getPaginationData);
     this.isFilterOn$ = this.store.select(searchFilterStatus)
-
+    this.store.select(rootTaxonomyId)
+      .subscribe(id => this.rootTaxonomyId = id)
   }
 
   // tslint:disable-next-line:member-ordering
@@ -79,8 +79,7 @@ export class HomeComponent implements OnInit {
   }
 
   OnCategeorySelected(category) {
-    // TODO: Here taxonomies_id is hardcoded for now.
-    this.store.dispatch(this.searchActions.getChildTaxons('1', category.id));
+    this.store.dispatch(this.searchActions.getChildTaxons(this.rootTaxonomyId, category.id));
     this.taxonomies$ = this.store.select(getChildTaxons)
     this.categoryLevel$ = this.store.select(categeoryLevel)
     // ToDo: Here Brands are hardcoded For now.

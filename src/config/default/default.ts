@@ -19,6 +19,7 @@ export const DEFAULT_CONFIG = {
   //Following are the test crediantials for payubiz payment gateway.
   payuBizSalt: '***REMOVED***',
   payuBizKey: '***REMOVED***',
+  payuBizUrl: 'https://test.payu.in/_payment',
 
   ...DEFAULT_APP_DATA
 };
