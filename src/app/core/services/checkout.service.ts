@@ -233,11 +233,11 @@ export class CheckoutService {
     body = body.set('furl', params.furl)
     body = body.set('hash', params.hash)
 
-    return this.http.post(`${environment.config.payuBizUrl}`,
-      body, { headers: header, responseType: 'text', observe: 'response' }
-    ).pipe(map(resp => {
-      return resp;
-    }), error => { return error })
+    // return this.http.post(`${environment.config.payuBizUrl}`,
+    //   body, { headers: header, responseType: 'text', observe: 'response' }
+    // ).pipe(map(resp => {
+    //   return resp;
+    // }), error => { return error })
   }
   /**
    *

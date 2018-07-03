@@ -37,8 +37,8 @@
   &.active {
     color: $white;
     font-weight: 500;
-    background-color: $theme-action-sub-color4;
-    border: 1px solid $theme-main-sub-color3 +10
+    background-color: $theme-action-color;
+    border: 1px solid $theme-action-color;
   }
 }
 
