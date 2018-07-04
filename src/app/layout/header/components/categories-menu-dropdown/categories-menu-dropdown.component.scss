@@ -85,6 +85,7 @@ ul {
     }
   }
   .active {
+    &::after {color:$gray-800}
     background-color: $white !important;
     color: $gray-600 !important;
     border-radius: 4px 0px 0px 4px !important;

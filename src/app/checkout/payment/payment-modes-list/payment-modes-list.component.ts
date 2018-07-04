@@ -101,20 +101,20 @@ export class PaymentModesListComponent implements OnInit {
       hash: hashString
     }
 
-    // this.checkoutService.makePayment(paramsToPost)
-    //   .subscribe(response => {
-    //     response = response
-    //     this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
-    //       tap(() => {
-    //         this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-    //         this.checkoutService.createEmptyOrder()
-    //           .subscribe();
-    //       })
-    //     )
-    //       .subscribe(res => {
-    //         window.open(response.url, '_self');
-    //       });
-    //   })
+    this.checkoutService.makePayment(paramsToPost)
+      .subscribe(response => {
+        response = response
+        this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
+          tap(() => {
+            this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
+            this.checkoutService.createEmptyOrder()
+              .subscribe();
+          })
+        )
+          .subscribe(res => {
+            window.open(response.url, '_self');
+          });
+      })
   }
   private redirectToNewPage() {
     if (this.isAuthenticated) {
