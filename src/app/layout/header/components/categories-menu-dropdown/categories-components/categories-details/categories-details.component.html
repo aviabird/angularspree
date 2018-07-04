@@ -5,7 +5,7 @@
         <div class="col-md-3 p-0" *ngFor="let taxon of taxons">
           <div>
             <a [routerLink]="['/search']" [queryParams]="{id: taxon.id}">
-              <b class="sucathead">{{taxon.name}}</b>
+               <b class="sucathead">{{taxon.name}}</b>
             </a>
             <app-categories-list [taxons]="taxon.taxons"></app-categories-list>
           </div>
@@ -19,9 +19,9 @@
       </div>
     </div>
     <!-- to do -->
-    <div class="col-md-5 imgcon">
+    <!-- <div class="col-md-5 imgcon">
       <img class="w-100" [src]="taxonImageLink" alt="">
-    </div>
+    </div> -->
   </div>
 </div>
 <div class="container catcon" *ngIf="screenwidth">

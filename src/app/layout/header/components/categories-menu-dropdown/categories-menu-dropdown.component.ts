@@ -44,7 +44,7 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   isOpen: boolean;
   subIsopen: boolean;
   index: any;
-  selectedItem: any;
+  selectedItem: 0;
   get stateName() {
     return this.show ? 'show' : 'hide'
   }
@@ -91,6 +91,8 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   }
   onOpenChange(data: boolean): void {
     this.isOpen = !this.isOpen;
+    this.menuTaxons = this.taxonomies[0].root.taxons[0];
+    this.selectedItem = 0;
   }
 
 }
