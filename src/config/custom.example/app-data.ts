@@ -21,6 +21,10 @@ export const APP_DATA = {
     image_link: 'assets/custom/banner/promo/promo.png',
     link_url: '#'
   },
+  category_banner: {
+    image_link: 'assets/custom/banner/promo/promo.png',
+    link_url: '#'
+  },
   Deals: {
     type: 'Today\'s deals'
   },

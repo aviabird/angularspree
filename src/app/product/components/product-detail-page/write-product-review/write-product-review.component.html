@@ -1,4 +1,4 @@
-<div class="container pt-5 pb-5">
+<div class="container pt-5 pb-5" *ngIf="product$ | async; let product">
   <h3>Write Review</h3>
   <div class="write-review">
     <div class="row">
@@ -10,7 +10,7 @@
           <div class="row">
             <div class="col-12" *ngIf="!showThanks">
               <h2>{{product.name}}</h2>
-              <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()" data-toggle="validator">
+              <form [formGroup]="reviewForm" (ngSubmit)="onSubmit(product.id)" data-toggle="validator">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Rate this product</label>
                   <div>
@@ -37,12 +37,12 @@
               <div class="float-right">
                 <p class="w-75 text-success">Your review has been submitted.Please note that your review may take up to 48 hours to appear.</p>
               </div>
-              <button type="normal" class="primary-btn primary-btn--action col-5 mt-4" (click)="goToProduct()">Continue Shopping</button>
+              <button type="normal" class="primary-btn primary-btn--action col-5 mt-4" (click)="goToProduct(product.id)">Continue Shopping</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-3" *ngIf="submitReview">
+      <div class="col-3" *ngIf="!showThanks">
         <div class="guideline">
           <h4>Writing Guidelines</h4>
           <ul>
