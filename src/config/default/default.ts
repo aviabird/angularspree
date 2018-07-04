@@ -13,10 +13,10 @@ export const DEFAULT_CONFIG = {
       height: '42',
       width: '140'
     },
-    searchPlaceholder: 'Find good furniture for me',
+    searchPlaceholder: 'Find good food for me',
     showGithubRibon: false
   },
-  //Following are the test crediantials for payubiz payment gateway.
+  // Following are the test crediantials for payubiz payment gateway.
   payuBizSalt: '***REMOVED***',
   payuBizKey: '***REMOVED***',
   payuBizUrl: 'https://test.payu.in/_payment',

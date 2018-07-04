@@ -35,13 +35,13 @@
   left: -2px;
   &:hover {
     background-color: $theme-main-color - 20;
-    box-shadow: 0 3px 5px rgba(0,0,0,.6); 
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
   }
 }
 
 .open {
   background-color: $theme-main-color - 20;
-  box-shadow: 0 3px 5px rgba(0,0,0,.6); 
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
 }
 
 .dpbtn .dropdown-toggle::after {
@@ -70,12 +70,8 @@ ul {
       background-size: 10px;
     }
     &:hover::after {
-      color: $header-font-color;
-    } // &:hover {
-    //   background-color: $white;
-    //   color: $theme-main-color;
-    //   border-radius: 4px 0px 0px 4px;
-    // }
+      color: $gray-800;
+    }
     ul>li {
       position: relative;
       left: 20%;
@@ -85,6 +81,9 @@ ul {
     }
   }
   .active {
+    &::after {
+      color: $gray-800
+    }
     background-color: $white !important;
     color: $gray-600 !important;
     border-radius: 4px 0px 0px 4px !important;

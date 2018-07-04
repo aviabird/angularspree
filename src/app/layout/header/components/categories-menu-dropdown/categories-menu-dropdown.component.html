@@ -15,8 +15,8 @@
       <div class="row" *ngIf="taxonomies[0]; let catgeory_taxonomy">
         <div class="col-md-3">
           <ul class="h-100">
-            <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)"
-              [ngClass]="{'active': selectedItem == i}">{{taxon.name}}</li>
+            <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index ; let first = first" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)"
+              [ngClass]="[selectedItem == i ? 'active':'']">{{taxon.name}}</li>
           </ul>
         </div>
         <div class="col-md-9 no-gutters detailcontainer" *ngIf="menuTaxons">
