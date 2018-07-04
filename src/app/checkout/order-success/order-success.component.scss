@@ -6,6 +6,14 @@
     font-size: 1.7em;
     text-transform: capitalize;
   }
+  .fa-check-circle {
+    font-size: 40px;
+  }
+  .thankyoumsg {
+    padding: 0px 36px;
+    margin-left: 17px;
+    display: block;
+  }
 }
 
 .order {
@@ -20,9 +28,9 @@
 }
 
 .order-items {
-    @extend .thankyou;
-    h3 {
-        font-size: 1.7em;
-        color: $gray-600;
-      }
+  @extend .thankyou;
+  h3 {
+    font-size: 1.7em;
+    color: $gray-600;
+  }
 }

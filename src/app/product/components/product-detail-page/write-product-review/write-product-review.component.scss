@@ -53,15 +53,15 @@
   .guideline {
     background-color: $gray-100;
     border-radius: 4px;
-    padding: 10px;
+    padding: 1em;
     margin:0 15px;
   }
   h4{color: $gray-900;font-size: 1.2em;}
   h2{color: $gray-900;font-size: 1.7em;}
   ul {
     list-style: inside;
-    text-indent: 10px;
-    padding: 20px 10px;
+    text-indent: -22px;
+    padding: 1rem 0rem 1rem 1.4rem;
     line-height: 1.5em;
     li {
       padding-bottom: .5rem;
