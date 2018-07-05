@@ -53,6 +53,7 @@ export class PaymentModesListComponent implements OnInit {
         this.paymentModes = payment.payment_methods;
         this.selectedMode = this.paymentService.setCODAsSelectedMode(this.paymentModes);
       });
+
   }
 
   makePayment() {
@@ -76,7 +77,7 @@ export class PaymentModesListComponent implements OnInit {
 
     const hashParams = {
       key: payUbizKey,
-      txnid: `${this.orderNumber}`,
+      txnid: `${this.orderNumber}`, //To be replace using random number
       amount: this.paymentAmount,
       productinfo: `${environment.appName}-Product`,
       firstname: this.address.firstname,
