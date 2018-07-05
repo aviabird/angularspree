@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <img src={{category_banner.image_link}} style="display: block; width: 100%;">
+    </div>
+    <div class="col-md-12" *ngIf="selectedTaxons$ | async; let selectedTaxons">
+      <div *ngFor="let taxon of selectedTaxons.taxons; index as taxonIndex">
+        <div *ngIf="productList$ | async; let productlist">
+          <div *ngIf="productlist[taxonIndex]?.length">
+            <p>{{taxon.name}}</p> 
+            <app-product-slider [productlist]="productlist[taxonIndex]"></app-product-slider>
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
