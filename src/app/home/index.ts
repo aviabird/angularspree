@@ -14,6 +14,7 @@ import { AccordionModule } from 'ngx-bootstrap';
 import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 // Components
 import { HomeComponent } from './home.component';
+
 // Breadcrumb components
 import { BreadcrumbComponent } from './breadcrumb/components/breadcrumb/breadcrumb.component';
 
@@ -33,6 +34,7 @@ import { HomeRoutes as routes } from './home.routes';
 
 import { FilterPipe } from './content/product-list/product-filter.pipe';
 import { reducers } from './reducers/index';
+import { CategoryPageComponent } from './category-page/category-page.component';
 @NgModule({
   declarations: [
     // components
@@ -49,6 +51,7 @@ import { reducers } from './reducers/index';
     CategoriesComponent,
     BrandFilterComponent,
     FilterMobileMenuComponent,
+    CategoryPageComponent,
 
     // pipes
     FilterPipe

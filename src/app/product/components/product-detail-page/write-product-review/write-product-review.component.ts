@@ -6,22 +6,23 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
 import { ProductActions } from '../../../actions/product-actions';
-import { getSelectedProduct } from '../../../reducers/selectors';
-import { environment } from '../../../../../environments/environment';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-write-product-review',
   templateUrl: './write-product-review.component.html',
   styleUrls: ['./write-product-review.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WriteProductReviewComponent implements OnInit {
 
   reviewForm: FormGroup;
   queryParams: any
   showThanks = false;
-  product: any;
+  product$: Observable<any>;
   submitReview = true
-  images
+  
   constructor(private fb: FormBuilder,
     private productService: ProductService,
     private activeRoute: ActivatedRoute,
@@ -35,17 +36,12 @@ export class WriteProductReviewComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.activeRoute.queryParams
-      .subscribe(params => {
-        this.queryParams = params
-
-        this.productService.getProduct(this.queryParams.prodId)
-          .subscribe(response => {
-            this.product = response
-            this.images = this.product.master.images.product_url;
-          }
-          );
-      })
+    this.product$ = this.activeRoute.queryParams
+      .pipe(
+        switchMap(params => {
+          return this.productService.getProduct(params.prodId)
+        })
+      )
   }
 
   initForm() {
@@ -53,19 +49,19 @@ export class WriteProductReviewComponent implements OnInit {
     const name = '';
     const title = '';
     const review = '';
-
-    this.reviewForm = this.fb.group({
-      rating: [rating, Validators.required],
-      name: [JSON.parse(localStorage.getItem('user')).email],
-      title: [title, Validators.required],
-      review: [review, Validators.required]
+    if (JSON.parse(localStorage.getItem('user'))) {
+      this.reviewForm = this.fb.group({
+        rating: [rating, Validators.required],
+        name: [JSON.parse(localStorage.getItem('user')).email],
+        title: [title, Validators.required],
+        review: [review, Validators.required]
+      }
+      );
     }
-    );
   }
   getProductImageUrl(url) {
     return url;
   }
-
 
   parse(formData) {
     return {
@@ -73,26 +69,26 @@ export class WriteProductReviewComponent implements OnInit {
         rating: formData.rating.toString(),
         name: formData.name,
         title: formData.title,
-        review: formData.review
+        review: formData.review,
+        user_id: JSON.parse(localStorage.getItem('user')).id
       }
     }
   }
 
-  onSubmit() {
+  onSubmit(prodId) {
     if (this.reviewForm.valid) {
       const values = this.reviewForm.value;
       const params = this.parse(values)
-      this.productService.submitReview(this.queryParams.prodId, params)
+      this.productService.submitReview(prodId, params)
         .subscribe((res) => {
           this.showThanks = true;
           this.submitReview = false;
-
         })
     } else {
       this.toastrService.info('All fields are rquired', 'Invalid!')
     }
   }
-  goToProduct() {
-    this.router.navigate([this.queryParams.prodId])
+  goToProduct(prodId) {
+    this.router.navigate([prodId])
   }
 }

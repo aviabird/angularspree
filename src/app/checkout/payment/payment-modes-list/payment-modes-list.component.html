@@ -5,7 +5,7 @@
 </div>
 
 <div class="selected-mode" [ngSwitch]="selectedMode.name">
-  <ng-template [ngSwitchCase]="'Check'" ngSwitchDefault>
+  <ng-template [ngSwitchCase]="'Check'">
     <app-cash-on-delivery (payOnDelivery)="makePayment()"></app-cash-on-delivery>
   </ng-template>
   <ng-template [ngSwitchCase]="'Payubiz'">

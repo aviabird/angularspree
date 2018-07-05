@@ -23,6 +23,10 @@ export const DEFAULT_APP_DATA = {
     image_link: `${cdn_url}secondary-banner-1.jpg`,
     link_url: '#'
   },
+  category_banner: {
+    image_link: 'assets/custom/banner/promo/promo.png',
+    link_url: '#'
+  },
   Deals: {
     type: 'Today\'s Deals'
   },

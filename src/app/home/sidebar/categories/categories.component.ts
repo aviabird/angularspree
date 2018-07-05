@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { SearchActions } from './../../reducers/search.actions';
 import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
-import { searchFilterStatus } from '../../reducers/selectors';
 
 
 @Component({

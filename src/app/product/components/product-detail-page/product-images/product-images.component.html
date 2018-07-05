@@ -7,7 +7,7 @@
         </button>
       </div>
     </div>
-    <div class="col-11">
+    <div class="col-11" *ngIf="selectedImage">
       <!-- <img itemprop="image" [zoomable]='zoomOptions' [src]="getProductImageUrl(selectedImage.large_url)" [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid" -->
       <img itemprop="image" [zoomable]='zoomOptions' [zoomableSrc]='getProductImageUrl(selectedImage.large_url)' [src]="getProductImageUrl(selectedImage.large_url)"
         [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid">
