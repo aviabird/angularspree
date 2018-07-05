@@ -1,10 +1,10 @@
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
-import { getTotalCartValue, getTotalCartItems } from './../../reducers/selectors';
+import { getTotalCartValue, getTotalCartItems, getShipTotal, getItemTotal, getAdjustmentTotal } from './../../reducers/selectors';
 import { Observable } from 'rxjs';
-import { Order } from './../../../core/models/order';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-delivery-options',
@@ -19,10 +19,17 @@ export class DeliveryOptionsComponent implements OnInit {
   shippingRates = [];
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
+  itemTotal$: Observable<number>;
+  shipTotal$: Observable<number>;
+  adjustmentTotal$: Observable<number>;
+  currency = environment.config.currency_symbol;
 
   constructor(private checkoutService: CheckoutService, private store: Store<AppState>) {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
+    this.shipTotal$ = this.store.select(getShipTotal);
+    this.itemTotal$ = this.store.select(getItemTotal);
+    this.adjustmentTotal$ = this.store.select(getAdjustmentTotal);
   }
 
   ngOnInit() {
