@@ -12,7 +12,7 @@ import { CheckoutService } from '../../core/services/checkout.service';
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
-export class PaymentComponent implements OnInit {
+export class PaymentComponent implements OnInit, OnDestroy {
 
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
@@ -36,7 +36,10 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
+    // this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
   }
 
+  ngOnDestroy() {
+    // this.orderSub$.unsubscribe();
+  }
 }

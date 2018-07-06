@@ -21,13 +21,10 @@ export class CartComponent implements OnInit {
   totalCartItems$: Observable<number>;
   shipTotal$: Observable<number>;
   itemTotal$: Observable<number>;
-  orderSub: any;
 
-  constructor(private store: Store<AppState>,
-    private checkoutService: CheckoutService) {
+  constructor(private store: Store<AppState>) {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
-    this.shipTotal$ = this.store.select(getShipTotal);
     this.itemTotal$ = this.store.select(getItemTotal);
   }
 
