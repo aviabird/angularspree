@@ -11,9 +11,14 @@
           <a class="primary-btn  quantity-plus" (click)="increseCount()">+</a>
         </div>
       </div>
-      <div class="buttons row">
+      <div class="buttons row" *ngIf="isBackorderable || product?.total_on_hand > 0">
         <input type="submit" class=" primary-btn primary-btn--action primary-btn--full js-add-cart" value="Add to Cart" (click)="addToCart(count)">
         <button (click)="addToCart(count)" [routerLink]="['/checkout/cart']" class="primary-btn primary-btn--action primary-btn--action-buy mt-1">Buy Now</button>
+      </div>
+
+      <div class="buttons row" *ngIf="!isBackorderable || product?.total_on_hand < 0">
+        <input type="submit" class=" primary-btn primary-btn--action primary-btn--full js-add-cart" value="Out of Stock" (click)="addToCart(count)"
+          disabled>
       </div>
     </form>
   </div>

@@ -1,7 +1,7 @@
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { getTotalCartValue, getTotalCartItems, getShipTotal, getItemTotal, getAdjustmentTotal } from './../../reducers/selectors';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../../../environments/environment';
@@ -23,6 +23,7 @@ export class DeliveryOptionsComponent implements OnInit {
   shipTotal$: Observable<number>;
   adjustmentTotal$: Observable<number>;
   currency = environment.config.currency_symbol;
+  orderSub$: Subscription;
 
   constructor(private checkoutService: CheckoutService, private store: Store<AppState>) {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
@@ -33,20 +34,21 @@ export class DeliveryOptionsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
     // this.setOrder();
   }
 
-  private setOrder() {
-    this.checkoutService.getOrder(this.orderNumber)
-      .subscribe((order) => {
-        this.order = order;
-        this.setShippingRates();
-      });
-  }
+  // private setOrder() {
+  //   this.checkoutService.getOrder(this.orderNumber)
+  //     .subscribe((order) => {
+  //       this.order = order;
+  //       this.setShippingRates();
+  //     });
+  // }
 
-  private setShippingRates() {
-    this.shippingRates = this.order.shipments[0].shipping_rates;
-    this.selectedShippingRate = this.order.shipments[0].selected_shipping_rate;
-  }
+  // private setShippingRates() {
+  //   this.shippingRates = this.order.shipments[0].shipping_rates;
+  //   this.selectedShippingRate = this.order.shipments[0].selected_shipping_rate;
+  // }
 
 }

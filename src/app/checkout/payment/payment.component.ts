@@ -2,9 +2,10 @@ import { Address } from './../../core/models/address';
 import { getTotalCartValue, getOrderNumber, getTotalCartItems, getShipAddress, getShipTotal, getItemTotal, getAdjustmentTotal } from './../reducers/selectors';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { CheckoutService } from '../../core/services/checkout.service';
 
 @Component({
   selector: 'app-payment',
@@ -21,8 +22,10 @@ export class PaymentComponent implements OnInit {
   itemTotal$: Observable<number>;
   adjustmentTotal$: Observable<number>;
   currency = environment.config.currency_symbol;
+  orderSub$: Subscription;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>,
+    private checkoutService: CheckoutService) {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.address$ = this.store.select(getShipAddress);
@@ -33,6 +36,7 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
   }
 
 }
