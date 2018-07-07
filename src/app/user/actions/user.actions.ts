@@ -9,8 +9,11 @@ export class UserActions {
   static GET_USER_FAVORITE_PRODUCTS_SUCCESS = 'GET_USER_FAVORITE_PRODUCTS_SUCCESS';
   static REMOVE_FROM_FAVORITE_PRODUCTS = 'REMOVE_FROM_FAVORITE_PRODUCTS';
 
-  getUserOrders() {
-    return { type: UserActions.GET_USER_ORDERS };
+  getUserOrders(email: string, page: number) {
+    return {
+      type: UserActions.GET_USER_ORDERS,
+      payload: { email, page }
+    };
   }
 
   getUserOrdersSuccess(orders: Order[]) {

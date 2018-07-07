@@ -1,25 +1,20 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h5 class="active">{{order.shipment_state | uppercase}}</h5>
-    <small>
-      Placed on {{order.created_at | date:'fullDate'}} / 
-      <i
-        class="fa fa-{{order.currency | lowercase}}"
-        aria-hidden="true">
-      </i>{{order.total}} / 
-      {{order.line_items.length}} items /
-      Payment: {{order.payment_state | humanize | uppercase}}
-    </small>
-    <hr>
-    <h5 class="strong">
-      Shipment: {{order.line_items.length}} items | 
-      {{order.shipment_state | uppercase}} on {{order.updated_at | date:'fullDate'}}
-      <div class="pull-right">
-        <a [routerLink]="['detail', order.number]" class="view-details-link strong">View Details</a>
-      </div>
-    </h5>
-    <div *ngFor="let line_item of order.line_items">
-      <img class="line_item_image" [src]="getProductImageUrl(line_item.image_url)" alt="Line Item">
-    </div>
-  </div>
+<div class=container *ngIf="order">
+  <table class="table">
+    <tr>
+      <td>
+        <button type="button" class="btn btn-primary" [routerLink]="['detail', order.number]">{{order.number}}</button>
+      </td>
+      <th>Status:</th>
+      <th>Ordered On:</th>
+      <th>Order Total:</th>
+      <th>Payment Status</th>
+    </tr>
+    <tr>
+      <td>{{order.number}}</td>
+      <td>{{order.shipment_state}}</td>
+      <td>{{order.completed_at | date:'fullDate'}}</td>
+      <td>{{order.display_total}}</td>
+      <td>{{order.payment_state}}</td>
+    </tr>
+  </table>
 </div>
