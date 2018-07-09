@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
   @Input() products;
+  @Input() paginationData;
   // tslint:disable-next-line:no-input-rename
   @Input('taxonIds') selectedTaxonIds;
   @Input() toggleLayout;
@@ -31,6 +32,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.products)
     this.screenwidth = window.innerWidth;
     this.calculateInnerWidth();
   }

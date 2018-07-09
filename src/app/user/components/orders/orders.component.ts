@@ -13,6 +13,8 @@ import { getUserOrders } from '../../reducers/selector';
 })
 export class OrdersComponent implements OnInit {
   orders$: Observable<Order[]>;
+  page: number;
+  email: string;
 
   constructor(
     private store: Store<AppState>,
@@ -22,7 +24,15 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.userActions.getUserOrders());
+    if (JSON.parse(localStorage.getItem('user'))) {
+      this.email = JSON.parse(localStorage.getItem('user')).email
+      this.store.dispatch(this.userActions.getUserOrders(this.email, 1));
+    }
+  }
+
+  pageChanged(event: any): void {
+    this.page = event.page;
+    this.store.dispatch(this.userActions.getUserOrders(this.email, this.page));
   }
 
 }

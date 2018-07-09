@@ -44,9 +44,9 @@ export class ProductPriceInfoComponent implements OnInit {
       this.currentSelectedOptions,
       this.customOptionTypesHash,
       option,
-      this.product
+      this.product,
     );
-
+    console.log('selected', this.product)
     this.createNewCorrespondingOptions(
       result.newCorrespondingOptions,
       option.value.optionValue.option_type_name
@@ -59,6 +59,8 @@ export class ProductPriceInfoComponent implements OnInit {
     this.images = newVariant.images;
     this.product.display_price = result.variant.display_price
     this.getSelectedVariant(result.variant);
+    this.isBackOrderable= newVariant.is_backorderable;
+    this.product.total_on_hand= newVariant.total_on_hand;
   }
 
   makeGlobalOptinTypesHash(customOptionTypes) {
