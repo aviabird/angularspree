@@ -16,4 +16,7 @@ export const CUSTOM_EXAMPLE_CONFIG = {
   //Following are the test crediantials for payubiz payment gateway.
   payuBizSalt: '***REMOVED***',
   payuBizKey: '***REMOVED***',
+  payuBizUrl: 'https://test.payu.in/_payment',
+  free_shipping_order_amount: 10,
+  currency_symbol: '$', //USD $
 };

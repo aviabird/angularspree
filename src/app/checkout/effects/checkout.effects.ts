@@ -2,8 +2,6 @@ import { map, switchMap } from 'rxjs/operators';
 import { LineItem } from './../../core/models/line_item';
 import { CheckoutService } from './../../core/services/checkout.service';
 import { CheckoutActions } from './../actions/checkout.actions';
-import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { Effect, Actions } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 
@@ -13,7 +11,7 @@ export class CheckoutEffects {
     private actions$: Actions,
     private checkoutService: CheckoutService,
     private actions: CheckoutActions
-  ) {}
+  ) { }
 
   // tslint:disable-next-line:member-ordering
   @Effect()

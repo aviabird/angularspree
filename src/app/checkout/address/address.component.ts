@@ -1,5 +1,5 @@
 
-import {tap} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CheckoutService } from './../../core/services/checkout.service';
 import { getShipAddress, getOrderState, getOrderNumber } from './../reducers/selectors';
@@ -7,7 +7,7 @@ import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription ,  Observable } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-address',
@@ -24,10 +24,10 @@ export class AddressComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
     private router: Router) {
-      this.orderNumber$ = this.store.select(getOrderNumber);
-      this.shipAddress$ = this.store.select(getShipAddress);
-      this.stateSub$ = this.store.select(getOrderState)
-        .subscribe(state => this.orderState = state);
+    this.orderNumber$ = this.store.select(getOrderNumber);
+    this.shipAddress$ = this.store.select(getShipAddress);
+    this.stateSub$ = this.store.select(getOrderState)
+      .subscribe(state => this.orderState = state);
   }
 
   ngOnInit() {

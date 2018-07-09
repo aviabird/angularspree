@@ -1,24 +1,26 @@
-export const APP_DATA = {
+const cdn_url = 'https://res.cloudinary.com/aviabird/image/upload/q_60/v1529433193/angularspree/';
+
+export const DEFAULT_APP_DATA = {
   landing_page_banner: [
     {
-      image_link: 'assets/custom/banner/page1.jpg',
+      image_link: `${cdn_url}banner-1.jpg`,
       link_url: '#'
     },
     {
-      image_link: 'assets/custom/banner/page2.jpg',
+      image_link: `${cdn_url}banner-2.jpg`,
       link_url: '#'
     },
     {
-      image_link: 'assets/custom/banner/page3.jpg',
+      image_link: `${cdn_url}banner-3.jpg`,
       link_url: '#'
     },
     {
-      image_link: 'assets/custom/banner/page4.jpg',
+      image_link: `${cdn_url}banner-4.jpg`,
       link_url: '#'
     }
   ],
   promo_banner: {
-    image_link: 'assets/custom/banner/promo/promo.png',
+    image_link: `${cdn_url}secondary-banner-1.jpg`,
     link_url: '#'
   },
   category_banner: {
@@ -26,16 +28,7 @@ export const APP_DATA = {
     link_url: '#'
   },
   Deals: {
-    type: 'Today\'s deals'
-  },
-
-  Dog: {
-    image_link: 'https://www.what-dog.net/Images/faces2/scroll001.jpg'
-  },
-
-  Cat: {
-    image_link:
-      'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350'
+    type: 'Today\'s Deals'
   },
 
   footer_page_links: [
@@ -95,6 +88,6 @@ export const APP_DATA = {
   ],
   contact_info: {
     contact_no: '917-6031-568',
-    copyright: 'Copyright © 2018 angularspree, Inc.'
+    copyright: 'Copyright © 2018 AngularSpree, Inc.'
   }
 };

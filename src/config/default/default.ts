@@ -20,6 +20,8 @@ export const DEFAULT_CONFIG = {
   payuBizSalt: '***REMOVED***',
   payuBizKey: '***REMOVED***',
   payuBizUrl: 'https://test.payu.in/_payment',
+  free_shipping_order_amount: 10,
+  currency_symbol: '$', //USD $
 
   ...DEFAULT_APP_DATA
 };
