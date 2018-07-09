@@ -22,7 +22,8 @@ export class CartComponent implements OnInit {
   shipTotal$: Observable<number>;
   itemTotal$: Observable<number>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>,
+    private checkoutService: CheckoutService) {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.itemTotal$ = this.store.select(getItemTotal);
