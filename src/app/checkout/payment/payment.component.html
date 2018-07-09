@@ -9,8 +9,10 @@
 						<span class="you-pay">{{currency}}{{totalCartValue$ | async | number:'1.2-2'}}</span>
 					</span>
 				</div>
-				<div class="pay-body" *ngIf="(orderNumber$ | async)!=null; let orderNumber">
-					<app-payment-modes-list [orderNumber]="orderNumber" [paymentAmount]="totalCartValue$ | async" [address]="address$ | async"></app-payment-modes-list>
+				<div *ngIf="orderNumber$ | async ; let orderNumber">
+					<div class="pay-body" *ngIf="orderNumber!=null">
+						<app-payment-modes-list [orderNumber]="orderNumber" [paymentAmount]="totalCartValue$ | async" [address]="address$ | async"></app-payment-modes-list>
+					</div>
 				</div>
 			</div>
 			<div class="right col-12 col-md-4 col-lg-4 m-0">

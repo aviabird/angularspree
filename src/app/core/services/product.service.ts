@@ -20,7 +20,7 @@ export class ProductService {
     private http: HttpClient,
     private toastrService: ToastrService,
     private apiParser: JsonApiParserService
-  ) {}
+  ) { }
 
   /**
    *
