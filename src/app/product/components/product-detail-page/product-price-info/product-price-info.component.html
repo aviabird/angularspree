@@ -1,18 +1,19 @@
 <div class="col-12 ">
   <h1 itemprop="name" class="title">{{product.name}}</h1>
-  <div class="product-subtitle">
+  <!-- <div class="product-subtitle">
     <a href="#">
       By
-      <span itemprop="brand">Nutro</span>
+      #To-do read from product properties.
+      <span itemprop="brand"></span>
     </a>
-  </div>
+  </div> -->
 </div>
 <div class="col-12">
   <div class="product-header-extras">
     <div class="ugc pr-3">
       <a class="hide-phone js-revScrollTo">
         <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" required></ngx-input-star-rating>
-        {{product.reviews_count }} Reviews  {{product.reviews_count }} Reviews
+        {{product.reviews_count }} Reviews
       </a>
     </div>
   </div>
@@ -45,7 +46,7 @@
           </li>
         </ul>
       </div>
-      <div id="featured-promotions" class="pt-3">
+      <div id="featured-promotions" class="pt-3" *ngIf="customOptionTypesHash">
         <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
           [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
         <hr class="">
@@ -53,7 +54,7 @@
 
     </div>
     <div id="buybox" class="">
-      <app-product-count (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorites()"></app-product-count>
+      <app-product-count (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorites()" [isBackorderable]="isBackOrderable"></app-product-count>
     </div>
   </div>
 </div>

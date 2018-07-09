@@ -4,15 +4,16 @@
       <button (click)="placeOrder()" class="order-btn">Proceed to Checkout</button>
     </div>
   </div>
-  <div class="order-summary-span">
+  <div class="order-summary-span" *ngIf=itemTotal>
     <div class="bag-total">
       <span>Sub Total</span>
       <span class="value">
-        <i class="fa fa-rupee ml-2"></i> {{totalCartValue | number:'1.2-2'}} </span>
+        {{currency}}{{itemTotal| number:'1.2-2'}} </span>
     </div>
     <div class="shipping">
-      <span>Flat-Rate Shipping</span>
-      <span class="shipping-fee c-green">FREE</span>
+      <span>Shipping</span>
+      <span class="shipping-fee c-green" *ngIf="enableshipping">Only {{currency}}{{enableshippingvalue | number:'1.2-2'}} to go for free delivery!</span>
+      <span class="shipping-fee c-green" *ngIf="!enableshipping">Free</span>
     </div>
   </div>
 </div>
@@ -21,7 +22,7 @@
     <div class="bag-total">
       <span>Sub Total :</span>
       <span class="value">
-        <i class="fa fa-rupee ml-2"></i> {{totalCartValue | number:'1.2-2'}} </span>
+        <i class="fa fa-rupee ml-2"></i> {{itemTotal | number:'1.2-2'}} </span>
     </div>
   </div>
   <div class="order-total footer">
@@ -29,18 +30,16 @@
       <button (click)="placeOrder()" class="order-btn">Proceed to Checkout</button>
     </div>
   </div>
-  <button type="button" class="btn shippingbtn" *ngIf="!enableshipping"> You qualify for FREE SHIPPING!
+  <button type="button" class="btn shippingbtn" *ngIf="!enableshipping"> You qualify for free delivery!
     <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
   </button>
-  <button type="button" class="btn shippingbtn" *ngIf="enableshipping"> Only
-    <span class="fa fa-rupee"></span> {{enableshippingvalue}} to go for FREE SHIPPING! &#8377;699!
+  <button type="button" class="btn shippingbtn" *ngIf="enableshipping">Only {{currency}}{{enableshippingvalue | number:'1.2-2'}} to go for free delivery!
     <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
   </button>
 
   <div class="d-flex shippingprogess">
     <span class="mr-2">
-      <i class="fa fa-rupee"></i> 0
-
+      {{currency}}0
     </span>
     <span class="shipcount__bg__line"></span>
     <span class="shipcount__bg__line"></span>
@@ -49,8 +48,7 @@
     <progressbar [value]="shippingProgress" type="success">
     </progressbar>
     <span class="ml-2">
-      <i class="fa fa-rupee"></i> 699
-
+      {{currency}}{{freeDeliveryAmount}}
     </span>
   </div>
 </div>
