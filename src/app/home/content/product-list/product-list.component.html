@@ -26,6 +26,12 @@
     </a>
   </div>
 </div>
+<pagination *ngIf="paginationData.total_count > paginationData.per_page"
+  [totalItems]="paginationData.total_count" 
+  [itemsPerPage]="paginationData.per_page" 
+  [(ngModel)]="paginationData.current_page"
+  (pageChanged)="pageChanged($event)"></pagination>
+
 <div class="row results-base m-0" *ngIf="isMobile">
   <div class="col-12 product-base" *ngFor="let product of products | filter : selectedTaxonIds; trackBy: trackByFn" [style.margin]="getMargin()"
     itemscope itemtype="https://schema.org/Product">
@@ -52,7 +58,7 @@
               FREE 1-2 day shipping on this item
             </p>
             <div class="ngrating">
-              <ngx-input-star-rating value="{{product.avg_rating }}" disable="true" required></ngx-input-star-rating>
+              <ngx-input-star-rating value="{{product.avg_rating }}" disabled="true" required></ngx-input-star-rating>
             </div>
           </div>
         </div>

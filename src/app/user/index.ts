@@ -3,6 +3,7 @@ import { FavoriteProductsComponent } from './components/favorite-products/favori
 import { RouterModule } from '@angular/router';
 import { UserRoutes } from './user.routes';
 import { NgModule } from '@angular/core';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 // components
 import { OverviewComponent } from './components/overview/overview.component';
@@ -49,7 +50,8 @@ import { OrderDetailComponent } from './components/orders/order-detail/order-det
   ],
   imports: [
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    PaginationModule,
   ]
 })
 export class UserModule {}

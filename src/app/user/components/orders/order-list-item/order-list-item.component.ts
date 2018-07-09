@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Order } from '../../../../core/models/order';
-import { environment } from '../../../../../environments/environment';
+import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-list-item',
@@ -10,7 +11,7 @@ import { environment } from '../../../../../environments/environment';
 export class OrderListItemComponent implements OnInit {
   @Input() order: Order;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -18,5 +19,4 @@ export class OrderListItemComponent implements OnInit {
   getProductImageUrl(url) {
     return url;
   }
-
 }
