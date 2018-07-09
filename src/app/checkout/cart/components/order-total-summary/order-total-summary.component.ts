@@ -3,11 +3,11 @@ import { tap } from 'rxjs/operators';
 import { getOrderState } from './../../../reducers/selectors';
 import { Router } from '@angular/router';
 import { CheckoutService } from './../../../../core/services/checkout.service';
-import { CheckoutActions } from './../../../actions/checkout.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-order-total-summary',
@@ -18,26 +18,29 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
 
   stateSub$: Subscription;
   orderState: string;
-  @Input() totalCartValue: number;
+  @Input() itemTotal: number;
   @Input() isMobile;
   enableshipping: boolean;
   enableshippingvalue;
   shippingProgress;
+  currency = environment.config.currency_symbol;
+  freeDeliveryAmount = environment.config.free_shipping_order_amount;
+
   constructor(private store: Store<AppState>,
-    private actions: CheckoutActions,
     private checkoutService: CheckoutService,
     private router: Router) {
     this.stateSub$ = this.store.select(getOrderState)
       .subscribe(state => this.orderState = state);
-
   }
 
   ngOnInit() {
 
   }
+
   ngOnChanges() {
     this.enableshippingcalculate()
   }
+
   placeOrder() {
     if (this.orderState === 'cart') {
       this.checkoutService.changeOrderState().pipe(
@@ -49,12 +52,13 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
       this.router.navigate(['/checkout', 'address']);
     }
   }
+
   enableshippingcalculate() {
-    if (this.totalCartValue !== 0) {
-      this.enableshippingvalue = 699 - this.totalCartValue;
-      if (this.totalCartValue < 699) {
+    if (this.itemTotal !== 0) {
+      this.enableshippingvalue = this.freeDeliveryAmount - this.itemTotal;
+      if (this.itemTotal < this.freeDeliveryAmount) {
         this.enableshipping = true;
-        this.shippingProgress = (this.totalCartValue / 699) * 100;
+        this.shippingProgress = (this.itemTotal / this.freeDeliveryAmount) * 100;
       } else {
         this.enableshipping = false;
         this.shippingProgress = 100;

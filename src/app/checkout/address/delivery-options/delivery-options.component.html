@@ -1,28 +1,36 @@
-<div class="del-lbl">
-  DELIVERY SPEED
-</div>
-<div class="del-options">
-  <div class="option">
-    <div class="option-name">
-      Standard delivery
-    </div>
-    <div class="option-rate">
+<div *ngIf="itemTotal$ | async;let itemTotal">
+  <div class="del-lbl">
+    DELIVERY TYPE
+  </div>
+  <div class="del-options">
+    <div class="option">
+      <div class="option-name">
+        Standard delivery
+      </div>
+      <!-- <div class="option-rate">
       Free delivery
+    </div> -->
     </div>
   </div>
-</div>
-<div class="mini-bag-summary">
-  <div class="items">{{totalCartItems$ | async}} ITEMS</div>
-  <div class="order-total">
-    <span>Order Total</span>
-    <span class="value">${{totalCartValue$ | async | number:'1.2-2'}}</span>
+  <div class="mini-bag-summary">
+    <div class="items">{{totalCartItems$ | async}} ITEMS</div>
+    <div class="order-total">
+      <span>Sub Total</span>
+      <span class="value">{{currency}}{{itemTotal | number:'1.2-2'}}</span>
+    </div>
+    <div class="shipping" *ngIf="(shipTotal$ | async);let shipTotal">
+      <span>Delivery</span>
+      <span class="shipping-fee c-green" *ngIf="shipTotal > 0">{{currency}}{{shipTotal | number:'1.2-2'}}</span>
+      <span class="shipping-fee c-green" *ngIf="shipTotal ==='0.0' && itemTotal >=30 ">Free</span>
+      <span class="shipping-fee c-green" *ngIf="shipTotal ==='0.0' && itemTotal < 30 ">Only {{currency}}{{(30 - itemTotal)| number:'1.2-2'}} to go for free shipping.</span>
+    </div>
+    <div class="order-total" *ngIf="(adjustmentTotal$ | async) > 0;let adjustmentTotal">
+      <span>Adjustment</span>
+      <span class="value">{{adjustmentTotal}}</span>
+    </div>
   </div>
-  <div class="shipping">
-    <span>Delivery</span>
-    <span class="shipping-fee c-green">FREE</span>
-  </div>
-</div>
-<div class="pay-lbl-total">
+  <!-- <div class="pay-lbl-total">
   <span class="pay-lbl">Total Payable</span>
-  <span class="pay-total">${{totalCartValue$ | async | number:'1.2-2'}}</span>
+  <span class="pay-total">{{currency}}{{totalCartValue$ | async | number:'1.2-2'}}</span>
+</div> -->
 </div>

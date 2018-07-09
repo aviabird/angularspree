@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Product } from '../../../../../core/models/product';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-count',
@@ -8,15 +10,20 @@ import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, Chan
   encapsulation: ViewEncapsulation.None
 })
 export class ProductCountComponent implements OnInit {
-  @Input() product;
+  @Input() product: Product;
+  @Input() isBackorderable;
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
 
   count: any = 1;
 
-  constructor() { }
+  constructor() {
 
-  ngOnInit() {}
+  }
+
+  ngOnInit() {
+
+  }
 
   increseCount() {
     this.count += 1;

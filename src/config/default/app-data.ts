@@ -31,15 +31,6 @@ export const DEFAULT_APP_DATA = {
     type: 'Today\'s Deals'
   },
 
-  Dog: {
-    image_link: 'https://www.what-dog.net/Images/faces2/scroll001.jpg'
-  },
-
-  Cat: {
-    image_link:
-      'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&h=350'
-  },
-
   footer_page_links: [
     {
       name: 'About Us',
