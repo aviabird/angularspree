@@ -1,0 +1,19 @@
+// Customize variables here
+
+// Import Bootstrap functions before using functions here
+@import "../../../../../../node_modules/bootstrap/scss/functions";
+
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Refer this https://getbootstrap.com/docs/4.0/getting-started/theming/
+
+$font-family-sans-serif:      "Whitney", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-monospace:       "Whitney", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:            $font-family-sans-serif !default;
+
+
+// XXXXXXXXXXXXXXXXXX--STOP--XXXXXXXXXXXXXXXXXXXX
+// Variables should be override above
+@import "./../_core_variables.scss";
+// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

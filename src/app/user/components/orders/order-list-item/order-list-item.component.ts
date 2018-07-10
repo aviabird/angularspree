@@ -13,6 +13,7 @@ export class OrderListItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.order);
   }
 
   getProductImageUrl(url) {

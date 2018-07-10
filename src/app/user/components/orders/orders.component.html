@@ -2,6 +2,7 @@
 <div class="container">
   <div *ngIf="(orders$ | async).length; else elseBlock">
     <div *ngFor="let order of orders$ | async">
+     
       <app-order-list-item [order]="order"></app-order-list-item>
     </div>
   </div>

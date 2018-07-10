@@ -1,4 +1,4 @@
-<div class="address-section col-12 col-md-7 col-lg-7">
+<div class="address-section col-12 col-md-8 col-lg-8">
 	<div *ngIf="(shipAddress$ | async)" class="row m-0">
 		<div class="left col-12 col-md-8 col-lg-8 m-0 ">
 			<div class="edit-address">
@@ -10,7 +10,7 @@
 		</div>
 		<div class="right col-12 col-md-4 col-lg-4 m-0 ">
 			<app-delivery-options [orderNumber]="orderNumber$ | async"></app-delivery-options>
-			<button (click)="checkoutToPayment()" class="pay-btn">CONTINUE TO PAYMENT</button>
+			<button (click)="checkoutToPayment()" class="btn themebtnprimary">continue to payment</button>
 		</div>
 	</div>
 	<div *ngIf="!(shipAddress$ | async)" class="row">
