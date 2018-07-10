@@ -1,16 +1,8 @@
 <div *ngIf="products$ | async; let products">
-  <table class="table" *ngIf="products.length; else elseBlock">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">Product Image</th>
-        <th scope="col">Product Name</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <app-favorite-product-list-item *ngFor="let product of products" [product]="product"></app-favorite-product-list-item>
-    </tbody>
-  </table>
+
+  <div class="table-responsive" *ngIf="products.length; else elseBlock">
+    <app-favorite-product-list-item [product]="products"></app-favorite-product-list-item>
+  </div>
   <ng-template #elseBlock>
     <div>You have'nt favorited anything yet.</div>
   </ng-template>
