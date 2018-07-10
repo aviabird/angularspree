@@ -96,6 +96,15 @@
   }
 }
 
+.bgimg {
+  position: relative;
+    width: 96%;
+    left: -1%;
+  background-repeat: no-repeat !important;
+  background-position: 100% !important;
+  background-size: 300px !important
+}
+
 @media screen and(min-width: 628px) and(max-width: 768px) {
   .catadjustwidth {
     width: 310%;

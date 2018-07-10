@@ -1,9 +1,20 @@
-<tr>
-  <td>
-    <img [src]="product.product_url" width="150px" height="150px">
-  </td>
-  <td>{{ product.name }}</td>
-  <td>
-    <button (click)="removeFromFavorite(product.id)" class="btn btn-primary">Remove</button>
-  </td>
-</tr>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Product Image</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let productinfo of product" >
+      <td>
+        <img [src]="productinfo.product_url" class="img-fluid fimg">
+      </td>
+      <td>{{ productinfo.name }}</td>
+      <td>
+        <button (click)="removeFromFavorite(productinfo.id)" class="btn themebtnprimary">Remove</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

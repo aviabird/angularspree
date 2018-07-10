@@ -43,19 +43,6 @@
     @media screen and(min-width: 320px) and(max-width: 768px) {
       padding: 0;
     }
-    .pay-btn {
-      cursor: pointer;
-      border: none;
-      border-radius: 3px;
-      height: 45px;
-      background-color: $theme-action-color !important;
-      font-weight: 600 !important;
-      box-shadow: none;
-      width: 100%;
-      color: $white;
-      font-family: $primary-font;
-      font-size: 14px;
-      margin: 10px auto;
-    }
+   
   }
 }
