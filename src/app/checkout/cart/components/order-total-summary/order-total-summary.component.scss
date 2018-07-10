@@ -52,20 +52,7 @@
     clear: right;
     .place-order {
       text-align: right;
-      .order-btn {
-        cursor: pointer;
-        border: 1px solid $theme-action-color - 50;
-        border-radius: 0.4rem;
-        padding: 0.5rem;
-        background-color: $theme-action-color !important;
-        font-weight: 300 !important;
-        box-shadow: none;
-        width: 100%;
-        color: $white;
-        font-family: "Roboto Regular";
-        font-size: 1.4em;
-        margin: 10px auto;
-      }
+      
     }
   }
 }

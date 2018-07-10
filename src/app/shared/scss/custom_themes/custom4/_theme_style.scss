@@ -1,0 +1,27 @@
+// selected-theme is the main theme class add to top level main html component
+// <div class="selected-theme">...
+@import '../../selected_theme_variables';
+.selected-theme {
+  @import "header";
+  @import "badge";
+  @import "notify";
+
+  input, button {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .panel {
+    box-shadow: 0 0 4px rgba(40,44,63,0.08);
+  }
+
+  .strong {
+    font-family: $primary-font;
+    font-weight: 800;
+  }
+
+  .caret {
+    color: $orange + 20;
+  }
+}

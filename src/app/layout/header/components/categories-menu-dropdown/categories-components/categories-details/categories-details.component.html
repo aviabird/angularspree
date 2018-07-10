@@ -1,5 +1,5 @@
-<div class="container" *ngIf="!screenwidth">
-  <div class="row">
+<div class="container bgimg" *ngIf="!screenwidth" [ngStyle]="{'background': '#fff url(' + taxonImageLink + ') no-repeat 0 0'}">
+  <div class="row mr-0">
     <div class="col-md-7 ">
       <div class="row">
         <div class="col-md-3 p-0" *ngFor="let taxon of taxons">

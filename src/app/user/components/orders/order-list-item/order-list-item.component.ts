@@ -14,6 +14,7 @@ export class OrderListItemComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+    console.log(this.order);
   }
 
   getProductImageUrl(url) {
