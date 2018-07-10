@@ -1,13 +1,8 @@
-import { Router } from '@angular/router';
-import { getTotalCartValue, getOrderState, getTotalCartItems, getShipTotal, getItemTotal } from './../reducers/selectors';
-import { Observable, Subscription } from 'rxjs';
-import { CheckoutService } from './../../core/services/checkout.service';
-import { CheckoutActions } from './../actions/checkout.actions';
+import { getTotalCartValue, getTotalCartItems, getItemTotal } from './../reducers/selectors';
+import { Observable } from 'rxjs';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
-import { LineItem } from './../../core/models/line_item';
-import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
-import { Order } from '../../core/models/order';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cart',

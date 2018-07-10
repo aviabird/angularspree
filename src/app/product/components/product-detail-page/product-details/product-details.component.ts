@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { CheckoutActions } from './../../../../checkout/actions/checkout.actions';
-import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
 
 import {
   Component,
@@ -18,8 +17,8 @@ import {
 } from '@angular/core';
 
 import { Product } from './../../../../core/models/product';
-import { VariantParserService } from './../../../../core/services/variant-parser.service';
 import { ProductService } from './../../../../core/services/product.service';
+import { getAuthStatus } from '../../../../auth/reducers/selectors';
 
 @Component({
   selector: 'app-product-details',
@@ -36,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
   variantId: any;
   productID: any;
   productdata: any;
+  isAuthenticated: boolean;
   similarProducts$: Observable<any>;
   relatedProducts$: Observable<any>;
   reviewProducts$: Observable<any>;
@@ -51,10 +51,25 @@ export class ProductDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.description = this.product.description;
-    this.images = this.product.master.images;
-    this.variantId = this.product.master.id;
-    this.productID = this.product.id;
+
+    if (this.product.has_variants) {
+      const product = this.product.variants[0];
+      this.description = product.description;
+      this.images = product.images;
+      this.variantId = product.id;
+      this.productID = this.product.id;
+      this.product.display_price = product.display_price;
+      this.product.price = product.price;
+      this.product.master.is_orderable = product.is_orderable;
+      this.product.master.cost_price = product.cost_price;
+    }
+    else {
+      this.description = this.product.description;
+      this.images = this.product.master.images;
+      this.variantId = this.product.master.id;
+      this.productID = this.product.id;
+    }
+
 
     this.productService.getRelatedProducts(this.productID)
       .subscribe(productdata => {
@@ -96,7 +111,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   selectedVariant(variant) {
-    console.log('selected', variant)
     this.images = variant.images
     this.variantId = variant.id
   }
