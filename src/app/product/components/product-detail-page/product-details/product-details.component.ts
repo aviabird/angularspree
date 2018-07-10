@@ -41,8 +41,6 @@ export class ProductDetailsComponent implements OnInit {
   reviewProducts$: Observable<any>;
 
   constructor(
-    private variantParser: VariantParserService,
-    private variantRetriver: VariantRetriverService,
     private checkoutActions: CheckoutActions,
     private store: Store<AppState>,
     private productService: ProductService,
@@ -98,6 +96,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   selectedVariant(variant) {
+    console.log('selected', variant)
     this.images = variant.images
     this.variantId = variant.id
   }

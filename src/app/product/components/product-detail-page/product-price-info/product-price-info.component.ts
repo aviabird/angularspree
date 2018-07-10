@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Variant } from './../../../../core/models/variant';
 import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
+import { Product } from '../../../../core/models/product';
 
 @Component({
   selector: 'app-product-price-info',
@@ -9,7 +10,7 @@ import { VariantParserService } from './../../../../core/services/variant-parser
   styleUrls: ['./product-price-info.component.scss']
 })
 export class ProductPriceInfoComponent implements OnInit {
-  @Input() product;
+  @Input() product
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
   @Output() selectedVariant = new EventEmitter<Object>();
@@ -22,6 +23,7 @@ export class ProductPriceInfoComponent implements OnInit {
   correspondingOptions: any;
   variantId: any;
   selectedVariantPrice: any;
+  isBackOrderable: boolean;
 
   constructor(private variantParser: VariantParserService,
   ) { }
@@ -34,6 +36,7 @@ export class ProductPriceInfoComponent implements OnInit {
       .getOptionsToDisplay(this.product.variants, this.product.option_types);
     this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
     this.correspondingOptions = this.mainOptions;
+    this.isBackOrderable = this.product.master.is_backorderable
   }
 
   onOptionClick(option) {
@@ -41,9 +44,9 @@ export class ProductPriceInfoComponent implements OnInit {
       this.currentSelectedOptions,
       this.customOptionTypesHash,
       option,
-      this.product
+      this.product,
     );
-
+    console.log('selected', this.product)
     this.createNewCorrespondingOptions(
       result.newCorrespondingOptions,
       option.value.optionValue.option_type_name
@@ -56,6 +59,8 @@ export class ProductPriceInfoComponent implements OnInit {
     this.images = newVariant.images;
     this.product.display_price = result.variant.display_price
     this.getSelectedVariant(result.variant);
+    this.isBackOrderable= newVariant.is_backorderable;
+    this.product.total_on_hand= newVariant.total_on_hand;
   }
 
   makeGlobalOptinTypesHash(customOptionTypes) {

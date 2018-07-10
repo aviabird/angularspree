@@ -1,12 +1,13 @@
+
 <div class="address-section col-12 col-md-8 col-lg-8">
-	<div *ngIf="(shipAddress$ | async)" class="row m-0">
+	<div *ngIf="shipAddress$ | async; let shipAddress" class="row m-0">
 		<div class="left col-12 col-md-8 col-lg-8 m-0 ">
 			<div class="edit-address">
 				<span class="edit-label">
 					Select Delivery Address
 				</span>
 			</div>
-			<app-delivery-address [address]="(shipAddress$ | async)"></app-delivery-address>
+			<app-delivery-address [address]="shipAddress"></app-delivery-address>
 		</div>
 		<div class="right col-12 col-md-4 col-lg-4 m-0 ">
 			<app-delivery-options [orderNumber]="orderNumber$ | async"></app-delivery-options>
