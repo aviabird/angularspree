@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from '../../../../../core/models/product';
-import { Router } from '../../../../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-count',

@@ -2,10 +2,10 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from './../../../../core/models/product';
 import { Router } from '@angular/router';
-import { Store } from '../../../../../../node_modules/@ngrx/store';
+import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
 import { getAuthStatus } from '../../../../auth/reducers/selectors';
-import { ToastrService } from '../../../../../../node_modules/ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-product-review',
   templateUrl: './product-review.component.html',
