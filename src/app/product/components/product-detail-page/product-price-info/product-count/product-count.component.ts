@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from '../../../../../core/models/product';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-count',
@@ -11,13 +11,13 @@ import { Observable } from 'rxjs';
 })
 export class ProductCountComponent implements OnInit {
   @Input() product: Product;
-  @Input() isBackorderable;
+  @Input() isOrderable;
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
 
   count: any = 1;
 
-  constructor() {
+  constructor(private router: Router) {
 
   }
 
@@ -44,6 +44,11 @@ export class ProductCountComponent implements OnInit {
 
   addToCart(count: number) {
     this.onAddToCart.emit(count);
+  }
+
+  buyNow(count: number){
+    this.onAddToCart.emit(count);
+    this.router.navigate(['checkout', 'address']);
   }
 
   markAsFavorites() {

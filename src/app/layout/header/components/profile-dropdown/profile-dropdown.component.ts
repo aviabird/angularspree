@@ -36,7 +36,9 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
 
     this.subnav = !this.subnav;
     this.authService.logout().
-      subscribe();
+      subscribe(res=>{
+        this.router.navigate(['auth', 'login']);
+      });
   }
 
   login() {

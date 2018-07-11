@@ -14,7 +14,6 @@ export class ProductPriceInfoComponent implements OnInit {
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
   @Output() selectedVariant = new EventEmitter<Object>();
-
   customOptionTypesHash: any;
   currentSelectedOptions = {};
   description: any;
@@ -23,20 +22,19 @@ export class ProductPriceInfoComponent implements OnInit {
   correspondingOptions: any;
   variantId: any;
   selectedVariantPrice: any;
-  isBackOrderable: boolean;
+  isOrderable: boolean;
 
   constructor(private variantParser: VariantParserService,
   ) { }
 
   ngOnInit() {
-
     this.images = this.product.master.images;
     this.variantId = this.product.master.id;
     this.customOptionTypesHash = this.variantParser
       .getOptionsToDisplay(this.product.variants, this.product.option_types);
     this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
     this.correspondingOptions = this.mainOptions;
-    this.isBackOrderable = this.product.master.is_backorderable
+    this.isOrderable = this.product.master.is_orderable
   }
 
   onOptionClick(option) {
@@ -46,7 +44,7 @@ export class ProductPriceInfoComponent implements OnInit {
       option,
       this.product,
     );
-    console.log('selected', this.product)
+
     this.createNewCorrespondingOptions(
       result.newCorrespondingOptions,
       option.value.optionValue.option_type_name
@@ -59,8 +57,7 @@ export class ProductPriceInfoComponent implements OnInit {
     this.images = newVariant.images;
     this.product.display_price = result.variant.display_price
     this.getSelectedVariant(result.variant);
-    this.isBackOrderable= newVariant.is_backorderable;
-    this.product.total_on_hand= newVariant.total_on_hand;
+    this.isOrderable= newVariant.is_orderable;
   }
 
   makeGlobalOptinTypesHash(customOptionTypes) {

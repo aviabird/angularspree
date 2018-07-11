@@ -27,5 +27,6 @@ export class Variant {
   in_stock: boolean;
   is_backorderable: boolean;
   is_destroyed: boolean;
+  is_orderable: boolean;
   images: Image[];
 }

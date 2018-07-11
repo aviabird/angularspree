@@ -2,6 +2,10 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from './../../../../core/models/product';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../interfaces';
+import { getAuthStatus } from '../../../../auth/reducers/selectors';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-product-review',
   templateUrl: './product-review.component.html',
@@ -11,28 +15,30 @@ import { Router } from '@angular/router';
 export class ProductReviewComponent implements OnInit {
   @Input() reviewList;
   @Input() product: Product;
-  ratingOneStar: any = 0;
-  ratingTwoStar: any = 0;
-  ratingThreeStar: any = 0;
-  ratingFourStar: any = 0;
-  ratingFivwStar: any = 0;
-  ratingTodal: any = 0;
-  percent: number[] = new Array(5);
-  review: any
+
   productID: any
-  dynamic = 70;
+  isAuthenticated: boolean;
 
   constructor(
     private router: Router,
-  ) { }
+    private store: Store<AppState>,
+    private toastrService: ToastrService
+  ) {
+    this.store.select(getAuthStatus).subscribe(auth => {
+      this.isAuthenticated = auth;
+    })
+  }
 
   ngOnInit() {
     this.productID = this.product.id;
   }
 
   showReviewForm() {
-    this.router.navigate([this.product.slug, 'write_review'], { queryParams: { 'prodId': this.productID } });
+    if (this.isAuthenticated) {
+      this.router.navigate([this.product.slug, 'write_review'], { queryParams: { 'prodId': this.productID } });
+    }
+    else {
+      this.toastrService.info('Please Login to write review.', 'Login')
+    }
   }
-
-
 }
