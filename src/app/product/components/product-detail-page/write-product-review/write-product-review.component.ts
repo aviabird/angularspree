@@ -5,9 +5,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
-import { ProductActions } from '../../../actions/product-actions';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { getAuthStatus } from '../../../../auth/reducers/selectors';
 
 @Component({
   selector: 'app-write-product-review',
@@ -21,17 +21,19 @@ export class WriteProductReviewComponent implements OnInit {
   queryParams: any
   showThanks = false;
   product$: Observable<any>;
-  submitReview = true
-  
+  submitReview = true;
+  isAuthenticated: boolean;
+
   constructor(private fb: FormBuilder,
     private productService: ProductService,
     private activeRoute: ActivatedRoute,
     private toastrService: ToastrService,
     private router: Router,
-    private store: Store<AppState>,
-    private productsActions: ProductActions
+    private store: Store<AppState>
   ) {
-
+    this.store.select(getAuthStatus).subscribe(auth => {
+      this.isAuthenticated = auth;
+    })
   }
 
   ngOnInit() {
@@ -43,13 +45,13 @@ export class WriteProductReviewComponent implements OnInit {
         })
       )
   }
-
+  
   initForm() {
     const rating = '';
     const name = '';
     const title = '';
     const review = '';
-    if (JSON.parse(localStorage.getItem('user'))) {
+    if (this.isAuthenticated) {
       this.reviewForm = this.fb.group({
         rating: [rating, Validators.required],
         name: [JSON.parse(localStorage.getItem('user')).email],
@@ -57,6 +59,9 @@ export class WriteProductReviewComponent implements OnInit {
         review: [review, Validators.required]
       }
       );
+    }
+    else{
+      this.router.navigate(['auth', 'login'])
     }
   }
   getProductImageUrl(url) {

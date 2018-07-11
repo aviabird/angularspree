@@ -32,7 +32,6 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.products)
     this.screenwidth = window.innerWidth;
     this.calculateInnerWidth();
   }
