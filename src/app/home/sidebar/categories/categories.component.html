@@ -2,7 +2,7 @@
 <div *ngIf="!isFilterOn" class="catgeory">
   <ul class="list-group" *ngIf="taxonomiList[0]; let catgeory_taxonomy">
     <h4> Catgeories</h4>
-    <li *ngFor="let categoryItem of catgeory_taxonomy.root.taxons" (click)="emitSelection(catgeory_taxonomy.id)">
+    <li *ngFor="let categoryItem of catgeory_taxonomy.root.taxons" (click)="emitSelection(catgeory_taxonomy)">
       <a class="list-group-item list-group-item-action" [routerLink]="['.']" [queryParams]="{'q[name_cont]': categoryItem.name, id: categoryItem.id, page: 1}">
         {{categoryItem.name}}
       </a>

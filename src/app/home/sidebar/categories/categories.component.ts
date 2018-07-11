@@ -57,8 +57,8 @@ export class CategoriesComponent implements OnInit {
     this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()));
   }
 
-  emitSelection(rootId) {
+  emitSelection(root) {
     this.catgeoryFilter()
-    this.onSelected.emit({ id: this.queryParams.id, name: this.queryParams['q[name_cont]'], root: rootId });
+    this.onSelected.emit({ id: this.queryParams.id, name: this.queryParams['q[name_cont]'], taxonomy: root.root.taxonomy_id});
   }
 }

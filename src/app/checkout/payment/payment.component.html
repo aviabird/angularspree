@@ -28,9 +28,11 @@
 						<span class="shipping-fee c-green" *ngIf="shipTotal > 0">{{currency}}{{shipTotal | number:'1.2-2'}}</span>
 						<span class="shipping-fee c-green" *ngIf="shipTotal === '0.0'">Free</span>
 					</div>
-					<div class="order-total" *ngIf="(adjustmentTotal$ | async) > 0;let adjustmentTotal">
-						<span>Adjustment</span>
-						<span class="value">{{adjustmentTotal}}</span>
+					<div *ngIf="(adjustmentTotal$ | async);let adjustmentTotal">
+						<div class="order-total" *ngIf="!adjustmentTotal.includes('$0.00')">
+							<span>Adjustment</span>
+							<span class="value">{{adjustmentTotal}}</span>
+						</div>
 					</div>
 				</div>
 				<div class="pay-lbl-total">
