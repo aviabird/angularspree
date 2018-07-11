@@ -21,7 +21,8 @@ export class ProductService {
     private toastrService: ToastrService,
     private apiParser: JsonApiParserService
   ) { }
-
+  success: any
+  error: any
   /**
    *
    *
@@ -147,14 +148,24 @@ export class ProductService {
   }
 
   submitReview(productId: any, params: any) {
-    return this.http.post(`products/${productId}/reviews`, params).pipe(
-      map(_ => this.toastrService.success('Review Submitted.', 'Success')),
-      tap(
-        _ => _,
-        _ =>
-          this.toastrService.error('something went wrong (reviews)', 'ERROR!!')
-      )
-    );
+    return this.http.post(`products/${productId}/reviews`, params)
+      .pipe(
+        map(success => {
+          this.success = success
+          if (this.success.type === 'info') {
+            this.toastrService.info(this.success.message, this.success.type)
+            return this.success.type;
+          }
+          else {
+            this.toastrService.success(this.success.message, this.success.type)
+            return this.success.type;
+          }
+        },
+          error => {
+            this.error = error
+            this.toastrService.error(this.error.message, this.error.type)
+            return this.error.type
+          }));
   }
 
   getRelatedProducts(productId: any): Observable<Array<Product>> {
