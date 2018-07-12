@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
-import { switchMap } from 'rxjs/operators';
+import { switchMap} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { getAuthStatus } from '../../../../auth/reducers/selectors';
 
@@ -23,6 +23,7 @@ export class WriteProductReviewComponent implements OnInit {
   product$: Observable<any>;
   submitReview = true;
   isAuthenticated: boolean;
+  result: any
 
   constructor(private fb: FormBuilder,
     private productService: ProductService,
@@ -45,7 +46,7 @@ export class WriteProductReviewComponent implements OnInit {
         })
       )
   }
-  
+
   initForm() {
     const rating = '';
     const name = '';
@@ -60,7 +61,7 @@ export class WriteProductReviewComponent implements OnInit {
       }
       );
     }
-    else{
+    else {
       this.router.navigate(['auth', 'login'])
     }
   }
@@ -85,12 +86,20 @@ export class WriteProductReviewComponent implements OnInit {
       const values = this.reviewForm.value;
       const params = this.parse(values)
       this.productService.submitReview(prodId, params)
-        .subscribe((res) => {
-          this.showThanks = true;
-          this.submitReview = false;
+        .subscribe(res => {
+        this.result = res;
+          if (this.result === 'info') {
+            this.goToProduct(prodId);
+          } else if (this.result === 'success') {
+            this.showThanks = true;
+            this.submitReview = false;
+          } else {
+            this.goToProduct(prodId)
+          }
         })
-    } else {
-      this.toastrService.info('All fields are rquired', 'Invalid!')
+    }
+    else {
+      this.toastrService.error('All fields are rquired', 'Invalid!')
     }
   }
   goToProduct(prodId) {

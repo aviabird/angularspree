@@ -1,5 +1,6 @@
 <div class="container pt-5 pb-5" *ngIf="product$ | async; let product">
-  <h3>Write Review</h3>
+  <h3 *ngIf="!showThanks">Write Review</h3>
+  <h3 *ngIf="showThanks">Review Submitted!</h3>
   <div class="write-review">
     <div class="row">
       <div class="col-2 pl-4">
