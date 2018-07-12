@@ -24,12 +24,20 @@ export const DEFAULT_APP_DATA = {
     link_url: '#'
   },
   category_banner: {
-    Dog: {
-      image_link: 'http://res.cloudinary.com/aviabird/image/upload/v1529041774/banner-1.png',
+    Living: {
+      image_link: `${cdn_url}banner-1.jpg`,
       link_url: '#'
     },
-    Cat:{
-      image_link: 'http://res.cloudinary.com/aviabird/image/upload/v1529041774/banner-2.png',
+    Bedroom: {
+      image_link: `${cdn_url}banner-2.jpg`,
+      link_url: '#'
+    },
+    Dining: {
+      image_link: `${cdn_url}banner-3.jpg`,
+      link_url: '#'
+    },
+    Study: {
+      image_link: `${cdn_url}banner-4.jpg`,
       link_url: '#'
     }
   },
