@@ -49,8 +49,8 @@ export class HomeComponent implements OnInit {
     this.products$ = this.store.select(getProductsByKeyword);
     this.pagination$ = this.store.select(getPaginationData);
     this.isFilterOn$ = this.store.select(searchFilterStatus)
-    // this.store.select(rootTaxonomyId)
-    //   .subscribe(id => this.rootTaxonomyId = id)
+    this.store.select(rootTaxonomyId)
+      .subscribe(id => this.rootTaxonomyId = id)
   }
 
   // tslint:disable-next-line:member-ordering
@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
   }
 
   OnCategeorySelected(category) {
-    this.store.dispatch(this.searchActions.getChildTaxons(category.taxonomy, category.id));
+    this.store.dispatch(this.searchActions.getChildTaxons(this.rootTaxonomyId, category.id));
     this.taxonomies$ = this.store.select(getChildTaxons)
     this.categoryLevel$ = this.store.select(categeoryLevel)
     // ToDo: Here Brands are hardcoded For now.

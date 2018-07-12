@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Order } from '../../../../core/models/order';
-import { UserService } from '../../../services/user.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-list-item',
@@ -11,10 +9,9 @@ import { Router } from '@angular/router';
 export class OrderListItemComponent implements OnInit {
   @Input() order: Order;
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit() {
-    console.log(this.order);
   }
 
   getProductImageUrl(url) {

@@ -24,8 +24,14 @@ export const DEFAULT_APP_DATA = {
     link_url: '#'
   },
   category_banner: {
-    image_link: 'assets/custom/banner/promo/promo.png',
-    link_url: '#'
+    Dog: {
+      image_link: 'http://res.cloudinary.com/aviabird/image/upload/v1529041774/banner-1.png',
+      link_url: '#'
+    },
+    Cat:{
+      image_link: 'http://res.cloudinary.com/aviabird/image/upload/v1529041774/banner-2.png',
+      link_url: '#'
+    }
   },
   Deals: {
     type: 'Today\'s Deals'
