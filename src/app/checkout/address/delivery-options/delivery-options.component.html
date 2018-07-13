@@ -18,7 +18,7 @@
       <span>Sub Total</span>
       <span class="value">{{currency}}{{itemTotal | number:'1.2-2'}}</span>
     </div>
-    sss{{freeDeliveryAmount}}
+
     <div class="shipping" *ngIf="(shipTotal$ | async);let shipTotal">
       <span>Delivery</span>
       <span class="shipping-fee c-green" *ngIf="shipTotal > 0">{{currency}}{{shipTotal | number:'1.2-2'}}</span>
