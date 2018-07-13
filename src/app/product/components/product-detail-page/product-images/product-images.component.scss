@@ -1,34 +1,40 @@
 @import '../../../../shared/scss/selected_theme_variables';
 .image-container {
-  .thumbnails-selected-image {
-    background:$white none repeat scroll 0% 0% / auto padding-box border-box;
-  }
-  .thumbnails-vertical-container {
-    width: 60px;
-    float: left;
-    margin-bottom: 10px;
-    .thumbnails-thumbnail-button {
-      outline: 0;
-      margin-right: 15px;
-      background-color:$white;
-      border: 0;
-      padding: 0;
-      position: relative;
-      cursor: pointer;
-      margin-bottom: 10px;
+    .thumbnails-selected-image {
+        background: $white none repeat scroll 0% 0% / auto padding-box border-box;
+        max-width: 100%;
+        width: 100%;
+        margin: auto;
+        height: 67%;
+        object-fit: scale-down;
     }
-  }
+    .thumbnails-vertical-container {
+        width: 60px;
+        float: left;
+        margin-bottom: 10px;
+        .thumbnails-thumbnail-button {
+            outline: 0;
+            margin-right: 15px;
+            background-color: $white;
+            border: 0;
+            padding: 0;
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+    }
 }
+
 img {
-  display: block;
+    display: block;
 }
 
 .img1 {
-  width: 400px;
-  height: 274px;
+    width: 400px;
+    height: 274px;
 }
 
 .img2 {
-   width: 200px;
-  height: 020px;
+    width: 200px;
+    height: 020px;
 }

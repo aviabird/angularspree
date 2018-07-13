@@ -1,5 +1,5 @@
 <div class="container" *ngIf="orderDetails">
-  <div class="col-12 thankyou shadow-sm mt-5 mb-3">
+  <div class="col-12 thankyou thankyou1 shadow-sm mt-5 mb-3">
     <h1>Thank you for your order!</h1>
     <div class="float-left">
       <i class="fa fa-check-circle text-success"></i>
@@ -62,7 +62,7 @@
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         <h3>Shipping</h3>
-        <div class="col-sm text-uppercase">
+        <div class="col-sm text-uppercase p-0">
           <p>Shipping Status: </p>
           <b>{{orderDetails.shipment_state}}</b>
         </div>
@@ -73,10 +73,10 @@
     <div class="col-sm">
       <h3>Item(s)</h3>
       <div class="row" *ngFor="let line_item of orderDetails.line_items">
-        <a [routerLink]="['/', line_item.variant.slug]">
+        <a [routerLink]="['/', line_item.variant.slug]" class="col-sm col-3">
           <img [src]="getProductImageUrl(line_item)">
         </a>
-        <div class="col-sm">
+        <div class="col-sm col-9">
           <p>{{line_item.variant.name}}</p>
           <p>Qty: {{line_item.quantity}}</p>
         </div>

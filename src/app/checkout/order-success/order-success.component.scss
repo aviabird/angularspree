@@ -1,36 +1,42 @@
 @import '../../shared/scss/selected_theme_variables';
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .thankyou1 {
+        margin-top: 4em !important
+    }
+}
+
 .thankyou {
-  padding: 2em;
-  background-color: $gray-100;
-  h1 {
-    font-size: 1.7em;
-    text-transform: capitalize;
-  }
-  .fa-check-circle {
-    font-size: 40px;
-  }
-  .thankyoumsg {
-    padding: 0px 36px;
-    margin-left: 17px;
-    display: block;
-  }
+    padding: 2em;
+    background-color: $gray-100;
+    h1 {
+        font-size: 1.7em;
+        text-transform: capitalize;
+    }
+    .fa-check-circle {
+        font-size: 40px;
+    }
+    .thankyoumsg {
+        padding: 0px 36px;
+        margin-left: 17px;
+        display: block;
+    }
 }
 
 .order {
-  @extend .thankyou;
-  h3 {
-    font-size: 1.7em;
-    color: $gray-600;
-  }
-  td {
-    font-size: 14px;
-  }
+    @extend .thankyou;
+    h3 {
+        font-size: 1.7em;
+        color: $gray-600;
+    }
+    td {
+        font-size: 14px;
+    }
 }
 
 .order-items {
-  @extend .thankyou;
-  h3 {
-    font-size: 1.7em;
-    color: $gray-600;
-  }
+    @extend .thankyou;
+    h3 {
+        font-size: 1.7em;
+        color: $gray-600;
+    }
 }
