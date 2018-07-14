@@ -1,5 +1,6 @@
 import { ProductEffects } from './../product/effects/product.effects';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { BrandFilterComponent } from './sidebar/brand-filter/brand-filter.component';
 import { CategoriesComponent } from './sidebar/categories/categories.component';
 import { EffectsModule } from '@ngrx/effects';
@@ -28,7 +29,7 @@ import { ContentComponent } from './content/content';
 // Sidebar components
 import { TaxonsComponent } from './sidebar/taxons/taxons.component';
 import { FilterComponent } from './sidebar/filter/filter.component';
-import {FilterMobileMenuComponent } from './filter-mobile-menu/filter-mobile-menu.component'
+import { FilterMobileMenuComponent } from './filter-mobile-menu/filter-mobile-menu.component'
 // Routes
 import { HomeRoutes as routes } from './home.routes';
 
@@ -63,6 +64,7 @@ import { CategoryPageComponent } from './category-page/category-page.component';
     PaginationModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
+    BsDropdownModule.forRoot(),
     NgxInputStarRatingModule,
 
     /**

@@ -5,7 +5,6 @@ import { ProductActions } from './../actions/product-actions';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
-
 import { ProductService } from './../../core/services/product.service';
 import { Action } from '@ngrx/store';
 
@@ -16,7 +15,7 @@ export class ProductEffects {
     private productService: ProductService,
     private productActions: ProductActions,
     private searchActions: SearchActions
-  ) {}
+  ) { }
 
   // tslint:disable-next-line:member-ordering
   @Effect()
@@ -63,7 +62,7 @@ export class ProductEffects {
       switchMap((action: any) =>
         this.productService.getproductsByKeyword(action.payload)
       ),
-      map(({products, pagination}) =>
+      map(({ products, pagination }) =>
         this.searchActions.getProducsByKeywordSuccess({ products, pagination })
       )
     );
@@ -76,8 +75,8 @@ export class ProductEffects {
       switchMap((action: any) =>
         this.productService.getProductsByTaxon(action.payload)
       ),
-      map((products: Product[]) =>
-        this.searchActions.getProducsByKeywordSuccess({ products })
+      map(({ products, pagination }) =>
+        this.searchActions.getProducsByKeywordSuccess({ products, pagination })
       )
     );
 
