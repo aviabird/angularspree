@@ -1,5 +1,6 @@
-<div class="items">
+<div class="items" *ngIf="address.full_name">
   <div class="address-row">
+    <i class="fa fa-edit icon-3x"></i>
     <div class="name">{{address.full_name}}</div>
     <div class="address">
       <div class="address-content">
@@ -7,6 +8,8 @@
         <div class="address-field">{{address.address2}}</div>
         <span class="address-field">{{address.city}}</span>
         <span class="address-field">-{{address.zipcode}}</span>
+        <br>
+        <span class="address-field">{{address.state?.name}}</span>
         <div class="mob">
           <span class="mob-lbl">Mobile: </span>
           <span class="mob-no">{{address.phone}}</span>
@@ -14,10 +17,6 @@
       </div>
     </div>
     <div class="serviceability">
-      <div class="try-and-buy">
-        <span class="mid-dot">•</span>
-        Try and Buy available
-      </div>
       <div class="cod">
         <span class="mid-dot">•</span>
         Cash/Card on Delivery available
@@ -27,7 +26,6 @@
         Standard Delivery available
       </div>
     </div>
-    <button class="select"></button>
     <!--<div class="remove-edit">
       <span class="remove">Remove</span>
       <span class="edit">Edit</span>

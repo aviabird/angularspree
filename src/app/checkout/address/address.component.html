@@ -1,17 +1,19 @@
-
 <div class="address-section col-12 col-md-8 col-lg-8">
-	<div *ngIf="shipAddress$ | async; let shipAddress" class="row m-0">
-		<div class="left col-12 col-md-8 col-lg-8 m-0 ">
-			<div class="edit-address">
-				<span class="edit-label">
-					Select Delivery Address
-				</span>
+	<div *ngIf=!editAddress>
+		<div *ngIf="shipAddress$ | async; let shipAddress" class="row m-0">
+			<div class="left col-12 col-md-8 col-lg-8 m-0 ">
+				<div class="edit-address">
+					<span class="edit-label">
+						Delivery Address
+					</span>
+					<br> click on address to update it.
+				</div>
+				<app-delivery-address (click)="userAddressEdit(shipAddress)" [address]="shipAddress"></app-delivery-address>
 			</div>
-			<app-delivery-address [address]="shipAddress"></app-delivery-address>
-		</div>
-		<div class="right col-12 col-md-4 col-lg-4 m-0 ">
-			<app-delivery-options [orderNumber]="orderNumber$ | async"></app-delivery-options>
-			<button (click)="checkoutToPayment()" class="btn themebtnprimary">continue to payment</button>
+			<div class="right col-12 col-md-4 col-lg-4 m-0 ">
+				<app-delivery-options [orderNumber]="orderNumber$ | async"></app-delivery-options>
+				<button (click)="checkoutToPayment()" class="btn themebtnprimary">continue to payment</button>
+			</div>
 		</div>
 	</div>
 	<div *ngIf="!(shipAddress$ | async)" class="row">
@@ -21,7 +23,18 @@
 					ADD NEW ADDRESS
 				</span>
 			</div>
-			<app-add-address></app-add-address>
+			<app-add-address [addressEdit]="null"></app-add-address>
+		</div>
+	</div>
+	<div *ngIf="editAddress" class="row">
+		<div class="left col-12 col-md-8 col-lg-8 m-auto border-right-0">
+			<div class="add-address">
+				<span class="add-label">
+					EDIT ADDRESS
+				</span>
+			</div>
+			<app-add-address (addressEdited)=addressEditedDone($event) [addressEdit]="addressData" [orderNumber]="orderNumber$ | async">
+			</app-add-address>
 		</div>
 	</div>
 </div>
