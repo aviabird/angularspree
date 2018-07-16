@@ -20,6 +20,8 @@ export class AddressComponent implements OnInit, OnDestroy {
   orderState: string;
   orderNumber$: Observable<number>;
   shipAddress$: Observable<Address>;
+  editAddress: boolean;
+  addressData: Address;
 
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
@@ -51,6 +53,15 @@ export class AddressComponent implements OnInit, OnDestroy {
         .subscribe();
     }
     this.stateSub$.unsubscribe();
+  }
+
+  userAddressEdit(addressData) {
+    this.addressData = addressData
+    this.editAddress = true;
+  }
+
+  addressEditedDone() {
+    this.editAddress = false;
   }
 
 }

@@ -51,4 +51,19 @@ export class AddressService {
   getAllStates(): Observable<any> {
     return this.http.get<any>(`api/v1/countries/105/states`)
   }
+
+  updateAddress(updatedAddress, addressId,orderNumber){
+  const url = `api/v1/orders/${orderNumber}/addresses/${addressId}?`
+  +`address[firstname]=${updatedAddress.firstname}`
+  +`&address[lastname]=${updatedAddress.lastname}`
+  +`&address[address1]=${updatedAddress.address1}`
+  +`&address[address2]=${updatedAddress.address2}`
+  +`&address[city]=${updatedAddress.city}`
+  +`&address[state_name]=${updatedAddress.state_name}`
+  +`&address[phone]=${updatedAddress.phone}`
+  +`&address[zipcode]=${updatedAddress.zipcode}`
+  +`&address[state_id]=${updatedAddress.state_id}`
+  +`&address[country_id]=${updatedAddress.country_id}`
+  return this.http.put(url, {})
+  }
 }

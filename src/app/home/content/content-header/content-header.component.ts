@@ -55,7 +55,6 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.paginationInfo)
     if (window.screen.width <= 768) {
       this.screenWidth = window.screen.width;
     }
