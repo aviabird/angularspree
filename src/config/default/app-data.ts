@@ -24,8 +24,22 @@ export const DEFAULT_APP_DATA = {
     link_url: '#'
   },
   category_banner: {
-    image_link: 'assets/custom/banner/promo/promo.png',
-    link_url: '#'
+    Living: {
+      image_link: `${cdn_url}banner-1.jpg`,
+      link_url: '#'
+    },
+    Bedroom: {
+      image_link: `${cdn_url}banner-2.jpg`,
+      link_url: '#'
+    },
+    Dining: {
+      image_link: `${cdn_url}banner-3.jpg`,
+      link_url: '#'
+    },
+    Study: {
+      image_link: `${cdn_url}banner-4.jpg`,
+      link_url: '#'
+    }
   },
   Deals: {
     type: 'Today\'s Deals'

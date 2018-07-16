@@ -57,7 +57,9 @@ export class ProductPriceInfoComponent implements OnInit {
     this.images = newVariant.images;
     this.product.display_price = result.variant.display_price
     this.getSelectedVariant(result.variant);
-    this.isOrderable= newVariant.is_orderable;
+    this.isOrderable = newVariant.is_orderable;
+    this.product.master.cost_price = newVariant.cost_price;
+    this.product.price = newVariant.price;
   }
 
   makeGlobalOptinTypesHash(customOptionTypes) {
@@ -94,6 +96,6 @@ export class ProductPriceInfoComponent implements OnInit {
   }
 
   get discountPercent() {
-    return `%${Math.ceil(this.discount / this.product.master.cost_price * 100)}`;
+    return `${Math.ceil(this.discount / this.product.master.cost_price * 100)}%`;
   }
 }
