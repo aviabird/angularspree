@@ -1,19 +1,26 @@
-<div class="container col-12 home" *ngIf="pagination$ | async; let paginationData">
-  <div class="contaier" *ngIf="taxonomies$ | async; let taxonomies">
-    <div class=row>
-      <div class="col-lg-3 sidebar d-sm-none d-xs-none d-none d-lg-block">
-        <h1>Searched Results</h1>
-        <!-- <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons> -->
-        <app-categories [taxonomiList]="taxonomies" (onSelected)="OnCategeorySelected($event)" (showAll)="showAll()" [isFilterOn]="isFilterOn$ | async"
-          [categoryLevel]="categoryLevel$ | async">
-        </app-categories>
-        <app-brand-filter [taxonomiList]="brands$ | async" [isFilterOn]="isFilterOn$ | async"></app-brand-filter>
-      </div>
-      <div class="col-lg-9 col-12 col-sm-12" [ngClass]="[isMobile ? 'p-0' : '']">
-        <app-content [productsList]="products$ | async" [paginationData]="paginationData" [fillterList]="taxonomies" class="col-12">
-          <!-- [taxonIds]="selectedTaxonIds$ | async"  -->
-        </app-content>
+<div *ngIf="pagination$ | async; let paginationData">
+  <div  class="container col-12 home" *ngIf="paginationData.total_count > 0">
+    <div class="contaier" *ngIf="taxonomies$ | async; let taxonomies">
+      <div class=row>
+        <div class="col-lg-3 sidebar d-sm-none d-xs-none d-none d-lg-block">
+          <h1>Searched Results</h1>
+          <!-- <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons> -->
+          <app-categories [taxonomiList]="taxonomies" (onSelected)="OnCategeorySelected($event)" (showAll)="showAll()" [isFilterOn]="isFilterOn$ | async"
+            [categoryLevel]="categoryLevel$ | async">
+          </app-categories>
+          <app-brand-filter [taxonomiList]="brands$ | async" [isFilterOn]="isFilterOn$ | async"></app-brand-filter>
+        </div>
+        <div class="col-lg-9 col-12 col-sm-12" [ngClass]="[isMobile ? 'p-0' : '']">
+          <app-content [productsList]="products$ | async" [paginationData]="paginationData" [fillterList]="taxonomies" class="col-12">
+            <!-- [taxonIds]="selectedTaxonIds$ | async"  -->
+          </app-content>
+        </div>
       </div>
     </div>
+  </div>
+  <!-- Need to change it  -->
+  <div *ngIf='paginationData.total_count <= 0'>
+    <h2 style="padding-top: 100px;
+    /* padding-right: 14px; */padding-left: 500px;">No prodcuts found</h2>
   </div>
 </div>

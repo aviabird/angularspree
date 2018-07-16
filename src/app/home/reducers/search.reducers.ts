@@ -1,8 +1,6 @@
 import { Taxonomy } from './../../core/models/taxonomy';
 import { Product } from './../../core/models/product';
-import { List } from 'immutable';
 import { SearchActions } from './search.actions';
-import { ActionReducer, Action } from '@ngrx/store';
 import { SearchState, SearchStateRecord } from './search.state';
 
 export const initialState: SearchState = new SearchStateRecord() as SearchState;

@@ -1,7 +1,7 @@
 <div class="container content" *ngIf="!screenWidth">
-  <div class="row " *ngIf=productsCount>
+  <div class="row " *ngIf=paginationInfo.total_count>
     <div itemprop="name" class="queried-for col-7 pl-1 ">
-      <h4 title="men casual shirts">Showing {{productsCount}} of {{productsTotal_count}} results.
+      <h4 title="men casual shirts">Showing {{paginationInfo.count}} of {{paginationInfo.total_count}} products.
       </h4>
       <span>&nbsp;</span>
     </div>

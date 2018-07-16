@@ -47,7 +47,7 @@ export class CategoryPageComponent implements OnInit {
                 const taxons = selectedTaxon.taxons;
 
                 this.productList$ = forkJoin(
-                  taxons.map(taxon => this.productService.getProductsByTaxon(`id=${taxon.id}`))
+                  taxons.map(taxon => this.productService.getProductsByTaxonNP(taxon.id))
                 )
                 return selectedTaxon;
               })

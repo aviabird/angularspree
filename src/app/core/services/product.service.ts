@@ -103,10 +103,27 @@ export class ProductService {
   }
 
   // tslint:disable-next-line:max-line-length
-  getProductsByTaxon(id: string): Observable<Array<Product>> {
+  getProductsByTaxon(id: string): Observable<any> {
+    return this.http
+      .get<{ data: CJsonApi[], pagination: Object }>(
+        `api/v1/taxons/products?${id}&per_page=20&data_set=small`
+      )
+      .pipe(
+        map(
+          resp => {
+            return {
+              pagination: resp.pagination,
+              products: this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+            }
+          }
+        )
+      );
+  }
+
+  getProductsByTaxonNP(id: string): Observable<Array<Product>> {
     return this.http
       .get<{ data: CJsonApi[] }>(
-        `api/v1/taxons/products?${id}&per_page=20&data_set=small`
+        `api/v1/taxons/products?id=${id}&per_page=20&data_set=small`
       )
       .pipe(
         map(
