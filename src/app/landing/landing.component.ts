@@ -1,15 +1,12 @@
 import { environment } from './../../environments/environment';
-
 import { switchMap } from 'rxjs/operators';
-
 import { ProductService } from './../core/services/product.service';
 import { Observable } from 'rxjs';
-import { getProducts, getTaxonomies } from './../product/reducers/selectors';
+import { getProducts } from './../product/reducers/selectors';
 import { ProductActions } from './../product/actions/product-actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../interfaces';
-import { Component, OnInit, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
-import { DragScrollDirective } from 'ngx-drag-scroll';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-landing',
@@ -45,7 +42,7 @@ export class LandingComponent implements OnInit {
         this.taxon_by_name = response;
         if (this.taxon_by_name.count > 0) {
           this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
-          return this.productService.getProductsByTaxon(`id=${this.taxons_id}`);
+          return this.productService.getProductsByTaxonNP(this.taxons_id);
         } else {
           return []
         }
