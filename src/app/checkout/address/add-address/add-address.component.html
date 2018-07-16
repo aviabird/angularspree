@@ -33,7 +33,8 @@
   <div class="form-group">
     <label> State </label>
     <select class="form-control" formControlName="state_name">
-      <option *ngFor="let state of states">{{state.name}}</option>
+      <option *ngIf="addressEdit">{{addressEdit.state.name}}
+        <option *ngFor="let state of states">{{state.name}}</option>
     </select>
   </div>
 
