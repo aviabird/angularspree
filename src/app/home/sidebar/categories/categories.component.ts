@@ -59,6 +59,6 @@ export class CategoriesComponent implements OnInit {
 
   emitSelection(root) {
     this.catgeoryFilter()
-    this.onSelected.emit({ id: this.queryParams.id, name: this.queryParams['q[name_cont]'], taxonomy: root.root.taxonomy_id});
+    this.onSelected.emit({ id: this.queryParams.id, name: this.queryParams['q[name_cont]'] });
   }
 }

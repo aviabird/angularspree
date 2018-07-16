@@ -19,7 +19,7 @@
             (click)="showCategoryonclick(i)" 
             (mouseenter)="showCategory(i)"
             [ngClass]="{'active': selectedItem == i}"
-            [routerLink]="['c' ,taxon.id]">
+            [routerLink]="['c' ,taxon.name]">
             {{taxon.name}}</li>
           </ul>
         </div>

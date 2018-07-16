@@ -3,12 +3,10 @@ import { environment } from '../../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { AppState } from '../../interfaces';
 import { Store } from '@ngrx/store';
-import { getTaxonomies, rootTaxonomyId } from '../../product/reducers/selectors';
-import { SearchActions } from '../reducers/search.actions';
+import { getTaxonomies } from '../../product/reducers/selectors';
 import { Observable, forkJoin, of } from 'rxjs';
-import { getProductsByKeyword } from '../reducers/selectors';
 import { ProductService } from '../../core/services/product.service';
-import { tap, map, switchMap, reduce } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-category-page',
@@ -17,16 +15,15 @@ import { tap, map, switchMap, reduce } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryPageComponent implements OnInit {
-
-  category_banner = environment.config.category_banner;
-  categeory_number: number;
+  banners = environment.config.category_banner;
+  category_banner: any;
+  categeory_number: any;
   id: any
   selectedTaxons$: Observable<any>
   productList$: Observable<any>
 
   constructor(private route: ActivatedRoute,
     private store: Store<AppState>,
-    private searchActions: SearchActions,
     private productService: ProductService) { }
 
   ngOnInit() {
@@ -39,9 +36,10 @@ export class CategoryPageComponent implements OnInit {
             return this.route.params.pipe(
               map(params => {
                 const categeory_number = params.number
+                this.category_banner = this.banners[categeory_number]
                 let taxons = [];
                 if (taxonomy) { taxons = taxonomy.root.taxons };
-                return taxons.find(taxon => taxon.id === parseInt(categeory_number));;
+                return taxons.find(taxon => taxon.name === categeory_number);;
               }),
               map(selectedTaxon => {
                 if (typeof selectedTaxon === 'undefined') { return of({}) };
