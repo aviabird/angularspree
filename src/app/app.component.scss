@@ -1,90 +1,108 @@
 @import '../app/shared/scss/_selected_theme_variables';
 :host {
-  min-height: 100vh;
-  display: block;
+    min-height: 100vh;
+    display: block;
 }
 
 .issearchopen :host /deep/ .main-body {
-  @media screen and(min-width: 320px) and(max-width: 768px) {
-    margin-top: 48px;
-  }
+    @media screen and(min-width: 320px) and(max-width: 768px) {
+        margin-top: 48px;
+    }
 }
 
 :host /deep/.ngx-input-star-rating__btn {
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-  position: relative;
-  width: 26px;
-  height: 8px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    width: 26px;
+    height: 8px;
 }
 
 :host /deep/.ngx-input-star-rating__btn svg {
-  position: absolute;
-  top: -12px;
-  left: 5px;
+    position: absolute;
+    top: -12px;
+    left: 5px;
 }
 
 :host /deep/.ngx-input-star-rating__btn {
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-  position: relative;
-  width: 26px;
-  height: 8px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    width: 26px;
+    height: 8px;
 }
 
 :host /deep/.ngx-input-star-rating__btn svg {
-  position: absolute;
-  top: -12px;
-  left: 5px;
+    position: absolute;
+    top: -12px;
+    left: 5px;
 }
 
 :host /deep/ngx-input-star-rating {
-  display: inline-block;
-  --color-star-default: #ddd;
-  --color-star-highlight: #fe9700;
+    display: inline-block;
+    --color-star-default: #ddd;
+    --color-star-highlight: #fe9700;
 }
 
 :host /deep/ngx-input-star-rating {
-  display: inline-block;
-  --color-star-default: #ddd;
-  --color-star-highlight: #fe9700;
+    display: inline-block;
+    --color-star-default: #ddd;
+    --color-star-highlight: #fe9700;
 }
 
 :host /deep/.themebtnprimary {
-  background:$theme-action-color - 60;
-  &:focus {
+    background: $theme-action-color - 60;
+    &:focus {
+        @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
+    }
     @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
-  }
-  @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
-  color:$white;
-  border: 1px solid $theme-action-color - 80;
-  border-radius: 0.4rem;
-  padding: 0.5rem;
-  font-weight: 300 !important;
-  box-shadow: 0px 2px 4.6px $theme-action-color - 20;
-  width: 100%;
-  color: $white;
-  font-family: "Roboto Regular";
-  font-size: 1.4em;
-  margin: 10px auto;
+    color:$white;
+    border: 1px solid $theme-action-color - 80;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    font-weight: 300 !important;
+    box-shadow: 0px 2px 4.6px $theme-action-color - 20;
+    width: 100%;
+    color: $white;
+    font-family: "Roboto Regular";
+    font-size: 1.4em;
+    margin: 10px auto;
+    text-transform: capitalize;
 }
-:host /deep/.themebtnprimarysade{
-  @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 60, $start-percent: 0%, $end-percent: 95%);
- 
-} 
-:host /deep/.themebtndisable{
-  @include gradient-y($start-color: $gray-200, $end-color:$gray-600, $start-percent: 0%, $end-percent: 95%);
-  box-shadow: 0px 2px 4.6px $gray-600 - 20;
-  border: 1px solid $gray-600 - 80;
-} 
-.btn:not(:disabled):not(.disabled):active,
-.btn:not(:disabled):not(.disabled).active {
-  @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 50, $start-percent: 0%, $end-percent: 80%);
+
+:host /deep/.themebtnprimarysade {
+    @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 60, $start-percent: 0%, $end-percent: 95%);
+}
+
+:host /deep/.themebtndisable {
+    @include gradient-y($start-color: $gray-200, $end-color:$gray-600, $start-percent: 0%, $end-percent: 95%);
+    box-shadow: 0px 2px 4.6px $gray-600 - 20;
+    border: 1px solid $gray-600 - 80;
 }
 
 .btn:not(:disabled):not(.disabled):active,
 .btn:not(:disabled):not(.disabled).active {
-  background-image: auto !important;
+    @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 50, $start-percent: 0%, $end-percent: 80%);
+}
+
+.btn:not(:disabled):not(.disabled):active,
+.btn:not(:disabled):not(.disabled).active {
+    background-image: auto !important;
+}
+
+:host /deep/ .page-item.active .page-link {
+    z-index: 1;
+    color: $white;
+    background-color: $theme-action-color - 80;
+    border-color: $theme-action-color - 80;
+}
+
+:host /deep/ .page-link {
+    color: $gray-900;
+    &:hover {
+        background-color: $theme-action-color - 100;
+        border-color: $theme-action-color - 100;
+    }
 }

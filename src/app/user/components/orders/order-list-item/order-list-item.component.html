@@ -1,16 +1,18 @@
 <div class=container *ngIf="order.completed_at!=null">
   <table class="table">
     <tr>
-      <td>
-        <button type="button" class="btn btn-primary" [routerLink]="['detail', order.number]">{{order.number}}</button>
-      </td>
+      <th>
+        Order No
+      </th>
       <th>Status:</th>
       <th>Ordered On:</th>
       <th>Order Total:</th>
       <th>Payment Status</th>
     </tr>
-    <tr>
-      <td>{{order.number}}</td>
+    <tr *ngFor="let order of order.orders">
+      <td>
+        <a [routerLink]="['detail', order.number]" class="view-details-link"> {{order.number}} </a>
+      </td>
       <td>{{order.shipment_state}}</td>
       <td>{{order.completed_at | date:'fullDate'}}</td>
       <td>{{order.display_total}}</td>
