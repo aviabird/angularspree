@@ -11,7 +11,7 @@ import { environment } from '../../../../environments/environment';
   templateUrl: './delivery-options.component.html',
   styleUrls: ['./delivery-options.component.scss']
 })
-export class DeliveryOptionsComponent implements OnInit,OnDestroy {
+export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   @Input() orderNumber;
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
@@ -19,6 +19,7 @@ export class DeliveryOptionsComponent implements OnInit,OnDestroy {
   shipTotal$: Observable<number>;
   adjustmentTotal$: Observable<number>;
   currency = environment.config.currency_symbol;
+  freeDeliveryAmount = environment.config.free_shipping_order_amount
   orderSub$: Subscription;
 
   constructor(private checkoutService: CheckoutService, private store: Store<AppState>) {

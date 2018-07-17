@@ -1,8 +1,11 @@
 @import '../../../../shared/scss/selected_theme_variables';
 .line_item_image {
-  float: left;
+    float: left;
 }
 
 .view-details-link {
-  color: $theme-action-color;
+    color: $theme-action-color - 100;
+    font-weight: bold;
+    font-size: 1em;
+    text-decoration: underline;
 }

@@ -42,7 +42,10 @@
       cursor: pointer;
     }
     .shipping>.c-green {
-      color: $theme-action-color - 50;
+      color: $theme-action-color - 80;
+      width: 15em;
+      font-size: 14px;
+      padding-top: 5px;
     }
   }
   .order-total.footer {

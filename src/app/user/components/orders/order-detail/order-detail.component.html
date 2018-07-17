@@ -1,125 +1,91 @@
 <div *ngIf="order">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="row">
-        <div class="active col-md-6">
-          <div class="row">
+  <div class="row box  m-1">
+    <div class="col-12 col-sm-6">
+      <h3>Order Details</h3>
+      <table>
+        <tr>
+          <td>Order ID:</td>
+          <td> {{order.number}}</td>
+        </tr>
+        <tr>
+          <td>Order Date:</td>
+          <td>{{order.updated_at | date}}</td>
+        </tr>
+        <tr>
+          <td>Item price:</td>
+          <td> {{order.display_item_total}}</td>
+        </tr>
+        <tr>
+          <tr>
+            <td>Shipping:</td>
+            <td> {{order.display_ship_total}}</td>
+          </tr>
+          <tr>
+            <td>Total Amount:</td>
+            <td> {{order.display_total}} </td>
+          </tr>
+          <tr>
+            <td>Payment Status:</td>
+            <td>
+              <b class="text-uppercase">{{order.payment_state | humanize | uppercase}}</b>
+            </td>
+          </tr>
+      </table>
+    </div>
+    <div class="col-12 col-sm-6 ">
+      <h3>Address</h3>
+      <table>
+        <tr>
+          <td>Name: </td>
+          <td>{{order.ship_address.full_name}}</td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>{{order.ship_address.address1}}, {{order.ship_address.address2}}, {{order.ship_address.city}}</td>
+        </tr>
+        <tr>
+          <td>Pincode:</td>
+          <td>{{order.ship_address.zipcode}}</td>
+        </tr>
+        <tr>
+          <td>Phone:</td>
+          <td>{{order.ship_address.phone}}</td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td>{{order.email}}</td>
+        </tr>
+      </table>
 
-            <div class="col-md-4">
-              <small>SHIPMENT</small>
-              <h5>
-                <i class="fa fa-{{order.currency | lowercase}}" aria-hidden="true"></i>
-                {{order.total}}
-              </h5>
-            </div>
-
-            <div class="col-md-4">
-              <small>STATUS</small>
-              <h5 class="status">
-                {{order.shipment_state | uppercase}}
-              </h5>
-            </div>
-            
-            <div class="col-md-4">
-              <small>ITEMS</small>
-              <h5>
-                {{order.line_items.length}}
-              </h5>
-            </div>
-
-          </div>
-          </div>
-      </div>
-      <hr>
-      <div class='row' *ngFor="let line_item of order.line_items">
-        <br>
-        <div class="col-md-2">
-          <img class="line_item_image" [src]="getProductImageUrl(line_item)" alt="Line Item">
-        </div>
-        
-        <div class="col-md-3">
-          <h5 class="ptitle">
-            <a [routerLink]="['/product', line_item.variant.slug]">
-              <span class="text-uppercase text-primary">{{line_item.variant.name}}</span>
-            </a>
-          </h5>
-        </div>
-
-        <div class="col-md-3">
-          <h5 class="strong">
-            <i class="fa fa-{{order.currency | lowercase}}" aria-hidden="true"></i>
-            {{line_item.total}}
-          </h5>
-          <small>
-            MRP: 
-            <i class="fa fa-{{order.currency | lowercase}}" aria-hidden="true"></i>
-            {{line_item.price}}
-          </small><br/>
-          <small class="text-warning">
-            VAT/CST: 
-            <i class="fa fa-{{order.currency | lowercase}}" aria-hidden="true"></i>
-            {{line_item.total - line_item.price}}
-          </small>
-        </div>
-
-        <div class="col-md-4">
-          <p>
-            <strong class="text-warning">Please note:</strong> You can return or exchange this within 30 days. 
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 
-  <br>
-  <h5>SHIPPING DETAILS</h5>
-  <div class="panel panel-default">
-    <div class="row panel-body">
-      <div class="col-md-12">
-        <h5>Order No: {{order.number}}</h5>
-      </div>
-      
-      <div class="col-md-12">
-        <address>
-          <strong>{{order.ship_address.full_name}}.</strong><br>
-          {{order.ship_address.address1}}<br>
-          {{order.ship_address.address2}}<br>
-          {{order.ship_address.city}}, {{order.ship_address.zipcode}}<br>
-          <abbr title="Phone">P:</abbr> {{order.ship_address.phone}}
-        </address>
-      </div>
+  <div class='row box m-1 my-4' *ngFor="let line_item of order.line_items">
+    <br>
+    <div class="col-md-2">
+      <img class="line_item_image" [src]="getProductImageUrl(line_item)" alt="Line Item">
+    </div>
 
-      <dl class="col-md-12">
-        <dt>
-          Total Amount:
-          <i class="fa fa-{{order.currency | lowercase}}" aria-hidden="true"></i>
-          {{order.total}}
-        </dt>
-        
-        <dd>
-          MRP: 
-          <i class="fa fa-{{order.currency | lowercase}}" aria-hidden="true"></i>
-          {{order.item_total}}
-        </dd>
+    <div class="col-md-3">
+      <h5 class="ptitle">
+        <a [routerLink]="['/', line_item.variant.slug]">
+          {{line_item.variant.name}}
+        </a>
+      </h5>
+    </div>
 
-        <dd>
-          Shipping: 
-          <i class="fa fa-{{order.currency | lowercase}}" aria-hidden="true"></i>
-          {{order.ship_total}}
-        </dd>
-        
-        <dd>
-          Adjustment: 
-          <i class="fa fa-{{order.currency | lowercase}}" aria-hidden="true"></i>
-          {{order.adjustment_total}}
-        </dd>
-      </dl>
+    <div class="col-md-3">
+      <h5 class="strong">
 
-      <dl class="col-md-12">
-        <dt>
-          Payment: {{order.payment_state | humanize | uppercase}}
-        </dt>
-      </dl>
+        {{line_item.display_amount}}
+      </h5>
+
+
+    </div>
+    <div class="col-md-4">
+      <p>
+        <strong class="text-warning">Please note:</strong> You can return or exchange this within 30 days.
+      </p>
     </div>
   </div>
 </div>

@@ -1,15 +1,15 @@
 @import '../shared/scss/selected_theme_variables';
 p a {
-  color: $gray-600;
-  text-decoration: none;
-  &.active {
-    font-family: $primary-font;
-    color: $theme-action-color;
-    font-weight: 500;
-    background-color: transparent;
-  }
+    color: $gray-600;
+    text-decoration: none;
+    &.active {
+        font-family: $primary-font;
+        color: $theme-action-color - 100;
+        font-weight: 900;
+        background-color: transparent;
+    }
 }
 
 .sidebar {
-  border-right: 1px solid $gray-10;
+    border-right: 1px solid $gray-10;
 }

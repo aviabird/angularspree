@@ -7,13 +7,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let productinfo of product" >
+    <tr *ngFor="let productinfo of product">
       <td>
         <img [src]="productinfo.product_url" class="img-fluid fimg">
       </td>
       <td>{{ productinfo.name }}</td>
-      <td>
-        <button (click)="removeFromFavorite(productinfo.id)" class="btn themebtnprimary">Remove</button>
+      <td class="text-right">
+        <button (click)="removeFromFavorite(productinfo.id)" class="btn">
+          <i class="fa fa-trash"></i>
+        </button>
       </td>
     </tr>
   </tbody>
