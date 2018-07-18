@@ -1,5 +1,28 @@
 # Changelog
 
+## [`v1.0.0-alpha-2`][tag-1_0_0-alpha-2] (2018-07-18)
+
+#### UI
+
+* Product Page UI [#168](https://github.com/aviabird/angularspree/pull/168)
+* Updated theme colour [#171](https://github.com/aviabird/angularspree/pull/171)
+* checkout Flow UI
+* Search Page UI
+* Order Details
+
+#### Feature
+
+* Payubiz Payment integration. [#179](https://github.com/aviabird/angularspree/pull/179)
+* Individual category page. [#196](https://github.com/aviabird/angularspree/pull/196)
+* Updatable delivery address.
+ 
+#### Fixes
+
+* Product variant option fixes. [#194](https://github.com/aviabird/angularspree/pull/194)
+* Duplicate review fixes. [#194](https://github.com/aviabird/angularspree/pull/194)
+* Order list with individual order details associated with user. [#193](https://github.com/aviabird/angularspree/pull/193)
+
+
 ## [`v1.0.0-alpha`][tag-1_0_0-alpha] (2018-06-12)
 
 ### Core
@@ -28,6 +51,7 @@
   * Address
   * My Orders
 
+[tag-1_0_0-alpha-2]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-alpha-2
 [tag-1_0_0-alpha]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-alpha
 [tag-0_2]: https://github.com/aviabird/angularspree/releases/tag/v0.2
 [tag-0_1_0]: https://github.com/aviabird/angularspree/releases/tag/v0.1.0
