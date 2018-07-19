@@ -9,9 +9,8 @@ import { PaymentMode } from './../../../core/models/payment_mode';
 import { PaymentService } from './../services/payment.service';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { environment } from '../../../../environments/environment';
-import * as CryptoJS from 'crypto-js';
 import { Address } from '../../../core/models/address';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-payment-modes-list',
@@ -28,6 +27,7 @@ export class PaymentModesListComponent implements OnInit {
   selectedMode: PaymentMode = new PaymentMode;
   isAuthenticated: boolean;
   showOrderSuccess = false;
+  free_shipping_order_amount = environment.config.free_shipping_order_amount
 
   constructor(private checkoutService: CheckoutService,
     private paymentService: PaymentService,
@@ -56,8 +56,10 @@ export class PaymentModesListComponent implements OnInit {
 
   }
 
-  makePayment() {
+  makePaymentCod() {
     const paymentModeId = this.selectedMode.id;
+    const shipping_pincode = this.address.zipcode
+    
     this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
       tap(() => {
         this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
@@ -69,43 +71,10 @@ export class PaymentModesListComponent implements OnInit {
   }
 
   makePaymentPayubiz() {
-    const paymentModeId = this.selectedMode.id;
-    const payUbizSalt = environment.config.payuBizSalt;
-    const payUbizKey = environment.config.payuBizKey;
-    const successUrl = `${environment.apiEndpoint}auth/handle_payment`;
-    const failureUrl = `${environment.apiEndpoint}auth/canceled_payment`;
-
-    const hashParams = {
-      key: payUbizKey,
-      txnid: `${this.orderNumber}`, //To be replace using random number
-      amount: this.paymentAmount,
-      productinfo: `${environment.appName}-Product`,
-      firstname: this.address.firstname,
-      email: JSON.parse(localStorage.getItem('user')).email,
-    }
-
-    // tslint:disable-next-line:max-line-length
-    const paramsList = `${hashParams.key}|${hashParams.txnid}|${hashParams.amount}|${hashParams.productinfo}|${hashParams.firstname}|${hashParams.email}|||||||||||${payUbizSalt}`;
-    const encryptedHash = CryptoJS.SHA512(paramsList);
-    const hashString = CryptoJS.enc.Hex.stringify(encryptedHash)
-
-    const paramsToPost = {
-      key: hashParams.key,
-      txnid: hashParams.txnid,
-      amount: hashParams.amount,
-      productinfo: hashParams.productinfo,
-      firstname: hashParams.firstname,
-      email: hashParams.email,
-      phone: this.address.phone,
-      surl: successUrl,
-      furl: failureUrl,
-      hash: hashString
-    }
-
-    this.checkoutService.makePayment(paramsToPost)
+    this.checkoutService.makePayment(this.paymentAmount, this.address)
       .subscribe(response => {
         response = response
-        this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
+        this.checkoutService.createNewPayment(this.selectedMode.id, this.paymentAmount).pipe(
           tap(() => {
             this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
             this.checkoutService.createEmptyOrder()
@@ -117,6 +86,7 @@ export class PaymentModesListComponent implements OnInit {
           });
       })
   }
+
   private redirectToNewPage() {
     if (this.isAuthenticated) {
       this.router.navigate(['checkout', 'order-success'],

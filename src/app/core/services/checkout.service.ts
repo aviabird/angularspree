@@ -8,6 +8,8 @@ import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Order } from '../models/order';
 import { ToastrService } from 'ngx-toastr';
+import { Address } from '../models/address';
+import * as CryptoJS from 'crypto-js';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -219,16 +221,50 @@ export class CheckoutService {
       .pipe(map(_ => this.changeOrderState().subscribe()));
   }
 
-  makePayment(params: any) {
+  makePayment(paymentAmount: number, address: Address) {
+    const payUbizSalt = environment.config.payuBizSalt;
+    const payUbizKey = environment.config.payuBizKey;
+    const successUrl = `${environment.apiEndpoint}payubiz/handle_payment`;
+    const failureUrl = `${environment.apiEndpoint}payubiz/canceled_payment`;
+
+    const hashParams = {
+      key: payUbizKey,
+      txnid: `${this.orderNumber}` + `${(Math.random().toString(36).substr(2, 9)).toUpperCase()}`,
+      amount: paymentAmount,
+      productinfo: `${environment.appName}-Product`,
+      firstname: address.firstname,
+      email: JSON.parse(localStorage.getItem('user')).email,
+      udf1: `${this.orderNumber}`
+    }
+    // tslint:disable-next-line:max-line-length
+    const paramsList = `${hashParams.key}|${hashParams.txnid}|${hashParams.amount}|${hashParams.productinfo}|${hashParams.firstname}|${hashParams.email}|${hashParams.udf1}||||||||||${payUbizSalt}`;
+    const encryptedHash = CryptoJS.SHA512(paramsList);
+    const hashString = CryptoJS.enc.Hex.stringify(encryptedHash)
+
+    const params = {
+      key: hashParams.key,
+      txnid: hashParams.txnid,
+      amount: hashParams.amount,
+      productinfo: hashParams.productinfo,
+      firstname: hashParams.firstname,
+      email: hashParams.email,
+      phone: address.phone,
+      udf1: hashParams.udf1,
+      surl: successUrl,
+      furl: failureUrl,
+      hash: hashString,
+    }
+
     const header = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     let body = new HttpParams();
     body = body.set('key', params.key);
     body = body.set('txnid', params.txnid);
-    body = body.set('amount', params.amount);
+    body = body.set('amount', (params.amount).toString());
     body = body.set('productinfo', params.productinfo)
     body = body.set('firstname', params.firstname)
     body = body.set('email', params.email)
     body = body.set('phone', params.phone)
+    body = body.set('udf1', params.udf1)
     body = body.set('surl', params.surl)
     body = body.set('furl', params.furl)
     body = body.set('hash', params.hash)
@@ -253,6 +289,10 @@ export class CheckoutService {
     return token;
   }
 
+  shipmentAvailability(pincode: number) {
+    return this.http
+      .post(`address/shipment_availability`, { pincode: pincode })
+  }
   /**
    *
    *
