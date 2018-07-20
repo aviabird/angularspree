@@ -255,25 +255,10 @@ export class CheckoutService {
       hash: hashString,
     }
 
-    const header = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-    let body = new HttpParams();
-    body = body.set('key', params.key);
-    body = body.set('txnid', params.txnid);
-    body = body.set('amount', (params.amount).toString());
-    body = body.set('productinfo', params.productinfo)
-    body = body.set('firstname', params.firstname)
-    body = body.set('email', params.email)
-    body = body.set('phone', params.phone)
-    body = body.set('udf1', params.udf1)
-    body = body.set('surl', params.surl)
-    body = body.set('furl', params.furl)
-    body = body.set('hash', params.hash)
-
-    return this.http.post(`${environment.config.payuBizUrl}`,
-      body, { headers: header, responseType: 'text', observe: 'response' }
-    ).pipe(map(resp => {
-      return resp;
-    }), error => { return error })
+    return this.http.post(`payubiz/post_request_payubiz`, { params: params })
+      .pipe(
+        map(res => { return res }), error => { return error }
+      )
   }
   /**
    *

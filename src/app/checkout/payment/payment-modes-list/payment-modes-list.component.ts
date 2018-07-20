@@ -24,6 +24,7 @@ export class PaymentModesListComponent implements OnInit {
   @Input() orderNumber: number;
   @Input() address: Address;
   isShippeble: boolean;
+  appName = environment.config.appName;
 
   paymentModes: PaymentMode[];
   selectedMode: PaymentMode = new PaymentMode;
@@ -86,7 +87,7 @@ export class PaymentModesListComponent implements OnInit {
 
   makePaymentPayubiz() {
     this.checkoutService.makePayment(this.paymentAmount, this.address)
-      .subscribe(response => {
+      .subscribe((response: any) => {
         response = response
         this.checkoutService.createNewPayment(this.selectedMode.id, this.paymentAmount).pipe(
           tap(() => {
@@ -95,7 +96,7 @@ export class PaymentModesListComponent implements OnInit {
               .subscribe();
           })
         )
-          .subscribe(res => {
+          .subscribe((res) => {
             window.open(response.url, '_self');
           });
       })
