@@ -24,7 +24,7 @@ export class PaymentModesListComponent implements OnInit {
   @Input() orderNumber: number;
   @Input() address: Address;
   isShippeble: boolean;
-  appName = environment.config.appName;
+  showDummyCardInfo = environment.config.showDummyCardInfo;
 
   paymentModes: PaymentMode[];
   selectedMode: PaymentMode = new PaymentMode;

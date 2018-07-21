@@ -1,7 +1,6 @@
 <div class="container" *ngIf="orders$ | async;let orders">
   <div *ngIf="orders.total_count > 0; else elseBlock">
-    <div *ngFor="let order of orders.orders"></div>
-    <app-order-list-item [order]="orders"></app-order-list-item>
+    <app-order-list-item [orders]="orders"></app-order-list-item>
   </div>
 
 

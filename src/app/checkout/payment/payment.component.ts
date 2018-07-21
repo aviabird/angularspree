@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { CheckoutService } from '../../core/services/checkout.service';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -25,7 +25,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   orderSub$: Subscription;
 
   constructor(private store: Store<AppState>,
-    private checkoutService: CheckoutService) {
+    private router: Router) {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.address$ = this.store.select(getShipAddress);
@@ -36,6 +36,12 @@ export class PaymentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.store.select(getTotalCartValue)
+      .subscribe(total => {
+        if (total === 0) {
+          this.router.navigate(['/checkout', 'cart']);
+        }
+      });
     // this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
   }
 

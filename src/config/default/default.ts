@@ -16,11 +16,11 @@ export const DEFAULT_CONFIG = {
     searchPlaceholder: 'Find good food for me',
     showGithubRibon: false
   },
+  showDummyCardInfo: true,
   // Following are the test crediantials for payubiz payment gateway.
   payuBizSalt: 'eCwWELxi',
   payuBizKey: 'gtKFFx',
-  payuBizUrl: 'https://test.payu.in/_payment',
-  free_shipping_order_amount: 10,
+  free_shipping_order_amount: 50,
   currency_symbol: '$', //USD $
 
   ...DEFAULT_APP_DATA
