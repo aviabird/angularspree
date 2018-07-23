@@ -5,14 +5,6 @@
 </div>
 
 <div class="selected-mode" [ngSwitch]="selectedMode.name">
-<<<<<<< HEAD
-  <ng-template [ngSwitchCase]="'Check'">
-    <app-cash-on-delivery (payOnDelivery)="makePayment()"></app-cash-on-delivery>
-  </ng-template>
-  <ng-template [ngSwitchCase]="'Payubiz'">
-    <app-credit-card (onPayNow)=makePaymentPayubiz()></app-credit-card>
-  </ng-template>
-=======
   <ng-template [ngSwitchCase]="cashOnDelivery">
     <app-cash-on-delivery (payOnDelivery)="makePaymentCod()"></app-cash-on-delivery>
   </ng-template>
@@ -50,5 +42,4 @@
       </tr>
     </table>
   </div>
->>>>>>> d4ad62450b6745b165c61b2698cc9f270562c151
 </div>
