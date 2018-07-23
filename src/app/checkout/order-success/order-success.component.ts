@@ -38,12 +38,24 @@ export class OrderSuccessComponent implements OnInit {
       .getOrderDetail(this.queryParams.orderReferance)
       .subscribe(order => {
         this.orderDetails = order
+
       })
+    this.refresh()
   }
 
   getProductImageUrl(line_item: LineItem) {
     const image_url = line_item.variant.images[0].small_url;
     return image_url;
+  }
+
+  refresh() {
+    setTimeout(() => {
+      this.userService
+        .getOrderDetail(this.queryParams.orderReferance)
+        .subscribe(order => {
+          this.orderDetails = order
+        })
+    }, 3000)
   }
 
 }

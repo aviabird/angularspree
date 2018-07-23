@@ -19,7 +19,7 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   shipTotal$: Observable<number>;
   adjustmentTotal$: Observable<number>;
   currency = environment.config.currency_symbol;
-  freeDeliveryAmount = environment.config.free_shipping_order_amount
+  freeShippingAmount = environment.config.freeShippingAmount
   orderSub$: Subscription;
 
   constructor(private checkoutService: CheckoutService, private store: Store<AppState>) {
@@ -33,6 +33,7 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
   }
+  
   ngOnDestroy() {
     this.orderSub$.unsubscribe();
   }

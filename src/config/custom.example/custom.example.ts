@@ -17,6 +17,9 @@ export const CUSTOM_EXAMPLE_CONFIG = {
   payuBizSalt: 'eCwWELxi',
   payuBizKey: 'gtKFFx',
   payuBizUrl: 'https://test.payu.in/_payment',
-  free_shipping_order_amount: 10,
+  freeShippingAmount: 10,
   currency_symbol: '$', //USD $
+  PaymentMethodCod: 'COD',
+  PaymentMethodPayubiz: 'Payubiz', 
+  defaultPaymentMethod: 'Payubiz',
 };

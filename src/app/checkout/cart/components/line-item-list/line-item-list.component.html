@@ -1,3 +1,5 @@
-<div *ngFor="let item of lineItems$ | async">
-  <app-line-item [lineItem]="item" [isMobile]="isMobile"></app-line-item>
+<div *ngIf="lineItems$ | async; let lineItems">
+  <div *ngFor="let item of lineItems">
+    <app-line-item [lineItem]="item" [isMobile]="isMobile"></app-line-item>
+  </div>
 </div>
