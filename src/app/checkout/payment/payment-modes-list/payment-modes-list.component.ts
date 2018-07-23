@@ -33,7 +33,7 @@ export class PaymentModesListComponent implements OnInit {
   freeShippingAmount = environment.config.freeShippingAmount;
   currency = environment.config.currency_symbol;
   payubiz = environment.config.PaymentMethodPayubiz;
-  cashOnDelivery= environment.config.PaymentMethodCod;
+  cashOnDelivery = environment.config.PaymentMethodCod;
 
   constructor(private checkoutService: CheckoutService,
     private paymentService: PaymentService,
@@ -79,12 +79,13 @@ export class PaymentModesListComponent implements OnInit {
             .subscribe();
         } else {
           if (this.paymentAmount < this.freeShippingAmount) {
+            // tslint:disable-next-line:max-line-length
             this.toastyService.error(`${this.selectedMode.name} is not available for Order amount less than ${this.currency} ${this.freeShippingAmount}.`, "Order Amount");
           } else if (!this.isShippeble) {
-            this.toastyService.error(`${this.selectedMode.name} is not available for pincode ${shipping_pincode}.`, "Pincode");
+            this.toastyService.error(`${this.selectedMode.name} is not available for pincode ${shipping_pincode}.`, 'Pincode');
           }
         }
-      })
+      });
   }
 
   makePaymentPayubiz() {
