@@ -24,7 +24,7 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
   enableshippingvalue;
   shippingProgress;
   currency = environment.config.currency_symbol;
-  freeDeliveryAmount = environment.config.free_shipping_order_amount;
+  freeShippingAmount = environment.config.freeShippingAmount;
 
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
@@ -55,10 +55,10 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
 
   enableshippingcalculate() {
     if (this.itemTotal !== 0) {
-      this.enableshippingvalue = this.freeDeliveryAmount - this.itemTotal;
-      if (this.itemTotal < this.freeDeliveryAmount) {
+      this.enableshippingvalue = this.freeShippingAmount - this.itemTotal;
+      if (this.itemTotal < this.freeShippingAmount) {
         this.enableshipping = true;
-        this.shippingProgress = (this.itemTotal / this.freeDeliveryAmount) * 100;
+        this.shippingProgress = (this.itemTotal / this.freeShippingAmount) * 100;
       } else {
         this.enableshipping = false;
         this.shippingProgress = 100;
