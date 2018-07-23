@@ -5,15 +5,15 @@
 </div>
 
 <div class="selected-mode" [ngSwitch]="selectedMode.name">
-  <ng-template [ngSwitchCase]="'COD'">
+  <ng-template [ngSwitchCase]="cashOnDelivery">
     <app-cash-on-delivery (payOnDelivery)="makePaymentCod()"></app-cash-on-delivery>
   </ng-template>
-  <ng-template [ngSwitchCase]="'Payubiz'">
+  <ng-template [ngSwitchCase]="payubiz">
     <app-credit-card (onPayNow)=makePaymentPayubiz()></app-credit-card>
   </ng-template>
 </div>
 <br>
-<div *ngIf="showDummyCardInfo &&  selectedMode.name === 'Payubiz'">
+<div *ngIf="showDummyCardInfo &&  selectedMode.name === payubiz">
   <div class="alert alert-info">
     <h6>
       <strong>Note:</strong> Use following <strong>Test Card</strong> for making payment with payubiz.</h6>

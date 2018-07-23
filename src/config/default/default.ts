@@ -20,8 +20,11 @@ export const DEFAULT_CONFIG = {
   // Following are the test crediantials for payubiz payment gateway.
   payuBizSalt: 'eCwWELxi',
   payuBizKey: 'gtKFFx',
-  free_shipping_order_amount: 50,
+  freeShippingAmount: 50,
   currency_symbol: '$', //USD $
+  PaymentMethodCod: 'COD',
+  PaymentMethodPayubiz: 'Payubiz', 
+  defaultPaymentMethod: 'Payubiz',
 
   ...DEFAULT_APP_DATA
 };

@@ -34,7 +34,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 export class HeaderComponent implements OnInit {
   @ViewChild('autoShownModal') autoShownModal: ModalDirective;
 
-  freeDeliveryAmount = environment.config.free_shipping_order_amount
+  freeShippingAmount = environment.config.freeShippingAmount
   currency = environment.config.currency_symbol
   isModalShown = false;
   isSearchopen = true;

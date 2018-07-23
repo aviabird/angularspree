@@ -11,7 +11,7 @@ import { CheckoutService } from './../../../core/services/checkout.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Address } from '../../../core/models/address';
 import { environment } from '../../../../environments/environment';
-import { ToastrService } from '../../../../../node_modules/ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-payment-modes-list',
@@ -30,8 +30,10 @@ export class PaymentModesListComponent implements OnInit {
   selectedMode: PaymentMode = new PaymentMode;
   isAuthenticated: boolean;
   showOrderSuccess = false;
-  free_shipping_order_amount = environment.config.free_shipping_order_amount;
+  freeShippingAmount = environment.config.freeShippingAmount;
   currency = environment.config.currency_symbol;
+  payubiz = environment.config.PaymentMethodPayubiz;
+  cashOnDelivery= environment.config.PaymentMethodCod;
 
   constructor(private checkoutService: CheckoutService,
     private paymentService: PaymentService,
@@ -56,7 +58,7 @@ export class PaymentModesListComponent implements OnInit {
     this.checkoutService.availablePaymentMethods()
       .subscribe((payment) => {
         this.paymentModes = payment.payment_methods;
-        this.selectedMode = this.paymentService.setCODAsSelectedMode(this.paymentModes);
+        this.selectedMode = this.paymentService.getDefaultSelectedMode(this.paymentModes);
       });
   }
 
@@ -66,7 +68,7 @@ export class PaymentModesListComponent implements OnInit {
     this.checkoutService.shipmentAvailability(+shipping_pincode)
       .subscribe((res: any) => {
         this.isShippeble = res.available
-        if (this.isShippeble && this.paymentAmount >= this.free_shipping_order_amount) {
+        if (this.isShippeble && this.paymentAmount >= this.freeShippingAmount) {
           this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
             tap(() => {
               this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
@@ -76,10 +78,10 @@ export class PaymentModesListComponent implements OnInit {
             }))
             .subscribe();
         } else {
-          if (this.paymentAmount < this.free_shipping_order_amount) {
-            this.toastyService.error(`COD is not available for Order amount less than ${this.currency} ${this.free_shipping_order_amount}.`, "Order Amount");
+          if (this.paymentAmount < this.freeShippingAmount) {
+            this.toastyService.error(`${this.selectedMode.name} is not available for Order amount less than ${this.currency} ${this.freeShippingAmount}.`, "Order Amount");
           } else if (!this.isShippeble) {
-            this.toastyService.error(`COD is not available for pincode ${shipping_pincode}.`, "Pincode");
+            this.toastyService.error(`${this.selectedMode.name} is not available for pincode ${shipping_pincode}.`, "Pincode");
           }
         }
       })
