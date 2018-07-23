@@ -7,7 +7,7 @@ import { Order } from '../../../../core/models/order';
   styleUrls: ['./order-list-item.component.scss']
 })
 export class OrderListItemComponent implements OnInit {
-  @Input() order: Order;
+  @Input() orders;
 
   constructor() { }
 

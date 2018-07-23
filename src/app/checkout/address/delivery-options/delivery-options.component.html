@@ -23,8 +23,8 @@
       <span>Delivery</span>
       <span class="shipping-fee c-green" *ngIf="shipTotal > 0">{{currency}}{{shipTotal | number:'1.2-2'}}</span>
 
-      <span class="shipping-fee c-green" *ngIf="shipTotal ==='0.0' && itemTotal >= freeDeliveryAmount ">Free</span>
-      <span class="shipping-fee c-green" *ngIf="shipTotal ==='0.0' && itemTotal < freeDeliveryAmount ">Only {{currency}}{{(freeDeliveryAmount - itemTotal)| number:'1.2-2'}} to go for free shipping.</span>
+      <span class="shipping-fee c-green" *ngIf="shipTotal ==='0.0' && itemTotal >= freeShippingAmount ">Free</span>
+      <span class="shipping-fee c-green" *ngIf="shipTotal ==='0.0' && itemTotal < freeShippingAmount ">Only {{currency}}{{(freeShippingAmount - itemTotal)| number:'1.2-2'}} to go for free shipping.</span>
     </div>
     <div *ngIf="adjustmentTotal$ | async;let adjustmentTotal">
       <div class="order-total" *ngIf="adjustmentTotal > 0">
