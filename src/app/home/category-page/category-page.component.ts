@@ -39,7 +39,7 @@ export class CategoryPageComponent implements OnInit {
                 this.category_banner = this.banners[categeory_number]
                 let taxons = [];
                 if (taxonomy) { taxons = taxonomy.root.taxons };
-                return taxons.find(taxon => taxon.name === categeory_number);;
+                return taxons.find(taxon => taxon.name === categeory_number);
               }),
               map(selectedTaxon => {
                 if (typeof selectedTaxon === 'undefined') { return of({}) };

@@ -20,6 +20,7 @@ export class OrdersComponent implements OnInit {
     private store: Store<AppState>,
     private userActions: UserActions
   ) {
+
     this.orders$ = this.store.select(getUserOrders);
   }
 
