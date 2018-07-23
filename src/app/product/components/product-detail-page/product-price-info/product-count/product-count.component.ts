@@ -48,7 +48,7 @@ export class ProductCountComponent implements OnInit {
 
   buyNow(count: number){
     this.onAddToCart.emit(count);
-    this.router.navigate(['checkout', 'address']);
+    this.router.navigate(['checkout', 'cart']);
   }
 
   markAsFavorites() {

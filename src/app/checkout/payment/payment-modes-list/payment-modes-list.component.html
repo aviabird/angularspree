@@ -5,10 +5,41 @@
 </div>
 
 <div class="selected-mode" [ngSwitch]="selectedMode.name">
-  <ng-template [ngSwitchCase]="'Check'">
-    <app-cash-on-delivery (payOnDelivery)="makePayment()"></app-cash-on-delivery>
+  <ng-template [ngSwitchCase]="cashOnDelivery">
+    <app-cash-on-delivery (payOnDelivery)="makePaymentCod()"></app-cash-on-delivery>
   </ng-template>
-  <ng-template [ngSwitchCase]="'Payubiz'">
+  <ng-template [ngSwitchCase]="payubiz">
     <app-credit-card (onPayNow)=makePaymentPayubiz()></app-credit-card>
   </ng-template>
+</div>
+<br>
+<div *ngIf="showDummyCardInfo &&  selectedMode.name === payubiz">
+  <div class="alert alert-info">
+    <h6>
+      <strong>Note:</strong> Use following <strong>Test Card</strong> for making payment with payubiz.</h6>
+  </div>
+  <div class="alert alert-warning">
+    <table class="table table-sm table-bordered">
+      <tr>
+        <th>Card Type</th>
+        <td>VISA</td>
+      </tr>
+      <tr>
+        <th>Name On Card</th>
+        <td>Test</td>
+      </tr>
+      <tr>
+        <th>Card Number</th>
+        <th>4012001037141112</th>
+      </tr>
+      <tr>
+        <th>Expiry Date</th>
+        <td>05/20</td>
+      </tr>
+      <tr>
+        <th>CVV</th>
+        <td>123</td>
+      </tr>
+    </table>
+  </div>
 </div>
