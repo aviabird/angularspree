@@ -1,4 +1,4 @@
-<div class=container *ngIf="order.completed_at!=null">
+<div class="container">
   <table class="table">
     <tr>
       <th>
@@ -9,7 +9,7 @@
       <th>Order Total:</th>
       <th>Payment Status</th>
     </tr>
-    <tr *ngFor="let order of order.orders">
+    <tr *ngFor="let order of orders.orders">
       <td>
         <a [routerLink]="['detail', order.number]" class="view-details-link"> {{order.number}} </a>
       </td>

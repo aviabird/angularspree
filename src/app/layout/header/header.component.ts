@@ -33,6 +33,9 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('autoShownModal') autoShownModal: ModalDirective;
+
+  freeShippingAmount = environment.config.freeShippingAmount
+  currency = environment.config.currency_symbol
   isModalShown = false;
   isSearchopen = true;
   isAuthenticated: Observable<boolean>;
@@ -51,6 +54,7 @@ export class HeaderComponent implements OnInit {
     backdrop: false,
     ignoreBackdropClick: false
   };
+
   taxonList = [
     {
       id: 4,
