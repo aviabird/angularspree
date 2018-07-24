@@ -39,6 +39,7 @@
     "@ngrx/effects": "^6.0.1",
     "@ngrx/router-store": "^6.0.1",
     "@ngrx/store": "^6.0.1",
+    "@ngu/carousel": "^1.4.8",
     "@ngx-lite/input-star-rating": "^0.1.5",
     "@ngx-progressbar/core": "^5.0.1",
     "@ngx-progressbar/http": "^5.0.1",
@@ -47,6 +48,7 @@
     "core-js": "^2.5.7",
     "crypto-js": "^3.1.9-1",
     "font-awesome": "^4.7.0",
+    "hammerjs": "^2.0.8",
     "immutable": "^3.8.2",
     "ng2-ui-auth": "^9.0.0-beta.2",
     "ngx-bootstrap": "^3.0.0",
@@ -54,6 +56,7 @@
     "ngx-toastr": "^8.7.3",
     "reselect": "^3.0.1",
     "rxjs": "^6.2.1",
+    "rxjs-compat": "6.2.1",
     "web-animations-js": "^2.3.1",
     "webpack-bundle-analyzer": "^2.11.1",
     "zone.js": "^0.8.24"
