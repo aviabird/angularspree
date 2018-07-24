@@ -1,0 +1,36 @@
+.bannerStyle h1 {
+  background-color: #ccc;
+  min-height: 300px;
+  text-align: center;
+  line-height: 300px;
+}
+
+.leftRs,
+.rightRs {
+  position: absolute;
+  margin: auto;
+  top: -10%;
+  bottom: 0;
+  border: none;
+  background-color: transparent;
+  opacity: 0.5;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0 4rem;
+  background-size: 3rem;
+  @media (max-width: 768px) {
+    top: -30%;
+    padding: 0 1rem;
+    background-size: 1rem;
+  }
+}
+
+.leftRs {
+  left: 0;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+
+.rightRs {
+  right: 0;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}

@@ -1,7 +1,9 @@
-<carousel class="mb-5" showIndicators="false">
-  <slide *ngFor="let banner of banners">
+<ngu-carousel [inputs]="carouselOne">
+  <ngu-item NguCarouselItem *ngFor="let banner of banners" class="bannerStyle">
     <a href="{{banner.link_url}}">
       <img src={{banner.image_link}} alt="" style="display: block; width: 100%;">
     </a>
-  </slide>
-</carousel>
+  </ngu-item>
+  <button NguCarouselPrev class='leftRs'></button>
+  <button NguCarouselNext class='rightRs'></button>
+</ngu-carousel>
