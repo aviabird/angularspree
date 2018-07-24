@@ -33,7 +33,7 @@ export class PaymentModesListComponent implements OnInit {
   freeShippingAmount = environment.config.freeShippingAmount;
   currency = environment.config.currency_symbol;
   payubiz = environment.config.PaymentMethodPayubiz;
-  cashOnDelivery= environment.config.PaymentMethodCod;
+  cashOnDelivery = environment.config.PaymentMethodCod;
 
   constructor(private checkoutService: CheckoutService,
     private paymentService: PaymentService,
@@ -80,12 +80,13 @@ export class PaymentModesListComponent implements OnInit {
             .subscribe();
         } else {
           if (this.paymentAmount < this.freeShippingAmount) {
+            // tslint:disable-next-line:max-line-length
             this.toastyService.error(`${this.selectedMode.name} is not available for Order amount less than ${this.currency} ${this.freeShippingAmount}.`, "Order Amount");
           } else if (!this.isShippeble) {
-            this.toastyService.error(`${this.selectedMode.name} is not available for pincode ${shipping_pincode}.`, "Pincode");
+            this.toastyService.error(`${this.selectedMode.name} is not available for pincode ${shipping_pincode}.`, 'Pincode');
           }
         }
-      })
+      });
   }
 
   makePaymentPayubiz() {
@@ -105,55 +106,6 @@ export class PaymentModesListComponent implements OnInit {
       })
   }
 
-  makePaymentPayubiz() {
-    const paymentModeId = this.selectedMode.id;
-    const payUbizSalt = environment.config.payuBizSalt;
-    const payUbizKey = environment.config.payuBizKey;
-    const successUrl = `${environment.apiEndpoint}auth/handle_payment`;
-    const failureUrl = `${environment.apiEndpoint}auth/canceled_payment`;
-
-    const hashParams = {
-      key: payUbizKey,
-      txnid: `${this.orderNumber}`, //To be replace using random number
-      amount: this.paymentAmount,
-      productinfo: `${environment.appName}-Product`,
-      firstname: this.address.firstname,
-      email: JSON.parse(localStorage.getItem('user')).email,
-    }
-
-    // tslint:disable-next-line:max-line-length
-    const paramsList = `${hashParams.key}|${hashParams.txnid}|${hashParams.amount}|${hashParams.productinfo}|${hashParams.firstname}|${hashParams.email}|||||||||||${payUbizSalt}`;
-    const encryptedHash = CryptoJS.SHA512(paramsList);
-    const hashString = CryptoJS.enc.Hex.stringify(encryptedHash)
-
-    const paramsToPost = {
-      key: hashParams.key,
-      txnid: hashParams.txnid,
-      amount: hashParams.amount,
-      productinfo: hashParams.productinfo,
-      firstname: hashParams.firstname,
-      email: hashParams.email,
-      phone: this.address.phone,
-      surl: successUrl,
-      furl: failureUrl,
-      hash: hashString
-    }
-
-    this.checkoutService.makePayment(paramsToPost)
-      .subscribe(response => {
-        response = response
-        this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
-          tap(() => {
-            this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-            this.checkoutService.createEmptyOrder()
-              .subscribe();
-          })
-        )
-          .subscribe(res => {
-            window.open(response.url, '_self');
-          });
-      })
-  }
   private redirectToNewPage() {
     if (this.isAuthenticated) {
       this.router.navigate(['checkout', 'order-success'],
