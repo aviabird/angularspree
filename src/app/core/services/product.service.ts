@@ -21,7 +21,9 @@ export class ProductService {
     private toastrService: ToastrService,
     private apiParser: JsonApiParserService
   ) { }
+  // tslint:disable-next-line:member-ordering
   success: any
+  // tslint:disable-next-line:member-ordering
   error: any
   /**
    *
@@ -172,8 +174,7 @@ export class ProductService {
           if (this.success.type === 'info') {
             this.toastrService.info(this.success.message, this.success.type)
             return this.success.type;
-          }
-          else {
+          } else {
             this.toastrService.success(this.success.message, this.success.type)
             return this.success.type;
           }

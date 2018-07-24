@@ -4,8 +4,12 @@ ul {
   padding: 0.5rem 0 0.5rem 0;
   margin: 0px;
   li {
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
     a {
-      padding: 0.8rem 1.1rem;
+      padding: 0.8rem .1rem;
       border-bottom: 1px solid $gray-10;
       color: $gray-900;
       display: block;
@@ -21,14 +25,32 @@ ul {
         background-size: 10px;
       }
     }
-    ul{
+    ul {
+      li {
+        a {
+          padding: 0.8rem 1.5rem;
+        }
+      }
       display: none;
-      ul{display: none}
+      ul {
+        li {
+          a {
+            padding: 0.8rem 2.5rem;
+          }
+        }
+        display: none
+      }
     }
-   
   }
-  .active{
-    ul{display: block}
+  .active {
+    ul {
+      display: block;
+      .active {
+        ul {
+          display: block
+        }
+      }
+    }
   }
 }
 
@@ -61,4 +83,67 @@ ul {
 .radio-pink-gap [type="radio"]:checked+label:after {
   border-color: $theme-action-sub-color2;
   background-color: $theme-action-sub-color2;
+}
+
+.radio-button,
+.checkbox {
+  position: relative;
+  margin: 0 !important;
+}
+
+.checkbox {
+  display: block;
+}
+
+.radio-button input,
+.checkbox input {
+  position: absolute;
+  margin: 5px;
+  padding: 0;
+  /* for mobile accessibility (iOS Label Bug) */
+  visibility: hidden;
+}
+
+.radio-button .label-visible,
+.checkbox .label-visible {
+  margin-left: 2em;
+  margin-bottom: 0;
+}
+
+.fake-radiobutton,
+.fake-checkbox {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid $gray-10;
+  background-color: $white;
+}
+
+.fake-radiobutton:after,
+.fake-checkbox:after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: $theme-action-sub-color2;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.fake-radiobutton {
+  border-radius: 50%;
+}
+
+.fake-radiobutton:after {
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked+span .fake-radiobutton:after,
+input[type="checkbox"]:checked+span .fake-checkbox:after {
+  display: block;
 }

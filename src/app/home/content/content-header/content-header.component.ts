@@ -11,6 +11,8 @@ export class ContentHeaderComponent implements OnInit {
   @Output() toggleSize = new EventEmitter();
   @Input() paginationInfo;
   @Input() fillterList;
+  subselectedItem;
+  childselectedItem;
   screenWidth: any;
 
   options = [
@@ -37,21 +39,30 @@ export class ContentHeaderComponent implements OnInit {
   selectedSize = 'COZY';
   searchKeyword = '';
   selectedEntry;
+  isfilterModalShown;
+  issortModalShown
   defaultselectedEntry = 'Relevance';
   constructor(private routernomal: Router) { }
 
   // tslint:disable-next-line:member-ordering
-  @ViewChild(ModalDirective) modal: ModalDirective;
 
 
-  showModal() {
-    this.modal.show();
+  sortModalShow() { this.issortModalShown = true; }
+  sortModalhide() { this.issortModalShown = false; }
+
+  filterModalShow() {
+    this.isfilterModalShown = true;
   }
+  filterModalhide() {
+    this.isfilterModalShown = false;
+  }
+
 
   onSelectionChange(entry) {
     this.selectedEntry = entry;
     this.sortFilter(this.selectedEntry.name);
-    this.modal.hide();
+    this.issortModalShown = false;
+    this.selectedOption = entry;
   }
 
   ngOnInit() {
@@ -72,6 +83,19 @@ export class ContentHeaderComponent implements OnInit {
   isBigSelected(): boolean {
     return this.selectedSize === 'COMPACT';
   }
+  fltermodelstate(flag) {
+    this.isfilterModalShown = flag;
+  }
+  selectedInput(newVal) {
+    this.subselectedItem = newVal;
+
+  }
+  childselectedInput(newVal) {
+    this.childselectedItem = newVal;
+
+  }
+
+
 
   sortFilter(i) {
     const urlTree = this.routernomal.createUrlTree([], {
@@ -82,4 +106,5 @@ export class ContentHeaderComponent implements OnInit {
     this.routernomal.navigateByUrl(urlTree);
     this.selectedOption = i;
   }
+
 }
