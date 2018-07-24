@@ -54,7 +54,6 @@ export class HeaderComponent implements OnInit {
     backdrop: false,
     ignoreBackdropClick: false
   };
-
   taxonList = [
     {
       id: 4,

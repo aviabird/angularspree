@@ -14,4 +14,5 @@ export class LineItem {
   display_amount: number;
   variant_id: number;
   variant: Variant;
+
 }

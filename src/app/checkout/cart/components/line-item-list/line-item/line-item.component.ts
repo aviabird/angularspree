@@ -19,7 +19,7 @@ export class LineItemComponent implements OnInit {
   quantity: number;
   amount: number;
   quantityCount: any;
-
+  optionTxt: any;
   constructor(
     private store: Store<AppState>,
     private actions: CheckoutActions,
@@ -28,13 +28,15 @@ export class LineItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(this.lineItem.variant.images[0]){
+    if (this.lineItem.variant.images[0]) {
       this.image = this.lineItem.variant.images[0].product_url;
     }
     this.name = this.lineItem.variant.name;
     this.quantity = this.lineItem.quantity;
     this.amount = this.lineItem.display_amount;
     this.quantityCount = this.quantity;
+    this.optionTxt = this.lineItem.variant.options_text;
+
   }
 
   removeLineItem() {
