@@ -38,9 +38,10 @@ export class OrderSuccessComponent implements OnInit {
       .getOrderDetail(this.queryParams.orderReferance)
       .subscribe(order => {
         this.orderDetails = order
-
+        if (this.orderDetails.shipment_state != 'ready') {
+          this.refresh()
+        }
       })
-    this.refresh()
   }
 
   getProductImageUrl(line_item: LineItem) {
@@ -49,13 +50,15 @@ export class OrderSuccessComponent implements OnInit {
   }
 
   refresh() {
-    setTimeout(() => {
-      this.userService
-        .getOrderDetail(this.queryParams.orderReferance)
-        .subscribe(order => {
-          this.orderDetails = order
-        })
-    }, 3000)
+    //needed another way to handle.
+    this.userService
+      .getOrderDetail(this.queryParams.orderReferance)
+      .subscribe(order => {
+        this.orderDetails = order
+        if (this.orderDetails.shipment_state != 'ready') {
+          this.refresh()
+        }
+      })
   }
 
 }
