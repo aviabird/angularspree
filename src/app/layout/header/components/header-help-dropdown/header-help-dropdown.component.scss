@@ -30,17 +30,25 @@
   font-size: 1.2em;
   padding: 0.7rem 1.2em 0.7em 0.7em;
   border-radius: 7px 7px 0px 0px;
-
   cursor: pointer;
   margin-right: 1em;
   position: relative;
   &:hover {
-    box-shadow: 0 3px 5px rgba(0,0,0,.6); 
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
     background-color: $theme-main-color - 20;
   }
 }
 
+.dropdown-item {
+  cursor: pointer;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $theme-main-color
+}
+
 .openhelp {
   background-color: $theme-main-color - 20 !important;
-  box-shadow: 0 3px 5px rgba(0,0,0,.6); 
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
 }

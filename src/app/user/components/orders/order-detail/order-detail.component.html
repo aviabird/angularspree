@@ -67,16 +67,20 @@
     </div>
 
     <div class="col-md-3">
-      <h5 class="ptitle">
+      <h4 class="ptitle">
         <a [routerLink]="['/', line_item.variant.slug]">
           {{line_item.variant.name}}
         </a>
-      </h5>
+      </h4>
+      <h6 class="ptitle">
+          <a [routerLink]="['/', line_item.variant.slug]">
+            {{line_item.variant.options_text}}
+          </a>
+        </h6>
     </div>
 
     <div class="col-md-3">
       <h5 class="strong">
-
         {{line_item.display_amount}}
       </h5>
 
