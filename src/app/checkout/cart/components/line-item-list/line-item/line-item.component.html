@@ -1,4 +1,5 @@
 <div class="prod-item pb-3" *ngIf="!isMobile">
+{{lineItem.optionTxt | json}}
   <div class="col1 col-4 col-sm-2 col-md-2 col-lg-2">
     <img [src]="image" alt="">
   </div>
@@ -20,6 +21,9 @@
           </span>
         </div>
       </div>
+    </div>
+    <div class="optiontxt">
+      {{optionTxt}}
     </div>
     <div class="prod-amount">
       {{amount}}

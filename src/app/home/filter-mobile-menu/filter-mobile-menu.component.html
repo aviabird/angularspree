@@ -2,14 +2,41 @@
 
   <div class="p-0 no-gutters" class="parrent-catgory">
     <ul class="filter">
-      <li *ngFor="let taxon of catgeory_taxonomy.root.taxons" [ngClass]="{'active': selectedItem == taxon.name}" (click)="listClick($event, taxon.name)">
-        <a>{{taxon.name}}</a>
+      <li [routerLink]="['.']" [queryParams]="{'q[name_cont]': taxon.name, id: taxon.id, page: 1}" *ngFor="let taxon of catgeory_taxonomy.root.taxons"
+        [ngClass]="{'active': subselectedItem == taxon.name}" (click)="parrentTaxon($event, taxon.name)">
+        <a>
+          <label class="radio-button">
+            <input type="radio" name="Main" [checked]="subselectedItem == taxon.name">
+            <span class="label-visible">
+              <span class="fake-radiobutton"></span>
+              {{taxon.name}}
+
+
+            </span>
+          </label>
+        </a>
         <ul>
-          <li *ngFor="let subtaxon of taxon.taxons">
-            <a>{{subtaxon.name}}</a>
+          <li *ngFor="let subtaxon of taxon.taxons" [ngClass]="{'active': childselectedItem == subtaxon.name}" (click)="childTaxons($event, subtaxon.name)">
+            <a>
+              <label class="radio-button">
+                <input type="radio" name="Main" [checked]="childselectedItem == subtaxon.name">
+                <span class="label-visible">
+                  <span class="fake-radiobutton"></span>
+                  {{subtaxon.name}} {{childselectedItem}}
+                </span>
+              </label>
+            </a>
             <ul>
-              <li *ngFor="let subsubtaxon of subtaxon.taxons">
-                <a>{{ subsubtaxon.name }}</a>
+              <li *ngFor="let subsubtaxon of subtaxon.taxons" [ngClass]="{'active': subselectedItem == subsubtaxon.name}">
+                <a>
+                  <label class="radio-button">
+                    <input type="radio" name="Main" [checked]="subselectedItem === subsubtaxon.name">
+                    <span class="label-visible">
+                      <span class="fake-radiobutton"></span>
+                      {{subsubtaxon.name}}
+                    </span>
+                  </label>
+                </a>
               </li>
             </ul>
           </li>
