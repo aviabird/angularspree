@@ -24,6 +24,8 @@
     background-color: transparent;
     color: $theme-main-sub-color2 - 40;
     text-decoration: underline
+
+    
   }
   .maninname {
     color: $gray-900;
@@ -31,7 +33,7 @@
   }
   background-color: $gray-200;
   .sidebar {
-    background-color: $gray-100;
+    background-color: $white;
     padding: 3.5vh 0vw;
     @media screen and(width: 768px) {
       padding:2.5vh 0vw;

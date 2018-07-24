@@ -21,7 +21,7 @@ export class CategoryPageComponent implements OnInit {
   id: any
   selectedTaxons$: Observable<any>
   productList$: Observable<any>
-
+  selectedCategory: any;
   constructor(private route: ActivatedRoute,
     private store: Store<AppState>,
     private productService: ProductService) { }
@@ -36,7 +36,7 @@ export class CategoryPageComponent implements OnInit {
             return this.route.params.pipe(
               map(params => {
                 const categeory_number = params.number
-                this.category_banner = this.banners[categeory_number]
+                this.selectedCategory = this.banners[categeory_number]
                 let taxons = [];
                 if (taxonomy) { taxons = taxonomy.root.taxons };
                 return taxons.find(taxon => taxon.name === categeory_number);

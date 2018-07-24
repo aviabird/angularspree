@@ -1,8 +1,8 @@
 <div class="container catgeory" *ngIf="selectedTaxons$ | async; let selectedTaxons">
   <div class="row" *ngIf="productList$ | async; let productlist">
 
-    <div class="col-md-12">
-      <img src={{banners.image_link}} style="display: block; width: 100%;">
+    <div class="col-md-12 p-0">
+      <img src={{selectedCategory.image_link}} style="display: block; width: 100%;">
     </div>
 
     <div class="col-md-3 sidebar" *ngIf="productlist[0].length > 0">
