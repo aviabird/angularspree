@@ -17,6 +17,17 @@ h1 {
   color: $white;
 }
 
+.rating {
+  transform: scale(0.7);
+}
+
+.hide-phone {
+  @media screen and(min-width: 310px) and(max-width: 768px) {
+    display: block;
+    text-align: right
+  }
+}
+
 .pdp-button {
   border-radius: 3px;
   outline: 0;
@@ -98,15 +109,14 @@ h1 {
       text-align: justify;
     }
   }
-
   .review-sort-filter {
     border-top: 1px solid $gray-10;
     border-top: 1px solid $gray-10;
     background-color: $gray-200;
     padding: 1rem;
-
   }
 }
+
 .product-box {
   border-radius: 5px;
   margin-top: 1rem;

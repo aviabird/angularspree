@@ -1,63 +1,102 @@
-<div class="col-12 ">
-  <h1 itemprop="name" class="title">{{product.name}}</h1>
-  <!-- <div class="product-subtitle">
-    <a href="#">
-      By
-      #To-do read from product properties.
-      <span itemprop="brand"></span>
-    </a>
-  </div> -->
-</div>
-<div class="col-12">
-  <div class="product-header-extras">
-    <div class="ugc pr-3">
-      <a class="hide-phone js-revScrollTo">
-        <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" required></ngx-input-star-rating>
-        {{product.reviews_count }} Reviews
-      </a>
+<div *ngIf="!isMobile" class="col-12 p-0">
+  <div class="col-12 p-0">
+    <h1 itemprop="name" class="title">{{product.name}}</h1>
+    <!-- <div class="product-subtitle">
+          <a href="#">
+            By
+            #To-do read from product properties.
+            <span itemprop="brand"></span>
+          </a>
+        </div> -->
+  </div>
+  <div class="col-12 p-0">
+    <div class="product-header-extras">
+      <div class="ugc pr-3">
+        <a class="hide-phone js-revScrollTo">
+          <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" required></ngx-input-star-rating>
+          {{product.reviews_count }} Reviews
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 d-flex p-0">
+    <div class="buybox-wrapper col-12 p-0">
+      <div id="product-vitals">
+        <div id="pricing">
+          <ul class="product-pricing">
+            <li class="list-price" *ngIf="discount > 0">
+              <p class="title">
+                List Price:</p>
+              <p class="price">{{product.currency}}{{product.master.cost_price}}</p>
+            </li>
+            <li class="our-price">
+              <p class="title">Price:</p>
+              <p class="price">
+                <span class="ga-eec__price">
+                  {{product.display_price}}</span>
+                <span class="free-shipping  d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
+                  <span>Shipping on this item</span>
+                </span>
+              </p>
+            </li>
+            <li class="you-save" *ngIf="discount > 0">
+              <p class="title">You Save:</p>
+              <p class="price">
+                {{product.currency}}{{discount}} ({{discountPercent}})
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div id="featured-promotions" class="pt-3" *ngIf="customOptionTypesHash">
+          <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
+            [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
+          <hr class="">
+        </div>
+      </div>
+      <div id="buybox" class="">
+        <app-product-count (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorites()" [isOrderable]="isOrderable"></app-product-count>
+      </div>
     </div>
   </div>
 </div>
-<div class="col-12">
-  <div class="buybox-wrapper">
-    <div id="product-vitals">
-      <div id="pricing">
-        <ul class="product-pricing">
-          <li class="list-price" *ngIf="discount > 0">
-            <p class="title">
-              List Price:</p>
-            <p class="price">{{product.currency}}{{product.master.cost_price}}</p>
-          </li>
-          <li class="our-price">
-            <p class="title">Price:</p>
-            <p class="price">
-              <span class="ga-eec__price">
-                {{product.display_price}}</span>
-              <span class="free-shipping  d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
-                <span>Shipping on this item</span>
-              </span>
-            </p>
-          </li>
-          <li class="you-save" *ngIf="discount > 0">
-            <p class="title">You Save:</p>
-            <p class="price">
-              {{product.currency}}{{discount}} ({{discountPercent}})
-            </p>
-          </li>
-        </ul>
+<div *ngIf="isMobile" > 
+  <div class="col-12 p-0">
+    <div class="buybox-wrapper">
+      <div id="product-vitals">
+        <div id="pricing">
+          <ul class="product-pricing pl-3">
+            <li class="list-price" *ngIf="discount > 0">
+              <p class="title">
+                List Price:</p>
+              <p class="price">{{product.currency}}{{product.master.cost_price}}</p>
+            </li>
+            <li class="our-price">
+              <p class="title">Price:</p>
+              <p class="price">
+                <span class="ga-eec__price">
+                  {{product.display_price}}</span>
+                <span class="free-shipping  d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
+                  <span>Shipping on this item</span>
+                </span>
+              </p>
+            </li>
+            <li class="you-save" *ngIf="discount > 0">
+              <p class="title">You Save:</p>
+              <p class="price">
+                {{product.currency}}{{discount}} ({{discountPercent}})
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div id="featured-promotions" class="pt-3" *ngIf="customOptionTypesHash">
+          <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
+            [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
+          <hr class="">
+        </div>
       </div>
-      <div id="featured-promotions" class="pt-3" *ngIf="customOptionTypesHash">
-        <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
-          [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
-        <hr class="">
+      <div id="buybox" class="">
+        <app-product-count (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorites()" [isOrderable]="isOrderable"></app-product-count>
       </div>
-
-    </div>
-    <div id="buybox" class="">
-      <app-product-count 
-        (onAddToCart)="addToCart($event)" 
-        (onMarkAsFavorites)="markAsFavorites()" 
-        [isOrderable]="isOrderable"></app-product-count>
     </div>
   </div>
 </div>

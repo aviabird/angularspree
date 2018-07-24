@@ -35,6 +35,8 @@ export class ProductDetailsComponent implements OnInit {
   variantId: any;
   productID: any;
   productdata: any;
+  isMobile = false;
+  screenwidth: any;
   isAuthenticated: boolean;
   similarProducts$: Observable<any>;
   relatedProducts$: Observable<any>;
@@ -51,6 +53,8 @@ export class ProductDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.screenwidth = window.innerWidth;
+    this.calculateInnerWidth();
 
     if (this.product.has_variants) {
       const product = this.product.variants[0];
@@ -62,8 +66,7 @@ export class ProductDetailsComponent implements OnInit {
       this.product.price = product.price;
       this.product.master.is_orderable = product.is_orderable;
       this.product.master.cost_price = product.cost_price;
-    }
-    else {
+    } else {
       this.description = this.product.description;
       this.images = this.product.master.images;
       this.variantId = this.product.master.id;
@@ -89,8 +92,12 @@ export class ProductDetailsComponent implements OnInit {
     this.store.dispatch(this.productsActions.getProductReviews(this.productID));
     this.reviewProducts$ = this.store.select(productReviews);
   }
+  calculateInnerWidth() {
+    if (this.screenwidth <= 800) {
+      this.isMobile = this.screenwidth;
+    }
+  }
 
-  ngOnChanges() { }
 
   addToCart(quantitiy) {
     this.store.dispatch(

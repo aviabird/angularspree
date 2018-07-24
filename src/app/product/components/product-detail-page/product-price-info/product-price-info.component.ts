@@ -10,7 +10,8 @@ import { Product } from '../../../../core/models/product';
   styleUrls: ['./product-price-info.component.scss']
 })
 export class ProductPriceInfoComponent implements OnInit {
-  @Input() product
+  @Input() product;
+  @Input() isMobile;
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
   @Output() selectedVariant = new EventEmitter<Object>();
