@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { DragScrollModule } from 'ngx-drag-scroll';
+import { NguCarouselModule } from '@ngu/carousel';
 
 // Pipes
 import { KeysPipe } from './pipes/keys.pipe';
@@ -40,7 +41,8 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     DragScrollModule,
     ZoomableDirective,
     ProductSliderComponent,
-    DragScrollModule
+    DragScrollModule,
+    NguCarouselModule
   ],
   imports: [
     FormsModule,
@@ -49,7 +51,8 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     BsDropdownModule.forRoot(),
     DragScrollModule,
     RouterModule,
-    NgxInputStarRatingModule
+    NgxInputStarRatingModule,
+    NguCarouselModule
   ]
 })
 export class SharedModule { }

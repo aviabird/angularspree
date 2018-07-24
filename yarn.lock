@@ -288,6 +288,10 @@
     tree-kill "^1.0.0"
     webpack-sources "^1.1.0"
 
+"@ngu/carousel@^1.4.8":
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/@ngu/carousel/-/carousel-1.4.8.tgz#102a2472e319fa2c048d59b5c1c347f2ef60f922"
+
 "@ngx-lite/input-star-rating@^0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@ngx-lite/input-star-rating/-/input-star-rating-0.1.5.tgz#dbfa3e74a540e619d332058bc5af49de3cb2fa9d"
@@ -3067,6 +3071,10 @@ gzip-size@^4.1.0:
   dependencies:
     duplexer "^0.1.1"
     pify "^3.0.0"
+
+hammerjs@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
 
 handle-thing@^1.2.5:
   version "1.2.5"
@@ -6216,6 +6224,10 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   resolved "https://registry.yarnpkg.com/run-queue/-/run-queue-1.0.3.tgz#e848396f057d223f24386924618e25694161ec47"
   dependencies:
     aproba "^1.1.1"
+
+rxjs-compat@6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/rxjs-compat/-/rxjs-compat-6.2.1.tgz#f5a5e4bd700db414e82aa7cb34e5c9222c6d3756"
 
 rxjs@^6.0.0:
   version "6.0.0"
