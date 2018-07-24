@@ -9,8 +9,8 @@
       <button button color="primary " (click)="moveRight() " class="slider-btn next">right</button>
     </div>
   </div>
-  <div class="d-flex scrollbar-hidden" #nav dragScroll drag-scroll-y-disabled="true" scrollbar-hidden="true">
-    <app-pl-item class=" col-sm-2 col-6 col-md-3 col-lg-2 product-box" *ngFor="let product of products" [product]="product"></app-pl-item>
-  </div>
+  <drag-scroll class="d-flex scrollbar-hidden" #nav>
+    <app-pl-item  drag-scroll-item *ngFor="let product of products" class=" col-sm-2 col-6 col-md-3 col-lg-2 product-box" [product]="product"></app-pl-item>
+  </drag-scroll>
   <hr>
 </section>

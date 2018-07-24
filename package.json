@@ -50,7 +50,7 @@
     "immutable": "^3.8.2",
     "ng2-ui-auth": "^9.0.0-beta.2",
     "ngx-bootstrap": "^3.0.0",
-    "ngx-drag-scroll": "^1.8.0",
+    "ngx-drag-scroll": "^2.0.0-beta.3",
     "ngx-toastr": "^8.7.3",
     "reselect": "^3.0.1",
     "rxjs": "^6.2.1",
