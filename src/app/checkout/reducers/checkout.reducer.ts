@@ -121,34 +121,13 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
 
     case CheckoutActions.CHANGE_ORDER_STATE_SUCCESS:
       _orderState = payload.state;
-      _totalCartItems = payload.total_quantity;
-      _totalCartValue = parseFloat(payload.total);
       _ship_address = payload.ship_address;
       _bill_address = payload.bill_address;
-      _orderState = payload.state;
-      _shipTotal = payload.ship_total;
-      _itemTotal = parseFloat(payload.item_total);
-      _adjustmentTotal = payload.display_adjustment_total;
-      _lineItems = payload.line_items;
-      _lineItemIds = _lineItems.map(lineItem => lineItem.id);
-
-      _lineItemEntities = _lineItems.reduce((lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
-        return Object.assign(lineItems, {
-          [lineItem.id]: lineItem
-        });
-      }, {});
 
       return state.merge({
         orderState: _orderState,
-        totalCartItems: _totalCartItems,
-        totalCartValue: _totalCartValue,
         shipAddress: _ship_address,
         billAddress: _bill_address,
-        shipTotal: _shipTotal,
-        itemTotal: _itemTotal,
-        adjustmentTotal: _adjustmentTotal,
-        lineItemIds: _lineItemIds,
-        lineItemEntities: _lineItemEntities,
 
       }) as CheckoutState;
 
