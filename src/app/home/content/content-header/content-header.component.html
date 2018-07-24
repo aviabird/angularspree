@@ -1,4 +1,3 @@
-
 <div class="container content mb-4" *ngIf="!screenWidth">
   <div class="row ">
 
@@ -11,11 +10,11 @@
 
       <div class="form-group row mb-0 ">
         <label for="inputEmail3 " class="col-sm-5 col-md-5 col-form-label ">Sort by</label>
-        <div class="btn-group" dropdown>
-          <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+        <div class="btn-group col-sm-7 col-md-7 " dropdown>
+          <button dropdownToggle type="button" class="btn sort-dropdown dropdown-toggle" aria-controls="dropdown-basic">
             {{selectedOption}}
           </button>
-          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="button-basic">
             <li role="menuitem">
               <a class="dropdown-item" (click)=sortFilter(opt.name) *ngFor="let opt of options">{{opt.name}}</a>
             </li>
@@ -30,24 +29,27 @@
 <div class="container content " *ngIf="screenWidth">
   <div class="row">
     <div class="col-6 pl-1 pr-1  text-right">
-      <button (click)="showModal()" type="button" class="search-btns col-12 p-0 px-1 py-3 shadow-sm">
+      <button type="button" class="search-btns col-12 p-0 px-1 py-3 shadow-sm" (click)="sortModalShow()">
         <i class="fa fa-sort mr-2"></i>
         <span *ngIf="!selectedEntry">{{defaultselectedEntry}}</span>
         <span *ngIf="selectedEntry">{{selectedEntry.name}}</span>
       </button>
-      <div class="modal fade" bsModal #modal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-events-name">
+      <div *ngIf="issortModalShown" [config]="{ show: true }" bsModal #autoShownModal="bs-modal" class="modal fade" tabindex="-1"
+        role="dialog" aria-labelledby="dialog-auto-name">
         <div class="modal-dialog sort-mobile">
           <div class="modal-content">
             <div class="modal-body">
               <ul>
                 <li>
                   <span class="sort">Sort</span>
-                  <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
-                    <span aria-hidden="true">&times;</span>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="sortModalhide()">
+                    <span aria-hidden="true">
+                      <i class="fa fa-times"></i>
+                    </span>
                   </button>
                 </li>
                 <li *ngFor="let entry of optionsMobile; let idx = index">
-                  <input type="radio" name="radiogroup" id="test{{idx}}" [checked]="idx === 0" [value]="entry.id" (change)="onSelectionChange(entry)">
+                  <input type="radio" name="radiogroup" id="test{{idx}}" [checked]="idx === entry.name" [value]="entry.id" (change)="onSelectionChange(entry)">
                   <label for="test{{idx}}">{{ entry.name }}</label>
                 </li>
               </ul>
@@ -57,25 +59,31 @@
       </div>
     </div>
     <div class="col-6 pr-1 pl-1 text-left">
-      <button type="button" class="col-12 px-1 py-3 search-btns shadow-sm" (click)="staticModal.show()">
+      <button type="button" class="search-btns col-12 p-0 px-1 py-3 shadow-sm" (click)="filterModalShow()">
         <i class="fa fa-filter mr-2"></i>Filter By</button>
-      <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="dialog-static-name">
+      <div *ngIf="isfilterModalShown" [ngClass]="[isfilterModalShown ? 'd-block' : 'd-none']" [config]="{ show: true }" bsModal
+        #autoShownModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
         <div class="modal-dialog sort-mobile">
           <div class="modal-content">
             <div class="modal-body">
               <ul>
                 <li>
                   <span class="sort">Filter</span>
-                  <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
-                    <span aria-hidden="true">&times;</span>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="filterModalhide()">
+                    <span aria-hidden="true">
+                      <i class="fa fa-times"></i>
+                    </span>
                   </button>
                 </li>
               </ul>
-              <app-filter-mobile-menu [fillterList]="fillterList"></app-filter-mobile-menu>
-            </div>
+              <app-filter-mobile-menu (fltermodelstate)="fltermodelstate($event)" (selectedItemEmit)="selectedInput($event)"
+               (childselectedItememit)="childselectedInput($event)"
+                [fillterList]="fillterList" [subselectedItem]="subselectedItem" [childselectedItem]="childselectedItem"></app-filter-mobile-menu>
+            
+            
+              </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>

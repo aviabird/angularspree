@@ -22,6 +22,15 @@
   }
 }
 
+.dropdown-item {
+  cursor: pointer;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: $theme-main-color
+}
+
 .arrowalignement {
   &:before {
     left: 6.2rem;
@@ -44,15 +53,12 @@
   height: calc(100vh - 9vw);
   top: 10vw !important;
   &:before {
-   
     left: 15.3rem;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
     border-bottom: 7px solid $white;
-  
   }
 }
-
 
 .dpmenu {
   position: relative;

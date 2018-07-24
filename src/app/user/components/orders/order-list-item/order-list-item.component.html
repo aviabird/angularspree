@@ -1,22 +1,32 @@
-<div class="container">
-  <table class="table">
-    <tr>
-      <th>
-        Order No
-      </th>
-      <th>Status:</th>
-      <th>Ordered On:</th>
-      <th>Order Total:</th>
-      <th>Payment Status</th>
-    </tr>
-    <tr *ngFor="let order of orders.orders">
-      <td>
+<div>
+  <div  *ngFor="let order of orders.orders">
+    <div *ngIf="order.completed_at!=null" class="box shadow-sm">
+      <div class="order-num btn">
         <a [routerLink]="['detail', order.number]" class="view-details-link"> {{order.number}} </a>
-      </td>
-      <td>{{order.shipment_state}}</td>
-      <td>{{order.completed_at | date:'fullDate'}}</td>
-      <td>{{order.display_total}}</td>
-      <td>{{order.payment_state}}</td>
-    </tr>
-  </table>
+      </div>
+      <div class="order-detail">
+        <div class="order-body">
+          <div>
+            <span class="head">Status : </span>
+            <span class="text-uppercase">{{order.shipment_state}}</span>
+          </div>
+          <div>
+            <span class="head">Payment Status : </span>
+            <span class="text-uppercase">{{order.payment_state}}</span>
+          </div>
+        </div>
+        <div class="order-footer">
+          <div class="order-on float-left">
+            <span class="head">Ordered On : </span>
+            <span>{{order.completed_at | date:'fullDate'}}</span>
+          </div>
+          <div class="order-on float-right">
+            <span class="head">Order Total : </span>
+            <span>{{order.display_total}}</span>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
