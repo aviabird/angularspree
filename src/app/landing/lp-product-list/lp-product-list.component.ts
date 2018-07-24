@@ -1,9 +1,8 @@
+import { DragScrollComponent } from 'ngx-drag-scroll';
 import { SearchActions } from './../../home/reducers/search.actions';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { AppState } from './../../interfaces';
-import { DragScrollDirective } from 'ngx-drag-scroll';
-import { environment } from './../../../environments/environment';
 import {
   Component,
   OnInit,
@@ -22,8 +21,7 @@ export class LpProductListComponent implements OnInit {
   @Input() products;
   @Input() dealsType;
   @Input() dealsId;
-  @ViewChild('nav', { read: DragScrollDirective })
-  ds: DragScrollDirective;
+  @ViewChild('nav', {read: DragScrollComponent}) ds: DragScrollComponent;
 
   constructor(
     private searchActions: SearchActions,
