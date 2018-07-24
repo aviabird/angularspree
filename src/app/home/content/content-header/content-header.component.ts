@@ -88,11 +88,11 @@ export class ContentHeaderComponent implements OnInit {
   }
   selectedInput(newVal) {
     this.subselectedItem = newVal;
-    console.log(this.subselectedItem)
+
   }
   childselectedInput(newVal) {
     this.childselectedItem = newVal;
-    console.log(this.childselectedItem)
+
   }
 
 

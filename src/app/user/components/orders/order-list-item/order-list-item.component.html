@@ -1,5 +1,5 @@
 <div>
-  <div  *ngFor="let order of order.orders">
+  <div  *ngFor="let order of orders.orders">
     <div *ngIf="order.completed_at!=null" class="box shadow-sm">
       <div class="order-num btn">
         <a [routerLink]="['detail', order.number]" class="view-details-link"> {{order.number}} </a>
