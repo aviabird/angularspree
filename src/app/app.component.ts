@@ -1,4 +1,3 @@
-import { environment } from './../environments/environment';
 import { filter } from 'rxjs/operators';
 import { getAuthStatus } from './auth/reducers/selectors';
 import { AppState } from './interfaces';
