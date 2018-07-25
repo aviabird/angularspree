@@ -1,9 +1,11 @@
 import { DEFAULT_APP_DATA } from './app-data';
+import { DEFAULT_META_DATA } from "./meta-data";
 
 export const DEFAULT_CONFIG = {
   // Add Your custom configs hereh
   prodApiEndpoint: 'https://ngspree-api.herokuapp.com/',
   // prodApiEndpoint: 'http://localhost:3000/',
+  frontEndUrl: 'https://angularspree.firebaseapp.com/',
   appName: 'Angularspree',
   fevicon: 'http://via.placeholder.com/350x150',
   header: {
@@ -23,8 +25,9 @@ export const DEFAULT_CONFIG = {
   freeShippingAmount: 50,
   currency_symbol: '$', //USD $
   PaymentMethodCod: 'COD',
-  PaymentMethodPayubiz: 'Payubiz', 
+  PaymentMethodPayubiz: 'Payubiz',
   defaultPaymentMethod: 'Payubiz',
 
-  ...DEFAULT_APP_DATA
+  ...DEFAULT_APP_DATA,
+  ...DEFAULT_META_DATA
 };

@@ -7,6 +7,8 @@ import { Subscription } from 'rxjs';
 import { CheckoutService } from './core/services/checkout.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Title } from '../../node_modules/@angular/platform-browser';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +24,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private checkoutService: CheckoutService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private metaTitle: Title
   ) {
     router.events
       .pipe(filter(e => e instanceof NavigationEnd))
@@ -30,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.currentUrl = e.url;
         this.findCurrentStep(this.currentUrl);
         window.scrollTo(0, 0);
+        this.metaTitle.setTitle(environment.config.landing_page.title)
       });
   }
 

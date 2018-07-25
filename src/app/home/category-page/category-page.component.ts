@@ -22,6 +22,7 @@ export class CategoryPageComponent implements OnInit {
   selectedTaxons$: Observable<any>
   productList$: Observable<any>
   selectedCategory: any;
+
   constructor(private route: ActivatedRoute,
     private store: Store<AppState>,
     private productService: ProductService) { }
