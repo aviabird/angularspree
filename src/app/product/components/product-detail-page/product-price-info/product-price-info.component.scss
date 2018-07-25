@@ -98,7 +98,7 @@
       .list-price .price {
         font-size: 1.4rem;
         line-height: 1;
-        color:  $theme-action-color - 50;
+        color: $red;
         text-decoration: line-through;
       }
       .price {
@@ -113,7 +113,7 @@
         .price {
           font-size: 1.6em;
           font-weight: 600;
-          color: $theme-action-color - 50;
+          color: $red;
           line-height: 12px;
           padding-top: 11px;
           span {
@@ -142,7 +142,7 @@
           font-size: 1.4rem;
           margin-bottom: 0;
           line-height: 1;
-          color: $theme-action-color - 50;
+          color: $red;
         }
       }
     }
@@ -154,7 +154,7 @@
           font-size: 1em;
           font-weight: 600;
           text-align: right;
-          color: $theme-action-sub-color2 - 40;
+          color: $red;
           padding: 11px 5px 0 0;
           line-height: 1;
           width: auto;
@@ -167,7 +167,7 @@
         }
         .autoship-pricing {
           font-weight: 600;
-          color: $theme-action-sub-color4;
+          color: $red;
           font-size: 1.714em;
           margin: 0;
           .autoship-percent {
@@ -177,7 +177,7 @@
           }
         }
         .title span {
-          color: $theme-action-color;
+          color: $red;
           font-size: 0.8em;
         }
       }

@@ -5,7 +5,7 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/.DS_Store": true,
-    // "node_modules": true,
+    "node_modules": true,
     "bin": true,
     "obj": true,
     "dist": true,

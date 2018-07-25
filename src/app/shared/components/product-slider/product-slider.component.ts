@@ -13,7 +13,7 @@ export class ProductSliderComponent implements OnInit {
 
   constructor() {
     this.carouselOne = {
-      grid: {xs: 1, sm: 1, md: 2, lg: 3, all: 0},
+      grid: {xs: 1, sm: 1, md: 2, lg: 5, all: 0},
       slide: 2,
       speed: 400,
       animation: 'lazy',
