@@ -1,5 +1,5 @@
 <div class="col-md-12 p-0">
-  <img src={{selectedCategory.image_link}} style="display: block; width: 100%;">
+  <img src={{selectedCategory?.image_link}} style="display: block; width: 100%;">
 </div>
 
 <div class="container catgeory" *ngIf="selectedTaxons$ | async; let selectedTaxons">
