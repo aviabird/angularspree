@@ -46,7 +46,7 @@ export class ProductCountComponent implements OnInit {
     this.onAddToCart.emit(count);
   }
 
-  buyNow(count: number){
+  buyNow(count: number) {
     this.onAddToCart.emit(count);
     this.router.navigate(['checkout', 'cart']);
   }

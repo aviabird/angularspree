@@ -234,8 +234,8 @@ export class ZoomableDirective implements OnInit {
     this.renderer.setElementStyle(this.zoomView, 'backgroundPosition', `-${xRatio * bgWidth}px -${yRatio * bgHeight}px`);
     this.renderer.setElementStyle(this.zoomView, 'backgroundSize', `${bgWidth}px ${bgHeight}px`);
     this.renderer.setElementStyle(this.zoomView, 'backgroundRepeat', 'no-repeat');
-    this.renderer.setElementStyle(this.zoomView, 'height', '500px');
-    this.renderer.setElementStyle(this.zoomView, 'width', '500px');
+    this.renderer.setElementStyle(this.zoomView, 'height', '400px');
+    this.renderer.setElementStyle(this.zoomView, 'width', '700px');
   }
 
   private destroyViews() {

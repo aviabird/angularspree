@@ -16,9 +16,9 @@
             </span>
           </span>
         </div>
-        <p class="shipping">
-          FREE 1-2 day shipping on this item
-        </p>
+        <small class="shipping">
+          FREE 1-2 day shipping over {{appConfig.currency_symbol}}{{appConfig.freeShippingAmount}}
+        </small>
         <div class="ngrating my-3">
           <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}"></ngx-input-star-rating>
         </div>
@@ -52,8 +52,8 @@
                 </span>
               </span>
             </div>
-            <p class="shipping">
-              FREE 1-2 day shipping on this item
+            <p class="shipping border-top border-bottom mt-1 mb-2">
+                <b>FREE 1-2 day</b> shipping at {{appConfig.currency_symbol}}{{appConfig.freeShippingAmount}}
             </p>
             <div class="ngrating">
               <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}"></ngx-input-star-rating>
@@ -64,7 +64,7 @@
     </a>
   </div>
 </div>
-<div class="col-12">
+<div class="col-12 mt-3">
   <div class="row">
     <pagination *ngIf="paginationData.total_count > paginationData.per_page" [totalItems]="paginationData.total_count" [itemsPerPage]="paginationData.per_page"
       [(ngModel)]="paginationData.current_page" (pageChanged)="pageChanged($event)" class="m-auto"></pagination>

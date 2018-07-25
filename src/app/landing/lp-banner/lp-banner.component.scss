@@ -1,10 +1,9 @@
 @import "../../shared/scss/_selected_theme_variables.scss";
-
 :host {
   /deep/ .banner {
     .bannerStyle {
       &h1 {
-        background-color: #ccc;
+        background-color: $gray-10;
         min-height: 300px;
         text-align: center;
         line-height: 300px;
@@ -24,7 +23,7 @@
       position: relative;
       left: 0;
       box-sizing: border-box;
-      background-color: white;
+      background-color: $white;
       margin: 0 auto -28px;
       align-self: center;
       width: fit-content;
@@ -42,14 +41,14 @@
     .ngucarouselPoint li {
       display: inline-block;
       border-radius: 999px;
-      background-color: $theme-action-sub-color1;
+      background-color: $theme-main-color;
       padding: 5px;
       margin: 0 3px;
       transition: .4s ease all;
     }
     .ngucarouselPoint li.active {
-      background-color: white;
-      border: 1px solid $theme-action-sub-color1;
+      background-color: $white;
+      border: 1px solid $theme-main-color;
       width: 10px;
     }
   }

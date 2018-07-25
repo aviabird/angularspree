@@ -1,10 +1,9 @@
+<div class="col-md-12 p-0">
+  <img src={{selectedCategory.image_link}} style="display: block; width: 100%;">
+</div>
+
 <div class="container catgeory" *ngIf="selectedTaxons$ | async; let selectedTaxons">
   <div class="row" *ngIf="productList$ | async; let productlist">
-
-    <div class="col-md-12 p-0">
-      <img src={{selectedCategory.image_link}} style="display: block; width: 100%;">
-    </div>
-
     <div class="col-md-3 sidebar" *ngIf="productlist[0].length > 0">
       <ul class="list-group">
         <li *ngFor="let taxon of selectedTaxons.taxons">
