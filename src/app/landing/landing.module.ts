@@ -1,5 +1,4 @@
 import { SharedModule } from './../shared/index';
-import { DragScrollModule } from 'ngx-drag-scroll';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { LpPromoComponent } from './lp-promo/lp-promo.component';
 import { PlItemComponent } from './lp-product-list/pl-item/pl-item.component';
@@ -26,7 +25,6 @@ const COMPONENTS = [
     CommonModule,
     LandingRoutingModule,
     CarouselModule,
-    DragScrollModule,
     SharedModule
   ],
   declarations: [...COMPONENTS]

@@ -1,6 +1,5 @@
-import { DragScrollComponent } from 'ngx-drag-scroll';
-import { environment } from './../../../../environments/environment';
-import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { NguCarousel } from '@ngu/carousel';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-product-slider',
@@ -9,20 +8,30 @@ import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy } from '@a
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductSliderComponent implements OnInit {
-  @Input() productlist = new Array(10);
-  @ViewChild('nav', {read: DragScrollComponent}) ds: DragScrollComponent;
+  @Input() productsList = new Array(10);
+  public carouselOne: NguCarousel;
 
   constructor() {
+    this.carouselOne = {
+      grid: {xs: 2, sm: 3, md: 3, lg: 5, all: 0},
+      slide: 2,
+      speed: 400,
+      // animation: 'lazy',
+      point: {
+        visible: false
+      },
+      load: 2,
+      touch: true,
+      easing: 'ease'
+    }
   }
 
   ngOnInit() {
   }
 
   moveLeft() {
-    this.ds.moveLeft();
   }
 
   moveRight() {
-    this.ds.moveRight();
   }
 }
