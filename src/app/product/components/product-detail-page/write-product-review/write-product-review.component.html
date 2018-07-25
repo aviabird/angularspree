@@ -3,10 +3,10 @@
   <h3 *ngIf="showThanks">Review Submitted!</h3>
   <div class="write-review">
     <div class="row">
-      <div class="col-2 pl-4">
+      <div class="col-12 pl-4 col-sm-2 text-center">
         <img [src]="getProductImageUrl(product.master.images[0].product_url)" class="img-fluid">
       </div>
-      <div class="col-7">
+      <div class="col-12 col-sm-7">
         <div class="container">
           <div class="row">
             <div class="col-12" *ngIf="!showThanks">
@@ -27,7 +27,7 @@
                   <label for="exampleFormControlTextarea1">Content</label>
                   <textarea class="form-control" rows="3" placeholder="Your review" formControlName="review" required></textarea>
                 </div>
-                <button type="submit" class="btn themebtnprimary col-5">Submit Review</button>
+                <button type="submit" class="btn themebtnprimary col-12 col-sm-5 mb-4">Submit Review</button>
               </form>
             </div>
             <div class="col-12" *ngIf="showThanks">
@@ -38,12 +38,12 @@
               <div class="float-right">
                 <p class="w-75 text-success">Your review has been submitted.Please note that your review may take up to 48 hours to appear.</p>
               </div>
-              <button type="normal" class="btn themebtnprimary col-5 mt-4" (click)="goToProduct(product.id)">Continue Shopping</button>
+              <button type="normal" class="btn themebtnprimary col-12 col-sm-5 mt-4 mb-1" (click)="goToProduct(product.id)">Continue Shopping</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-3" *ngIf="!showThanks">
+      <div class="col-12 col-sm-3" *ngIf="!showThanks">
         <div class="guideline">
           <h4>Writing Guidelines</h4>
           <ul>

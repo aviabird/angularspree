@@ -47,7 +47,7 @@
     background-color: transparent;
     color: $gray-900;
     .searchimg {
-      height: 220px;
+      height: 130px;
     }
     .product-thumb {
       height: 240px;
@@ -67,6 +67,9 @@
       .ngrating {
         position: relative;
         left: -10px;
+        @media screen and (min-width: 320px) and (max-width: 768px) {
+          transform: scale(0.7) translateX(-16%);
+        }
       }
       .product-brand,
       .product-product {
@@ -86,7 +89,7 @@
       .product-price {
         font-size: 1.3em;
         line-height: 1.2em;
-        color: $theme-action-sub-color2 - 50;
+        color: $red;
         margin: 10px 0 0;
         white-space: nowrap;
         font-weight: 500;
@@ -104,21 +107,24 @@
   text-align: center;
   @media screen and (min-width: 320px) and (max-width: 768px) {
     background-color: $white;
-    color: $gray-800;
-    font-size: 1em;
+    color: $gray-400;
     margin-top: 0px;
+    width: 60%;
+    margin: 0 auto;
+    font-size: 0.7rem;
   }
 }
 
 .shipping {
-  font-size: 0.8em;
+  font-size: 0.7em;
   font-weight: 400;
   text-align: left;
   margin-top: 15px;
   color: $black;
   margin-bottom: 0px;
   @media screen and (min-width: 320px) and (max-width: 768px) {
-    margin-bottom: 10px;
+    margin:0;
+    padding: 5px 0;
   }
 }
 
