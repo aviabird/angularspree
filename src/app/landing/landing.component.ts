@@ -7,6 +7,7 @@ import { ProductActions } from './../product/actions/product-actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../interfaces';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-landing',
@@ -28,7 +29,9 @@ export class LandingComponent implements OnInit {
 
   constructor(private store: Store<AppState>,
     private actions: ProductActions,
-    private productService: ProductService) {
+    private productService: ProductService,
+    private meta: Meta,
+    private metaTitle: Title) {
     this.store.dispatch(this.actions.getAllProducts());
     this.products$ = this.store.select(getProducts);
     // #TO DO: Brands name hardcoded for now.
@@ -54,5 +57,17 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.addMetaInfo()
+  }
+
+  addMetaInfo() {
+    this.meta.updateTag({ name: 'description', content: environment.config.landing_page.description });
+    this.meta.updateTag({ name: 'keywords', content: environment.config.landing_page.title });
+    this.meta.updateTag({ name: 'title', content: environment.config.landing_page.title });
+    this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: environment.appName });
+    this.meta.updateTag({ property: 'og:description', content: environment.config.landing_page.description })
+    this.meta.updateTag({ property: "og:url", content: environment.config.frontEndUrl }),
+      this.metaTitle.setTitle(environment.config.landing_page.title);
+    this.meta.updateTag({ property: 'twitter:title', content: environment.config.landing_page.description })
   }
 }
