@@ -1,42 +1,81 @@
-.bannerStyle {
-  &h1 {
-    background-color: #ccc;
-    min-height: 300px;
-    text-align: center;
-    line-height: 300px;
-  }
-  @media (max-width: 768px) {
-    img {
-      height: 150px;
-      object-fit: cover;
+@import "../../shared/scss/_selected_theme_variables.scss";
+
+:host {
+  /deep/ .banner {
+    .bannerStyle {
+      &h1 {
+        background-color: #ccc;
+        min-height: 300px;
+        text-align: center;
+        line-height: 300px;
+      }
+      @media (max-width: 768px) {
+        img {
+          height: 150px;
+          object-fit: cover;
+        }
+      }
+    }
+    .ngucarouselPoint {
+      list-style-type: none;
+      padding: 3px;
+      white-space: nowrap;
+      overflow: auto;
+      position: relative;
+      left: 0;
+      box-sizing: border-box;
+      background-color: white;
+      margin: 0 auto -28px;
+      align-self: center;
+      width: fit-content;
+      border-radius: 5px 5px 0 0;
+      bottom: 27px;
+      @media (min-width: '768px') {
+        bottom: 0;
+      }
+    }
+    @media (min-width: '768px') {
+      .ngucarouselPoint {
+        bottom: 0;
+      }
+    }
+    .ngucarouselPoint li {
+      display: inline-block;
+      border-radius: 999px;
+      background-color: $theme-action-sub-color1;
+      padding: 5px;
+      margin: 0 3px;
+      transition: .4s ease all;
+    }
+    .ngucarouselPoint li.active {
+      background-color: white;
+      border: 1px solid $theme-action-sub-color1;
+      width: 10px;
     }
   }
-}
-
-.leftRs,
-.rightRs {
-  position: absolute;
-  margin: auto;
-  top: -10%;
-  bottom: 0;
-  border: none;
-  background-color: transparent;
-  opacity: 0.5;
-  background-repeat: no-repeat;
-  background-position: center;
-  padding: 0 4rem;
-  background-size: 3rem;
-  @media (max-width: 768px) {
-    display: none !important;
+  .leftRs,
+  .rightRs {
+    position: absolute;
+    margin: auto;
+    top: -10%;
+    bottom: 0;
+    border: none;
+    background-color: transparent;
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0 4rem;
+    background-size: 3rem;
+    @media (max-width: 768px) {
+      display: none !important;
+    }
   }
-}
-
-.leftRs {
-  left: 0;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
-}
-
-.rightRs {
-  right: 0;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+  .leftRs {
+    left: 0;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+  }
+  .rightRs {
+    right: 0;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+  }
 }

@@ -46,32 +46,37 @@
   }
 }
 
-.leftRs,
-.rightRs {
-  position: absolute;
-  top: -3.1rem;
-  margin: auto;
-  right: 0;
-  background-color: transparent;
-  border: 1.5px solid $theme-action-color;
-  height: 2rem;
-  width: 2rem;
-  border-radius: 9999px;
-  background-repeat: no-repeat;
-  background-size: 8px;
-  cursor: pointer;
-  @media (min-width: 768px) {
-    display: block !important;
+:host {
+  /deep/ .banner {
+    .leftRs,
+    .rightRs {
+      position: absolute;
+      top: -3.1rem;
+      margin: auto;
+      right: 0;
+      background-color: transparent;
+      border: 1.5px solid $theme-action-color;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 9999px;
+      background-repeat: no-repeat;
+      background-size: 8px;
+      cursor: pointer;
+      @media (min-width: 768px) {
+        display: block !important;
+      }
+    }
+
+    .leftRs {
+      background-image: url(../../../../assets/custom/arrow-left.png);
+      background-position: 9px 8px;
+      right: 3rem;
+    }
+
+    .rightRs {
+      background-image: url(../../../../assets/custom/arrow-right.png);
+      background-position: 11px 8px;
+    }
+
   }
-}
-
-.leftRs {
-  background-image: url(../../../../assets/custom/arrow-left.png);
-  background-position: 9px 8px;
-  right: 3rem;
-}
-
-.rightRs {
-  background-image: url(../../../../assets/custom/arrow-right.png);
-  background-position: 11px 8px;
 }
