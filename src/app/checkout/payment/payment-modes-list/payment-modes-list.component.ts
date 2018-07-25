@@ -21,7 +21,7 @@ import { ToastrService } from 'ngx-toastr';
 export class PaymentModesListComponent implements OnInit {
 
   @Input() paymentAmount: number;
-  @Input() orderNumber: number;
+  @Input() orderNumber: string;
   @Input() address: Address;
   isShippeble: boolean;
   showDummyCardInfo = environment.config.showDummyCardInfo;
@@ -89,7 +89,7 @@ export class PaymentModesListComponent implements OnInit {
   }
 
   makePaymentPayubiz() {
-    this.checkoutService.makePayment(this.paymentAmount, this.address)
+    this.checkoutService.makePayment(this.paymentAmount, this.address, this.orderNumber)
       .subscribe((response: any) => {
         response = response
         this.checkoutService.createNewPayment(this.selectedMode.id, this.paymentAmount).pipe(
