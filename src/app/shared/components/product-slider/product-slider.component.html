@@ -1,12 +1,13 @@
-<section class="mt-3" *ngIf="productlist?.length">
-  <div class="slider-section">
-    <div class="slider-control">
-      <button button color="primary " (click)="moveLeft() " class="slider-btn prv">left</button>
-      <button button color="primary " (click)="moveRight() " class="slider-btn next">right</button>
-    </div>
-  </div>
-  <drag-scroll class="d-flex scrollbar-hidden" #nav>
-    <app-inner-product drag-scroll-item class="col-6  col-sm-2  col-md-3 col-lg-2 product-box" *ngFor="let product of productlist " [product]="product"></app-inner-product>
-  </drag-scroll>
+<section class="mt-3" *ngIf="productsList?.length">
+  <ngu-carousel [inputs]="carouselOne">
+    <app-inner-product
+      NguCarouselItem
+      *ngFor="let product of productsList"
+      class="col-6 col-sm-2 col-md-3 col-lg-2 product-box m-1"
+      [product]="product">
+    </app-inner-product>
+    <button NguCarouselPrev class='leftRs'></button>
+    <button NguCarouselNext class='rightRs'></button>
+  </ngu-carousel>
   <hr>
 </section>
