@@ -16,13 +16,13 @@ export class ProductSliderComponent implements OnInit {
       grid: {xs: 2, sm: 3, md: 3, lg: 5, all: 0},
       slide: 2,
       speed: 400,
-      // animation: 'lazy',
+      animation: 'lazy',
       point: {
         visible: false
       },
       load: 2,
       touch: true,
-      easing: 'ease'
+      easing: 'ease-in'
     }
   }
 

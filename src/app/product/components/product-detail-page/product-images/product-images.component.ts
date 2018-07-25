@@ -17,6 +17,18 @@ export class ProductImagesComponent implements OnInit {
   imageSource2 = img2;
   @Input() images: Image[] = null;
   @Input() selectedImage: Image = null;
+  zoomOptions = {
+    peepView: {
+      borderColor: '#fff',
+      borderWidth: '2px',
+      borderStyle: 'solid',
+      cursor: 'zoom-in',
+    },
+    settings: {
+      zoom: 4,
+      gap: -250
+    }
+  };
   constructor() { }
 
   ngOnInit() { }

@@ -6,6 +6,10 @@
   @import "badge";
   @import "notify";
 
+  @media screen and (max-width: 768px) {
+    background-color: #efefef;
+  }
+
   input, button {
     &:focus {
       outline: none;
