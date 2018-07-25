@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { filter } from 'rxjs/operators';
 import { getAuthStatus } from './auth/reducers/selectors';
 import { AppState } from './interfaces';
@@ -36,6 +37,16 @@ export class AppComponent implements OnInit, OnDestroy {
     this.store.select(getAuthStatus).subscribe(() => {
       this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
     });
+
+    this.addFaviconIcon();
+  }
+
+  addFaviconIcon() {
+    const link = document.querySelector(`link[rel*='icon']`) || document.createElement('link') as any;
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = environment.config.fevicon;
+    document.getElementsByTagName('head')[0].appendChild(link);
   }
 
   isCheckoutRoute() {
