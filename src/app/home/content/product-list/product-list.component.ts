@@ -3,6 +3,7 @@ import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-product-list',
@@ -19,7 +20,8 @@ export class ProductListComponent implements OnInit {
   page: number;
   queryParams: any;
   screenwidth;
-  isMobile
+  isMobile;
+  appConfig = environment.config;
   constructor(
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
