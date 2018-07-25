@@ -1,7 +1,7 @@
 <div *ngIf="!isMobile">
   <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-5">
     <div class="col-12 col-md-5">
-      <app-image-container [images]="images" class="col-12" [selectedImage]="images[0]">
+      <app-image-container [images]="images" [isMobile]='isMobile' class="col-12" [selectedImage]="images[0]">
       </app-image-container>
     </div>
     <div class="col-md-7 col-12">
@@ -39,7 +39,7 @@
 
 </div>
 <div *ngIf="isMobile">
-  <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-1">
+  <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-2">
     <div class="col-12 ">
       <h1 itemprop="name" class="title">{{product.name}}</h1>
       <!-- <div class="product-subtitle">

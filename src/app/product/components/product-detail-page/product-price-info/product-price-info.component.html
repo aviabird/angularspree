@@ -88,7 +88,7 @@
             </li>
           </ul>
         </div>
-        <div id="featured-promotions" class="pt-3" *ngIf="customOptionTypesHash">
+        <div id="featured-promotions" class="pt-3 px-3" *ngIf="customOptionTypesHash">
           <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
             [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
           <hr class="">

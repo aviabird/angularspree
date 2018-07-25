@@ -5,7 +5,12 @@
 
 h1 {
   font-size: 1.7em;
-  color: $gray-900
+  color: $gray-900;
+  @media screen and(min-width: 310px) and(max-width: 768px) {
+    font-size: 1.2em;
+    line-height: 1.2em;
+    font-weight: 700;
+  }
 }
 
 .pdp-add-to-bag {
