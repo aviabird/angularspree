@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Address } from '../../../core/models/address';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from '../../../../../node_modules/rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-address',
@@ -23,7 +23,7 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   @Input() addressEdit: any
   @Input() orderNumber: string
   @Output() addressEdited: EventEmitter<boolean> = new EventEmitter<boolean>();
-  orderSub$: Subscription;
+  // orderSub$: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -45,7 +45,7 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
+    // this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
     if (this.addressEdit != null) {
       this.existingAddress(this.addressForm)
     }
@@ -107,7 +107,7 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.orderSub$.unsubscribe();
+    // this.orderSub$.unsubscribe();
   }
   showEdited() {
     this.addressEdited.emit(true)

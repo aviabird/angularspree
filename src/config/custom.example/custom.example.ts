@@ -1,3 +1,6 @@
+import { CUSTOM_APP_DATA } from "./app-data";
+import { CUSTOM_META_DATA } from "./meta-data";
+
 export const CUSTOM_EXAMPLE_CONFIG = {
   // Add Your custom configs here
   prodApiEndpoint: 'http://my-prod.api.example.com/',
@@ -20,6 +23,9 @@ export const CUSTOM_EXAMPLE_CONFIG = {
   freeShippingAmount: 10,
   currency_symbol: '$', //USD $
   PaymentMethodCod: 'COD',
-  PaymentMethodPayubiz: 'Payubiz', 
+  PaymentMethodPayubiz: 'Payubiz',
   defaultPaymentMethod: 'Payubiz',
+
+  ...CUSTOM_APP_DATA,
+  ...CUSTOM_META_DATA
 };
