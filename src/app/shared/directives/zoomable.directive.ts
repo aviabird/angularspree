@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: '[zoomable]'
 })
 export class ZoomableDirective implements OnInit {
@@ -38,7 +39,7 @@ export class ZoomableDirective implements OnInit {
     },
     zoomView: {
       position: 'absolute',
-      zIndex: '999'
+      zIndex: '999',
     },
     settings: {
       zoom: 3,
@@ -46,6 +47,7 @@ export class ZoomableDirective implements OnInit {
     }
   };
 
+  // tslint:disable-next-line:no-input-rename
   @Input('zoomable') customOptions?: {
     hoverView?: {},
     peepView?: {},
@@ -53,6 +55,7 @@ export class ZoomableDirective implements OnInit {
     settings?: {}
   };
 
+  // tslint:disable-next-line:no-input-rename
   @Input('zoomableSrc') sourceImage?= '';
 
   constructor(private el: ElementRef, private renderer: Renderer) { }
@@ -230,6 +233,9 @@ export class ZoomableDirective implements OnInit {
     this.renderer.setElementStyle(this.zoomView, 'backgroundImage', `url("${imgSrc}")`);
     this.renderer.setElementStyle(this.zoomView, 'backgroundPosition', `-${xRatio * bgWidth}px -${yRatio * bgHeight}px`);
     this.renderer.setElementStyle(this.zoomView, 'backgroundSize', `${bgWidth}px ${bgHeight}px`);
+    this.renderer.setElementStyle(this.zoomView, 'backgroundRepeat', 'no-repeat');
+    this.renderer.setElementStyle(this.zoomView, 'height', '500px');
+    this.renderer.setElementStyle(this.zoomView, 'width', '500px');
   }
 
   private destroyViews() {
