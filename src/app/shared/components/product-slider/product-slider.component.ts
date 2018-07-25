@@ -22,7 +22,8 @@ export class ProductSliderComponent implements OnInit {
       },
       load: 2,
       touch: true,
-      easing: 'ease-in'
+      easing: 'ease-in',
+      custom: 'banner'
     }
   }
 
