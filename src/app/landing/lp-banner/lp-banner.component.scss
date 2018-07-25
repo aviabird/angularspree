@@ -1,8 +1,16 @@
-.bannerStyle h1 {
-  background-color: #ccc;
-  min-height: 300px;
-  text-align: center;
-  line-height: 300px;
+.bannerStyle {
+  &h1 {
+    background-color: #ccc;
+    min-height: 300px;
+    text-align: center;
+    line-height: 300px;
+  }
+  @media (max-width: 768px) {
+    img {
+      height: 150px;
+      object-fit: cover;
+    }
+  }
 }
 
 .leftRs,
@@ -19,9 +27,7 @@
   padding: 0 4rem;
   background-size: 3rem;
   @media (max-width: 768px) {
-    top: -30%;
-    padding: 0 1rem;
-    background-size: 1rem;
+    display: none !important;
   }
 }
 

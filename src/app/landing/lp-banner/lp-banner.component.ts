@@ -20,7 +20,37 @@ export class LpBannerComponent implements OnInit {
       speed: 400,
       interval: 4000,
       point: {
-        visible: true
+        visible: true,
+        pointStyles: `
+          .ngucarouselPoint {
+            list-style-type: none;
+            padding: 3px;
+            white-space: nowrap;
+            overflow: auto;
+            position: relative;
+            bottom: 27px;
+            left: 0;
+            box-sizing: border-box;
+            background-color: white;
+            margin: 0 auto -28px;
+            align-self: center;
+            width: fit-content;
+            border-radius: 5px 5px 0 0;
+          }
+          .ngucarouselPoint li {
+            display: inline-block;
+            border-radius: 999px;
+            background-color: rgba(0, 0, 255, 0.55);
+            padding: 5px;
+            margin: 0 3px;
+            transition: .4s ease all;
+          }
+          .ngucarouselPoint li.active {
+              background-color: white;
+              border: 1px solid rgba(0, 0, 255, 0.55);
+              width: 10px;
+          }
+        `
       },
       load: 2,
       touch: true,
