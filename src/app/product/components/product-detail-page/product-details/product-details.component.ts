@@ -18,7 +18,9 @@ import {
 
 import { Product } from './../../../../core/models/product';
 import { ProductService } from './../../../../core/services/product.service';
+import { Meta, Title } from '@angular/platform-browser';
 import { getAuthStatus } from '../../../../auth/reducers/selectors';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-product-details',
@@ -41,6 +43,7 @@ export class ProductDetailsComponent implements OnInit {
   similarProducts$: Observable<any>;
   relatedProducts$: Observable<any>;
   reviewProducts$: Observable<any>;
+  frontEndUrl = environment.config.frontEndUrl
 
   constructor(
     private checkoutActions: CheckoutActions,
@@ -49,13 +52,17 @@ export class ProductDetailsComponent implements OnInit {
     private router: Router,
     private toastrService: ToastrService,
     private searchActions: SearchActions,
-    private productsActions: ProductActions
-  ) { }
+    private productsActions: ProductActions,
+    private meta: Meta,
+    private title: Title
+  ) {
+  }
 
   ngOnInit() {
     this.screenwidth = window.innerWidth;
     this.calculateInnerWidth();
 
+    this.addMetaInfo(this.product)
     if (this.product.has_variants) {
       const product = this.product.variants[0];
       this.description = product.description;
@@ -91,6 +98,7 @@ export class ProductDetailsComponent implements OnInit {
 
     this.store.dispatch(this.productsActions.getProductReviews(this.productID));
     this.reviewProducts$ = this.store.select(productReviews);
+
   }
   calculateInnerWidth() {
     if (this.screenwidth <= 800) {
@@ -120,5 +128,16 @@ export class ProductDetailsComponent implements OnInit {
   selectedVariant(variant) {
     this.images = variant.images
     this.variantId = variant.id
+  }
+
+  addMetaInfo(product: Product) {
+    this.meta.updateTag({ name: 'description', content: product.meta_description });
+    this.meta.updateTag({ name: 'keywords', content: product.meta_keywords });
+    this.meta.updateTag({ name: 'title', content: product.slug });
+    this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: environment.appName });
+    this.meta.updateTag({ property: 'og:description', content: product.meta_description })
+    this.meta.updateTag({ property: "og:url", content: environment.config.frontEndUrl }),
+      this.title.setTitle(this.product.name),
+      this.meta.updateTag({ property: 'twitter:title', content: this.product.description })
   }
 }
