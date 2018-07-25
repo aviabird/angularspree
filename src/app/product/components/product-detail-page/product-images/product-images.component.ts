@@ -27,7 +27,6 @@ export class ProductImagesComponent implements OnInit {
     },
     settings: {
       zoom: 4,
-      gap: -250
     }
   };
   @Input() isMobile;
