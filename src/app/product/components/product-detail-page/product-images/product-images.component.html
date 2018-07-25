@@ -1,16 +1,32 @@
-<div class="image-container" *ngIf="images">
-  <div class="row">
-    <div class="col-1">
-      <div class="thumbnails-vertical-container d-none d-lg-block">
-        <button class="thumbnails-thumbnail-button" *ngFor="let image of images">
-          <img class="thumbnails-thumbnail img-fluid" [src]="getProductImageUrl(image.small_url)" [alt]="image.alt" (mouseover)="onMouseOver(image)">
-        </button>
+
+<div *ngIf="!isMobile">
+  <div class="image-container" *ngIf="images">
+    <div class="row">
+      <div class="col-1">
+        <div class="thumbnails-vertical-container d-none d-lg-block">
+          <button class="thumbnails-thumbnail-button" *ngFor="let image of images">
+            <img class="thumbnails-thumbnail img-fluid" [src]="getProductImageUrl(image.small_url)" [alt]="image.alt" (mouseover)="onMouseOver(image)">
+          </button>
+        </div>
+      </div>
+      <div class="col-11" *ngIf="selectedImage">
+        <!-- <img itemprop="image" [zoomable]='zoomOptions' [src]="getProductImageUrl(selectedImage.large_url)" [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid" -->
+        <img itemprop="image" [zoomable]='zoomOptions' [zoomableSrc]='getProductImageUrl(selectedImage.large_url)' [src]="getProductImageUrl(selectedImage.large_url)"
+          [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid">
       </div>
     </div>
-    <div class="col-11" *ngIf="selectedImage">
-      <!-- <img itemprop="image" [zoomable]='zoomOptions' [src]="getProductImageUrl(selectedImage.large_url)" [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid" -->
-      <img itemprop="image" [zoomable]='zoomOptions' [zoomableSrc]='getProductImageUrl(selectedImage.large_url)' [src]="getProductImageUrl(selectedImage.large_url)"
-        [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid">
-    </div>
+  </div>
+</div>
+<div *ngIf="isMobile">
+  <div *ngIf="images">
+    <ngu-carousel [inputs]="carouselOne">
+      <ngu-item NguCarouselItem *ngFor="let image of images" class="bannerStyle">
+        <a>
+          <img [src]="getProductImageUrl(image.large_url)" alt="" style="display: block; width: 100%;">
+        </a>
+      </ngu-item>
+      <button NguCarouselPrev class='leftRs'></button>
+      <button NguCarouselNext class='rightRs'></button>
+    </ngu-carousel>
   </div>
 </div>

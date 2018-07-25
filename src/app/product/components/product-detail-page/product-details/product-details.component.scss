@@ -5,7 +5,12 @@
 
 h1 {
   font-size: 1.7em;
-  color: $gray-900
+  color: $gray-900;
+  @media screen and(min-width: 310px) and(max-width: 768px) {
+    font-size: 1.2em;
+    line-height: 1.2em;
+    font-weight: 700;
+  }
 }
 
 .pdp-add-to-bag {
@@ -15,6 +20,17 @@ h1 {
   background-color: $theme-main-color;
   border: 1px solid $theme-main-color;
   color: $white;
+}
+
+.rating {
+  transform: scale(0.7);
+}
+
+.hide-phone {
+  @media screen and(min-width: 310px) and(max-width: 768px) {
+    display: block;
+    text-align: right
+  }
 }
 
 .pdp-button {
@@ -98,15 +114,14 @@ h1 {
       text-align: justify;
     }
   }
-
   .review-sort-filter {
     border-top: 1px solid $gray-10;
     border-top: 1px solid $gray-10;
     background-color: $gray-200;
     padding: 1rem;
-
   }
 }
+
 .product-box {
   border-radius: 5px;
   margin-top: 1rem;
