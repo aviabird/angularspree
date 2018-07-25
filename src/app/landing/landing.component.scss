@@ -27,43 +27,6 @@
   /deep/ .scrollbar-hidden {
     overflow: hidden !important;
   }
-  /deep/ .slider-section {
-    position: relative;
-    .slider-control {
-      position: absolute;
-      right: 0;
-      top: 0;
-      .slider-btn {
-        margin: 0 3px;
-        border: 1.5px solid $theme-action-color;
-        -webkit-border-radius: 50%;
-        border-radius: 50%;
-        width: 28px;
-        height: 28px;
-        display: block;
-        text-indent: -9999px;
-        float: left;
-        cursor: pointer;
-        background: $white;
-        &.next {
-          background-image: url(../../../src/assets/custom/arrow-right.png);
-          background-position: 10px;
-          background-repeat: no-repeat;
-          background-size: 8px;
-        }
-        &.prv {
-          background-image: url(../../../src/assets/custom/arrow-left.png);
-          background-position: 7px;
-          background-repeat: no-repeat;
-          background-size: 8px;
-        }
-      }
-      .slider-btn:hover {
-        background-color: $theme-action-color - 40;
-        color: $white;
-      }
-    }
-  }
   /deep/ .product-tile {
     text-align: center;
     a {

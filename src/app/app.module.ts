@@ -25,7 +25,6 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './app.reducers';
 import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-header.component';
 import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
-import { DragScrollModule } from 'ngx-drag-scroll';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -67,7 +66,6 @@ import { ToastrModule } from 'ngx-toastr';
     HomeModule,
     LayoutModule,
     Ng2UiAuthModule.forRoot(myAuthConfig),
-    DragScrollModule,
     ToastrModule.forRoot({
       timeOut: 1500,
       positionClass: 'toast-top-right',

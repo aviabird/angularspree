@@ -2,7 +2,6 @@ import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { DragScrollModule } from 'ngx-drag-scroll';
 import { NguCarouselModule } from '@ngu/carousel';
 
 // Pipes
@@ -38,10 +37,8 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     // pipes
     KeysPipe,
     HumanizePipe,
-    DragScrollModule,
     ZoomableDirective,
     ProductSliderComponent,
-    DragScrollModule,
     NguCarouselModule
   ],
   imports: [
@@ -49,7 +46,6 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     ReactiveFormsModule,
     CommonModule,
     BsDropdownModule.forRoot(),
-    DragScrollModule,
     RouterModule,
     NgxInputStarRatingModule,
     NguCarouselModule

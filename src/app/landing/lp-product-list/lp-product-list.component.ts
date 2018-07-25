@@ -1,4 +1,3 @@
-import { DragScrollComponent } from 'ngx-drag-scroll';
 import { SearchActions } from './../../home/reducers/search.actions';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
@@ -7,7 +6,6 @@ import {
   Component,
   OnInit,
   Input,
-  ViewChild,
   ChangeDetectionStrategy
 } from '@angular/core';
 
@@ -21,7 +19,6 @@ export class LpProductListComponent implements OnInit {
   @Input() products;
   @Input() dealsType;
   @Input() dealsId;
-  @ViewChild('nav', {read: DragScrollComponent}) ds: DragScrollComponent;
 
   constructor(
     private searchActions: SearchActions,
@@ -30,13 +27,6 @@ export class LpProductListComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
-
-  moveLeft() {
-    this.ds.moveLeft();
-  }
-  moveRight() {
-    this.ds.moveRight();
-  }
 
   getDeals() {
     const search = new URLSearchParams();
