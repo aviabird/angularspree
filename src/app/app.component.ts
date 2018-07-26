@@ -19,6 +19,12 @@ export class AppComponent implements OnInit, OnDestroy {
   currentUrl: string;
   currentStep: string;
   checkoutUrls = ['/checkout/cart', '/checkout/address', '/checkout/payment'];
+  schema = {
+    '@context': 'http://schema.org',
+    '@type': 'Organization',
+    'name': environment.appName,
+    'url': location.origin
+  };
 
   constructor(
     private router: Router,
