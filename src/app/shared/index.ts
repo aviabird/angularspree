@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NguCarouselModule } from '@ngu/carousel';
+import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 
 // Pipes
 import { KeysPipe } from './pipes/keys.pipe';
@@ -34,6 +35,7 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     BsDropdownModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxJsonLdModule,
     // pipes
     KeysPipe,
     HumanizePipe,
@@ -48,7 +50,8 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     BsDropdownModule.forRoot(),
     RouterModule,
     NgxInputStarRatingModule,
-    NguCarouselModule
+    NguCarouselModule,
+    NgxJsonLdModule
   ]
 })
 export class SharedModule { }
