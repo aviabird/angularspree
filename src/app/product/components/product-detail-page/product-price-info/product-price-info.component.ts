@@ -92,6 +92,7 @@ export class ProductPriceInfoComponent implements OnInit {
   getSelectedVariant(variant) {
     this.selectedVariant.emit(variant)
   }
+
   get discount() {
     return this.product.master.cost_price - this.product.price;
   }

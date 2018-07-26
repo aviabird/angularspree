@@ -1,3 +1,4 @@
+import { tap } from 'rxjs/operators';
 import { relatedProducts, productReviews } from './../../../reducers/selectors';
 import { ProductActions } from './../../../actions/product-actions';
 import { Observable } from 'rxjs';
@@ -13,7 +14,7 @@ import {
   Component,
   OnInit,
   Input,
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 import { Product } from './../../../../core/models/product';
@@ -29,21 +30,21 @@ import { environment } from '../../../../../environments/environment';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailsComponent implements OnInit {
-
   @Input() product: Product;
 
   description: any;
   images: any;
   variantId: any;
   productID: any;
-  productdata: any;
   isMobile = false;
   screenwidth: any;
   isAuthenticated: boolean;
   similarProducts$: Observable<any>;
   relatedProducts$: Observable<any>;
   reviewProducts$: Observable<any>;
-  frontEndUrl = environment.config.frontEndUrl
+  frontEndUrl = environment.config.frontEndUrl;
+  schema: any;
+  selectedVariant: any;
 
   constructor(
     private checkoutActions: CheckoutActions,
@@ -55,19 +56,32 @@ export class ProductDetailsComponent implements OnInit {
     private productsActions: ProductActions,
     private meta: Meta,
     private title: Title
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.screenwidth = window.innerWidth;
     this.calculateInnerWidth();
 
-    this.addMetaInfo(this.product)
+    this.addMetaInfo(this.product);
+
+    this.initData();
+
+    this.store.dispatch(this.productsActions.getRelatedProduct(this.productID));
+    this.relatedProducts$ = this.store.select(relatedProducts);
+
+    this.store.dispatch(this.productsActions.getProductReviews(this.productID));
+    this.reviewProducts$ = this.store.select(productReviews);
+
+    this.addJsonLD(this.product);
+  }
+
+  initData() {
     if (this.product.has_variants) {
       const product = this.product.variants[0];
       this.description = product.description;
       this.images = product.images;
       this.variantId = product.id;
+      this.selectedVariant = product;
       this.productID = this.product.id;
       this.product.display_price = product.display_price;
       this.product.price = product.price;
@@ -78,13 +92,8 @@ export class ProductDetailsComponent implements OnInit {
       this.images = this.product.master.images;
       this.variantId = this.product.master.id;
       this.productID = this.product.id;
+      this.selectedVariant = this.product.master;
     }
-
-
-    this.productService.getRelatedProducts(this.productID)
-      .subscribe(productdata => {
-        this.productdata = productdata;
-      });
 
     if (this.product.taxon_ids[0]) {
       this.store.dispatch(
@@ -92,20 +101,13 @@ export class ProductDetailsComponent implements OnInit {
       );
       this.similarProducts$ = this.store.select(getProductsByKeyword);
     }
-
-    this.store.dispatch(this.productsActions.getRelatedProduct(this.productID));
-    this.relatedProducts$ = this.store.select(relatedProducts);
-
-    this.store.dispatch(this.productsActions.getProductReviews(this.productID));
-    this.reviewProducts$ = this.store.select(productReviews);
-
   }
+
   calculateInnerWidth() {
     if (this.screenwidth <= 800) {
       this.isMobile = this.screenwidth;
     }
   }
-
 
   addToCart(quantitiy) {
     this.store.dispatch(
@@ -125,19 +127,70 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  selectedVariant(variant) {
-    this.images = variant.images
-    this.variantId = variant.id
+  selectVariant(variant) {
+    this.images = variant.images;
+    this.variantId = variant.id;
+    this.selectedVariant = variant;
+    this.addJsonLD(this.product);
   }
 
+  get selectedImage() { return this.images ? this.images[0] : '' }
+
   addMetaInfo(product: Product) {
-    this.meta.updateTag({ name: 'description', content: product.meta_description });
-    this.meta.updateTag({ name: 'keywords', content: product.meta_keywords });
+    this.meta.updateTag({
+      name: 'description',
+      content: product.meta_description
+    });
+
+    this.meta.updateTag({
+      name: 'keywords',
+      content: product.meta_keywords
+    });
+
     this.meta.updateTag({ name: 'title', content: product.slug });
-    this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: environment.appName });
-    this.meta.updateTag({ property: 'og:description', content: product.meta_description })
-    this.meta.updateTag({ property: "og:url", content: environment.config.frontEndUrl }),
-      this.title.setTitle(this.product.name),
-      this.meta.updateTag({ property: 'twitter:title', content: this.product.description })
+
+    this.meta.updateTag({
+      name: 'apple-mobile-web-app-title',
+      content: environment.appName
+    });
+
+    this.meta.updateTag({
+      property: 'og:description',
+      content: product.meta_description
+    });
+
+    this.meta.updateTag({
+      property: 'og:url',
+      content: environment.config.frontEndUrl
+    });
+
+    this.title.setTitle(this.product.name), this.meta.updateTag({
+      property: 'twitter:title',
+      content: this.product.description
+    });
+  }
+
+  addJsonLD(product: Product) {
+    this.schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      'url': location.href,
+      'itemCondition': 'https://schema.org/NewCondition',
+      'aggregateRating': {
+        '@type': 'AggregateRating',
+        'ratingValue': product.avg_rating,
+        'reviewCount': product.reviews_count
+      },
+      'description': product.meta_description,
+      'name': product.name,
+      'image': this.selectedImage && this.selectedImage.product_url,
+      'offers': [{
+        '@type': 'Offer',
+        'itemCondition': 'https://schema.org/NewCondition',
+        'availability': this.selectedVariant.is_orderable ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+        'price': this.selectedVariant.price,
+        'priceCurrency': this.selectedVariant.currency,
+      }]
+    };
   }
 }
