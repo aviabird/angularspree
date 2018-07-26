@@ -221,7 +221,7 @@ export class CheckoutService {
       .pipe(map(_ => this.changeOrderState().subscribe()));
   }
 
-  makePayment(paymentAmount: number, address: Address) {
+  makePayment(paymentAmount: number, address: any, orderNumber: string) {
     const payUbizSalt = environment.config.payuBizSalt;
     const payUbizKey = environment.config.payuBizKey;
     const successUrl = `${environment.apiEndpoint}payubiz/handle_payment`;
@@ -229,12 +229,12 @@ export class CheckoutService {
 
     const hashParams = {
       key: payUbizKey,
-      txnid: `${this.orderNumber}` + `${(Math.random().toString(36).substr(2, 9)).toUpperCase()}`,
+      txnid: `${orderNumber}` + `${(Math.random().toString(36).substr(2, 9)).toUpperCase()}`,
       amount: paymentAmount,
       productinfo: `${environment.appName}-Product`,
       firstname: address.firstname,
       email: JSON.parse(localStorage.getItem('user')).email,
-      udf1: `${this.orderNumber}`
+      udf1: `${orderNumber}`
     }
     // tslint:disable-next-line:max-line-length
     const paramsList = `${hashParams.key}|${hashParams.txnid}|${hashParams.amount}|${hashParams.productinfo}|${hashParams.firstname}|${hashParams.email}|${hashParams.udf1}||||||||||${payUbizSalt}`;
