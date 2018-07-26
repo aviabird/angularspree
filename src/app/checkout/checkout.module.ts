@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { routes } from './checkout.routes';
+import { OrderFailedComponent } from './order-failed/order-failed.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { routes } from './checkout.routes';
     AddressModule,
     PaymentModule
   ],
-  declarations: [OrderSuccessComponent],
+  declarations: [OrderSuccessComponent, OrderFailedComponent],
   providers: [
     CheckoutActions
   ]

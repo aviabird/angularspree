@@ -1,0 +1,92 @@
+<div class="container" *ngIf="orderDetails">
+  <div class="col-12 thankyou thankyou1 shadow-sm mt-5 mb-3">
+    <h1>Sorry Your payment has been failed</h1>
+    <h5 *ngIf=errorReason>Reason: {{errorReason}}</h5>
+    <div class="float-left">
+      <i class="fa fa-close custom"></i>
+    </div>
+    <div>
+      <p class="w-75 text-success thankyoumsg"> Your order has been placed but payment is not processes.Retry payment to complete order.
+      </p>
+    </div>
+  </div>
+  <div class="order shadow-sm">
+    <div class="row">
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <h3>Order Details</h3>
+        <table>
+          <tr>
+            <td>Order ID:</td>
+            <td>{{orderDetails.number}}({{orderDetails.total_quantity}} Item(s))</td>
+          </tr>
+          <tr>
+            <td>Order Date:</td>
+            <td>{{orderDetails.created_at}}</td>
+          </tr>
+          <tr>
+            <td>Total Amount:</td>
+            <td>{{orderDetails.display_total}} through {{orderDetails.payments[0].payment_method.name}}</td>
+          </tr>
+          <tr *ngIf=orderDetails.payment_state>
+            <td>Payment Status:</td>
+            <td>
+              <b class="text-uppercase">
+                <button class="btn btn-primary" (click)="retryPayment(orderDetails)">
+                  Retry Payment
+                </button>
+              </b>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <h3>Delivery Address</h3>
+        <table>
+          <tr>
+            <td>Name: </td>
+            <td>{{orderDetails.ship_address.full_name}}</td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td>{{orderDetails.ship_address.address1}}, {{orderDetails.ship_address.address2}}, {{orderDetails.ship_address.city}}</td>
+          </tr>
+          <tr>
+            <td>Pincode:</td>
+            <td>{{orderDetails.ship_address.zipcode}}</td>
+          </tr>
+          <tr>
+            <td>Phone:</td>
+            <td>{{orderDetails.ship_address.phone}}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{orderDetails.email}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+        <h3>Shipping</h3>
+        <div class="col-sm text-uppercase p-0">
+          <p>Shipping Status: </p>
+          <b>{{orderDetails.shipment_state}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="order-items shadow-sm mt-3 mb-3">
+    <div class="col-sm">
+      <h3>Item(s)</h3>
+      <div class="row" *ngFor="let line_item of orderDetails.line_items">
+        <a [routerLink]="['/', line_item.variant.slug]" class="col-sm col-3">
+          <img [src]="getProductImageUrl(line_item)">
+        </a>
+        <div class="col-sm col-9">
+          <p>{{line_item.variant.name}}</p>
+          <p>Qty: {{line_item.quantity}}</p>
+          <p>{{line_item.variant.options_text}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
