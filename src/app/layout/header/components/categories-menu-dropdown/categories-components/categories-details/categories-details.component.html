@@ -1,21 +1,18 @@
-<div class="container bgimg" *ngIf="!screenwidth" [ngStyle]="{'background': '#fff url(' + taxonImageLink + ') no-repeat 0 0'}">
-  <div class="row mr-0">
-    <div class="col-md-7 ">
-      <div class="row">
-        <div class="col-md-3 p-0" *ngFor="let taxon of taxons">
+<div class="bgimg" *ngIf="!screenwidth" [ngStyle]="{'background': '#fff url(' + taxonImageLink + ') no-repeat 0 0'}">
+  <div class="row m-0">
+    <div class="col-md-9 py-3">
+      <div class="row m-0">
+        <div class="col-md-4 p-3" *ngFor="let taxon of taxons">
           <div>
-            <a [routerLink]="['/search']" [queryParams]="{id: taxon.id}">
-               <b class="sucathead">{{taxon.name}}</b>
-            </a>
+            <a [routerLink]="['/search']" [queryParams]="{id: taxon.id}" class="headlinks">
+              {{taxon.name}} </a>
             <app-categories-list [taxons]="taxon.taxons"></app-categories-list>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-9 p-0 my-3">
-          <h4>Popular Brands</h4>
-          <app-brand-logo [brandList]="brandLists$ |async"></app-brand-logo>
-        </div>
+      <div class="col-md-9 pl-3 my-3">
+        <h4>Popular Brands</h4>
+        <app-brand-logo [brandList]="brandLists$ |async"></app-brand-logo>
       </div>
     </div>
     <!-- to do -->
@@ -24,7 +21,7 @@
     </div> -->
   </div>
 </div>
-<div class="container catcon" *ngIf="screenwidth">
+<div class="catcon" *ngIf="screenwidth">
   <div class="row">
     <div class="col-md-8 catconinner">
 

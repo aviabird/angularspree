@@ -6,7 +6,8 @@
       </app-image-container>
     </div>
     <div class="col-md-7 col-12">
-      <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectVariant($event)"
+      
+      <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectedVariant($event)"
         class="row">
       </app-product-price-info>
     </div>
@@ -36,7 +37,7 @@
       <app-product-slider [productsList]="relatedProducts"></app-product-slider>
     </div>
   </div>
-  <app-product-review [product]="product" [reviewList]='reviewProducts$ | async'></app-product-review>
+  <app-product-review [product]="product" id="review"[reviewList]='reviewProducts$ | async'></app-product-review>
 
 </div>
 <div *ngIf="isMobile">

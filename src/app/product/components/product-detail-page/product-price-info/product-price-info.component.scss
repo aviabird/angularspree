@@ -89,7 +89,10 @@
         margin: auto;
         p {
           &:first-child {
-            text-align: right
+            text-align: left;
+            @media only screen and (min-width: 320px) and (max-width: 767px) {
+              text-align: left;
+            }
           }
         }
       }
@@ -198,6 +201,30 @@
     width: 40%;
     @media only screen and (min-width: 320px) and (max-width: 767px) {
       width:100%
+    }
+  }
+}
+
+.product-price {
+  li {
+    width: 100%;
+    ul {
+      li {
+        &:first-child {
+          width: 40%;
+          text-align: right;
+          font-size: 1em;
+          color: $gray-600;
+          font-weight: 400;
+        }
+        width: 60%;
+        float: left;
+        padding: 7px 5px;
+        font-size: 1.2em;
+        font-weight: 700;
+        line-height: 1.2em;
+        color: $red;
+      }
     }
   }
 }

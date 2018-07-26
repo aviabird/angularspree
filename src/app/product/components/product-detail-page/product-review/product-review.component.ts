@@ -36,8 +36,7 @@ export class ProductReviewComponent implements OnInit {
   showReviewForm() {
     if (this.isAuthenticated) {
       this.router.navigate([this.product.slug, 'write_review'], { queryParams: { 'prodId': this.productID } });
-    }
-    else {
+    } else {
       this.toastrService.info('Please Login to write review.', 'Login')
     }
   }
