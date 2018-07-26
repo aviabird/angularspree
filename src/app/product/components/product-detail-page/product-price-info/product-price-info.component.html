@@ -24,7 +24,7 @@
       <div id="product-vitals">
         <div id="pricing">
           <ul class="product-pricing">
-            <li class="list-price" *ngIf="discount > 0">
+            <li class="list-price">
               <p class="title">
                 List Price:</p>
               <p class="price">{{product.currency}}{{product.master.cost_price}}</p>
@@ -39,7 +39,7 @@
                 </span>
               </p>
             </li>
-            <li class="you-save" *ngIf="discount > 0">
+            <li class="you-save">
               <p class="title">You Save:</p>
               <p class="price">
                 {{product.currency}}{{discount}} ({{discountPercent}})
@@ -59,13 +59,13 @@
     </div>
   </div>
 </div>
-<div *ngIf="isMobile" > 
+<div *ngIf="isMobile">
   <div class="col-12 p-0">
     <div class="buybox-wrapper">
       <div id="product-vitals">
         <div id="pricing">
           <ul class="product-pricing pl-3">
-            <li class="list-price" *ngIf="discount > 0">
+            <li class="list-price">
               <p class="title">
                 List Price:</p>
               <p class="price">{{product.currency}}{{product.master.cost_price}}</p>
@@ -80,7 +80,7 @@
                 </span>
               </p>
             </li>
-            <li class="you-save" *ngIf="discount > 0">
+            <li class="you-save">
               <p class="title">You Save:</p>
               <p class="price">
                 {{product.currency}}{{discount}} ({{discountPercent}})
@@ -88,10 +88,10 @@
             </li>
           </ul>
         </div>
-        <div id="featured-promotions" class="pt-3 px-3" *ngIf="customOptionTypesHash">
+        <div id="featured-promotions" *ngIf="customOptionTypesHash">
           <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
             [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
-          <hr class="">
+
         </div>
       </div>
       <div id="buybox" class="">

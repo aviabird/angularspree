@@ -7,7 +7,8 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
    <div *ngIf='paginationData.total_count > 0'>
     <app-content-header (toggleSize)="toggleSize($event)"
      [paginationInfo]="paginationData" [fillterList]="fillterList"></app-content-header>
-    <app-product-list [(toggleLayout)]='toggleLayout' [products]='productsList' [paginationData]='paginationData' [taxonIds]="taxonIds"></app-product-list>
+    <app-product-list [(toggleLayout)]='toggleLayout'
+     [products]='productsList' [paginationData]='paginationData' [taxonIds]="taxonIds"></app-product-list>
     </div>
   `,
   //   styleUrls: ['./content-header.component.scss'] <app-filter-summary></app-filter-summary>
