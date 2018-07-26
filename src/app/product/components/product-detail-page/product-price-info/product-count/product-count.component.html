@@ -18,7 +18,7 @@
         <button (click)="buyNow(count)" class="btn themebtnprimary themebtnprimarysade mt-1">Buy Now</button>
       </div>
       <div class="buttons row" *ngIf="!isOrderable">
-        <input type="submit" class=" btn themebtnprimary themebtndisable" value="Out of Stock" disabled>
+        <input type="submit" class=" btn themebtnprimary themebtndisable" value="Out of Stock" (click)="addToCart(count)" disabled>
       </div>
     </form>
   </div>
