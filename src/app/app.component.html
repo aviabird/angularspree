@@ -1,13 +1,13 @@
+<ngx-json-ld [json]="schema"></ngx-json-ld>
 <div class="selected-theme">
   <section>
     <ng-progress [color]="'red'" [spinner]="false"></ng-progress>
 
     <app-header *ngIf="currentUrl"></app-header>
-    
+
     <main class="main-body">
       <router-outlet></router-outlet>
-    </main>   
+    </main>
     <app-footer *ngIf="currentUrl"></app-footer>
-    
   </section>
 </div>

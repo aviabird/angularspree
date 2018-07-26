@@ -298,6 +298,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@ngx-lite/json-ld@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@ngx-lite/json-ld/-/json-ld-0.4.2.tgz#03e40dc0c1eeadd10a8d1a9034bb88ce20d254d7"
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngx-progressbar/core@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@ngx-progressbar/core/-/core-5.0.1.tgz#a8566384638512b7e53945a3995ccbd79ce21c31"

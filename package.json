@@ -41,6 +41,7 @@
     "@ngrx/store": "^6.0.1",
     "@ngu/carousel": "^1.4.8",
     "@ngx-lite/input-star-rating": "^0.1.5",
+    "@ngx-lite/json-ld": "^0.4.2",
     "@ngx-progressbar/core": "^5.0.1",
     "@ngx-progressbar/http": "^5.0.1",
     "@types/crypto-js": "^3.1.40",

@@ -21,7 +21,7 @@
 </div>
 <div class="cart-section container p-0" *ngIf="isMobile">
   <div class="right col-12">
-    <app-order-total-summary [itemTotal]="itemTotal$ | async" [isMobile]="isMobile"></app-order-total-summary>
+    <app-order-total-summary *ngIf="(totalCartItems$ | async) > 0" [itemTotal]="itemTotal$ | async" [isMobile]="isMobile"></app-order-total-summary>
   </div>
   <div *ngIf="(totalCartItems$ | async) > 0 else emptyCart">
     <div class="left col-12">
