@@ -5,26 +5,22 @@
   @import "header";
   @import "badge";
   @import "notify";
-
   @media screen and (max-width: 768px) {
-    background-color: #efefef;
+    background-color: #fafafa;
   }
-
-  input, button {
+  input,
+  button {
     &:focus {
       outline: none;
     }
   }
-
   .panel {
-    box-shadow: 0 0 4px rgba(40,44,63,0.08);
+    box-shadow: 0 0 4px rgba(40, 44, 63, 0.08);
   }
-
   .strong {
     font-family: $primary-font;
     font-weight: 800;
   }
-
   .caret {
     color: $orange + 20;
   }
