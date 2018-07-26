@@ -7,12 +7,12 @@ import { Subscription } from 'rxjs';
 import { CheckoutService } from './core/services/checkout.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Title } from '../../node_modules/@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit, OnDestroy {
   orderSub$: Subscription;
@@ -30,7 +30,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private checkoutService: CheckoutService,
     private store: Store<AppState>,
-    private metaTitle: Title
+    private metaTitle: Title,
+    private meta: Meta
   ) {
     router.events
       .pipe(filter(e => e instanceof NavigationEnd))
@@ -38,7 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.currentUrl = e.url;
         this.findCurrentStep(this.currentUrl);
         window.scrollTo(0, 0);
-        this.metaTitle.setTitle(environment.config.landing_page.title)
+        this.addMetaInfo();
       });
   }
 
@@ -51,11 +52,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   addFaviconIcon() {
-    const link = document.querySelector(`link[rel*='icon']`) || document.createElement('link') as any;
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
+    const link =
+      document.querySelector(`link[rel*='icon']`) ||
+      (document.createElement("link") as any);
+    link.type = "image/x-icon";
+    link.rel = "shortcut icon";
     link.href = environment.config.fevicon;
-    document.getElementsByTagName('head')[0].appendChild(link);
+    document.getElementsByTagName("head")[0].appendChild(link);
   }
 
   isCheckoutRoute() {
@@ -71,12 +74,44 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private findCurrentStep(currentRoute) {
-    const currRouteFragments = currentRoute.split('/');
+    const currRouteFragments = currentRoute.split("/");
     const length = currRouteFragments.length;
-    this.currentStep = currentRoute.split('/')[length - 1];
+    this.currentStep = currentRoute.split("/")[length - 1];
   }
 
   ngOnDestroy() {
     this.orderSub$.unsubscribe();
+  }
+
+  addMetaInfo() {
+    this.meta.updateTag({
+      name: "description",
+      content: environment.config.landing_page.description
+    });
+    this.meta.updateTag({
+      name: "keywords",
+      content: environment.config.landing_page.title
+    });
+    this.meta.updateTag({
+      name: "title",
+      content: environment.config.landing_page.title
+    });
+    this.meta.updateTag({
+      name: "apple-mobile-web-app-title",
+      content: environment.appName
+    });
+    this.meta.updateTag({
+      property: "og:description",
+      content: environment.config.landing_page.description
+    });
+    this.meta.updateTag({
+      property: "og:url",
+      content: environment.config.frontEndUrl
+    }),
+      this.meta.updateTag({
+        property: "twitter:title",
+        content: environment.config.landing_page.description
+      });
+    this.metaTitle.setTitle(environment.config.landing_page.title);
   }
 }

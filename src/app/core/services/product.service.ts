@@ -1,12 +1,12 @@
-import { JsonApiParserService } from './json-api-parser.service';
-import { CJsonApi } from './../models/jsonapi';
-import { ToastrService } from 'ngx-toastr';
-import { Taxonomy } from './../models/taxonomy';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Product } from '../models/product';
-import { map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { JsonApiParserService } from "./json-api-parser.service";
+import { CJsonApi } from "./../models/jsonapi";
+import { ToastrService } from "ngx-toastr";
+import { Taxonomy } from "./../models/taxonomy";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Product } from "../models/product";
+import { map, tap } from "rxjs/operators";
+import { Observable } from "rxjs";
 
 @Injectable()
 export class ProductService {
@@ -20,11 +20,11 @@ export class ProductService {
     private http: HttpClient,
     private toastrService: ToastrService,
     private apiParser: JsonApiParserService
-  ) { }
+  ) {}
   // tslint:disable-next-line:member-ordering
-  success: any
+  success: any;
   // tslint:disable-next-line:member-ordering
-  error: any
+  error: any;
   /**
    *
    *
@@ -35,7 +35,9 @@ export class ProductService {
    */
   getProduct(id: string): Observable<Product> {
     return this.http
-      .get<{ data: CJsonApi }>(`api/v1/products/${id}?data_set=large`)
+      .get<{ data: CJsonApi }>(
+        `api/v1/products/${id}?data_set=large&${+new Date()}`
+      )
       .pipe(map(resp => this.apiParser.parseSingleObj(resp.data) as Product));
   }
 
@@ -107,18 +109,16 @@ export class ProductService {
   // tslint:disable-next-line:max-line-length
   getProductsByTaxon(id: string): Observable<any> {
     return this.http
-      .get<{ data: CJsonApi[], pagination: Object }>(
+      .get<{ data: CJsonApi[]; pagination: Object }>(
         `api/v1/taxons/products?${id}&per_page=20&data_set=small`
       )
       .pipe(
-        map(
-          resp => {
-            return {
-              pagination: resp.pagination,
-              products: this.apiParser.parseArrayofObject(resp.data) as Array<Product>
-            }
-          }
-        )
+        map(resp => {
+          return {
+            pagination: resp.pagination,
+            products: this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+          };
+        })
       );
   }
 
@@ -136,24 +136,24 @@ export class ProductService {
 
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(
-      `api/v1/taxonomies?q[name_cont]=${name}&set=nested`
+      `api/v1/taxonomies?q[name_cont]=${name}&set=nested&per_page=2`
     );
   }
 
   getproductsByKeyword(keyword: string): Observable<any> {
     return this.http
-      .get<{ data: CJsonApi[], pagination: Object }>(
+      .get<{ data: CJsonApi[]; pagination: Object }>(
         `api/v1/products?${keyword}&per_page=20&data_set=small`
       )
       .pipe(
-        map(
-          resp => {
-            return {
-              pagination: resp.pagination,
-              products: this.apiParser.parseArrayofObject(resp.data) as Array<Product>
-            }
-          }
-        )
+        map(resp => {
+          return {
+            pagination: resp.pagination,
+            products: this.apiParser.parseArrayofObject(resp.data) as Array<
+              Product
+            >
+          };
+        })
       );
   }
 
@@ -167,23 +167,25 @@ export class ProductService {
   }
 
   submitReview(productId: any, params: any) {
-    return this.http.post(`products/${productId}/reviews`, params)
-      .pipe(
-        map(success => {
-          this.success = success
-          if (this.success.type === 'info') {
-            this.toastrService.info(this.success.message, this.success.type)
+    return this.http.post(`products/${productId}/reviews`, params).pipe(
+      map(
+        success => {
+          this.success = success;
+          if (this.success.type === "info") {
+            this.toastrService.info(this.success.message, this.success.type);
             return this.success.type;
           } else {
-            this.toastrService.success(this.success.message, this.success.type)
+            this.toastrService.success(this.success.message, this.success.type);
             return this.success.type;
           }
         },
-          error => {
-            this.error = error
-            this.toastrService.error(this.error.message, this.error.type)
-            return this.error.type
-          }));
+        error => {
+          this.error = error;
+          this.toastrService.error(this.error.message, this.error.type);
+          return this.error.type;
+        }
+      )
+    );
   }
 
   getRelatedProducts(productId: any): Observable<Array<Product>> {
