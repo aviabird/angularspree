@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from '../../../../../core/models/product';
 import { Router } from '@angular/router';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-product-count',
@@ -16,7 +17,7 @@ export class ProductCountComponent implements OnInit {
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
 
   count: any = 1;
-
+  appConfig = environment.config;
   constructor(private router: Router) {
 
   }
