@@ -1,30 +1,14 @@
-<!-- <div class="col-9">
+<div class="variant">
   <div *ngFor="let variant of (customOptionTypesHash | keys)">
-    <div class="size-buttons-size-header">
-      <h6>{{ variant.key }}
-        <span *ngIf="selectedItem">{{selectedItem.key }}</span>
-      </h6>
+    <div class="size-buttons-size-header d-none d-sm-block">
+      <h6>{{ variant.key }}</h6>
     </div>
-    <ul>
-      <li class="option-buttons" [ngClass]="[selectedItem == options ? 'active':'',isDisabled(correspondingOptions[variant.key], options.value['optionValue'].name) ? 'disabled':'']"
-        (click)="listClick($event, options)" *ngFor="let options of (variant.value | keys)" [class.selected]="options.key === currentSelectedOptions[variant.key]">
-        <p>
-          {{ options.value["optionValue"].presentation }}
-          <span class="strike"></span>
-        </p>
-      </li>
-    </ul>
+    <button class="option-buttons" *ngFor="let options of (variant.value | keys)" (click)="onOptionClick(options)" [class.selected]="options.key === currentSelectedOptions[variant.key]"
+      [ngClass]="{'disabled': isDisabled(correspondingOptions[variant.key], options.value['optionValue'].name)}">
+      <p>
+        {{ options.value["optionValue"].presentation }}
+        <span class="strike"></span>
+      </p>
+    </button>
   </div>
-</div> -->
-<div *ngFor="let variant of (customOptionTypesHash | keys)" >
-  <div class="size-buttons-size-header">
-    <h6>{{ variant.key }}</h6>
-  </div>
-  <button class="option-buttons" *ngFor="let options of (variant.value | keys)" (click)="onOptionClick(options)" [class.selected]="options.key === currentSelectedOptions[variant.key]"
-    [ngClass]="{'disabled': isDisabled(correspondingOptions[variant.key], options.value['optionValue'].name)}">
-    <p>
-      {{ options.value["optionValue"].presentation }}
-      <span class="strike"></span>
-    </p>
-  </button>
 </div>

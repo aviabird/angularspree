@@ -1,5 +1,5 @@
 import { DEFAULT_APP_DATA } from './app-data';
-import { DEFAULT_META_DATA } from "./meta-data";
+import { DEFAULT_META_DATA } from './meta-data';
 
 export const DEFAULT_CONFIG = {
   // Add Your custom configs hereh
@@ -23,7 +23,7 @@ export const DEFAULT_CONFIG = {
   payuBizSalt: '***REMOVED***',
   payuBizKey: '***REMOVED***',
   freeShippingAmount: 50,
-  currency_symbol: '$', //USD $
+  currency_symbol: '$', // USD $
   PaymentMethodCod: 'COD',
   PaymentMethodPayubiz: 'Payubiz',
   defaultPaymentMethod: 'Payubiz',

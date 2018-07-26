@@ -2,7 +2,7 @@
 <div *ngIf="!isMobile">
   <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-5">
     <div class="col-12 col-md-5">
-      <app-image-container [images]="images"  class="col-12" [selectedImage]="selectedImage">
+      <app-image-container [images]="images" class="col-12" [selectedImage]="selectedImage">
       </app-image-container>
     </div>
     <div class="col-md-7 col-12">
@@ -70,13 +70,21 @@
       </div>
     </div>
     <div class="col-12 col-md-5">
-      <app-image-container [images]="images"  [isMobile]='isMobile' class="col-12" [selectedImage]="images[0]">
+      <app-image-container [images]="images" [isMobile]='isMobile' class="col-12" [selectedImage]="images[0]">
       </app-image-container>
     </div>
     <div class="col-md-7 col-12">
-      <app-product-price-info [product]="product" [isMobile]='isMobile' (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectVariant($event)"
-        class="row">
+      <app-product-price-info [product]="product" [isMobile]='isMobile' (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
+        (selectedVariant)="selectVariant($event)" class="row">
       </app-product-price-info>
+    </div>
+  </div>
+  <div *ngIf="relatedProducts$ | async; let relatedProducts">
+    <div class="slider" *ngIf="relatedProducts.length >0">
+      <h2>
+        Related products
+      </h2>
+      <app-product-slider [productsList]="relatedProducts"></app-product-slider>
     </div>
   </div>
   <div class="row">
@@ -96,14 +104,7 @@
       <app-product-slider [productsList]="similarProducts"></app-product-slider>
     </div>
   </div>
-  <div *ngIf="relatedProducts$ | async; let relatedProducts">
-    <div class="slider" *ngIf="relatedProducts.length >0">
-      <h2>
-        Related products
-      </h2>
-      <app-product-slider [productsList]="relatedProducts"></app-product-slider>
-    </div>
-  </div>
+
   <app-product-review [product]="product" [reviewList]='reviewProducts$ | async'></app-product-review>
 
 </div>
