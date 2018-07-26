@@ -65,6 +65,7 @@
     @media only screen and (min-width: 320px) and (max-width: 767px) {
       width:100%;
       padding-right: 0;
+      margin-bottom: 0;
     }
     padding-right: 15px;
     margin-bottom: 10px;
@@ -84,6 +85,13 @@
       li {
         margin: 0;
         padding-bottom: 25px;
+        width: 80%;
+        margin: auto;
+        p {
+          &:first-child {
+            text-align: right
+          }
+        }
       }
       .title {
         font-size: 1em;
@@ -96,13 +104,14 @@
         margin: 0;
       }
       .list-price .price {
-        font-size: 1.4rem;
-        line-height: 1;
+        font-size: 1rem;
+        line-height: 1.7em;
         color: $red;
         text-decoration: line-through;
+        font-weight: bold;
       }
       .price {
-        margin-left: 85px;
+        margin-left: 100px;
         display: block;
       }
       p {
@@ -111,10 +120,10 @@
       }
       .our-price {
         .price {
-          font-size: 1.6em;
-          font-weight: 600;
+          font-size: 1em;
+          line-height: 1.5;
+          font-weight: bold;
           color: $red;
-          line-height: 12px;
           padding-top: 11px;
           span {
             float: left;
@@ -139,10 +148,11 @@
           margin-bottom: 0;
         }
         .price {
-          font-size: 1.4rem;
+          font-size: 1rem;
           margin-bottom: 0;
-          line-height: 1;
+          line-height: 1.5;
           color: $red;
+          font-weight: bold;
         }
       }
     }

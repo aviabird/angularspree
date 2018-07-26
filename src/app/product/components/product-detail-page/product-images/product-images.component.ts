@@ -44,14 +44,13 @@ export class ProductImagesComponent implements OnInit {
         pointStyles: `
           .ngucarouselPoint {
             list-style-type: none;
-            padding: 3px;
+            padding: 10px;
             white-space: nowrap;
             overflow: auto;
             position: relative;
-            bottom: 27px;
             left: 0;
             box-sizing: border-box;
-            background-color: white;
+            background-color: transparent;
             margin: 0 auto -28px;
             align-self: center;
             width: fit-content;
@@ -65,8 +64,9 @@ export class ProductImagesComponent implements OnInit {
             margin: 0 3px;
             transition: .4s ease all;
           }
+          .ngucarouselPoint li a img{height:190px;margin:auto}
           .ngucarouselPoint li.active {
-              background-color: white;
+              background-color: transparent;
               border: 1px solid rgba(0, 0, 255, 0.55);
               width: 10px;
           }

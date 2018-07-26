@@ -30,6 +30,10 @@
         padding: 0 1.2rem;
       }
       padding: 20px;
+      @media only screen and (min-width: 320px) and (max-width: 767px) {
+        text-align: center;
+        padding-top: 2px;
+      }
       .buy-quantity {
         display: block;
         margin-bottom: 15px;
