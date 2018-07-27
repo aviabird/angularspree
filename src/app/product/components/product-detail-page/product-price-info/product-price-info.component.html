@@ -1,13 +1,14 @@
 <div *ngIf="!isMobile" class="col-12 p-0">
   <div class="col-12 p-0">
     <h1 itemprop="name" class="title">{{product.name}}</h1>
-    <!-- <div class="product-subtitle">
-          <a href="#">
-            By
-            #To-do read from product properties.
-            <span itemprop="brand"></span>
-          </a>
-        </div> -->
+    <div class="product-subtitle">
+      <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': brand.name, id: brand.id}" *ngIf="brand">
+        <small>
+          By {{brand.name}}
+          <span itemprop="brand"></span>
+        </small>
+      </a>
+    </div>
   </div>
   <div class="col-12 p-0">
     <div class="product-header-extras">
@@ -40,7 +41,7 @@
                   <span class="free-shipping d-block float-left d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
                     <span>Shipping on this item</span>
                   </span>
-                  
+
                 </li>
               </ul>
             </li>
@@ -100,7 +101,7 @@
               </ul>
             </li>
           </ul>
-        <div class="clearfix"></div>
+          <div class="clearfix"></div>
         </div>
         <div id="featured-promotions" *ngIf="customOptionTypesHash">
           <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
