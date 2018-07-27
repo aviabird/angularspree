@@ -1,6 +1,5 @@
 <ngx-json-ld [json]="schema"></ngx-json-ld>
 <div *ngIf="!isMobile">
-
   <div class="container">
     <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-5">
       <div class="col-12 col-md-5">
@@ -57,22 +56,30 @@
       <div class="col-12 ">
         <h1 itemprop="name" class="title">{{product.name}}</h1>
       </div>
-      <div class="col-12">
-        <div class="row">
-          <div class="product-subtitle col-5 pr-0">
-            <a href="#">
-              <span> By :</span>
-              ABC
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="product-subtitle col-5 p-0">
+          <a href="#">
+            <span>By :</span>
+            ABC 
+          </a>
+        </div>
+        <div class="product-header-extras col-7 p-0">
+          <div class="ugc pr-3">
+            <a class="hide-phone js-revScrollTo">
+              <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" class="rating" required></ngx-input-star-rating>
+              <a class='reviewlink' (click)="scrollToReviewMobile()">{{product.reviews_count}}</a>
             </a>
           </div>
-          <div class="product-header-extras col-7 p-0">
+          <!-- <div class="product-header-extras col-7 p-0">
             <div class="ugc pr-3">
               <a class="hide-phone js-revScrollTo">
                 <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" class="rating" required></ngx-input-star-rating>
                 <span class="rating-count">{{product.reviews_count }}</span>
               </a>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="col-12 col-md-5">
@@ -118,6 +125,6 @@
     </div>
   </div>
   <div class="container">
-    <app-product-review [product]="product" [reviewList]='reviewProducts$ | async'></app-product-review>
+    <app-product-review [product]="product" [reviewList]='reviewProducts$ | async' id="review"></app-product-review>
   </div>
 </div>
