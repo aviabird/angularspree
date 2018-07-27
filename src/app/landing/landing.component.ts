@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './../interfaces';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { Product } from '../core/models/product';
 
 @Component({
   selector: 'app-landing',
@@ -17,12 +18,13 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class LandingComponent implements OnInit {
   products$: Observable<any>;
-  products_by_taxons: any;
+  products_by_taxons$: Observable<any>; 
   taxon_by_name: any;
   taxons_id: string;
-  favoriteProducts: any;
+  favoriteProducts$: any;
   dealsType = environment.config.Deals.type;
-  brands: any;
+  brands$: Observable<any>;
+  
 
 
   // dealsType is taxonomi whose value is set in app-data.ts;
@@ -35,12 +37,9 @@ export class LandingComponent implements OnInit {
     this.store.dispatch(this.actions.getAllProducts());
     this.products$ = this.store.select(getProducts);
     // #TO DO: Brands name hardcoded for now.
-    this.brands = this.productService.getTaxonByName('Brands')
-      .subscribe(data => {
-        this.brands = data
-      })
+    this.brands$ = this.productService.getTaxonByName('Brands');
 
-    const result = this.productService.getTaxonByName(this.dealsType).pipe(
+    this.products_by_taxons$ = this.productService.getTaxonByName(this.dealsType).pipe(
       switchMap(response => {
         this.taxon_by_name = response;
         if (this.taxon_by_name.count > 0) {
@@ -50,10 +49,8 @@ export class LandingComponent implements OnInit {
           return []
         }
       }))
-      .subscribe(response => this.products_by_taxons = response);
-
-    this.productService.getFavoriteProducts()
-      .subscribe(response => this.favoriteProducts = response)
+      // .subscribe(response => this.products_by_taxons = response);
+      this.favoriteProducts$ = this.productService.getFavoriteProducts();
   }
 
   ngOnInit() {
@@ -67,7 +64,7 @@ export class LandingComponent implements OnInit {
     this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: environment.appName });
     this.meta.updateTag({ property: 'og:description', content: environment.config.landing_page.description })
     this.meta.updateTag({ property: "og:url", content: environment.config.frontEndUrl }),
-      this.metaTitle.setTitle(environment.config.landing_page.title);
     this.meta.updateTag({ property: 'twitter:title', content: environment.config.landing_page.description })
+    this.metaTitle.setTitle(environment.config.landing_page.title);
   }
 }

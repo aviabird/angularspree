@@ -6,7 +6,7 @@
         <div class="row">
           <div class="review col-12 col-md-5 col-lg-5 p-0">
             <ngx-input-star-rating disabled="true" value="{{product.avg_rating}}" required></ngx-input-star-rating>
-            {{product.reviews_count }} Reviews
+            {{reviewList.total_ratings }} Reviews
           </div>
           <div class="out-review col-12 col-md-5 col-lg-5 ">
             {{product.avg_rating }} out of 5 star
@@ -25,17 +25,19 @@
           </div>
         </div>
         <div class="col-2  col-md-2 col-lg-2 pl-2">
-          <b>{{rating.percentage | number: '1.0-0'}}% </b>
+          <b *ngIf="rating.percentage===0 || rating.percentage===null">{{0}}%</b>
+          <b *ngIf="rating.percentage > 0 ">{{rating.percentage | number: '1.0-0'}}% </b>
         </div>
       </div>
     </div>
     <div class="col-12 col-md-3 offset-md-2 mt-5 pt-5">
       <div class="row">
+        <p style="margin-left: 30px;" *ngIf="reviewList.total_ratings === 0">Be the first to Review this product</p>
         <button (click)="showReviewForm()" class="btn themebtnprimary col-10 m-auto">Write Review</button>
       </div>
     </div>
   </div>
-  <div class="review-display">
+  <div class="review-display" *ngIf="reviewList.total_ratings > 0">
     <div class="row">
       <div class="col-md-8">
         <div class="review-sort-filter mt-5 mb-4">
@@ -50,7 +52,7 @@
               <span class="pl-3">{{item.title}}</span>
             </div>
             <div class="rating-by">
-              By {{item.name}} on {{item.created_at | date}}
+              By {{item?.name.split('@')[0]}} on {{item.created_at | date}}
             </div>
             <p class="description">
               {{item.review}}
