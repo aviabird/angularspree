@@ -1,12 +1,12 @@
-import { JsonApiParserService } from "./json-api-parser.service";
-import { CJsonApi } from "./../models/jsonapi";
-import { ToastrService } from "ngx-toastr";
-import { Taxonomy } from "./../models/taxonomy";
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Product } from "../models/product";
-import { map, tap } from "rxjs/operators";
-import { Observable } from "rxjs";
+import { JsonApiParserService } from './json-api-parser.service';
+import { CJsonApi } from './../models/jsonapi';
+import { ToastrService } from 'ngx-toastr';
+import { Taxonomy } from './../models/taxonomy';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Product } from '../models/product';
+import { map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProductService {
@@ -20,7 +20,7 @@ export class ProductService {
     private http: HttpClient,
     private toastrService: ToastrService,
     private apiParser: JsonApiParserService
-  ) {}
+  ) { }
   // tslint:disable-next-line:member-ordering
   success: any;
   // tslint:disable-next-line:member-ordering
@@ -151,7 +151,7 @@ export class ProductService {
             pagination: resp.pagination,
             products: this.apiParser.parseArrayofObject(resp.data) as Array<
               Product
-            >
+              >
           };
         })
       );
@@ -171,7 +171,7 @@ export class ProductService {
       map(
         success => {
           this.success = success;
-          if (this.success.type === "info") {
+          if (this.success.type === 'info') {
             this.toastrService.info(this.success.message, this.success.type);
             return this.success.type;
           } else {
