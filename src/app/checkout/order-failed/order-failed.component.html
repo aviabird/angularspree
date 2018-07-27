@@ -1,12 +1,12 @@
 <div class="container" *ngIf="orderDetails">
   <div class="col-12 thankyou thankyou1 shadow-sm mt-5 mb-3">
-    <h1>Sorry Your payment has been failed</h1>
+    <h1>Payment Failed</h1>
     <h5 *ngIf=errorReason>Reason: {{errorReason}}</h5>
     <div class="float-left">
       <i class="fa fa-close custom"></i>
     </div>
     <div>
-      <p class="w-75 text-success thankyoumsg"> Your order has been placed but payment is not processes.Retry payment to complete order.
+      <p class="w-75 text-success thankyoumsg"> Your payment for order could not be completed.Please retry payment.
       </p>
     </div>
   </div>
