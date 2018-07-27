@@ -14,8 +14,7 @@
       <div class="ugc pr-3">
         <a class="hide-phone js-revScrollTo">
           <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" required></ngx-input-star-rating>
-          {{product.reviews_count }}
-          <a href="#review">Reviews</a>
+          <a class='reviewlink pl-1' (click)="scrollToReview()">{{product.reviews_count }} Reviews</a>
         </a>
       </div>
     </div>
