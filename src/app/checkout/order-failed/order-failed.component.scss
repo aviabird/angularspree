@@ -5,8 +5,18 @@
   }
 }
 
+.close-btn {
+  background-color: $red;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-size: 1.5em;
+  width: 40px;
+  height: 40px;
+  color: $white!important;
+}
+
 .thankyou {
-  padding: 2em;
+  padding: 2em 2em 0.8em;
   background-color: $gray-100;
   h1 {
     font-size: 1.7em;
@@ -16,7 +26,7 @@
     font-size: 40px;
   }
   .thankyoumsg {
-    padding: 0px 36px;
+    padding: 10px 36px;
     margin-left: 17px;
     display: block;
   }

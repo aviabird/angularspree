@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Output, Input, ChangeDetectionStrategy } from '@angular/core';
 import {
   trigger,
   state,
@@ -6,6 +6,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { ElementRef, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-category-mobile-menu',
   templateUrl: './category-mobile-menu.component.html',
@@ -36,7 +37,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryMobileMenuComponent implements OnInit {
-
+  @Output()
+  onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() taxonomies;
   @Input() isScrolled;
 
@@ -49,7 +51,7 @@ export class CategoryMobileMenuComponent implements OnInit {
   showParrent = false;
   showChild = false;
   backBtnShow = false;
-  constructor() { }
+  constructor(private el: ElementRef) { }
   showCategory(i) {
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
     this.showParrent = !this.showParrent;
@@ -66,13 +68,16 @@ export class CategoryMobileMenuComponent implements OnInit {
     this.showChild = !this.showChild;
     this.subChild = this.menuTaxons.taxons[i];
   }
+
   parrantBack() {
     this.showParrent = !this.showParrent;
   }
   childBack() {
     this.showChild = !this.showChild;
   }
-
+  onCloseMobilemenu() {
+    this.onSubCatClicked.emit(false);
+   }
   ngOnInit() {
   }
 }

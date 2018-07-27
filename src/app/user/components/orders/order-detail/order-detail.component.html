@@ -1,5 +1,5 @@
 <div *ngIf="order">
-  <div class="row box  m-1">
+  <div class="row box">
     <div class="col-12 col-sm-6">
       <h3>Order Details</h3>
       <table>
@@ -32,7 +32,7 @@
           </tr>
       </table>
     </div>
-    <div class="col-12 col-sm-6 ">
+    <div class="col-12 col-sm-6">
       <h3>Address</h3>
       <table>
         <tr>
@@ -60,7 +60,7 @@
     </div>
   </div>
 
-  <div class='row box m-1 my-4' *ngFor="let line_item of order.line_items">
+  <div class='row box  my-4' *ngFor="let line_item of order.line_items">
     <br>
     <div class="col-md-2">
       <img class="line_item_image" [src]="getProductImageUrl(line_item)" alt="Line Item">
