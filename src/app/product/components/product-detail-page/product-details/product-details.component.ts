@@ -21,6 +21,7 @@ import { ProductService } from './../../../../core/services/product.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { getAuthStatus } from '../../../../auth/reducers/selectors';
 import { environment } from '../../../../../environments/environment';
+import { Taxon } from '../../../../core/models/taxon';
 
 @Component({
   selector: 'app-product-details',
@@ -44,6 +45,7 @@ export class ProductDetailsComponent implements OnInit {
   frontEndUrl = environment.config.frontEndUrl;
   schema: any;
   selectedVariant: any;
+  brand: Taxon;
 
   constructor(
     private checkoutActions: CheckoutActions,
@@ -72,6 +74,8 @@ export class ProductDetailsComponent implements OnInit {
     this.reviewProducts$ = this.store.select(productReviews);
 
     this.addJsonLD(this.product);
+
+    this.findBrand();
   }
 
   initData() {
@@ -184,7 +188,15 @@ export class ProductDetailsComponent implements OnInit {
       }]
     };
   }
+
   scrollToReviewMobile() {
     document.getElementById('review').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  findBrand() {
+    const brandClassification = this.product.classifications.find(element =>
+      element.taxon.pretty_name.includes('Brands')
+    );
+    this.brand = brandClassification && brandClassification.taxon;
   }
 }
