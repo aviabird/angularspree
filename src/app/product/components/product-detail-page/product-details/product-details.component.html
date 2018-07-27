@@ -4,12 +4,12 @@
   <div class="container">
     <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-5">
       <div class="col-12 col-md-5">
-        <app-image-container [images]="images" class="col-12" [selectedImage]="images[0]">
+        <app-image-container [images]="images" class="col-12" [selectedImage]="selectedImage">
         </app-image-container>
       </div>
       <div class="col-md-7 col-12">
 
-        <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectedVariant($event)"
+        <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectVariant($event)"
           class="row">
         </app-product-price-info>
       </div>
@@ -81,7 +81,7 @@
       </div>
       <div class="col-md-7 col-12">
         <app-product-price-info [product]="product" [isMobile]='isMobile' (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
-          (selectedVariant)="selectedVariant($event)" class="row">
+          (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
       </div>
     </div>

@@ -134,7 +134,7 @@ export class ProductDetailsComponent implements OnInit {
     this.addJsonLD(this.product);
   }
 
-  get selectedImage() { return this.images ? this.images[0] : '' }
+  get selectedImage() { return this.images ? this.images[0] : ''; }
 
   addMetaInfo(product: Product) {
     this.meta.updateTag({
@@ -149,10 +149,10 @@ export class ProductDetailsComponent implements OnInit {
 
     this.meta.updateTag({ name: 'title', content: product.slug });
     this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: environment.appName });
-    this.meta.updateTag({ property: 'og:description', content: product.meta_description })
+    this.meta.updateTag({ property: 'og:description', content: product.meta_description });
     this.meta.updateTag({ property: 'og:url', content: environment.config.frontEndUrl }),
       this.title.setTitle(this.product.name),
-      this.meta.updateTag({ property: 'twitter:title', content: this.product.description })
+      this.meta.updateTag({ property: 'twitter:title', content: this.product.description });
   }
 
   addJsonLD(product: Product) {
