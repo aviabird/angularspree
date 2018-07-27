@@ -22,6 +22,19 @@ h1 {
   color: $white;
 }
 
+.product-subtitle {
+  a {
+    span {
+      color: $gray-900;
+    }
+  }
+}
+
+.rating-count {
+  position: relative;
+  left: -10px;
+}
+
 .rating {
   transform: scale(0.7);
 }
@@ -57,13 +70,27 @@ h1 {
     z-index: 20;
   }
 }
-
 .slider {
-  margin-top: 1vw;
+  background-color: $gray-100;
+  border-bottom: 1px solid $gray-10;
+  border-top: 1px solid $gray-10;
+  margin: 1vw 0;
   padding-top: 1vw;
-  h2 {
+  padding-bottom: 1vw;
+  m h2 {
     font-size: 1.7em;
     color: $gray-900;
+  }
+  /deep/ .product-tile p {
+    margin-bottom: 10px;
+    font-size: .9em
+  }
+  /deep/ .product-box {
+    box-shadow: 0 0 1px $gray-11;
+    border: 1px solid $gray-10;
+  }
+  /deep/ hr {
+    display: none
   }
 }
 

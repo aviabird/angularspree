@@ -14,7 +14,8 @@
       <div class="ugc pr-3">
         <a class="hide-phone js-revScrollTo">
           <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" required></ngx-input-star-rating>
-          {{product.reviews_count }} Reviews
+          {{product.reviews_count }}
+          <a href="#review">Reviews</a>
         </a>
       </div>
     </div>
@@ -23,29 +24,38 @@
     <div class="buybox-wrapper col-12 p-0">
       <div id="product-vitals">
         <div id="pricing">
-          <ul class="product-pricing">
-            <li class="list-price">
-              <p class="title">
-                List Price:</p>
-              <p class="price">{{product.currency}}{{product.master.cost_price}}</p>
+          <ul class="product-price">
+            <li>
+              <ul>
+                <li>
+                  List Price:</li>
+                <li>{{product.currency}}{{product.master.cost_price}}</li>
+              </ul>
             </li>
-            <li class="our-price">
-              <p class="title">Price:</p>
-              <p class="price">
-                <span class="ga-eec__price">
-                  {{product.display_price}}</span>
-                <span class="free-shipping  d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
-                  <span>Shipping on this item</span>
-                </span>
-              </p>
+            <li>
+              <ul>
+                <li>Price:</li>
+                <li>
+                  <span class="d-block float-left">
+                    {{product.display_price}}</span>
+                  <span class="free-shipping d-block float-left d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
+                    <span>Shipping on this item</span>
+                  </span>
+                  
+                </li>
+              </ul>
             </li>
-            <li class="you-save">
-              <p class="title">You Save:</p>
-              <p class="price">
-                {{product.currency}}{{discount}} ({{discountPercent}})
-              </p>
+            <li>
+              <ul>
+                <li>You Save:</li>
+                <li>
+                  {{product.currency}}{{discount}} ({{discountPercent}})
+                </li>
+              </ul>
+
             </li>
           </ul>
+          <div class="clearfix"></div>
         </div>
         <div id="featured-promotions" class="pt-3" *ngIf="customOptionTypesHash">
           <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
@@ -64,29 +74,34 @@
     <div class="buybox-wrapper">
       <div id="product-vitals">
         <div id="pricing">
-          <ul class="product-pricing pl-3">
-            <li class="list-price">
-              <p class="title">
-                List Price:</p>
-              <p class="price">{{product.currency}}{{product.master.cost_price}}</p>
+          <ul class="product-price pl-3">
+            <li>
+              <ul>
+                <li> List Price:</li>
+                <li>{{product.currency}}{{product.master.cost_price}}</li>
+              </ul>
             </li>
-            <li class="our-price">
-              <p class="title">Price:</p>
-              <p class="price">
-                <span class="ga-eec__price">
-                  {{product.display_price}}</span>
-                <span class="free-shipping  d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
-                  <span>Shipping on this item</span>
-                </span>
-              </p>
+            <li>
+              <ul>
+                <li> Price:</li>
+                <li>
+                  <span class="ga-eec__price">
+                    {{product.display_price}}</span>
+                  <span class="free-shipping  d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
+                    <span>Shipping on this item</span>
+                  </span>
+                </li>
+              </ul>
+
             </li>
-            <li class="you-save">
-              <p class="title">You Save:</p>
-              <p class="price">
-                {{product.currency}}{{discount}} ({{discountPercent}})
-              </p>
+            <li>
+              <ul>
+                <li> You Save:</li>
+                <li> {{product.currency}}{{discount}} ({{discountPercent}})</li>
+              </ul>
             </li>
           </ul>
+        <div class="clearfix"></div>
         </div>
         <div id="featured-promotions" *ngIf="customOptionTypesHash">
           <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
