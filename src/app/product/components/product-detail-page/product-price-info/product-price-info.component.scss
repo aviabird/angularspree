@@ -213,7 +213,7 @@
         li {
           &:first-child {
             width: 40%;
-            text-align: right;
+            text-align: right!important;
             font-size: 1em;
             color: $gray-600;
             font-weight: 400;

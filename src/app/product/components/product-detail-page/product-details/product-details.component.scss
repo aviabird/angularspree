@@ -30,6 +30,11 @@ h1 {
   }
 }
 
+.bg {
+  background-color: $white;
+  display: block
+}
+
 .rating-count {
   position: relative;
   left: -10px;
@@ -44,6 +49,11 @@ h1 {
     display: block;
     text-align: right
   }
+}
+
+.rating-count {
+  position: relative;
+  left: -10px;
 }
 
 .pdp-button {
@@ -70,6 +80,7 @@ h1 {
     z-index: 20;
   }
 }
+
 .slider {
   background-color: $gray-100;
   border-bottom: 1px solid $gray-10;
