@@ -1,22 +1,14 @@
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Product Image</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let productinfo of product">
-      <td>
-        <img [src]="productinfo.product_url" class="img-fluid fimg">
-      </td>
-      <td>{{ productinfo.name }}</td>
-      <td class="text-right">
-        <button (click)="removeFromFavorite(productinfo.id)" class="btn">
-          <i class="fa fa-trash"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+<div class="row favorite m-0 p-2" *ngFor="let productinfo of product">
+  <div class="col-12 col-sm-2">
+    <img [src]="productinfo.product_url" class="img-fluid fimg" [routerLink]="['/', productinfo.slug]">
+  </div>
+  <div class="col-12 col-sm-7">
+    <a [routerLink]="['/', productinfo.slug]">{{ productinfo.name }}</a>  
+  </div>
+  <div class="col-12 col-sm-3 text-right">
+    <button (click)="removeFromFavorite(productinfo.id)" class="btn">
+      <i class="fa fa-trash"></i>
+    </button>
+  </div>
+</div>

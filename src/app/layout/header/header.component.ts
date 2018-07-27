@@ -193,4 +193,13 @@ export class HeaderComponent implements OnInit {
     this.isModalShown = status;
     this.isSearchopen = !status;
   }
+  allmenuClosed(status) {
+    this.isModalShown = status;
+    this.isSearchopen = !status;
+    if (this.isSearchopen) {
+      this.renderer.addClass(document.body, 'issearchopen');
+    } else {
+      this.renderer.removeClass(document.body, 'issearchopen');
+    }
+  }
 }
