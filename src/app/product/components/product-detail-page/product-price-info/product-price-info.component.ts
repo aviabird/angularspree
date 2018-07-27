@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Variant } from './../../../../core/models/variant';
 import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
+import { Taxon } from '../../../../core/models/taxon';
 
 @Component({
   selector: 'app-product-price-info',
@@ -11,6 +12,7 @@ import { VariantParserService } from './../../../../core/services/variant-parser
 export class ProductPriceInfoComponent implements OnInit {
   @Input() product;
   @Input() isMobile;
+  @Input() brand: Taxon;
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
   @Output() selectedVariant = new EventEmitter<Object>();
@@ -35,7 +37,7 @@ export class ProductPriceInfoComponent implements OnInit {
       .getOptionsToDisplay(this.product.variants, this.product.option_types);
     this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
     this.correspondingOptions = this.mainOptions;
-    this.isOrderable = this.product.master.is_orderable
+    this.isOrderable = this.product.master.is_orderable;
   }
 
   onOptionClick(option) {

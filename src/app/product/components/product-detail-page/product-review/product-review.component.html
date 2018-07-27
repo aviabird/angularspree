@@ -1,9 +1,8 @@
 <div class="cust-reviews">
- 
   <h1>Customer Reviews</h1>
   <div class="row">
-    <div class="col-12 col-md-6 pl-4" *ngIf="reviewList" id="review">
-      <div class="avg-review">
+    <div class="col-12 col-md-6 pl-4" *ngIf="reviewList">
+      <div class="avg-review" id="review">
         <div class="row">
           <div class="review col-12 col-md-5 col-lg-5 p-0">
             <ngx-input-star-rating disabled="true" value="{{product.avg_rating}}" required></ngx-input-star-rating>
