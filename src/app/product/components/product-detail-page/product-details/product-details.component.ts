@@ -154,4 +154,28 @@ export class ProductDetailsComponent implements OnInit {
       this.title.setTitle(this.product.name),
       this.meta.updateTag({ property: 'twitter:title', content: this.product.description })
   }
+
+  addJsonLD(product: Product) {
+    this.schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      'url': location.href,
+      'itemCondition': 'https://schema.org/NewCondition',
+      'aggregateRating': {
+        '@type': 'AggregateRating',
+        'ratingValue': product.avg_rating,
+        'reviewCount': product.reviews_count
+      },
+      'description': product.meta_description,
+      'name': product.name,
+      'image': this.selectedImage && this.selectedImage.product_url,
+      'offers': [{
+        '@type': 'Offer',
+        'itemCondition': 'https://schema.org/NewCondition',
+        'availability': this.selectedVariant.is_orderable ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+        'price': this.selectedVariant.price,
+        'priceCurrency': this.selectedVariant.currency,
+      }]
+    };
+  }
 }
