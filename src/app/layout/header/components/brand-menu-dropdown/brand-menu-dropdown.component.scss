@@ -8,7 +8,7 @@
   z-index: 10;
   padding: .7rem;
   border-radius: 0px;
-  height: 580px;
+  height: 420px;
   overflow: hidden;
   overflow-y: auto;
   &:before {
@@ -53,14 +53,27 @@
 }
 
 li {
-  padding: 5px;
-  margin: 5px;
+  padding: 0;
+  margin: 0;
   line-height: 100px;
   font-weight: bold;
   font-size: 1em;
   text-align: center;
   float: left;
   line-height: 1.5em;
-  height: 100px;
   vertical-align: middle;
+  max-width: 111.6px !important;
+  border: 1px solid $gray-10;
+  padding: 22.2px 19px;
+  margin-right: -1px;
+  margin-top: -1px;
+  &:last-child {
+    padding: 45.3px 24px;
+    background-color: $theme-main-color;
+    /* border: 5px solid #ffffff; */
+    color: $white;
+    box-shadow: inset 0 0 13px $gray-600;
+    max-width: 282px !important;
+    cursor: pointer;
+  }
 }
