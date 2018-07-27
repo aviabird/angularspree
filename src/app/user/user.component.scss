@@ -4,12 +4,12 @@ p a {
     text-decoration: none;
     &.active {
         font-family: $primary-font;
-        color: $theme-action-color - 100;
+        color: $theme-action-color;
         font-weight: 900;
         background-color: transparent;
     }
 }
-.bg{background-color: $gray-200;padding:1rem 0}
+.bg{background-color: $gray-100;padding:1rem 0}
 .sidebar {
     border-right: 1px solid $gray-10;
 }

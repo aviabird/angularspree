@@ -1,4 +1,76 @@
-.fimg{
-    object-fit: contain;
-    width: 5.6em;
+@import '../../../../shared/scss/selected_theme_variables';
+.fimg {
+  object-fit: contain;
+  width: 5.6em;
 }
+
+.favorite {
+  border: 1px solid $gray-10;
+  margin: 0 10px 10px !important;
+  background-color: $white;
+  box-shadow: 0 0 1px $gray-10;
+  a {
+    font-size: 1.5em;
+    color: $gray-900;
+  }
+}
+.size-buttons-size-header {
+    overflow: auto;
+    color: $gray-900;
+    span {
+      font-weight: bold;
+      font-size: 1em;
+    }
+  }
+  
+  .option-buttons {
+    display: inline-block;
+    background-color: $white;
+    border: 1px solid $gray-900;
+    border-radius: 4px;
+    padding: .5rem 1rem;
+    text-align: center;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: $gray-900;
+    &.disabled {
+      position: relative;
+      color: $gray-900;
+      border: 1px solid $gray-10;
+      cursor: $red;
+      pointer-events: none;
+      .strike {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $gray-10;
+      }
+    }
+    p {
+      margin: 0;
+    }
+    &:hover,
+    &.active {
+      color: $white;
+      font-weight: 500;
+      background-color: $theme-action-color;
+      border: 1px solid $theme-action-color;
+    }
+  }
+  
+  .selected {
+    color: $white;
+    font-weight: 500;
+    background-color: $gray-900;
+  }
+  
+  .variant {
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+      padding: 12px 15px 5px;
+      display: block;
+      margin: auto;
+    }
+  }

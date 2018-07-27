@@ -1,14 +1,25 @@
 <div class="container" *ngIf="orderDetails">
   <div class="col-12 thankyou thankyou1 shadow-sm mt-5 mb-3">
-    <h1>Payment Failed</h1>
-    <h5 *ngIf=errorReason>Reason: {{errorReason}}</h5>
-    <div class="float-left">
-      <i class="fa fa-close custom"></i>
+    <div class="row">
+      <div class="col-12 col-sm-9">
+        
+        <h1>Payment Failed</h1>
+        <h5 *ngIf=errorReason>Reason: {{errorReason}}</h5>
+        <div class="float-left close-btn">
+          <i class="fa fa-close"></i>
+        </div>
+        <div>
+          <p class="w-75 text-danger thankyoumsg"> Your payment for order could not be completed.Please retry payment.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-3 text-right">
+          <button class="btn themebtnprimary" (click)="retryPayment(orderDetails)">
+              Retry Payment
+            </button>
+      </div>
     </div>
-    <div>
-      <p class="w-75 text-success thankyoumsg"> Your payment for order could not be completed.Please retry payment.
-      </p>
-    </div>
+
   </div>
   <div class="order shadow-sm">
     <div class="row">
@@ -31,15 +42,14 @@
             <td>Payment Status:</td>
             <td>
               <b class="text-uppercase">
-                <button class="btn btn-primary" (click)="retryPayment(orderDetails)">
-                  Retry Payment
-                </button>
+                {{orderDetails.payment_state}}
               </b>
 
             </td>
           </tr>
         </table>
       </div>
+
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         <h3>Delivery Address</h3>
         <table>
