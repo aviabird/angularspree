@@ -2,8 +2,10 @@
 a {
   color: $gray-600;
   font-size: 0.9rem;
+  padding: 5px 0px;
+  display: block;
   &:hover {
-    color: $theme-action-sub-color1;
+    color: $theme-main-color - 80;
     text-decoration: underline;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {

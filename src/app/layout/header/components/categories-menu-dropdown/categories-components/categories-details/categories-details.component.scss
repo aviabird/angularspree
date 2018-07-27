@@ -1,10 +1,4 @@
 @import "../../../../../../shared/scss/selected_theme_variables";
-.sucathead {
-  color: $gray-900;
-  text-decoration: none;
-  font-size: 14px;
-}
-
 .brandsmenu a {
   color: $white;
   text-decoration: None;
@@ -15,15 +9,28 @@
   text-decoration: underline;
 }
 
+.headlinks {
+  display: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid $gray-10;
+  margin-bottom: 10px;
+  color: $theme-main-color - 50;
+  &:hover {
+    border-bottom: 2px solid $theme-main-color;
+    text-decoration: none;
+    color:$theme-main-color - 60;
+  }
+}
+
 .brandsmenu {
   ul {
     list-style: none;
     padding: 0.5rem 0 0.5rem 1.5rem;
     margin: 0px;
-    background-color: $gray-10;
+    background-color: $gray-100;
     li {
       padding: 0.5rem 0.4rem;
-      background-color: $gray-10;
+      background-color: $gray-100;
       border-bottom: 1px solid $gray-10;
       color: $gray-10;
       cursor: pointer;
@@ -98,8 +105,6 @@
 
 .bgimg {
   position: relative;
-    width: 96%;
-    left: -1%;
   background-repeat: no-repeat !important;
   background-position: 100% !important;
   background-size: 300px !important

@@ -1,16 +1,20 @@
 @import '../../../../../../shared/scss/selected_theme_variables';
-a a:focus {
-  color: $black;
-  text-decoration: None;
-  &:hover {
-    color: $theme-main-color;
-    text-decoration: underline;
+a {
+
+  &:focus {
+    color: $black;
+    text-decoration: None;
+    &:hover {
+      color: $theme-main-color;
+      text-decoration: underline;
+    }
   }
+ 
 }
 
 .img-fit {
   max-width: 100%;
-  height: 100%;
+  height:70px;
   object-fit: scale-down;
 }
 
