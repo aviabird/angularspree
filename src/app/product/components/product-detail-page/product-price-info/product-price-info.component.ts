@@ -2,7 +2,6 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Variant } from './../../../../core/models/variant';
 import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
-import { Product } from '../../../../core/models/product';
 
 @Component({
   selector: 'app-product-price-info',
@@ -15,6 +14,7 @@ export class ProductPriceInfoComponent implements OnInit {
   @Output() onAddToCart = new EventEmitter<Object>();
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
   @Output() selectedVariant = new EventEmitter<Object>();
+
   customOptionTypesHash: any;
   currentSelectedOptions = {};
   description: any;
@@ -94,10 +94,14 @@ export class ProductPriceInfoComponent implements OnInit {
   }
 
   get discount() {
-    return this.product.master.cost_price - this.product.price;
+    return Math.ceil(this.product.master.cost_price - this.product.price);
   }
 
   get discountPercent() {
     return `${Math.ceil(this.discount / this.product.master.cost_price * 100)}%`;
+  }
+
+  scrollToReview() {
+    document.getElementById('review').scrollIntoView({ behavior: 'smooth' });
   }
 }

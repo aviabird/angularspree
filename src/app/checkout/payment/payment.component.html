@@ -42,7 +42,9 @@
 				<div class="address-summary" *ngIf="address$ | async; let address">
 					<div class="address-lbl">DELIVER TO</div>
 					<div class="add-info">
-						<i class="fa fa-edit icon-5x" routerLink="/checkout/address"></i>
+						<strong>
+							<a routerLink="/checkout/address">Edit</a>
+						</strong>
 					</div>
 					<div class="name">{{address.full_name}}</div>
 					<div class="add-info">{{address.address1}}</div>
