@@ -3,8 +3,8 @@
   color: $gray-800;
   padding-top: 5px;
   font-weight: 600;
-  font-size: 2em;
-  line-height: 1.5em;
+  font-size: 1.4em;
+  line-height: 1.4em;
   font-family: $primary-font;
   display: inline;
 }
@@ -112,10 +112,11 @@
         color: $red;
         text-decoration: line-through;
         font-weight: bold;
+        float: left;
       }
       .price {
-        margin-left: 100px;
         display: block;
+        float: left;
       }
       p {
         margin-top: 0;
@@ -136,15 +137,6 @@
         .title {
           padding-top: 10px;
         }
-      }
-      .free-shipping {
-        font-size: 12px;
-        line-height: 13px;
-        font-weight: 500;
-        color: $gray-800;
-        margin: -8px 0 0 10px;
-        text-transform: uppercase;
-        width: 8rem;
       }
       .you-save {
         .title {
@@ -205,25 +197,59 @@
   }
 }
 
+#pricing {
+  border-bottom: 1px solid $gray-10;
+  // @media only screen and (min-width: 320px) and (max-width: 767px) {
+  //   border:0px solid
+  // }
+}
+
 .product-price {
   li {
     width: 100%;
     ul {
+      @media only screen and (min-width: 320px) and (max-width: 767px) {
+        li {
+          &:first-child {
+            width: 40%;
+            text-align: right;
+            font-size: 1em;
+            color: $gray-600;
+            font-weight: 400;
+          }
+          width: 60%;
+          float: left;
+          padding: 7px 5px;
+          font-size: 1.2em;
+          font-weight: 700;
+          line-height: 1.2em;
+          color: $red;
+        }
+      }
       li {
         &:first-child {
-          width: 40%;
-          text-align: right;
+          width: 30%;
+          text-align: left;
           font-size: 1em;
           color: $gray-600;
           font-weight: 400;
         }
-        width: 60%;
+        width: 70%;
         float: left;
         padding: 7px 5px;
         font-size: 1.2em;
         font-weight: 700;
         line-height: 1.2em;
         color: $red;
+        .free-shipping {
+          font-size: 12px;
+          line-height: 13px;
+          font-weight: 500;
+          color: $gray-800;
+          margin: -8px 0 0 10px;
+          text-transform: uppercase;
+          width:11.5em;
+        }
       }
     }
   }

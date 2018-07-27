@@ -6,7 +6,7 @@
   @import "badge";
   @import "notify";
   @media screen and (max-width: 768px) {
-    background-color: #fafafa;
+    background-color: $gray-100;
   }
   input,
   button {
