@@ -1,4 +1,3 @@
-import { tap } from 'rxjs/operators';
 import { relatedProducts, productReviews } from './../../../reducers/selectors';
 import { ProductActions } from './../../../actions/product-actions';
 import { Observable } from 'rxjs';
@@ -56,7 +55,7 @@ export class ProductDetailsComponent implements OnInit {
     private productsActions: ProductActions,
     private meta: Meta,
     private title: Title
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.screenwidth = window.innerWidth;
@@ -109,10 +108,17 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  addToCart(quantitiy) {
-    this.store.dispatch(
-      this.checkoutActions.addToCart(this.variantId, quantitiy)
-    );
+  addToCart(event) {
+    if (event.buyNow) {
+      this.store.dispatch(
+        this.checkoutActions.addToCart(this.variantId, event.count)
+      );
+      setTimeout(() => { this.router.navigate(['checkout', 'cart']); }, 1500)
+    } else {
+      this.store.dispatch(
+        this.checkoutActions.addToCart(this.variantId, event.count)
+      );
+    }
   }
 
   markAsFavorite() {
@@ -177,5 +183,8 @@ export class ProductDetailsComponent implements OnInit {
         'priceCurrency': this.selectedVariant.currency,
       }]
     };
+  }
+  scrollToReviewMobile() {
+    document.getElementById('review').scrollIntoView({ behavior: 'smooth' });
   }
 }
