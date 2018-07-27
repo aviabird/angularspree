@@ -10,6 +10,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LandingRoutingModule } from './landing-routing.module';
+import { BrandsPageComponent } from './brands-page/brands-page.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { FaqPageComponent } from './faq-page/faq-page.component';
+import { ReturnPolicyComponent } from './return-policy/return-policy.component';
 
 const COMPONENTS = [
   LandingComponent,
@@ -18,6 +22,10 @@ const COMPONENTS = [
   LpProductListComponent,
   PlItemComponent,
   LpPromoComponent,
+  BrandsPageComponent,
+  ReturnPolicyComponent,
+  FaqPageComponent,
+  AboutUsComponent
 ];
 
 @NgModule({
