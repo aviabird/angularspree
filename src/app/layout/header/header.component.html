@@ -59,7 +59,7 @@
   <div class="modal-dialog  cat-mobile ">
     <div class="modal-content">
       <div class="modal-body">
-        <app-category-mobile-menu [taxonomies]="taxonomies$| async"></app-category-mobile-menu>
+        <app-category-mobile-menu (onSubCatClicked)="allmenuClosed($event)" [taxonomies]="taxonomies$| async"></app-category-mobile-menu>
       </div>
     </div>
   </div>

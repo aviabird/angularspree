@@ -46,9 +46,8 @@
         .quantity-input {
           width: 33.33333%;
           float: left;
-          border: 1px solid;
-          border-color: $white;
-          background-color: $white;
+          padding: 4px;
+          background-color: $gray-10;
           position: relative;
           .quantity-number {
             top: 0;
