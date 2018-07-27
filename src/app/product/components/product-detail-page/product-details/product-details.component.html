@@ -50,7 +50,7 @@
   </div>
 
 </div>
-<div *ngIf="isMobile">
+<div *ngIf="isMobile" class="bg">
   <div class="container">
     <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-2">
       <div class="col-12 ">
@@ -94,7 +94,7 @@
     </div>
   </div>
   <div *ngIf="relatedProducts$ | async; let relatedProducts">
-    <div class="slider" *ngIf="relatedProducts.length >0">
+    <div class="slider mb-5 pb-4" *ngIf="relatedProducts.length >0">
       <div class="container">
         <h2>
           Related products
@@ -105,7 +105,7 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 mt-4 mb-4">
         <h1 class="mt-2">
           Description
         </h1>
@@ -115,7 +115,7 @@
     </div>
   </div>
   <div *ngIf="similarProducts$ | async; let similarProducts">
-    <div class="slider" *ngIf="similarProducts.length >0">
+    <div class="slider mb-5 pb-4 " *ngIf="similarProducts.length >0">
       <div class="container">
         <h2>
           Similar products
