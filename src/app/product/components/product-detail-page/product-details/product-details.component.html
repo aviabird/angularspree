@@ -8,8 +8,8 @@
       </div>
       <div class="col-md-7 col-12">
 
-        <app-product-price-info [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectVariant($event)"
-          class="row">
+        <app-product-price-info [brand]="brand" [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
+          (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
       </div>
     </div>
@@ -46,7 +46,7 @@
     </div>
   </div>
   <div class="container">
-    <app-product-review [product]="product" id="review" [reviewList]='reviewProducts$ | async'></app-product-review>
+    <app-product-review [product]="product" [reviewList]='reviewProducts$ | async'></app-product-review>
   </div>
 
 </div>
@@ -60,16 +60,16 @@
     <div class="col-12">
       <div class="row">
         <div class="product-subtitle col-5 p-0">
-          <a href="#">
-            <span>By :</span>
-            ABC 
+          <a [routerLink]="['search']" [queryParams]="{'q[name_cont]': brand.name, id: brand.id}" *ngIf="brand">
+            <span>By </span>
+            {{brand.name}}
           </a>
         </div>
         <div class="product-header-extras col-7 p-0">
           <div class="ugc pr-3">
-            <a class="hide-phone js-revScrollTo">
+            <a class="hide-phone js-revScrollTo reviewlink" (click)="scrollToReviewMobile()">
               <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" class="rating" required></ngx-input-star-rating>
-              <a class='reviewlink' (click)="scrollToReviewMobile()">{{product.reviews_count}}</a>
+              {{product.reviews_count}}
             </a>
           </div>
           <!-- <div class="product-header-extras col-7 p-0">
@@ -125,6 +125,6 @@
     </div>
   </div>
   <div class="container">
-    <app-product-review [product]="product" [reviewList]='reviewProducts$ | async' id="review"></app-product-review>
+    <app-product-review [product]="product" [reviewList]='reviewProducts$ | async'></app-product-review>
   </div>
 </div>
