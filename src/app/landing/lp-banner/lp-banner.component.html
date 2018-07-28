@@ -1,5 +1,5 @@
-<ngu-carousel [inputs]="carouselOne">
-  <ngu-item NguCarouselItem *ngFor="let banner of banners" class="bannerStyle">
+<ngu-carousel #landingBanners [inputs]="carouselOne" (onMove)="onMoveBanner($event)">
+  <ngu-item NguCarouselItem *ngFor="let banner of bannerItems" class="bannerStyle">
     <a href="{{banner.link_url}}">
       <img src={{banner.image_link}} alt="" style="display: block; width: 100%;">
     </a>

@@ -1,6 +1,6 @@
 import { environment } from './../../../environments/environment';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { NguCarousel } from '@ngu/carousel';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { NguCarousel, NguCarouselStore } from '@ngu/carousel';
 
 @Component({
   selector: 'app-lp-banner',
@@ -9,8 +9,10 @@ import { NguCarousel } from '@ngu/carousel';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LpBannerComponent implements OnInit {
-  banners = environment.config.landing_page_banner;
+  public bannerItems = environment.config.landing_page_banner;
   public carouselOne: NguCarousel;
+  @ViewChild('landingBanners') landingBanners: NguCarouselStore;
+
   constructor() {}
 
   ngOnInit() {
@@ -28,5 +30,9 @@ export class LpBannerComponent implements OnInit {
       loop: true,
       custom: 'banner'
     };
+  }
+
+  onMoveBanner(store: NguCarouselStore) {
+    this.landingBanners.currentSlide = store.currentSlide;
   }
 }
