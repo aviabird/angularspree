@@ -42,14 +42,13 @@
       display: inline-block;
       border-radius: 999px;
       background-color: $theme-main-color;
+      border: 1px solid $theme-main-color;
       padding: 5px;
       margin: 0 3px;
       transition: .4s ease all;
     }
     .ngucarouselPoint li.active {
       background-color: $white;
-      border: 1px solid $theme-main-color;
-      width: 10px;
     }
   }
   .leftRs,
@@ -64,6 +63,7 @@
     background-repeat: no-repeat;
     background-position: center;
     padding: 0 4rem;
+    filter: drop-shadow(0 2px 2px #444);
     background-size: 3rem;
     @media (max-width: 768px) {
       display: none !important;
@@ -76,5 +76,31 @@
   .rightRs {
     right: 0;
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+  }
+  .myBannerPoint {
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    color: beige;
+    justify-content: center;
+    list-style-type: none;
+    background: rgba(0, 0, 0, 0.34);
+    margin: 0;
+    padding: 10px;
+    li {
+      background: #6b6b6b;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      &.active {
+        transform: translateY(-10px);
+        transition: .3s ease all;
+      }
+    }
   }
 }
