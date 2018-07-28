@@ -320,4 +320,7 @@ p {
   display: flex;
   align-items: center;
   padding-left: 3rem;
+  @media screen and(min-width: 310px) and(max-width: 768px) {
+    padding-left: 0rem;
+  }
 }

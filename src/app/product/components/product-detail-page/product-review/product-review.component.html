@@ -1,4 +1,4 @@
-<div class="cust-reviews">
+<div class="cust-reviews" *ngIf="!isMobile">
   <h1>Customer Reviews</h1>
   <div class="row">
     <div class="col-12 col-md-6 pl-4" *ngIf="reviewList">
@@ -41,6 +41,60 @@
     <div class="row">
       <div class="col-md-8">
         <div class="review-sort-filter mt-5 mb-4">
+          <div class="row">
+            <div class="float-left col-md-4 pt-2">Showing {{product.reviews_count }} Reviews</div>
+          </div>
+        </div>
+        <div *ngIf="reviewList">
+          <div *ngFor="let item of reviewList.reviews" class="rating-inner">
+            <div class="rating-head">
+              <ngx-input-star-rating disabled="true" value="{{item.rating }}" required></ngx-input-star-rating>
+              <span class="pl-3">{{item.title}}</span>
+            </div>
+            <div class="rating-by">
+              By {{item?.name.split('@')[0]}} on {{item.created_at | date}}
+            </div>
+            <p class="description">
+              {{item.review}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cust-reviews" *ngIf="isMobile">
+  <h1>Customer Reviews</h1>
+  <div class="row">
+    <div class="col-12 col-md-6 pl-4" *ngIf="reviewList">
+      <div class="avg-review" id="review" *ngIf="reviewList.total_ratings>0">
+        <div class="row">
+          <div class="review col-12 col-md-5 col-lg-5 p-0 text-center">
+            <ngx-input-star-rating disabled="true" value="{{product.avg_rating}}" required></ngx-input-star-rating>
+            {{reviewList.total_ratings }} Reviews
+          </div>
+          <div class="out-review col-12 text-center">
+            {{product.avg_rating | number}} out of 5 star
+          </div>
+        </div>
+        <div class="write-review">
+          <button (click)="showReviewForm()" class="btn themebtnprimary col-102 m-auto">Write a Review</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3 offset-md-2 pt-2" *ngIf="reviewList.total_ratings === 0">
+      <div class="row">
+        <div class="box">
+          <div class="float-left col-5 pl-0">Be the first to Review this product</div>
+          <button (click)="showReviewForm()" class="btn themebtnprimary col-7 m-auto float-right">Write a Review</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="review-display" *ngIf="reviewList.total_ratings > 0">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="review-sort-filter mt-1 mb-4">
           <div class="row">
             <div class="float-left col-md-4 pt-2">Showing {{product.reviews_count }} Reviews</div>
           </div>

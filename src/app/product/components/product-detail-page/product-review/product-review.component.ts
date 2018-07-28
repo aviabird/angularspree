@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductReviewComponent implements OnInit {
   @Input() reviewList;
   @Input() product: Product;
-
+  @Input() isMobile;
   productID: any
   isAuthenticated: boolean;
 
