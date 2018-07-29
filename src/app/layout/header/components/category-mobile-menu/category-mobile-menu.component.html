@@ -5,14 +5,16 @@
     </ul>
     <ul class="otherlinks">
       <li>
-        <a href="#">Account</a>
+        <a [routerLink]="['info/About_us']" (click)="onCloseMobilemenu()">About us</a>
+
       </li>
       <li>
-        <a href="#">FAQs</a>
+        <a [routerLink]="['info/FAQs']" (click)="onCloseMobilemenu()">FAQs</a>
       </li>
       <li>
-        <a href="#">Blogs</a>
+        <a [routerLink]="['info/Return Policy']" (click)="onCloseMobilemenu()">Return Policy</a>
       </li>
+
     </ul>
   </div>
   <div class="p-0 no-gutters" class="sub-catgory" [@popOverState]="getparrentState" [@subCatgory]="getChildState">
@@ -32,4 +34,5 @@
         (click)="onCloseMobilemenu()">{{taxon.name}}</li>
     </ul>
   </div>
+  <div class="need-help">Need help?+91-9176031568</div>
 </div>

@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductReviewComponent implements OnInit {
   @Input() reviewList;
   @Input() product: Product;
-
+  @Input() isMobile;
   productID: any
   isAuthenticated: boolean;
 
@@ -39,5 +39,13 @@ export class ProductReviewComponent implements OnInit {
     } else {
       this.toastrService.info('Please Login to write review.', 'Login')
     }
+  }
+
+  get reviewPercent() {
+    return Math.ceil(this.product.avg_rating / 5 * 100);
+  }
+
+  get hasReviews() {
+    return this.reviewList.total_ratings > 0;
   }
 }

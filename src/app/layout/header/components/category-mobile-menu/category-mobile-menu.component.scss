@@ -69,7 +69,8 @@ ul {
   background-color: $white - 10;
   border-bottom: 1px solid $gray-10;
 }
-.backbtn{
+
+.backbtn {
   padding-left: 10px;
   &::after {
     font-family: 'FontAwesome';
@@ -79,10 +80,19 @@ ul {
     margin-right: 12px;
     left: 11px;
     top: 7px;
-    display:none; 
+    display: none;
     position: absolute;
     background-size: 10px;
     font-size: 20px;
   }
+}
 
+.need-help {
+  position: fixed;
+  bottom: 7.8vh;
+  padding: 1rem;
+  text-align: center;
+  background-color: $theme-main-color - 20;
+  width: 100%;
+  color:$white;
 }
