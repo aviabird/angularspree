@@ -7,7 +7,6 @@
         </app-image-container>
       </div>
       <div class="col-md-7 col-12">
-
         <app-product-price-info [brand]="brand" [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
           (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
@@ -51,14 +50,14 @@
 
 </div>
 <div *ngIf="isMobile" class="bg">
-  <div class="container">
-    <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-2">
-      <div class="col-12 ">
+  <div class="container p-0">
+    <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row m-0 pt-2">
+      <div class="col-12">
         <h1 itemprop="name" class="title">{{product.name}}</h1>
       </div>
     </div>
     <div class="col-12">
-      <div class="row">
+      <div class="row m-0">
         <div class="product-subtitle col-5 p-0">
           <a [routerLink]="['search']" [queryParams]="{'q[name_cont]': brand.name, id: brand.id}" *ngIf="brand">
             <span>By </span>
@@ -69,7 +68,9 @@
           <div class="ugc pr-3">
             <a class="hide-phone js-revScrollTo reviewlink" (click)="scrollToReviewMobile()">
               <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" class="rating" required></ngx-input-star-rating>
-              {{product.reviews_count}}
+              <span class="rating-count">
+                {{product.reviews_count}}
+              </span>
             </a>
           </div>
           <!-- <div class="product-header-extras col-7 p-0">
@@ -86,7 +87,7 @@
         <app-image-container [images]="images" [isMobile]='isMobile' class="col-12" [selectedImage]="images[0]">
         </app-image-container>
       </div>
-      <div class="col-md-7 col-12">
+      <div class="col-md-7 col-12 p-0">
         <app-product-price-info [product]="product" [isMobile]='isMobile' (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
           (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
@@ -115,7 +116,7 @@
     </div>
   </div>
   <div *ngIf="similarProducts$ | async; let similarProducts">
-    <div class="slider mb-5 pb-4 " *ngIf="similarProducts.length >0">
+    <div class="slider mb-3 pb-4 pt-3 " *ngIf="similarProducts.length >0">
       <div class="container">
         <h2>
           Similar products
@@ -125,6 +126,6 @@
     </div>
   </div>
   <div class="container">
-    <app-product-review [product]="product" [reviewList]='reviewProducts$ | async'></app-product-review>
+    <app-product-review [product]="product" [isMobile]='isMobile' [reviewList]='reviewProducts$ | async'></app-product-review>
   </div>
 </div>

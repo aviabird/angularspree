@@ -1,5 +1,5 @@
 <div class="container" *ngIf="orderDetails">
-  <div class="col-12 thankyou thankyou1 shadow-sm mt-5 mb-3">
+  <div class="col-12 thankyou mobileth shadow-sm mt-5 mb-3">
     <h1>Thank you for your order!</h1>
     <div class="float-left">
       <i class="fa fa-check-circle text-success"></i>
@@ -74,7 +74,7 @@
     </div>
   </div>
   <div class="order-items shadow-sm mt-3 mb-3">
-    <div class="col-sm">
+    <div class="col-sm order">
       <h3>Item(s)</h3>
       <div class="row" *ngFor="let line_item of orderDetails.line_items">
         <a [routerLink]="['/', line_item.variant.slug]" class="col-sm col-3">
