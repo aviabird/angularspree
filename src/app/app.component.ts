@@ -10,9 +10,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
   orderSub$: Subscription;
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   currentStep: string;
   checkoutUrls = ['/checkout/cart', '/checkout/address', '/checkout/payment'];
   schema = {
-    '@context': 'http://schema.org',
+    '@context': 'https://schema.org',
     '@type': 'Organization',
     'name': environment.appName,
     'url': location.origin
@@ -54,11 +54,11 @@ export class AppComponent implements OnInit, OnDestroy {
   addFaviconIcon() {
     const link =
       document.querySelector(`link[rel*='icon']`) ||
-      (document.createElement("link") as any);
-    link.type = "image/x-icon";
-    link.rel = "shortcut icon";
+      (document.createElement('link') as any);
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
     link.href = environment.config.fevicon;
-    document.getElementsByTagName("head")[0].appendChild(link);
+    document.getElementsByTagName('head')[0].appendChild(link);
   }
 
   isCheckoutRoute() {
@@ -74,9 +74,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private findCurrentStep(currentRoute) {
-    const currRouteFragments = currentRoute.split("/");
+    const currRouteFragments = currentRoute.split('/');
     const length = currRouteFragments.length;
-    this.currentStep = currentRoute.split("/")[length - 1];
+    this.currentStep = currentRoute.split('/')[length - 1];
   }
 
   ngOnDestroy() {
@@ -85,31 +85,31 @@ export class AppComponent implements OnInit, OnDestroy {
 
   addMetaInfo() {
     this.meta.updateTag({
-      name: "description",
+      name: 'description',
       content: environment.config.landing_page.description
     });
     this.meta.updateTag({
-      name: "keywords",
+      name: 'keywords',
       content: environment.config.landing_page.title
     });
     this.meta.updateTag({
-      name: "title",
+      name: 'title',
       content: environment.config.landing_page.title
     });
     this.meta.updateTag({
-      name: "apple-mobile-web-app-title",
+      name: 'apple-mobile-web-app-title',
       content: environment.appName
     });
     this.meta.updateTag({
-      property: "og:description",
+      property: 'og:description',
       content: environment.config.landing_page.description
     });
     this.meta.updateTag({
-      property: "og:url",
+      property: 'og:url',
       content: environment.config.frontEndUrl
     }),
       this.meta.updateTag({
-        property: "twitter:title",
+        property: 'twitter:title',
         content: environment.config.landing_page.description
       });
     this.metaTitle.setTitle(environment.config.landing_page.title);
