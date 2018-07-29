@@ -5,5 +5,6 @@
   border: 1px solid $gray-10;
   img {
     height: 100%;
+    object-fit: scale-down;
   }
 }
