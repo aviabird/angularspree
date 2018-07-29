@@ -42,16 +42,12 @@
 
 .order-items {
   .order {
-    @media screen and(min-width: 320px) and(max-width: 768px) {
-      padding: 0px;
-    }
+    @media screen and(min-width: 320px) and(max-width: 768px) {}
+    padding: 0px;
   }
-}
-
-@extend .thankyou;
-h3 {
-  font-size: 1.7em;
-  color: $gray-600;
-}
-
+  @extend .thankyou;
+  h3 {
+    font-size: 1.7em;
+    color: $gray-600;
+  }
 }
