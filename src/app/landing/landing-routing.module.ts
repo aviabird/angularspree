@@ -7,14 +7,15 @@ import { FaqPageComponent } from './faq-page/faq-page.component';
 import { ReturnPolicyComponent } from './return-policy/return-policy.component';
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'b/brands', component: BrandsPageComponent},
-  { path: 'a/about', component: AboutUsComponent},
-  { path: 'r/return', component: ReturnPolicyComponent},
-  { path: 'f/faq', component: FaqPageComponent}
+  { path: 'b/brands', component: BrandsPageComponent },
+  { path: 'info/About_us', component: AboutUsComponent },
+  { path: 'info/Return Policy', component: ReturnPolicyComponent },
+  { path: 'info/FAQs', component: FaqPageComponent }
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LandingRoutingModule {}
+export class LandingRoutingModule { }
