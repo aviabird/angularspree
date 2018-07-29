@@ -11,10 +11,10 @@
       {
         "source": "**/*",
         "headers": [
-          {
-            "key": "Content-Security-Policy",
-            "value": "script-src 'self' 'nonce-2726c7f26c' cdn.segment.com www.googletagmanager.com cdnjs.cloudflare.com www.google-analytics.com cdn.ravenjs.com d24n15hnbwhuhn.cloudfront.net connect.facebook.net cdn.mxpnl.com"
-          },
+          // {
+          //   "key": "Content-Security-Policy",
+          //   "value": "script-src 'self' 'nonce-2726c7f26c' cdn.segment.com www.googletagmanager.com cdnjs.cloudflare.com www.google-analytics.com cdn.ravenjs.com d24n15hnbwhuhn.cloudfront.net connect.facebook.net cdn.mxpnl.com"
+          // },
           {
             "key": "X-Frame-Options",
             "value": "SAMEORIGIN"
