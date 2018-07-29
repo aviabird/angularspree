@@ -13,7 +13,7 @@
         "headers": [
           {
             "key": "Content-Security-Policy",
-            "value": "script-src 'self' 'nonce-2726c7f26c' www.googletagmanager.com cdnjs.cloudflare.com www.google-analytics.com"
+            "value": "script-src 'self' 'nonce-2726c7f26c' cdn.segment.com www.googletagmanager.com cdnjs.cloudflare.com www.google-analytics.com cdn.ravenjs.com d24n15hnbwhuhn.cloudfront.net connect.facebook.net cdn.mxpnl.com"
           },
           {
             "key": "X-Frame-Options",
@@ -44,7 +44,6 @@
         ]
       },
       {
-        // Sets the cache header for 404 pages to cache for 5 minutes
         "source": "404.html",
         "headers": [
           {

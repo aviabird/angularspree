@@ -1,14 +1,14 @@
-import { CUSTOM_APP_DATA } from "./app-data";
-import { CUSTOM_META_DATA } from "./meta-data";
+import { CUSTOM_APP_DATA } from './app-data';
+import { CUSTOM_META_DATA } from './meta-data';
 
 export const CUSTOM_EXAMPLE_CONFIG = {
   // Add Your custom configs here
   prodApiEndpoint: 'http://my-prod.api.example.com/',
   appName: 'Custom App Name',
-  fevicon: 'http://via.placeholder.com/350x150',
+  fevicon: 'https://via.placeholder.com/350x150',
   header: {
     brand: {
-      logo: 'http://via.placeholder.com/350x150',
+      logo: 'https://via.placeholder.com/350x150',
       name: 'Custom',
       height: '40',
       width: '112',
@@ -16,12 +16,12 @@ export const CUSTOM_EXAMPLE_CONFIG = {
     searchPlaceholder: 'Search',
     showGithubRibon: false,
   },
-  //Following are the test crediantials for payubiz payment gateway.
+  // Following are the test crediantials for payubiz payment gateway.
   payuBizSalt: '***REMOVED***',
   payuBizKey: '***REMOVED***',
   payuBizUrl: 'https://test.payu.in/_payment',
   freeShippingAmount: 10,
-  currency_symbol: '$', //USD $
+  currency_symbol: '$', // USD $
   PaymentMethodCod: 'COD',
   PaymentMethodPayubiz: 'Payubiz',
   defaultPaymentMethod: 'Payubiz',
