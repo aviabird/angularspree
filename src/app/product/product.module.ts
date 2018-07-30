@@ -15,6 +15,7 @@ import { ProductVariantsComponent } from './components/product-detail-page/produ
 import { ProductComponent } from './product.component';
 import { WriteProductReviewComponent } from './components/product-detail-page/write-product-review/write-product-review.component';
 import { ProductReviewComponent } from './components/product-detail-page/product-review/product-review.component'
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { ProductReviewComponent } from './components/product-detail-page/product
   ],
   imports: [
     SharedModule,
+    RoundProgressModule,
     ProductRoutingModule,
     NgxInputStarRatingModule,
     ProgressbarModule.forRoot()

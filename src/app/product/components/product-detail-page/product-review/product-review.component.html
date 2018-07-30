@@ -66,19 +66,30 @@
 <div class="cust-reviews" *ngIf="isMobile">
   <h1>Customer Reviews</h1>
   <div class="row">
-    <div class="col-12 col-md-6 pl-4" *ngIf="reviewList">
+    <div class="col-12 col-md-6" *ngIf="reviewList">
       <div class="avg-review" id="review" *ngIf="hasReviews; else noReviews">
         <div class="row">
-          <div class="col-4">
-            <span class="review-percentage">
-              {{reviewPercent}}<sup>%</sup>
-              <br /><small>RECOMMENDED</small>
-            </span>
+          <div class="col-5">
+            <div class="review-percentage">
+              <div class="percent">
+
+                <div class="num">
+                  {{reviewPercent}}
+                </div>
+                <sup>%</sup>
+
+                <small>RECOMMENDED</small>
+              </div>
+              <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'" [radius]="55" [stroke]="5"
+                [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'"
+                [animationDelay]="0" (onRender)="doSomethingWithCurrentValue($event)">Jaypal f., nmcv.mcxncvn;cvmx;nmlcmvnxl;mlm;</round-progress>
+            </div>
           </div>
-          <div class="review col-8 p-0 text-left mb-5 pl-2">
-            <p>{{reviewPercent}}% OF REVIEWERS <br> RECOMMEND THIS PRODUCT</p>
+          <div class="review col-7 text-left mb-5 pl-2">
+            <p>{{reviewPercent}}% OF REVIEWERS
+              <br> RECOMMEND THIS PRODUCT</p>
             <ngx-input-star-rating disabled="true" value="{{product.avg_rating}}" required></ngx-input-star-rating>
-            {{product.avg_rating | number}} / 5
+            {{product.avg_rating | number:'1.1-1'}} / 5
           </div>
         </div>
         <div class="write-review">
