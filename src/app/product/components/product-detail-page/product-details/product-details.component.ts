@@ -19,9 +19,10 @@ import {
 import { Product } from './../../../../core/models/product';
 import { ProductService } from './../../../../core/services/product.service';
 import { Meta, Title } from '@angular/platform-browser';
-import { getAuthStatus } from '../../../../auth/reducers/selectors';
 import { environment } from '../../../../../environments/environment';
 import { Taxon } from '../../../../core/models/taxon';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CheckoutService } from '../../../../core/services/checkout.service';
 
 @Component({
   selector: 'app-product-details',
@@ -46,6 +47,8 @@ export class ProductDetailsComponent implements OnInit {
   schema: any;
   selectedVariant: any;
   brand: Taxon;
+  checkPincodeForm: FormGroup;
+  isCodAvilable$: Observable<any>;
 
   constructor(
     private checkoutActions: CheckoutActions,
@@ -56,26 +59,23 @@ export class ProductDetailsComponent implements OnInit {
     private searchActions: SearchActions,
     private productsActions: ProductActions,
     private meta: Meta,
-    private title: Title
+    private title: Title,
+    private fb: FormBuilder,
+    private checkoutService: CheckoutService
   ) { }
 
   ngOnInit() {
     this.screenwidth = window.innerWidth;
     this.calculateInnerWidth();
-
     this.addMetaInfo(this.product);
-
     this.initData();
-
     this.store.dispatch(this.productsActions.getRelatedProduct(this.productID));
     this.relatedProducts$ = this.store.select(relatedProducts);
-
     this.store.dispatch(this.productsActions.getProductReviews(this.productID));
     this.reviewProducts$ = this.store.select(productReviews);
-
     this.addJsonLD(this.product);
-
     this.findBrand();
+    this.initForm();
   }
 
   initData() {
@@ -198,5 +198,19 @@ export class ProductDetailsComponent implements OnInit {
       element.taxon.pretty_name.includes('Brands')
     );
     this.brand = brandClassification && brandClassification.taxon;
+  }
+
+  initForm() {
+    const pincode = '';
+
+    this.checkPincodeForm = this.fb.group({
+      'pincode': [pincode, Validators.required]
+    });
+  }
+  checkCodAvilability() {
+    if (this.checkPincodeForm.valid) {
+      const pincode = this.checkPincodeForm.value.pincode;
+      this.isCodAvilable$ = this.checkoutService.shipmentAvailability(pincode)
+    }
   }
 }
