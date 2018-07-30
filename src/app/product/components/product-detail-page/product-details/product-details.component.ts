@@ -23,6 +23,7 @@ import { environment } from '../../../../../environments/environment';
 import { Taxon } from '../../../../core/models/taxon';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckoutService } from '../../../../core/services/checkout.service';
+import { getLineItems } from '../../../../checkout/reducers/selectors';
 
 @Component({
   selector: 'app-product-details',
@@ -49,6 +50,7 @@ export class ProductDetailsComponent implements OnInit {
   brand: Taxon;
   checkPincodeForm: FormGroup;
   isCodAvilable$: Observable<any>;
+  linesItems: any
 
   constructor(
     private checkoutActions: CheckoutActions,
@@ -62,7 +64,9 @@ export class ProductDetailsComponent implements OnInit {
     private title: Title,
     private fb: FormBuilder,
     private checkoutService: CheckoutService
-  ) { }
+  ) {
+    // this.linesItems = this.store.select(getLineItems);
+  }
 
   ngOnInit() {
     this.screenwidth = window.innerWidth;
@@ -113,11 +117,25 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(event) {
+    let navigateToCart: boolean;
+    this.store.select(getLineItems)
+      .subscribe(res => {
+        this.linesItems = res
+      })
     if (event.buyNow) {
-      this.store.dispatch(
-        this.checkoutActions.addToCart(this.variantId, event.count)
-      );
-      setTimeout(() => { this.router.navigate(['checkout', 'cart']); }, 1500)
+      this.linesItems.find(item => {
+        if (item.variant_id === this.variantId && item.quantity === 1) {
+          navigateToCart = true
+        }
+      })
+      if (navigateToCart) {
+        this.router.navigate(['checkout', 'cart'])
+      } else {
+        this.store.dispatch(
+          this.checkoutActions.addToCart(this.variantId, event.count)
+        );
+        setTimeout(() => { this.router.navigate(['checkout', 'cart']); }, 1500)
+      }
     } else {
       this.store.dispatch(
         this.checkoutActions.addToCart(this.variantId, event.count)
@@ -202,11 +220,11 @@ export class ProductDetailsComponent implements OnInit {
 
   initForm() {
     const pincode = '';
-
     this.checkPincodeForm = this.fb.group({
       'pincode': [pincode, Validators.required]
     });
   }
+
   checkCodAvilability() {
     if (this.checkPincodeForm.valid) {
       const pincode = this.checkPincodeForm.value.pincode;
