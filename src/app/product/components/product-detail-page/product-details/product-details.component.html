@@ -20,11 +20,12 @@
                 </div>
                 <button type="submit" class="btn themebtnprimarybasic" [disabled]=!checkPincodeForm.valid>Check</button>
                 <p *ngIf="checkPincodeForm.get('pincode').hasError('required') &&  checkPincodeForm.get('pincode').touched" class="value-err text-danger show mt-3 ml-2 d-block">Pincode can't be blank!</p>
-                <div *ngIf="isCodAvilable$ | async;let isCodAvilable" class="mt-2 msg">
-                  <h5 *ngIf="isCodAvilable.available">CASH ON DELIVERY IS AVAILABLE!</h5>
-                  <h5 *ngIf="!isCodAvilable.available">CASH ON DELIVERY IS NOT AVAILABLE TO THIS POSTAL CODE.</h5>
-                </div>
+              
               </div>
+              <div *ngIf="isCodAvilable$ | async;let isCodAvilable" class="mt-2 msg">
+                  <h5 *ngIf="isCodAvilable.available" class="text-success">CASH ON DELIVERY IS AVAILABLE!</h5>
+                  <h5 *ngIf="!isCodAvilable.available" class="text-danger">CASH ON DELIVERY IS NOT AVAILABLE TO THIS POSTAL CODE.</h5>
+                </div>
             </form>
           </div>
         </div>
@@ -120,8 +121,8 @@
                 <button type="submit" class="btn themebtnprimarybasic" [disabled]=!checkPincodeForm.valid>Check</button>
                 <p *ngIf="checkPincodeForm.get('pincode').hasError('required') &&  checkPincodeForm.get('pincode').touched" class="value-err text-danger show mt-0 mt-sm-3 ml-0 ml-sm-2 d-block">Pincode can't be blank!</p>
                 <div *ngIf="isCodAvilable$ | async;let isCodAvilable" class="mt-2 msg">
-                  <h5 *ngIf="isCodAvilable.available">CASH ON DELIVERY IS AVAILABLE!</h5>
-                  <h5 *ngIf="!isCodAvilable.available">CASH ON DELIVERY IS NOT AVAILABLE TO THIS POSTAL CODE.</h5>
+                  <h5 *ngIf="isCodAvilable.available" class="text-success">CASH ON DELIVERY IS AVAILABLE!</h5>
+                  <h5 *ngIf="!isCodAvilable.available" class="text-danger">CASH ON DELIVERY IS NOT AVAILABLE TO THIS POSTAL CODE.</h5>
                 </div>
               </div>
             </form>
@@ -142,7 +143,7 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-12 mt-4 mb-4">
+      <div class="col-12 mt-3 mb-3">
         <h1 class="mt-2">
           Description
         </h1>
