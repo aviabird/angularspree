@@ -30,10 +30,32 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-3 offset-md-2 mt-5 pt-5">
+    <div class="col-12 col-md-4 offset-md-1 mt-5 pt-5">
       <div class="row">
-        <p style="margin-left: 30px;" *ngIf="reviewList.total_ratings === 0">Be the first to Review this product</p>
-        <button (click)="showReviewForm()" class="btn themebtnprimary col-10 m-auto">Write Review</button>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-4 review-percentage">
+              <div class="percent">
+                <div class="num">
+                  {{reviewPercent}}
+                </div>
+                <sup>%</sup>
+                <small>RECOMMENDED</small>
+              </div>
+              <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'" [radius]="55" [stroke]="5"
+                [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'"
+                [animationDelay]="0" (onRender)="doSomethingWithCurrentValue($event)"></round-progress>
+
+            </div>
+            <div class="col-8 p-0">
+              <p style="margin-left: 30px;" *ngIf="reviewList.total_ratings === 0">Be the first to Review this product</p>
+              <p>{{reviewPercent}}% OF REVIEWERS RECOMMEND THIS PRODUCT</p>
+              <button (click)="showReviewForm()" class="btn themebtnprimary col-10 m-auto">Write Review</button>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </div>
   </div>
@@ -82,7 +104,7 @@
               </div>
               <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'" [radius]="55" [stroke]="5"
                 [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'"
-                [animationDelay]="0" (onRender)="doSomethingWithCurrentValue($event)">Jaypal f., nmcv.mcxncvn;cvmx;nmlcmvnxl;mlm;</round-progress>
+                [animationDelay]="0" (onRender)="doSomethingWithCurrentValue($event)"></round-progress>
             </div>
           </div>
           <div class="review col-7 text-left mb-5 pl-2">

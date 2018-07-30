@@ -81,6 +81,31 @@ h1 {
       }
     }
   }
+  .review-percentage {
+    position: relative;
+    .percent {
+      position: absolute;
+      top: 35px;
+      left: 42px;
+      z-index: 12;
+      .num {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+        line-height: 30px;
+      }
+      sup {
+        top: -31px;
+        right: -53px;
+        font-size: 22px;
+      }
+      small {
+        font-size: 11px;
+        left: -29px;
+        position: relative;
+      }
+    }
+  }
   .review-display {
     .rating-inner {
       padding-bottom: 1rem;
