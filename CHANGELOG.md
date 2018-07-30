@@ -1,5 +1,27 @@
 # Changelog
 
+## [`v1.0.0-beta-1`][tag-1_0_0-beta-1] (2018-07-30)
+
+### UI
+
+- **carousel** : Replaced system wide carousel to `ngu carousel`
+- **Product** : Product detail UI fixes [#206](https://github.com/aviabird/angularspree/pull/206)
+
+### Feature
+
+- **SEO** : Meta info for product detail page [#207](https://github.com/aviabird/angularspree/pull/207)
+- **Product Title** : added brand name/link to product detail [#215](https://github.com/aviabird/angularspree/pull/215)
+- **Order Placement with COD payment** : Pincode validation, test card and core fixes for payubiz payment [#201](https://github.com/aviabird/angularspree/pull/201)
+
+### Fixes
+
+- **Enable Touch** : All carousels and product list now support mobile touch events. Thanks to [ngu-carousel](https://github.com/sheikalthaf/ngu-carousel) by @sheikalthaf
+- **Bug** : COD order success fixes [#204](https://github.com/aviabird/angularspree/pull/204)
+- **Bugs** : Other bug fixes [#205](https://github.com/aviabird/angularspree/pull/205)
+- **Product Detail** : zoom fixes [#e910d6b](
+https://github.com/aviabird/angularspree/pull/218/commits/e910d6b5048eff58d9af53e61e1305dbef73cc64)
+
+
 ## [`v1.0.0-alpha-2`][tag-1_0_0-alpha-2] (2018-07-18)
 
 #### UI
@@ -51,6 +73,7 @@
   * Address
   * My Orders
 
+[tag-1_0_0-beta-1]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-beta-1
 [tag-1_0_0-alpha-2]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-alpha-2
 [tag-1_0_0-alpha]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-alpha
 [tag-0_2]: https://github.com/aviabird/angularspree/releases/tag/v0.2
