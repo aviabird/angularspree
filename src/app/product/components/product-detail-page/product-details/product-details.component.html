@@ -11,6 +11,20 @@
           (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
       </div>
+      <div class='col-md-7 col-12'>
+        <h1>Check COD Availability</h1>
+        <form [formGroup]="checkPincodeForm" (ngSubmit)="checkCodAvilability()">
+          <div class="form-group">
+            <input type="text" class="form-control" name="pincode" placeholder="Postal/Pin code" formControlName="pincode" required>
+            <button type="submit" class="btn btn-primary" [disabled]=!checkPincodeForm.valid>Check</button>
+            <p *ngIf="checkPincodeForm.get('pincode').hasError('required') &&  checkPincodeForm.get('pincode').touched" class="value-err text-danger show">Pincode can't be blank!</p>
+            <div *ngIf="isCodAvilable$ | async;let isCodAvilable">
+              <h5 *ngIf="isCodAvilable.available">CASH ON DELIVERY IS AVAILABLE!</h5>
+              <h5 *ngIf="!isCodAvilable.available">CASH ON DELIVERY IS NOT AVAILABLE TO THIS POSTAL CODE.</h5>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
   <div *ngIf="relatedProducts$ | async; let relatedProducts">
