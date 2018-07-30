@@ -150,8 +150,8 @@ h1 {
     position: relative;
     .percent {
       position: absolute;
-      top: 35px;
-      left: 28px;
+      top: 35px !important;
+      left: 28px !important;
       z-index: 12;
       .num {
         font-size: 3em;
