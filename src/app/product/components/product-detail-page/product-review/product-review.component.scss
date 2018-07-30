@@ -81,6 +81,31 @@ h1 {
       }
     }
   }
+  .review-percentage {
+    position: relative;
+    .percent {
+      position: absolute;
+      top: 35px;
+      left: 42px;
+      z-index: 12;
+      .num {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+        line-height: 30px;
+      }
+      sup {
+        top: -31px;
+        right: -53px;
+        font-size: 22px;
+      }
+      small {
+        font-size: 11px;
+        left: -29px;
+        position: relative;
+      }
+    }
+  }
   .review-display {
     .rating-inner {
       padding-bottom: 1rem;
@@ -116,31 +141,38 @@ h1 {
 .box {
   box-shadow: 0 0 1px $gray-10;
   border: 1px solid $gray-10;
-  margin: 1em;padding: 1em;
+  margin: 1em;
+  padding: 0.5em;
 }
 
 @media screen and(min-width: 310px) and(max-width: 768px) {
   .review-percentage {
-    border: 6px solid $theme-action-color;
-    border-radius: 50px;
-    padding: 17px 23px;
-    font-size: 2rem;
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    sup{
-      font-size: 01rem;
-      top: -17px;
-    }
-    small {
-      font-size: 0.6rem;
+    position: relative;
+    .percent {
       position: absolute;
-      bottom: 16px;
-      left: 3px;
+      top: 35px !important;
+      left: 28px !important;
+      z-index: 12;
+      .num {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+        line-height: 30px;
+      }
+      sup {
+        top: -31px;
+        right: -53px;
+        font-size: 22px;
+      }
+      small {
+        font-size: 11px;
+        left: -29px;
+        position: relative;
+      }
     }
   }
-
   .review {
+    font-size: 12.5px;
     ngx-input-star-rating {
       margin-left: -6px;
     }
