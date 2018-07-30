@@ -72,6 +72,17 @@
   text-transform: capitalize;
 }
 
+:host /deep/.themebtnprimarybasic {
+  text-transform: capitalize;
+  color:$white;
+  border: 1px solid $theme-action-color - 80;
+  box-shadow: 0px 2px 4.6px $theme-action-color - 20;
+  &:focus {
+    @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
+  }
+  @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
+}
+
 :host /deep/.themebtnprimarysade {
   @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 60, $start-percent: 0%, $end-percent: 95%);
 }
