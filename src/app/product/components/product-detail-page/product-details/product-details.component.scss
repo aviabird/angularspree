@@ -51,7 +51,17 @@ h1 {
   }
 }
 
+.check-head {
+  font-size: 1.5em
+}
 
+.msg {
+  display:block;
+  h5 {
+    font-size: 12px;
+    text-transform: capitalize
+  }
+}
 
 .pdp-button {
   border-radius: 3px;
