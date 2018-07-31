@@ -68,9 +68,8 @@ import { ToastrModule } from 'ngx-toastr';
     Ng2UiAuthModule.forRoot(myAuthConfig),
     ToastrModule.forRoot({
       timeOut: 1500,
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-top-center',
       preventDuplicates: true,
-      progressBar: true,
       progressAnimation: 'increasing'
     }),
     CoreModule,
