@@ -111,11 +111,11 @@
         <app-image-container [images]="images" [isMobile]='isMobile' class="col-12" [selectedImage]="images[0]">
         </app-image-container>
       </div>
-      <div class="col-md-7 col-12 p-3 p-sm-0">
+      <div class="col-md-7 col-12 p-0 p-sm-0">
         <app-product-price-info [product]="product" [isMobile]='isMobile' (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
           (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
-        <div class='row'>
+        <div class='row p-3'>
           <div class="col-12 p-0 mt-2 mt-sm-0">
             <h4 class="check-head">Check COD Availability</h4>
             <form [formGroup]="checkPincodeForm" (ngSubmit)="checkCodAvilability()" class="d-block">

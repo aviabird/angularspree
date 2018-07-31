@@ -60,7 +60,27 @@
         <div id="featured-promotions" class="pt-3" *ngIf="customOptionTypesHash">
           <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
             [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
-          <hr class="">
+
+        </div>
+
+        <div class='row p-3'>
+          <div class="col-12 p-0 mt-2 mt-sm-0">
+            <h4 class="check-head">Check COD Availability</h4>
+            <form [formGroup]="checkPincodeForm" (ngSubmit)="checkCodAvilability()" class="d-block">
+              <div class="form-inline">
+                <div class="form-group mr-sm-3 mr-3">
+                  <input type="text" class="form-control mt-3 mt-sm-0" name="pincode" placeholder="Postal/Pin code" formControlName="pincode"
+                    required>
+                </div>
+                <button type="submit" class="btn themebtnprimarybasic" [disabled]=!checkPincodeForm.valid>Check</button>
+                <p *ngIf="checkPincodeForm.get('pincode').hasError('required') &&  checkPincodeForm.get('pincode').touched" class="value-err text-danger show mt-0 mt-sm-3 ml-0 ml-sm-2 d-block">Pincode can't be blank!</p>
+                <div *ngIf="isCodAvilable$ | async;let isCodAvilable" class="mt-2 msg">
+                  <h5 *ngIf="isCodAvilable.available" class="text-success">CASH ON DELIVERY IS AVAILABLE!</h5>
+                  <h5 *ngIf="!isCodAvilable.available" class="text-danger">CASH ON DELIVERY IS NOT AVAILABLE TO THIS POSTAL CODE.</h5>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       <div id="buybox" class="">

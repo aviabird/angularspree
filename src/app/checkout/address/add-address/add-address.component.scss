@@ -49,21 +49,3 @@
     padding: 10px;
   }
 }
-
-.save-button {
-  padding: 1rem 0px;
-  height: 68px;
-  button {
-    width: 190px;
-    color: $white;
-    border-radius: 4px;
-    font-size: 14px;
-    height: 48px;
-    background: $theme-action-color;
-    font-weight: 600;
-    font-family: $primary-font;
-    box-shadow: none;
-    border: none;
-    cursor: pointer;
-  }
-}
