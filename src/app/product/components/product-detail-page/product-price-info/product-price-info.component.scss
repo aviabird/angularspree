@@ -8,7 +8,13 @@
   font-family: $primary-font;
   display: inline;
 }
-.reviewlink{cursor: pointer;&:hover{text-decoration: underline}}
+
+.reviewlink {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline
+  }
+}
 
 .product-subtitle {
   display: inline-block;
@@ -199,8 +205,7 @@
 }
 
 #pricing {
-  border-bottom: 1px solid $gray-10;
-  // @media only screen and (min-width: 320px) and (max-width: 767px) {
+  border-bottom: 1px solid $gray-10; // @media only screen and (min-width: 320px) and (max-width: 767px) {
   //   border:0px solid
   // }
 }
@@ -213,7 +218,7 @@
         li {
           &:first-child {
             width: 40%;
-            text-align: right!important;
+            text-align: right !important;
             font-size: 1em;
             color: $gray-600;
             font-weight: 400;
@@ -249,7 +254,7 @@
           color: $gray-800;
           margin: -8px 0 0 10px;
           text-transform: uppercase;
-          width:11.5em;
+          width: 11.5em;
         }
       }
     }
