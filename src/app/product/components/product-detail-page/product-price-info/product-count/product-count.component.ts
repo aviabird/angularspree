@@ -56,14 +56,7 @@ export class ProductCountComponent implements OnInit {
   }
 
   buyNow(count: number) {
-    this.totalCartItems$.subscribe(cartCount => {
-      this.cartCount = cartCount
-    })
-    if (this.cartCount > 0) {
-      this.router.navigate(['checkout', 'cart']);
-    } else {
-      this.onAddToCart.emit({ count: count, buyNow: true });
-    }
+    this.onAddToCart.emit({ count: count, buyNow: true });
   }
 
   markAsFavorites() {
