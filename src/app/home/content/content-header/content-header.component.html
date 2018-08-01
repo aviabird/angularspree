@@ -48,7 +48,7 @@
                     </span>
                   </button>
                 </li>
-                <li *ngFor="let entry of optionsMobile; let idx = index">
+                <li *ngFor="let entry of options; let idx = index">
                   <input type="radio" name="radiogroup" id="test{{idx}}" [checked]="idx === entry.name" [value]="entry.id" (change)="onSelectionChange(entry)">
                   <label for="test{{idx}}">{{ entry.name }}</label>
                 </li>
@@ -76,12 +76,11 @@
                   </button>
                 </li>
               </ul>
-              <app-filter-mobile-menu (fltermodelstate)="fltermodelstate($event)" (selectedItemEmit)="selectedInput($event)"
-               (childselectedItememit)="childselectedInput($event)"
+              <app-filter-mobile-menu (fltermodelstate)="fltermodelstate($event)" (selectedItemEmit)="selectedInput($event)" (childselectedItememit)="childselectedInput($event)"
                 [fillterList]="fillterList" [subselectedItem]="subselectedItem" [childselectedItem]="childselectedItem"></app-filter-mobile-menu>
-            
-            
-              </div>
+
+
+            </div>
           </div>
         </div>
       </div>

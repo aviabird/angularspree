@@ -4,7 +4,7 @@
     <form [formGroup]="checkPincodeForm" (ngSubmit)="checkCodAvilability()" class="d-block">
       <div class="form-inline">
         <div class="form-group mr-sm-3 mr-3 mt-3 mt-sm-0">
-          <input type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" class="form-control" name="pincode" placeholder="Postal/Pin code"
+          <input type="text" class="form-control" name="pincode" placeholder="Postal/Pin code"
           formControlName="pincode">
         </div>
         <button type="submit" class="btn themebtnprimarybasic" [disabled]=!checkPincodeForm.valid>Check</button>

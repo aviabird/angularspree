@@ -10,10 +10,10 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class ProductSliderComponent implements OnInit {
   @Input() productsList = new Array(10);
   public carouselOne: NguCarousel;
-
+  @Input() showRating: boolean;
   constructor() {
     this.carouselOne = {
-      grid: {xs: 1, sm: 1, md: 2, lg: 5, all: 0},
+      grid: { xs: 1, sm: 1, md: 2, lg: 5, all: 0 },
       slide: 2,
       speed: 400,
       animation: 'lazy',
