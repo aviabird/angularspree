@@ -53,9 +53,19 @@
 }
 
 .variant {
+  padding-bottom: 12px;
+  border-bottom: 1px solid $gray-10;
+  width: 100%;
+  margin-bottom: 10px;
   @media only screen and (min-width: 320px) and (max-width: 767px) {
     padding: 12px 15px 5px;
     display: block;
     margin: auto;
   }
+}
+
+.notvariant {
+  padding: 0;
+  margin: 0;
+  border: 0 solid;
 }

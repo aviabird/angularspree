@@ -1,14 +1,17 @@
 @import "../../shared/scss/_selected_theme_variables.scss";
+$break-small: 320px;
 footer {
   height: 50px;
   position: absolute;
   right: 0;
-  bottom: auto;
+  bottom: -60px;
+  @media screen and (min-width: $break-small) and (max-width: 767px) {
+    bottom:auto;
+  }
   left: 0;
   background-color: $gray-10;
   text-align: center;
 }
-
 .quicklinks {
   padding: 2rem 0;
 }
@@ -33,7 +36,7 @@ footer {
   }
 }
 
-$break-small: 320px;
+
 @media screen and (min-width: $break-small) and (max-width: 767px) {
   .quicklinks .row {
     margin: 0px

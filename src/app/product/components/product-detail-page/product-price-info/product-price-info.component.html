@@ -60,8 +60,9 @@
         <div id="featured-promotions" class="pt-3" *ngIf="customOptionTypesHash">
           <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
             [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
-          <hr class="">
+
         </div>
+        <app-check-pincode></app-check-pincode>
       </div>
       <div id="buybox" class="">
         <app-product-count (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorites()" [isOrderable]="isOrderable"></app-product-count>
@@ -113,5 +114,7 @@
         <app-product-count (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorites()" [isOrderable]="isOrderable"></app-product-count>
       </div>
     </div>
+    <div class="clearfix"></div>
+    <app-check-pincode></app-check-pincode>
   </div>
 </div>

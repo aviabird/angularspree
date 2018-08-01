@@ -34,22 +34,23 @@
       <div class="row">
         <div class="col-12">
           <div class="row">
-            <div class="col-4 review-percentage">
+            <div class="float-left review-percentage" *ngIf="reviewList.total_ratings > 0">
               <div class="percent">
                 <div class="num">
                   {{reviewPercent}}
+                  <span>%</span>
                 </div>
-                <sup>%</sup>
+               
                 <small>RECOMMENDED</small>
               </div>
               <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'" [radius]="55" [stroke]="5"
                 [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'"
-                [animationDelay]="0" (onRender)="doSomethingWithCurrentValue($event)"></round-progress>
+                [animationDelay]="0"></round-progress>
 
             </div>
-            <div class="col-8 p-0">
-              <p style="margin-left: 30px;" *ngIf="reviewList.total_ratings === 0">Be the first to Review this product</p>
-              <p>{{reviewPercent}}% OF REVIEWERS RECOMMEND THIS PRODUCT</p>
+            <div class="float-left p-0 write-review ">
+              <p *ngIf="reviewList.total_ratings === 0">Be the first to Review this product</p>
+              <p *ngIf="reviewList.total_ratings > 0">{{reviewPercent}}% OF REVIEWERS RECOMMEND THIS PRODUCT</p>
               <button (click)="showReviewForm()" class="btn themebtnprimary  m-auto">Write Review</button>
             </div>
           </div>
@@ -94,17 +95,17 @@
           <div class="col-5">
             <div class="review-percentage">
               <div class="percent">
-
                 <div class="num">
                   {{reviewPercent}}
+                  <span>%</span>
                 </div>
-                <sup>%</sup>
+               
 
                 <small>RECOMMENDED</small>
               </div>
               <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'" [radius]="55" [stroke]="5"
                 [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'"
-                [animationDelay]="0" (onRender)="doSomethingWithCurrentValue($event)"></round-progress>
+                [animationDelay]="0"></round-progress>
             </div>
           </div>
           <div class="review col-7 text-left mb-5 pl-2">
@@ -121,9 +122,9 @@
     </div>
     <ng-template #noReviews class="col-12 col-md-3 offset-md-2 pt-2">
       <div class="row">
-        <div class="box">
-          <div class="float-left col-5 pl-0">Be the first to Review this product</div>
-          <button (click)="showReviewForm()" class="btn themebtnprimary col-7 m-auto float-right">Write a Review</button>
+        <div class="box col-12">
+          <div class="col-12 pl-0">Be the first to Review this product</div>
+          <button (click)="showReviewForm()" class="btn themebtnprimary col-12 m-auto">Write a Review</button>
         </div>
       </div>
     </ng-template>
