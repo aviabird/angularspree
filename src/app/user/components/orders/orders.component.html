@@ -8,7 +8,7 @@
   <div class="col-12">
     <div class="row">
       <pagination class="m-auto" *ngIf="orders.total_count > orders.per_page" [totalItems]="orders.total_count" [itemsPerPage]="orders.per_page"
-        [(ngModel)]="orders.current_page" (pageChanged)="pageChanged($event)">
+        [(ngModel)]="orders.current_page" (pageChanged)="pageChanged($event)" [rotate]="rotate" [maxSize]="5">
       </pagination>
     </div>
   </div>
@@ -18,7 +18,7 @@
     <div class="cart-empty">
       <div class="empty-cart-icon"></div>
       <div class="empty-cart-message">You have'nt ordered anything yet.</div>
-      <button type="button" class="btn btn-primary" [routerLink]="['/']">Start Shopping</button>
+      <button type="button" class="btn themebtnprimary" [routerLink]="['/']">Start Shopping</button>
     </div>
   </ng-template>
 </div>

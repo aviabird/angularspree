@@ -16,6 +16,7 @@ import { ProductComponent } from './product.component';
 import { WriteProductReviewComponent } from './components/product-detail-page/write-product-review/write-product-review.component';
 import { ProductReviewComponent } from './components/product-detail-page/product-review/product-review.component'
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { CheckPincodeComponent } from './components/product-detail-page/product-price-info/check-pincode/check-pincode.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar';
     ProductVariantsComponent,
     ProductCountComponent,
     WriteProductReviewComponent,
-    ProductReviewComponent
+    ProductReviewComponent,
+    CheckPincodeComponent
     // pipes
   ],
   exports: [
