@@ -83,16 +83,24 @@ h1 {
   }
   .review-percentage {
     position: relative;
+    width: 135px;
     .percent {
       position: absolute;
       top: 35px;
-      left: 42px;
+      left: 12px;
       z-index: 12;
+      width: 85px;
+      text-align: center;
       .num {
-        font-size: 3em;
+        font-size: 2em;
         padding: 0px;
         margin: 0px;
         line-height: 30px;
+        span {
+          font-size: 19px;
+          position: absolute;
+          top: -14px;
+        }
       }
       sup {
         top: -31px;
@@ -101,9 +109,15 @@ h1 {
       }
       small {
         font-size: 11px;
-        left: -29px;
+        left: 0px;
         position: relative;
       }
+    }
+  }
+  .write-review {
+    width: calc(100% - 135px);
+    @media screen and(min-width: 310px) and(max-width: 768px) {
+      width:100%
     }
   }
   .review-display {
@@ -141,8 +155,7 @@ h1 {
 .box {
   box-shadow: 0 0 1px $gray-10;
   border: 1px solid $gray-10;
-  margin: 1em;
-  padding: 0.5em;
+  padding: 15px;
 }
 
 @media screen and(min-width: 310px) and(max-width: 768px) {
@@ -151,13 +164,18 @@ h1 {
     .percent {
       position: absolute;
       top: 35px !important;
-      left: 28px !important;
+      left: 12px !important;
       z-index: 12;
       .num {
-        font-size: 3em;
+        font-size: 2em;
         padding: 0px;
         margin: 0px;
         line-height: 30px;
+        span {
+          font-size: 19px;
+          position: absolute;
+          top: -14px;
+        }
       }
       sup {
         top: -31px;
@@ -166,7 +184,7 @@ h1 {
       }
       small {
         font-size: 11px;
-        left: -29px;
+        left: 0;
         position: relative;
       }
     }

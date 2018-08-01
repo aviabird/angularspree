@@ -67,7 +67,7 @@
 <div class="col-12 mt-3">
   <div class="row">
     <pagination *ngIf="paginationData.total_count > paginationData.per_page" [totalItems]="paginationData.total_count" [itemsPerPage]="paginationData.per_page"
-      [(ngModel)]="paginationData.current_page" (pageChanged)="pageChanged($event)" class="m-auto"></pagination>
+      [(ngModel)]="paginationData.current_page" (pageChanged)="pageChanged($event)" class="m-auto" [rotate]="rotate" [maxSize]="5"></pagination>
   </div>
 
 </div>

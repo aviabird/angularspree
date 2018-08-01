@@ -62,10 +62,9 @@ export class ProductDetailsComponent implements OnInit {
     private productsActions: ProductActions,
     private meta: Meta,
     private title: Title,
-    private fb: FormBuilder,
-    private checkoutService: CheckoutService
+
   ) {
-    // this.linesItems = this.store.select(getLineItems);
+
   }
 
   ngOnInit() {
@@ -79,7 +78,7 @@ export class ProductDetailsComponent implements OnInit {
     this.reviewProducts$ = this.store.select(productReviews);
     this.addJsonLD(this.product);
     this.findBrand();
-    this.initForm();
+
   }
 
   initData() {
@@ -216,19 +215,5 @@ export class ProductDetailsComponent implements OnInit {
       element.taxon.pretty_name.includes('Brands')
     );
     this.brand = brandClassification && brandClassification.taxon;
-  }
-
-  initForm() {
-    const pincode = '';
-    this.checkPincodeForm = this.fb.group({
-      'pincode': [pincode, Validators.required]
-    });
-  }
-
-  checkCodAvilability() {
-    if (this.checkPincodeForm.valid) {
-      const pincode = this.checkPincodeForm.value.pincode;
-      this.isCodAvilable$ = this.checkoutService.shipmentAvailability(pincode)
-    }
   }
 }
