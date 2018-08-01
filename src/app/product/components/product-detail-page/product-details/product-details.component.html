@@ -10,30 +10,7 @@
         <app-product-price-info [brand]="brand" [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
           (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
-        <div class='row'>
-          <div class="col-12 p-0">
-            <h4 class="check-head">Check COD Availability</h4>
-            <form [formGroup]="checkPincodeForm" (ngSubmit)="checkCodAvilability()" class="d-block">
-              <div class="form-inline">
-                <div class="form-group mr-sm-3">
-                  <input type="text" 
-                         class="form-control" 
-                         name="pincode" 
-                         placeholder="Postal/Pin code" 
-                         formControlName="pincode"
-                         onkeypress="return event.charCode >= 48 && event.charCode <= 57">
-                </div>
-                <button type="submit" class="btn themebtnprimarybasic" [disabled]=!checkPincodeForm.valid>Check</button>
-              </div>
-              <div *ngIf="isCodAvilable$ | async;let isCodAvilable" class="mt-2 msg">
-                <h5 *ngIf="isCodAvilable.available; else elseBlock" class="text-success">CASH ON DELIVERY IS AVAILABLE!</h5>
-                <ng-template #elseBlock>
-                  <h5 class="text-danger">CASH ON DELIVERY IS NOT AVAILABLE!</h5>
-                </ng-template>
-              </div>
-            </form>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
@@ -111,34 +88,11 @@
         <app-image-container [images]="images" [isMobile]='isMobile' class="col-12" [selectedImage]="images[0]">
         </app-image-container>
       </div>
-      <div class="col-md-7 col-12 p-3 p-sm-0">
+      <div class="col-md-7 col-12 p-0 p-sm-0">
         <app-product-price-info [product]="product" [isMobile]='isMobile' (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
           (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
-        <div class='row'>
-          <div class="col-12 p-0 mt-2 mt-sm-0">
-            <h4 class="check-head">Check COD Availability</h4>
-            <form [formGroup]="checkPincodeForm" (ngSubmit)="checkCodAvilability()" class="d-block">
-              <div class="form-inline">
-                <div class="form-group mr-sm-3 mr-3">
-                  <input type="text" 
-                  class="form-control mt-3 mt-sm-0" 
-                  name="pincode" placeholder="Postal/Pin code" 
-                  formControlName="pincode"
-                  onkeypress="return event.charCode >= 48 && event.charCode <= 57">
-                </div>
-                <button type="submit" class="btn themebtnprimarybasic" [disabled]=!checkPincodeForm.valid>Check</button>
-                <p *ngIf="checkPincodeForm.get('pincode').hasError('required') &&  checkPincodeForm.get('pincode').touched" class="value-err text-danger show mt-0 mt-sm-3 ml-0 ml-sm-2 d-block">Pincode can't be blank!</p>
-                <div *ngIf="isCodAvilable$ | async;let isCodAvilable" class="mt-2 msg">
-                  <h5 *ngIf="isCodAvilable.available; else elseBlock" class="text-success">CASH ON DELIVERY IS AVAILABLE!</h5>
-                  <ng-template #elseBlock>
-                    <h5 class="text-danger">CASH ON DELIVERY IS NOT AVAILABLE!</h5>
-                  </ng-template>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
