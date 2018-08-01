@@ -30,6 +30,15 @@
               <b class="text-uppercase">{{order.payment_state | humanize | uppercase}}</b>
             </td>
           </tr>
+          <tr>
+            <td> Payment Source:</td>
+            <td>{{order.payments[0]?.payment_method?.name}}</td>
+          </tr>
+          <tr *ngIf="order.payment_state!= 'paid' && order.payments[0]?.payment_method?.name === payubiz">
+            <td>
+              <button class="btn themebtnprimary" (click)="retryPayment(order)">Retry Payment</button>
+            </td>
+          </tr>
       </table>
     </div>
     <div class="col-12 col-sm-6">
@@ -73,10 +82,10 @@
         </a>
       </h4>
       <h6 class="ptitle">
-          <a [routerLink]="['/', line_item.variant.slug]">
-            {{line_item.variant.options_text}}
-          </a>
-        </h6>
+        <a [routerLink]="['/', line_item.variant.slug]">
+          {{line_item.variant.options_text}}
+        </a>
+      </h6>
     </div>
 
     <div class="col-md-3">
