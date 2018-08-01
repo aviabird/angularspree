@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../environments/environment';
-
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',

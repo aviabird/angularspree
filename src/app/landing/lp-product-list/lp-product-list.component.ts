@@ -19,6 +19,7 @@ export class LpProductListComponent implements OnInit {
   @Input() products;
   @Input() dealsType;
   @Input() dealsId;
+  @Input() showRating: boolean;
 
   constructor(
     private searchActions: SearchActions,
