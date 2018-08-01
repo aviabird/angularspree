@@ -14,6 +14,7 @@ import { BrandsPageComponent } from './brands-page/brands-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FaqPageComponent } from './faq-page/faq-page.component';
 import { ReturnPolicyComponent } from './return-policy/return-policy.component';
+import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 
 const COMPONENTS = [
   LandingComponent,
@@ -33,7 +34,8 @@ const COMPONENTS = [
     CommonModule,
     LandingRoutingModule,
     CarouselModule,
-    SharedModule
+    SharedModule,
+    NgxInputStarRatingModule
   ],
   declarations: [...COMPONENTS]
 })

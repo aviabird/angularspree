@@ -1,6 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
@@ -17,18 +16,17 @@ export class ContentHeaderComponent implements OnInit {
 
   options = [
     { name: 'Newest', value: 1 },
-    { name: 'A To Z', value: 2 },
-    { name: 'Z To A', value: 3 },
-    { name: 'Relevence', value: 4 }
+    { name: 'Avg.Customer Review', value: 2 },
+    { name: 'Most Reviews', value: 3 },
+    { name: 'A To Z', value: 4 },
+    { name: 'Z To A', value: 5 },
+    { name: 'Relevence', value: 6 }
   ]
-  optionsMobile = [
-    { name: 'Newest', value: 1 },
-    { name: 'A To Z', value: 2 },
-    { name: 'Z To A', value: 3 },
-    { name: 'Relevence', value: 4 }
-  ]
+
   queryMap = {
     Newest: 'updated_at+asc',
+    'Avg.Customer Review': 'avg_rating+desc',
+    'Most Reviews': 'reviews_count+desc',
     'A To Z': 'name+asc',
     'Z To A': 'name+desc',
     Relevance: '',
@@ -44,9 +42,6 @@ export class ContentHeaderComponent implements OnInit {
   defaultselectedEntry = 'Relevance';
   constructor(private routernomal: Router) { }
 
-  // tslint:disable-next-line:member-ordering
-
-
   sortModalShow() { this.issortModalShown = true; }
   sortModalhide() { this.issortModalShown = false; }
 
@@ -56,7 +51,6 @@ export class ContentHeaderComponent implements OnInit {
   filterModalhide() {
     this.isfilterModalShown = false;
   }
-
 
   onSelectionChange(entry) {
     this.selectedEntry = entry;
@@ -95,8 +89,6 @@ export class ContentHeaderComponent implements OnInit {
 
   }
 
-
-
   sortFilter(i) {
     const urlTree = this.routernomal.createUrlTree([], {
       queryParams: { 'q[s]': this.queryMap[i] },
@@ -106,5 +98,4 @@ export class ContentHeaderComponent implements OnInit {
     this.routernomal.navigateByUrl(urlTree);
     this.selectedOption = i;
   }
-
 }

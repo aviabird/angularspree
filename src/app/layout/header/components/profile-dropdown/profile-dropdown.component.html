@@ -1,5 +1,4 @@
 <div *ngIf="!isMobile">
-
   <div *ngIf="!isAuthenticated">
     <div class="btn  helpbtn" [ngClass]="[isOpen ? 'openhelp':'']" (mouseenter)="dropdown.show()" (mouseleave)="dropdown.hide()">
       <strong>Login & SignUp</strong>
@@ -47,21 +46,12 @@
           </li>
           <li class="divider dropdown-divider"></li>
           <li role="menuitem">
-            <a class="dropdown-item" href="#">Edit Profile</a>
-          </li>
-          <li class="divider dropdown-divider"></li>
-          <li role="menuitem">
             <a class="dropdown-item" (click)="logout()">Logout</a>
           </li>
         </ul>
       </div>
     </div>
   </div>
-
-
-
-
-
 
 </div>
 <div *ngIf="isMobile" class="mobileusericon">

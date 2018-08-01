@@ -1,7 +1,6 @@
 import { FavoriteProductListItemComponent } from './components/favorite-products/favorite-product-list-item/favorite-product-list-item.component';
 import { FavoriteProductsComponent } from './components/favorite-products/favorite-products.component';
 import { RouterModule } from '@angular/router';
-import { UserRoutes } from './user.routes';
 import { NgModule } from '@angular/core';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 
@@ -54,4 +53,4 @@ import { OrderDetailComponent } from './components/orders/order-detail/order-det
     PaginationModule,
   ]
 })
-export class UserModule {}
+export class UserModule { }
