@@ -10,6 +10,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@a
 })
 export class InnerIproductComponent implements OnInit {
   @Input() product: Product;
+  @Input() showRating: boolean;
 
   constructor() {
   }
