@@ -8,7 +8,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from './../interfaces';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { Product } from '../core/models/product';
 
 @Component({
   selector: 'app-landing',
@@ -46,7 +45,7 @@ export class LandingComponent implements OnInit {
           this.taxons_id = this.taxon_by_name.taxonomies[0].root.id;
           return this.productService.getProductsByTaxonNP(this.taxons_id);
         } else {
-          return []
+          return [];
         }
       }))
     this.favoriteProducts$ = this.productService.getFavoriteProducts();
@@ -57,13 +56,14 @@ export class LandingComponent implements OnInit {
   }
 
   addMetaInfo() {
-    this.meta.updateTag({ name: 'description', content: environment.config.landing_page.description });
-    this.meta.updateTag({ name: 'keywords', content: environment.config.landing_page.title });
-    this.meta.updateTag({ name: 'title', content: environment.config.landing_page.title });
+    const landingPageMeta = environment.config.metaInfo.landingPage;
+    this.meta.updateTag({ name: 'description', content: landingPageMeta.description });
+    this.meta.updateTag({ name: 'keywords', content: landingPageMeta.title });
+    this.meta.updateTag({ name: 'title', content: landingPageMeta.title });
     this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: environment.appName });
-    this.meta.updateTag({ property: 'og:description', content: environment.config.landing_page.description })
-    this.meta.updateTag({ property: 'og:url', content: environment.config.frontEndUrl }),
-      this.meta.updateTag({ property: 'twitter:title', content: environment.config.landing_page.description })
-    this.metaTitle.setTitle(environment.config.landing_page.title);
+    this.meta.updateTag({ property: 'og:description', content: landingPageMeta.description })
+    this.meta.updateTag({ property: 'og:url', content: environment.config.frontEndUrl });
+    this.meta.updateTag({ property: 'twitter:title', content: landingPageMeta.description });
+    this.metaTitle.setTitle(landingPageMeta.title);
   }
 }

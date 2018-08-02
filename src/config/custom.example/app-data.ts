@@ -101,7 +101,7 @@ export const CUSTOM_APP_DATA = {
     }
   ],
   contact_info: {
-    contact_no: '917-6031-568',
+    contact_no: '888-888-xxx',
     copyright: 'Copyright © 2018 AngularSpree, Inc.'
   }
 };
