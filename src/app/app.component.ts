@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private metaTitle: Title,
     private meta: Meta
   ) {
-    router.events
+    this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
         this.currentUrl = e.url;
@@ -49,6 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     this.addFaviconIcon();
+    this.addConstMetaInfo();
   }
 
   addFaviconIcon() {
@@ -84,34 +85,19 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   addMetaInfo() {
-    this.meta.updateTag({
-      name: 'description',
-      content: environment.config.landing_page.description
-    });
-    this.meta.updateTag({
-      name: 'keywords',
-      content: environment.config.landing_page.title
-    });
-    this.meta.updateTag({
-      name: 'title',
-      content: environment.config.landing_page.title
-    });
-    this.meta.updateTag({
-      name: 'apple-mobile-web-app-title',
-      content: environment.appName
-    });
-    this.meta.updateTag({
-      property: 'og:description',
-      content: environment.config.landing_page.description
-    });
-    this.meta.updateTag({
-      property: 'og:url',
-      content: environment.config.frontEndUrl
-    }),
-      this.meta.updateTag({
-        property: 'twitter:title',
-        content: environment.config.landing_page.description
-      });
-    this.metaTitle.setTitle(environment.config.landing_page.title);
+    const metaInfo = environment.config.metaInfo;
+    this.meta.updateTag({ name: 'description', content: metaInfo.description });
+    this.meta.updateTag({ name: 'keywords', content: metaInfo.title });
+    this.meta.updateTag({ name: 'title', content: metaInfo.title });
+    this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: environment.appName });
+    this.meta.updateTag({ property: 'og:description', content: metaInfo.description });
+    this.meta.updateTag({ property: 'og:url', content: environment.config.frontEndUrl });
+    this.meta.updateTag({ property: 'twitter:title', content: metaInfo.description });
+    this.metaTitle.setTitle(metaInfo.title);
+  }
+
+  addConstMetaInfo() {
+    const metaInfo = environment.config.metaInfo;
+    this.meta.updateTag({ name: 'google-site-verification', content: metaInfo.googleSiteVerification })
   }
 }
