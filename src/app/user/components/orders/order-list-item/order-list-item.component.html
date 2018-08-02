@@ -1,21 +1,44 @@
 <div>
-  <div  *ngFor="let order of orders.orders">
+  <div *ngFor="let order of orders.orders">
     <div *ngIf="order.completed_at!=null" class="box shadow-sm">
-      <div class="order-num btn">
-        <a [routerLink]="['detail', order.number]" class="view-details-link"> {{order.number}} </a>
+
+      <div class="order">
+        <div class="order-num btn">
+          <a [routerLink]="['detail', order.number]" class="view-details-link"> {{order.number}} </a>
+        </div>
       </div>
       <div class="order-detail">
         <div class="order-body">
-          <div>
-            <span class="head">Status : </span>
-            <span class="text-uppercase">{{order.shipment_state}}</span>
-          </div>
-          <div>
-            <span class="head">Payment Status : </span>
-            <span class="text-uppercase">{{order.payment_state}}</span>
+          <div *ngFor="let item of order.line_items" class="lineitems">
+
+            <div class="row ">
+              <div class="col-12 pr-0 col-sm-1">
+                <img [routerLink]="['/', item.variant.slug]" [src]='getProductImageUrl(item)' />
+              </div>
+              <div class="col-12 col-sm-5" [routerLink]="['/', item.variant.slug]">
+                <div class="lineitems-name"> {{item.variant.name}}</div>
+                <div class="lineitems-info"> {{item.variant.options_text}}</div>
+              </div>
+              <div class="col-12 col-sm-2">
+                <div class="price">{{item.display_amount}}</div>
+                <div class="qty"> QTY: {{item.quantity}}</div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <b class="text-warning">Please note:</b> You can return or exchange this within 30 days.
+              </div>
+            </div>
           </div>
         </div>
         <div class="order-footer">
+          <div class="order-on float-left">
+            <span class="head">Status On : </span>
+            <span>{{order.shipment_state}}</span>
+          </div>
+          <div class="order-on float-right">
+            <span class="head">Payment Status : </span>
+            <span>{{order.payment_state}}</span>
+          </div>
+          <div class="clearfix"></div>
           <div class="order-on float-left">
             <span class="head">Ordered On : </span>
             <span>{{order.completed_at | date:'fullDate'}}</span>

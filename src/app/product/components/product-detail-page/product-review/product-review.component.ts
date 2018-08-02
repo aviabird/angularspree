@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
 import { Product } from './../../../../core/models/product';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -12,10 +12,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./product-review.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductReviewComponent implements OnInit {
+export class ProductReviewComponent implements OnInit, OnChanges {
   @Input() reviewList;
   @Input() product: Product;
   @Input() isMobile;
+  content: any[] = new Array();
+  counter: number;
   productID: any
   isAuthenticated: boolean;
 
@@ -24,13 +26,21 @@ export class ProductReviewComponent implements OnInit {
     private store: Store<AppState>,
     private toastrService: ToastrService
   ) {
+
     this.store.select(getAuthStatus).subscribe(auth => {
       this.isAuthenticated = auth;
     })
+    this.counter = 0;
+
   }
 
   ngOnInit() {
+
+  }
+  ngOnChanges() {
     this.productID = this.product.id;
+    console.log('shsd', this.reviewList.reviews.length);
+    this.getData();
   }
 
   showReviewForm() {
@@ -47,5 +57,14 @@ export class ProductReviewComponent implements OnInit {
 
   get hasReviews() {
     return this.reviewList.total_ratings > 0;
+  }
+  getData() {
+
+    for (let i = this.counter + 1; i < this.reviewList.reviews.length; i++) {
+      this.content.push(this.reviewList.reviews[i]);
+      if (i % 10 === 0) { break; }
+    }
+    this.counter += 10;
+
   }
 }

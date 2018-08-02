@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { Order } from '../../../../core/models/order';
+import { LineItem } from '../../../../core/models/line_item';
 @Component({
   selector: 'app-order-list-item',
   templateUrl: './order-list-item.component.html',
@@ -13,7 +14,7 @@ export class OrderListItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  getProductImageUrl(url) {
-    return url;
+  getProductImageUrl(line_item: LineItem) {
+    return line_item.variant.images[0].small_url;
   }
 }
