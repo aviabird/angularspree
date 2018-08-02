@@ -34,7 +34,7 @@ fdescribe('products', () => {
 
     fdescribe('get product detail action', () => {
       fit('should trigger get product details action', () => {
-        let id = 'some id';
+        const id = 'some id';
         expect(actions.getProductDetail(id)).toEqual({
           type: ProductActions.GET_PRODUCT_DETAIL,
           payload: id
@@ -44,7 +44,7 @@ fdescribe('products', () => {
 
     fdescribe('get product detail success action', () => {
       fit('should trigger get product details success action', () => {
-        expect(actions.getProductDetailSuccess(product)).toEqual({
+        expect(actions.getProductDetailSuccess(product as any)).toEqual({
           type: ProductActions.GET_PRODUCT_DETAIL_SUCCESS,
           payload: product
         });

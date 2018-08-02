@@ -20,7 +20,13 @@
     "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d docs/",
     "sw": "sw-precache --root=dist --config=sw-precache-config.js",
     "bundle-report": "webpack-bundle-analyzer dist/stats.json",
-    "static-serve": "cd dist && live-server --port=4200 --host=localhost --entry-file=/index.html"
+    "static-serve": "cd dist/browser && live-server --port=4200 --host=localhost --entry-file=/index.html",
+
+    "start:ssr:prod-custom": "npm run build:client-and-server-bundles:prod-custom && npm run webpack:server && node dist/server",
+    "start:ssr:prod-ng-spree": "npm run build:client-and-server-bundles:prod-ng-spree && npm run webpack:server && node dist/server",
+    "build:client-and-server-bundles:prod-custom": "npm run build:prod-custom && ng run angularspree:server:prod-custom",
+    "build:client-and-server-bundles:prod-ng-spree": "npm run build:prod-ng-spree && ng run angularspree:server:prod-ng-spree",
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +47,9 @@
     "@ngrx/router-store": "^6.1.0",
     "@ngrx/store": "^6.1.0",
     "@ngu/carousel": "^1.4.8",
+    "@nguniversal/express-engine": "^6.0.0",
+    "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
+    "@nguniversal/common": "^6.0.0",
     "@ngx-lite/input-star-rating": "^0.1.5",
     "@ngx-lite/json-ld": "^0.4.2",
     "@ngx-progressbar/core": "^5.0.1",
@@ -60,6 +69,7 @@
     "reselect": "^3.0.1",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
+    "ts-loader": "^4.4.2",
     "web-animations-js": "^2.3.1",
     "webpack-bundle-analyzer": "^2.13.1",
     "zone.js": "^0.8.26"
@@ -96,7 +106,8 @@
     "sw-precache": "^5.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~2.9.0"
+    "typescript": "~2.9.0",
+    "webpack-cli": "^3.1.0"
   },
   "description": "Spree for Angular2",
   "main": "index.js",

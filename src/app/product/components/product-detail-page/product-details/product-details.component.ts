@@ -13,7 +13,9 @@ import {
   Component,
   OnInit,
   Input,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  PLATFORM_ID,
+  Inject
 } from '@angular/core';
 
 import { Product } from './../../../../core/models/product';
@@ -21,9 +23,9 @@ import { ProductService } from './../../../../core/services/product.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from '../../../../../environments/environment';
 import { Taxon } from '../../../../core/models/taxon';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CheckoutService } from '../../../../core/services/checkout.service';
+import { FormGroup } from '@angular/forms';
 import { getLineItems } from '../../../../checkout/reducers/selectors';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
@@ -62,13 +64,15 @@ export class ProductDetailsComponent implements OnInit {
     private productsActions: ProductActions,
     private meta: Meta,
     private title: Title,
-
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
 
   }
 
   ngOnInit() {
-    this.screenwidth = window.innerWidth;
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenwidth = window.innerWidth;
+    }
     this.calculateInnerWidth();
     this.addMetaInfo(this.product);
     this.initData();
@@ -186,7 +190,7 @@ export class ProductDetailsComponent implements OnInit {
     this.schema = {
       '@context': 'https://schema.org',
       '@type': 'Product',
-      'url': location.href,
+      'url': isPlatformBrowser(this.platformId) ? location.href : '',
       'itemCondition': 'https://schema.org/NewCondition',
       'aggregateRating': {
         '@type': 'AggregateRating',
@@ -207,7 +211,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   scrollToReviewMobile() {
-    document.getElementById('review').scrollIntoView({ behavior: 'smooth' });
+    if (isPlatformBrowser(this.platformId)) {
+      document.getElementById('review').scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   findBrand() {
