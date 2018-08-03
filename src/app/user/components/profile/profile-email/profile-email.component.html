@@ -1,0 +1,19 @@
+<div class="row" *ngIf="userDetails">
+  <div class="col-md-8">
+    <form [formGroup]="emailForm" (ngSubmit)="onSaveEmail(userDetails.id)" class="d-block">
+      <div class="alert alert-success">
+        <strong>Welcome!</strong> {{userDetails.email}}
+      </div>
+      <h5>Email Address</h5>
+      <span *ngIf="!isEditEmailPressed; else elseBlock" class='reviewlink pl-1' (click)="editEmail()">Edit</span>
+      <ng-template #elseBlock>
+        <span class='reviewlink pl-1' (click)="cancelEmail()">Cancel</span>
+      </ng-template>
+      <input [readonly]="!isEditEmailPressed" type="email" class="form-control" name="email" placeholder="Email Address" formControlName="email">
+      <button type="submit" class="btn btn-primary" *ngIf="isEditEmailPressed" [disabled]="!emailForm.valid">Save</button>
+      <div *ngIf="emailForm.get('email').errors && emailForm.get('email').touched">
+        <p class="login-error-message text-danger">{{emailForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
+      </div>
+    </form>
+  </div>
+</div>
