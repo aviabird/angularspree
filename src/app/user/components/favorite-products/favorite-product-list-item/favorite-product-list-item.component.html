@@ -1,14 +1,20 @@
+<div *ngFor="let productinfo of product" class="lineitems">
+  <div class="row favorite m-0 p-2" *ngFor="let productinfo of product">
+    <div class="col-12 col-sm-1">
+      <img [src]="productinfo.product_url" class="img-fluid fimg" [routerLink]="['/', productinfo.slug]">
+    </div>
+    <div class="col-12 col-sm-6">
+      <a class="lineitems-name" [routerLink]="['/', productinfo.slug]">{{ productinfo.name }}</a>
+    </div>
+    <div class="col-12 col-sm-2">
+      <div class="price">{{productinfo.currency}}{{productinfo.price}}</div>
 
-<div class="row favorite m-0 p-2" *ngFor="let productinfo of product">
-  <div class="col-12 col-sm-2">
-    <img [src]="productinfo.product_url" class="img-fluid fimg" [routerLink]="['/', productinfo.slug]">
+    </div>
+    <div class="col-12 col-sm-3 text-right">
+      <button (click)="removeFromFavorite(productinfo.id)" class="btn">
+        <i class="fa fa-trash"></i>
+      </button>
+    </div>
   </div>
-  <div class="col-12 col-sm-7">
-    <a [routerLink]="['/', productinfo.slug]">{{ productinfo.name }}</a>  
-  </div>
-  <div class="col-12 col-sm-3 text-right">
-    <button (click)="removeFromFavorite(productinfo.id)" class="btn">
-      <i class="fa fa-trash"></i>
-    </button>
-  </div>
+
 </div>

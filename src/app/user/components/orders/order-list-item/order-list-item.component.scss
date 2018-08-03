@@ -11,7 +11,7 @@
     width: 100%;
     background-color: $gray-100;
     .order-num {
-      margin: .4rem;
+      margin: 0.5rem .4rem .4rem 0.6rem;
       border-radius: 0;
       background-color: $theme-action-color;
       color: $white;
@@ -35,11 +35,17 @@
         img {
           height: 75px;
           width: 100%;
+          @media only screen and (min-width: 320px) and (max-width: 767px) {
+            height: 121px;
+            width: 100%;
+            margin: auto;
+            object-fit: scale-down;
+          }
         }
         .lineitems-name {
           font-size: 1em;
           color: $gray-900;
-          font-weight:200;
+          font-weight: 200;
           margin-top: 17px;
           cursor: pointer;
         }
@@ -51,10 +57,11 @@
         .price {
           color: $red;
           font-size: 1.2em;
-          font-weight:bold;
+          font-weight: bold;
         }
-        .qty{font-size: .8em;}
-        
+        .qty {
+          font-size: .8em;
+        }
       }
     }
     .order-footer {
@@ -63,7 +70,7 @@
       .order-on {
         padding: 3px;
         span {
-          font-weight:200;
+          font-weight: 200;
           color: $gray-900
         }
         .head {

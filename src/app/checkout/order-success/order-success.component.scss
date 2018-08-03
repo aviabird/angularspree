@@ -11,7 +11,8 @@
     padding: 15px;
     margin: 10px 0px;
   }
-  background-color: $gray-100;
+  background-color: transparent;
+  border:1px solid $gray-10;
   h1 {
     font-size: 1.7em;
     text-transform: capitalize;
@@ -49,5 +50,52 @@
   h3 {
     font-size: 1.7em;
     color: $gray-600;
+  }
+}
+
+.lineitems {
+  &:last-child {
+    .row {
+      border-bottom: 0 solid;
+      margin: 0;
+      ;
+      padding: 5px 0;
+    }
+  }
+  .row {
+    border-bottom: 1px solid $gray-10;
+    margin: 0;
+    ;
+    padding: 5px 0;
+  }
+  padding: .5rem;
+  img {
+    height: 75px;
+    width: 100%;
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+      height: 121px;
+      width: 100%;
+      margin: auto;
+      object-fit: scale-down;
+    }
+  }
+  .lineitems-name {
+    font-size: 1em;
+    color: $gray-900;
+    font-weight: 200;
+    cursor: pointer;
+  }
+  .lineitems-info {
+    font-size: .8em;
+    color: $gray-900;
+    cursor: pointer;
+  }
+  .price {
+    color: $red;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .qty {
+    font-size: .8em;
   }
 }
