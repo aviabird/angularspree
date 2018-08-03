@@ -1,25 +1,31 @@
-<div *ngIf="userDetails$ | async; let userDetails">
+<div *ngIf="userDetails$ | async; let userDetails" class="useraddress">
   <div *ngIf="userDetails.ship_address!=null">
-    <span *ngIf="!isEditAddrPressed; else elseBlock" class='reviewlink pl-1' (click)="editAddress()">Edit</span>
+    <span *ngIf="!isEditAddrPressed; else elseBlock" class='reviewlink pl-1 mb-3' (click)="editAddress()">
+      <i class="fa fa-edit"></i>
+    </span>
     <ng-template #elseBlock>
-      <span class='reviewlink pl-1' (click)="cancelAddressEdit()">Cancel</span>
+      <span class='reviewlink pl-1' (click)="cancelAddressEdit()">
+        <i class="fa fa-times"></i>
+      </span>
     </ng-template>
+    <div class="clearfix"></div>
     <app-saved-address *ngIf="!isEditAddrPressed" [userDetails]="userDetails"></app-saved-address>
     <div *ngIf="isEditAddrPressed">
-      <strong>Edit Address</strong>
+      <div class="head">Edit Address</div>
       <app-add-edit-address 
-        [isEditAddrPressed]="isEditAddrPressed" 
-        [addressParams]="buildAddressParams(userDetails)"
-        [stateName]="userDetails.ship_address.state.name"  
-        (isAddressEdited)="addressEditedDone($event)"></app-add-edit-address>
+      [isEditAddrPressed]="isEditAddrPressed" 
+      [addressParams]="buildAddressParams(userDetails)" 
+      (isAddressEdited)="addressEditedDone($event)"
+      [stateName]="userDetails.ship_address.state.name"
+      ></app-add-edit-address>
     </div>
   </div>
   <div *ngIf="userDetails?.ship_address===null">
-    <strong>Add Address</strong>
+    <div class="head">Add Address</div>
     <app-add-edit-address 
       [isEditAddrPressed]="false" 
       (isAddressEdited)="addressEditedDone($event)" 
       [addressParams]="buildAddressParams(userDetails)"
-      [stateName]="null" ></app-add-edit-address>
+      [stateName]="null"></app-add-edit-address>
   </div>
 </div>
