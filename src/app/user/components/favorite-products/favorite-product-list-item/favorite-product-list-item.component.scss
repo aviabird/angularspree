@@ -74,3 +74,41 @@
       margin: auto;
     }
   }
+  .lineitems {
+    &:last-child {
+      border-bottom: 0 solid;
+    }
+    border-bottom: 1px solid $gray-10;
+    padding: .5rem;
+    img {
+      height: 75px;
+      width: 100%;
+      @media only screen and (min-width: 320px) and (max-width: 767px) {
+        height: 121px;
+        width: 100%;
+        margin: auto;
+        object-fit: scale-down;
+      }
+    }
+    .lineitems-name {
+      font-size: 1em;
+      color: $gray-900;
+      font-weight: 200;
+      margin-top: 17px;
+      cursor: pointer;
+      display: block;
+    }
+    .lineitems-info {
+      font-size: .8em;
+      color: $gray-900;
+      cursor: pointer;
+    }
+    .price {
+      color: $red;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .qty {
+      font-size: .8em;
+    }
+  }
