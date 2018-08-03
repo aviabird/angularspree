@@ -27,9 +27,12 @@
     }
     .buybox__purchase {
       .buttons {
-        padding: 0 1.2rem;
+        padding: 0 15px;
+        // @media only screen and (min-width: 320px) and (max-width: 767px) {
+        //   padding: 0rem;
+        // }
       }
-      padding: 20px;
+      padding: 15px;
       @media only screen and (min-width: 320px) and (max-width: 767px) {
         text-align: center;
         padding-top: 2px;

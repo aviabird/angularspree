@@ -1,6 +1,6 @@
 <div class="container" *ngIf="orders$ | async;let orders">
-  
-  <div *ngIf="orders.total_count > 0; else elseBlock">
+
+  <div *ngIf="orders?.orders?.length > 0; else elseBlock">
     <app-order-list-item [orders]="orders"></app-order-list-item>
   </div>
 
@@ -18,7 +18,9 @@
     <div class="cart-empty">
       <div class="empty-cart-icon"></div>
       <div class="empty-cart-message">You have'nt ordered anything yet.</div>
-      <button type="button" class="btn themebtnprimary" [routerLink]="['/']">Start Shopping</button>
+      <button type="button" class="btn themebtnprimary col-sm-4 m-auto" [routerLink]="['/']">Start Shopping</button>
     </div>
   </ng-template>
 </div>
+
+
