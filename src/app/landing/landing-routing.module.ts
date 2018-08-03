@@ -8,7 +8,7 @@ import { ReturnPolicyComponent } from './return-policy/return-policy.component';
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'b/brands', component: BrandsPageComponent },
-  { path: 'info/About_us', component: AboutUsComponent },
+  { path: 'info/About us', component: AboutUsComponent },
   { path: 'info/Return Policy', component: ReturnPolicyComponent },
   { path: 'info/FAQs', component: FaqPageComponent }
 

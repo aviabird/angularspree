@@ -31,8 +31,7 @@
             <td>Payment Status:</td>
             <td>
               <b class="text-uppercase">{{orderDetails.payment_state}}</b>
-              <i class="fa fa-refresh fa-spin" style="font-size:24px"
-              *ngIf="!orderDetails.payment_state"></i>
+              <i class="fa fa-refresh fa-spin" style="font-size:24px" *ngIf="!orderDetails.payment_state"></i>
             </td>
           </tr>
         </table>
@@ -67,25 +66,33 @@
         <div class="col-sm text-uppercase p-0">
           <p>Shipping Status: </p>
           <b>{{orderDetails.shipment_state}}</b>
-          <i class="fa fa-refresh fa-spin" style="font-size:24px"
-              *ngIf="!orderDetails.shipment_state"></i>
+          <i class="fa fa-refresh fa-spin" style="font-size:24px" *ngIf="!orderDetails.shipment_state"></i>
         </div>
       </div>
     </div>
   </div>
   <div class="order-items shadow-sm mt-3 mb-3">
-    <div class="col-sm order">
-      <h3>Item(s)</h3>
-      <div class="row" *ngFor="let line_item of orderDetails.line_items">
-        <a [routerLink]="['/', line_item.variant.slug]" class="col-sm col-3">
-          <img [src]="getProductImageUrl(line_item)">
-        </a>
-        <div class="col-sm col-9">
-          <p>{{line_item.variant.name}}</p>
-          <p>Qty: {{line_item.quantity}}</p>
-          <p>{{line_item.variant.options_text}}</p>
+    <h3>Item(s)</h3>
+    <div class="row">
+      <div *ngFor="let item of  orderDetails.line_items" class="lineitems col-12 col-sm-6">
+        <div class="row">
+          <div class="col-12 pr-0 col-sm-2">
+            <a [routerLink]="['/', item.variant.slug]" class="col-sm col-3">
+              <img [src]="getProductImageUrl(item)">
+            </a>
+          </div>
+          <div class="col-12 col-sm-8" [routerLink]="['/', item.variant.slug]">
+            <div class="lineitems-name"> {{item.variant.name}}</div>
+            <div class="lineitems-info"> {{item.variant.options_text}}</div>
+          </div>
+          <div class="col-12 col-sm-2">
+            <div class="price">{{item.display_amount}}</div>
+            <div class="qty"> QTY: {{item.quantity}}</div>
+          </div>
+
         </div>
       </div>
     </div>
+
   </div>
 </div>

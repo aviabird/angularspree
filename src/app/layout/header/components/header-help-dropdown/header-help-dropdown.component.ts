@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { environment } from '../../../../../environments/environment.dev-ng-spree';
 
 @Component({
   selector: 'app-header-help-dropdown',
@@ -8,6 +9,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HeaderHelpDropdownComponent implements OnInit {
   isOpen: boolean;
+  contactno = environment.config.contact_info.contact_no;
   constructor() { }
 
 
