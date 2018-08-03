@@ -39,7 +39,6 @@ export class ProductReviewComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
     this.productID = this.product.id;
-    console.log('shsd', this.reviewList.reviews.length);
     this.getData();
   }
 
