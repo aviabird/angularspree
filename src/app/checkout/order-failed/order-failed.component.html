@@ -41,7 +41,7 @@
             <td>Payment Status:</td>
             <td>
               <b class="text-uppercase">
-                {{orderDetails.payment_state}}
+                {{orderDetails.payment_state | humanize | uppercase}}
               </b>
 
             </td>
@@ -78,7 +78,7 @@
         <h3>Shipping</h3>
         <div class="col-sm text-uppercase p-0">
           <p>Shipping Status: </p>
-          <b>{{orderDetails.shipment_state}}</b>
+          <b>{{orderDetails.shipment_state | humanize | uppercase}}</b>
         </div>
       </div>
     </div>

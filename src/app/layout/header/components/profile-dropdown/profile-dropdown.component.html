@@ -42,7 +42,11 @@
           </li>
           <li class="divider dropdown-divider"></li>
           <li role="menuitem">
-            <a class="dropdown-item" routerLink="/user/addresses">Saved Addresses</a>
+            <a class="dropdown-item" routerLink="/user/addresses">My Saved Addresses</a>
+          </li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem">
+            <a class="dropdown-item" routerLink="/user/favorite-products">My Favorite Products</a>
           </li>
           <li class="divider dropdown-divider"></li>
           <li role="menuitem">
@@ -75,8 +79,13 @@
       </li>
       <li class="divider dropdown-divider"></li>
       <li role="menuitem">
+        <a class="dropdown-item" routerLink="/user/favorite-products">My Favorite Products</a>
+      </li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem">
         <a class="dropdown-item" (click)="logout()">Logout</a>
       </li>
+
     </ul>
   </div>
 </div>
