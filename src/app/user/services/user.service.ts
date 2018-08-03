@@ -8,6 +8,7 @@ import { Response } from '@angular/http';
 import { User } from '../../core/models/user';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class UserService {
@@ -15,7 +16,8 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private actions: UserActions,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private toastrService: ToastrService
   ) { }
 
   /**
@@ -56,4 +58,31 @@ export class UserService {
     return this.http.get<User>(`api/v1/users/${user_id}`);
   }
 
+  updateUser(params: any): Observable<User> {
+    return this.http.put<User>(`api/v1/users/${params.user_id}`, params);
+  }
+
+  updateUserPassword(params: any) {
+    return this.http.put(`auth/change_password`, params)
+      .pipe(
+        map((success: any) => {
+          this.toastrService.success(success.status, 'Success!');
+          return true;
+        }, (error: any) => {
+          this.toastrService.error(error.status, 'Error!');
+          return false;
+        })
+      )
+  }
+
+  updateUserAddress(updatedAddress) {
+      const url = `address/update_address`
+      return this.http.post(url, updatedAddress)
+  }
+
+  createUserAddress(updatedAddress) {
+    const url = `address/create_address`
+    return this.http.post(url, updatedAddress)
+  }
 }
+

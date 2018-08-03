@@ -33,7 +33,7 @@
         [ngClass]="[isScrolled ? '':'notscrolled']" role="menu" aria-labelledby="button-triggers-manual">
         <ul>
           <li role="menuitem">
-            <a class="dropdown-item" routerLink="/user">My Profile</a>
+            <a class="dropdown-item" routerLink="/user/profile">My Profile</a>
           </li>
           <li class="divider dropdown-divider"></li>
 
@@ -62,7 +62,7 @@
     </button>
     <ul id="dropdown-split" *dropdownMenu class="dropdown-menu mobile-profile" role="menu" aria-labelledby="button-split">
       <li role="menuitem">
-        <a class="dropdown-item" routerLink="/user">My Profile</a>
+        <a class="dropdown-item" routerLink="/user/profile">My Profile</a>
       </li>
       <li class="divider dropdown-divider"></li>
 
@@ -73,11 +73,6 @@
       <li role="menuitem">
         <a class="dropdown-item" routerLink="/user/addresses">Saved Addresses</a>
       </li>
-      <li class="divider dropdown-divider"></li>
-      <li role="menuitem">
-        <a class="dropdown-item" href="#">Edit Profile</a>
-      </li>
-
       <li class="divider dropdown-divider"></li>
       <li role="menuitem">
         <a class="dropdown-item" (click)="logout()">Logout</a>
