@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
-import { switchMap} from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { getAuthStatus } from '../../../../auth/reducers/selectors';
 
@@ -13,7 +13,7 @@ import { getAuthStatus } from '../../../../auth/reducers/selectors';
   selector: 'app-write-product-review',
   templateUrl: './write-product-review.component.html',
   styleUrls: ['./write-product-review.component.scss'],
-  //changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WriteProductReviewComponent implements OnInit {
 
@@ -60,8 +60,7 @@ export class WriteProductReviewComponent implements OnInit {
         review: [review, Validators.required]
       }
       );
-    }
-    else {
+    } else {
       this.router.navigate(['auth', 'login'])
     }
   }
@@ -87,7 +86,7 @@ export class WriteProductReviewComponent implements OnInit {
       const params = this.parse(values)
       this.productService.submitReview(prodId, params)
         .subscribe(res => {
-        this.result = res;
+          this.result = res;
           if (this.result === 'info') {
             this.goToProduct(prodId);
           } else if (this.result === 'success') {
@@ -97,8 +96,7 @@ export class WriteProductReviewComponent implements OnInit {
             this.goToProduct(prodId)
           }
         })
-    }
-    else {
+    } else {
       this.toastrService.error('All fields are rquired', 'Invalid!')
     }
   }
