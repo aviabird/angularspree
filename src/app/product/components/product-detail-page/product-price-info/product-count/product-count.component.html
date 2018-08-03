@@ -14,11 +14,11 @@
         </div>
       </div>
       <div class="buttons row" *ngIf="isOrderable">
-        <input type="submit" class="btn themebtnprimary js-add-cart" value="Add to Cart" (click)="addToCart(count)">
-        <button (click)="buyNow(count)" class="btn themebtnprimary themebtnprimarysade mt-1">Buy Now</button>
+        <input type="submit" class="btn col-12 themebtnprimary js-add-cart" value="Add to Cart" (click)="addToCart(count)">
+        <button (click)="buyNow(count)" class="btn col-12 themebtnprimary themebtnprimarysade mt-1">Buy Now</button>
       </div>
       <div class="buttons row" *ngIf="!isOrderable">
-        <input type="submit" class=" btn themebtnprimary themebtndisable" value="Out of Stock" (click)="addToCart(count)" disabled>
+        <input type="submit" class=" btn col-12 themebtnprimary themebtndisable" value="Out of Stock" (click)="addToCart(count)" disabled>
       </div>
     </form>
   </div>

@@ -1,34 +1,83 @@
 @import '../../../../shared/scss/selected_theme_variables';
 .status {
-    color: $theme-action-color;
+  color: $theme-action-color;
 }
 
 .line_item_image {
-    border: 1px solid $gray-10;
+  // border: 1px solid $gray-10;
+  height: 75px;
 }
 
 .box {
-    background-color: $gray-100;
-    padding: 1rem;
-    box-shadow: 0px 0px 4px $gray-10;
-    border-radius: 2px;
-    margin-bottom: 10px;
-    margin: 22px;
-    border: 1px solid #ccc;
+  background-color: $gray-100 + 10;
+  padding: 1rem;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  margin: 0 15px;
+  border: 1px solid $gray-10;
+  h3 {
+    font-size: 1.2em
+  }
+  a {
+    color: $gray-900;
+    text-decoration: none;
+    font-size: 1em
+  }
+  .ptitle {
+    font-size: 1em;
     a {
-        color: $gray-900;
-        text-decoration: none;
-        font-size: 1em
+      font-size: 1.2em;
     }
+  }
+}
+
+.lineitems {
+  &:last-child {
+    border-bottom: 0 solid;
+  }
+  border-bottom: 1px solid $gray-10;
+  padding: .5rem;
+  img {
+    height: 75px;
+    width: 100%;
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+      height: 121px;
+      width: 100%;
+      margin: auto;
+      object-fit: scale-down;
+    }
+  }
+  .lineitems-name {
+    font-size: 1em;
+    color: $gray-900;
+    font-weight: 200;
+    margin-top: 17px;
+    cursor: pointer;
+  }
+  .lineitems-info {
+    font-size: .8em;
+    color: $gray-900;
+    cursor: pointer;
+  }
+  .price {
+    color: $red;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .qty {
+    font-size: .8em;
+  }
 }
 
 table {
-    tr {
-        td {
-            &:first-child {
-                font-weight: bold;
-                padding-right: 1rem;
-            }
-        }
+  tr {
+    td {
+      &:first-child {
+        font-weight: 200;
+        padding-right: 1rem;
+        font-size: 1em;
+        color: $gray-600
+      }
     }
+  }
 }

@@ -69,36 +69,27 @@
     </div>
   </div>
 
-  <div class='row box  my-4' *ngFor="let line_item of order.line_items">
-    <br>
-    <div class="col-md-2">
-      <img class="line_item_image" [src]="getProductImageUrl(line_item)" alt="Line Item">
-    </div>
 
-    <div class="col-md-3">
-      <h4 class="ptitle">
-        <a [routerLink]="['/', line_item.variant.slug]">
-          {{line_item.variant.name}}
-        </a>
-      </h4>
-      <h6 class="ptitle">
-        <a [routerLink]="['/', line_item.variant.slug]">
-          {{line_item.variant.options_text}}
-        </a>
-      </h6>
-    </div>
+  <div class="box mt-2 p-0">
+   
+    <div *ngFor="let item of order.line_items" class="lineitems">
 
-    <div class="col-md-3">
-      <h5 class="strong">
-        {{line_item.display_amount}}
-      </h5>
-
-
-    </div>
-    <div class="col-md-4">
-      <p>
-        <strong class="text-warning">Please note:</strong> You can return or exchange this within 30 days.
-      </p>
+      <div class="row ">
+        <div class="col-12 pr-0 col-sm-1">
+          <img [routerLink]="['/', item.variant.slug]" [src]='getProductImageUrl(item)' />
+        </div>
+        <div class="col-12 col-sm-5" [routerLink]="['/', item.variant.slug]">
+          <div class="lineitems-name"> {{item.variant.name}}</div>
+          <div class="lineitems-info"> {{item.variant.options_text}}</div>
+        </div>
+        <div class="col-12 col-sm-2">
+          <div class="price">{{item.display_amount}}</div>
+          <div class="qty"> QTY: {{item.quantity}}</div>
+        </div>
+        <div class="col-12 col-sm-4">
+          <b class="text-warning">Please note:</b> You can return or exchange this within 15 days.
+        </div>
+      </div>
     </div>
   </div>
 </div>

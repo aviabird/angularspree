@@ -22,6 +22,7 @@ export class OrdersComponent implements OnInit {
   ) {
 
     this.orders$ = this.store.select(getUserOrders);
+
   }
 
   ngOnInit() {

@@ -40,7 +40,7 @@
                   {{reviewPercent}}
                   <span>%</span>
                 </div>
-               
+
                 <small>RECOMMENDED</small>
               </div>
               <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'" [radius]="55" [stroke]="5"
@@ -69,7 +69,7 @@
           </div>
         </div>
         <div *ngIf="reviewList">
-          <div *ngFor="let item of reviewList.reviews" class="rating-inner">
+          <div *ngFor="let item of content" class="rating-inner">
             <div class="rating-head">
               <ngx-input-star-rating disabled="true" value="{{item.rating }}" required></ngx-input-star-rating>
               <span class="pl-3">{{item.title}}</span>
@@ -81,6 +81,9 @@
               {{item.review}}
             </p>
           </div>
+          <button class="btn themebtnprimarybasic" (click)="getData()" [disabled]="counter>=reviewList.reviews.length">
+            Show more
+          </button>
         </div>
       </div>
     </div>
@@ -99,7 +102,7 @@
                   {{reviewPercent}}
                   <span>%</span>
                 </div>
-               
+
 
                 <small>RECOMMENDED</small>
               </div>
@@ -138,7 +141,7 @@
           </div>
         </div>
         <div *ngIf="reviewList">
-          <div *ngFor="let item of reviewList.reviews" class="rating-inner">
+          <div *ngFor="let item of content" class="rating-inner">
             <div class="rating-head">
               <ngx-input-star-rating disabled="true" value="{{item.rating }}" required></ngx-input-star-rating>
               <span class="pl-3">{{item.title}}</span>
@@ -150,8 +153,12 @@
               {{item.review}}
             </p>
           </div>
+          <button class="btn themebtnprimarybasic" (click)="getData()" [disabled]="counter>=reviewList.reviews.length">
+            Show more
+          </button>
         </div>
       </div>
     </div>
   </div>
+
 </div>
