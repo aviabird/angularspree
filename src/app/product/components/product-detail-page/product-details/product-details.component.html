@@ -59,7 +59,7 @@
     <div class="col-12">
       <div class="row m-0">
         <div class="product-subtitle col-5 p-0">
-          <a [routerLink]="['search']" [queryParams]="{'q[name_cont]': brand.name, id: brand.id}" *ngIf="brand">
+          <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': brand.name, id: brand.id}" *ngIf="brand">
             <span>By </span>
             {{brand.name}}
           </a>

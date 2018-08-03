@@ -1,3 +1,17 @@
-<p>
-  addresses works!
-</p>
+<div *ngIf="userDetails$ | async; let userDetails">
+  <div *ngIf="userDetails.ship_address!=null">
+    <span *ngIf="!isEditAddrPressed; else elseBlock" class='reviewlink pl-1' (click)="editAddress()">Edit</span>
+    <ng-template #elseBlock>
+      <span class='reviewlink pl-1' (click)="cancelAddressEdit()">Cancel</span>
+    </ng-template>
+    <app-saved-address *ngIf="!isEditAddrPressed" [userDetails]="userDetails"></app-saved-address>
+    <div *ngIf="isEditAddrPressed">
+      <strong>Edit Address</strong>
+      <app-add-edit-address [isEditAddrPressed]="isEditAddrPressed" [addressParams]="buildAddressParams(userDetails)" (isAddressEdited)="addressEditedDone($event)"></app-add-edit-address>
+    </div>
+  </div>
+  <div *ngIf="userDetails?.ship_address===null">
+    <strong>Add Address</strong>
+    <app-add-edit-address [isEditAddrPressed]="false" (isAddressEdited)="addressEditedDone($event)" [addressParams]="buildAddressParams(userDetails)"></app-add-edit-address>
+  </div>
+</div>
