@@ -15,6 +15,7 @@ export class AddEditAddressComponent implements OnInit {
   @Input() isEditAddrPressed: boolean;
   @Input() addressParams: any;
   @Output() isAddressEdited: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() stateName: any;
 
   constructor(private fb: FormBuilder,
     private addrService: AddressService,

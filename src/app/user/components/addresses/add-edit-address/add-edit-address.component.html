@@ -24,7 +24,7 @@
     <div class="form-group col-sm-6">
       <label> State </label>
       <select class="form-control" formControlName="state_name">
-        <option *ngIf="addressParams">{{addressParams.user.ship_address.state.name}}
+        <option *ngIf="stateName">{{stateName}}
           <option *ngFor="let state of states">{{state.name}}</option>
       </select>
     </div>

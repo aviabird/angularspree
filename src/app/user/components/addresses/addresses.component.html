@@ -7,11 +7,19 @@
     <app-saved-address *ngIf="!isEditAddrPressed" [userDetails]="userDetails"></app-saved-address>
     <div *ngIf="isEditAddrPressed">
       <strong>Edit Address</strong>
-      <app-add-edit-address [isEditAddrPressed]="isEditAddrPressed" [addressParams]="buildAddressParams(userDetails)" (isAddressEdited)="addressEditedDone($event)"></app-add-edit-address>
+      <app-add-edit-address 
+        [isEditAddrPressed]="isEditAddrPressed" 
+        [addressParams]="buildAddressParams(userDetails)"
+        [stateName]="userDetails.ship_address.state.name"  
+        (isAddressEdited)="addressEditedDone($event)"></app-add-edit-address>
     </div>
   </div>
   <div *ngIf="userDetails?.ship_address===null">
     <strong>Add Address</strong>
-    <app-add-edit-address [isEditAddrPressed]="false" (isAddressEdited)="addressEditedDone($event)" [addressParams]="buildAddressParams(userDetails)"></app-add-edit-address>
+    <app-add-edit-address 
+      [isEditAddrPressed]="false" 
+      (isAddressEdited)="addressEditedDone($event)" 
+      [addressParams]="buildAddressParams(userDetails)"
+      [stateName]="null" ></app-add-edit-address>
   </div>
 </div>
