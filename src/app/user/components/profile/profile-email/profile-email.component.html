@@ -1,19 +1,17 @@
 <div class="row" *ngIf="userDetails">
-  <div class="col-md-8">
-    <form [formGroup]="emailForm" (ngSubmit)="onSaveEmail(userDetails.id)" class="d-block">
-      <div class="alert alert-success">
-        <strong>Welcome!</strong> {{userDetails.email}}
+  <div class="col-md-12">
+    <div class="alert alert-success col-12">
+      <strong>Welcome!</strong> {{userDetails.email}}
+    </div>
+    <h5 class="d-block">Email Address</h5>
+    <form [formGroup]="emailForm" (ngSubmit)="onSaveEmail(userDetails.id)" class="form-inline">
+      <div class="form-group mr-sm-3 ">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input type="email" [readonly]="!isEditEmailPressed" class="form-control mt-1" placeholder="Email Address" formControlName="email">
       </div>
-      <h5>Email Address</h5>
-      <span *ngIf="!isEditEmailPressed; else elseBlock" class='reviewlink pl-1' (click)="editEmail()">Edit</span>
-      <ng-template #elseBlock>
-        <span class='reviewlink pl-1' (click)="cancelEmail()">Cancel</span>
-      </ng-template>
-      <input [readonly]="!isEditEmailPressed" type="email" class="form-control" name="email" placeholder="Email Address" formControlName="email">
-      <button type="submit" class="btn btn-primary" *ngIf="isEditEmailPressed" [disabled]="!emailForm.valid">Save</button>
-      <div *ngIf="emailForm.get('email').errors && emailForm.get('email').touched">
-        <p class="login-error-message text-danger">{{emailForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
-      </div>
+      <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-2" (click)="editEmail()" *ngIf="!isEditEmailPressed">Edit</button>
+      <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-3 mr-3" *ngIf="isEditEmailPressed" [disabled]="!emailForm.valid">Svae</button>
+      <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-3 mt-2 mt-sm-0" *ngIf="isEditEmailPressed" (click)="cancelEmail()">Cancel</button>
     </form>
   </div>
 </div>
