@@ -34,7 +34,7 @@ export class OrderSuccessComponent implements OnInit {
       .getOrderDetail(this.queryParams.orderReferance)
       .subscribe(order => {
         this.orderDetails = order
-        if (this.orderDetails.shipment_state != 'ready') {
+        if (this.orderDetails.shipment_state !== 'ready') {
           this.refresh()
         }
       })
@@ -51,10 +51,9 @@ export class OrderSuccessComponent implements OnInit {
       .subscribe(order => {
         this.orderDetails = order
         this.retryCount = this.retryCount + 1;
-        if (this.orderDetails.shipment_state != 'ready' && this.retryCount <= 5) {
+        if (this.orderDetails.shipment_state !== 'ready' && this.retryCount <= 5) {
           this.refresh()
         }
       })
   }
-
 }

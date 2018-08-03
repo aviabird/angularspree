@@ -1,5 +1,3 @@
-<!-- <div *ngIf="userDetails$ | async; let userDetails">
-    <div *ngIf="userDetails?.ship_address!=null;else  elseBlock"> -->
 <div class="items" *ngIf="userDetails.ship_address; let address">
   <div class="address-row" *ngIf="!isEditAddrPressed">
     <div class="row">

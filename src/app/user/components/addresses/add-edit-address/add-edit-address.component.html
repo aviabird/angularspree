@@ -22,7 +22,7 @@
       <p *ngIf="addressForm.get('city').hasError('required') &&  addressForm.get('city').touched" class="value-err text-danger show">This is a mandatory field</p>
     </div>
     <div class="form-group col-sm-6">
-      <label> State </label>
+      <label> State</label>
       <select class="form-control" formControlName="state_name">
         <option *ngIf="stateName">{{stateName}}
           <option *ngFor="let state of states">{{state.name}}</option>

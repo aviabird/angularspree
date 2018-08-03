@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { routes } from './checkout.routes';
 import { OrderFailedComponent } from './order-failed/order-failed.component';
+import { SharedModule } from '../shared';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { OrderFailedComponent } from './order-failed/order-failed.component';
     ]),
     CartModule,
     AddressModule,
-    PaymentModule
+    PaymentModule,
+    SharedModule,
   ],
   declarations: [OrderSuccessComponent, OrderFailedComponent],
   providers: [

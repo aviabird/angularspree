@@ -10,7 +10,7 @@
         <input type="email" [readonly]="!isEditEmailPressed" class="form-control mt-1" placeholder="Email Address" formControlName="email">
       </div>
       <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-2" (click)="editEmail()" *ngIf="!isEditEmailPressed">Edit</button>
-      <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-3 mr-3" *ngIf="isEditEmailPressed" [disabled]="!emailForm.valid">Svae</button>
+      <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-3 mr-3" *ngIf="isEditEmailPressed" [disabled]="!emailForm.valid">Save</button>
       <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-3 mt-2 mt-sm-0" *ngIf="isEditEmailPressed" (click)="cancelEmail()">Cancel</button>
     </form>
   </div>

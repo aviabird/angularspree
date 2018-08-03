@@ -28,7 +28,7 @@ export class UserService {
    * @memberof UserService
    */
   getOrders(email, page): Observable<Array<Order>> {
-    return this.http.get<Array<Order>>(`/api/v1/orders/mine?per_page=5&q[s]=id%20desc&page=${page}`)
+    return this.http.get<Array<Order>>(`/api/v1/orders/mine?q[s]=id%20desc`)
       .pipe(
         map(data => data)
       )
