@@ -172,8 +172,8 @@
     tslib "^1.9.0"
 
 "@angular/platform-server@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-6.1.1.tgz#fb5d0aac97bd36d281871594c83333b40e674ee2"
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@angular/platform-server/-/platform-server-6.1.2.tgz#f8954c5720169c4a2433cb73678c8a8709b12271"
   dependencies:
     domino "^2.0.1"
     tslib "^1.9.0"
@@ -3753,8 +3753,8 @@ ini@^1.3.4, ini@~1.3.0:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
 
 inquirer@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.0.0.tgz#e8c20303ddc15bbfc2c12a6213710ccd9e1413d8"
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-6.1.0.tgz#8f65c7b31c498285f4ddf3b742ad8c487892040b"
   dependencies:
     ansi-escapes "^3.0.0"
     chalk "^2.0.0"
@@ -7812,8 +7812,8 @@ uws@~9.14.0:
   resolved "https://registry.yarnpkg.com/uws/-/uws-9.14.0.tgz#fac8386befc33a7a3705cbd58dc47b430ca4dd95"
 
 v8-compile-cache@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.0.tgz#526492e35fc616864284700b7043e01baee09f0a"
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.2.tgz#a428b28bb26790734c4fc8bc9fa106fccebf6a6c"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"

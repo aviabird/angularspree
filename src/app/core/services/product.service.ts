@@ -1,3 +1,4 @@
+import { deserialize } from 'jsonapi-deserializer';
 import { JsonApiParserService } from './json-api-parser.service';
 import { CJsonApi } from './../models/jsonapi';
 import { ToastrService } from 'ngx-toastr';
@@ -35,20 +36,15 @@ export class ProductService {
    */
   getProduct(id: string): Observable<Product> {
     return this.http
-      .get<{ data: CJsonApi }>(
-        `api/v1/products/${id}?data_set=large&${+new Date()}`
+      .get<Product>(
+        `http://localhost:3000/api/v1/products/${id}?${+new Date()}`
       )
-      .pipe(
-        map(resp => {
-          const product = this.apiParser.parseSingleObj(resp.data) as Product;
-          return product;
-        })
-      );
   }
 
   getProductReviews(products): Observable<any> {
     return this.http.get(`products/${products}/reviews`);
   }
+
   /**
    *
    *
@@ -56,9 +52,7 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getTaxonomies(): any {
-    return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?set=nested`);
-  }
+  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?set=nested`); }
 
   /**
    *
@@ -68,15 +62,11 @@ export class ProductService {
    * @memberof ProductService
    */
   getProducts(pageNumber: number): Observable<Array<Product>> {
+    // sort=A-Z&filter[name]=Hill's&page[limit]=2&page[offset]=2
     return this.http
-      .get<{ data: CJsonApi[] }>(
-        `api/v1/products?q[s]=avg_rating+desc&page=${pageNumber}&per_page=20&data_set=small`
+      .get<Array<Product>>(
+        `http://localhost:3000/api/v1/products?q[s]=avg_rating+desc&page[limit]=20&page[offset]=${pageNumber}`
       )
-      .pipe(
-        map(
-          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
-        )
-      );
   }
 
   markAsFavorite(id: number): Observable<{}> {
