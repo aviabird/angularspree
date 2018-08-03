@@ -30,7 +30,7 @@
           <tr>
             <td>Payment Status:</td>
             <td>
-              <b class="text-uppercase">{{orderDetails.payment_state}}</b>
+              <b class="text-uppercase">{{orderDetails.payment_state |humanize | uppercase}}</b>
               <i class="fa fa-refresh fa-spin" style="font-size:24px" *ngIf="!orderDetails.payment_state"></i>
             </td>
           </tr>
@@ -63,9 +63,9 @@
       </div>
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         <h3>Shipping</h3>
-        <div class="col-sm text-uppercase p-0">
+        <div class="col-sm  p-0">
           <p>Shipping Status: </p>
-          <b>{{orderDetails.shipment_state}}</b>
+          <b>{{orderDetails.shipment_state | humanize | uppercase}}</b>
           <i class="fa fa-refresh fa-spin" style="font-size:24px" *ngIf="!orderDetails.shipment_state"></i>
         </div>
       </div>
@@ -89,10 +89,8 @@
             <div class="price">{{item.display_amount}}</div>
             <div class="qty"> QTY: {{item.quantity}}</div>
           </div>
-
         </div>
       </div>
     </div>
-
   </div>
 </div>

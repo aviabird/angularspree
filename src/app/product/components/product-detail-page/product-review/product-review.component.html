@@ -40,13 +40,11 @@
                   {{reviewPercent}}
                   <span>%</span>
                 </div>
-
                 <small>RECOMMENDED</small>
               </div>
               <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'" [radius]="55" [stroke]="5"
                 [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'"
                 [animationDelay]="0"></round-progress>
-
             </div>
             <div class="float-left p-0 write-review ">
               <p *ngIf="reviewList.total_ratings === 0">Be the first to Review this product</p>
@@ -54,9 +52,7 @@
               <button (click)="showReviewForm()" class="btn themebtnprimary  m-auto">Write Review</button>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   </div>
@@ -68,8 +64,9 @@
             <div class="float-left col-md-4 pt-2">Showing {{product.reviews_count }} Reviews</div>
           </div>
         </div>
+        {{reviews}}
         <div *ngIf="reviewList">
-          <div *ngFor="let item of content" class="rating-inner">
+          <div *ngFor="let item of reviewList.reviews" class="rating-inner">
             <div class="rating-head">
               <ngx-input-star-rating disabled="true" value="{{item.rating }}" required></ngx-input-star-rating>
               <span class="pl-3">{{item.title}}</span>
@@ -81,9 +78,9 @@
               {{item.review}}
             </p>
           </div>
-          <button class="btn themebtnprimarybasic" (click)="getData()" [disabled]="counter>=reviewList.reviews.length">
+          <!-- <button class="btn themebtnprimarybasic" (click)="getData()" *ngIf="counter>=reviewList.reviews.length">
             Show more
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
@@ -102,8 +99,6 @@
                   {{reviewPercent}}
                   <span>%</span>
                 </div>
-
-
                 <small>RECOMMENDED</small>
               </div>
               <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'" [radius]="55" [stroke]="5"
@@ -141,7 +136,7 @@
           </div>
         </div>
         <div *ngIf="reviewList">
-          <div *ngFor="let item of content" class="rating-inner">
+          <div *ngFor="let item of reviewList.reviews" class="rating-inner">
             <div class="rating-head">
               <ngx-input-star-rating disabled="true" value="{{item.rating }}" required></ngx-input-star-rating>
               <span class="pl-3">{{item.title}}</span>
@@ -153,12 +148,11 @@
               {{item.review}}
             </p>
           </div>
-          <button class="btn themebtnprimarybasic" (click)="getData()" [disabled]="counter>=reviewList.reviews.length">
+          <!-- <button class="btn themebtnprimarybasic" (click)="getData()" [disabled]="counter>=reviewList.reviews.length">
             Show more
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
   </div>
-
 </div>
