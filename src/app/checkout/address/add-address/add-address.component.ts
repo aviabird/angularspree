@@ -1,12 +1,12 @@
-import { getAuthStatus } from './../../../auth/reducers/selectors';
-import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
-import { AuthActions } from './../../../auth/actions/auth.actions';
-import { AddressService } from './../services/address.service';
-import { CheckoutService } from './../../../core/services/checkout.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { AddressService } from '../services/address.service';
+import { AuthActions } from '../../../auth/actions/auth.actions';
+import { getAuthStatus } from '../../../auth/reducers/selectors';
+import { CheckoutService } from '../../../core/services/checkout.service';
+import { AppState } from '../../../interfaces';
 
 @Component({
   selector: 'app-add-address',

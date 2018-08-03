@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-addresses',
@@ -7,9 +9,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddressesComponent implements OnInit {
 
-  constructor() { }
+  userDetails$: Observable<any>
+  isEditAddrPressed: boolean;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.getUser();
+  }
+  getUser() {
+    this.userDetails$ = this.userService.getUser();
   }
 
+  editAddress() {
+    this.isEditAddrPressed = true;
+  }
+
+  cancelAddressEdit() {
+    this.isEditAddrPressed = false;
+  }
+
+  buildAddressParams(userDetails) {
+    const params = {
+      user: {
+        email: userDetails.email,
+        ship_address: userDetails.ship_address
+      }
+    }
+    return params;
+  }
+  addressEditedDone() {
+    this.userDetails$ = this.userService.getUser();
+    this.isEditAddrPressed = false;
+  }
 }

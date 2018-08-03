@@ -1,0 +1,39 @@
+<!-- <div *ngIf="userDetails$ | async; let userDetails">
+    <div *ngIf="userDetails?.ship_address!=null;else  elseBlock"> -->
+<div class="items" *ngIf="userDetails.ship_address; let address">
+  <div class="address-row" *ngIf="!isEditAddrPressed">
+    <div class="name">{{address.full_name}}
+      <div class="address">
+        <div class="address-content">
+          <div class="address-field">{{address.address1}}</div>
+          <div class="address-field">{{address.address2}}</div>
+          <span class="address-field">{{address.city}}</span>
+          <span class="address-field">-{{address.zipcode}}</span>
+          <br>
+          <span class="address-field">{{address.state?.name}}</span>
+          <div class="mob">
+            <span class="mob-lbl">Mobile: </span>
+            <span class="mob-no">{{address.phone}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div *ngIf="isEditAddrPressed" class="row">
+        <div class="add-address">
+          <span class="add-label">
+            EDIT ADDRESS
+          </span>
+        </div>
+        <app-add-address (addressEdited)=addressEditedDone($event) [addressEdit]="userDetails?.ship_address" [userAddressParams]="buildAddressParams(userDetails)">
+        </app-add-address>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div>
+        <h5>Add A New Address</h5>
+        <app-add-address  (addressEdited)="addressEditedDone($event)" [addressEdit]="null" [userAddressParams]="buildAddressParams(userDetails)"></app-add-address>
+      </div>
+    </ng-template> -->
+<!-- </div> -->
