@@ -26,6 +26,7 @@ import { UserActions } from '../user/actions/user.actions';
 import { UserEffects } from '../user/effects/user.effects';
 import { UserService } from '../user/services/user.service';
 import { CanActivateViaAuthGuard } from './guards/auth.guard';
+import { ResponseInterceptor } from './interceptors/reponse.interceptor';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { CanActivateViaAuthGuard } from './guards/auth.guard';
     {provide: HTTP_INTERCEPTORS, useClass: TransferStateInterceptor, multi: true},
     TransferStateService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
   ]
 })
 export class CoreModule { }
