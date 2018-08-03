@@ -39,7 +39,7 @@ export class ProductReviewComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
     this.productID = this.product.id;
-    this.getData();
+    // this.getData();
   }
 
   showReviewForm() {
@@ -57,13 +57,13 @@ export class ProductReviewComponent implements OnInit, OnChanges {
   get hasReviews() {
     return this.reviewList.total_ratings > 0;
   }
-  getData() {
-
-    for (let i = this.counter + 1; i < this.reviewList.reviews.length; i++) {
-      this.content.push(this.reviewList.reviews[i]);
-      if (i % 10 === 0) { break; }
-    }
-    this.counter += 10;
-
-  }
+  // getData() {
+  //   if (this.reviewList.reviews) {
+  //     for (let i = this.counter + 1; i < this.reviewList.reviews.length; i++) {
+  //       this.content.push(this.reviewList.reviews[i]);
+  //       if (i % 10 === 0) { break; }
+  //     }
+  //     this.counter += 10;
+  //   }
+  // }
 }
