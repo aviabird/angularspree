@@ -11,9 +11,10 @@
         {{currency}}{{itemTotal| number:'1.2-2'}} </span>
     </div>
     <div class="shipping">
-      <span>Shipping</span>
-      <span class="shipping-fee c-green" *ngIf="enableshipping">Only {{currency}}{{enableshippingvalue | number:'1.2-2'}} to go for free delivery!</span>
-      <span class="shipping-fee c-green" *ngIf="!enableshipping">Free</span>
+      <div class="float-left">Shipping</div>
+      <div class="shipping-fee c-green float-right" *ngIf="enableshipping">Only {{currency}}{{enableshippingvalue | number:'1.2-2'}} to go for free delivery!</div>
+      <div class="shipping-fee c-green float-right" *ngIf="!enableshipping">Free</div>
+      <div class="clearfix"></div>
     </div>
   </div>
 </div>
