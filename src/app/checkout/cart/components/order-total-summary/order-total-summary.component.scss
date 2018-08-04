@@ -19,7 +19,7 @@
     }
     .shipping {
       padding: 1rem 0;
-      span {
+      div {
         color: $gray-900;
         font-size: 1.2em;
       }
@@ -43,7 +43,7 @@
     }
     .shipping>.c-green {
       color: $theme-action-color - 80;
-      width: 15em;
+      width: 11.8em;
       font-size: 14px;
       padding-top: 5px;
     }
