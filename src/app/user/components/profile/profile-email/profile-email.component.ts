@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../services/user.service';
 import { AuthService } from '../../../../core/services/auth.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-profile-email',
@@ -11,14 +13,16 @@ import { AuthService } from '../../../../core/services/auth.service';
 })
 export class ProfileEmailComponent implements OnInit {
   @Input() userDetails;
-
+  modalRef: BsModalRef;
   emailForm: FormGroup;
   isEditEmailPressed: boolean;
+  currentuserId: number;
 
   constructor(private userService: UserService,
     private fb: FormBuilder,
     private toastyService: ToastrService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private modalService: BsModalService) { }
 
   ngOnInit() {
     this.initForm();
@@ -48,5 +52,20 @@ export class ProfileEmailComponent implements OnInit {
       }, error => {
         this.toastyService.error('Email could not be updated!', 'Error!');
       })
+  }
+
+  emailConfirmModal(template: TemplateRef<any>, id: number) {
+    this.currentuserId = id;
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(): void {
+   this.onSaveEmail(this.currentuserId)
+    this.modalRef.hide();
+  }
+
+  decline(): void {
+    this.isEditEmailPressed = false;
+    this.modalRef.hide();
   }
 }
