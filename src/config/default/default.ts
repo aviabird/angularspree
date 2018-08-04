@@ -27,6 +27,7 @@ export const DEFAULT_CONFIG = {
   PaymentMethodCod: 'COD',
   PaymentMethodPayubiz: 'Payubiz',
   defaultPaymentMethod: 'Payubiz',
+  reviewsDisplayLimit: 5,
 
   ...DEFAULT_APP_DATA,
   ...DEFAULT_META_DATA
