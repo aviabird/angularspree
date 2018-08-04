@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
 import { getAuthStatus } from '../../../../auth/reducers/selectors';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../../../../environments/environment';
 @Component({
   selector: 'app-product-review',
   templateUrl: './product-review.component.html',
@@ -17,21 +18,22 @@ export class ProductReviewComponent implements OnInit, OnChanges {
   @Input() product: Product;
   @Input() isMobile;
   content: any[] = new Array();
-  counter: number;
+  updated: any[] = new Array();
+  isShowMore: boolean;
   productID: any
   isAuthenticated: boolean;
+  start = 0;
+  reviewsDisplayLimit = environment.config.reviewsDisplayLimit;
+  end = this.reviewsDisplayLimit;
 
   constructor(
     private router: Router,
     private store: Store<AppState>,
     private toastrService: ToastrService
   ) {
-
     this.store.select(getAuthStatus).subscribe(auth => {
       this.isAuthenticated = auth;
     })
-    this.counter = 0;
-
   }
 
   ngOnInit() {
@@ -39,7 +41,10 @@ export class ProductReviewComponent implements OnInit, OnChanges {
   }
   ngOnChanges() {
     this.productID = this.product.id;
-    // this.getData();
+    if (this.reviewList.reviews) {
+      this.updated = this.reviewList.reviews.slice(this.start, this.end);
+      this.content = this.updated;
+    }
   }
 
   showReviewForm() {
@@ -57,13 +62,28 @@ export class ProductReviewComponent implements OnInit, OnChanges {
   get hasReviews() {
     return this.reviewList.total_ratings > 0;
   }
-  // getData() {
-  //   if (this.reviewList.reviews) {
-  //     for (let i = this.counter + 1; i < this.reviewList.reviews.length; i++) {
-  //       this.content.push(this.reviewList.reviews[i]);
-  //       if (i % 10 === 0) { break; }
-  //     }
-  //     this.counter += 10;
-  //   }
-  // }
+
+  showMore() {
+    this.isShowMore = true;
+    this.start = this.end;
+    this.end = this.end + this.reviewsDisplayLimit;
+    this.updated = this.reviewList.reviews.slice(this.start, this.end);
+    this.updated.forEach((review, i) => {
+      this.content.push(review);
+    })
+  }
+
+  showLess() {
+    this.start = 0;
+    this.end = this.reviewsDisplayLimit;
+    this.updated = this.reviewList.reviews.slice(this.start, this.end);
+    this.content = this.updated;
+  }
+  get activeShowMore() {
+    return this.updated.length >= this.reviewsDisplayLimit && this.content.length !== this.reviewList.reviews.length
+  }
+
+  get activeShowLess() {
+    return this.isShowMore && this.content.length === this.reviewList.reviews.length
+  }
 }
