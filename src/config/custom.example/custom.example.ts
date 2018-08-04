@@ -25,6 +25,7 @@ export const CUSTOM_EXAMPLE_CONFIG = {
   PaymentMethodCod: 'COD',
   PaymentMethodPayubiz: 'Payubiz',
   defaultPaymentMethod: 'Payubiz',
+  reviewsDisplayLimit: 5,
 
   ...CUSTOM_APP_DATA,
   ...CUSTOM_META_DATA

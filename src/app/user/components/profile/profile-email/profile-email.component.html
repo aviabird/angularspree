@@ -4,7 +4,7 @@
       <strong>Welcome!</strong> {{userDetails.email}}
     </div>
     <h5 class="d-block">Email Address</h5>
-    <form [formGroup]="emailForm" (ngSubmit)="onSaveEmail(userDetails.id)" class="form-inline">
+    <form [formGroup]="emailForm" (ngSubmit)="emailConfirmModal(emailModal, userDetails.id)" class="form-inline">
       <div class="form-group mr-sm-3 ">
         <label for="inputPassword2" class="sr-only">Password</label>
         <input type="email" [readonly]="!isEditEmailPressed" class="form-control mt-1" placeholder="Email Address" formControlName="email">
@@ -15,3 +15,12 @@
     </form>
   </div>
 </div>
+
+<ng-template #emailModal>
+  <div class="modal-body text-center">
+    <p>After updating email, you will be automatically logged out!</p>
+    <p>Do you want to confirm?</p>
+    <button type="button" class="btn btn-success mr-3" (click)="confirm()">Yes</button>
+    <button type="button" class="btn btn-danger" (click)="decline()">No</button>
+  </div>
+</ng-template>
