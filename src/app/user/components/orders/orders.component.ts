@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
 import { UserActions } from '../../actions/user.actions';
@@ -18,7 +19,8 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private userActions: UserActions
+    private userActions: UserActions,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
 
     this.orders$ = this.store.select(getUserOrders);
@@ -26,7 +28,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (JSON.parse(localStorage.getItem('user'))) {
+    if (isPlatformBrowser(this.platformId) && JSON.parse(localStorage.getItem('user'))) {
       this.email = JSON.parse(localStorage.getItem('user')).email
       this.store.dispatch(this.userActions.getUserOrders(this.email, 1));
     }

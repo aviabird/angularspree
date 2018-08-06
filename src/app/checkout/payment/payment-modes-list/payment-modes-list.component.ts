@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
 import { PaymentMode } from './../../../core/models/payment_mode';
 import { PaymentService } from './../services/payment.service';
 import { CheckoutService } from './../../../core/services/checkout.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
 import { Address } from '../../../core/models/address';
 import { environment } from '../../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-payment-modes-list',
@@ -40,7 +41,8 @@ export class PaymentModesListComponent implements OnInit {
     private router: Router,
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
-    private toastyService: ToastrService) {
+    private toastyService: ToastrService,
+    @Inject(PLATFORM_ID) private platformId: any) {
     this.store.select(getAuthStatus).subscribe((auth) => {
       this.isAuthenticated = auth;
     });
@@ -80,7 +82,7 @@ export class PaymentModesListComponent implements OnInit {
         } else {
           if (this.paymentAmount < this.freeShippingAmount) {
             // tslint:disable-next-line:max-line-length
-            this.toastyService.error(`${this.selectedMode.name} is not available for Order amount less than ${this.currency} ${this.freeShippingAmount}.`, "Order Amount");
+            this.toastyService.error(`${this.selectedMode.name} is not available for Order amount less than ${this.currency} ${this.freeShippingAmount}.`, 'Order Amount');
           } else if (!this.isShippeble) {
             this.toastyService.error(`${this.selectedMode.name} is not available for pincode ${shipping_pincode}.`, 'Pincode');
           }
@@ -100,7 +102,9 @@ export class PaymentModesListComponent implements OnInit {
           })
         )
           .subscribe((res) => {
-            window.open(response.url, '_self');
+            if (isPlatformBrowser(this.platformId)) {
+              window.open(response.url, '_self');
+            }
           });
       })
   }

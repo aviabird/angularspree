@@ -13,9 +13,10 @@ import { AppState } from './../interfaces';
 import { getTaxonomies, rootTaxonomyId } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Product } from '../core/models/product';
+import { isPlatformBrowser } from '../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -40,7 +41,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private actions: ProductActions,
-    private searchActions: SearchActions) {
+    private searchActions: SearchActions,
+    @Inject(PLATFORM_ID) private platformId: any) {
     this.store.dispatch(this.actions.getAllProducts(1));
     this.store.dispatch(this.actions.getAllTaxonomies());
     this.taxonomies$ = this.store.select(getTaxonomies);
@@ -74,7 +76,9 @@ export class HomeComponent implements OnInit {
     this.isModalShown = false;
   }
   ngOnInit() {
-    this.screenwidth = window.innerWidth;
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenwidth = window.innerWidth;
+    }
     this.calculateInnerWidth();
   }
 

@@ -1,5 +1,6 @@
+import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
-import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
@@ -16,17 +17,16 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
   subnav: boolean;
   isOpen: boolean;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private platformId: any) {
   }
 
   ngOnInit() {
   }
   onOpenChange(data: boolean): void {
-
     this.isOpen = !this.isOpen;
   }
   ngOnChanges() {
-    this.currentUser = JSON.parse(localStorage.getItem('user'))
+    this.currentUser = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')) : null;
     if (this.currentUser) {
       this.email = this.currentUser.email.split('@')[0];
     }
@@ -36,7 +36,7 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
 
     this.subnav = !this.subnav;
     this.authService.logout().
-      subscribe(res=>{
+      subscribe(res => {
         this.router.navigate(['auth', 'login']);
       });
   }
