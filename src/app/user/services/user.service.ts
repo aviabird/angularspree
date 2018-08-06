@@ -1,23 +1,19 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { UserActions } from '../actions/user.actions';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../interfaces';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { Order } from '../../core/models/order';
-import { Response } from '@angular/http';
 import { User } from '../../core/models/user';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class UserService {
 
   constructor(
     private http: HttpClient,
-    private actions: UserActions,
-    private store: Store<AppState>,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    @Inject(PLATFORM_ID) private platformId: any
   ) { }
 
   /**
@@ -54,7 +50,7 @@ export class UserService {
    * @memberof UserService
    */
   getUser(): Observable<User> {
-    const user_id = JSON.parse(localStorage.getItem('user')).id;
+    const user_id = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')).id : null;
     return this.http.get<User>(`api/v1/users/${user_id}`);
   }
 

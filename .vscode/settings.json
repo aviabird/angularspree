@@ -16,6 +16,6 @@
     "*.csproj.user": true,
     "*.suo": true,
     ".docker": false,
-    "docs": false
+    "docs": true
   }
 }
