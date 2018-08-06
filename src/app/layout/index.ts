@@ -26,6 +26,10 @@ import { CategoryMobileMenuComponent } from './header/components/category-mobile
 // Modules
 import { SharedModule } from '../shared/index';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import * as fromLayout from './reducers/layout.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { LayoutEffects } from './effects/layout.effects';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,9 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     RouterModule,
     TabsModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    StoreModule.forFeature('layout', fromLayout.reducer),
+    EffectsModule.forFeature([LayoutEffects])
   ]
 })
 export class LayoutModule { }
