@@ -1,9 +1,11 @@
+import { LayoutState } from './layout/reducers/layout.state';
+import { getlayoutStateJS } from './layout/reducers/layout.selector';
 import { environment } from './../environments/environment';
 import { filter } from 'rxjs/operators';
 import { getAuthStatus } from './auth/reducers/selectors';
 import { AppState } from './interfaces';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { CheckoutService } from './core/services/checkout.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
@@ -19,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   currentUrl: string;
   currentStep: string;
   checkoutUrls = ['/checkout/cart', '/checkout/address', '/checkout/payment'];
+  layoutState$: Observable<LayoutState>;
   schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -47,6 +50,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.store.select(getAuthStatus).subscribe(() => {
       this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
     });
+
+    this.layoutState$ = this.store.select(getlayoutStateJS);
 
     this.addFaviconIcon();
     this.addConstMetaInfo();

@@ -9,7 +9,7 @@
     <div class="options col-5 p-0 pr-2">
 
       <div class="form-group row mb-0 ">
-        <label for="inputEmail3 " class="col-sm-5 col-md-5 col-form-label ">Sort by</label>
+        <label class="col-sm-5 col-md-5 col-form-label ">Sort by</label>
         <div class="btn-group col-sm-7 col-md-7 " dropdown>
           <button dropdownToggle type="button" class="btn sort-dropdown dropdown-toggle" aria-controls="dropdown-basic">
             {{selectedOption}}
@@ -19,7 +19,6 @@
               <a class="dropdown-item" (click)=sortFilter(opt.name) *ngFor="let opt of options">{{opt.name}}</a>
             </li>
           </ul>
-
         </div>
       </div>
     </div>
@@ -78,8 +77,6 @@
               </ul>
               <app-filter-mobile-menu (fltermodelstate)="fltermodelstate($event)" (selectedItemEmit)="selectedInput($event)" (childselectedItememit)="childselectedInput($event)"
                 [fillterList]="fillterList" [subselectedItem]="subselectedItem" [childselectedItem]="childselectedItem"></app-filter-mobile-menu>
-
-
             </div>
           </div>
         </div>

@@ -46,10 +46,6 @@ export class ProductListComponent implements OnInit {
     return this.toggleLayout.size === 'COZY' ? '0 7.5px 20px 7.5px' : '0 80px 20px 0';
   }
 
-  trackByFn(index, item) {
-    return index;
-  }
-
   pageChanged(event: any): void {
     this.page = event.page;
     const urlTree = this.routernomal.createUrlTree([], {

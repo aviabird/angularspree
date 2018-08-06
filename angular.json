@@ -209,7 +209,9 @@
       }
     }
   },
-  "cli": {},
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  },
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
