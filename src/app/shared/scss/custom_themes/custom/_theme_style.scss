@@ -1,6 +1,5 @@
 // selected-theme is the main theme class add to top level main html component
 // <div class="selected-theme">...
-@import '../../selected_theme_variables';
 .selected-theme {
   @import "header";
   @import "badge";

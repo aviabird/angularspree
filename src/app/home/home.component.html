@@ -1,7 +1,7 @@
 <div *ngIf="pagination$ | async; let paginationData">
   <div class="container col-12 home" *ngIf="paginationData.total_count > 0">
-    <div class="contaier" *ngIf="taxonomies$ | async; let taxonomies">
-      <div class=row>
+    <div class="container" *ngIf="taxonomies$ | async; let taxonomies">
+      <div class="row">
         <div class="col-lg-3 sidebar d-sm-none d-xs-none d-none d-lg-block">
           <h1>Searched Results</h1>
           <!-- <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons> -->
