@@ -23,8 +23,7 @@ export class HeaderSearchComponent implements OnInit {
   queryParams: any;
   @Input() isMobile;
   @Input() isSearchopen;
-  @Output()
-  onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   searchPlaceholder = environment.config.header.searchPlaceholder;
   showGo = false;
   constructor(

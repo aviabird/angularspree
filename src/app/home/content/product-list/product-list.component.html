@@ -1,7 +1,7 @@
 <div class="row results-base m-0" *ngIf="!isMobile">
-  <div class="col-12 col-md-3 col-sm-3 col-lg-3 product-base" *ngFor="let product of products | filter : selectedTaxonIds; trackBy: trackByFn"
+  <div class="col-12 col-sm-4 col-lg-3 p-2 m-0" *ngFor="let product of products | filter : selectedTaxonIds"
     [style.margin]="getMargin()" itemscope itemtype="https://schema.org/Product">
-    <a itemprop="url" [routerLink]="['/', product.slug]">
+    <a itemprop="url" [routerLink]="['/', product.slug]" class="product-base p-1 d-block">
       <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="product.product_url">
       <div class="product-productMetaInfo">
         <div class="morechoices">
@@ -16,19 +16,16 @@
             </span>
           </span>
         </div>
+        <div class="ngrating">
+          <ngx-input-star-rating disabled="true" [value]="product.avg_rating"></ngx-input-star-rating>
+        </div>
         <small class="shipping">
           FREE 1-2 day shipping over {{appConfig.currency_symbol}}{{appConfig.freeShippingAmount}}
         </small>
-        <div class="ngrating my-3">
-          <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}"></ngx-input-star-rating>
-        </div>
       </div>
     </a>
   </div>
 </div>
-
-
-
 
 <div class="row results-base m-0" *ngIf="isMobile">
   <div class="col-12 product-base" *ngFor="let product of products | filter : selectedTaxonIds; trackBy: trackByFn" [style.margin]="getMargin()"
@@ -53,7 +50,7 @@
               </span>
             </div>
             <p class="shipping border-top border-bottom mt-1 mb-2">
-                <b>FREE 1-2 day</b> shipping at {{appConfig.currency_symbol}}{{appConfig.freeShippingAmount}}
+              <b>FREE 1-2 day</b> shipping at {{appConfig.currency_symbol}}{{appConfig.freeShippingAmount}}
             </p>
             <div class="ngrating">
               <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}"></ngx-input-star-rating>
@@ -67,7 +64,7 @@
 <div class="col-12 mt-3">
   <div class="row">
     <pagination *ngIf="paginationData.total_count > paginationData.per_page" [totalItems]="paginationData.total_count" [itemsPerPage]="paginationData.per_page"
-      [(ngModel)]="paginationData.current_page" (pageChanged)="pageChanged($event)" class="m-auto" [rotate]="rotate" [maxSize]="5"></pagination>
+      [(ngModel)]="paginationData.current_page" (pageChanged)="pageChanged($event)" class="m-auto" [maxSize]="5"></pagination>
   </div>
 
 </div>
