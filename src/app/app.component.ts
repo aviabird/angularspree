@@ -7,9 +7,10 @@ import { AppState } from './interfaces';
 import { Store } from '@ngrx/store';
 import { Subscription, Observable } from 'rxjs';
 import { CheckoutService } from './core/services/checkout.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
+import { isPlatformBrowser } from '../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -22,28 +23,33 @@ export class AppComponent implements OnInit, OnDestroy {
   currentStep: string;
   checkoutUrls = ['/checkout/cart', '/checkout/address', '/checkout/payment'];
   layoutState$: Observable<LayoutState>;
-  schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    'name': environment.appName,
-    'url': location.origin
-  };
+  schema = {};
 
   constructor(
     private router: Router,
     private checkoutService: CheckoutService,
     private store: Store<AppState>,
     private metaTitle: Title,
-    private meta: Meta
+    private meta: Meta,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
         this.currentUrl = e.url;
         this.findCurrentStep(this.currentUrl);
-        window.scrollTo(0, 0);
+        if (isPlatformBrowser(this.platformId)) {
+          window.scrollTo(0, 0);
+        }
         this.addMetaInfo();
       });
+
+    this.schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      'name': environment.appName,
+      'url': isPlatformBrowser(this.platformId) ? location.origin : ''
+    };
   }
 
   ngOnInit() {
@@ -58,13 +64,15 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   addFaviconIcon() {
-    const link =
-      document.querySelector(`link[rel*='icon']`) ||
-      (document.createElement('link') as any);
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
-    link.href = environment.config.fevicon;
-    document.getElementsByTagName('head')[0].appendChild(link);
+    if (isPlatformBrowser(this.platformId)) {
+      const link =
+        document.querySelector(`link[rel*='icon']`) ||
+        (document.createElement('link') as any);
+      link.type = 'image/x-icon';
+      link.rel = 'shortcut icon';
+      link.href = environment.config.fevicon;
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
   }
 
   isCheckoutRoute() {

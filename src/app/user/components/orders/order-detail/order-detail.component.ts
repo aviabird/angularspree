@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { Order } from '../../../../core/models/order';
 import { ActivatedRoute } from '@angular/router';
@@ -23,7 +24,8 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private checkoutService: CheckoutService
+    private checkoutService: CheckoutService,
+    @Inject(PLATFORM_ID) private platformId: any
   ) { }
 
   ngOnInit() {
@@ -50,8 +52,10 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   retryPayment(order: Order) {
     this.checkoutService.makePayment(+order.total, order.bill_address, order.number)
       .subscribe((response: any) => {
-        response = response
-        window.open(response.url, '_self');
+        response = response;
+        if (isPlatformBrowser(this.platformId)) {
+          window.open(response.url, '_self');
+        }
       });
   }
 }

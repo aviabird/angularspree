@@ -1,9 +1,10 @@
+import { isPlatformBrowser } from '@angular/common';
 import { environment } from './../../../../../environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
-import { Directive, Renderer2, ElementRef } from '@angular/core';
+import { Directive, Renderer2, ElementRef, PLATFORM_ID, Inject } from '@angular/core';
 import {
   Component,
   OnInit,
@@ -32,7 +33,7 @@ export class HeaderSearchComponent implements OnInit {
     private router: Router,
     private activatedRouter: ActivatedRoute,
     private renderer: Renderer2,
-    private el: ElementRef
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.activatedRouter.queryParams.subscribe(params => {
       this.queryParams = params;
@@ -45,10 +46,12 @@ export class HeaderSearchComponent implements OnInit {
   showsearch() {
     this.isSearchopen = !this.isSearchopen;
     this.onSubCatClicked.emit(false);
-    if (this.isSearchopen) {
-      this.renderer.addClass(document.body, 'issearchopen');
-    } else {
-      this.renderer.removeClass(document.body, 'issearchopen');
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.isSearchopen) {
+        this.renderer.addClass(document.body, 'issearchopen');
+      } else {
+        this.renderer.removeClass(document.body, 'issearchopen');
+      }
     }
   }
 

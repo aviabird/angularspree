@@ -5,7 +5,7 @@ import { Taxonomy } from './../models/taxonomy';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -19,7 +19,7 @@ export class ProductService {
   constructor(
     private http: HttpClient,
     private toastrService: ToastrService,
-    private apiParser: JsonApiParserService
+    private apiParser: JsonApiParserService,
   ) { }
   // tslint:disable-next-line:member-ordering
   success: any;
@@ -38,7 +38,12 @@ export class ProductService {
       .get<{ data: CJsonApi }>(
         `api/v1/products/${id}?data_set=large&${+new Date()}`
       )
-      .pipe(map(resp => this.apiParser.parseSingleObj(resp.data) as Product));
+      .pipe(
+        map(resp => {
+          const product = this.apiParser.parseSingleObj(resp.data) as Product;
+          return product;
+        })
+      );
   }
 
   getProductReviews(products): Observable<any> {
