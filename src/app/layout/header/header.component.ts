@@ -17,12 +17,14 @@ import { getAuthStatus } from '../../auth/reducers/selectors';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
 import { AuthActions } from '../../auth/actions/auth.actions';
-import { TemplateRef } from '@angular/core';
+import { TemplateRef, Inject, PLATFORM_ID } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Directive, Renderer2, ElementRef } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { LayoutState } from '../reducers/layout.state';
+import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -59,20 +61,22 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private authService: AuthService,
     private authActions: AuthActions,
     private searchActions: SearchActions,
     private actions: ProductActions,
     private router: Router,
     private modalService: BsModalService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.taxonomies$ = this.store.select(getTaxonomies);
     this.store.dispatch(this.actions.getAllTaxonomies());
-    if (this.isSearchopen) {
-      this.renderer.addClass(document.body, 'issearchopen');
-    } else {
-      this.renderer.removeClass(document.body, 'issearchopen');
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.isSearchopen) {
+        this.renderer.addClass(document.body, 'issearchopen');
+      } else {
+        this.renderer.removeClass(document.body, 'issearchopen');
+      }
     }
   }
 
@@ -87,7 +91,9 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(this.authActions.login());
     this.isAuthenticated = this.store.select(getAuthStatus);
     this.totalCartItems = this.store.select(getTotalCartItems);
-    this.screenwidth = window.innerWidth;
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenwidth = window.innerWidth;
+    }
     this.calculateInnerWidth();
   }
   calculateInnerWidth() {
@@ -103,15 +109,17 @@ export class HeaderComponent implements OnInit {
   showModal(): void {
     this.isModalShown = !this.isModalShown;
     this.isSearchopen = !this.isSearchopen;
-    if (this.isModalShown) {
-      this.renderer.addClass(document.body, 'isModalShown');
-    } else {
-      this.renderer.removeClass(document.body, 'isModalShown');
-    }
-    if (this.isSearchopen) {
-      this.renderer.addClass(document.body, 'issearchopen');
-    } else {
-      this.renderer.removeClass(document.body, 'issearchopen');
+    if (isPlatformBrowser(this.platformId)) {
+     if (this.isModalShown) {
+        this.renderer.addClass(document.body, 'isModalShown');
+      } else {
+        this.renderer.removeClass(document.body, 'isModalShown');
+      }
+      if (this.isSearchopen) {
+        this.renderer.addClass(document.body, 'issearchopen');
+      } else {
+        this.renderer.removeClass(document.body, 'issearchopen');
+      }
     }
   }
 
@@ -124,9 +132,9 @@ export class HeaderComponent implements OnInit {
 
   updateHeader(evt) {
     if (this.screenwidth >= 1000) {
-      this.currPos =
-        (window.pageYOffset || evt.target.scrollTop) -
-        (evt.target.clientTop || 0);
+      if (isPlatformBrowser(this.platformId)) {
+        this.currPos = (window.pageYOffset || evt.target.scrollTop) - (evt.target.clientTop || 0);
+      }
       if (this.currPos >= this.changePos) {
         this.isScrolled = true;
       } else {
@@ -141,10 +149,12 @@ export class HeaderComponent implements OnInit {
   allmenuClosed(status) {
     this.isModalShown = status;
     this.isSearchopen = !status;
-    if (this.isSearchopen) {
-      this.renderer.addClass(document.body, 'issearchopen');
-    } else {
-      this.renderer.removeClass(document.body, 'issearchopen');
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.isSearchopen) {
+        this.renderer.addClass(document.body, 'issearchopen');
+      } else {
+        this.renderer.removeClass(document.body, 'issearchopen');
+      }
     }
   }
 }

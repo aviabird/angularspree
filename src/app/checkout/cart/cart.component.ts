@@ -2,7 +2,8 @@ import { getTotalCartValue, getTotalCartItems, getItemTotal } from './../reducer
 import { Observable } from 'rxjs';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -17,14 +18,16 @@ export class CartComponent implements OnInit {
   shipTotal$: Observable<number>;
   itemTotal$: Observable<number>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, @Inject(PLATFORM_ID) private platformId: any) {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.itemTotal$ = this.store.select(getItemTotal);
   }
 
   ngOnInit() {
-    this.screenwidth = window.innerWidth;
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenwidth = window.innerWidth;
+    }
     this.calculateInnerWidth();
   }
   calculateInnerWidth() {

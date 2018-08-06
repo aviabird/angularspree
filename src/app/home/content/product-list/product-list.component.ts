@@ -1,9 +1,10 @@
 import { CheckoutActions } from './../../../checkout/actions/checkout.actions';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../environments/environment';
+import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -25,7 +26,8 @@ export class ProductListComponent implements OnInit {
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
     private router: ActivatedRoute,
-    private routernomal: Router) {
+    private routernomal: Router,
+    @Inject(PLATFORM_ID) private platformId: any) {
     this.router.queryParams
       .subscribe(params => {
         this.queryParams = params
@@ -33,7 +35,9 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.screenwidth = window.innerWidth;
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenwidth = window.innerWidth;
+    }
     this.calculateInnerWidth();
   }
   calculateInnerWidth() {

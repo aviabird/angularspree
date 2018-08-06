@@ -2,8 +2,9 @@ import { ActivatedRoute } from '@angular/router';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { SearchActions } from './../../reducers/search.actions';
-import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges, Inject, PLATFORM_ID } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
+import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private searchActions: SearchActions,
     private store: Store<AppState>,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.router.queryParams
       .subscribe(params => {
@@ -40,7 +42,9 @@ export class CategoriesComponent implements OnInit {
   }
   showAllCategory() {
     this.showAll.emit()
-    window.location.reload();
+    if (isPlatformBrowser(this.platformId)) {
+      window.location.reload();
+    }
   }
 
   /**
