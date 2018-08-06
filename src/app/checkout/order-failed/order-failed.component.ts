@@ -2,8 +2,9 @@ import { LineItem } from './../../core/models/line_item';
 import { Order } from './../../core/models/order';
 import { UserService } from './../../user/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { CheckoutService } from '../../core/services/checkout.service';
+import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-order-failed',
@@ -20,7 +21,9 @@ export class OrderFailedComponent implements OnInit {
     private userService: UserService,
     private activatedRouter: ActivatedRoute,
     private route: Router,
-    private checkoutService: CheckoutService) {
+    private checkoutService: CheckoutService,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {
     this.activatedRouter.queryParams
       .subscribe(params => {
         this.queryParams = params
@@ -47,8 +50,10 @@ export class OrderFailedComponent implements OnInit {
   retryPayment(order: Order) {
     this.checkoutService.makePayment(+order.total, order.bill_address, order.number)
       .subscribe((response: any) => {
-        response = response
-        window.open(response.url, '_self');
+        response = response;
+        if (isPlatformBrowser(this.platformId)) {
+          window.open(response.url, '_self');
+        }
       });
   }
 

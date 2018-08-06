@@ -1,16 +1,16 @@
 import { map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { getOrderNumber } from './../../checkout/reducers/selectors';
 import { CheckoutActions } from './../../checkout/actions/checkout.actions';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { LineItem } from './../models/line_item';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Order } from '../models/order';
 import { ToastrService } from 'ngx-toastr';
-import { Address } from '../models/address';
 import * as CryptoJS from 'crypto-js';
 import { environment } from '../../../environments/environment';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class CheckoutService {
@@ -28,7 +28,8 @@ export class CheckoutService {
     private http: HttpClient,
     private actions: CheckoutActions,
     private store: Store<AppState>,
-    private toastyService: ToastrService) {
+    private toastyService: ToastrService,
+    @Inject(PLATFORM_ID) private platformId: any) {
     this.store.select(getOrderNumber)
       .subscribe(number => (this.orderNumber = number));
   }
@@ -101,7 +102,6 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   createEmptyOrder() {
-    const user = JSON.parse(localStorage.getItem('user'));
     const headers = new HttpHeaders().set('Content-Type', 'text/plain');
 
     return this.http
@@ -233,7 +233,7 @@ export class CheckoutService {
       amount: paymentAmount,
       productinfo: `${environment.appName}-Product`,
       firstname: address.firstname,
-      email: JSON.parse(localStorage.getItem('user')).email,
+      email: isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')).email : '',
       udf1: `${orderNumber}`
     }
     // tslint:disable-next-line:max-line-length
@@ -269,7 +269,7 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   private getOrderToken() {
-    const order = JSON.parse(localStorage.getItem('order'));
+    const order = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('order')) : {};
     const token = order.order_token;
     return token;
   }
@@ -288,6 +288,8 @@ export class CheckoutService {
    */
   private setOrderTokenInLocalStorage(token: any): void {
     const jsonData = JSON.stringify(token);
-    localStorage.setItem('order', jsonData);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('order', jsonData) ;
+    }
   }
 }

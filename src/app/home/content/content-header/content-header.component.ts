@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
@@ -40,7 +41,7 @@ export class ContentHeaderComponent implements OnInit {
   isfilterModalShown;
   issortModalShown
   defaultselectedEntry = 'Relevance';
-  constructor(private routernomal: Router) { }
+  constructor(private routernomal: Router, @Inject(PLATFORM_ID) private platformId: any) { }
 
   sortModalShow() { this.issortModalShown = true; }
   sortModalhide() { this.issortModalShown = false; }
@@ -61,7 +62,9 @@ export class ContentHeaderComponent implements OnInit {
 
   ngOnInit() {
     if (window.screen.width <= 768) {
-      this.screenWidth = window.screen.width;
+      if (isPlatformBrowser(this.platformId)) {
+        this.screenWidth = window.screen.width;
+      }
     }
   }
 

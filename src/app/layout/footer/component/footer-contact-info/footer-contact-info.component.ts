@@ -1,5 +1,6 @@
 import { environment } from './../../../../../environments/environment';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '../../../../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-footer-contact-info',
@@ -8,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterContactInfoComponent implements OnInit {
   contact_info = environment.config.contact_info
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit() {
   }
   scollTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    if (isPlatformBrowser(this.platformId)) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 }
