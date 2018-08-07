@@ -1,7 +1,7 @@
 <div class="product-tile">
   <a [routerLink]="['/', product.slug]">
-    <img width="150" height="200" [src]="product.product_url">
+    <img width="150" height="200" class="mb-1" [src]="product.product_url">
     <ngx-input-star-rating *ngIf="showRating" value="{{product.avg_rating}}" disabled="true"></ngx-input-star-rating>
-    <p> {{ product.name }} </p>
+    <p class="mt-1 mb-2 text-dark"> {{ product.name }} </p>
   </a>
 </div>
