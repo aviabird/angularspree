@@ -30,6 +30,9 @@
     margin-bottom: 0px;
     white-space: normal;
     margin-top: 10px;
+    overflow: hidden;
+    height: 2.3rem;
+    font-size: 0.8rem;
   }
   /deep/.dropdown-toggle::after {
     vertical-align: 0.055em !important;
