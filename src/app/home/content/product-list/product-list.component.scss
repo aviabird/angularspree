@@ -21,7 +21,8 @@
     border-radius: 0;
     border-bottom: 1px solid $gray-10;
     display: block;
-    padding: 1em;
+    padding: 1em 1.5em;
+    box-shadow: none;
   }
   @media screen and(width: 768px) {
     flex: 0 0 30.5%;
@@ -133,4 +134,11 @@
   color: $gray-700;
   text-decoration: line-through;
   margin-left: 10px;
+}
+
+.results-base {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    padding: 0 0px;
+    background-color: $white;
+  }
 }

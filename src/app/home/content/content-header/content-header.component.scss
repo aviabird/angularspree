@@ -2,8 +2,8 @@
 .content {
   .search-btns {
     text-transform: uppercase;
-    margin-bottom: 2rem;
-    @include button-size(10px, 10px, 1em, 1em, 7px);
+    margin-bottom: 10px;
+    @include button-size(10px, 10px, 0.7em, 1em, 7px);
     color: $black;
     border: 1px solid $gray-600;
     @include gradient-y($start-color: $gray-100, $end-color: $gray-300, $start-percent: 0%, $end-percent: 100%)
@@ -382,4 +382,15 @@ ul {
 input[type="radio"]:checked+span .fake-radiobutton:after,
 input[type="checkbox"]:checked+span .fake-checkbox:after {
   display: block;
+}
+
+.content-device {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    background-color:$gray-100;
+    padding: 0 22px;
+    margin-bottom: 5px;
+  }
+  .showcount {
+    font-size: 10px;
+  }
 }
