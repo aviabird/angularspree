@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 my-2">
-      <h4> My Account </h4>
+    <div class="col-md-12 my-3">
+      <h5 *ngIf="selectedProfileMenu; else elseBlock"> My Account > {{selectedProfileMenu.name}}</h5>
+      <ng-template #elseBlock>
+          <h5> My Account</h5>
+      </ng-template>
       <hr>
     </div>
 

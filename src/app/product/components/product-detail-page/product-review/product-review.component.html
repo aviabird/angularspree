@@ -89,11 +89,11 @@
     </div>
   </div>
 </div>
-<div class="cust-reviews" *ngIf="isMobile">
+<div class="cust-reviews" *ngIf="isMobile" id="review">
   <h1>Customer Reviews</h1>
   <div class="row">
     <div class="col-12 col-md-6" *ngIf="reviewList">
-      <div class="avg-review" id="review" *ngIf="hasReviews; else noReviews">
+      <div class="avg-review" *ngIf="hasReviews; else noReviews">
         <div class="row">
           <div class="col-5">
             <div class="review-percentage">
