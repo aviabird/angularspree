@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, PLATFORM_ID, Inject } from '@angular/core';
 import { Variant } from './../../../../core/models/variant';
 import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
 import { Taxon } from '../../../../core/models/taxon';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-product-price-info',
@@ -17,6 +18,7 @@ export class ProductPriceInfoComponent implements OnInit {
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
   @Output() selectedVariant = new EventEmitter<Object>();
 
+
   customOptionTypesHash: any;
   currentSelectedOptions = {};
   description: any;
@@ -28,7 +30,9 @@ export class ProductPriceInfoComponent implements OnInit {
   isOrderable: boolean;
 
   constructor(private variantParser: VariantParserService,
-  ) { }
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {
+   }
 
   ngOnInit() {
     this.images = this.product.master.images;
@@ -104,6 +108,8 @@ export class ProductPriceInfoComponent implements OnInit {
   }
 
   scrollToReview() {
-    document.getElementById('review').scrollIntoView({ behavior: 'smooth' });
+    if (isPlatformBrowser(this.platformId)) {
+      document.getElementById('review').scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
