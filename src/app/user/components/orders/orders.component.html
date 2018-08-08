@@ -2,23 +2,24 @@
 
   <div *ngIf="orders?.orders?.length > 0; else elseBlock">
     <app-order-list-item [orders]="orders"></app-order-list-item>
+    <div class="col-12 d-none d-sm-block">
+      <div class="row">
+        <pagination class="m-auto" *ngIf="orders.total_count > orders.per_page" [totalItems]="orders.total_count" [itemsPerPage]="orders.per_page"
+          [(ngModel)]="orders.current_page" (pageChanged)="pageChanged($event)" [rotate]="rotate" [maxSize]="5">
+        </pagination>
+      </div>
+    </div>
+    <div class="col-12 d-block d-sm-none mb-2">
+      <div class="row">
+        <pagination class="m-auto" *ngIf="orders.total_count > orders.per_page" [totalItems]="orders.total_count" [itemsPerPage]="orders.per_page"
+          [(ngModel)]="orders.current_page" (pageChanged)="pageChanged($event)" [rotate]="rotate" [maxSize]="3">
+        </pagination>
+      </div>
+    </div>
   </div>
 
 
-  <div class="col-12 d-none d-sm-block">
-    <div class="row">
-      <pagination class="m-auto" *ngIf="orders.total_count > orders.per_page" [totalItems]="orders.total_count" [itemsPerPage]="orders.per_page"
-        [(ngModel)]="orders.current_page" (pageChanged)="pageChanged($event)" [rotate]="rotate" [maxSize]="5">
-      </pagination>
-    </div>
-  </div>
-  <div class="col-12 d-block d-sm-none mb-2">
-    <div class="row">
-      <pagination class="m-auto" *ngIf="orders.total_count > orders.per_page" [totalItems]="orders.total_count" [itemsPerPage]="orders.per_page"
-        [(ngModel)]="orders.current_page" (pageChanged)="pageChanged($event)" [rotate]="rotate" [maxSize]="3">
-      </pagination>
-    </div>
-  </div>
+
 
 
   <ng-template #elseBlock>
@@ -29,5 +30,3 @@
     </div>
   </ng-template>
 </div>
-
-

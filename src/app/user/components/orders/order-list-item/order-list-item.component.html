@@ -5,7 +5,7 @@
         <div class="order-num btn float-left">
           <a [routerLink]="['detail', order.number]" class="view-details-link"> {{order.number}} </a>
         </div>
-        <div class="float-right col-6 col-sm-2 my-2 mr-2 mr-sm-0" *ngIf="order.payment_state!= 'paid' && order.payments[0]?.payment_method?.name === payubiz">
+        <div class="float-right col-6 col-sm-3 my-2 mr-2 mr-sm-0 pr-0 pr-sm-2 text-right" *ngIf="order.payment_state!= 'paid' && order.payments[0]?.payment_method?.name === payubiz">
           <button class="btn themebtnprimarybasic" (click)="retryPayment(order)">Retry Payment</button>
         </div>
         <div class="clearfix"></div>
