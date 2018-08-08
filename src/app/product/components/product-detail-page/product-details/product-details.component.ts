@@ -80,9 +80,8 @@ export class ProductDetailsComponent implements OnInit {
     this.relatedProducts$ = this.store.select(relatedProducts);
     this.store.dispatch(this.productsActions.getProductReviews(this.productID));
     this.reviewProducts$ = this.store.select(productReviews);
-    this.addJsonLD(this.product);
     this.findBrand();
-
+    this.addJsonLD(this.product);
   }
 
   initData() {
@@ -187,15 +186,22 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addJsonLD(product: Product) {
+    const stockStatus = this.selectedVariant.is_orderable ? 'InStock' : 'OutOfStock';
     this.schema = {
       '@context': 'https://schema.org',
       '@type': 'Product',
       'url': isPlatformBrowser(this.platformId) ? location.href : '',
       'itemCondition': 'https://schema.org/NewCondition',
+      'brand': {
+        '@type': 'Thing',
+        'name':  `${this.brand.name}`
+      },
       'aggregateRating': {
         '@type': 'AggregateRating',
         'ratingValue': product.avg_rating,
-        'reviewCount': product.reviews_count
+        'reviewCount': `${product.reviews_count}`,
+        'bestRating': '5',
+        'worstRating': '0'
       },
       'description': product.meta_description,
       'name': product.name,
@@ -203,9 +209,9 @@ export class ProductDetailsComponent implements OnInit {
       'offers': [{
         '@type': 'Offer',
         'itemCondition': 'https://schema.org/NewCondition',
-        'availability': this.selectedVariant.is_orderable ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+        'availability': `https://schema.org/${stockStatus}`,
         'price': this.selectedVariant.price,
-        'priceCurrency': this.selectedVariant.currency,
+        'priceCurrency': product.currency,
       }]
     };
   }
@@ -220,6 +226,6 @@ export class ProductDetailsComponent implements OnInit {
     const brandClassification = this.product.classifications.find(element =>
       element.taxon.pretty_name.includes('Brands')
     );
-    this.brand = brandClassification && brandClassification.taxon;
+    this.brand = brandClassification ?  brandClassification.taxon : {} as Taxon;
   }
 }

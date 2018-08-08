@@ -10,9 +10,9 @@
         <div itemprop="name" class="product-brand">{{ product.name }}</div>
         <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
           <span>
-            <span itemprop="price" class="product-discountedPrice">{{product.currency}} {{ product.price }}</span>
+            <span itemprop="price" class="product-discountedPrice">{{product.currency_symbol}} {{ product.price }}</span>
             <span *ngIf="product.cost_price; let cost_price">
-              <span itemprop="price" class="disableprize">{{product.currency}}{{cost_price}}</span>
+              <span itemprop="price" class="disableprize">{{product.currency_symbol}}{{cost_price}}</span>
             </span>
           </span>
         </div>
@@ -43,9 +43,9 @@
             <div itemprop="name" class="product-brand">{{ product.name }}</div>
             <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
               <span>
-                <span itemprop="price" class="product-discountedPrice">{{product.currency}} {{ product.price }}</span>
+                <span itemprop="price" class="product-discountedPrice">{{product.currency_symbol}} {{ product.price }}</span>
                 <span *ngIf="product.cost_price; let cost_price">
-                  <span itemprop="price" class="disableprize">{{product.currency}}{{cost_price}}</span>
+                  <span itemprop="price" class="disableprize">{{product.currency_symbol}}{{cost_price}}</span>
                 </span>
               </span>
             </div>
