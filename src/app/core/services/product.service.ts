@@ -52,7 +52,7 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?set=nested`); }
+  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`http://localhost:3000/api/v1/taxonomies`); }
 
   /**
    *
@@ -84,7 +84,8 @@ export class ProductService {
       )
       .pipe(
         map(
-          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+          (resp: any) => resp.data
+          // resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
         )
       );
   }
@@ -124,7 +125,8 @@ export class ProductService {
       )
       .pipe(
         map(
-          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
+          (resp: any) => resp.data
+          // resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
         )
       );
   }

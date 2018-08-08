@@ -1,7 +1,7 @@
-<div class="dpmenu">
+<div class="dpmenu" *ngIf="taxonomies[0]; let brands_taxonomy">
   <div class="cust-menu-btn" [ngClass]="[isOpen ? 'open':'']" (mouseenter)="dropdown.show()" (mouseleave)="dropdown.hide()">
     Shop By
-    <span *ngIf="taxonomies[0]; let brands_taxonomy">{{brands_taxonomy.name}}
+    <span>{{brands_taxonomy.name}}
       <i class="fa pl-3 fa-chevron-down"></i>
     </span>
 
@@ -9,13 +9,13 @@
   <div dropdown #dropdown="bs-dropdown" [autoClose]="false" (isOpenChange)="onOpenChange($event)" (mouseenter)="dropdown.show()"
     (mouseleave)="dropdown.hide()" (click)="dropdown.hide()">
     <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-triggers-manual">
-      <div *ngIf="taxonomies[0]; let brands_taxonomy">
+      <div *ngIf="brands_taxonomy?.root?.taxons">
         <ul>
           <li *ngFor="let taxon of brands_taxonomy.root.taxons | slice:0:26" class="col-2" (click)="getBrands()">
             <app-brand-list [taxons]="taxon"></app-brand-list>
           </li>
           <li [routerLink]="['b/brands']">
-            <a  > Show all </a>
+            <a> Show all </a>
           </li>
         </ul>
       </div>

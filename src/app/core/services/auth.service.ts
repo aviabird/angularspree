@@ -189,7 +189,7 @@ export class AuthService {
       client: user.client || [],
       uid: user.uid || [],
       'Auth-Token': user.spree_api_key || [],
-      'ng-api': 'true'
+      // 'ng-api': 'true'
     });
   }
 

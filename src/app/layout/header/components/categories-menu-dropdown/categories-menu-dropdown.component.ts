@@ -90,9 +90,10 @@ export class CategoriesMenuDropdownComponent implements OnInit {
     this.backBtnShow = status;
   }
   onOpenChange(data: boolean): void {
-    this.isOpen = !this.isOpen;
-    this.menuTaxons = this.taxonomies[0].root.taxons[0];
-    this.selectedItem = 0;
+    if (typeof this.taxonomies[0].root !== 'undefined') {
+      this.isOpen = !this.isOpen;
+      this.menuTaxons = this.taxonomies[0].root.taxons[0];
+      this.selectedItem = 0;
+    }
   }
-
 }
