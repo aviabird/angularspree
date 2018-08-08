@@ -5,8 +5,11 @@
     </div>
     <h5 class="d-block">Email Address</h5>
     <form [formGroup]="emailForm" (ngSubmit)="emailConfirmModal(emailModal, userDetails.id)" class="form-inline">
-      <div class="form-group mr-sm-3 ">
-        <label for="inputPassword2" class="sr-only">Password</label>
+      <div class="form-group mr-sm-3 d-none d-sm-block">
+       
+        <input type="email" [readonly]="!isEditEmailPressed" class="form-control mt-1" placeholder="Email Address" formControlName="email">
+      </div>
+      <div class="form-group mr-sm-3 col-12 p-0 d-bolck d-sm-none">        
         <input type="email" [readonly]="!isEditEmailPressed" class="form-control mt-1" placeholder="Email Address" formControlName="email">
       </div>
       <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-2" (click)="editEmail()" *ngIf="!isEditEmailPressed">Edit</button>

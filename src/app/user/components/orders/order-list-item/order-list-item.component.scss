@@ -11,7 +11,10 @@
     width: 100%;
     background-color: $gray-100;
     .order-num {
-      margin: 0.5rem .4rem .4rem 0.6rem;
+      @media only screen and (min-width: 320px) and (max-width: 767px) {
+        margin: 0.5rem .4rem .4rem 0.4rem;
+      }
+      margin: 0.5rem .4rem .4rem 0.5rem;
       border-radius: 0;
       background-color: $theme-action-color;
       color: $white;
