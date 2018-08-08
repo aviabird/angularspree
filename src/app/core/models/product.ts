@@ -33,4 +33,5 @@ export class Product {
   avg_rating: number;
   reviews_count: number;
   product_url?: string;
+  currency: string;
 }
