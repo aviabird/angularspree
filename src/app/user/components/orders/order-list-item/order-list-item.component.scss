@@ -35,6 +35,7 @@
         img {
           height: 75px;
           width: 100%;
+          object-fit: contain;
           @media only screen and (min-width: 320px) and (max-width: 767px) {
             height: 121px;
             width: 100%;
