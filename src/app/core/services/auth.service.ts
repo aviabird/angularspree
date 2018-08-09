@@ -1,5 +1,5 @@
 import { CheckoutService } from './checkout.service';
-import { of as observableOf, Observable, throwError, of } from 'rxjs';
+import { of as observableOf, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
@@ -186,8 +186,7 @@ export class AuthService {
       client: user.client || [],
       uid: user.uid || [],
       'Auth-Token': user.spree_api_key || [],
-      'ng-api': 'true',
-      'Guest-Order-Token': this.checkoutService.getOrderToken() || []
+      // 'ng-api': 'true'
     });
   }
 

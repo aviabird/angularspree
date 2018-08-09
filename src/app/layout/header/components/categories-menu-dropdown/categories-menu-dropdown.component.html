@@ -1,9 +1,9 @@
-<div class="dpmenu">
+<div class="dpmenu" *ngIf="taxonomies[0]; let catgeory_taxonomy">
   <div class="" [ngClass]="[isOpen ? 'open main-nav-trigger-open':'',isScrolled ? 'main-nav-trigger':'cust-menu-btn']" (mouseenter)="dropdown.show()"
     (mouseleave)="dropdown.hide()">
     <span *ngIf="isScrolled"></span>
     <strong *ngIf="!isScrolled">Shop By
-      <a *ngIf="taxonomies[0]; let catgeory_taxonomy">{{catgeory_taxonomy.name}}
+      <a>{{catgeory_taxonomy.name}}
         <i class="fa pl-3 fa-chevron-down"></i>
       </a>
     </strong>
@@ -12,7 +12,7 @@
     class="open show" (mouseleave)="dropdown.hide()" (click)="dropdown.hide()">
     <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu container show" style="left: 0px; right: auto; top: 100%; transform: translateY(0px);"
       [ngClass]="[isScrolled ? '':'notscrolled']" role="menu" aria-labelledby="button-triggers-manual">
-      <div class="row m-0" *ngIf="taxonomies[0]; let catgeory_taxonomy">
+      <div class="row m-0" *ngIf="catgeory_taxonomy?.root?.taxons">
         <div class="col-md-3 p-0">
           <ul class="h-100">
             <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)"
@@ -26,5 +26,4 @@
       </div>
     </div>
   </div>
-
 </div>
