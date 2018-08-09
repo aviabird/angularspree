@@ -1,5 +1,24 @@
 # Changelog
 
+## [`v1.0.0-beta-2`][tag-1_0_0-beta-2] (2018-08-09)
+
+### UI
+
+* **Product detail**: Cash On Delivery Pincode check (#219)
+* **Product detail**: Circular Rating progressbar (#220)
+
+### Feature
+
+* **SEO**: Angular universal integration 🔥🚀 🍰 (#224)
+* **User Profile**: Added User profile features (#227) (#229)
+
+### Fixes
+
+* **Product detail**: Buynow action fixes (#222)
+* **Payment & searching**: Retry Payment & Sortfilters (#225)
+* **Product reviews**: Added revies show more-less & email modal (#230)
+* **SEO**: Added fixes for jsonld format and added currency_iso format. (#236)
+
 ## [`v1.0.0-beta-1`][tag-1_0_0-beta-1] (2018-07-30)
 
 ### UI
@@ -73,6 +92,7 @@ https://github.com/aviabird/angularspree/pull/218/commits/e910d6b5048eff58d9af53
   * Address
   * My Orders
 
+[tag-1_0_0-beta-2]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-beta-2
 [tag-1_0_0-beta-1]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-beta-1
 [tag-1_0_0-alpha-2]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-alpha-2
 [tag-1_0_0-alpha]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-alpha
