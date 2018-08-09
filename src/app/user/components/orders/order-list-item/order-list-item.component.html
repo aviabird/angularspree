@@ -1,4 +1,5 @@
 <div>
+  xbxcb{{isMobile}}
   <div *ngFor="let order of orders.orders">
     <div *ngIf="order.completed_at!=null" class="box shadow-sm">
       <div class="order">
@@ -11,9 +12,8 @@
         <div class="clearfix"></div>
       </div>
       <div class="order-detail">
-        <div class="order-body">
+        <div class="order-body" *ngIf="!isMobile">
           <div *ngFor="let item of order.line_items" class="lineitems">
-
             <div class="row ">
               <div class="col-12 pr-0 col-sm-1">
                 <img [routerLink]="['/', item.variant.slug]" [src]='getProductImageUrl(item)' />
@@ -27,12 +27,32 @@
                 <div class="qty"> QTY: {{item.quantity}}</div>
               </div>
               <div class="col-12 col-sm-4">
-                <b class="text-warning">Please note:</b> You can return or exchange this within 15 days.
+                <b class="text-danger note p-0">Note:</b> <span class="note">You can return or exchange this within 15 days.</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="order-footer">
+        <div class="order-body" *ngIf="isMobile">
+          <div *ngFor="let item of order.line_items" class="lineitems">
+            <div class="row ">
+              <div class="col-12 pr-0 col-sm-1">
+                <img [routerLink]="['/', item.variant.slug]" [src]='getProductImageUrl(item)' />
+              </div>
+              <div class="col-7 col-sm-5" [routerLink]="['/', item.variant.slug]">
+                <div class="lineitems-name"> {{item.variant.name}}</div>
+                <div class="lineitems-info"> {{item.variant.options_text}}</div>
+              </div>
+              <div class="col-5 col-sm-2">
+                <div class="qty"> QTY: {{item.quantity}}</div>
+                <div class="price">{{item.display_amount}}</div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <b class="text-danger note p-0">Note:</b> <span class="note">You can return or exchange this within 15 days.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-footer" *ngIf="!isMobile">
           <div class="order-on float-left col-12 col-sm-6">
             <span class="head">Shipping : </span>
             <span>{{order.shipment_state | humanize | uppercase}}</span>

@@ -1,7 +1,6 @@
 <div class="" *ngIf="orders$ | async;let orders">
-
   <div *ngIf="orders?.orders?.length > 0; else elseBlock">
-    <app-order-list-item [orders]="orders"></app-order-list-item>
+    <app-order-list-item [orders]="orders" [isMobile]="isMobile"></app-order-list-item>
     <div class="col-12 d-none d-sm-block">
       <div class="row">
         <pagination class="m-auto" *ngIf="orders.total_count > orders.per_page" [totalItems]="orders.total_count" [itemsPerPage]="orders.per_page"
@@ -17,11 +16,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
   <ng-template #elseBlock>
     <div class="cart-empty">
       <div class="empty-cart-icon"></div>
@@ -30,3 +24,5 @@
     </div>
   </ng-template>
 </div>
+
+

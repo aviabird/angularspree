@@ -1,6 +1,6 @@
 <div *ngIf="order">
-  <div class="row box">
-    <div class="col-12 col-sm-6">
+  <div class="row box m-0">
+    <div class="col-12 col-sm-6 p-0 p-sm-3">
       <h3>Order Details</h3>
       <table>
         <tr>
@@ -41,7 +41,7 @@
           </tr>
       </table>
     </div>
-    <div class="col-12 col-sm-6">
+    <div class="col-12 col-sm-6 p-0 p-sm-3">
       <h3>Address</h3>
       <table>
         <tr>
@@ -70,10 +70,9 @@
   </div>
 
 
-  <div class="box mt-2 p-0">
-   
-    <div *ngFor="let item of order.line_items" class="lineitems">
+  <div class="box mt-2 p-0 mb-4 row m-0" *ngIf="!isMobile">
 
+    <div *ngFor="let item of order.line_items" class="lineitems">
       <div class="row ">
         <div class="col-12 pr-0 col-sm-1">
           <img [routerLink]="['/', item.variant.slug]" [src]='getProductImageUrl(item)' />
@@ -87,7 +86,28 @@
           <div class="qty"> QTY: {{item.quantity}}</div>
         </div>
         <div class="col-12 col-sm-4">
-          <b class="text-warning">Please note:</b> You can return or exchange this within 15 days.
+          <b class="text-danger note p-0">Please note:</b> You can return or exchange this within 15 days.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="box mt-2 p-0 mb-4 row m-0" *ngIf="isMobile">
+    <div *ngFor="let item of order.line_items" class="lineitems">
+      <div class="row ">
+        <div class="col-12 pr-0 col-sm-1">
+          <img [routerLink]="['/', item.variant.slug]" [src]='getProductImageUrl(item)' />
+        </div>
+        <div class="col-6 col-sm-5" [routerLink]="['/', item.variant.slug]">
+          <div class="lineitems-name"> {{item.variant.name}}</div>
+          <div class="lineitems-info"> {{item.variant.options_text}}</div>
+        </div>
+        <div class="col-6 col-sm-2">
+          <div class="qty"> QTY: {{item.quantity}}</div>
+          <div class="price">{{item.display_amount}}</div>
+        </div>
+        <div class="col-12 col-sm-4">
+          <b class="note text-danger p-0">Note:</b>
+          <span class="note">You can return or exchange this within 15 days.</span>
         </div>
       </div>
     </div>

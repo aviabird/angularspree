@@ -11,8 +11,8 @@ import { CheckoutService } from '../../../../core/services/checkout.service';
 })
 export class OrderListItemComponent implements OnInit {
   @Input() orders;
-  payubiz = environment.config.PaymentMethodPayubiz
-
+  @Input() isMobile;
+  payubiz = environment.config.PaymentMethodPayubiz;
   constructor( private checkoutService: CheckoutService) { }
 
   ngOnInit() {
