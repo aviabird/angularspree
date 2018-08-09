@@ -16,7 +16,8 @@ export class OrdersComponent implements OnInit {
   orders$: Observable<Order[]>;
   page: number;
   email: string;
-
+  isMobile = false;
+  screenwidth: any;
   constructor(
     private store: Store<AppState>,
     private userActions: UserActions,
@@ -31,6 +32,15 @@ export class OrdersComponent implements OnInit {
     if (isPlatformBrowser(this.platformId) && JSON.parse(localStorage.getItem('user'))) {
       this.email = JSON.parse(localStorage.getItem('user')).email
       this.store.dispatch(this.userActions.getUserOrders(this.email, 1));
+    }
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenwidth = window.innerWidth;
+    }
+    this.calculateInnerWidth();
+  }
+  calculateInnerWidth() {
+    if (this.screenwidth <= 1000) {
+      this.isMobile = this.screenwidth;
     }
   }
 
