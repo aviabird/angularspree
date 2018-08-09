@@ -4,27 +4,41 @@
   "license": "MIT",
   "scripts": {
     "ng": "./node_modules/@angular/cli/bin/ng",
+
     "start:mock-ng-spree": "ng serve --configuration=mock-ng-spree",
-    "start:dev-ng-spree": "ng serve --configuration=dev-ng-spree",
-    "build:dev-ng-spree": "ng build --configuration=dev-ng-spree",
-    "build:prod-ng-spree": "ng build --configuration=prod-ng-spree",
-    "test:dev-ng-spree": "ng test --configuration=dev-ng-spree",
-    "lint:dev-ng-spree": "ng lint --configuration=dev-ng-spree",
+
     "e2e:dev-ng-spree": "ng e2e --configuration=dev-ng-spree",
-    "start:dev-custom": "ng serve --configuration=dev-custom",
-    "build:dev-custom": "ng build --configuration=dev-custom",
-    "test:dev-custom": "ng test --configuration=dev-custom",
-    "lint:dev-custom": "ng lint --configuration=dev-custom",
+    "lint:dev-ng-spree": "ng lint --configuration=dev-ng-spree",
+    "test:dev-ng-spree": "ng test --configuration=dev-ng-spree",
+    "build:dev-ng-spree": "ng build --configuration=dev-ng-spree",
+    "start:dev-ng-spree": "ng serve --configuration=dev-ng-spree",
+    "build:prod-ng-spree": "ng build --configuration=prod-ng-spree",
+
+
     "e2e:dev-custom": "ng e2e --configuration=dev-custom",
+    "lint:dev-custom": "ng lint --configuration=dev-custom",
+    "test:dev-custom": "ng test --configuration=dev-custom",
+    "build:dev-custom": "ng build --configuration=dev-custom",
+    "start:dev-custom": "ng serve --configuration=dev-custom",
     "build:prod-custom": "ng build --configuration=prod-custom",
+
     "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d docs/",
+
     "sw": "sw-precache --root=dist --config=sw-precache-config.js",
+
     "bundle-report": "webpack-bundle-analyzer dist/stats.json",
+
     "static-serve": "cd dist/browser && live-server --port=4200 --host=localhost --entry-file=/index.html",
-    "start:ssr:prod-custom": "npm run build:client-and-server-bundles:prod-custom && npm run webpack:server && node dist/server",
-    "start:ssr:prod-ng-spree": "npm run build:client-and-server-bundles:prod-ng-spree && npm run webpack:server && node dist/server",
+
+    "build:ssr:prod-custom": "npm run build:client-and-server-bundles:prod-custom && npm run webpack:server",
+    "build:ssr:prod-ng-spree": "npm run build:client-and-server-bundles:prod-ng-spree && npm run webpack:server",
+
+    "start:ssr:prod-custom": "npm run build:ssr:prod-custom && node dist/server",
+    "start:ssr:prod-ng-spree": "npm run build:ssr:prod-ng-spree && node dist/server",
+
     "build:client-and-server-bundles:prod-custom": "npm run build:prod-custom && ng run angularspree:server:prod-custom",
     "build:client-and-server-bundles:prod-ng-spree": "npm run build:prod-ng-spree && ng run angularspree:server:prod-ng-spree",
+
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors"
   },
   "private": true,
