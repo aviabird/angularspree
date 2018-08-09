@@ -1,6 +1,10 @@
 @import '../shared/scss/selected_theme_variables';
 .home {
   background-color: $gray-100;
+  @media screen and(min-width: 320px) and(max-width: 768px) {
+    background-color:transparent;
+    padding: 0px;
+  }
   .sidebar {
     background-color: $gray-100;
     padding: 3.5vh 2vw;
@@ -29,7 +33,7 @@
 
 .nproduct {
   text-align: center;
-  padding-top:2em;
+  padding-top: 2em;
   img {
     height: 170px;
   }
