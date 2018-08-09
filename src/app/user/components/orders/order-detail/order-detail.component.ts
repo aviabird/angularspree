@@ -20,7 +20,8 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   order: Order;
   title = environment.appName;
   payubiz = environment.config.PaymentMethodPayubiz
-
+  isMobile = false;
+  screenwidth: any;
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
@@ -38,8 +39,16 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
             .subscribe(order => this.order = order);
       }
     );
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenwidth = window.innerWidth;
+    }
+    this.calculateInnerWidth();
   }
-
+  calculateInnerWidth() {
+    if (this.screenwidth <= 1000) {
+      this.isMobile = this.screenwidth;
+    }
+  }
   getProductImageUrl(line_item: LineItem) {
     return line_item.variant.images[0].small_url;
   }

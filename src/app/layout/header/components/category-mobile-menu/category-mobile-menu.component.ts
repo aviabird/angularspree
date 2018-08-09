@@ -7,6 +7,7 @@ import {
   transition
 } from '@angular/animations';
 import { ElementRef, EventEmitter } from '@angular/core';
+import { environment } from '../../../../../environments/environment';
 @Component({
   selector: 'app-category-mobile-menu',
   templateUrl: './category-mobile-menu.component.html',
@@ -51,6 +52,7 @@ export class CategoryMobileMenuComponent implements OnInit {
   showParrent = false;
   showChild = false;
   backBtnShow = false;
+  contactno = environment.config.contact_info.contact_no;
   constructor(private el: ElementRef) { }
   showCategory(i) {
     this.menuTaxons = this.taxonomies[0].root.taxons[i];

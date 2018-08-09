@@ -2,8 +2,8 @@
 .content {
   .search-btns {
     text-transform: uppercase;
-    margin-bottom: 2rem;
-    @include button-size(10px, 10px, 1em, 1em, 7px);
+    margin-bottom: 10px;
+    @include button-size(10px, 10px, 0.7em, 1em, 7px);
     color: $black;
     border: 1px solid $gray-600;
     @include gradient-y($start-color: $gray-100, $end-color: $gray-300, $start-percent: 0%, $end-percent: 100%)
@@ -14,13 +14,21 @@
     text-align: left;
   }
   .dropdown-menu {
-    width: 80%;
-    right: 18px !important
+    width: 17em;
+    right: 18px !important;
+    li {
+      border-bottom: 0 solid
+    }
   }
   .dropdown-toggle::after {
-    right: -50%;
     display: inline-block;
-    position: relative;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+  }
+  .dropdown-item.active,
+  .dropdown-item:active {
+    background-color: $gray-100
   }
   .queried-for {
     overflow: hidden; // display: inline-block;
@@ -234,7 +242,7 @@ ul {
       box-shadow: none;
     }
     a {
-      padding: 0.8rem .1rem;
+      padding: 0.8rem .7rem;
       border-bottom: 1px solid $gray-10;
       color: $gray-900;
       display: block;
@@ -248,6 +256,9 @@ ul {
         right: 0px;
         position: absolute;
         background-size: 10px;
+      }
+      &:focus {
+        background-color: $gray-100;
       }
     }
     ul {
@@ -371,4 +382,15 @@ ul {
 input[type="radio"]:checked+span .fake-radiobutton:after,
 input[type="checkbox"]:checked+span .fake-checkbox:after {
   display: block;
+}
+
+.content-device {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    background-color:$gray-100;
+    padding: 0 22px;
+    margin-bottom: 5px;
+  }
+  .showcount {
+    font-size: 10px;
+  }
 }
