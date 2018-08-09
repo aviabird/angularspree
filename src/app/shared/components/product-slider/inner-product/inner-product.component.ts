@@ -11,10 +11,13 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@a
 export class InnerIproductComponent implements OnInit {
   @Input() product: Product;
   @Input() showRating: boolean;
-
+  noImageUrl = 'assets/default/no-image-available.png'
   constructor() {
   }
 
   ngOnInit() {
+  }
+  get imageUrl() {
+    return this.product.product_url ? this.product.product_url : this.noImageUrl
   }
 }
