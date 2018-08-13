@@ -42,7 +42,13 @@ export class ProductService {
   }
 
   getProductReviews(products): Observable<any> {
+
+    // /product/:id/rating-summary
     return this.http.get(`products/${products}/reviews`);
+  }
+
+  getProductRatingSummery(productId: any): Observable<any> {
+    return this.http.get('http://localhost:3000/api/v1/product/productId/rating-summary')
   }
 
   /**
