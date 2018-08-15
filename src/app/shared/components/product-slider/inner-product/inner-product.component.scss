@@ -1,5 +1,4 @@
 @import '../../../scss/selected_theme_variables';
-
 ngx-input-star-rating {
   transform: scale(0.8) translateX(-10%);
 }
@@ -7,4 +6,13 @@ ngx-input-star-rating {
 img {
   width: 100%;
   object-fit: contain;
+}
+
+.rating {
+  position: relative;
+  left: .8em;
+  @media screen and(min-width: 320px) and(max-width: 768px) {
+    position: relative;
+    left:8.5px;
+  }
 }

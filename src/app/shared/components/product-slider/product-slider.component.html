@@ -1,6 +1,6 @@
 <section class="mt-3" *ngIf="productsList?.length">
   <ngu-carousel [inputs]="carouselOne">
-    <ngu-item class="col-6 col-sm-4 col-md-3 col-lg-2 product-box m-1 card" *ngFor="let product of productsList" NguCarouselItem>
+    <ngu-item class="col-6 col-sm-4 col-md-3 col-lg-2 product-box m-1 card p-1" *ngFor="let product of productsList" NguCarouselItem>
       <app-inner-product [product]="product" [showRating]="showRating">
       </app-inner-product>
     </ngu-item>

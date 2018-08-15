@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row m-0" *ngIf="brands.taxonomies">
-    <div class="col-4 col-sm-2  col-md-3 col-lg-2 p-0" *ngFor="let brand of brands.taxonomies[0].root.taxons">
+    <div class="col-4 col-sm-2  col-md-3 col-lg-2 p-0" *ngFor="let brand of brands.taxonomies[0].root.taxons | slice:0:24">
       <div class="card">
         <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': brand.name, id: brand.id}">
           <img class="card-img-top" [src]="getBrandImageUrl(brand.icon)">

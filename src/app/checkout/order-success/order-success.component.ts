@@ -14,7 +14,8 @@ export class OrderSuccessComponent implements OnInit {
   queryParams: any;
   orderDetails: Order
   retryCount = 0;
-
+  isMobile = false;
+  screenwidth: any;
   constructor(
     private userService: UserService,
     private activatedRouter: ActivatedRoute,
@@ -38,6 +39,16 @@ export class OrderSuccessComponent implements OnInit {
           this.refresh()
         }
       })
+
+    this.screenwidth = window.innerWidth;
+
+    this.calculateInnerWidth();
+  }
+  calculateInnerWidth() {
+    if (this.screenwidth <= 1000) {
+
+      this.isMobile = this.screenwidth;
+    }
   }
 
   getProductImageUrl(line_item: LineItem) {

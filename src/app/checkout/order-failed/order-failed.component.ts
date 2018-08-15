@@ -15,7 +15,8 @@ export class OrderFailedComponent implements OnInit {
   queryParams: any;
   orderDetails: Order
   errorReason: string;
-
+  isMobile = false;
+  screenwidth: any;
 
   constructor(
     private userService: UserService,
@@ -40,8 +41,16 @@ export class OrderFailedComponent implements OnInit {
       .subscribe(order => {
         this.orderDetails = order
       })
-  }
+    this.screenwidth = window.innerWidth;
 
+    this.calculateInnerWidth();
+  }
+  calculateInnerWidth() {
+    if (this.screenwidth <= 1000) {
+
+      this.isMobile = this.screenwidth;
+    }
+  }
   getProductImageUrl(line_item: LineItem) {
     const image_url = line_item.variant.images[0].small_url;
     return image_url;

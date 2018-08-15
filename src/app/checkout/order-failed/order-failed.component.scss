@@ -15,9 +15,23 @@
   color: $white!important;
 }
 
+
+
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .mobileth {
+    margin-top: 4em !important
+  }
+}
+
 .thankyou {
-  padding: 2em 2em 0.8em;
-  background-color: $gray-100;
+  padding: 2em;
+  @media screen and(min-width: 320px) and(max-width: 768px) {
+    padding: 15px;
+    margin: 10px 0px;
+  }
+  background-color: transparent;
+  border:1px solid $gray-10;
   h1 {
     font-size: 1.7em;
     text-transform: capitalize;
@@ -26,9 +40,12 @@
     font-size: 40px;
   }
   .thankyoumsg {
-    padding: 10px 36px;
+    padding: 0px 36px;
     margin-left: 17px;
     display: block;
+    @media screen and(min-width: 320px) and(max-width: 768px) {
+      padding: 0px 10px 0px 35px;
+    }
   }
 }
 
@@ -44,9 +61,54 @@
 }
 
 .order-items {
+  .order {
+    @media screen and(min-width: 320px) and(max-width: 768px) {}
+    padding: 0px;
+  }
   @extend .thankyou;
   h3 {
     font-size: 1.7em;
     color: $gray-600;
+  }
+}
+
+.lineitems {
+
+  .row {
+    border-bottom: 1px solid $gray-10;
+    margin: 0;
+    padding: 5px 0;
+  }
+  padding: .5rem;
+  img {
+    height: 75px;
+    width: 100%;
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
+      height: 121px;
+      width: 100%;
+      margin: auto;
+      object-fit: scale-down;
+    }
+  }
+  .lineitems-name {
+    font-size: 1em;
+    color: $gray-900;
+    font-weight: 200;
+    cursor: pointer;
+  }
+  .lineitems-info {
+    font-size: .8em;
+    color: $gray-900;
+    cursor: pointer;
+  }
+  .price {
+    color: $red;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align:right;
+  }
+  .qty {
+    font-size: .8em;
+    text-align:right;
   }
 }
