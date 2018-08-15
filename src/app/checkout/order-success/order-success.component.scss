@@ -54,18 +54,10 @@
 }
 
 .lineitems {
-  &:last-child {
-    .row {
-      border-bottom: 0 solid;
-      margin: 0;
-      ;
-      padding: 5px 0;
-    }
-  }
+
   .row {
     border-bottom: 1px solid $gray-10;
     margin: 0;
-    ;
     padding: 5px 0;
   }
   padding: .5rem;
@@ -94,8 +86,10 @@
     color: $red;
     font-size: 1.2em;
     font-weight: bold;
+    text-align:right;
   }
   .qty {
     font-size: .8em;
+    text-align:right;
   }
 }
