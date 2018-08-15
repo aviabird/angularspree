@@ -93,6 +93,16 @@
       font-weight: 500;
     }
   }
+  a {
+    &:focus {
+      text-decoration: none;
+      color: $gray-600;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $gray-600;
+    }
+  }
 }
 
 .morechoices {
