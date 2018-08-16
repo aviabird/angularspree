@@ -1,3 +1,4 @@
+import { LoadLayouts } from './layout/actions/layout.actions';
 import { LayoutState } from './layout/reducers/layout.state';
 import { getlayoutStateJS } from './layout/reducers/layout.selector';
 import { environment } from './../environments/environment';
@@ -61,9 +62,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.addFaviconIcon();
     this.addConstMetaInfo();
+    this.initLayoutState();
   }
 
-  addFaviconIcon() {
+  private addFaviconIcon() {
     if (isPlatformBrowser(this.platformId)) {
       const link =
         document.querySelector(`link[rel*='icon']`) ||
@@ -72,18 +74,6 @@ export class AppComponent implements OnInit, OnDestroy {
       link.rel = 'shortcut icon';
       link.href = environment.config.fevicon;
       document.getElementsByTagName('head')[0].appendChild(link);
-    }
-  }
-
-  isCheckoutRoute() {
-    if (!this.currentUrl) {
-      return false;
-    }
-    const index = this.checkoutUrls.indexOf(this.currentUrl);
-    if (index >= 0) {
-      return true;
-    } else {
-      return false;
     }
   }
 
@@ -97,7 +87,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.orderSub$.unsubscribe();
   }
 
-  addMetaInfo() {
+  private addMetaInfo() {
     const metaInfo = environment.config.metaInfo;
     this.meta.updateTag({ name: 'description', content: metaInfo.description });
     this.meta.updateTag({ name: 'keywords', content: metaInfo.title });
@@ -109,8 +99,18 @@ export class AppComponent implements OnInit, OnDestroy {
     this.metaTitle.setTitle(metaInfo.title);
   }
 
-  addConstMetaInfo() {
+  private addConstMetaInfo() {
     const metaInfo = environment.config.metaInfo;
     this.meta.updateTag({ name: 'google-site-verification', content: metaInfo.googleSiteVerification })
+  }
+
+  private initLayoutState() {
+    const layoutState: LayoutState = {} as LayoutState;
+    if (isPlatformBrowser(this.platformId)) {
+      if (window.innerWidth < 1000) {
+        layoutState.isMobileView = true;
+      }
+    }
+    this.store.dispatch(new LoadLayouts(layoutState));
   }
 }

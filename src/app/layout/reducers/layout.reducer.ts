@@ -7,7 +7,7 @@ export function reducer(state = initialState, action: LayoutActions): LayoutStat
   switch (action.type) {
 
     case LayoutActionTypes.LoadLayouts:
-      return state;
+      return state.merge(action.payload) as LayoutState;
 
     case LayoutActionTypes.HideMobileSearchBar:
       return state.merge({showMobileSearchBar: false}) as LayoutState;
