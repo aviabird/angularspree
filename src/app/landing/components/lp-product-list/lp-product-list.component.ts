@@ -1,7 +1,7 @@
-import { SearchActions } from './../../home/reducers/search.actions';
+import { SearchActions } from './../../../home/reducers/search.actions';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
-import { AppState } from './../../interfaces';
+import { AppState } from './../../../interfaces';
 import {
   Component,
   OnInit,

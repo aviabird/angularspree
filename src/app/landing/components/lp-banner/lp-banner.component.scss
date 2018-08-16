@@ -1,12 +1,10 @@
-@import "../../shared/scss/_selected_theme_variables.scss";
+@import "../../../shared/scss/_selected_theme_variables.scss";
 :host {
   /deep/ .banner {
     .bannerStyle {
-      &h1 {
-        background-color: $gray-10;
-        min-height: 300px;
-        text-align: center;
-        line-height: 300px;
+      min-height: 20vh;
+      img {
+        background-color: $theme-main-color - 50;
       }
       @media (max-width: 768px) {
         img {
