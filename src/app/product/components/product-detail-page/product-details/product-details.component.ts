@@ -86,26 +86,22 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   initData() {
-
-    // if (this.product.variants.length) {
-    // const product = this.product.variants[0];
-    // this.description = product.description;
-    // this.images = product.images;
-    // this.variantId = product.id;
-    // this.selectedVariant = product;
-    // this.productID = this.product.id;
-    // this.product.display_price = product.display_price;
-    // this.product.price = product.price;
-    // this.product.master.is_orderable = product.is_orderable;
-    // this.product.master.cost_price = product.cost_price;
-    // } else {
-    this.description = this.product.description;
-    // Note: For Now added placeholder for images.
     this.images = this.imagesPlaceHolder(this.noImageUrl);
-    this.variantId = this.product.id;
-    this.productID = this.product.id;
-    // this.selectedVariant = this.product.master;
-    // }
+    if (this.product.variants.length) {
+      const product = this.product.variants[0];
+      this.description = product.description;
+      this.product.name = product.name;
+      this.variantId = product.id;
+      this.selectedVariant = product;
+      this.productID = this.product.id;
+      this.product.selling_price = product.selling_price;
+      this.product.max_retail_price = product.max_retail_price;
+    } else {
+      this.description = this.product.description;
+      this.variantId = this.product.id;
+      this.productID = this.product.id;
+      this.selectedVariant = this.product.variants[0];
+    }
 
     // if (this.product.taxon_ids[0]) {
     //   this.store.dispatch(
@@ -161,10 +157,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   selectVariant(variant) {
-    this.images = variant.images;
+    // for now showing default image only.
+    this.images = this.images;
     this.variantId = variant.id;
     this.selectedVariant = variant;
-    this.addJsonLD(this.product);
+    // this.addJsonLD(this.product);
   }
 
   get selectedImage() { return this.images ? this.images[0] : ''; }
