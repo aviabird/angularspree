@@ -1,10 +1,13 @@
+import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import {Injectable} from '@angular/core';
 import {
-    HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpResponse
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HttpResponse
 } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
 import {TransferStateService} from '../services/transfer-state.service';
 
 @Injectable()
@@ -24,17 +27,19 @@ export class TransferStateInterceptor implements HttpInterceptor {
         if (cachedResponse) {
             // A cached response exists which means server set it before. Serve it instead of forwarding
             // the request to the next handler.
-            return Observable.of(new HttpResponse<any>({body: cachedResponse}));
+            return of(new HttpResponse<any>({body: cachedResponse}));
         }
 
         /**
          * No cached response exists. Go to the network, and cache
          * the response when it arrives.
          */
-        return next.handle(req).do(event => {
+        return next.handle(req).pipe(
+          tap(event => {
             if (event instanceof HttpResponse) {
                 this.transferStateService.setCache(req.url, event.body);
             }
-        });
+          })
+        );
     }
 }
