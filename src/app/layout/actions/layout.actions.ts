@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { LayoutState } from '../reducers/layout.state';
 
 export enum LayoutActionTypes {
   LoadLayouts = '[Layout] Load Layouts',
@@ -10,6 +11,8 @@ export enum LayoutActionTypes {
 
 export class LoadLayouts implements Action {
   readonly type = LayoutActionTypes.LoadLayouts;
+
+  constructor(public payload: LayoutState) {}
 }
 
 export class HideMobileSearchBar implements Action {
