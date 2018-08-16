@@ -94,14 +94,10 @@ export class HeaderComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
     }
-    this.calculateInnerWidth();
+    this.isMobile = this.layoutState.isMobileView;
+    if (this.isMobile) { this.isScrolled = false; }
   }
-  calculateInnerWidth() {
-    if (this.screenwidth <= 1000) {
-      this.isScrolled = false;
-      this.isMobile = this.screenwidth;
-    }
-  }
+
   selectTaxon(taxon) {
     this.router.navigateByUrl('/');
     this.store.dispatch(this.searchActions.addFilter(taxon));
