@@ -6,7 +6,7 @@ import { isPlatformBrowser } from '@angular/common';
  * Keep caches (makeStateKey) into it in each `setCache` function call
  * @type {any[]}
  */
-const transferStateCache = [];
+const transferStateCache: String[] = [];
 
 @Injectable()
 export class TransferStateService {
