@@ -8,7 +8,7 @@
     "node_modules": true,
     "bin": true,
     "obj": true,
-    "dist": true,
+    "dist": false,
     "Properties": true,
     ".vs": true,
     "*.csproj": true,

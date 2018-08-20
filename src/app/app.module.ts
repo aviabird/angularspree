@@ -77,7 +77,7 @@ import { ToastrModule } from 'ngx-toastr';
     }),
     CoreModule,
     SharedModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AppPreloadingStrategy],
   bootstrap: [AppComponent]
