@@ -37,7 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     CheckoutFooterComponent
   ],
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: AppPreloadingStrategy }),
+    RouterModule.forRoot(routes, { preloadingStrategy: AppPreloadingStrategy, initialNavigation: 'enabled' }),
     StoreModule.forRoot(reducers, { metaReducers }),
 
     /**
