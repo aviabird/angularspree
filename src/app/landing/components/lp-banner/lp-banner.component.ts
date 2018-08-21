@@ -1,4 +1,4 @@
-import { environment } from './../../../environments/environment';
+import { environment } from './../../../../environments/environment';
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { NguCarousel, NguCarouselStore } from '@ngu/carousel';
 

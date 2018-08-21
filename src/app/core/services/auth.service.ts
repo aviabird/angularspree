@@ -1,4 +1,4 @@
-import { of as observableOf, Observable } from 'rxjs';
+import { of as observableOf, Observable, throwError, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
@@ -30,7 +30,7 @@ export class AuthService {
     private toastrService: ToastrService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: any
-  ) {}
+  ) { }
 
   /**
    *
@@ -141,11 +141,7 @@ export class AuthService {
   authorized(): Observable<any> {
     return this.http
       .get('auth/authenticated')
-      .pipe(map((res: Response) => res));
-    // catch should be handled here with the http observable
-    // so that only the inner obs dies and not the effect Observable
-    // otherwise no further login requests will be fired
-    // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
+      .pipe(catchError(error => of(error.error)));
   }
 
   /**

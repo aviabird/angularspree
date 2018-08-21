@@ -37,7 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
     CheckoutFooterComponent
   ],
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: AppPreloadingStrategy }),
+    RouterModule.forRoot(routes, { preloadingStrategy: AppPreloadingStrategy, initialNavigation: 'enabled' }),
     StoreModule.forRoot(reducers, { metaReducers }),
 
     /**
@@ -77,7 +77,7 @@ import { ToastrModule } from 'ngx-toastr';
     }),
     CoreModule,
     SharedModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AppPreloadingStrategy],
   bootstrap: [AppComponent]

@@ -15,12 +15,11 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
 import { getAuthStatus } from '../../auth/reducers/selectors';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../core/services/auth.service';
 import { AuthActions } from '../../auth/actions/auth.actions';
 import { TemplateRef, Inject, PLATFORM_ID } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { Directive, Renderer2, ElementRef } from '@angular/core';
+import { Renderer2 } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { LayoutState } from '../reducers/layout.state';
 import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
@@ -69,8 +68,8 @@ export class HeaderComponent implements OnInit {
     private renderer: Renderer2,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
-    this.taxonomies$ = this.store.select(getTaxonomies);
     this.store.dispatch(this.actions.getAllTaxonomies());
+    this.taxonomies$ = this.store.select(getTaxonomies);
     if (isPlatformBrowser(this.platformId)) {
       if (this.isSearchopen) {
         this.renderer.addClass(document.body, 'issearchopen');
