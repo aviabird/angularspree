@@ -2,6 +2,6 @@
   "projects": {
     "angularspree": "angularspree",
     "default": "angularspree",
-    "staging": "ofypets"
+    "staging": "angularspree"
   }
 }
