@@ -1,7 +1,7 @@
 import { CUSTOM_APP_DATA } from './app-data';
 import { CUSTOM_META_DATA } from './meta-data';
 
-export const CUSTOM_EXAMPLE_CONFIG = {
+export const CUSTOM_CONFIG = {
   // Add Your custom configs here
   prodApiEndpoint: 'http://my-prod.api.example.com/',
   appName: 'Custom App Name',
