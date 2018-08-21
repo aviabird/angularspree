@@ -1,3 +1,5 @@
+import { TransferStateInterceptor } from './interceptors/transfer-state.interceptor';
+import { TransferStateService } from './services/transfer-state.service';
 import { CheckoutEffects } from './../checkout/effects/checkout.effects';
 import { CheckoutActions } from './../checkout/actions/checkout.actions';
 import { CheckoutService } from './services/checkout.service';
@@ -63,6 +65,8 @@ import { CanActivateViaAuthGuard } from './guards/auth.guard';
     UserActions,
     UserService,
     CanActivateViaAuthGuard,
+    {provide: HTTP_INTERCEPTORS, useClass: TransferStateInterceptor, multi: true},
+    TransferStateService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ]
 })

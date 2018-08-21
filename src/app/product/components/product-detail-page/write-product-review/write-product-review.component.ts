@@ -1,27 +1,24 @@
+import { Product } from './../../../../core/models/product';
 import { isPlatformBrowser } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from './../../../../core/services/product.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
-import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { getAuthStatus } from '../../../../auth/reducers/selectors';
 
 @Component({
   selector: 'app-write-product-review',
   templateUrl: './write-product-review.component.html',
-  styleUrls: ['./write-product-review.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./write-product-review.component.scss']
 })
 export class WriteProductReviewComponent implements OnInit {
-
   reviewForm: FormGroup;
   queryParams: any
   showThanks = false;
-  product$: Observable<any>;
+  product: Product;
   submitReview = true;
   isAuthenticated: boolean;
   result: any
@@ -41,12 +38,7 @@ export class WriteProductReviewComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.product$ = this.activeRoute.queryParams
-      .pipe(
-        switchMap(params => {
-          return this.productService.getProduct(params.prodId)
-        })
-      )
+    this.product = this.activeRoute.snapshot.data['product'];
   }
 
   initForm() {
@@ -66,6 +58,7 @@ export class WriteProductReviewComponent implements OnInit {
       this.router.navigate(['auth', 'login'])
     }
   }
+
   getProductImageUrl(url) {
     return url;
   }
@@ -90,18 +83,19 @@ export class WriteProductReviewComponent implements OnInit {
         .subscribe(res => {
           this.result = res;
           if (this.result === 'info') {
-            this.goToProduct(prodId);
+            this.goToProduct(this.product.slug);
           } else if (this.result === 'success') {
             this.showThanks = true;
             this.submitReview = false;
           } else {
-            this.goToProduct(prodId)
+            this.goToProduct(this.product.slug)
           }
         })
     } else {
       this.toastrService.error('All fields are rquired', 'Invalid!')
     }
   }
+
   goToProduct(prodId) {
     this.router.navigate([prodId])
   }
