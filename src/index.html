@@ -98,7 +98,7 @@
 
   <script nonce='2726c7f26c'>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+      navigator.serviceWorker.register('/ngsw-worker.js').then(function (registration) {
         console.log('Service Worker registered');
       }).catch(function (err) {
         console.log('Service Worker registration failed: ', err);
@@ -110,6 +110,7 @@
   <!-- To enable search engine to render the app first then parse -->
   <script nonce='2726c7f26c' src=https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/shim.min.js></script>
 
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 
 </html>

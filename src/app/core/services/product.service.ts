@@ -36,7 +36,7 @@ export class ProductService {
   getProduct(id: string): Observable<Product> {
     return this.http
       .get<{ data: CJsonApi }>(
-        `api/v1/products/${id}?data_set=large&${+new Date()}`
+        `api/v1/products/${id}?data_set=large&${+new Date().getDate()}`
       )
       .pipe(
         map(resp => {
@@ -148,7 +148,7 @@ export class ProductService {
   getproductsByKeyword(keyword: string): Observable<any> {
     return this.http
       .get<{ data: CJsonApi[]; pagination: Object }>(
-        `api/v1/products?${keyword}&per_page=20&data_set=small&${+new Date()}`
+        `api/v1/products?${keyword}&per_page=20&data_set=small&${+new Date().getDate()}`
       )
       .pipe(
         map(resp => {

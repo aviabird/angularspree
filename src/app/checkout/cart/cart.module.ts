@@ -1,4 +1,3 @@
-import { EffectsModule } from '@ngrx/effects';
 import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart.component';
 import { NgModule } from '@angular/core';

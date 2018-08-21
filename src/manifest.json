@@ -1,6 +1,6 @@
 {
-  "name": "Angular Spree",
-  "short_name": "ng2-Spree",
+  "name": "angularspree",
+  "short_name": "angularspree",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
