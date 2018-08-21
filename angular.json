@@ -39,7 +39,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "serviceWorker": true
+            "serviceWorker": false
           },
           "configurations": {
             "mock-ng-spree": {
@@ -93,7 +93,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "serviceWorker": true,
+              "serviceWorker": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
