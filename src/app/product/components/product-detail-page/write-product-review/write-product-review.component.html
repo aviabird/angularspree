@@ -1,4 +1,4 @@
-<div class="container pt-5 pb-5" *ngIf="product$ | async; let product">
+<div class="container pt-5 pb-5">
   <h3 *ngIf="!showThanks">Write Review</h3>
   <h3 *ngIf="showThanks">Review Submitted!</h3>
   <div class="write-review">
@@ -38,7 +38,7 @@
               <div class="float-right">
                 <p class="w-75 text-success">Your review has been submitted.Please note that your review may take up to 48 hours to appear.</p>
               </div>
-              <button type="normal" class="btn themebtnprimary col-12 col-sm-5 mt-4 mb-1" (click)="goToProduct(product.id)">Continue Shopping</button>
+              <button type="normal" class="btn themebtnprimary col-12 col-sm-5 mt-4 mb-1" (click)="goToProduct(product.slug)">Continue Shopping</button>
             </div>
           </div>
         </div>

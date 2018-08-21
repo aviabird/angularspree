@@ -1,51 +1,30 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { Subscription ,  Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from './../../../core/models/product';
-import { ProductService } from './../../../core/services/product.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail-page',
-  templateUrl: './product-detail-page.component.html',
+  template: `
+    <app-product-details [product]="product$ | async"></app-product-details>
+  `,
   styleUrls: ['./product-detail-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductDetailPageComponent implements OnInit, OnDestroy {
-  actionsSubscription$: Subscription;
-  product$: Observable<Product> = null;
-  routeSubs: Subscription;
-  productId: any;
+export class ProductDetailPageComponent implements OnInit {
+  product$: Observable<Product>;
 
-  constructor(private productService: ProductService,
-    private route: ActivatedRoute) {
-
-    /**On Init
-     * 1. Parse route params
-     * 2. Retrive product id
-     * 3. Ask for the product detail based on product id
-     * */
-    this.actionsSubscription$ = this.route.params.subscribe(
-      (params: any) => {
-        this.productId = params['id'];
-        this.product$ = this.productService.getProduct(this.productId);
-      }
-    );
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   };
 
 
   ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    this.actionsSubscription$.unsubscribe();
-  }
-
-  /**
-   * Action To be dispatched
-   * when added to cart
-   */
-  addToCart() {
-    return;
+    this.product$ = this.route.data.pipe(map(({ product }) => product));
   }
 
 }

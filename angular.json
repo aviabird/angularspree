@@ -27,15 +27,11 @@
                 "output": "/"
               },
               {
-                "glob": "service-worker.js",
-                "input": "src",
-                "output": "/"
-              },
-              {
                 "glob": "manifest.json",
                 "input": "src",
                 "output": "/"
               },
+              "src/manifest.json",
               "src/manifest.json"
             ],
             "styles": [
@@ -43,7 +39,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "serviceWorker": true
+            "serviceWorker": false
           },
           "configurations": {
             "mock-ng-spree": {
@@ -97,6 +93,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "serviceWorker": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -218,6 +215,7 @@
                 "input": "src",
                 "output": "/"
               },
+              "src/manifest.json",
               "src/manifest.json"
             ]
           }

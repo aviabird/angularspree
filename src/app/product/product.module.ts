@@ -1,3 +1,4 @@
+import { ProductResolver } from './guards/product-resolver';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/index';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar'
@@ -53,6 +54,7 @@ import { CheckPincodeComponent } from './components/product-detail-page/product-
     ProgressbarModule.forRoot()
   ],
   providers: [
+    ProductResolver
   ]
 })
 export class ProductModule { }

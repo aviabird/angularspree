@@ -61,8 +61,8 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (window.screen.width <= 768) {
-      if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
+      if (window.screen.width <= 768) {
         this.screenWidth = window.screen.width;
       }
     }
