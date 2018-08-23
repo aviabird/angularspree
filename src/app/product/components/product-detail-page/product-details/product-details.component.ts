@@ -53,6 +53,7 @@ export class ProductDetailsComponent implements OnInit {
   checkPincodeForm: FormGroup;
   isCodAvilable$: Observable<any>;
   linesItems: any
+  noImageUrl = 'assets/default/no-image-available.jpg'
 
   constructor(
     private checkoutActions: CheckoutActions,
@@ -76,40 +77,38 @@ export class ProductDetailsComponent implements OnInit {
     this.calculateInnerWidth();
     this.addMetaInfo(this.product);
     this.initData();
-    this.store.dispatch(this.productsActions.getRelatedProduct(this.productID));
-    this.relatedProducts$ = this.store.select(relatedProducts);
-    this.store.dispatch(this.productsActions.getProductReviews(this.productID));
-    this.reviewProducts$ = this.store.select(productReviews);
-    this.findBrand();
-    this.addJsonLD(this.product);
+    // this.store.dispatch(this.productsActions.getRelatedProduct(this.productID));
+    // this.relatedProducts$ = this.store.select(relatedProducts);
+    // this.store.dispatch(this.productsActions.getProductReviews(this.productID));
+    // this.reviewProducts$ = this.store.select(productReviews);
+    // this.findBrand();
+    // this.addJsonLD(this.product);
   }
 
   initData() {
-    if (this.product.has_variants) {
+    this.images = this.imagesPlaceHolder(this.noImageUrl);
+    if (this.product.variants.length) {
       const product = this.product.variants[0];
       this.description = product.description;
-      this.images = product.images;
+      this.product.name = product.name;
       this.variantId = product.id;
       this.selectedVariant = product;
       this.productID = this.product.id;
-      this.product.display_price = product.display_price;
-      this.product.price = product.price;
-      this.product.master.is_orderable = product.is_orderable;
-      this.product.master.cost_price = product.cost_price;
+      this.product.selling_price = product.selling_price;
+      this.product.max_retail_price = product.max_retail_price;
     } else {
       this.description = this.product.description;
-      this.images = this.product.master.images;
-      this.variantId = this.product.master.id;
+      this.variantId = this.product.id;
       this.productID = this.product.id;
-      this.selectedVariant = this.product.master;
+      this.selectedVariant = this.product.variants[0];
     }
 
-    if (this.product.taxon_ids[0]) {
-      this.store.dispatch(
-        this.searchActions.getProductsByTaxon(`id=${this.product.taxon_ids[0]}`)
-      );
-      this.similarProducts$ = this.store.select(getProductsByKeyword);
-    }
+    // if (this.product.taxon_ids[0]) {
+    //   this.store.dispatch(
+    //     this.searchActions.getProductsByTaxon(`id=${this.product.taxon_ids[0]}`)
+    //   );
+    //   this.similarProducts$ = this.store.select(getProductsByKeyword);
+    // }
   }
 
   calculateInnerWidth() {
@@ -158,10 +157,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   selectVariant(variant) {
-    this.images = variant.images;
+    // for now showing default image only.
+    this.images = this.images;
     this.variantId = variant.id;
     this.selectedVariant = variant;
-    this.addJsonLD(this.product);
+    // this.addJsonLD(this.product);
   }
 
   get selectedImage() { return this.images ? this.images[0] : ''; }
@@ -194,7 +194,7 @@ export class ProductDetailsComponent implements OnInit {
       'itemCondition': 'https://schema.org/NewCondition',
       'brand': {
         '@type': 'Thing',
-        'name':  `${this.brand.name}`
+        'name': `${this.brand.name}`
       },
       'aggregateRating': {
         '@type': 'AggregateRating',
@@ -226,6 +226,15 @@ export class ProductDetailsComponent implements OnInit {
     const brandClassification = this.product.classifications.find(element =>
       element.taxon.pretty_name.includes('Brands')
     );
-    this.brand = brandClassification ?  brandClassification.taxon : {} as Taxon;
+    this.brand = brandClassification ? brandClassification.taxon : {} as Taxon;
+  }
+
+  imagesPlaceHolder(url) {
+    const images = [{
+      product_url: url,
+      large_url: url,
+      small_url: url
+    }]
+    return images;
   }
 }

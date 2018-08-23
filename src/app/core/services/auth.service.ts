@@ -40,8 +40,8 @@ export class AuthService {
    * @memberof AuthService
    */
   login({ email, password }: Authenticate): Observable<User> {
-    const params = { spree_user: { email, password } };
-    return this.http.post<User>('login.json', params).pipe(
+    const params = { email, password };
+    return this.http.post<User>('http://localhost:3000/api/v1/login', params).pipe(
       map(user => {
         this.setTokenInLocalStorage(user);
         this.store.dispatch(this.actions.loginSuccess());

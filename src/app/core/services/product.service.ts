@@ -37,12 +37,18 @@ export class ProductService {
   getProduct(id: string): Observable<Product> {
     return this.http
       .get<Product>(
-        `http://localhost:3000/api/v1/products/${id}?${+new Date().getDate()}`
+        `http://localhost:3000/api/v1/products/${id}?${+new Date()}`
       )
   }
 
   getProductReviews(products): Observable<any> {
+
+    // /product/:id/rating-summary
     return this.http.get(`products/${products}/reviews`);
+  }
+
+  getProductRatingSummery(productId: any): Observable<any> {
+    return this.http.get('http://localhost:3000/api/v1/product/productId/rating-summary')
   }
 
   /**

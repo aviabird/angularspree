@@ -34,4 +34,7 @@ export class Product {
   reviews_count: number;
   product_url?: string;
   currency: string;
+  selling_price: Object;
+  max_retail_price: Object;
+
 }

@@ -10,7 +10,7 @@ import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@a
 export class BrandListComponent implements OnInit {
   @Input() taxons;
   // To do : Finding alternateway to show image.
-  image = '../../../../../../../assets/default/no-image-available.png'
+  image = 'assets/default/no-image-available.jpg'
   constructor() { }
   ngOnInit() {
   }

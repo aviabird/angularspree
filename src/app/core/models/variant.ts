@@ -29,4 +29,7 @@ export class Variant {
   is_destroyed: boolean;
   is_orderable: boolean;
   images: Image[];
+  options: any;
+  selling_price: Object;
+  max_retail_price: Object;
 }
