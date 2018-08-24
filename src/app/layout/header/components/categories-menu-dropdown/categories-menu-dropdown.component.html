@@ -9,7 +9,7 @@
     </strong>
   </div>
   <div dropdown #dropdown="bs-dropdown" [autoClose]="false" (isOpenChange)="onOpenChange($event)" (mouseenter)="dropdown.show()"
-    class="open show"  (click)="dropdown.hide()">
+    class="open show" (mouseleave)="dropdown.hide()" (click)="dropdown.hide()">
     <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu container show" style="left: 0px; right: auto; top: 100%; transform: translateY(0px);"
       [ngClass]="[isScrolled ? '':'notscrolled']" role="menu" aria-labelledby="button-triggers-manual">
       <div class="row m-0" *ngIf="taxonomies[0]; let catgeory_taxonomy">
