@@ -12,8 +12,8 @@ import { ProductActions } from './../product/actions/product-actions';
 import { AppState } from './../interfaces';
 import { getTaxonomies, rootTaxonomyId } from './../product/reducers/selectors';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Product } from '../core/models/product';
 import { isPlatformBrowser } from '../../../node_modules/@angular/common';
@@ -24,8 +24,7 @@ import { isPlatformBrowser } from '../../../node_modules/@angular/common';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit {
-  // products$: Observable<any>;
+export class HomeComponent implements OnInit, OnDestroy {
   taxonomies$: Observable<any>;
   brands$: Observable<any>;
   selectedTaxonIds$: Observable<number[]>;
@@ -38,6 +37,7 @@ export class HomeComponent implements OnInit {
   screenwidth;
   isMobile;
   rootTaxonomyId: any;
+  rootTaxonomyIdSubs$: Subscription;
 
   @ViewChild('autoShownModal') autoShownModal: ModalDirective;
   isModalShown = false;
@@ -46,7 +46,8 @@ export class HomeComponent implements OnInit {
     private store: Store<AppState>,
     private actions: ProductActions,
     private searchActions: SearchActions,
-    @Inject(PLATFORM_ID) private platformId: any) {
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {
     this.store.dispatch(this.actions.getAllProducts(1));
     this.store.dispatch(this.actions.getAllTaxonomies());
     this.taxonomies$ = this.store.select(getTaxonomies);
@@ -55,17 +56,19 @@ export class HomeComponent implements OnInit {
     this.products$ = this.store.select(getProductsByKeyword);
     this.pagination$ = this.store.select(getPaginationData);
     this.isFilterOn$ = this.store.select(searchFilterStatus);
-    this.store.select(rootTaxonomyId).subscribe(id => this.rootTaxonomyId = id);
+    this.rootTaxonomyIdSubs$ = this.store.select(rootTaxonomyId).subscribe(id => this.rootTaxonomyId = id);
   }
 
   showModal(): void {
     this.isModalShown = true;
   }
+
   calculateInnerWidth() {
     if (this.screenwidth <= 1000) {
       this.isMobile = this.screenwidth;
     }
   }
+
   hideModal(): void {
     this.autoShownModal.hide();
   }
@@ -73,6 +76,7 @@ export class HomeComponent implements OnInit {
   onHidden(): void {
     this.isModalShown = false;
   }
+
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
@@ -89,11 +93,16 @@ export class HomeComponent implements OnInit {
     this.brands$ = this.store.select(taxonomiByName)
     this.store.dispatch(this.searchActions.setSearchFilterOn())
   }
+
   showAll() {
     this.store.dispatch(this.searchActions.setSearchFilterOff())
   }
 
   isOpenChangeaccourdian() {
     this.isCategoryOpen = !this.isCategoryOpen;
+  }
+
+  ngOnDestroy() {
+    this.rootTaxonomyIdSubs$.unsubscribe();
   }
 }
