@@ -13,7 +13,7 @@ import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
 })
 export class OrderFailedComponent implements OnInit {
   queryParams: any;
-  orderDetails: Order
+  orderDetails: Order;
   errorReason: string;
   isMobile = false;
   screenwidth: any;

@@ -18,21 +18,15 @@ export class BrandMenuDropdownComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private searchActions: SearchActions,
-    private store: Store<AppState>) {
-    this.route.queryParams
-      .subscribe(params => {
-        this.queryParams = params
-      });
-  }
+    private store: Store<AppState>) {}
 
   ngOnInit() {
   }
 
-  getBrands() {
-    const search = new URLSearchParams();
-    search.set('id', this.queryParams.id);
-    this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()));
+  getBrands(id: string) {
+    this.store.dispatch(this.searchActions.getProductsByTaxon(`id=${id}`));
   }
+
   onOpenChange(data: boolean): void {
     this.isOpen = !this.isOpen;
   }

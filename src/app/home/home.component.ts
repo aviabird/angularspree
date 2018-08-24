@@ -38,6 +38,10 @@ export class HomeComponent implements OnInit {
   screenwidth;
   isMobile;
   rootTaxonomyId: any;
+
+  @ViewChild('autoShownModal') autoShownModal: ModalDirective;
+  isModalShown = false;
+
   constructor(
     private store: Store<AppState>,
     private actions: ProductActions,
@@ -50,15 +54,9 @@ export class HomeComponent implements OnInit {
     this.selectedTaxonIds$ = this.store.select(getSelectedTaxonIds);
     this.products$ = this.store.select(getProductsByKeyword);
     this.pagination$ = this.store.select(getPaginationData);
-    this.isFilterOn$ = this.store.select(searchFilterStatus)
-    this.store.select(rootTaxonomyId)
-      .subscribe(id => this.rootTaxonomyId = id)
+    this.isFilterOn$ = this.store.select(searchFilterStatus);
+    this.store.select(rootTaxonomyId).subscribe(id => this.rootTaxonomyId = id);
   }
-
-  // tslint:disable-next-line:member-ordering
-  @ViewChild('autoShownModal') autoShownModal: ModalDirective;
-  // tslint:disable-next-line:member-ordering
-  isModalShown = false;
 
   showModal(): void {
     this.isModalShown = true;
