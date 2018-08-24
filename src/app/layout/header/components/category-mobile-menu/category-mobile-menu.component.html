@@ -5,14 +5,14 @@
     </ul>
     <ul class="otherlinks">
       <li>
-        <a [routerLink]="['info/About_us']" (click)="onCloseMobilemenu()">About us</a>
+        <a [routerLink]="['/info/About_us']" (click)="onCloseMobilemenu()">About us</a>
 
       </li>
       <li>
-        <a [routerLink]="['info/FAQs']" (click)="onCloseMobilemenu()">FAQs</a>
+        <a [routerLink]="['/info/FAQs']" (click)="onCloseMobilemenu()">FAQs</a>
       </li>
       <li>
-        <a [routerLink]="['info/Return Policy']" (click)="onCloseMobilemenu()">Return Policy</a>
+        <a [routerLink]="['/info/Return Policy']" (click)="onCloseMobilemenu()">Return Policy</a>
       </li>
 
     </ul>
@@ -21,7 +21,7 @@
     <ul class="bg-color" *ngIf="menuTaxons">
       <li (click)="parrantBack()" class="backbtn">
         <i class="fa fa-chevron-left mr-2"></i>Back</li>
-      <div class="subhead" (click)="onCloseMobilemenu()" [routerLink]="['search']" [queryParams]="{'q[name_cont]': menuTaxons.name, id: menuTaxons.id}" >{{menuTaxons.name}}</div>
+      <div class="subhead" (click)="onCloseMobilemenu()" [routerLink]="['/search']" [queryParams]="{'q[name_cont]': menuTaxons.name, id: menuTaxons.id}" >{{menuTaxons.name}}</div>
       <li *ngFor="let taxon of menuTaxons.taxons; let i= index" (click)="showSubCategory(i)">{{taxon.name}}</li>
     </ul>
   </div>
@@ -29,8 +29,8 @@
     <ul class="bg-color" *ngIf="subChild">
       <li (click)="childBack()" class="backbtn">
         <i class="fa fa-chevron-left mr-2"></i> Back</li>
-      <div class="subhead" (click)="onCloseMobilemenu()" [routerLink]="['search']" [queryParams]="{'q[name_cont]': subChild.name, id: subChild.id}">{{subChild.name}}</div>
-      <li *ngFor="let taxon of subChild.taxons; let i= index" [routerLink]="['search']" [queryParams]="{'q[name_cont]': taxon.name, id: taxon.id}"
+      <div class="subhead" (click)="onCloseMobilemenu()" [routerLink]="['/search']" [queryParams]="{'q[name_cont]': subChild.name, id: subChild.id}">{{subChild.name}}</div>
+      <li *ngFor="let taxon of subChild.taxons; let i= index" [routerLink]="['/search']" [queryParams]="{'q[name_cont]': taxon.name, id: taxon.id}"
         (click)="onCloseMobilemenu()">{{taxon.name}}</li>
     </ul>
   </div>
