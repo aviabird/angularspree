@@ -11,7 +11,7 @@
     <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-triggers-manual">
       <div *ngIf="taxonomies[0]; let brands_taxonomy">
         <ul>
-          <li *ngFor="let taxon of brands_taxonomy.root.taxons | slice:0:26" class="col-2" (click)="getBrands()">
+          <li *ngFor="let taxon of brands_taxonomy.root.taxons | slice:0:26" class="col-2" (click)="getBrands(taxon.id)">
             <app-brand-list [taxons]="taxon"></app-brand-list>
           </li>
           <li [routerLink]="['b/brands']">
