@@ -36,8 +36,16 @@
                 "input": "src",
                 "output": "/"
               },
-              "src/manifest.json",
-              "src/manifest.json"
+              {
+                "glob": "robots.txt",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "sitemap.xml",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "node_modules/font-awesome/css/font-awesome.css",
