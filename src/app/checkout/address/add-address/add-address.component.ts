@@ -20,8 +20,8 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   addressForm: FormGroup;
   emailForm: FormGroup;
   isAuthenticated: boolean;
-  states: Array<CState>;
-  subscriptionList$: Array<Subscription>;
+  states: Array<CState> = [];
+  subscriptionList$: Array<Subscription> = [];
   @Input() addressEdit: Address;
   @Input() orderNumber: string
   @Output() addressEdited: EventEmitter<boolean> = new EventEmitter<boolean>();

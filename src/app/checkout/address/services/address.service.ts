@@ -53,7 +53,9 @@ export class AddressService {
   }
   // Country ID: 105 is for INDIA.
   getAllStates(): Observable<Array<CState>> {
-    return this.http.get<Array<CState>>(`api/v1/countries/105/states`);
+    return this.http
+      .get<{states: Array<CState>}>(`api/v1/countries/105/states`)
+      .pipe(map(res => res.states));
   }
 
   updateAddress(updatedAddress, addressId, orderNumber) {
