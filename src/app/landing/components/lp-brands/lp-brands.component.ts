@@ -9,15 +9,13 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class LpBrandsComponent implements OnInit {
   @Input() brands;
   // To do : Finding alternate way to show image.
-  image = '../../../../../../../assets/default/no-image-available.png'
+  image = 'assets/default/no-image-available.png'
   constructor() { }
 
   ngOnInit() {
   }
 
-  getBrandImageUrl(url) {
-    if (url) {
-      return url;
-    } else { return this.image }
+  public getBrandImageUrl(url) {
+    return url ? url : this.image;
   }
 }

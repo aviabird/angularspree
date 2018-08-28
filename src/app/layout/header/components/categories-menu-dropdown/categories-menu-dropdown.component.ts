@@ -10,8 +10,8 @@ import {
   animate,
   transition
 } from '@angular/animations';
-
 import { URLSearchParams } from '@angular/http'
+
 @Component({
   selector: 'app-categories-menu-dropdown',
   templateUrl: './categories-menu-dropdown.component.html',
@@ -33,7 +33,6 @@ import { URLSearchParams } from '@angular/http'
 export class CategoriesMenuDropdownComponent implements OnInit {
   @Input() taxonomies;
   @Input() isScrolled;
-
   @Input() screenwidth;
   dropdownWidth: any;
   menuTaxons: any;
@@ -45,9 +44,8 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   subIsopen: boolean;
   index: any;
   selectedItem: 0;
-  get stateName() {
-    return this.show ? 'show' : 'hide'
-  }
+
+
   constructor(
     private route: ActivatedRoute,
     private searchActions: SearchActions,
@@ -57,6 +55,7 @@ export class CategoriesMenuDropdownComponent implements OnInit {
         this.queryParams = params;
       });
   }
+
   ngOnInit() {
     if (this.screenwidth <= 1000) {
       this.dropdownWidth = this.screenwidth - 10 + 'px';
@@ -64,6 +63,10 @@ export class CategoriesMenuDropdownComponent implements OnInit {
     } else {
       this.autoclose = true;
     }
+  }
+
+  get stateName() {
+    return this.show ? 'show' : 'hide'
   }
 
   showCategory(i) {
@@ -78,17 +81,21 @@ export class CategoriesMenuDropdownComponent implements OnInit {
       this.menuTaxons = this.taxonomies[0].root.taxons[i];
     }
   }
+
   backtolist() {
     this.show = !this.show;
   }
+
   getCategeory() {
     const search = new URLSearchParams();
     search.set('id', this.queryParams.id);
     this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()))
   }
+
   childCatLoaded(status) {
     this.backBtnShow = status;
   }
+
   onOpenChange(data: boolean): void {
     this.isOpen = !this.isOpen;
     this.menuTaxons = this.taxonomies[0].root.taxons[0];

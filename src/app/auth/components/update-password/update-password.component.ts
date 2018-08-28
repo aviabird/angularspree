@@ -1,13 +1,14 @@
 
-import {tap} from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { tap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { AuthService } from './../../../core/services/auth.service';
 import { AuthActions } from './../../actions/auth.actions';
-import { ActivatedRoute, Router } from '@angular/router';
 import { AppState } from './../../../interfaces';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-update-password',
@@ -48,12 +49,12 @@ export class UpdatePasswordComponent implements OnInit {
     if (this.updatePasswordForm.valid) {
       this.updatePasswordSubs = this.authService
         .updatePassword(values).pipe(
-        tap(_ => this.passwordReset = true, (user) => {
-          const errors = user.error.error || 'Something went wrong';
-          keys.forEach(val => {
-            this.pushErrorFor(val, errors);
-          });
-        })).subscribe();
+          tap(_ => this.passwordReset = true, (user) => {
+            const errors = user.error.error || 'Something went wrong';
+            keys.forEach(val => {
+              this.pushErrorFor(val, errors);
+            });
+          })).subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.updatePasswordForm.controls[val];

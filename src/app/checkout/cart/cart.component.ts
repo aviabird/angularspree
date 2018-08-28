@@ -1,9 +1,10 @@
-import { getTotalCartValue, getTotalCartItems, getItemTotal } from './../reducers/selectors';
-import { Observable } from 'rxjs';
-import { AppState } from './../../interfaces';
-import { Store } from '@ngrx/store';
 import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { getTotalCartValue, getTotalCartItems, getItemTotal } from './../reducers/selectors';
+import { AppState } from './../../interfaces';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +19,10 @@ export class CartComponent implements OnInit {
   shipTotal$: Observable<number>;
   itemTotal$: Observable<number>;
 
-  constructor(private store: Store<AppState>, @Inject(PLATFORM_ID) private platformId: any) {
+  constructor(
+    private store: Store<AppState>,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.itemTotal$ = this.store.select(getItemTotal);

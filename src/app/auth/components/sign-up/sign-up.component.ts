@@ -1,14 +1,14 @@
-
-import {tap} from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { tap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+
 import { environment } from '../../../../environments/environment';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { getAuthStatus } from '../../reducers/selectors';
-import { Subscription } from 'rxjs';
 import { AuthActions } from '../../actions/auth.actions';
 
 @Component({
@@ -44,12 +44,12 @@ export class SignUpComponent implements OnInit, OnDestroy {
     if (this.signUpForm.valid) {
       this.registerSubs = this.authService
         .register(values).pipe(
-        tap(_ => _, (user) => {
-          const errors = user.error.errors || {};
-          keys.forEach(val => {
-            if (errors[val]) { this.pushErrorFor(val, errors[val][0]); };
-          });
-        })).subscribe();
+          tap(_ => _, (user) => {
+            const errors = user.error.errors || {};
+            keys.forEach(val => {
+              if (errors[val]) { this.pushErrorFor(val, errors[val][0]); };
+            });
+          })).subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.signUpForm.controls[val];
@@ -76,7 +76,14 @@ export class SignUpComponent implements OnInit, OnDestroy {
       'email': [email, Validators.compose([Validators.required, Validators.email])],
       'password': [password, Validators.compose([Validators.required, Validators.minLength(6)])],
       'password_confirmation': [password_confirmation, Validators.compose([Validators.required, Validators.minLength(6)])],
-      'mobile': [mobile, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[0-9]{10}')])],
+      'mobile': [
+        mobile,
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10),
+          Validators.pattern('[0-9]{10}')
+        ])],
       'gender': [gender, Validators.required]
     }, { validator: this.matchingPasswords('password', 'password_confirmation') }
     );
@@ -96,8 +103,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
     return (group: FormGroup): { [key: string]: any } => {
-      let password = group.controls[passwordKey];
-      let confirmPassword = group.controls[confirmPasswordKey];
+      const password = group.controls[passwordKey];
+      const confirmPassword = group.controls[confirmPasswordKey];
 
       if (password.value !== confirmPassword.value) {
         return {

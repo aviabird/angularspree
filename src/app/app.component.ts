@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private metaTitle: Title,
     private meta: Meta,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))

@@ -1,13 +1,17 @@
+import { ToastrService } from 'ngx-toastr';
+import { map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
+import { CState } from '../../../core/models/state';
 
 @Injectable()
 export class AddressService {
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastrService: ToastrService
   ) { }
 
   initAddressForm() {
@@ -48,8 +52,8 @@ export class AddressService {
     };
   }
   // Country ID: 105 is for INDIA.
-  getAllStates(): Observable<any> {
-    return this.http.get<any>(`api/v1/countries/105/states`)
+  getAllStates(): Observable<Array<CState>> {
+    return this.http.get<Array<CState>>(`api/v1/countries/105/states`);
   }
 
   updateAddress(updatedAddress, addressId, orderNumber) {
@@ -65,5 +69,11 @@ export class AddressService {
       + `&address[state_id]=${updatedAddress.state_id}`
       + `&address[country_id]=${updatedAddress.country_id}`
     return this.http.put(url, {})
+      .pipe(
+        tap(
+          _ => this.toastrService.success('Address Updated SuccesFully!', 'Success'),
+          _err => this.toastrService.error('Address Could not be Updated', 'Failed')
+        )
+      );
   }
 }

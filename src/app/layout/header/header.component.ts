@@ -85,6 +85,7 @@ export class HeaderComponent implements OnInit {
       Object.assign({}, { class: 'cat-mobile' }, this.config)
     );
   }
+
   ngOnInit() {
     this.store.dispatch(this.authActions.authorize());
     this.store.dispatch(this.authActions.login());
@@ -101,11 +102,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/');
     this.store.dispatch(this.searchActions.addFilter(taxon));
   }
+
   showModal(): void {
     this.isModalShown = !this.isModalShown;
     this.isSearchopen = !this.isSearchopen;
     if (isPlatformBrowser(this.platformId)) {
-     if (this.isModalShown) {
+      if (this.isModalShown) {
         this.renderer.addClass(document.body, 'isModalShown');
       } else {
         this.renderer.removeClass(document.body, 'isModalShown');
@@ -121,6 +123,7 @@ export class HeaderComponent implements OnInit {
   hideModal(): void {
     this.autoShownModal.hide();
   }
+
   onHidden(): void {
     this.isModalShown = false;
   }
@@ -137,10 +140,12 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
+
   childCatLoaded(status) {
     this.isModalShown = status;
     this.isSearchopen = !status;
   }
+
   allmenuClosed(status) {
     this.isModalShown = status;
     this.isSearchopen = !status;

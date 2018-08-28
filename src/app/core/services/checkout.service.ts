@@ -133,13 +133,7 @@ export class CheckoutService {
     const url = `api/v1/orders/${this.orderNumber}/line_items/${
       lineItem.id
       }?order_token=${this.getOrderToken()}`;
-    return this.http
-      .delete(url)
-      .pipe(
-        map(() =>
-          this.store.dispatch(this.actions.removeLineItemSuccess(lineItem))
-        )
-      );
+    return this.http.delete(url).pipe(map(_ => lineItem));
   }
 
   /**

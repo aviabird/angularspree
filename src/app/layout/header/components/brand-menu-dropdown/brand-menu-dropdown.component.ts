@@ -1,9 +1,7 @@
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
 import { SearchActions } from './../../../../home/reducers/search.actions';
-import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { URLSearchParams } from '@angular/http'
 
 @Component({
   selector: 'app-brand-menu-dropdown',
@@ -15,19 +13,20 @@ export class BrandMenuDropdownComponent implements OnInit {
   @Input() taxonomies;
   queryParams: any;
   isOpen: any;
+
   constructor(
-    private route: ActivatedRoute,
     private searchActions: SearchActions,
-    private store: Store<AppState>) {}
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit() {
   }
 
-  getBrands(id: string) {
+  getBrands(id: string): void {
     this.store.dispatch(this.searchActions.getProductsByTaxon(`id=${id}`));
   }
 
-  onOpenChange(data: boolean): void {
+  onOpenChange(_): void {
     this.isOpen = !this.isOpen;
   }
 }

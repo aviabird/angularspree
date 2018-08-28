@@ -7,23 +7,34 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CheckoutEffects {
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  AddToCart$ = this.actions$
+    .ofType(CheckoutActions.ADD_TO_CART).pipe(
+      switchMap((action: any) => {
+        return this.checkoutService.createNewLineItem(
+          action.payload.variant_id,
+          action.payload.quantity
+        );
+      }),
+      map((lineItem: LineItem) => this.actions.addToCartSuccess(lineItem))
+    );
+
+  @Effect()
+    RemoveLineItem$ = this.actions$
+    .ofType(CheckoutActions.REMOVE_LINE_ITEM)
+    .pipe(
+      switchMap((action: any) => {
+        return this.checkoutService.deleteLineItem(action.payload);
+      }),
+      map((lineItem) => this.actions.removeLineItemSuccess(lineItem))
+    )
+
   constructor(
     private actions$: Actions,
     private checkoutService: CheckoutService,
     private actions: CheckoutActions
   ) { }
-
-  // tslint:disable-next-line:member-ordering
-  @Effect()
-  AddToCart$ = this.actions$.ofType(CheckoutActions.ADD_TO_CART).pipe(
-    switchMap((action: any) => {
-      return this.checkoutService.createNewLineItem(
-        action.payload.variant_id,
-        action.payload.quantity
-      );
-    }),
-    map((lineItem: LineItem) => this.actions.addToCartSuccess(lineItem))
-  );
 }
 // @Effect()
 // FetchCurrentOrder$ = this.actions$
@@ -37,10 +48,3 @@ export class CheckoutEffects {
 
 // Use this effect once angular releases RC4
 
-// @Effect()
-//   RemoveLineItem$ = this.actions$
-//   .ofType(CartActions.REMOVE_LINE_ITEM)
-//   .switchMap((action: any) => {
-//     return this.cartService.deleteLineItem(action.payload);
-//   })
-//   .map(() => this.cartActions.removeLineItemSuccess());

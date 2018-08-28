@@ -1,3 +1,4 @@
+import { CState } from './state';
 /* Address model
  * Detailed info http://guides.spreecommerce.org/developer/addresses.html
  * Public API's http://guides.spreecommerce.org/api/addresses.html
@@ -19,4 +20,5 @@ export class Address {
   state_id: string;
   state_name: string;
   state_text: string;
+  state: CState;
 }

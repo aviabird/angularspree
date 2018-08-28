@@ -18,8 +18,6 @@ export class BrandLogoComponent implements OnInit {
   ngOnInit() { }
 
   getBrandImageUrl(url) {
-    if (url) {
-      return url;
-    } else { return this.image }
+    return url ? url : this.image;
   }
 }
