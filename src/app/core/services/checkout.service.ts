@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import * as CryptoJS from 'crypto-js';
 import { environment } from '../../../environments/environment';
 import { isPlatformBrowser } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class CheckoutService {
@@ -29,7 +30,7 @@ export class CheckoutService {
     private actions: CheckoutActions,
     private store: Store<AppState>,
     private toastyService: ToastrService,
-    @Inject(PLATFORM_ID) private platformId: any) {
+    @Inject(PLATFORM_ID) private platformId: Object) {
     this.store.select(getOrderNumber)
       .subscribe(number => (this.orderNumber = number));
   }
@@ -268,9 +269,9 @@ export class CheckoutService {
     return token;
   }
 
-  shipmentAvailability(pincode: number) {
+  shipmentAvailability(pincode: number): Observable<{available: boolean}> {
     return this.http
-      .post(`address/shipment_availability`, { pincode: pincode })
+      .post<{available: boolean}>(`address/shipment_availability`, { pincode: pincode });
   }
   /**
    *

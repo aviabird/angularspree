@@ -29,7 +29,7 @@ export class AuthService {
     private oAuthService: OauthService,
     private toastrService: ToastrService,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   /**

@@ -68,8 +68,10 @@ export class AppComponent implements OnInit, OnDestroy {
   private addFaviconIcon() {
     if (isPlatformBrowser(this.platformId)) {
       const link =
-        document.querySelector(`link[rel*='icon']`) ||
-        (document.createElement('link') as any);
+        (
+          document.querySelector(`link[rel*='icon']`) ||
+          document.createElement('link')
+        ) as HTMLLinkElement;
       link.type = 'image/x-icon';
       link.rel = 'shortcut icon';
       link.href = environment.config.fevicon;

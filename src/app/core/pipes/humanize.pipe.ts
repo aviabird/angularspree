@@ -8,12 +8,12 @@ export class HumanizePipe {
   /**
    *
    *
-   * @param {any} value
+   * @param {string | null} value
    * @returns
    *
    * @memberof HumanizePipe
    */
-  transform(value) {
+  transform(value: string | null) {
     let updated_val = value;
     if (typeof(value) === 'string') {
       updated_val = value.replace(/\_/g, ' ');
