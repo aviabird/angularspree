@@ -16,7 +16,7 @@
 			</div>
 		</div>
 	</div>
-	<div *ngIf="!(shipAddress$ | async)" class="row">
+	<div *ngIf="!(shipAddress$ | async)" class="row m-0 ">
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0">
 			<div class="add-address">
 				<span class="add-label">
@@ -26,14 +26,14 @@
 			<app-add-address [addressEdit]="null"></app-add-address>
 		</div>
 	</div>
-	<div *ngIf="editAddress" class="row">
+	<div *ngIf="editAddress" class="row m-0 useraddress">
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0">
 			<div class="add-address">
 				<span class="add-label">
 					EDIT ADDRESS
 				</span>
 			</div>
-			<app-add-address (addressEdited)=addressEditedDone($event) [addressEdit]="addressData" [orderNumber]="orderNumber$ | async">
+			<app-add-address   (addressEdited)=addressEditedDone($event) [addressEdit]="addressData" [orderNumber]="orderNumber$ | async">
 			</app-add-address>
 		</div>
 	</div>
