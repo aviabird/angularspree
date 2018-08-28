@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
+import { Address } from '../../../core/models/address';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AddressService {
@@ -65,5 +67,9 @@ export class AddressService {
       + `&address[state_id]=${updatedAddress.state_id}`
       + `&address[country_id]=${updatedAddress.country_id}`
     return this.http.put(url, {})
+  }
+
+  getUserAddresses(): Observable<Array<Address>> {
+    return this.http.get<Array<Address>>(`http://localhost:3000/api/v1/addresses`)
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserService } from '../../services/user.service';
+import { AddressService } from '../../../checkout/address/services/address.service';
+import { Address } from '../../../core/models/address';
 
 @Component({
   selector: 'app-addresses',
@@ -9,16 +11,18 @@ import { UserService } from '../../services/user.service';
 })
 export class AddressesComponent implements OnInit {
 
-  userDetails$: Observable<any>
+  userAddresses$: Observable<Array<Address>>
   isEditAddrPressed: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    private addressService: AddressService) { }
 
   ngOnInit() {
-    this.getUser();
+    this.getUserAddresses();
   }
-  getUser() {
-    this.userDetails$ = this.userService.getUser();
+
+  getUserAddresses() {
+    this.userAddresses$ = this.addressService.getUserAddresses();
   }
 
   editAddress() {
@@ -39,7 +43,6 @@ export class AddressesComponent implements OnInit {
     return params;
   }
   addressEditedDone() {
-    this.userDetails$ = this.userService.getUser();
     this.isEditAddrPressed = false;
   }
 }

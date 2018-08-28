@@ -23,7 +23,7 @@
   <div *ngIf="isAuthenticated">
     <div class="btn  helpbtn" [ngClass]="[isOpen ? 'openhelp':'']" (mouseenter)="dropdown.show()" (mouseleave)="dropdown.hide()">
       <i class="fa fa-user mr-2" aria-hidden="true"></i>
-      <strong class="text-capitalize">{{email}}
+      <strong class="text-capitalize">{{name}}
         <i class="fa pl-3 fa-chevron-down"></i>
       </strong>
     </div>
@@ -32,22 +32,21 @@
       <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu text-center" [ngClass]="[isAuthenticated ? 'arrowalignement':'']"
         [ngClass]="[isScrolled ? '':'notscrolled']" role="menu" aria-labelledby="button-triggers-manual">
         <ul>
-          <li role="menuitem">
+          <!-- <li role="menuitem">
             <a class="dropdown-item" routerLink="/user/profile">My Profile</a>
-          </li>
-          <li class="divider dropdown-divider"></li>
-
+          </li> -->
+          <!-- <li class="divider dropdown-divider"></li>
           <li role="menuitem">
             <a class="dropdown-item" routerLink="/user/orders">My Orders</a>
-          </li>
-          <li class="divider dropdown-divider"></li>
+          </li> -->
+          <!-- <li class="divider dropdown-divider"></li> -->
           <li role="menuitem">
             <a class="dropdown-item" routerLink="/user/addresses">My Saved Addresses</a>
           </li>
-          <li class="divider dropdown-divider"></li>
+          <!-- <li class="divider dropdown-divider"></li>
           <li role="menuitem">
             <a class="dropdown-item" routerLink="/user/favorite-products">My Favorite Products</a>
-          </li>
+          </li> -->
           <li class="divider dropdown-divider"></li>
           <li role="menuitem">
             <a class="dropdown-item" (click)="logout()">Logout</a>
@@ -66,12 +65,12 @@
     </button>
     <ul id="dropdown-split" *dropdownMenu class="dropdown-menu mobile-profile" role="menu" aria-labelledby="button-split">
       <li role="menuitem">
-        <a class="dropdown-item" routerLink="/user/profile">My Profile</a>
+        <!-- <a class="dropdown-item" routerLink="/user/profile">My Profile</a> -->
       </li>
       <li class="divider dropdown-divider"></li>
 
       <li role="menuitem">
-        <a class="dropdown-item" routerLink="/user/orders">My Orders</a>
+        <!-- <a class="dropdown-item" routerLink="/user/orders">My Orders</a> -->
       </li>
       <li class="divider dropdown-divider"></li>
       <li role="menuitem">
@@ -79,7 +78,7 @@
       </li>
       <li class="divider dropdown-divider"></li>
       <li role="menuitem">
-        <a class="dropdown-item" routerLink="/user/favorite-products">My Favorite Products</a>
+        <!-- <a class="dropdown-item" routerLink="/user/favorite-products">My Favorite Products</a> -->
       </li>
       <li class="divider dropdown-divider"></li>
       <li role="menuitem">

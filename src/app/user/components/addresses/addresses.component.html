@@ -1,5 +1,5 @@
-<div *ngIf="userDetails$ | async; let userDetails" class="useraddress">
-  <div *ngIf="userDetails.ship_address!=null">
+<div *ngIf="userAddresses$ | async; let userAddresses" class="useraddress">
+  <div *ngIf="userAddresses.length !=0">
     <span *ngIf="!isEditAddrPressed; else elseBlock" class='reviewlink pl-1 mb-3' (click)="editAddress()">
       <i class="fa fa-edit"></i>
     </span>
@@ -9,7 +9,7 @@
       </span>
     </ng-template>
     <div class="clearfix"></div>
-    <app-saved-address *ngIf="!isEditAddrPressed" [userDetails]="userDetails"></app-saved-address>
+    <app-saved-address *ngIf="!isEditAddrPressed" [userAddresses]="userAddresses"></app-saved-address>
     <div *ngIf="isEditAddrPressed">
       <div class="head">Edit Address</div>
       <app-add-edit-address 
@@ -20,12 +20,12 @@
       ></app-add-edit-address>
     </div>
   </div>
-  <div *ngIf="userDetails?.ship_address===null">
+  <!-- <div *ngIf="userDetails?.ship_address===null">
     <div class="head">Add Address</div>
     <app-add-edit-address 
       [isEditAddrPressed]="false" 
       (isAddressEdited)="addressEditedDone($event)" 
       [addressParams]="buildAddressParams(userDetails)"
       [stateName]="null"></app-add-edit-address>
-  </div>
+  </div> -->
 </div>

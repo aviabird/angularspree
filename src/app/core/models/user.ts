@@ -15,6 +15,8 @@ export class User {
   uid: string;
   spree_api_key: string;
   email: string;
+  first_name: string;
+  last_name: string;
   created_at: string;
   updated_at: string;
   bill_address_id: string;
@@ -22,7 +24,7 @@ export class User {
   payment_sources: [any];
   bill_address: [Address];
   ship_address: [Address];
-  error?: {error: string, errors: Object};
+  error?: { error: string, errors: Object };
   access_token: string;
   client: string;
 }

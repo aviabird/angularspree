@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SavedAddressComponent implements OnInit {
 
-  @Input() userDetails;
+  @Input() userAddresses;
   constructor() { }
 
   ngOnInit() {

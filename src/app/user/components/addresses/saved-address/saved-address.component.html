@@ -1,15 +1,19 @@
-<div class="items" *ngIf="userDetails.ship_address; let address">
-  <div class="address-row" *ngIf="!isEditAddrPressed">
-    <div class="row">
-      <div class="col name">
-        <span class="name mr-2">{{address.full_name}}</span>
-        <span class="mob">{{address.phone}}</span>
-      </div>     
-    </div>
-    <div class="address">{{address.address1}} {{address.address2}}
-      <span class="address-field">{{address.city}}</span>,
-      <span class="address-field"> {{address.state?.name}}</span>
-      <span class="address-field pin">-{{address.zipcode}}</span>
+<div class="items" *ngIf="userAddresses?.length > 0">
+  <div *ngFor="let address of userAddresses">
+    <hr>
+    <div class="address-row" *ngIf="!isEditAddrPressed">
+      <div class="row">
+        <div class="col name">
+          <span class="name mr-2">{{address.first_name}}</span>
+          <span class="name mr-2">{{address.last_name}}</span>
+          <span class="mob">{{address.phone}}</span>
+        </div>
+      </div>
+      <div class="address">{{address.address_line_1}} {{address.address_line_2}}
+        <span class="address-field">{{address.city}}</span>,
+        <!-- <span class="address-field"> {{address.state?.name}}</span> -->
+        <span class="address-field pin">-{{address.zip_code}}</span>
+      </div>
     </div>
   </div>
 </div>

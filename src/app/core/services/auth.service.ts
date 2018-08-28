@@ -11,6 +11,8 @@ import { Authenticate, User } from '../models/user';
 import { HttpRequest } from '@angular/common/http/src/request';
 import { ToastrService, ActiveToast } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
+import { getCurrentUser } from '../../auth/reducers/selectors';
+
 
 @Injectable()
 export class AuthService {
@@ -43,8 +45,13 @@ export class AuthService {
     const params = { email, password };
     return this.http.post<User>('http://localhost:3000/api/v1/login', params).pipe(
       map(user => {
-        this.setTokenInLocalStorage(user);
-        this.store.dispatch(this.actions.loginSuccess());
+        const userToken = user['token']
+        this.setTokenInLocalStorage(user, 'user_token');
+        this.store.dispatch(this.actions.getCurrentUser(userToken))
+        this.store.select(getCurrentUser).
+          subscribe((userData) => {
+            this.setTokenInLocalStorage(userData, 'current_user')
+          })
         return user;
       }),
       tap(
@@ -70,7 +77,7 @@ export class AuthService {
     const params = { spree_user: data };
     return this.http.post<User>('auth/accounts', params).pipe(
       map(user => {
-        this.setTokenInLocalStorage(user);
+        this.setTokenInLocalStorage(user, 'current_user');
         this.store.dispatch(this.actions.loginSuccess());
         return user;
       }),
@@ -152,11 +159,12 @@ export class AuthService {
    * @memberof AuthService
    */
   logout() {
-    return this.http.get('logout.json').pipe(
+    return this.http.post('http://localhost:3000/api/v1/logout', {}).pipe(
       map((res: Response) => {
         // Setting token after login
         if (isPlatformBrowser(this.platformId)) {
-          localStorage.removeItem('user');
+          localStorage.removeItem('user_token');
+          localStorage.removeItem('current_user');
         }
         this.store.dispatch(this.actions.logoutSuccess());
         return res;
@@ -178,15 +186,17 @@ export class AuthService {
         ? JSON.parse(userJson)
         : {};
 
-    return new HttpHeaders({
-      'Content-Type': request.headers.get('Content-Type') || 'application/json',
-      'token-type': 'Bearer',
-      access_token: user.access_token || [],
-      client: user.client || [],
-      uid: user.uid || [],
-      'Auth-Token': user.spree_api_key || [],
-      // 'ng-api': 'true'
-    });
+    if (this.getUserToken()) {
+      return new HttpHeaders({
+        'Content-Type': 'application/vnd.api+json',
+        'Authorization': `Bearer ${this.getUserToken().token}`,
+        access_token: user.access_token || [],
+        client: user.client || [],
+        uid: user.uid || [],
+        // 'Auth-Token': user.spree_api_key || [],
+        // 'ng-api': 'true'
+      });
+    }
   }
 
   /**
@@ -197,17 +207,24 @@ export class AuthService {
    *
    * @memberof AuthService
    */
-  private setTokenInLocalStorage(user_data: any): void {
+  private setTokenInLocalStorage(user_data: any, keyName: string): void {
     const jsonData = JSON.stringify(user_data);
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('user', jsonData);
+      localStorage.setItem(keyName, jsonData);
     }
   }
 
+  /**
+   *
+   *
+   * @param {string} provider
+   * @returns
+   * @memberof AuthService
+   */
   socialLogin(provider: string) {
     return this.oAuthService.authenticate<User>(provider).pipe(
       map(user => {
-        this.setTokenInLocalStorage(user);
+        this.setTokenInLocalStorage(user, 'current_user');
         return user;
       }),
       catchError(_ => {
@@ -215,5 +232,32 @@ export class AuthService {
         return observableOf('Social login failed');
       })
     );
+  }
+
+/**
+ *
+ *
+ * @param {*} token
+ * @returns
+ * @memberof AuthService
+ */
+loadCurrentUser(token) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/vnd.api+json',
+      'Authorization': `Bearer ${token}`
+    })
+    return this.http.get(`http://localhost:3000/api/v1/current_user`, { headers: headers }).pipe(
+      map(userInfo => {
+        return userInfo;
+      }),
+      tap(
+        _ => this.router.navigate(['/']),
+        user => this.toastrService.error('Unable to find user', 'ERROR!')
+      )
+    )
+  }
+
+  getUserToken() {
+    return isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user_token')) : '{}';
   }
 }
