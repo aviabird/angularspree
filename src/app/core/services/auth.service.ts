@@ -134,13 +134,12 @@ export class AuthService {
   /**
    *
    *
-   * @returns {Observable<any>}
-   *
+   * @returns {(Observable<{status: string} & User>)}
    * @memberof AuthService
    */
-  authorized(): Observable<any> {
+  authorized(): Observable<{status: string} & User> {
     return this.http
-      .get('auth/authenticated')
+      .get<{status: string} | User>('auth/authenticated')
       .pipe(catchError(error => of(error.error)));
   }
 
@@ -204,7 +203,14 @@ export class AuthService {
     }
   }
 
-  socialLogin(provider: string) {
+  /**
+   *
+   *
+   * @param {string} provider
+   * @returns {(Observable<string | User>)}
+   * @memberof AuthService
+   */
+  socialLogin(provider: string): Observable<string | User> {
     return this.oAuthService.authenticate<User>(provider).pipe(
       map(user => {
         this.setTokenInLocalStorage(user);

@@ -1,3 +1,9 @@
+import { getlayoutStateJS } from './../../layout/reducers/layout.selector';
+import { AppState } from './../../interfaces';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { LayoutState } from './../../layout/reducers/layout.state';
+import { tap } from 'rxjs/operators';
 import { LineItem } from './../../core/models/line_item';
 import { Order } from './../../core/models/order';
 import { UserService } from './../../user/services/user.service';
@@ -19,29 +25,34 @@ export class OrderFailedComponent implements OnInit, OnDestroy {
   isMobile = false;
   screenwidth: number;
   subscriptionList$: Array<Subscription> = [];
+  layoutState$: Observable<LayoutState>;
 
   constructor(
     private userService: UserService,
     private activatedRouter: ActivatedRoute,
     private route: Router,
     private checkoutService: CheckoutService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private store: Store<AppState>,
   ) { }
 
   ngOnInit() {
+    this.layoutState$ = this.store.select(getlayoutStateJS);
+
     this.subscriptionList$.push(
       this.activatedRouter.queryParams
-        .subscribe(params => {
-          this.queryParams = params
-          this.errorReason = this.queryParams.reason;
-          if (!this.queryParams.orderReferance) {
-            this.route.navigate(['/'])
-          }
-        }),
-      this.userService
-        .getOrderDetail(this.queryParams.orderReferance)
-        .subscribe(order => {
-          this.orderDetails = order
+        .pipe(
+          tap(({ orderReferance }) => {
+            this.subscriptionList$.push(
+              this.userService
+              .getOrderDetail(orderReferance)
+              .subscribe(order => this.orderDetails = order)
+            )
+          })
+        )
+        .subscribe(({ reason, orderReferance }) => {
+          this.errorReason = reason;
+          if (!orderReferance) { this.route.navigate(['/']) }
         })
     );
     this.calculateInnerWidth();

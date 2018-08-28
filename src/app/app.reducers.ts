@@ -12,7 +12,7 @@ import * as fromAuth from './auth/reducers/auth.reducer';
  *
  * More: https://egghead.io/lessons/javascript-redux-implementing-combinereducers-from-scratch
  */
-import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
+import { ActionReducer, ActionReducerMap, MetaReducer, Action } from '@ngrx/store';
 
 import { AppState as State } from './interfaces';
 
@@ -42,7 +42,7 @@ export const reducers: ActionReducerMap<State> = {
 
 // console.log all actions
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
-  return function (state: State, action: any): State {
+  return function (state: State, action: Action): State {
     // console.log('state', state);
     // console.log('action', action);
 

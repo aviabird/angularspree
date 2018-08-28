@@ -24,7 +24,7 @@ export class OrderSuccessComponent implements OnInit, OnDestroy {
   screenwidth: number;
   subscriptionList$: Array<Subscription> = [];
   layoutState$: Observable<LayoutState>;
-  
+
   constructor(
     private userService: UserService,
     private activatedRouter: ActivatedRoute,
@@ -35,7 +35,7 @@ export class OrderSuccessComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.layoutState$ = this.store.select(getlayoutStateJS);
-    
+
     this.subscriptionList$.push(
       this.activatedRouter.queryParams
       .subscribe(params => {

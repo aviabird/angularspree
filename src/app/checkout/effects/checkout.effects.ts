@@ -1,3 +1,4 @@
+import { Action } from '@ngrx/store';
 import { map, switchMap } from 'rxjs/operators';
 import { LineItem } from './../../core/models/line_item';
 import { CheckoutService } from './../../core/services/checkout.service';
@@ -7,27 +8,26 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CheckoutEffects {
-  // tslint:disable-next-line:member-ordering
   @Effect()
   AddToCart$ = this.actions$
     .ofType(CheckoutActions.ADD_TO_CART).pipe(
-      switchMap((action: any) => {
+      switchMap<Action & {payload: {variant_id: number, quantity: number}}, LineItem>(action => {
         return this.checkoutService.createNewLineItem(
           action.payload.variant_id,
           action.payload.quantity
         );
       }),
-      map((lineItem: LineItem) => this.actions.addToCartSuccess(lineItem))
+      map(lineItem => this.actions.addToCartSuccess(lineItem))
     );
 
   @Effect()
     RemoveLineItem$ = this.actions$
     .ofType(CheckoutActions.REMOVE_LINE_ITEM)
     .pipe(
-      switchMap((action: any) => {
+      switchMap<Action & {payload: LineItem}, LineItem>(action => {
         return this.checkoutService.deleteLineItem(action.payload);
       }),
-      map((lineItem) => this.actions.removeLineItemSuccess(lineItem))
+      map(lineItem => this.actions.removeLineItemSuccess(lineItem))
     )
 
   constructor(
@@ -39,7 +39,7 @@ export class CheckoutEffects {
 // @Effect()
 // FetchCurrentOrder$ = this.actions$
 // .ofType(CartActions.FETCH_CURRENT_ORDER)
-// .switchMap((action: any) => {
+// .switchMap(action => {
 //   return this.cartService.fetchCurrentOrder();
 // })
 // .map((order: Order) => {

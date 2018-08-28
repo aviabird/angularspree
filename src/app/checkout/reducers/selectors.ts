@@ -28,11 +28,11 @@ export function fetchTotalCartValue(state: CheckoutState) {
 }
 
 export function fetchShipAddress(state: CheckoutState) {
-  return state.shipAddress ? state.shipAddress.toJS() : state.shipAddress;
+  return state.shipAddress ? state.shipAddress : state.shipAddress;
 }
 
 export function fetchBillAddress(state: CheckoutState) {
-  return state.billAddress ? state.billAddress.toJS() : state.billAddress;
+  return state.billAddress ? state.billAddress : state.billAddress;
 }
 
 export function fetchOrderState(state: CheckoutState) {
