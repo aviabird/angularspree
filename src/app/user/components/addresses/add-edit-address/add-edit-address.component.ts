@@ -24,7 +24,7 @@ export class AddEditAddressComponent implements OnInit, OnDestroy {
   @Output() isAddressEdited: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() stateName: string;
   subscriptionList$: Array<Subscription> = [];
-  
+
   constructor(private fb: FormBuilder,
     private addrService: AddressService,
     private toastrService: ToastrService,
@@ -68,7 +68,7 @@ export class AddEditAddressComponent implements OnInit, OnDestroy {
           this.userService.updateUserAddress(this.addressParams)
             .subscribe((res: any) => {
               this.navigatePage();
-             
+
             })
         )
       } else {
@@ -84,7 +84,6 @@ export class AddEditAddressComponent implements OnInit, OnDestroy {
   }
 
   fillAddress(addressForm) {
-    debugger
     const existingAddress = this.addressParams.user.ship_address;
     addressForm.get('zipcode').setValue(existingAddress.zipcode);
     addressForm.get('address2').setValue(existingAddress.address2);
@@ -95,7 +94,7 @@ export class AddEditAddressComponent implements OnInit, OnDestroy {
     addressForm.get('address1').setValue(existingAddress.address1);
     addressForm.get('phone').setValue(existingAddress.phone);
   }
-  
+
   navigatePage() {
     this.isAddressEdited.emit(true)
   }
