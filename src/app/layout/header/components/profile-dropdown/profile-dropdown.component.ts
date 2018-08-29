@@ -17,7 +17,7 @@ export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
   currentUser: any;
   subnav: boolean;
   isOpen: boolean;
-  logoutSubs$: Subscription;
+  subList$: Array<Subscription> = [];
 
   constructor(
     private authService: AuthService,
@@ -40,7 +40,7 @@ export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
 
   logout() {
     this.subnav = !this.subnav;
-    this.logoutSubs$ = this.authService.logout().subscribe(_ => this.router.navigate(['auth', 'login']));
+    this.subList$.push(this.authService.logout().subscribe(_ => this.router.navigate(['auth', 'login'])));
   }
 
   login() {
@@ -48,6 +48,6 @@ export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.logoutSubs$.unsubscribe();
+    this.subList$.map(sub$ => sub$.unsubscribe());
   }
 }
