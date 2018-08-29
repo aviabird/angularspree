@@ -22,8 +22,6 @@ export class OrderFailedComponent implements OnInit, OnDestroy {
   queryParams: Params;
   orderDetails: Order;
   errorReason: string;
-  isMobile = false;
-  screenwidth: number;
   subscriptionList$: Array<Subscription> = [];
   layoutState$: Observable<LayoutState>;
 
@@ -55,20 +53,10 @@ export class OrderFailedComponent implements OnInit, OnDestroy {
           if (!orderReferance) { this.route.navigate(['/']) }
         })
     );
-    this.calculateInnerWidth();
   }
 
   ngOnDestroy() {
     this.subscriptionList$.map(sub$ => sub$.unsubscribe());
-  }
-
-  calculateInnerWidth() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.screenwidth = window.innerWidth;
-      if (this.screenwidth <= 1000) {
-        this.isMobile = true;
-      }
-    }
   }
 
   getProductImageUrl(line_item: LineItem) {
