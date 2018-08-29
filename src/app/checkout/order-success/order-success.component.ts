@@ -28,31 +28,31 @@ export class OrderSuccessComponent implements OnInit, OnDestroy {
     private route: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
     private store: Store<AppState>,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.layoutState$ = this.store.select(getlayoutStateJS);
 
     this.subscriptionList$.push(
       this.activatedRouter.queryParams
-      .pipe(
-        tap(({orderReferance}) => {
-          interval(200)
-            .pipe(
-              switchMap(_ => this.userService.getOrderDetail(orderReferance)),
-              take(30),
-              skipWhile(order => order.shipment_state !== 'ready'),
-              map(order => this.orderDetails = order),
-              take(1)
-            )
+        .pipe(
+          tap(({ orderReferance }) => {
+            interval(200)
+              .pipe(
+                switchMap(_ => this.userService.getOrderDetail(orderReferance)),
+                take(30),
+                skipWhile(order => order.shipment_state !== 'ready'),
+                map(order => this.orderDetails = order),
+                take(1)
+              )
+          })
+        )
+        .subscribe(params => {
+          this.queryParams = params
+          if (!this.queryParams.orderReferance) {
+            this.route.navigate(['/'])
+          }
         })
-      )
-      .subscribe(params => {
-        this.queryParams = params
-        if (!this.queryParams.orderReferance) {
-          this.route.navigate(['/'])
-        }
-      })
     );
   }
 
