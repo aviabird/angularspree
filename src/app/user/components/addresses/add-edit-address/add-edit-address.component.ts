@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { AddressService } from '../../../../checkout/address/services/address.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../services/user.service';
+import { Address } from '../../../../core/models/address';
 
 @Component({
   selector: 'app-add-edit-address',
@@ -68,14 +69,13 @@ export class AddEditAddressComponent implements OnInit {
   }
 
   fillAddress(addressForm) {
-    const existingAddress = this.addressParams.user.ship_address;
-    addressForm.get('zipcode').setValue(existingAddress.zipcode);
-    addressForm.get('address2').setValue(existingAddress.address2);
+    const existingAddress: Address = this.addressParams;
+    addressForm.get('zipcode').setValue(existingAddress.zip_code);
+    addressForm.get('address2').setValue(existingAddress.address_line_2);
     addressForm.get('city').setValue(existingAddress.city);
-    addressForm.get('state_name').setValue(existingAddress.state.name);
-    addressForm.get('firstname').setValue(existingAddress.firstname);
-    addressForm.get('lastname').setValue(existingAddress.lastname);
-    addressForm.get('address1').setValue(existingAddress.address1);
+    addressForm.get('firstname').setValue(existingAddress.first_name);
+    addressForm.get('lastname').setValue(existingAddress.last_name);
+    addressForm.get('address1').setValue(existingAddress.address_line_1);
     addressForm.get('phone').setValue(existingAddress.phone);
   }
   navigatePage() {

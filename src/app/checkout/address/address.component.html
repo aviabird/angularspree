@@ -1,5 +1,5 @@
 <div class="address-section col-12 col-md-8 col-lg-8">
-	<div *ngIf=!editAddress>
+	<!-- <div *ngIf=!editAddress>
 		<div *ngIf="shipAddress$ | async; let shipAddress" class="row m-0">
 			<div class="left col-12 col-md-8 col-lg-8 m-0 ">
 				<div class="edit-address">
@@ -15,15 +15,42 @@
 				<button (click)="checkoutToPayment()" class="btn themebtnprimary">continue to payment</button>
 			</div>
 		</div>
-	</div>
-	<div *ngIf="!(shipAddress$ | async)" class="row">
+	</div> -->
+	<div *ngIf="true" class="row">
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0">
 			<div class="add-address">
-				<span class="add-label">
-					ADD NEW ADDRESS
+				<span class="add-label reviewlink pl-1" (click)=addNewAddress()>
+					+ ADD A NEW ADDRESS
 				</span>
 			</div>
-			<app-add-address [addressEdit]="null"></app-add-address>
+			<app-add-address [addressEdit]="null" *ngIf="isAddNewAddress" (cancelAddress)="cancelAddress($event)"></app-add-address>
+		</div>
+		<!-- TODO: Address list should be seperate component -->
+		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0" *ngIf="userAddresses$ | async; let userAddresses">
+			<div *ngFor="let address of userAddresses; index as i">
+				<hr>
+				<div class="address-row reviewlink"  (click)="selectedAddress(i)">
+					<div class="row">
+						<div class="col name">
+							<button class='reviewlink pl-1 mb-3' (click)="editAddress(address)">Edit</button>
+						</div>
+						<div class="col name" *ngIf="showDeliverhere && selectedIndex === i ">
+								<button class='reviewlink pl-1 mb-3' (click)="selectedDeliveryAddress(address)">Deliver here</button>
+							</div>
+					</div>
+					<div class="row">
+						<div class="col name">
+							<span class="name mr-2">{{address.first_name}}</span>
+							<span class="name mr-2">{{address.last_name}}</span>
+							<span class="mob">{{address.phone}}</span>
+						</div>
+					</div>
+					<div class="address">{{address.address_line_1}} {{address.address_line_2}}
+						<span class="address-field">{{address.city}}</span>,
+						<span class="address-field pin">-{{address.zip_code}}</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div *ngIf="editAddress" class="row">

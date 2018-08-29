@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
+import { AddressService } from './services/address.service';
 
 @Component({
   selector: 'app-address',
@@ -15,24 +16,29 @@ import { Subscription, Observable } from 'rxjs';
   styleUrls: ['./address.component.scss'],
 })
 export class AddressComponent implements OnInit, OnDestroy {
-
   stateSub$: Subscription;
   orderState: string;
   orderNumber$: Observable<number>;
   shipAddress$: Observable<Address>;
-  editAddress: boolean;
+  isEditButtonPressed: boolean;
   addressData: Address;
+  isAddNewAddress: boolean;
+  userAddresses$: Observable<Array<Address>>;
+  showDeliverhere: boolean;
+  selectedIndex: number;
 
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
+    private addressService: AddressService,
     private router: Router) {
-    this.orderNumber$ = this.store.select(getOrderNumber);
+    // this.orderNumber$ = this.store.select(getOrderNumber);
     this.shipAddress$ = this.store.select(getShipAddress);
-    this.stateSub$ = this.store.select(getOrderState)
-      .subscribe(state => this.orderState = state);
+    // this.stateSub$ = this.store.select(getOrderState)
+    // .subscribe(state => this.orderState = state);
   }
 
   ngOnInit() {
+    this.getUserAddresses();
   }
 
   checkoutToPayment() {
@@ -52,16 +58,39 @@ export class AddressComponent implements OnInit, OnDestroy {
       this.checkoutService.changeOrderState()
         .subscribe();
     }
-    this.stateSub$.unsubscribe();
+    // this.stateSub$.unsubscribe();
   }
 
   userAddressEdit(addressData) {
     this.addressData = addressData
-    this.editAddress = true;
+    this.isEditButtonPressed = true;
   }
 
   addressEditedDone() {
-    this.editAddress = false;
+    this.isEditButtonPressed = false;
   }
 
+  addNewAddress() {
+    this.isAddNewAddress = true;
+  }
+
+  cancelAddress(event) {
+    return this.isAddNewAddress = event;
+  }
+
+  getUserAddresses() {
+    this.userAddresses$ = this.addressService.getUserAddresses()
+  }
+
+  selectedAddress(index: number) {
+    this.showDeliverhere = true;
+    this.selectedIndex = index;
+  }
+
+  selectedDeliveryAddress(address: Address) {
+  }
+
+  editAddress(selectedAddress) {
+    // this.isEditButtonPressed.emit({ address: selectedAddress, isEditButtonPressed: true })
+  }
 }

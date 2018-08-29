@@ -3,6 +3,11 @@
     <hr>
     <div class="address-row" *ngIf="!isEditAddrPressed">
       <div class="row">
+          <div class="col name">
+              <button class='reviewlink pl-1 mb-3' (click)="editAddress(address)">Edit</button>
+          </div>
+      </div>
+      <div class="row">
         <div class="col name">
           <span class="name mr-2">{{address.first_name}}</span>
           <span class="name mr-2">{{address.last_name}}</span>

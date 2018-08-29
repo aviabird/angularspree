@@ -56,7 +56,7 @@ export class AuthService {
       }),
       tap(
         _ => this.router.navigate(['/']),
-        user => this.toastrService.error(user.error.error, 'ERROR!')
+        user => this.toastrService.error('Something went wrong', 'ERROR!')
       )
     );
     // catch should be handled here with the http observable
@@ -74,15 +74,16 @@ export class AuthService {
    * @memberof AuthService
    */
   register(data: User): Observable<User> {
-    const params = { spree_user: data };
-    return this.http.post<User>('auth/accounts', params).pipe(
+    const params = { data: {type: 'user', attributes: data}};
+    return this.http.post<User>('http://localhost:3000/api/v1/register', params).pipe(
       map(user => {
-        this.setTokenInLocalStorage(user, 'current_user');
-        this.store.dispatch(this.actions.loginSuccess());
         return user;
       }),
       tap(
-        _ => _,
+        _ => {
+          this.toastrService.success('You are successfully registerd!', 'Success!!')
+          this.router.navigate(['auth', 'login']);
+      },
         _ => this.toastrService.error('Invalid/Existing data', 'ERROR!!')
       )
     );

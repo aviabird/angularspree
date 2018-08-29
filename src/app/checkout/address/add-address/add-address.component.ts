@@ -20,7 +20,8 @@ export class AddAddressComponent implements OnInit {
   states: any;
   @Input() addressEdit: any
   @Input() orderNumber: string
-  @Output() addressEdited: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() addressEdited = new EventEmitter<boolean>();
+  @Output() cancelAddress = new EventEmitter<boolean>();
 
   constructor(
     private fb: FormBuilder,
@@ -106,5 +107,9 @@ export class AddAddressComponent implements OnInit {
 
   showEdited() {
     this.addressEdited.emit(true)
+  }
+
+  get closeAddressForm() {
+    return this.cancelAddress.emit(false);
   }
 }

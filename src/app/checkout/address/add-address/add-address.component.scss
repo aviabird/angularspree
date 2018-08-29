@@ -49,3 +49,10 @@
     padding: 10px;
   }
 }
+
+.reviewlink {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline
+  }
+}

@@ -66,7 +66,7 @@ export class PaymentModesListComponent implements OnInit {
 
   makePaymentCod() {
     const paymentModeId = this.selectedMode.id;
-    const shipping_pincode = (this.address.zipcode)
+    const shipping_pincode = (this.address.zip_code)
     this.checkoutService.shipmentAvailability(+shipping_pincode)
       .subscribe((res: any) => {
         this.isShippeble = res.available

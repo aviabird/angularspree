@@ -93,12 +93,11 @@ export class HeaderComponent implements OnInit {
     const userToken = this.authService.getUserToken();
     if (userToken) {
       this.store.dispatch(this.authActions.getCurrentUser(userToken.token))
+      this.store.dispatch(this.authActions.login());
+      this.isAuthenticated = this.store.select(getAuthStatus)
     } else {
       this.store.dispatch(this.authActions.logoutSuccess());
     }
-    this.store.dispatch(this.authActions.authorize());
-    this.store.dispatch(this.authActions.login());
-    this.isAuthenticated = this.store.select(getAuthStatus)
     this.totalCartItems = this.store.select(getTotalCartItems);
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;

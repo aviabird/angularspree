@@ -9,14 +9,17 @@
       </span>
     </ng-template>
     <div class="clearfix"></div>
-    <app-saved-address *ngIf="!isEditAddrPressed" [userAddresses]="userAddresses"></app-saved-address>
+    <app-saved-address *ngIf="!isEditAddrPressed" 
+      [userAddresses]="userAddresses"
+      (isEditButtonPressed)="editAddress($event)"
+      ></app-saved-address>
     <div *ngIf="isEditAddrPressed">
       <div class="head">Edit Address</div>
       <app-add-edit-address 
       [isEditAddrPressed]="isEditAddrPressed" 
-      [addressParams]="buildAddressParams(userDetails)" 
+      [addressParams]="selectedAddress" 
       (isAddressEdited)="addressEditedDone($event)"
-      [stateName]="userDetails.ship_address.state.name"
+      [stateName]="Maharashtra"
       ></app-add-edit-address>
     </div>
   </div>

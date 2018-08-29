@@ -13,6 +13,7 @@ export class AddressesComponent implements OnInit {
 
   userAddresses$: Observable<Array<Address>>
   isEditAddrPressed: boolean;
+  selectedAddress: Address;
 
   constructor(private userService: UserService,
     private addressService: AddressService) { }
@@ -22,27 +23,24 @@ export class AddressesComponent implements OnInit {
   }
 
   getUserAddresses() {
-    this.userAddresses$ = this.addressService.getUserAddresses();
+     this.userAddresses$ = this.addressService.getUserAddresses()
   }
 
-  editAddress() {
-    this.isEditAddrPressed = true;
+  editAddress(event) {
+    this.isEditAddrPressed = event.isEditButtonPressed;
+    this.selectedAddress = event.address;
   }
 
   cancelAddressEdit() {
     this.isEditAddrPressed = false;
   }
 
-  buildAddressParams(userDetails) {
-    const params = {
-      user: {
-        email: userDetails.email,
-        ship_address: userDetails.ship_address
-      }
-    }
-    return params;
+  buildAddressParams() {
+    return this.selectedAddress;
   }
   addressEditedDone() {
     this.isEditAddrPressed = false;
   }
+  
+  
 }
