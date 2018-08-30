@@ -1,4 +1,4 @@
-import { map, tap } from 'rxjs/operators';
+import { map, tap, switchMap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { getOrderNumber } from './../../checkout/reducers/selectors';
 import { CheckoutActions } from './../../checkout/actions/checkout.actions';
@@ -18,11 +18,12 @@ export class CheckoutService {
   private orderNumber: number;
 
   /**
-   * Creates an instance of CheckoutService.
-   * @param {HttpService} http
+   *Creates an instance of CheckoutService.
+   * @param {HttpClient} http
    * @param {CheckoutActions} actions
    * @param {Store<AppState>} store
-   *
+   * @param {ToastrService} toastyService
+   * @param {*} platformId
    * @memberof CheckoutService
    */
   constructor(
@@ -61,23 +62,39 @@ export class CheckoutService {
   }
 
   /**
-   *
-   *
+   * This method fetches the current order in two ways.
+   * 1. Guest user
+   *    1. Check for localstorage order details, to find the order.
+   *    2. Create new order if not found.
+   * 2. Logged in User
+   *    1. Get user current user from api.
+   *    2. If not current order, then check for localstorage order details, to find the order.
+   *    3. Create new order if not found.
    * @returns
    *
    * @memberof CheckoutService
    */
   fetchCurrentOrder() {
     return this.http.get<Order>('api/v1/orders/current').pipe(
-      map(order => {
+      tap(order => {
         if (order) {
           const token = order.token;
-          this.setOrderTokenInLocalStorage({ order_token: token });
+          this.setOrderTokenInLocalStorage({ order_token: token, order_number: order.number });
           return this.store.dispatch(
             this.actions.fetchCurrentOrderSuccess(order)
           );
-        } else {
-          this.createEmptyOrder().subscribe();
+        }
+      }),
+      switchMap(order => {
+        if (!order) {
+          if (this.getOrderToken()) {
+            const s_order = JSON.parse(localStorage.getItem('order'));
+            return this
+              .getOrder(s_order.order_number)
+              .pipe(tap(_order => this.store.dispatch(this.actions.fetchCurrentOrderSuccess(_order))));
+          } else {
+            return this.createEmptyOrder();
+          }
         }
       })
     );
@@ -109,10 +126,8 @@ export class CheckoutService {
       .post<Order>('api/v1/orders.json', null, { headers: headers })
       .pipe(
         map(order => {
-          this.setOrderTokenInLocalStorage({ order_token: order.token });
-          return this.store.dispatch(
-            this.actions.fetchCurrentOrderSuccess(order)
-          );
+          this.setOrderTokenInLocalStorage({ order_token: order.token, order_number: order.number });
+          return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
         }),
         tap(
           _ => _,
@@ -265,8 +280,7 @@ export class CheckoutService {
    */
   private getOrderToken() {
     const order = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('order')) : {};
-    const token = order.order_token;
-    return token;
+    return order ? order.order_token : null;
   }
 
   shipmentAvailability(pincode: number): Observable<{available: boolean}> {
@@ -283,6 +297,7 @@ export class CheckoutService {
    */
   private setOrderTokenInLocalStorage(token: any): void {
     const jsonData = JSON.stringify(token);
+    this.orderNumber = token.order_number
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('order', jsonData) ;
     }
