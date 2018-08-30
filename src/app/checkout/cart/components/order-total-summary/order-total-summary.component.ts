@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
+import { getAuthStatus } from '../../../../auth/reducers/selectors';
 
 @Component({
   selector: 'app-order-total-summary',
@@ -25,12 +26,19 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
   shippingProgress;
   currency = environment.config.currency_symbol;
   freeShippingAmount = environment.config.freeShippingAmount;
+  isAuthenticated: boolean;
 
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
     private router: Router) {
     this.stateSub$ = this.store.select(getOrderState)
       .subscribe(state => this.orderState = state);
+
+    this.store.select(getAuthStatus).
+      subscribe(authStatus => {
+        this.isAuthenticated = authStatus
+      })
+
   }
 
   ngOnInit() {
@@ -42,14 +50,18 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
   }
 
   placeOrder() {
-    if (this.orderState === 'cart') {
-      this.checkoutService.changeOrderState().pipe(
-        tap(() => {
-          this.router.navigate(['/checkout', 'address']);
-        }))
-        .subscribe();
+    if (this.isAuthenticated) {
+      if (this.orderState === 'cart') {
+        this.checkoutService.changeOrderState().pipe(
+          tap(() => {
+            this.router.navigate(['/checkout', 'address']);
+          }))
+          .subscribe();
+      } else {
+        this.router.navigate(['/checkout', 'address']);
+      }
     } else {
-      this.router.navigate(['/checkout', 'address']);
+      this.router.navigate(['/auth', 'login']);
     }
   }
 
