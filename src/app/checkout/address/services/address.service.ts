@@ -3,24 +3,30 @@ import { Observable } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { Address } from '../../../core/models/address';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { getCurrentUser } from '../../../auth/reducers/selectors';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../interfaces';
 
 @Injectable()
 export class AddressService {
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastrService: ToastrService,
+    private store: Store<AppState>,
   ) { }
 
   initAddressForm() {
     return this.fb.group({
-      'firstname': ['', Validators.required],
-      'lastname': ['', Validators.required],
-      'address1': ['', Validators.required],
-      'address2': ['', Validators.required],
+      'first_name': ['', Validators.required],
+      'last_name': ['', Validators.required],
+      'address_line_1': ['', Validators.required],
+      'address_line_2': ['', Validators.required],
       'city': ['', Validators.required],
       'phone': ['', Validators.required],
-      'zipcode': ['', Validators.required],
+      'zip_code': ['', Validators.required],
       'state_name': ['', Validators.required]
     });
   }
@@ -66,10 +72,47 @@ export class AddressService {
       + `&address[zipcode]=${updatedAddress.zipcode}`
       + `&address[state_id]=${updatedAddress.state_id}`
       + `&address[country_id]=${updatedAddress.country_id}`
-    return this.http.put(url, {})
+      
+    return this.http.put(url, {}).pipe(
+      map(resp => { return resp }
+      ), tap(_ => { this.toastrService.success('Address Updated SuccesFully!', 'Success'); },
+        _ => { this.toastrService.error('Address Could not be Updated', 'Failed'); }
+      )
+    )
   }
 
-  getUserAddresses(): Observable<Array<Address>> {
-    return this.http.get<Array<Address>>(`http://localhost:3000/api/v1/addresses`)
+  saveUserAddress(address: Address): Observable<Address> {
+    let userId: string;
+    this.store.select(getCurrentUser).subscribe(user => userId = user.id);
+    const params = this.buildAddressJson(address, userId);
+    return this.http.post<Address>(`http://localhost:3000/api/v1/addresses`, params).pipe(
+      map(resp => {
+        return resp;
+      }), tap(_ => { this.toastrService.success('Address added successfully!', 'Success!') },
+        _ => { this.toastrService.error('Could not save address!', 'Failed!') }
+      )
+    )
+  }
+
+  buildAddressJson(address: Address, userId: string) {
+    const params = {
+      'data':
+      {
+        'type': 'address',
+        'attributes':
+          address
+        , 'relationships':
+        {
+          'user':
+          {
+            'data':
+            {
+              'id': userId
+            }
+          }
+        }
+      }
+    };
+    return params;
   }
 }

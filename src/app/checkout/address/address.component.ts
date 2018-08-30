@@ -9,6 +9,8 @@ import { Address } from './../../core/models/address';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { AddressService } from './services/address.service';
+import { UserActions } from '../../user/actions/user.actions';
+import { getUserAddressess } from '../../user/reducers/selector';
 
 @Component({
   selector: 'app-address',
@@ -30,15 +32,18 @@ export class AddressComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
     private addressService: AddressService,
-    private router: Router) {
+    private router: Router,
+    private userActions: UserActions) {
     // this.orderNumber$ = this.store.select(getOrderNumber);
     this.shipAddress$ = this.store.select(getShipAddress);
     // this.stateSub$ = this.store.select(getOrderState)
     // .subscribe(state => this.orderState = state);
+
+    this.store.dispatch(this.userActions.fetchUserAddress());
+    this.userAddresses$ = this.store.select(getUserAddressess);
   }
 
   ngOnInit() {
-    this.getUserAddresses();
   }
 
   checkoutToPayment() {
@@ -76,10 +81,6 @@ export class AddressComponent implements OnInit, OnDestroy {
 
   cancelAddress(event) {
     return this.isAddNewAddress = event;
-  }
-
-  getUserAddresses() {
-    this.userAddresses$ = this.addressService.getUserAddresses()
   }
 
   selectedAddress(index: number) {

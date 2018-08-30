@@ -3,7 +3,7 @@ import { User } from '../../core/models/user';
 
 export interface AuthState extends Map<string, any> {
   isAuthenticated: boolean;
-  currentUser: User,
+  currentUser: any,
 }
 
 export const AuthStateRecord = Record({

@@ -18,6 +18,9 @@ export function reducer(state = initialState, { type, payload }: any): UserState
 
       return state.merge({ favorite_products: products }) as UserState;
 
+    case UserActions.FETCH_USER_ADDRESS_SUCCEESS:
+      return state.merge({ userAddresses: payload }) as UserState;
+
     default:
       return state;
   }

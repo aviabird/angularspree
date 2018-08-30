@@ -27,16 +27,16 @@
 		</div>
 		<!-- TODO: Address list should be seperate component -->
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0" *ngIf="userAddresses$ | async; let userAddresses">
+			<hr>
 			<div *ngFor="let address of userAddresses; index as i">
-				<hr>
-				<div class="address-row reviewlink"  (click)="selectedAddress(i)">
+				<div class="address-row reviewlink" (click)="selectedAddress(i)">
 					<div class="row">
-						<div class="col name">
+						<!-- <div class="col name">
 							<button class='reviewlink pl-1 mb-3' (click)="editAddress(address)">Edit</button>
-						</div>
+						</div> -->
 						<div class="col name" *ngIf="showDeliverhere && selectedIndex === i ">
-								<button class='reviewlink pl-1 mb-3' (click)="selectedDeliveryAddress(address)">Deliver here</button>
-							</div>
+							<button class='reviewlink pl-1 mb-3' (click)="selectedDeliveryAddress(address)">Deliver here</button>
+						</div>
 					</div>
 					<div class="row">
 						<div class="col name">
@@ -51,9 +51,10 @@
 					</div>
 				</div>
 			</div>
+			<hr>
 		</div>
 	</div>
-	<div *ngIf="editAddress" class="row">
+	<div *ngIf="false" class="row">
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0">
 			<div class="add-address">
 				<span class="add-label">

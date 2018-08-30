@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
+import { Address } from '../../core/models/address';
 
 @Injectable()
 export class UserService {
@@ -79,6 +80,10 @@ export class UserService {
   createUserAddress(updatedAddress) {
     const url = `address/create_address`
     return this.http.post(url, updatedAddress)
+  }
+
+  getUserAddresses(): Observable<Array<Address>> {
+    return this.http.get<Array<Address>>(`http://localhost:3000/api/v1/addresses`)
   }
 }
 

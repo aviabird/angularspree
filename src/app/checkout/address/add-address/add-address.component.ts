@@ -4,9 +4,12 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { ToastrService } from 'ngx-toastr';
 import { AddressService } from '../services/address.service';
 import { AuthActions } from '../../../auth/actions/auth.actions';
-import { getAuthStatus } from '../../../auth/reducers/selectors';
+import { getAuthStatus, getCurrentUser } from '../../../auth/reducers/selectors';
 import { CheckoutService } from '../../../core/services/checkout.service';
 import { AppState } from '../../../interfaces';
+import { User } from '../../../core/models/user';
+import { Observable } from 'rxjs';
+import { UserActions } from '../../../user/actions/user.actions';
 
 @Component({
   selector: 'app-add-address',
@@ -22,6 +25,7 @@ export class AddAddressComponent implements OnInit {
   @Input() orderNumber: string
   @Output() addressEdited = new EventEmitter<boolean>();
   @Output() cancelAddress = new EventEmitter<boolean>();
+  currentUser$: Observable<User>;
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +33,8 @@ export class AddAddressComponent implements OnInit {
     private checkoutService: CheckoutService,
     private addrService: AddressService,
     private store: Store<AppState>,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private userActions: UserActions
   ) {
     this.addressForm = addrService.initAddressForm();
     this.emailForm = addrService.initEmailForm();
@@ -46,17 +51,15 @@ export class AddAddressComponent implements OnInit {
     if (this.addressEdit != null) {
       this.existingAddress(this.addressForm)
     }
-
   }
 
   onSubmit() {
     const address = this.addressForm.value;
-    let addressAttributes;
     for (const state of this.states) {
       if (state.name === address.state_name) {
-        address['state_id'] = state.id;
-        address['country_id'] = state.country_id;
-        address['state_name'] = state.name;
+        address['state_id'] = 1987;
+        address['country_id'] = 105;
+        address['state_name'] = 'Maharashtra';
         break;
       }
     }
@@ -65,25 +68,18 @@ export class AddAddressComponent implements OnInit {
         if (this.isAuthenticated) {
           this.addrService.updateAddress(address, this.addressEdit.id, this.orderNumber)
             .subscribe(data => {
-              this.showEdited();
-              this.toastrService.success('Address Updated SuccesFully!', 'Success');
-            },
-              error => {
-                this.toastrService.error('Address Could not be Updated', 'Failed');
-              }
-            )
+              this.closeAddressForm();
+            })
         }
       } else if (this.addressEdit === null) {
         if (this.isAuthenticated) {
-          addressAttributes = this.addrService.createAddresAttributes(address);
-        } else {
-          const email = this.getEmailFromUser();
-          addressAttributes = this.addrService.createGuestAddressAttributes(
-            address,
-            email
-          );
+          this.addrService.saveUserAddress(address).
+            subscribe(_ => {
+              this.closeAddressForm();
+              this.store.dispatch(this.userActions.fetchUserAddress());
+            });
         }
-        this.checkoutService.updateOrder(addressAttributes).subscribe();
+        // this.checkoutService.updateOrder(addressAttributes).subscribe();
       }
     } else {
       this.toastrService.error('Some fields are blank!', 'Unable to save address!');
@@ -109,7 +105,7 @@ export class AddAddressComponent implements OnInit {
     this.addressEdited.emit(true)
   }
 
-  get closeAddressForm() {
+  closeAddressForm() {
     return this.cancelAddress.emit(false);
   }
 }

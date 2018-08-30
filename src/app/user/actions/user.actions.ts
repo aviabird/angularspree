@@ -1,6 +1,6 @@
 import { Product } from './../../core/models/product';
-import { Action } from '@ngrx/store';
 import { Order } from '../../core/models/order';
+import { Address } from '../../core/models/address';
 
 export class UserActions {
   static GET_USER_ORDERS = 'GET_USER_ORDERS';
@@ -8,6 +8,8 @@ export class UserActions {
   static GET_USER_FAVORITE_PRODUCTS = 'GET_USER_FAVORITE_PRODUCTS';
   static GET_USER_FAVORITE_PRODUCTS_SUCCESS = 'GET_USER_FAVORITE_PRODUCTS_SUCCESS';
   static REMOVE_FROM_FAVORITE_PRODUCTS = 'REMOVE_FROM_FAVORITE_PRODUCTS';
+  static FETCH_USER_ADDRESS = 'FETCH_USER_ADDRESS';
+  static FETCH_USER_ADDRESS_SUCCEESS = 'FETCH_USER_ADDRESS_SUCCEESS';
 
   getUserOrders(email: string, page: number) {
     return {
@@ -30,6 +32,20 @@ export class UserActions {
 
   removeFromFavoriteProducts(id: number) {
     return { type: UserActions.REMOVE_FROM_FAVORITE_PRODUCTS, payload: id };
+  }
+
+  fetchUserAddress() {
+    debugger
+    return {
+      type: UserActions.FETCH_USER_ADDRESS
+    }
+  }
+
+  fetchUserAddressSuccess(addressList: Address[]) {
+    return {
+      type: UserActions.FETCH_USER_ADDRESS_SUCCEESS,
+      payload: addressList
+    }
   }
 
 }

@@ -14,7 +14,7 @@ const fetchAuthStatus = function (state: AuthState): boolean {
 }
 
 const fetchCurrentUser = function (state: AuthState): User {
-    return state.currentUser;
+    return state.currentUser.toJS();
 }
 
 // *************************** PUBLIC API's ****************************

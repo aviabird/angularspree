@@ -49,6 +49,7 @@ export function fetchItemTotal(state: CheckoutState) {
 export function fetchAdjustmentTotal(state: CheckoutState) {
   return state.adjustmentTotal;
 }
+
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCheckoutState, fetchLineItems);
 export const getOrderNumber = createSelector(getCheckoutState, fetchOrderNumber);
