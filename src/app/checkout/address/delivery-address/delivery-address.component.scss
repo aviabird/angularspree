@@ -7,7 +7,7 @@
     padding-top: 25px;
     padding-left: 45px;
     display: inline-block;
-    height: 296px;
+    height: auto;
     width: 302px;
     margin-right: 25px;
     border-radius: 4px;
@@ -50,6 +50,7 @@
     }
     .serviceability {
       font-size: 13px;
+      margin-bottom: 20px;
     }
     .select {
       cursor: pointer;

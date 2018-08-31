@@ -41,7 +41,7 @@ export class ProductPriceInfoComponent implements OnInit {
     .getOptionsToDisplay(this.product.variants, this.product.theme.option_types);
     this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
     this.correspondingOptions = this.mainOptions;
-    this.isOrderable = this.product.is_orderable;
+    this.isOrderable = true;
   }
 
   onOptionClick(option) {
@@ -63,7 +63,7 @@ export class ProductPriceInfoComponent implements OnInit {
     this.description = newVariant.description;
     // this.images = newVariant.images;
     this.getSelectedVariant(result.variant);
-    this.isOrderable = newVariant.is_orderable;
+    this.isOrderable = true;
     this.product.max_retail_price = newVariant.max_retail_price;
     this.product.selling_price = newVariant.selling_price;
     this.product.name = newVariant.name;

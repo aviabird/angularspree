@@ -23,7 +23,7 @@ export class AddressesComponent implements OnInit {
   }
 
   getUserAddresses() {
-     this.userAddresses$ = this.addressService.getUserAddresses()
+    //  this.userAddresses$ = this.addressService.getUserAddresses()
   }
 
   editAddress(event) {

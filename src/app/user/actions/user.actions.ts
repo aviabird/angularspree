@@ -35,7 +35,6 @@ export class UserActions {
   }
 
   fetchUserAddress() {
-    debugger
     return {
       type: UserActions.FETCH_USER_ADDRESS
     }

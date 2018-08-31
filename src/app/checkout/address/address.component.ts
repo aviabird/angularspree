@@ -21,13 +21,12 @@ export class AddressComponent implements OnInit, OnDestroy {
   stateSub$: Subscription;
   orderState: string;
   orderNumber$: Observable<number>;
-  shipAddress$: Observable<Address>;
+  shipAddress: Address;
   isEditButtonPressed: boolean;
   addressData: Address;
   isAddNewAddress: boolean;
   userAddresses$: Observable<Array<Address>>;
-  showDeliverhere: boolean;
-  selectedIndex: number;
+  isUserSelectedAddress: boolean;
 
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
@@ -35,7 +34,7 @@ export class AddressComponent implements OnInit, OnDestroy {
     private router: Router,
     private userActions: UserActions) {
     // this.orderNumber$ = this.store.select(getOrderNumber);
-    this.shipAddress$ = this.store.select(getShipAddress);
+    // this.shipAddress$ = this.store.select(getShipAddress);
     // this.stateSub$ = this.store.select(getOrderState)
     // .subscribe(state => this.orderState = state);
 
@@ -83,15 +82,12 @@ export class AddressComponent implements OnInit, OnDestroy {
     return this.isAddNewAddress = event;
   }
 
-  selectedAddress(index: number) {
-    this.showDeliverhere = true;
-    this.selectedIndex = index;
-  }
-
-  selectedDeliveryAddress(address: Address) {
-  }
-
   editAddress(selectedAddress) {
     // this.isEditButtonPressed.emit({ address: selectedAddress, isEditButtonPressed: true })
+  }
+
+  getSelectedAddress(event) {
+    this.shipAddress = event;
+    this.isUserSelectedAddress = true
   }
 }
