@@ -78,7 +78,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       'first_name': [first_name, Validators.compose([Validators.required])],
       'last_name': [last_name, Validators.compose([Validators.required])],
       'email': [email, Validators.compose([Validators.required, Validators.email])],
-      'password': [password, Validators.compose([Validators.required, Validators.minLength(6)])],
+      'password': [password, Validators.compose([Validators.required, Validators.minLength(8)])],
       'password_confirmation': [password_confirmation, Validators.compose([Validators.required, Validators.minLength(6)])],
       // 'mobile': [mobile, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[0-9]{10}')])],
       // 'gender': [gender, Validators.required]

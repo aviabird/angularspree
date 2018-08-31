@@ -14,6 +14,7 @@ export interface CheckoutState extends Map<string, any> {
   shipTotal: number;
   itemTotal: number;
   adjustmentTotal: number;
+  orderId: number;
 }
 
 export const CheckoutStateRecord = Record({
@@ -28,5 +29,5 @@ export const CheckoutStateRecord = Record({
   shipTotal: 0,
   itemTotal: 0,
   adjustmentTotal: 0,
-
+  orderId: null
 });

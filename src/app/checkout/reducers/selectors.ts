@@ -50,6 +50,10 @@ export function fetchAdjustmentTotal(state: CheckoutState) {
   return state.adjustmentTotal;
 }
 
+export function fetchOrderId(state: CheckoutState) {
+  return state.orderId;
+}
+
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCheckoutState, fetchLineItems);
 export const getOrderNumber = createSelector(getCheckoutState, fetchOrderNumber);
@@ -61,3 +65,4 @@ export const getOrderState = createSelector(getCheckoutState, fetchOrderState);
 export const getShipTotal = createSelector(getCheckoutState, fetchShipTotal);
 export const getItemTotal = createSelector(getCheckoutState, fetchItemTotal);
 export const getAdjustmentTotal = createSelector(getCheckoutState, fetchAdjustmentTotal);
+export const getOrderId = createSelector(getCheckoutState, fetchOrderId);
