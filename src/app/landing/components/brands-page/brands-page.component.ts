@@ -11,11 +11,10 @@ import { ProductService } from '../../../core/services/product.service';
 export class BrandsPageComponent implements OnInit {
   public brands$: Observable<Taxonomy[]>;
 
-  constructor(  private productService: ProductService) {
-    this.brands$ = this.productService.getTaxonByName('Brands');
-   }
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
+    this.brands$ = this.productService.getTaxonByName('Brands');
   }
 
 }

@@ -42,7 +42,7 @@ export class PaymentModesListComponent implements OnInit {
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
     private toastyService: ToastrService,
-    @Inject(PLATFORM_ID) private platformId: any) {
+    @Inject(PLATFORM_ID) private platformId: Object) {
     this.store.select(getAuthStatus).subscribe((auth) => {
       this.isAuthenticated = auth;
     });

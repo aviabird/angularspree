@@ -1,6 +1,7 @@
+import { Subscription } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
-import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
@@ -9,22 +10,27 @@ import { AuthService } from '../../../../core/services/auth.service';
   styleUrls: ['./profile-dropdown.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProfileDropdownComponent implements OnInit, OnChanges {
+export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
   @Input() isAuthenticated;
   email = '';
   @Input() isMobile;
   currentUser: any;
   subnav: boolean;
   isOpen: boolean;
+  subList$: Array<Subscription> = [];
 
-  constructor(private authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private platformId: any) {
-  }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) { }
 
-  ngOnInit() {
-  }
-  onOpenChange(data: boolean): void {
+  ngOnInit() { }
+
+  onOpenChange(_): void {
     this.isOpen = !this.isOpen;
   }
+
   ngOnChanges() {
     this.currentUser = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')) : null;
     if (this.currentUser) {
@@ -33,16 +39,15 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
   }
 
   logout() {
-
     this.subnav = !this.subnav;
-    this.authService.logout().
-      subscribe(res => {
-        this.router.navigate(['auth', 'login']);
-      });
+    this.subList$.push(this.authService.logout().subscribe(_ => this.router.navigate(['auth', 'login'])));
   }
 
   login() {
     this.router.navigate(['/auth/login'])
   }
 
+  ngOnDestroy() {
+    this.subList$.map(sub$ => sub$.unsubscribe());
+  }
 }

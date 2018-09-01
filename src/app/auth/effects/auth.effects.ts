@@ -1,11 +1,12 @@
-import { filter, switchMap, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+import { filter, switchMap, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Actions, Effect } from '@ngrx/effects';
-
 import { Action } from '@ngrx/store';
+
+import { User } from './../../core/models/user';
 import { AuthService } from '../../core/services/auth.service';
 import { AuthActions } from '../actions/auth.actions';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -20,7 +21,7 @@ export class AuthenticationEffects {
   Authorized$: Observable<Action> = this.actions$
     .ofType(AuthActions.AUTHORIZE)
     .pipe(
-      switchMap(() => this.authService.authorized()),
+      switchMap<Action, {status: string} & User>(() => this.authService.authorized()),
       filter(data => data.status !== 'unauthorized'),
       map(() => this.authActions.loginSuccess())
     );
@@ -30,12 +31,11 @@ export class AuthenticationEffects {
   OAuthLogin: Observable<Action> = this.actions$
     .ofType(AuthActions.O_AUTH_LOGIN)
     .pipe(
-      switchMap((action: any) => {
+      switchMap<Action & {payload: string}, string | User>(action => {
         return this.authService.socialLogin(action.payload);
       }),
-      filter(data => data !== null),
       map(data => {
-        if (typeof data === typeof 'string') {
+        if (typeof data === 'string') {
           return this.authActions.noOp();
         } else {
           return this.authActions.loginSuccess();

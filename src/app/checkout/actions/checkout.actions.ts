@@ -1,6 +1,5 @@
 import { LineItem } from './../../core/models/line_item';
 import { Order } from './../../core/models/order';
-import { Action } from '@ngrx/store';
 
 export class CheckoutActions {
   static FETCH_CURRENT_ORDER = 'FETCH_CURRENT_ORDER';
@@ -44,7 +43,7 @@ export class CheckoutActions {
     };
   }
 
-  removeLineItem(lineItemId: number) {
+  removeLineItem(lineItemId: LineItem) {
     return {
       type: CheckoutActions.REMOVE_LINE_ITEM,
       payload: lineItemId
@@ -95,7 +94,7 @@ export class CheckoutActions {
     return { type: CheckoutActions.ORDER_COMPLETE_SUCCESS };
   }
 
-  getOrderDetails(order_number: any) {
+  getOrderDetails(order_number: string) {
     return {
       type: CheckoutActions.GET_ORDER_DETAILS,
       payload: order_number

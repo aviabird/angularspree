@@ -38,7 +38,6 @@ export class CategoriesDetailsComponent implements OnInit, OnChanges {
   @Input() screenwidth;
   @Input() taxonImageLink;
   @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   menuTaxons: any;
   brandLists$: Observable<any>;
   show = false;

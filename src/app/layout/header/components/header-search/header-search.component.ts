@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
-import { Directive, Renderer2, ElementRef, PLATFORM_ID, Inject } from '@angular/core';
+import { Renderer2, PLATFORM_ID, Inject } from '@angular/core';
 import {
   Component,
   OnInit,
@@ -14,6 +14,7 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
+
 @Component({
   selector: 'app-header-search',
   templateUrl: './header-search.component.html',
@@ -27,6 +28,7 @@ export class HeaderSearchComponent implements OnInit {
   @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   searchPlaceholder = environment.config.header.searchPlaceholder;
   showGo = false;
+
   constructor(
     private store: Store<AppState>,
     private searchActions: SearchActions,
@@ -56,7 +58,6 @@ export class HeaderSearchComponent implements OnInit {
   }
 
   onSearch(keyword: string) {
-
     if (keyword !== '') {
       keyword = keyword.trim();
       const search = new URLSearchParams();
@@ -94,6 +95,8 @@ export class HeaderSearchComponent implements OnInit {
     );
   }
 
+  // TODO
+  // Refactor me 🙏
   loadPage() {
     if ('q[name_cont_any]' in this.queryParams && 'page' in this.queryParams) {
       this.onSearch(this.queryParams['q[name_cont_any]']);
@@ -113,9 +116,11 @@ export class HeaderSearchComponent implements OnInit {
       this.onSearch(this.queryParams['q[name_cont_any]']);
     }
   }
+
   onFoucs() {
     this.showGo = true;
   }
+
   onFoucsOut() {
     this.showGo = false;
   }
