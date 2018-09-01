@@ -9,7 +9,8 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class CategoriesListComponent implements OnInit {
   @Input() taxons;
   @Input() screenwidth
+
   constructor() { }
-  ngOnInit() {
-  }
+
+  ngOnInit() {}
 }

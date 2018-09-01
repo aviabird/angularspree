@@ -9,9 +9,9 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class HeaderCartComponent implements OnInit {
   @Input() totalCartItems: number;
   @Input() isMobile;
-  constructor() { }
-  ngOnInit() {
 
-  }
+  constructor() { }
+
+  ngOnInit() { }
 
 }

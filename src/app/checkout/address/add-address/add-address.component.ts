@@ -1,3 +1,4 @@
+import { Address } from './../../../core/models/address';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
@@ -7,24 +8,25 @@ import { AuthActions } from '../../../auth/actions/auth.actions';
 import { getAuthStatus } from '../../../auth/reducers/selectors';
 import { CheckoutService } from '../../../core/services/checkout.service';
 import { AppState } from '../../../interfaces';
+import { CState } from '../../../core/models/state';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-address',
   templateUrl: './add-address.component.html',
   styleUrls: ['./add-address.component.scss']
 })
-export class AddAddressComponent implements OnInit {
+export class AddAddressComponent implements OnInit, OnDestroy {
   addressForm: FormGroup;
   emailForm: FormGroup;
   isAuthenticated: boolean;
-  states: any;
-  @Input() addressEdit: any
+  states: Array<CState> = [];
+  subscriptionList$: Array<Subscription> = [];
+  @Input() addressEdit: Address;
   @Input() orderNumber: string
   @Output() addressEdited: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(
-    private fb: FormBuilder,
-    private authActions: AuthActions,
     private checkoutService: CheckoutService,
     private addrService: AddressService,
     private store: Store<AppState>,
@@ -32,20 +34,25 @@ export class AddAddressComponent implements OnInit {
   ) {
     this.addressForm = addrService.initAddressForm();
     this.emailForm = addrService.initEmailForm();
-    this.store.select(getAuthStatus).subscribe(auth => {
-      this.isAuthenticated = auth;
-    });
-
-    this.addrService.getAllStates().subscribe(data => {
-      this.states = data.states;
-    });
   }
 
   ngOnInit() {
+    this.subscriptionList$.push(
+      this.addrService.getAllStates().subscribe(states => {
+        this.states = states;
+      }),
+      this.store.select(getAuthStatus).subscribe(auth => {
+        this.isAuthenticated = auth;
+      })
+    );
+
     if (this.addressEdit != null) {
       this.existingAddress(this.addressForm)
     }
+  }
 
+  ngOnDestroy() {
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 
   onSubmit() {
@@ -59,18 +66,15 @@ export class AddAddressComponent implements OnInit {
         break;
       }
     }
+    // TODO: Refactor this 🙏
     if (this.addressForm.valid) {
       if (this.addressEdit != null) {
         if (this.isAuthenticated) {
-          this.addrService.updateAddress(address, this.addressEdit.id, this.orderNumber)
-            .subscribe(data => {
-              this.showEdited();
-              this.toastrService.success('Address Updated SuccesFully!', 'Success');
-            },
-              error => {
-                this.toastrService.error('Address Could not be Updated', 'Failed');
-              }
-            )
+          this.subscriptionList$.push(
+            this.addrService
+              .updateAddress(address, this.addressEdit.id, this.orderNumber)
+              .subscribe(_ => this.showEdited())
+          )
         }
       } else if (this.addressEdit === null) {
         if (this.isAuthenticated) {
@@ -82,7 +86,7 @@ export class AddAddressComponent implements OnInit {
             email
           );
         }
-        this.checkoutService.updateOrder(addressAttributes).subscribe();
+        this.subscriptionList$.push(this.checkoutService.updateOrder(addressAttributes).subscribe());
       }
     } else {
       this.toastrService.error('Some fields are blank!', 'Unable to save address!');

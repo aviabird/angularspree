@@ -3,7 +3,7 @@ import { Observable, timer, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
 export class AppPreloadingStrategy implements PreloadingStrategy {
-  preload(route: Route, load: Function): Observable<any> {
+  preload(route: Route, load: Function): Observable<Function | null> {
       const loadRoute = (delay) => delay
           ? timer(150).pipe(flatMap(_ => load()))
           : load();

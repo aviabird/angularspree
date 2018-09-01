@@ -6,8 +6,9 @@ import {
   animate,
   transition
 } from '@angular/animations';
-import { ElementRef, EventEmitter } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'app-category-mobile-menu',
   templateUrl: './category-mobile-menu.component.html',
@@ -42,7 +43,6 @@ export class CategoryMobileMenuComponent implements OnInit {
   onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() taxonomies;
   @Input() isScrolled;
-
   @Input() screenwidth;
   subChild: any;
   dropdownWidth: any;
@@ -53,18 +53,19 @@ export class CategoryMobileMenuComponent implements OnInit {
   showChild = false;
   backBtnShow = false;
   contactno = environment.config.contact_info.contact_no;
-  constructor(private el: ElementRef) { }
+
+  constructor() { }
+
   showCategory(i) {
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
     this.showParrent = !this.showParrent;
   }
-  get getparrentState() {
-    return this.showParrent ? 'show' : 'hide'
-  }
 
-  get getChildState() {
-    return this.showChild ? 'show' : 'hide'
-  }
+  ngOnInit() { }
+
+  get getparrentState() { return this.showParrent ? 'show' : 'hide' }
+
+  get getChildState() { return this.showChild ? 'show' : 'hide' }
 
   showSubCategory(i) {
     this.showChild = !this.showChild;
@@ -74,12 +75,12 @@ export class CategoryMobileMenuComponent implements OnInit {
   parrantBack() {
     this.showParrent = !this.showParrent;
   }
+
   childBack() {
     this.showChild = !this.showChild;
   }
+
   onCloseMobilemenu() {
     this.onSubCatClicked.emit(false);
-   }
-  ngOnInit() {
   }
 }

@@ -48,23 +48,23 @@ export const CUSTOM_APP_DATA = {
   footer_page_links: [
     {
       name: 'About Us',
-      link_url: '#'
+      link_url: 'about'
     },
     {
       name: 'Blog',
-      link_url: '#'
+      link_url: 'blog'
     },
     {
       name: 'Return Policy',
-      link_url: '#'
+      link_url: 'return_policy'
     },
     {
       name: 'FAQs',
-      link_url: '#'
+      link_url: 'faqs'
     },
     {
       name: 'Testimonials',
-      link_url: '#'
+      link_url: 'testimonials'
     }
   ],
   footer_social_links: [

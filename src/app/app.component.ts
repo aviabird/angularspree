@@ -32,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private metaTitle: Title,
     private meta: Meta,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
@@ -68,8 +68,10 @@ export class AppComponent implements OnInit, OnDestroy {
   private addFaviconIcon() {
     if (isPlatformBrowser(this.platformId)) {
       const link =
-        document.querySelector(`link[rel*='icon']`) ||
-        (document.createElement('link') as any);
+        (
+          document.querySelector(`link[rel*='icon']`) ||
+          document.createElement('link')
+        ) as HTMLLinkElement;
       link.type = 'image/x-icon';
       link.rel = 'shortcut icon';
       link.href = environment.config.fevicon;
