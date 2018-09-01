@@ -26,17 +26,20 @@ export class AuthActions {
       payload: provider
     };
   }
+
   forgetPasswordSuccess() {
     return { type: AuthActions.FORGET_PASSWORD_SUCCESS };
   }
-  forgetPassword(){
+
+  forgetPassword() {
     return { type: AuthActions.FORGET_PASSWORD };
   }
 
   updatePasswordSuccess() {
     return { type: AuthActions.UPDATE_PASSWORD_SUCCESS };
   }
-  updatePassword(){
+
+  updatePassword() {
     return { type: AuthActions.UPDATE_PASSWORD };
   }
 

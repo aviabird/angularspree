@@ -18,13 +18,6 @@
   }
 }
 
-.landing {
-  margin-top: 2rem;
-  @media screen and (min-width: 320px) and (max-width: 768px) {
-    margin-top:1rem;
-  }
-}
-
 :host {
   /deep/ .section-title {
     color: $black;

@@ -1,10 +1,11 @@
-import { Action, ActionReducer } from '@ngrx/store';
+import { Action } from '@ngrx/store';
+
 import { AuthActions } from '../actions/auth.actions';
 import { AuthState, AuthStateRecord } from './auth.state';
 
 export const initialState: AuthState = new AuthStateRecord() as AuthState;
 
-export function reducer(state = initialState, { type, payload }: any): AuthState {
+export function reducer(state = initialState, { type }: Action): AuthState {
     switch (type) {
       case AuthActions.LOGIN_SUCCESS:
         return state.merge({ isAuthenticated: true }) as AuthState;

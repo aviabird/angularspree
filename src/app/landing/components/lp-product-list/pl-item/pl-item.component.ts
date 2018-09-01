@@ -13,8 +13,4 @@ export class PlItemComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  getProductImageUrl(url) {
-    return url;
-  }
 }

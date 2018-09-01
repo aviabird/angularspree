@@ -1,38 +1,54 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AddressService } from '../../../../checkout/address/services/address.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../services/user.service';
+import { CState } from '../../../../core/models/state';
+import { Subscription } from 'rxjs';
+import { Address } from '../../../../core/models/address';
 
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../interfaces';
+import { getAuthStatus } from '../../../../auth/reducers/selectors';
 @Component({
   selector: 'app-add-edit-address',
   templateUrl: './add-edit-address.component.html',
   styleUrls: ['./add-edit-address.component.scss']
 })
-export class AddEditAddressComponent implements OnInit {
+export class AddEditAddressComponent implements OnInit, OnDestroy {
   addressForm: FormGroup;
-  states: any;
+  states: Array<CState> = [];
+  isAuthenticated: boolean;
   @Input() isEditAddrPressed: boolean;
-  @Input() addressParams: any;
+  @Input() addressParams: Address;
   @Output() isAddressEdited: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() stateName: any;
+  @Input() stateName: string;
+  subscriptionList$: Array<Subscription> = [];
 
   constructor(private fb: FormBuilder,
     private addrService: AddressService,
     private toastrService: ToastrService,
-    private userService: UserService,
+    private userService: UserService, private store: Store<AppState>
   ) {
     this.addressForm = addrService.initAddressForm();
-
-    this.addrService.getAllStates().subscribe(data => {
-      this.states = data.states;
-    });
   }
 
   ngOnInit() {
+    this.subscriptionList$.push(
+      this.addrService.getAllStates().subscribe(states => {
+        this.states = states;
+      }),
+      this.store.select(getAuthStatus).subscribe(auth => {
+        this.isAuthenticated = auth;
+      })
+    );
     if (this.isEditAddrPressed) {
       this.fillAddress(this.addressForm);
     }
+  }
+
+  ngOnDestroy() {
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 
   onSubmit() {
@@ -48,19 +64,19 @@ export class AddEditAddressComponent implements OnInit {
     if (this.addressForm.valid) {
       if (this.isEditAddrPressed) {
         this.addressParams.user.ship_address = address;
-        this.userService.updateUserAddress(this.addressParams)
-          .subscribe((res: any) => {
-            this.navigatePage();
-            this.toastrService.success(res.status, 'Success!')
-          })
+        this.subscriptionList$.push(
+          this.userService.updateUserAddress(this.addressParams)
+            .subscribe((res: any) => {
+              this.navigatePage();
 
+            })
+        )
       } else {
         this.addressParams.user.ship_address = address;
-        this.userService.createUserAddress(this.addressParams)
-          .subscribe((res: any) => {
-            this.navigatePage();
-            this.toastrService.success(res.status, 'Success!')
-          })
+        this.subscriptionList$.push(
+          this.userService.createUserAddress(this.addressParams)
+            .subscribe(_ => this.navigatePage())
+        )
       }
     } else {
       this.toastrService.error('Some fields are blank!', 'Unable to save address!');
@@ -78,6 +94,7 @@ export class AddEditAddressComponent implements OnInit {
     addressForm.get('address1').setValue(existingAddress.address1);
     addressForm.get('phone').setValue(existingAddress.phone);
   }
+
   navigatePage() {
     this.isAddressEdited.emit(true)
   }

@@ -10,14 +10,12 @@ import { environment } from './../../../../../environments/environment';
 export class HeaderHelpDropdownComponent implements OnInit {
   isOpen: boolean;
   contactno = environment.config.contact_info.contact_no
+
   constructor() { }
 
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  onOpenChange(data: boolean): void {
-
+  onOpenChange(_): void {
     this.isOpen = !this.isOpen;
   }
 }

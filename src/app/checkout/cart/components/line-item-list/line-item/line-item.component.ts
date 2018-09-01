@@ -1,10 +1,10 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+
 import { CheckoutService } from './../../../../../core/services/checkout.service';
 import { CheckoutActions } from './../../../../actions/checkout.actions';
 import { AppState } from './../../../../../interfaces';
-import { Store } from '@ngrx/store';
-import { environment } from './../../../../../../environments/environment';
 import { LineItem } from './../../../../../core/models/line_item';
-import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-line-item',
@@ -18,11 +18,10 @@ export class LineItemComponent implements OnInit {
   name: string;
   quantity: number;
   amount: number;
-  quantityCount: any;
-  optionTxt: any;
+  quantityCount: number;
+  optionTxt: string;
   constructor(
     private store: Store<AppState>,
-    private actions: CheckoutActions,
     private checkoutService: CheckoutService,
     private checkoutActions: CheckoutActions,
   ) { }
@@ -40,7 +39,7 @@ export class LineItemComponent implements OnInit {
   }
 
   removeLineItem() {
-    this.checkoutService.deleteLineItem(this.lineItem).subscribe();
+    this.store.dispatch(this.checkoutActions.removeLineItem(this.lineItem));
   }
 
   removeQuantity() {

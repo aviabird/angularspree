@@ -3,9 +3,10 @@ import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { Order } from '../../core/models/order';
 import { User } from '../../core/models/user';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
+import { Address } from '../../core/models/address';
 
 @Injectable()
 export class UserService {
@@ -71,14 +72,34 @@ export class UserService {
       )
   }
 
-  updateUserAddress(updatedAddress) {
+  /**
+   * This function updates the address of the user. 
+   *
+   * @param {Address} updatedAddress
+   * @returns {Observable<{status: string}>}
+   * @memberof UserService
+   */
+  updateUserAddress(updatedAddress: Address): Observable<{status: string}> {
       const url = `address/update_address`
-      return this.http.post(url, updatedAddress)
+      return this.http.post<{status: string}>(url, updatedAddress)
+        .pipe(
+          tap(res =>  this.toastrService.success(res.status, 'Success!') )
+        );
   }
 
-  createUserAddress(updatedAddress) {
+  /**
+   * This function creates the user address.
+   *
+   * @param {Address} updatedAddress
+   * @returns {Observable<{status: string}>}
+   * @memberof UserService
+   */
+  createUserAddress(updatedAddress: Address): Observable<{status: string}> {
     const url = `address/create_address`
-    return this.http.post(url, updatedAddress)
+    return this.http.post<{status: string}>(url, updatedAddress)
+      .pipe(
+        tap(res =>  this.toastrService.success(res.status, 'Success!') )
+      );
   }
 }
 
