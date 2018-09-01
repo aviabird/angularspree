@@ -39,7 +39,7 @@
       </div>
     </div>
   </nav>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg" id="sub-header" [ngClass]="{'hide-sub-header': isScrolled}">
     <div class="container">
       <div class="collapse navbar-collapse left-content-start">
         <app-categories-menu-dropdown [screenwidth]="screenwidth" [taxonomies]="taxonomies$ | async"></app-categories-menu-dropdown>
