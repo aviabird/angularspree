@@ -30,12 +30,12 @@
       <pagination *ngIf="paginationData.total_count > paginationData.per_page" [totalItems]="paginationData.total_count" [itemsPerPage]="paginationData.per_page"
         [(ngModel)]="paginationData.current_page" (pageChanged)="pageChanged($event)" class="m-auto" [maxSize]="5"></pagination>
     </div>
-  
+
   </div>
 </div>
 
 <div class="row results-base m-0" *ngIf="isMobile">
-  <div class="col-12 product-base" *ngFor="let product of products | filter : selectedTaxonIds; trackBy: trackByFn" [style.margin]="getMargin()"
+  <div class="col-12 product-base" *ngFor="let product of products | filter : selectedTaxonIds" [style.margin]="getMargin()"
     itemscope itemtype="https://schema.org/Product">
     <a itemprop="url" [routerLink]="['/', product.slug]">
       <div class="row">
@@ -72,7 +72,7 @@
       <pagination *ngIf="paginationData.total_count > paginationData.per_page" [totalItems]="paginationData.total_count" [itemsPerPage]="paginationData.per_page"
         [(ngModel)]="paginationData.current_page" (pageChanged)="pageChanged($event)" class="m-auto" [maxSize]="3"></pagination>
     </div>
-  
+
   </div>
 </div>
 
