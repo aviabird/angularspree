@@ -2,6 +2,9 @@
 :host {
   min-height: 100vh;
   display: block;
+  .main-body {
+    margin-top: 50px;
+  }
 }
 
 .issearchopen :host /deep/ .main-body {

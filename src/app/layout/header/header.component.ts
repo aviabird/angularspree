@@ -9,7 +9,8 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ViewChild,
-  Input
+  Input,
+  HostListener
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
@@ -28,10 +29,6 @@ import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  // tslint:disable-next-line:use-host-property-decorator
-  host: {
-    '(window:scroll)': 'updateHeader($event)'
-  },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
@@ -47,9 +44,11 @@ export class HeaderComponent implements OnInit {
   user$: Observable<any>;
   headerConfig = environment.config.header;
   isScrolled = false;
-  currPos: Number = 0;
-  startPos: Number = 0;
-  changePos: Number = 100;
+  scrollPos = {
+    currPos: 0,
+    startPos: 0,
+    changePos: 5,
+  };
   isMobile = false;
   screenwidth: any;
   modalRef: BsModalRef;
@@ -128,15 +127,19 @@ export class HeaderComponent implements OnInit {
     this.isModalShown = false;
   }
 
-  updateHeader(evt) {
-    if (this.screenwidth >= 1000) {
-      if (isPlatformBrowser(this.platformId)) {
-        this.currPos = (window.pageYOffset || evt.target.scrollTop) - (evt.target.clientTop || 0);
-      }
-      if (this.currPos >= this.changePos) {
-        this.isScrolled = true;
-      } else {
-        this.isScrolled = false;
+  @HostListener('window:scroll', ['$event'])
+  updateHeader($event) {
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.screenwidth >= 1000) {
+        this.scrollPos.currPos = (window.pageYOffset || $event.target.scrollTop) - ($event.target.clientTop || 0);
+        if (
+          this.scrollPos.currPos >= this.scrollPos.changePos &&
+          window.pageYOffset >= 100
+        ) {
+          this.isScrolled = true;
+        } else {
+          this.isScrolled = false;
+        }
       }
     }
   }
