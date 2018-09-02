@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
+import { LayoutState } from '../../../layout/reducers/layout.state';
+
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
@@ -11,9 +12,9 @@ export class ContentHeaderComponent implements OnInit {
   @Output() toggleSize = new EventEmitter();
   @Input() paginationInfo;
   @Input() fillterList;
+  @Input() layoutState: LayoutState;
   subselectedItem;
   childselectedItem;
-  screenWidth: any;
 
   options = [
     { name: 'Newest', value: 1 },
@@ -34,14 +35,13 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   selectedOption = 'Relevance';
-  isMobile: any;
   selectedSize = 'COZY';
   searchKeyword = '';
   selectedEntry;
   isfilterModalShown;
   issortModalShown
   defaultselectedEntry = 'Relevance';
-  constructor(private routernomal: Router, @Inject(PLATFORM_ID) private platformId: any) { }
+  constructor(private routernomal: Router) { }
 
   sortModalShow() { this.issortModalShown = true; }
   sortModalhide() { this.issortModalShown = false; }
@@ -61,11 +61,6 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      if (window.screen.width <= 768) {
-        this.screenWidth = window.screen.width;
-      }
-    }
   }
 
   toggleView(view) {

@@ -1,15 +1,19 @@
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+
 import { JsonApiParserService } from './json-api-parser.service';
 import { CJsonApi } from './../models/jsonapi';
 import { ToastrService } from 'ngx-toastr';
 import { Taxonomy } from './../models/taxonomy';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProductService {
+  success: any;
+  error: any;
+
   /**
    * Creates an instance of ProductService.
    * @param {HttpService} http
@@ -21,10 +25,6 @@ export class ProductService {
     private toastrService: ToastrService,
     private apiParser: JsonApiParserService,
   ) { }
-  // tslint:disable-next-line:member-ordering
-  success: any;
-  // tslint:disable-next-line:member-ordering
-  error: any;
   /**
    *
    *
@@ -49,22 +49,22 @@ export class ProductService {
   getProductReviews(products): Observable<any> {
     return this.http.get(`products/${products}/reviews`);
   }
+
   /**
    *
    *
-   * @returns {Array<Taxonomy>}
-   *
+   * @returns {Observable<Array<Taxonomy>>}
    * @memberof ProductService
    */
-  getTaxonomies(): any {
+  getTaxonomies(): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies?set=nested`);
   }
 
   /**
    *
    *
-   * @returns {Array<Product>}
-   *
+   * @param {number} pageNumber
+   * @returns {Observable<Array<Product>>}
    * @memberof ProductService
    */
   getProducts(pageNumber: number): Observable<Array<Product>> {
@@ -79,14 +79,34 @@ export class ProductService {
       );
   }
 
+  /**
+   *
+   *
+   * @param {number} id
+   * @returns {Observable<{}>}
+   * @memberof ProductService
+   */
   markAsFavorite(id: number): Observable<{}> {
     return this.http.post<{}>(`favorite_products`, { id: id });
   }
 
+  /**
+   *
+   *
+   * @param {number} id
+   * @returns {Observable<{}>}
+   * @memberof ProductService
+   */
   removeFromFavorite(id: number): Observable<{}> {
     return this.http.delete<{}>(`favorite_products/${id}`);
   }
 
+  /**
+   *
+   *
+   * @returns {Observable<Array<Product>>}
+   * @memberof ProductService
+   */
   getFavoriteProducts(): Observable<Array<Product>> {
     return this.http
       .get<{ data: CJsonApi[] }>(
@@ -99,6 +119,12 @@ export class ProductService {
       );
   }
 
+  /**
+   *
+   *
+   * @returns {Observable<Array<Product>>}
+   * @memberof ProductService
+   */
   getUserFavoriteProducts(): Observable<Array<Product>> {
     return this.http
       .get<{ data: CJsonApi[] }>(
@@ -111,8 +137,14 @@ export class ProductService {
       );
   }
 
-  // tslint:disable-next-line:max-line-length
-  getProductsByTaxon(id: string): Observable<any> {
+  /**
+   *
+   *
+   * @param {string} id
+   * @returns {Observable<{pagination: Object, products: Array<Product>}>}
+   * @memberof ProductService
+   */
+  getProductsByTaxon(id: string): Observable<{ pagination: Object, products: Array<Product> }> {
     return this.http
       .get<{ data: CJsonApi[]; pagination: Object }>(
         `api/v1/taxons/products?${id}&per_page=20&data_set=small`
@@ -127,6 +159,13 @@ export class ProductService {
       );
   }
 
+  /**
+   *
+   *
+   * @param {string} id
+   * @returns {Observable<Array<Product>>}
+   * @memberof ProductService
+   */
   getProductsByTaxonNP(id: string): Observable<Array<Product>> {
     return this.http
       .get<{ data: CJsonApi[] }>(
@@ -139,13 +178,27 @@ export class ProductService {
       );
   }
 
+  /**
+   *
+   *
+   * @param {string} name
+   * @returns {Observable<Array<Taxonomy>>}
+   * @memberof ProductService
+   */
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(
       `api/v1/taxonomies?q[name_cont]=${name}&set=nested&per_page=2`
     );
   }
 
-  getproductsByKeyword(keyword: string): Observable<any> {
+  /**
+   *
+   *
+   * @param {string} keyword
+   * @returns {Observable<{pagination: Object, products: Array<Product>}>}
+   * @memberof ProductService
+   */
+  getproductsByKeyword(keyword: string): Observable<{ pagination: Object, products: Array<Product> }> {
     return this.http
       .get<{ data: CJsonApi[]; pagination: Object }>(
         `api/v1/products?${keyword}&per_page=20&data_set=small`
@@ -154,23 +207,34 @@ export class ProductService {
         map(resp => {
           return {
             pagination: resp.pagination,
-            products: this.apiParser.parseArrayofObject(resp.data) as Array<
-              Product
-              >
+            products: this.apiParser.parseArrayofObject(resp.data) as Array<Product>
           };
         })
       );
   }
 
-  getChildTaxons(
-    taxonomyId: string,
-    taxonId: string
-  ): Observable<Array<Taxonomy>> {
+  /**
+   *
+   *
+   * @param {string} taxonomyId
+   * @param {string} taxonId
+   * @returns {Observable<Array<Taxonomy>>}
+   * @memberof ProductService
+   */
+  getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(
       `/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`
     );
   }
 
+  /**
+   *
+   *
+   * @param {*} productId
+   * @param {*} params
+   * @returns
+   * @memberof ProductService
+   */
   submitReview(productId: any, params: any) {
     return this.http.post(`products/${productId}/reviews`, params).pipe(
       map(
@@ -193,7 +257,14 @@ export class ProductService {
     );
   }
 
-  getRelatedProducts(productId: any): Observable<Array<Product>> {
+  /**
+   *
+   *
+   * @param {number} productId
+   * @returns {Observable<Array<Product>>}
+   * @memberof ProductService
+   */
+  getRelatedProducts(productId: number): Observable<Array<Product>> {
     return this.http
       .get<{ data: CJsonApi[] }>(`api/products/${productId}/relations`)
       .pipe(
