@@ -4,16 +4,21 @@
   color: $gray-900;
   font-weight: 700;
 }
+
 .mob {
   font-size: 1em;
   color: $gray-900;
   font-weight: 700;
 }
-.pin{font-weight: 700;}
+
+.pin {
+  font-weight: 700;
+}
 
 .reviewlink {
   cursor: pointer;
   &:hover {
-    text-decoration: none
+    text-decoration: none;
+    background-color: #62ff0009;
   }
 }

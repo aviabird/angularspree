@@ -48,9 +48,9 @@ export class AddAddressComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.addressEdit != null) {
-      this.existingAddress(this.addressForm)
-    }
+    // if (this.addressEdit != null) {
+    //   this.existingAddress(this.addressForm)
+    // }
   }
 
   onSubmit() {
@@ -66,10 +66,10 @@ export class AddAddressComponent implements OnInit {
     if (this.addressForm.valid) {
       if (this.addressEdit != null) {
         if (this.isAuthenticated) {
-          this.addrService.updateAddress(address, this.addressEdit.id, this.orderNumber)
-            .subscribe(data => {
-              this.closeAddressForm();
-            })
+          // this.addrService.updateAddress(address, this.addressEdit.id, this.orderNumber)
+          //   .subscribe(data => {
+          //     this.closeAddressForm();
+          //   })
         }
       } else if (this.addressEdit === null) {
         if (this.isAuthenticated) {
@@ -90,20 +90,20 @@ export class AddAddressComponent implements OnInit {
     return this.emailForm.value.email;
   }
 
-  existingAddress(addressForm) {
-    addressForm.get('zipcode').setValue(this.addressEdit.zipcode);
-    addressForm.get('address2').setValue(this.addressEdit.address2);
-    addressForm.get('city').setValue(this.addressEdit.city);
-    addressForm.get('state_name').setValue(this.addressEdit.state.name);
-    addressForm.get('firstname').setValue(this.addressEdit.firstname);
-    addressForm.get('lastname').setValue(this.addressEdit.lastname);
-    addressForm.get('address1').setValue(this.addressEdit.address1);
-    addressForm.get('phone').setValue(this.addressEdit.phone);
-  }
+  // existingAddress(addressForm) {
+  //   addressForm.get('zipcode').setValue(this.addressEdit.zipcode);
+  //   addressForm.get('address2').setValue(this.addressEdit.address2);
+  //   addressForm.get('city').setValue(this.addressEdit.city);
+  //   addressForm.get('state_name').setValue(this.addressEdit.state.name);
+  //   addressForm.get('firstname').setValue(this.addressEdit.firstname);
+  //   addressForm.get('lastname').setValue(this.addressEdit.lastname);
+  //   addressForm.get('address1').setValue(this.addressEdit.address1);
+  //   addressForm.get('phone').setValue(this.addressEdit.phone);
+  // }
 
-  showEdited() {
-    this.addressEdited.emit(true)
-  }
+  // showEdited() {
+  //   this.addressEdited.emit(true)
+  // }
 
   closeAddressForm() {
     return this.cancelAddress.emit(false);

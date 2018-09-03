@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { getCurrentUser } from '../../../auth/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
+import { Order } from '../../../core/models/order';
 
 @Injectable()
 export class AddressService {
@@ -56,30 +57,34 @@ export class AddressService {
     };
   }
   // Country ID: 105 is for INDIA.
-  getAllStates(): Observable<any> {
-    return this.http.get<any>(`api/v1/countries/105/states`)
+  getCountires(): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/v1/countries`)
   }
 
-  updateAddress(updatedAddress, addressId, orderNumber) {
-    const url = `api/v1/orders/${orderNumber}/addresses/${addressId}?`
-      + `address[firstname]=${updatedAddress.firstname}`
-      + `&address[lastname]=${updatedAddress.lastname}`
-      + `&address[address1]=${updatedAddress.address1}`
-      + `&address[address2]=${updatedAddress.address2}`
-      + `&address[city]=${updatedAddress.city}`
-      + `&address[state_name]=${updatedAddress.state_name}`
-      + `&address[phone]=${updatedAddress.phone}`
-      + `&address[zipcode]=${updatedAddress.zipcode}`
-      + `&address[state_id]=${updatedAddress.state_id}`
-      + `&address[country_id]=${updatedAddress.country_id}`
-      
-    return this.http.put(url, {}).pipe(
-      map(resp => { return resp }
-      ), tap(_ => { this.toastrService.success('Address Updated SuccesFully!', 'Success'); },
-        _ => { this.toastrService.error('Address Could not be Updated', 'Failed'); }
-      )
-    )
+  getAllStates(): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/api/v1/countries/105/states`)
   }
+
+  // updateAddress(updatedAddress, addressId, orderNumber) {
+  //   const url = `api/v1/orders/${orderNumber}/addresses/${addressId}?`
+  //     + `address[firstname]=${updatedAddress.firstname}`
+  //     + `&address[lastname]=${updatedAddress.lastname}`
+  //     + `&address[address1]=${updatedAddress.address1}`
+  //     + `&address[address2]=${updatedAddress.address2}`
+  //     + `&address[city]=${updatedAddress.city}`
+  //     + `&address[state_name]=${updatedAddress.state_name}`
+  //     + `&address[phone]=${updatedAddress.phone}`
+  //     + `&address[zipcode]=${updatedAddress.zipcode}`
+  //     + `&address[state_id]=${updatedAddress.state_id}`
+  //     + `&address[country_id]=${updatedAddress.country_id}`
+
+  //   return this.http.put(url, {}).pipe(
+  //     map(resp => { return resp }
+  //     ), tap(_ => { this.toastrService.success('Address Updated SuccesFully!', 'Success'); },
+  //       _ => { this.toastrService.error('Address Could not be Updated', 'Failed'); }
+  //     )
+  //   )
+  // }
 
   saveUserAddress(address: Address): Observable<Address> {
     let userId: string;
@@ -91,6 +96,15 @@ export class AddressService {
       }), tap(_ => { this.toastrService.success('Address added successfully!', 'Success!') },
         _ => { this.toastrService.error('Could not save address!', 'Failed!') }
       )
+    )
+  }
+
+  bindAddressToOrder(address: Address, orderId: number): Observable<Order> {
+    const params = this.buildSelectAddressJson(orderId, address);
+    return this.http.post<Order>(`http://localhost:3000/api/v1/orders/${orderId}/select_address/`, params).pipe(
+      map(resp => {
+        return resp;
+      }), tap()
     )
   }
 
@@ -113,6 +127,21 @@ export class AddressService {
         }
       }
     };
+    return params;
+  }
+
+  buildSelectAddressJson(orderId: number, shipAddress: Address) {
+    const params = {
+      data: {
+        'id': orderId,
+        'type': 'order',
+        'attributes': {
+          // for now billing address is addeded as shipping address. 
+          'billing_address': shipAddress,
+          'shipping_address': shipAddress
+        }
+      }
+    }
     return params;
   }
 }

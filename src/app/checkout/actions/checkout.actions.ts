@@ -95,17 +95,18 @@ export class CheckoutActions {
     return { type: CheckoutActions.ORDER_COMPLETE_SUCCESS };
   }
 
-  getOrderDetails(order_number: any) {
+  getOrderDetails() {
     return {
-      type: CheckoutActions.GET_ORDER_DETAILS,
-      payload: order_number
+      type: CheckoutActions.GET_ORDER_DETAILS
     }
   }
 
   getOrderDetailsSuccess(order: Order) {
     return {
-      type: CheckoutActions.GET_ORDER_DETAILS,
+      type: CheckoutActions.GET_ORDER_DETAILS_SUCCESS,
       payload: order
     }
   }
+
 }
+

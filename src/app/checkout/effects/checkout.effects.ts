@@ -4,6 +4,7 @@ import { CheckoutService } from './../../core/services/checkout.service';
 import { CheckoutActions } from './../actions/checkout.actions';
 import { Effect, Actions } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
+import { Order } from '../../core/models/order';
 
 @Injectable()
 export class CheckoutEffects {
@@ -24,6 +25,16 @@ export class CheckoutEffects {
     }),
     map((lineItem: LineItem) => this.actions.addToCartSuccess(lineItem))
   );
+
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  OrderDetails$ = this.actions$.ofType(CheckoutActions.GET_ORDER_DETAILS).pipe(
+    switchMap((action: any) => {
+      return this.checkoutService.getOrder();
+    }),
+    map((order: Order) => this.actions.getOrderDetailsSuccess(order))
+  );
+
 }
 // @Effect()
 // FetchCurrentOrder$ = this.actions$

@@ -133,14 +133,14 @@ export class ProductDetailsComponent implements OnInit {
         this.router.navigate(['checkout', 'cart'])
       } else {
         this.store.dispatch(
-          this.checkoutActions.addToCart(this.variantId, event.count)
-        );
+          this.checkoutActions.addToCart(this.variantId, event.count));
+        this.store.dispatch(this.checkoutActions.getOrderDetails());
         setTimeout(() => { this.router.navigate(['checkout', 'cart']); }, 1500)
       }
     } else {
       this.store.dispatch(
-        this.checkoutActions.addToCart(this.variantId, event.count)
-      );
+        this.checkoutActions.addToCart(this.variantId, event.count));
+      this.store.dispatch(this.checkoutActions.getOrderDetails());
     }
   }
 

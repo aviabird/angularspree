@@ -2,7 +2,7 @@
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CheckoutService } from './../../core/services/checkout.service';
-import { getShipAddress, getOrderState, getOrderNumber } from './../reducers/selectors';
+import { getShipAddress, getOrderState, getOrderNumber, getOrderId } from './../reducers/selectors';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
@@ -20,7 +20,7 @@ import { getUserAddressess } from '../../user/reducers/selector';
 export class AddressComponent implements OnInit, OnDestroy {
   stateSub$: Subscription;
   orderState: string;
-  orderNumber$: Observable<number>;
+  orderId: number;
   shipAddress: Address;
   isEditButtonPressed: boolean;
   addressData: Address;
@@ -33,7 +33,8 @@ export class AddressComponent implements OnInit, OnDestroy {
     private addressService: AddressService,
     private router: Router,
     private userActions: UserActions) {
-    // this.orderNumber$ = this.store.select(getOrderNumber);
+    this.store.select(getOrderId).subscribe(orderId => this.orderId = orderId);
+
     // this.shipAddress$ = this.store.select(getShipAddress);
     // this.stateSub$ = this.store.select(getOrderState)
     // .subscribe(state => this.orderState = state);
@@ -46,15 +47,15 @@ export class AddressComponent implements OnInit, OnDestroy {
   }
 
   checkoutToPayment() {
-    if (this.orderState === 'delivery' || this.orderState === 'address') {
-      this.checkoutService.changeOrderState().pipe(
-        tap(() => {
-          this.router.navigate(['/checkout', 'payment']);
-        }))
-        .subscribe();
-    } else {
-      this.router.navigate(['/checkout', 'payment']);
-    }
+    // if (this.orderState === 'delivery' || this.orderState === 'address') {
+    //   this.checkoutService.changeOrderState().pipe(
+    //     tap(() => {
+    //       this.router.navigate(['/checkout', 'payment']);
+    //     }))
+    //     .subscribe();
+    // } else {
+    //   this.router.navigate(['/checkout', 'payment']);
+    // }
   }
 
   ngOnDestroy() {
@@ -88,6 +89,7 @@ export class AddressComponent implements OnInit, OnDestroy {
 
   getSelectedAddress(event) {
     this.shipAddress = event;
-    this.isUserSelectedAddress = true
+    this.isUserSelectedAddress = true;
+    this.addressService.bindAddressToOrder(this.shipAddress, this.orderId).subscribe();
   }
 }

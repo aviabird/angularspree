@@ -15,6 +15,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Injectable()
 export class CheckoutService {
   private orderId: number;
+  private orderNumber: string;
 
   /**
    * Creates an instance of CheckoutService.
@@ -32,6 +33,10 @@ export class CheckoutService {
     @Inject(PLATFORM_ID) private platformId: any) {
     this.store.select(getOrderId)
       .subscribe(orderId => (this.orderId = orderId));
+
+    this.store.select(getOrderNumber)
+      .subscribe(orderNumber => (this.orderNumber = orderNumber))
+
   }
 
   /**
@@ -85,8 +90,8 @@ export class CheckoutService {
    * @returns
    * @memberof CheckoutService
    */
-  getOrder(orderNumber: string) {
-    const url = `api/v1/orders/${orderNumber}.json`;
+  getOrder() {
+    const url = `http://localhost:3000/api/v1/orders/${this.orderNumber}`;
     return this.http.get<Order>(url);
   }
 
@@ -124,7 +129,7 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   deleteLineItem(lineItem: LineItem) {
-    const url = `api/v1/orders/${this.orderNumber}/line_items/${
+    const url = `api/v1/orders/${this.orderId}/line_items/${
       lineItem.id
       }?order_token=${this.getOrderToken()}`;
     return this.http
@@ -166,7 +171,7 @@ export class CheckoutService {
    */
   updateOrder(params: any) {
     const url = `api/v1/checkouts/${
-      this.orderNumber
+      this.orderId
       }.json?order_token=${this.getOrderToken()}`;
     return this.http
       .put<Order>(url, params)
@@ -186,7 +191,7 @@ export class CheckoutService {
    */
   availablePaymentMethods() {
     const url = `api/v1/orders/${
-      this.orderNumber
+      this.orderId
       }/payments/new?order_token=${this.getOrderToken()}`;
     return this.http.get<any>(url);
   }

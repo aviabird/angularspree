@@ -32,15 +32,17 @@ export class ProductPriceInfoComponent implements OnInit {
   constructor(private variantParser: VariantParserService,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
-   }
+  }
 
   ngOnInit() {
     this.images = this.product.images;
     this.variantId = this.product.id;
-    this.customOptionTypesHash = this.variantParser
-    .getOptionsToDisplay(this.product.variants, this.product.theme.option_types);
-    this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
-    this.correspondingOptions = this.mainOptions;
+    if (this.product.theme) {
+      this.customOptionTypesHash = this.variantParser
+        .getOptionsToDisplay(this.product.variants, this.product.theme.option_types);
+      this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
+      this.correspondingOptions = this.mainOptions;
+  }
     this.isOrderable = true;
   }
 

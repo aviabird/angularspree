@@ -10,9 +10,10 @@ export function getCheckoutState(state: AppState): CheckoutState {
 
 // ******************** Individual selectors ***************************
 export function fetchLineItems(state: CheckoutState) {
-  const ids = state.lineItemIds.toJS();
-  const lineItemEntitites = state.lineItemEntities.toJS();
-  return ids.map(id => lineItemEntitites[id]);
+  return state.lineItems.toJS();
+  // const ids = state.lineItemIds.toJS();
+  // const lineItemEntitites = state.lineItemEntities.toJS();
+  // return ids.map(id => lineItemEntitites[id]);
 }
 
 export function fetchOrderNumber(state: CheckoutState) {

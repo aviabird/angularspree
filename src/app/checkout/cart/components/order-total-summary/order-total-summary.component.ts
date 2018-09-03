@@ -42,15 +42,7 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
   }
 
   placeOrder() {
-    if (this.orderState === 'cart') {
-      this.checkoutService.changeOrderState().pipe(
-        tap(() => {
-          this.router.navigate(['/checkout', 'address']);
-        }))
-        .subscribe();
-    } else {
-      this.router.navigate(['/checkout', 'address']);
-    }
+    this.router.navigate(['/checkout', 'address']);
   }
 
   enableshippingcalculate() {

@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { environment } from './../../../../../../environments/environment';
 import { LineItem } from './../../../../../core/models/line_item';
 import { Component, OnInit, Input } from '@angular/core';
+import { Price } from '../../../../../core/models/price';
 
 @Component({
   selector: 'app-line-item',
@@ -20,6 +21,10 @@ export class LineItemComponent implements OnInit {
   amount: number;
   quantityCount: any;
   optionTxt: any;
+  noImageUrl = 'assets/default/no-image-available.jpg'
+  unit_price: Price;
+  currency = environment.config.currency_symbol;
+
   constructor(
     private store: Store<AppState>,
     private actions: CheckoutActions,
@@ -28,15 +33,13 @@ export class LineItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.lineItem.variant.images[0]) {
-      this.image = this.lineItem.variant.images[0].product_url;
-    }
-    this.name = this.lineItem.variant.name;
+    this.image = this.noImageUrl;
+    this.name = this.lineItem.product.name;
     this.quantity = this.lineItem.quantity;
-    this.amount = this.lineItem.display_amount;
+    this.unit_price = this.lineItem.unit_price as Price;
+    this.amount = (parseFloat(this.unit_price.amount) * this.quantity);
     this.quantityCount = this.quantity;
-    this.optionTxt = this.lineItem.variant.options_text;
-
+    this.optionTxt = 'TODO'
   }
 
   removeLineItem() {
@@ -57,6 +60,7 @@ export class LineItemComponent implements OnInit {
 
   addQuantity() {
     this.quantityCount += 1;
-    this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, 1));
+    this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.product.id, 1));
+    this.store.dispatch(this.actions.getOrderDetails());
   }
 }

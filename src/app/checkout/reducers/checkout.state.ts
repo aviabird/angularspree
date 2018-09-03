@@ -3,7 +3,7 @@ import { LineItem } from './../../core/models/line_item';
 import { Map, Record, List, fromJS } from 'immutable';
 
 export interface CheckoutState extends Map<string, any> {
-  orderNumber: number;
+  orderNumber: string;
   orderState: string;
   lineItemIds: List<number>;
   lineItemEntities: Map<number, LineItem>;
@@ -15,6 +15,7 @@ export interface CheckoutState extends Map<string, any> {
   itemTotal: number;
   adjustmentTotal: number;
   orderId: number;
+  lineItems: List<LineItem>;
 }
 
 export const CheckoutStateRecord = Record({
@@ -29,5 +30,6 @@ export const CheckoutStateRecord = Record({
   shipTotal: 0,
   itemTotal: 0,
   adjustmentTotal: 0,
-  orderId: null
+  orderId: null,
+  lineItems: List([])
 });
