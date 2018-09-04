@@ -43,43 +43,37 @@ export class CheckoutService {
    */
   createNewLineItem(variant_id: number, quantity: number): Observable<LineItem> {
     if (!this.getOrderToken()) {
-      const order_params = {
-        order: {
-          line_items: {
-            0: { variant_id: variant_id, quantity: quantity }
-          }
-        }
-      };
-      const new_order_url = `api/v1/orders`;
-      return this.http.post<Order>(new_order_url, order_params).pipe(
-        map(
-          order => {
-            this.toastyService.success('Success!', 'Cart updated!');
-            this.setOrderTokenInLocalStorage({ order_token: order.token, order_number: order.number });
-            this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
-            return order.line_items[0];
-          }
-        ),
-        tap(_order =>
-          _ => _,
-          _ => this.toastyService.error('Something went wrong!', 'Failed')
-        )
-      );
-    } else {
-      const params = {
-        line_item: { variant_id: variant_id, quantity: quantity }
-      };
-      const url = `api/v1/orders/${this.orderNumber()}/line_items?order_token=${this.getOrderToken()}`;
-      return this.http.post<LineItem>(url, params).pipe(
-        tap(
-          lineItem => {
-            this.toastyService.success('Success!', 'Cart updated!');
-            return lineItem;
-          },
-          _ => this.toastyService.error('Something went wrong!', 'Failed')
-        )
-      );
+      const order_params = { order: { line_items: { 0: { variant_id: variant_id, quantity: quantity } } } };
+      return this.createNewOrder(order_params).pipe(map(order => order.line_items[0]));
     }
+
+    const params = {
+      line_item: { variant_id: variant_id, quantity: quantity }
+    };
+    const url = `api/v1/orders/${this.orderNumber()}/line_items?order_token=${this.getOrderToken()}`;
+    return this.http.post<LineItem>(url, params).pipe(
+      tap(
+        lineItem => {
+          this.toastyService.success('Success!', 'Cart updated!');
+          return lineItem;
+        },
+        _ => this.toastyService.error('Something went wrong!', 'Failed')
+      )
+    );
+  }
+
+  createNewOrder(orderParams): Observable<Order> {
+    const new_order_url = `api/v1/orders`;
+    return this.http.post<Order>(new_order_url, orderParams).pipe(
+      tap(
+        order => {
+          this.toastyService.success('Success!', 'Cart updated!');
+          this.setOrderTokenInLocalStorage({ order_token: order.token, order_number: order.number });
+          this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
+        },
+        _ => this.toastyService.error('Something went wrong!', 'Failed')
+      )
+    );
   }
 
   fetchCurrentOrder() {

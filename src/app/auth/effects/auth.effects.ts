@@ -30,6 +30,14 @@ export class AuthenticationEffects {
     );
 
   @Effect()
+  AfterLoginSuccess$: Observable<Action> = this.actions$
+    .ofType(AuthActions.LOGIN_SUCCESS)
+    .pipe(
+      switchMap(() => this.checkoutService.fetchCurrentOrder()),
+      map(_ => this.authActions.noOp())
+    );
+
+  @Effect()
   OAuthLogin: Observable<Action> = this.actions$
     .ofType(AuthActions.O_AUTH_LOGIN)
     .pipe(

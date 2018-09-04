@@ -33,7 +33,7 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
   }
-  
+
   ngOnDestroy() {
     this.orderSub$.unsubscribe();
   }
