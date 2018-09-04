@@ -81,7 +81,7 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
                 tap(() => {
                   this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
                   this.redirectToNewPage();
-                  this.subscriptionList$.push(this.checkoutService.createEmptyOrder().subscribe());
+                  this.checkoutService.removeLocalOrder();
                 }))
                 .subscribe()
             );
@@ -105,7 +105,7 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
             this.checkoutService.createNewPayment(this.selectedMode.id, this.paymentAmount).pipe(
               tap(() => {
                 this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-                this.subscriptionList$.push(this.checkoutService.createEmptyOrder().subscribe());
+                this.checkoutService.removeLocalOrder();
               })
             )
             .subscribe(_ => {

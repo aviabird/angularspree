@@ -1,7 +1,7 @@
-<div *ngIf="shipAddress$ | async; let shipAddress" class="address-section col-12 col-md-8 col-lg-8">
+<div class="address-section col-12 col-md-8 col-lg-8">
 	<div *ngIf=!editAddress>
 		<div class="row m-0">
-			<div class="left col-12 col-md-8 col-lg-8 m-0 ">
+			<div class="left col-12 col-md-8 col-lg-8 m-0 " *ngIf="shipAddress$ | async; let shipAddress">
 				<div class="edit-address">
 					<span class="edit-label">
 						Delivery Address
@@ -16,7 +16,7 @@
 			</div>
 		</div>
 	</div>
-	<div *ngIf="!shipAddress" class="row">
+	<div *ngIf="!(shipAddress$ | async)" class="row">
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0">
 			<div class="add-address">
 				<span class="add-label">
