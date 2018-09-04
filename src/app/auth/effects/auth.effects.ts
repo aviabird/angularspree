@@ -20,8 +20,13 @@ export class AuthenticationEffects {
         return this.authService.authorized();
       }),
       switchMap((data) => this.checkoutService.fetchCurrentOrder().pipe(map(() => data))),
-      filter(data => data.status !== 'unauthorized'),
-      map(() => this.authActions.loginSuccess())
+      map(data => {
+        if (data.status === 'unauthorized') {
+          return this.authActions.noOp();
+        } else {
+          return this.authActions.loginSuccess();
+        }
+      })
     );
 
   @Effect()

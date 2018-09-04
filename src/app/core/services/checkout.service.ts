@@ -94,11 +94,12 @@ export class CheckoutService {
               .getOrder(s_order.order_number)
               .pipe(tap(_order => this.store.dispatch(this.actions.fetchCurrentOrderSuccess(_order))));
           } else {
-            return this.createEmptyOrder();
+            return of(null);
           }
         }
       }),
       map(order => {
+        if (!order) { return }
         const { token, number } = order;
         this.setOrderTokenInLocalStorage({ order_token: token, order_number: number });
         return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
@@ -269,12 +270,12 @@ export class CheckoutService {
    *
    * @memberof CheckoutService
    */
-  private getOrderToken() {
+  getOrderToken() {
     const order = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('order')) : {};
     return order ? order.order_token : null;
   }
 
-  private orderNumber() {
+  orderNumber() {
     const order = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('order')) : {};
     return order ? order.order_number : null;
   }
