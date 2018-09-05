@@ -1,3 +1,4 @@
+import { Taxon } from './../../core/models/taxon';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
@@ -7,6 +8,7 @@ import { getTaxonomies } from '../../product/reducers/selectors';
 import { Observable, forkJoin, of } from 'rxjs';
 import { ProductService } from '../../core/services/product.service';
 import { map, switchMap } from 'rxjs/operators';
+import { Product } from '../../core/models/product';
 
 @Component({
   selector: 'app-category-page',
@@ -16,11 +18,9 @@ import { map, switchMap } from 'rxjs/operators';
 })
 export class CategoryPageComponent implements OnInit {
   banners = environment.config.category_banner;
-  category_banner: any;
-  categeory_number: any;
-  id: any
-  selectedTaxons$: Observable<any>
-  productList$: Observable<any>
+  categeory_number: number;
+  selectedTaxons$: Observable<Taxon>;
+  productList$: Observable<Array<Product>>;
   selectedCategory: any;
 
   constructor(private route: ActivatedRoute,

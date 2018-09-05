@@ -3,7 +3,7 @@ import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { LayoutState } from './../../layout/reducers/layout.state';
-import { tap } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 import { LineItem } from './../../core/models/line_item';
 import { Order } from './../../core/models/order';
 import { UserService } from './../../user/services/user.service';
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Component, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
 import { CheckoutService } from '../../core/services/checkout.service';
 import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 
 @Component({
   selector: 'app-order-failed',
@@ -40,18 +40,19 @@ export class OrderFailedComponent implements OnInit, OnDestroy {
     this.subscriptionList$.push(
       this.activatedRouter.queryParams
         .pipe(
-          tap(({ orderReferance }) => {
-            this.subscriptionList$.push(
-              this.userService
+          switchMap(params => {
+            const { reason, orderReferance } = params;
+            this.errorReason = reason;
+            if (!orderReferance) {
+              this.route.navigate(['/'])
+              return of(params);
+            }
+            return this.userService
               .getOrderDetail(orderReferance)
-              .subscribe(order => this.orderDetails = order)
-            )
+              .pipe(tap(order => this.orderDetails = order));
           })
         )
-        .subscribe(({ reason, orderReferance }) => {
-          this.errorReason = reason;
-          if (!orderReferance) { this.route.navigate(['/']) }
-        })
+        .subscribe()
     );
   }
 

@@ -10,7 +10,7 @@
           <app-brand-filter [taxonomiList]="brands$ | async" [isFilterOn]="isFilterOn$ | async"></app-brand-filter>
         </div>
         <div class="col-lg-9 col-12 col-sm-12" [ngClass]="[isMobile ? 'p-0' : '']">
-          <app-content [productsList]="products$ | async" [paginationData]="paginationData" [fillterList]="taxonomies" class="col-12">
+          <app-content [layoutState]="layoutState$ | async" [productsList]="products$ | async" [paginationData]="paginationData" [fillterList]="taxonomies" class="col-12">
           </app-content>
         </div>
       </div>

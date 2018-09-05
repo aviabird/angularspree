@@ -4,7 +4,7 @@ import { Order } from './../../core/models/order';
 import { UserService } from './../../user/services/user.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Component, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
-import { Subscription, Observable, interval } from 'rxjs';
+import { Subscription, Observable, interval, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
 import { getlayoutStateJS } from '../../layout/reducers/layout.selector';
@@ -36,23 +36,18 @@ export class OrderSuccessComponent implements OnInit, OnDestroy {
     this.subscriptionList$.push(
       this.activatedRouter.queryParams
         .pipe(
-          tap(({ orderReferance }) => {
-            interval(200)
-              .pipe(
-                switchMap(_ => this.userService.getOrderDetail(orderReferance)),
-                take(30),
-                skipWhile(order => order.shipment_state !== 'ready'),
-                map(order => this.orderDetails = order),
-                take(1)
-              )
+          switchMap(params => {
+            const { orderReferance } = params;
+            if (!orderReferance) {
+              this.route.navigate(['/']);
+              return of(params);
+            }
+            return this.userService
+              .getOrderDetail(orderReferance)
+              .pipe(tap(order => this.orderDetails = order));
           })
         )
-        .subscribe(params => {
-          this.queryParams = params
-          if (!this.queryParams.orderReferance) {
-            this.route.navigate(['/'])
-          }
-        })
+        .subscribe()
     );
   }
 

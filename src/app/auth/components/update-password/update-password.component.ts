@@ -88,9 +88,9 @@ export class UpdatePasswordComponent implements OnInit {
       const password = group.controls[passwordKey];
       const confirmPassword = group.controls[confirmPasswordKey];
 
-      return {
-        mismatchedPasswords: password.value !== confirmPassword.value
-      };
+      if (password.value !== confirmPassword.value) {
+        return { mismatchedPasswords: true }
+      }
     }
   }
 
