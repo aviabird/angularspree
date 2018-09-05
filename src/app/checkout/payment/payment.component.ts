@@ -18,7 +18,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
   address$: Observable<Address>;
-  orderNumber$: Observable<number>;
+  orderNumber$: Observable<string>;
   shipTotal$: Observable<number>;
   itemTotal$: Observable<number>;
   adjustmentTotal$: Observable<number>;

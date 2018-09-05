@@ -43,14 +43,14 @@
 					<div class="address-lbl">DELIVER TO</div>
 					<div class="add-info">
 						<strong>
-							<a routerLink="/checkout/address">Edit</a>
+							<a routerLink="/checkout/address">Change</a>
 						</strong>
 					</div>
-					<div class="name">{{address.full_name}}</div>
-					<div class="add-info">{{address.address1}}</div>
-					<div class="add-info">{{address.address2}}</div>
-					<div class="add-info">{{address.city}} - {{address.zipcode}}</div>
-					<div class="add-info">{{address.state?.name}}</div>
+					<div class="name">{{address.first_name}} {{address.last_name}}</div>
+					<div class="add-info">{{address.address_line_1}}</div>
+					<div class="add-info">{{address.address_line_2}}</div>
+					<div class="add-info">{{address.city}} - {{address.zip_code}}</div>
+					<!-- <div class="add-info">{{address.state?.name}}</div> -->
 					<div class="add-info">Mobile: {{address.phone}}</div>
 				</div>
 			</div>

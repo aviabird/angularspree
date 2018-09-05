@@ -28,7 +28,8 @@ export class AddressService {
       'city': ['', Validators.required],
       'phone': ['', Validators.required],
       'zip_code': ['', Validators.required],
-      'state_name': ['', Validators.required]
+      'state_name': ['', Validators.required],
+      'country_name': ['', Validators.required]
     });
   }
 
@@ -55,14 +56,6 @@ export class AddressService {
         ship_address_attributes: address
       }
     };
-  }
-  // Country ID: 105 is for INDIA.
-  getCountires(): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/api/v1/countries`)
-  }
-
-  getAllStates(): Observable<any> {
-    return this.http.get<any>(`http://localhost:3000/api/v1/countries/105/states`)
   }
 
   // updateAddress(updatedAddress, addressId, orderNumber) {

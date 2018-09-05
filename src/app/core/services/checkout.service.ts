@@ -190,9 +190,7 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   availablePaymentMethods() {
-    const url = `api/v1/orders/${
-      this.orderId
-      }/payments/new?order_token=${this.getOrderToken()}`;
+    const url = `http://localhost:3000/api/v1/payment/payment-methods`
     return this.http.get<any>(url);
   }
 

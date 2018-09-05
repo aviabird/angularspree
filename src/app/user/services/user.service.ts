@@ -7,6 +7,8 @@ import { map } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
 import { Address } from '../../core/models/address';
+import { State } from '../../core/models/state';
+import { Country } from '../../core/models/country';
 
 @Injectable()
 export class UserService {
@@ -84,6 +86,14 @@ export class UserService {
 
   getUserAddresses(): Observable<Array<Address>> {
     return this.http.get<Array<Address>>(`http://localhost:3000/api/v1/addresses`)
+  }
+
+  getCountires(): Observable<Array<Country>> {
+    return this.http.get<any>(`http://localhost:3000/api/v1/countries`)
+  }
+
+  getAllStates(countryId: string): Observable<Array<State>> {
+    return this.http.get<Array<State>>(`http://localhost:3000/api/v1/countries/${countryId}/states`)
   }
 }
 

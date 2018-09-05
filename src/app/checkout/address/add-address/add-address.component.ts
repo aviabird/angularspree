@@ -4,12 +4,16 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { ToastrService } from 'ngx-toastr';
 import { AddressService } from '../services/address.service';
 import { AuthActions } from '../../../auth/actions/auth.actions';
-import { getAuthStatus, getCurrentUser } from '../../../auth/reducers/selectors';
+import { getAuthStatus} from '../../../auth/reducers/selectors';
 import { CheckoutService } from '../../../core/services/checkout.service';
 import { AppState } from '../../../interfaces';
 import { User } from '../../../core/models/user';
 import { Observable } from 'rxjs';
 import { UserActions } from '../../../user/actions/user.actions';
+import { State } from '../../../core/models/state';
+import { getStates } from '../../../user/reducers/selector';
+import { Country } from '../../../core/models/country';
+
 
 @Component({
   selector: 'app-add-address',
@@ -20,9 +24,12 @@ export class AddAddressComponent implements OnInit {
   addressForm: FormGroup;
   emailForm: FormGroup;
   isAuthenticated: boolean;
-  states: any;
+  states: State[];
+  countryId: string;
+
   @Input() addressEdit: any
   @Input() orderNumber: string
+  @Input() countries: Country[];
   @Output() addressEdited = new EventEmitter<boolean>();
   @Output() cancelAddress = new EventEmitter<boolean>();
   currentUser$: Observable<User>;
@@ -38,12 +45,9 @@ export class AddAddressComponent implements OnInit {
   ) {
     this.addressForm = addrService.initAddressForm();
     this.emailForm = addrService.initEmailForm();
+
     this.store.select(getAuthStatus).subscribe(auth => {
       this.isAuthenticated = auth;
-    });
-
-    this.addrService.getAllStates().subscribe(data => {
-      this.states = data.states;
     });
   }
 
@@ -57,9 +61,9 @@ export class AddAddressComponent implements OnInit {
     const address = this.addressForm.value;
     for (const state of this.states) {
       if (state.name === address.state_name) {
-        address['state_id'] = 1987;
-        address['country_id'] = 105;
-        address['state_name'] = 'Maharashtra';
+        address['state_id'] = state.id;
+        address['country_id'] = this.countryId;
+        address['state_name'] = state.name;
         break;
       }
     }
@@ -107,5 +111,13 @@ export class AddAddressComponent implements OnInit {
 
   closeAddressForm() {
     return this.cancelAddress.emit(false);
+  }
+
+  selectedCountry(countryId: string) {
+    this.countryId = countryId;
+    this.store.dispatch(this.userActions.fetchStates(countryId));
+    this.store.select(getStates).subscribe(state => {
+      this.states = state;
+    });
   }
 }

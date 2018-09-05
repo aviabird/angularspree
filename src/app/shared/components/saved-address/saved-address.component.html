@@ -3,6 +3,7 @@
     <div class="address-row reviewlink card-body" (click)="selectedAddress(i)">
       <div class="row ">
         <div class="col name " *ngIf="showDeliverHere && selectedIndex === i ">
+            <i class="fa fa-check-square-o"></i>
           <div class="row">
             <div class="col-md-3">
               <button class='btn themebtnprimarybasic col-12 mb-3' (click)="selectedDeliveryAddress(address) ">Deliver here</button>

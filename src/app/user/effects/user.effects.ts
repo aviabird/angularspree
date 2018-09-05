@@ -7,6 +7,7 @@ import { Effect, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { UserService } from '../services/user.service';
 import { UserActions } from '../actions/user.actions';
+import { AddressService } from '../../checkout/address/services/address.service';
 
 @Injectable()
 export class UserEffects {
@@ -39,6 +40,29 @@ export class UserEffects {
       switchMap((action: any) => this.userService.getUserAddresses()),
       map((addressList) =>
         this.userActions.fetchUserAddressSuccess(addressList)
+      )
+    );
+
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  FetchCountries$: Observable<Action> = this.actions$
+    .ofType(UserActions.FETCH_COUNTRIES)
+    .pipe(
+      switchMap((action: any) => this.userService.getCountires()),
+      map((countries) =>
+        this.userActions.fetchCountriesSuccess(countries)
+      )
+    );
+
+  // tslint:disable-next-line:member-ordering
+  @Effect()
+  FetchStates$: Observable<Action> = this.actions$
+    .ofType(UserActions.FETCH_STATES)
+    .pipe(
+      switchMap((action: any) =>
+       this.userService.getAllStates(action.payload)),
+      map((states) =>
+        this.userActions.fetchStatesSuccess(states)
       )
     );
 }

@@ -10,7 +10,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { AddressService } from './services/address.service';
 import { UserActions } from '../../user/actions/user.actions';
-import { getUserAddressess } from '../../user/reducers/selector';
+import { getUserAddressess, getCountries } from '../../user/reducers/selector';
+import { Country } from '../../core/models/country';
 
 @Component({
   selector: 'app-address',
@@ -27,26 +28,28 @@ export class AddressComponent implements OnInit, OnDestroy {
   isAddNewAddress: boolean;
   userAddresses$: Observable<Array<Address>>;
   isUserSelectedAddress: boolean;
+  countries$: Observable<Country[]>;
 
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
     private addressService: AddressService,
     private router: Router,
     private userActions: UserActions) {
-    this.store.select(getOrderId).subscribe(orderId => this.orderId = orderId);
-
-    // this.shipAddress$ = this.store.select(getShipAddress);
-    // this.stateSub$ = this.store.select(getOrderState)
-    // .subscribe(state => this.orderState = state);
-
     this.store.dispatch(this.userActions.fetchUserAddress());
-    this.userAddresses$ = this.store.select(getUserAddressess);
   }
 
   ngOnInit() {
+    this.store.select(getOrderId).subscribe(orderId => this.orderId = orderId);
+    // this.stateSub$ = this.store.select(getOrderState)
+    //   .subscribe(state => this.orderState = state);
+
+    this.userAddresses$ = this.store.select(getUserAddressess);
+    this.store.dispatch(this.userActions.fetchCountries());
+    this.countries$ = this.store.select(getCountries);
   }
 
   checkoutToPayment() {
+    this.router.navigate(['/checkout', 'payment']);
     // if (this.orderState === 'delivery' || this.orderState === 'address') {
     //   this.checkoutService.changeOrderState().pipe(
     //     tap(() => {
@@ -91,5 +94,9 @@ export class AddressComponent implements OnInit, OnDestroy {
     this.shipAddress = event;
     this.isUserSelectedAddress = true;
     this.addressService.bindAddressToOrder(this.shipAddress, this.orderId).subscribe();
+  }
+
+  changeAddress() {
+    this.isUserSelectedAddress = false;
   }
 }

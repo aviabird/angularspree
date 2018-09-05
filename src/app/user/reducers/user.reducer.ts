@@ -21,6 +21,12 @@ export function reducer(state = initialState, { type, payload }: any): UserState
     case UserActions.FETCH_USER_ADDRESS_SUCCEESS:
       return state.merge({ userAddresses: payload }) as UserState;
 
+    case UserActions.FETCH_COUNTRIES_SUCCEESS:
+      return state.merge({ countries: payload }) as UserState;
+
+    case UserActions.FETCH_STATES_SUCCEESS:
+      return state.merge({ states: payload.states }) as UserState;
+
     default:
       return state;
   }

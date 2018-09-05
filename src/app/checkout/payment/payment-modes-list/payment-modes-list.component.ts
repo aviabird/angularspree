@@ -58,55 +58,56 @@ export class PaymentModesListComponent implements OnInit {
 
   private fetchAllPayments() {
     this.checkoutService.availablePaymentMethods()
-      .subscribe((payment) => {
-        this.paymentModes = payment.payment_methods;
+      .subscribe((payments) => {
+        this.paymentModes = payments;
         this.selectedMode = this.paymentService.getDefaultSelectedMode(this.paymentModes);
       });
   }
 
-  makePaymentCod() {
-    const paymentModeId = this.selectedMode.id;
-    const shipping_pincode = (this.address.zip_code)
-    this.checkoutService.shipmentAvailability(+shipping_pincode)
-      .subscribe((res: any) => {
-        this.isShippeble = res.available
-        if (this.isShippeble && this.paymentAmount >= this.freeShippingAmount) {
-          this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
-            tap(() => {
-              this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-              this.redirectToNewPage();
-              this.checkoutService.createEmptyOrder()
-                .subscribe();
-            }))
-            .subscribe();
-        } else {
-          if (this.paymentAmount < this.freeShippingAmount) {
-            // tslint:disable-next-line:max-line-length
-            this.toastyService.error(`${this.selectedMode.name} is not available for Order amount less than ${this.currency} ${this.freeShippingAmount}.`, 'Order Amount');
-          } else if (!this.isShippeble) {
-            this.toastyService.error(`${this.selectedMode.name} is not available for pincode ${shipping_pincode}.`, 'Pincode');
-          }
-        }
-      });
-  }
+  // makePaymentCod() {
+  //   const paymentModeId = this.selectedMode.id;
+  //   const shipping_pincode = (this.address.zip_code)
+  //   this.checkoutService.shipmentAvailability(+shipping_pincode)
+  //     .subscribe((res: any) => {
+  //       this.isShippeble = res.available
+  //       if (this.isShippeble && this.paymentAmount >= this.freeShippingAmount) {
+  //         this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
+  //           tap(() => {
+  //             this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
+  //             this.redirectToNewPage();
+  //             this.checkoutService.createEmptyOrder()
+  //               .subscribe();
+  //           }))
+  //           .subscribe();
+  //       } else {
+  //         if (this.paymentAmount < this.freeShippingAmount) {
+  //           // tslint:disable-next-line:max-line-length
+  //           this.toastyService.error(`${this.selectedMode.name} is not available for Order amount less than ${this.currency} ${this.freeShippingAmount}.`, 'Order Amount');
+  //         } else if (!this.isShippeble) {
+  //           this.toastyService.error(`${this.selectedMode.name} is not available for pincode ${shipping_pincode}.`, 'Pincode');
+  //         }
+  //       }
+  //     });
+  // }
 
   makePaymentPayubiz() {
-    this.checkoutService.makePayment(this.paymentAmount, this.address, this.orderNumber)
-      .subscribe((response: any) => {
-        response = response
-        this.checkoutService.createNewPayment(this.selectedMode.id, this.paymentAmount).pipe(
-          tap(() => {
-            this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-            this.checkoutService.createEmptyOrder()
-              .subscribe();
-          })
-        )
-          .subscribe((res) => {
-            if (isPlatformBrowser(this.platformId)) {
-              window.open(response.url, '_self');
-            }
-          });
-      })
+    alert('Sorry you cant proceed further');
+    // this.checkoutService.makePayment(this.paymentAmount, this.address, this.orderNumber)
+    //   .subscribe((response: any) => {
+    //     response = response
+    //     this.checkoutService.createNewPayment(this.selectedMode.id, this.paymentAmount).pipe(
+    //       tap(() => {
+    //         this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
+    //         this.checkoutService.createEmptyOrder()
+    //           .subscribe();
+    //       })
+    //     )
+    //       .subscribe((res) => {
+    //         if (isPlatformBrowser(this.platformId)) {
+    //           window.open(response.url, '_self');
+    //         }
+    //       });
+    //   })
   }
 
   private redirectToNewPage() {

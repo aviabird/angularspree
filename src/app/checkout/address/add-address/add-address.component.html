@@ -4,7 +4,8 @@
       <span class="required">*</span>
     </label>
     <input type="email" class="form-control" formControlName="email">
-    <p *ngIf="emailForm.get('email').hasError('required') && emailForm.get('email').touched" class="value-err show">This is a mandatory field</p>
+    <p *ngIf="emailForm.get('email').hasError('required') && emailForm.get('email').touched" class="value-err show">This
+      is a mandatory field</p>
   </div>
 </form>
 <form class="form" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
@@ -14,28 +15,17 @@
         <span class="required">*</span>
       </label>
       <input type="tel" class="form-control" formControlName="zip_code">
-      <p *ngIf="addressForm.get('zip_code').hasError('required') && addressForm.get('zip_code').touched" class="value-err  text-danger show">This is a mandatory field</p>
+      <p *ngIf="addressForm.get('zip_code').hasError('required') && addressForm.get('zip_code').touched" class="value-err  text-danger show">This
+        is a mandatory field</p>
     </div>
+
     <div class="form-group col-sm-6">
-      <label> Locality / Town
+      <label>Mobile No
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="address_line_2">
-      <p *ngIf="addressForm.get('address_line_2').hasError('required') && addressForm.get('address_line_2').touched" class="value-err text-danger show">This is a mandatory field</p>
-    </div>
-    <div class="form-group col-sm-6">
-      <label>City / District
-        <span class="required">*</span>
-      </label>
-      <input type="text" class="form-control" formControlName="city">
-      <p *ngIf="addressForm.get('city').hasError('required') &&  addressForm.get('city').touched" class="value-err text-danger show">This is a mandatory field</p>
-    </div>
-    <div class="form-group col-sm-6">
-      <label> State </label>
-      <select class="form-control" formControlName="state_name">
-        <option *ngIf="addressEdit">{{addressEdit.state.name}}
-          <option *ngFor="let state of states">{{state.name}}</option>
-      </select>
+      <input type="tel" class="form-control" formControlName="phone">
+      <p *ngIf="addressForm.get('phone').hasError('required') &&  addressForm.get('phone').touched" class="value-err text-danger show">This
+        is a mandatory field</p>
     </div>
 
     <div class="form-group col-sm-6">
@@ -43,35 +33,64 @@
         <span class="required">*</span>
       </label>
       <input type="text" class="form-control" formControlName="first_name">
-      <p *ngIf="addressForm.get('first_name').hasError('required') &&  addressForm.get('first_name').touched" class="value-err text-danger show">This is a mandatory field</p>
+      <p *ngIf="addressForm.get('first_name').hasError('required') &&  addressForm.get('first_name').touched" class="value-err text-danger show">This
+        is a mandatory field</p>
     </div>
     <div class="form-group col-sm-6">
       <label> Last Name
         <span class="required">*</span>
       </label>
       <input type="text" class="form-control" formControlName="last_name">
-      <p *ngIf="addressForm.get('last_name').hasError('required') &&  addressForm.get('last_name').touched" class="value- text-danger show">This is a mandatory field</p>
+      <p *ngIf="addressForm.get('last_name').hasError('required') &&  addressForm.get('last_name').touched" class="value- text-danger show">This
+        is a mandatory field</p>
     </div>
 
     <div class="form-group col-sm-6">
+      <label> Locality / Town
+        <span class="required">*</span>
+      </label>
+      <input type="text" class="form-control" formControlName="address_line_2">
+      <p *ngIf="addressForm.get('address_line_2').hasError('required') && addressForm.get('address_line_2').touched" class="value-err text-danger show">This
+        is a mandatory field</p>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label>City / District
+        <span class="required">*</span>
+      </label>
+      <input type="text" class="form-control" formControlName="city">
+      <p *ngIf="addressForm.get('city').hasError('required') &&  addressForm.get('city').touched" class="value-err text-danger show">This
+        is a mandatory field</p>
+    </div>
+
+    <div class="form-group col-sm-12">
       <label>Address
         <span class="required">*</span>
       </label>
       <textarea type="text" class="form-control" formControlName="address_line_1"></textarea>
-      <p *ngIf="addressForm.get('address_line_1').hasError('required') &&  addressForm.get('address_line_1').touched" class="value-err text-danger show">This is a mandatory field</p>
+      <p *ngIf="addressForm.get('address_line_1').hasError('required') &&  addressForm.get('address_line_1').touched" class="value-err text-danger show">This
+        is a mandatory field</p>
     </div>
+
     <div class="form-group col-sm-6">
-      <label>Mobile No
-        <span class="required">*</span>
-      </label>
-      <input type="tel" class="form-control" formControlName="phone">
-      <p *ngIf="addressForm.get('phone').hasError('required') &&  addressForm.get('phone').touched" class="value-err text-danger show">This is a mandatory field</p>
+      <label> Country </label>
+      <select class="form-control" formControlName="country_name" [(ngModel)]="countryId" (change)="selectedCountry(countryId)">
+        <option *ngFor="let country of countries" [value]="country.id" >{{country.name}}</option>
+      </select>
     </div>
+
+    <div class="form-group col-sm-6">
+      <label> State </label>
+      <select  ng-disabled="true" class="form-control" formControlName="state_name" ng-disabled="true" placeholder="Your Email">
+          <option *ngFor="let state of states">{{state.name}}</option>
+      </select>
+    </div>
+
     <div *ngIf="isAuthenticated" class="save-button col-12 col-sm-6">
       <button class="btn themebtnprimary">SAVE</button>
     </div>
     <div class="col-12 col-sm-2 " style="padding-top: 25px;">
-        <span (click)="closeAddressForm()" class="reviewlink"><strong>Cancel</strong></span>
+      <span (click)="closeAddressForm()" class="reviewlink"><strong>Cancel</strong></span>
     </div>
     <div *ngIf="!isAuthenticated" class="save-button col-12 col-sm-6">
       <button [disabled]="!addressForm.valid && !emailForm.valid">SAVE</button>
