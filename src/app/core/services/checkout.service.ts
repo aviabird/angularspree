@@ -83,16 +83,17 @@ export class CheckoutService {
         } else {
           if (this.getOrderToken()) {
             const s_order = JSON.parse(localStorage.getItem('order'));
-            return this
-              .getOrder(s_order.order_number)
-              .pipe(tap(_order => this.store.dispatch(this.actions.fetchCurrentOrderSuccess(_order))));
+            return this.getOrder(s_order.order_number);
           } else {
             return of(null);
           }
         }
       }),
       map(order => {
-        if (!order) { return }
+        if (!order) {
+          localStorage.removeItem('order');
+          return;
+        }
         const { token, number } = order;
         this.setOrderTokenInLocalStorage({ order_token: token, order_number: number });
         return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
