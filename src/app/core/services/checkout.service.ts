@@ -56,7 +56,11 @@ export class CheckoutService {
           this.toastyService.success('Success!', 'Cart updated!');
           return lineItem;
         },
-        _ => this.toastyService.error('Something went wrong!', 'Failed')
+        _ => {
+          localStorage.removeItem('order');
+          this.createNewLineItem(variant_id, quantity);
+          this.toastyService.error('Something went wrong!', 'Failed');
+        }
       )
     );
   }
