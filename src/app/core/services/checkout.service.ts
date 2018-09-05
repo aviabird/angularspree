@@ -58,8 +58,7 @@ export class CheckoutService {
         },
         _ => {
           localStorage.removeItem('order');
-          this.createNewLineItem(variant_id, quantity);
-          this.toastyService.error('Something went wrong!', 'Failed');
+          this.createNewLineItem(variant_id, quantity).subscribe();
         }
       )
     );
