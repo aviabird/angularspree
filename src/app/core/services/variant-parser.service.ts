@@ -1,6 +1,4 @@
-import { Effect } from '@ngrx/effects';
 import { OptionValue } from './../models/option_value';
-import { element } from 'protractor';
 import { Variant } from './../models/variant';
 import { OptionType } from './../models/option_type';
 import { Injectable } from '@angular/core';

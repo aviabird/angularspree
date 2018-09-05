@@ -1,3 +1,4 @@
+import { CheckoutService } from './../../../core/services/checkout.service';
 import { ToastrService } from 'ngx-toastr';
 import { map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +12,8 @@ export class AddressService {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private checkoutService: CheckoutService
   ) { }
 
   initAddressForm() {
@@ -70,6 +72,7 @@ export class AddressService {
       + `&address[zipcode]=${updatedAddress.zipcode}`
       + `&address[state_id]=${updatedAddress.state_id}`
       + `&address[country_id]=${updatedAddress.country_id}`
+      + `&order_token=${this.checkoutService.getOrderToken()}`
     return this.http.put(url, {})
       .pipe(
         tap(

@@ -3,10 +3,9 @@ import { LayoutState } from './layout/reducers/layout.state';
 import { getlayoutStateJS } from './layout/reducers/layout.selector';
 import { environment } from './../environments/environment';
 import { filter } from 'rxjs/operators';
-import { getAuthStatus } from './auth/reducers/selectors';
 import { AppState } from './interfaces';
 import { Store } from '@ngrx/store';
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CheckoutService } from './core/services/checkout.service';
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
@@ -19,7 +18,6 @@ import { isPlatformBrowser } from '../../node_modules/@angular/common';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  orderSub$: Subscription;
   currentUrl: string;
   currentStep: string;
   checkoutUrls = ['/checkout/cart', '/checkout/address', '/checkout/payment'];
@@ -28,7 +26,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private checkoutService: CheckoutService,
     private store: Store<AppState>,
     private metaTitle: Title,
     private meta: Meta,
@@ -54,10 +51,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.select(getAuthStatus).subscribe(() => {
-      this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
-    });
-
     this.layoutState$ = this.store.select(getlayoutStateJS);
 
     this.addFaviconIcon();
@@ -86,7 +79,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.orderSub$.unsubscribe();
   }
 
   private addMetaInfo() {

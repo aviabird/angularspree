@@ -1,3 +1,4 @@
+import { getlayoutStateJS } from './../layout/reducers/layout.selector';
 import { SearchActions } from './reducers/search.actions';
 import {
   getSelectedTaxonIds,
@@ -17,6 +18,7 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, PLATFORM_ID, Inj
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Product } from '../core/models/product';
 import { isPlatformBrowser } from '../../../node_modules/@angular/common';
+import { LayoutState } from '../layout/reducers/layout.state';
 
 @Component({
   selector: 'app-home',
@@ -38,6 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isMobile;
   rootTaxonomyId: any;
   rootTaxonomyIdSubs$: Subscription;
+  layoutState$: Observable<LayoutState>;
 
   @ViewChild('autoShownModal') autoShownModal: ModalDirective;
   isModalShown = false;
@@ -57,6 +60,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.pagination$ = this.store.select(getPaginationData);
     this.isFilterOn$ = this.store.select(searchFilterStatus);
     this.rootTaxonomyIdSubs$ = this.store.select(rootTaxonomyId).subscribe(id => this.rootTaxonomyId = id);
+    this.layoutState$ = this.store.select(getlayoutStateJS);
   }
 
   showModal(): void {
