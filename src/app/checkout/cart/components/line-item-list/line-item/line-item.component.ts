@@ -5,6 +5,7 @@ import { CheckoutService } from './../../../../../core/services/checkout.service
 import { CheckoutActions } from './../../../../actions/checkout.actions';
 import { AppState } from './../../../../../interfaces';
 import { LineItem } from './../../../../../core/models/line_item';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-line-item',
@@ -24,6 +25,7 @@ export class LineItemComponent implements OnInit {
     private store: Store<AppState>,
     private checkoutService: CheckoutService,
     private checkoutActions: CheckoutActions,
+    private toastyService: ToastrService
   ) { }
 
   ngOnInit() {
@@ -55,7 +57,14 @@ export class LineItemComponent implements OnInit {
   }
 
   addQuantity() {
-    this.quantityCount += 1;
-    this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, 1));
+    const productInHands = this.lineItem.variant.total_on_hand;
+    const backOrderable = this.lineItem.variant.is_backorderable;
+
+    if (productInHands >= (this.quantityCount + 1) || backOrderable === true) {
+      this.quantityCount += 1;
+      this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, 1));
+    } else {
+      this.toastyService.error('Sorry! You can not add more quantity for this product.')
+    }
   }
 }
