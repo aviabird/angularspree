@@ -1,6 +1,5 @@
 import { map, tap, switchMap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { getOrderNumber } from './../../checkout/reducers/selectors';
+import { HttpClient } from '@angular/common/http';
 import { CheckoutActions } from './../../checkout/actions/checkout.actions';
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { LineItem } from './../models/line_item';

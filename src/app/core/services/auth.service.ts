@@ -188,7 +188,7 @@ export class AuthService {
       uid: user.uid || [],
       'Auth-Token': user.spree_api_key || [],
       'ng-api': 'true',
-      'Order-Token': this.checkoutService.getOrderToken() || []
+      'Guest-Order-Token': this.checkoutService.getOrderToken() || []
     });
   }
 

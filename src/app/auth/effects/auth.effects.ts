@@ -1,5 +1,6 @@
+import { CheckoutActions } from './../../checkout/actions/checkout.actions';
 import { Injectable } from '@angular/core';
-import { filter, switchMap, map } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { Observable} from 'rxjs';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
@@ -8,6 +9,7 @@ import { User } from './../../core/models/user';
 import { AuthService } from '../../core/services/auth.service';
 import { AuthActions } from '../actions/auth.actions';
 import { CheckoutService } from '../../core/services/checkout.service';
+import { Order } from '../../core/models/order';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -38,6 +40,13 @@ export class AuthenticationEffects {
     );
 
   @Effect()
+  AfterLogoutSuccess$: Observable<Action> = this.actions$
+    .ofType(AuthActions.LOGOUT_SUCCESS)
+    .pipe(
+      map(_ => this.checkoutActions.orderCompleteSuccess())
+    );
+
+  @Effect()
   OAuthLogin: Observable<Action> = this.actions$
     .ofType(AuthActions.O_AUTH_LOGIN)
     .pipe(
@@ -55,6 +64,7 @@ export class AuthenticationEffects {
 
   constructor(
     private actions$: Actions,
+    private checkoutActions: CheckoutActions,
     private authService: AuthService,
     private authActions: AuthActions,
     private checkoutService: CheckoutService
