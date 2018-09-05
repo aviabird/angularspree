@@ -42,14 +42,9 @@ export class OrderSuccessComponent implements OnInit, OnDestroy {
               this.route.navigate(['/']);
               return of(params);
             }
-            return interval(2000)
-              .pipe(
-                switchMap(_ => this.userService.getOrderDetail(orderReferance)),
-                take(30),
-                skipWhile(order => order.shipment_state !== 'ready'),
-                map(order => this.orderDetails = order),
-                take(1)
-              );
+            return this.userService
+              .getOrderDetail(orderReferance)
+              .pipe(tap(order => this.orderDetails = order));
           })
         )
         .subscribe()
