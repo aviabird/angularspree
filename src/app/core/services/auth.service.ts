@@ -157,8 +157,7 @@ export class AuthService {
       map((res: Response) => {
         // Setting token after login
         if (isPlatformBrowser(this.platformId)) {
-          localStorage.removeItem('user');
-          localStorage.removeItem('order');
+          localStorage.clear();
         }
         this.store.dispatch(this.actions.logoutSuccess());
         return res;
