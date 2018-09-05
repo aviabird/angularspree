@@ -37,6 +37,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    debugger
     const values = this.signUpForm.value;
     const keys = Object.keys(values);
     this.formSubmit = true;
@@ -106,9 +107,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
       const password = group.controls[passwordKey];
       const confirmPassword = group.controls[confirmPasswordKey];
 
-      return {
-        mismatchedPasswords: password.value !== confirmPassword.value
-      };
+      if (password.value !== confirmPassword.value) {
+        return { mismatchedPasswords: true }
+      }
     }
   }
 

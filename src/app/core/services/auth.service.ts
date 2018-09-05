@@ -1,3 +1,4 @@
+import { CheckoutService } from './checkout.service';
 import { of as observableOf, Observable, throwError, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -28,6 +29,7 @@ export class AuthService {
     private store: Store<AppState>,
     private oAuthService: OauthService,
     private toastrService: ToastrService,
+    private checkoutService: CheckoutService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
@@ -155,7 +157,7 @@ export class AuthService {
       map((res: Response) => {
         // Setting token after login
         if (isPlatformBrowser(this.platformId)) {
-          localStorage.removeItem('user');
+          localStorage.clear();
         }
         this.store.dispatch(this.actions.logoutSuccess());
         return res;
@@ -184,7 +186,8 @@ export class AuthService {
       client: user.client || [],
       uid: user.uid || [],
       'Auth-Token': user.spree_api_key || [],
-      'ng-api': 'true'
+      'ng-api': 'true',
+      'Guest-Order-Token': this.checkoutService.getOrderToken() || []
     });
   }
 

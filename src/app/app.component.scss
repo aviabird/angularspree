@@ -3,13 +3,15 @@
   min-height: 100vh;
   display: block;
   .main-body {
-    margin-top: 50px;
+    @media screen and (min-width: 768px) {
+      margin-top: 50px;
+    }
   }
 }
 
 .issearchopen :host /deep/ .main-body {
-  @media screen and(min-width: 320px) and(max-width: 768px) {
-    margin-top: 48px;
+  @media screen and (min-width: 320px) and(max-width: 768px) {
+    margin-top: 45px;
   }
 }
 

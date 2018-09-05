@@ -73,7 +73,7 @@ export class UserService {
   }
 
   /**
-   * This function updates the address of the user. 
+   * This function updates the address of the user.
    *
    * @param {Address} updatedAddress
    * @returns {Observable<{status: string}>}
