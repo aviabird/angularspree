@@ -145,7 +145,6 @@ export class ProductService {
    * @memberof ProductService
    */
   getProductsByTaxon(id: string): Observable<{ pagination: Object, products: Array<Product> }> {
-    if (id === '') { return of({ pagination: {}, products: [] }) }
     return this.http
       .get<{ data: CJsonApi[]; pagination: Object }>(
         `api/v1/taxons/products?${id}&per_page=20&data_set=small`

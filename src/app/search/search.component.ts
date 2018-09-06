@@ -89,12 +89,12 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   OnCategeorySelected(category) {
     this.store.dispatch(this.searchActions.getChildTaxons(this.rootTaxonomyId, category.id));
-    this.taxonomies$ = this.store.select(getChildTaxons)
-    this.categoryLevel$ = this.store.select(categeoryLevel)
+    this.taxonomies$ = this.store.select(getChildTaxons);
+    this.categoryLevel$ = this.store.select(categeoryLevel);
     // ToDo: Here Brands are hardcoded For now.
     this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', category.name));
-    this.brands$ = this.store.select(taxonomiByName)
-    this.store.dispatch(this.searchActions.setSearchFilterOn())
+    this.brands$ = this.store.select(taxonomiByName);
+    this.store.dispatch(this.searchActions.setSearchFilterOn());
   }
 
   showAll() {

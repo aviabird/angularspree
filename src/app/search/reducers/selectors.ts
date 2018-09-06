@@ -21,7 +21,7 @@ function fetchChildTaxons(state: SearchState) {
 }
 
 function fetchCategeoryLevel(state: SearchState) {
-  return state.categeoryLevel.toJS();
+  return state.categeoryLevel.toJS() || [];
 }
 
 function fetchTaxonomiByName(state: SearchState) {
