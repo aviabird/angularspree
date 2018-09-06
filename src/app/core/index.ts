@@ -1,6 +1,7 @@
+import { SearchActions } from './../search/reducers/search.actions';
+import { ProductActions } from './../product/actions/product-actions';
 import { TransferStateInterceptor } from './interceptors/transfer-state.interceptor';
 import { TransferStateService } from './services/transfer-state.service';
-import { CheckoutEffects } from './../checkout/effects/checkout.effects';
 import { CheckoutActions } from './../checkout/actions/checkout.actions';
 import { CheckoutService } from './services/checkout.service';
 import { NgModule } from '@angular/core';
@@ -62,6 +63,8 @@ import { CanActivateViaAuthGuard } from './guards/auth.guard';
     ProductService,
     AuthActions,
     CheckoutActions,
+    ProductActions,
+    SearchActions,
     UserActions,
     UserService,
     CanActivateViaAuthGuard,

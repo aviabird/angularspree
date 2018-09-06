@@ -1,5 +1,5 @@
 import { map, switchMap } from 'rxjs/operators';
-import { SearchActions } from './../../home/reducers/search.actions';
+import { SearchActions } from './../../search/reducers/search.actions';
 import { Product } from './../../core/models/product';
 import { ProductActions } from './../actions/product-actions';
 import { Observable } from 'rxjs';
