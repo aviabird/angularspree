@@ -54,8 +54,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.select(getAuthStatus).subscribe(() => {
-      this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
+    this.store.select(getAuthStatus).subscribe((data: boolean) => {
+      if (data) {
+        this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
+      }
     });
 
     this.layoutState$ = this.store.select(getlayoutStateJS);

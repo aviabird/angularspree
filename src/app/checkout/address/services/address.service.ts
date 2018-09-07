@@ -9,6 +9,7 @@ import { getCurrentUser } from '../../../auth/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
 import { Order } from '../../../core/models/order';
+import { CheckoutActions } from '../../actions/checkout.actions';
 
 @Injectable()
 export class AddressService {
@@ -17,6 +18,7 @@ export class AddressService {
     private http: HttpClient,
     private toastrService: ToastrService,
     private store: Store<AppState>,
+    private checkoutActions: CheckoutActions
   ) { }
 
   initAddressForm() {
@@ -81,8 +83,8 @@ export class AddressService {
 
   saveUserAddress(address: Address): Observable<Address> {
     let userId: string;
-    this.store.select(getCurrentUser).subscribe(user => userId = user.id);
-    const params = this.buildAddressJson(address, userId);
+     let user = JSON.parse(localStorage.getItem('user'))
+    const params = this.buildAddressJson(address, user.id);
     return this.http.post<Address>(`http://localhost:3000/api/v1/addresses`, params).pipe(
       map(resp => {
         return resp;
@@ -97,7 +99,7 @@ export class AddressService {
     return this.http.post<Order>(`http://localhost:3000/api/v1/orders/${orderId}/select_address/`, params).pipe(
       map(resp => {
         return resp;
-      }), tap()
+      })
     )
   }
 

@@ -16,5 +16,4 @@ export class LineItem {
   variant_id: number;
   variant: Variant;
   product: Product;
-
 }

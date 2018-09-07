@@ -12,6 +12,7 @@ import { AddressService } from './services/address.service';
 import { UserActions } from '../../user/actions/user.actions';
 import { getUserAddressess, getCountries } from '../../user/reducers/selector';
 import { Country } from '../../core/models/country';
+import { CheckoutActions } from '../actions/checkout.actions';
 
 @Component({
   selector: 'app-address',
@@ -34,7 +35,8 @@ export class AddressComponent implements OnInit, OnDestroy {
     private checkoutService: CheckoutService,
     private addressService: AddressService,
     private router: Router,
-    private userActions: UserActions) {
+    private userActions: UserActions,
+    private checkoutAction: CheckoutActions) {
     this.store.dispatch(this.userActions.fetchUserAddress());
   }
 
@@ -49,17 +51,17 @@ export class AddressComponent implements OnInit, OnDestroy {
   }
 
   checkoutToPayment() {
-    this.router.navigate(['/checkout', 'payment']);
-    // if (this.orderState === 'delivery' || this.orderState === 'address') {
-    //   this.checkoutService.changeOrderState().pipe(
-    //     tap(() => {
-    //       this.router.navigate(['/checkout', 'payment']);
-    //     }))
-    //     .subscribe();
-    // } else {
-    //   this.router.navigate(['/checkout', 'payment']);
-    // }
+    if (this.orderState === 'delivery' || this.orderState === 'address') {
+      this.checkoutService.changeOrderState().pipe(
+        tap(() => {
+          this.router.navigate(['/checkout', 'payment']);
+        }))
+        .subscribe();
+    } else {
+      this.router.navigate(['/checkout', 'payment']);
+    }
   }
+
 
   ngOnDestroy() {
     if (this.orderState === 'delivery') {
@@ -93,7 +95,7 @@ export class AddressComponent implements OnInit, OnDestroy {
   getSelectedAddress(event) {
     this.shipAddress = event;
     this.isUserSelectedAddress = true;
-    this.addressService.bindAddressToOrder(this.shipAddress, this.orderId).subscribe();
+    this.store.dispatch(this.checkoutAction.bindAddress(this.shipAddress, this.orderId))
   }
 
   changeAddress() {

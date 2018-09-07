@@ -58,13 +58,13 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
     this.orderSubscription$.unsubscribe();
   }
 
-  retryPayment(order: Order) {
-    this.checkoutService.makePayment(+order.total, order.bill_address, order.number)
-      .subscribe((response: any) => {
-        response = response;
-        if (isPlatformBrowser(this.platformId)) {
-          window.open(response.url, '_self');
-        }
-      });
-  }
+  // retryPayment(order: Order) {
+  //   this.checkoutService.makePayment(+order.total, order.bill_address, order.number)
+  //     .subscribe((response: any) => {
+  //       response = response;
+  //       if (isPlatformBrowser(this.platformId)) {
+  //         window.open(response.url, '_self');
+  //       }
+  //     });
+  // }
 }

@@ -11,16 +11,23 @@ import { Store } from '@ngrx/store';
 })
 export class CreditCardComponent implements OnInit {
 
+  @Output() onPayNow: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onAddPayment: EventEmitter<boolean> = new EventEmitter<boolean>();
+  isPaymentAdded: boolean;
+
   constructor(private checkoutService: CheckoutService,
     private checkoutActions: CheckoutActions,
     private store: Store<AppState>
   ) { }
 
-  @Output() onPayNow: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   ngOnInit() {
   }
   payNow() {
     this.onPayNow.emit(true);
+  }
+
+  addPayment() {
+    this.isPaymentAdded = true;
+    this.onAddPayment.emit(true);
   }
 }

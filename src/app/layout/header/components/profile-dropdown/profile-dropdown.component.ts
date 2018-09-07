@@ -12,7 +12,7 @@ import { User } from '../../../../core/models/user';
 })
 export class ProfileDropdownComponent implements OnInit, OnChanges {
   @Input() isAuthenticated;
-  name = '';
+  name: string;
   @Input() isMobile;
   currentUser: User;
   subnav: boolean;
@@ -29,7 +29,7 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.currentUser = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('current_user')) : null;
+    this.currentUser = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')) : null;
     if (this.currentUser) {
       this.name = this.currentUser.first_name;
     }

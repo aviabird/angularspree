@@ -1,5 +1,5 @@
 
-import { tap } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 import { getAuthStatus } from './../../../auth/reducers/selectors';
 import { CheckoutActions } from './../../actions/checkout.actions';
 import { AppState } from './../../../interfaces';
@@ -13,6 +13,9 @@ import { Address } from '../../../core/models/address';
 import { environment } from '../../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
+import { getOrderId, getTotalCartValue, getPaymentEntities } from '../../reducers/selectors';
+import { Payment } from '../../../core/models/payment';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-payment-modes-list',
@@ -24,7 +27,9 @@ export class PaymentModesListComponent implements OnInit {
   @Input() paymentAmount: number;
   @Input() orderNumber: string;
   @Input() address: Address;
+  paymentMethodId: number;
   isShippeble: boolean;
+  payment: Payment;
   showDummyCardInfo = environment.config.showDummyCardInfo;
 
   paymentModes: PaymentMode[];
@@ -35,6 +40,8 @@ export class PaymentModesListComponent implements OnInit {
   currency = environment.config.currency_symbol;
   payubiz = environment.config.PaymentMethodPayubiz;
   cashOnDelivery = environment.config.PaymentMethodCod;
+  orderId: number;
+  orderAmount: number;
 
   constructor(private checkoutService: CheckoutService,
     private paymentService: PaymentService,
@@ -50,10 +57,13 @@ export class PaymentModesListComponent implements OnInit {
 
   ngOnInit() {
     this.fetchAllPayments();
+    this.store.select(getOrderId).subscribe(resOrderId => this.orderId = resOrderId);
+    this.store.select(getTotalCartValue).subscribe(resOrderAmt => this.orderAmount = resOrderAmt)
   }
 
   selectedPaymentMode(mode) {
     this.selectedMode = mode;
+
   }
 
   private fetchAllPayments() {
@@ -64,58 +74,22 @@ export class PaymentModesListComponent implements OnInit {
       });
   }
 
-  // makePaymentCod() {
-  //   const paymentModeId = this.selectedMode.id;
-  //   const shipping_pincode = (this.address.zip_code)
-  //   this.checkoutService.shipmentAvailability(+shipping_pincode)
-  //     .subscribe((res: any) => {
-  //       this.isShippeble = res.available
-  //       if (this.isShippeble && this.paymentAmount >= this.freeShippingAmount) {
-  //         this.checkoutService.createNewPayment(paymentModeId, this.paymentAmount).pipe(
-  //           tap(() => {
-  //             this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-  //             this.redirectToNewPage();
-  //             this.checkoutService.createEmptyOrder()
-  //               .subscribe();
-  //           }))
-  //           .subscribe();
-  //       } else {
-  //         if (this.paymentAmount < this.freeShippingAmount) {
-  //           // tslint:disable-next-line:max-line-length
-  //           this.toastyService.error(`${this.selectedMode.name} is not available for Order amount less than ${this.currency} ${this.freeShippingAmount}.`, 'Order Amount');
-  //         } else if (!this.isShippeble) {
-  //           this.toastyService.error(`${this.selectedMode.name} is not available for pincode ${shipping_pincode}.`, 'Pincode');
-  //         }
-  //       }
-  //     });
-  // }
-
   makePaymentPayubiz() {
-    alert('Sorry you cant proceed further');
-    // this.checkoutService.makePayment(this.paymentAmount, this.address, this.orderNumber)
-    //   .subscribe((response: any) => {
-    //     response = response
-    //     this.checkoutService.createNewPayment(this.selectedMode.id, this.paymentAmount).pipe(
-    //       tap(() => {
-    //         this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
-    //         this.checkoutService.createEmptyOrder()
-    //           .subscribe();
-    //       })
-    //     )
-    //       .subscribe((res) => {
-    //         if (isPlatformBrowser(this.platformId)) {
-    //           window.open(response.url, '_self');
-    //         }
-    //       });
-    //   })
+    this.store.select(getPaymentEntities).subscribe(data => {
+      this.payment = data[this.paymentMethodId]
+    })
+
+    this.paymentService.makeHostedPayment(
+      this.orderId, this.payment.id, this.orderAmount, this.paymentMethodId).
+      subscribe((resp: any) => {
+        if (isPlatformBrowser(this.platformId)) {
+          window.open(resp.url, '_self');
+        }
+      })
   }
 
-  private redirectToNewPage() {
-    if (this.isAuthenticated) {
-      this.router.navigate(['checkout', 'order-success'],
-        { queryParams: { orderReferance: this.orderNumber } });
-    } else {
-      this.router.navigate(['/']);
-    }
+  addPayment(selectedPaymentMethodId: number) {
+    this.paymentMethodId = selectedPaymentMethodId;
+    this.store.dispatch(this.checkoutActions.bindPayment(this.paymentMethodId, this.orderId, this.orderAmount))
   }
 }

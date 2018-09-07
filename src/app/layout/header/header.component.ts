@@ -22,9 +22,7 @@ import { Renderer2 } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { LayoutState } from '../reducers/layout.state';
 import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
-import { AuthService } from '../../core/services/auth.service';
-import { UserActions } from '../../user/actions/user.actions';
-import { getAuthStatus } from '../../auth/reducers/selectors';
+import { getAuthStatus, getCurrentUser } from '../../auth/reducers/selectors';
 
 @Component({
   selector: 'app-header',
@@ -43,8 +41,8 @@ export class HeaderComponent implements OnInit {
   currency = environment.config.currency_symbol
   isModalShown = false;
   isSearchopen = true;
-  isAuthenticated: Observable<boolean>;
-  totalCartItems: Observable<number>;
+  isAuthenticated$: Observable<boolean>;
+  totalCartItems$: Observable<number>;
   taxonomies$: Observable<any>;
   user$: Observable<any>;
   headerConfig = environment.config.header;
@@ -55,10 +53,8 @@ export class HeaderComponent implements OnInit {
   isMobile = false;
   screenwidth: any;
   modalRef: BsModalRef;
-  config = {
-    backdrop: false,
-    ignoreBackdropClick: false
-  };
+  config = { backdrop: false, ignoreBackdropClick: false };
+  isUser: boolean;
 
   constructor(
     private store: Store<AppState>,
@@ -68,7 +64,6 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private modalService: BsModalService,
     private renderer: Renderer2,
-    private authService: AuthService,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
     this.store.dispatch(this.actions.getAllTaxonomies());
@@ -90,15 +85,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    const userToken = this.authService.getUserToken();
-    if (userToken) {
-      this.store.dispatch(this.authActions.getCurrentUser(userToken.token))
-      this.store.dispatch(this.authActions.login());
-      this.isAuthenticated = this.store.select(getAuthStatus)
-    } else {
-      this.store.dispatch(this.authActions.logoutSuccess());
-    }
-    this.totalCartItems = this.store.select(getTotalCartItems);
+    this.store.dispatch(this.authActions.authorize())
+    this.isAuthenticated$ = this.store.select(getAuthStatus);
+    this.totalCartItems$ = this.store.select(getTotalCartItems);
+
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
     }

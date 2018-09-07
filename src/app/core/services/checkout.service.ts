@@ -218,45 +218,6 @@ export class CheckoutService {
       .pipe(map(_ => this.changeOrderState().subscribe()));
   }
 
-  makePayment(paymentAmount: number, address: any, orderNumber: string) {
-    const payUbizSalt = environment.config.payuBizSalt;
-    const payUbizKey = environment.config.payuBizKey;
-    const successUrl = `${environment.apiEndpoint}payubiz/handle_payment`;
-    const failureUrl = `${environment.apiEndpoint}payubiz/canceled_payment`;
-
-    const hashParams = {
-      key: payUbizKey,
-      txnid: `${orderNumber}` + `${(Math.random().toString(36).substr(2, 9)).toUpperCase()}`,
-      amount: paymentAmount,
-      productinfo: `${environment.appName}-Product`,
-      firstname: address.firstname,
-      email: isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')).email : '',
-      udf1: `${orderNumber}`
-    }
-    // tslint:disable-next-line:max-line-length
-    const paramsList = `${hashParams.key}|${hashParams.txnid}|${hashParams.amount}|${hashParams.productinfo}|${hashParams.firstname}|${hashParams.email}|${hashParams.udf1}||||||||||${payUbizSalt}`;
-    const encryptedHash = CryptoJS.SHA512(paramsList);
-    const hashString = CryptoJS.enc.Hex.stringify(encryptedHash)
-
-    const params = {
-      key: hashParams.key,
-      txnid: hashParams.txnid,
-      amount: hashParams.amount,
-      productinfo: hashParams.productinfo,
-      firstname: hashParams.firstname,
-      email: hashParams.email,
-      phone: address.phone,
-      udf1: hashParams.udf1,
-      surl: successUrl,
-      furl: failureUrl,
-      hash: hashString,
-    }
-
-    return this.http.post(`payubiz/post_request_payubiz`, { params: params })
-      .pipe(
-        map(res => { return res }), error => { return error }
-      )
-  }
   /**
    *
    *

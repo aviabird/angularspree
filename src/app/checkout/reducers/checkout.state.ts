@@ -1,6 +1,7 @@
 import { Address } from './../../core/models/address';
 import { LineItem } from './../../core/models/line_item';
 import { Map, Record, List, fromJS } from 'immutable';
+import { Payment } from '../../core/models/payment';
 
 export interface CheckoutState extends Map<string, any> {
   orderNumber: string;
@@ -16,6 +17,8 @@ export interface CheckoutState extends Map<string, any> {
   adjustmentTotal: number;
   orderId: number;
   lineItems: List<LineItem>;
+  payments: List<Payment>
+  paymentEntities: Map<number, Payment>;
 }
 
 export const CheckoutStateRecord = Record({
@@ -31,5 +34,7 @@ export const CheckoutStateRecord = Record({
   itemTotal: 0,
   adjustmentTotal: 0,
   orderId: null,
-  lineItems: List([])
+  lineItems: List([]),
+  payments: List([]),
+  paymentEntities: Map({})
 });

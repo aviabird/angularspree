@@ -40,7 +40,7 @@ export class VariantParserService {
         /**For option values like [small, Red] etc in varaint iterate over each option value */
         this.currVariantOptionValues = variant.options;
 
-        variant.options.forEach(optionValue => {  
+        variant.options.forEach(optionValue => {
           /**
           * This loop runs for 750 times for 2 optiontypes and optionsvalues 3 and 5
           * Refactor this latter;
@@ -125,10 +125,10 @@ export class VariantParserService {
     const currespondingOptionValues = this.getOtherOptionValues(optionValue, optionType);
     if (optionTypesHash[optionType.name] != null && optionTypesHash[optionType.name][optionValue.value] != null) {
       const variantArr = optionTypesHash[optionType.name][optionValue.value].variantIds;
-      variantArr.push({[variant.id]: currespondingOptionValues });
+      variantArr.push({ [variant.id]: currespondingOptionValues });
       return variantArr;
     } else {
-      return Array.of({[variant.id]: currespondingOptionValues});
+      return Array.of({ [variant.id]: currespondingOptionValues });
     }
   }
 

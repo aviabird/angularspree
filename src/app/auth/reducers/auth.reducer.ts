@@ -9,13 +9,15 @@ export function reducer(state = initialState, { type, payload }: any): AuthState
       return state.merge({ isAuthenticated: true }) as AuthState;
 
     case AuthActions.LOGOUT_SUCCESS:
-      return state.merge({ isAuthenticated: false }) as AuthState;
+      return state.merge({
+        isAuthenticated: false,
+        currentUser: {}
+      }) as AuthState;
 
     case AuthActions.GET_CURRENT_USER_SUCCESS:
-      const _currentUser = payload
+      const _currentUser = payload;
       return state.merge({
         currentUser: _currentUser,
-        isAuthenticated: payload ? true : false,
       }) as AuthState;
 
     default:

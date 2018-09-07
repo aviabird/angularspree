@@ -24,10 +24,6 @@ export class AddEditAddressComponent implements OnInit {
     private userService: UserService,
   ) {
     this.addressForm = addrService.initAddressForm();
-
-    this.addrService.getAllStates().subscribe(data => {
-      this.states = data.states;
-    });
   }
 
   ngOnInit() {
