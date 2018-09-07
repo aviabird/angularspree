@@ -1,5 +1,4 @@
 import { ProductEffects } from '../product/effects/product.effects';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RouterModule } from '@angular/router';
@@ -57,7 +56,6 @@ import * as fromSearch from './reducers/search.reducer';
   ],
   imports: [
     RouterModule.forChild(routes),
-    PaginationModule.forRoot(),
     ModalModule.forRoot(),
     AccordionModule.forRoot(),
     NgxInputStarRatingModule,
