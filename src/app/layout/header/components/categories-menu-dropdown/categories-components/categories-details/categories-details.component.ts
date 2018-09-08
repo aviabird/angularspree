@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { taxonomiByName } from './../../../../../../home/reducers/selectors';
-import { SearchActions } from './../../../../../../home/reducers/search.actions';
+import { taxonomiByName } from './../../../../../../search/reducers/selectors';
+import { SearchActions } from './../../../../../../search/reducers/search.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../../../interfaces';
 import { environment } from './../../../../../../../environments/environment';
@@ -63,10 +63,10 @@ export class CategoriesDetailsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.brandLists$ = this.store.select(taxonomiByName);
   }
 
   ngOnChanges() {
     this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', this.taxonName));
-    this.brandLists$ = this.store.select(taxonomiByName);
   }
 }
