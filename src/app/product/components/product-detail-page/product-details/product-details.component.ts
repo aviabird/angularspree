@@ -1,8 +1,8 @@
 import { relatedProducts, productReviews } from './../../../reducers/selectors';
 import { ProductActions } from './../../../actions/product-actions';
 import { Observable } from 'rxjs';
-import { getProductsByKeyword } from './../../../../home/reducers/selectors';
-import { SearchActions } from './../../../../home/reducers/search.actions';
+import { getProductsByKeyword } from './../../../../search/reducers/selectors';
+import { SearchActions } from './../../../../search/reducers/search.actions';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AppState } from './../../../../interfaces';

@@ -37,7 +37,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    debugger
     const values = this.signUpForm.value;
     const keys = Object.keys(values);
     this.formSubmit = true;

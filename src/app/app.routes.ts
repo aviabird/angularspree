@@ -9,11 +9,6 @@ export const routes: Routes = [
     data: { preload: true, delay: true },
   },
   {
-    path: 'search',
-    loadChildren: './home/index#HomeModule',
-    data: { preload: false, delay: false },
-  },
-  {
     path: 'checkout',
     loadChildren: './checkout/checkout.module#CheckoutModule',
     data: { preload: true, delay: true },
@@ -28,6 +23,11 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: './auth/auth.module#AuthModule',
     data: { preload: false, delay: false },
+  },
+  {
+    path: '',
+    loadChildren: './search/search.module#SearchModule',
+    data: { preload: true, delay: true },
   },
   {
     path: '',

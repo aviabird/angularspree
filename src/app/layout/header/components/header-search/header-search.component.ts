@@ -1,7 +1,8 @@
+import { HttpParams } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
 import { environment } from './../../../../../environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SearchActions } from './../../../../home/reducers/search.actions';
+import { SearchActions } from './../../../../search/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { Renderer2, PLATFORM_ID, Inject } from '@angular/core';
@@ -13,7 +14,6 @@ import {
   EventEmitter,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { URLSearchParams } from '@angular/http';
 
 @Component({
   selector: 'app-header-search',
@@ -35,7 +35,7 @@ export class HeaderSearchComponent implements OnInit {
     private router: Router,
     private activatedRouter: ActivatedRoute,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: any,
   ) {
     this.activatedRouter.queryParams.subscribe(params => {
       this.queryParams = params;
@@ -60,14 +60,14 @@ export class HeaderSearchComponent implements OnInit {
   onSearch(keyword: string) {
     if (keyword !== '') {
       keyword = keyword.trim();
-      const search = new URLSearchParams();
-      search.set('q[name_cont_any]', keyword);
+      let search = new HttpParams()
+        .set('q[name_cont_any]', keyword);
 
       if ('page' in this.queryParams) {
-        search.set('page', this.queryParams.page);
+        search = search.set('page', this.queryParams.page);
       }
       if ('q[s]' in this.queryParams) {
-        search.set('q[s]', this.queryParams['q[s]']);
+        search = search.set('q[s]', this.queryParams['q[s]']);
       }
       this.store.dispatch(
         this.searchActions.getproductsByKeyword(search.toString())
@@ -84,11 +84,11 @@ export class HeaderSearchComponent implements OnInit {
   }
 
   catgeoryFilter() {
-    const search = new URLSearchParams();
-    search.set('id', this.queryParams.id);
-    search.set('page', this.queryParams.page);
+    let search = new HttpParams()
+      .set('id', this.queryParams.id)
+      .set('page', this.queryParams.page);
     if ('q[s]' in this.queryParams) {
-      search.set('q[s]', this.queryParams['q[s]']);
+      search = search.set('q[s]', this.queryParams['q[s]']);
     }
     this.store.dispatch(
       this.searchActions.getProductsByTaxon(search.toString())
