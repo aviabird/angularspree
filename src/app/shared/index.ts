@@ -12,6 +12,7 @@ import { HumanizePipe } from '../core/pipes/humanize.pipe';
 // components
 // imports
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductSliderComponent } from './components/product-slider/product-slider.component'
 import { InnerIproductComponent } from './components/product-slider/inner-product/inner-product.component'
@@ -33,6 +34,7 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     // modules
     CommonModule,
     BsDropdownModule,
+    PaginationModule,
     FormsModule,
     ReactiveFormsModule,
     NgxJsonLdModule,
@@ -48,6 +50,7 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     ReactiveFormsModule,
     CommonModule,
     BsDropdownModule.forRoot(),
+    PaginationModule.forRoot(),
     RouterModule,
     NgxInputStarRatingModule,
     NguCarouselModule,

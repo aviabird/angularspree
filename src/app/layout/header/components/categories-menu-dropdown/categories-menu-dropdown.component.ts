@@ -1,4 +1,4 @@
-import { SearchActions } from './../../../../home/reducers/search.actions';
+import { SearchActions } from './../../../../search/reducers/search.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,6 @@ import {
   animate,
   transition
 } from '@angular/animations';
-import { URLSearchParams } from '@angular/http'
 
 @Component({
   selector: 'app-categories-menu-dropdown',
@@ -84,12 +83,6 @@ export class CategoriesMenuDropdownComponent implements OnInit {
 
   backtolist() {
     this.show = !this.show;
-  }
-
-  getCategeory() {
-    const search = new URLSearchParams();
-    search.set('id', this.queryParams.id);
-    this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()))
   }
 
   childCatLoaded(status) {

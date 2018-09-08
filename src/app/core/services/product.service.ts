@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { JsonApiParserService } from './json-api-parser.service';

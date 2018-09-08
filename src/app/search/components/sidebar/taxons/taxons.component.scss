@@ -1,0 +1,82 @@
+@import '../../../../shared/scss/selected_theme_variables.scss';
+.heading {
+  text-transform: uppercase;
+  font-weight: 900;
+  padding: 5px 22px 5px 2px;
+  color: $gray-900;
+}
+.filter-box {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $gray-200;
+  position: relative;
+  ul.taxonomy {
+    margin-left: -37px;
+    list-style: none;
+    li.filter {
+      font-size: 14px;
+      margin-bottom: 7px;
+      font-size: 18px;
+      label.vertical-filters-label {
+        display: block;
+        font-size: 16px;
+        width: 95%;
+        white-space: nowrap;
+        cursor: pointer;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 17px;
+        color: $gray-900;
+        position: relative;
+        input {
+          margin: 0 10px 0 0;
+          visibility: hidden;
+        }
+        .common-checkboxIndicator {
+          box-sizing: border-box;
+          position: absolute;
+          top: 6px;
+          left: 0;
+          width: 16px;
+          height: 16px;
+          border: 1px solid $gray-10;
+          background: $white;
+          border-radius: 2px;
+        }
+        .common-checkboxIndicator:after {
+          display: block;
+          content: "";
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          z-index: 1;
+          width: 8px;
+          height: 5px;
+          border: 2px solid $white;
+          border-color: $white;
+          border-top-style: none;
+          border-right-style: none;
+          -webkit-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out;
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+        input:checked~.common-checkboxIndicator {
+          border: 2px;
+          background: $blue;
+        }
+        input[type=checkbox]:checked {
+          content: "\2713";
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+          font-size: 15px;
+          color: $gray-200;
+          text-align: center;
+          line-height: 15px;
+        }
+      }
+      label:before {
+        border-radius: 3px;
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { ProductActions } from './../../product/actions/product-actions';
 import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
-import { SearchActions } from './../../home/reducers/search.actions';
+import { SearchActions } from './../../search/reducers/search.actions';
 import { getTaxonomies } from './../../product/reducers/selectors';
 import { getTotalCartItems } from './../../checkout/reducers/selectors';
 import {

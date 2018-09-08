@@ -1,6 +1,6 @@
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
-import { SearchActions } from './../../../../home/reducers/search.actions';
+import { SearchActions } from './../../../../search/reducers/search.actions';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({

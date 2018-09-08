@@ -1,8 +1,9 @@
-import { FavoriteProductListItemComponent } from './components/favorite-products/favorite-product-list-item/favorite-product-list-item.component';
+import {
+  FavoriteProductListItemComponent
+} from './components/favorite-products/favorite-product-list-item/favorite-product-list-item.component';
 import { FavoriteProductsComponent } from './components/favorite-products/favorite-products.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 // components
 import { OverviewComponent } from './components/overview/overview.component';
@@ -62,7 +63,6 @@ import { AddressService } from '../checkout/address/services/address.service';
   imports: [
     RouterModule.forChild(routes),
     SharedModule,
-    PaginationModule,
   ]
 })
 export class UserModule { }
