@@ -1,5 +1,17 @@
 # Changelog
 
+## [`v1.0.0`][tag-1_0_0] (2018-09-10)
+
+### Fixes
+
+* **Add Address**: UI fix (#245) 
+* **SEO**: added a robots.txt empty sitemap to src
+* **Product API**: timestamps removed from api calls.
+* **MAJOR - Order persistence**: Guest order persistence after user logins to the system (#246)
+* **Checkout**: redirect user to login on checkout if guest user. (#247)
+* **Refactor code**: Refactored code in three phases #244 , #252 , #253 
+
+
 ## [`v1.0.0-beta-2`][tag-1_0_0-beta-2] (2018-08-09)
 
 ### UI
@@ -92,9 +104,10 @@ https://github.com/aviabird/angularspree/pull/218/commits/e910d6b5048eff58d9af53
   * Address
   * My Orders
 
-[tag-1_0_0-beta-2]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-beta-2
-[tag-1_0_0-beta-1]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-beta-1
-[tag-1_0_0-alpha-2]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-alpha-2
-[tag-1_0_0-alpha]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0-alpha
+[tag-1_0_0]: https://github.com/aviabird/angularspree/releases/tag/v1.0.0
+[tag-1_0_0-beta-2]: https://github.com/aviabird/angularspree/releases/tag/1.0.0-beta-2
+[tag-1_0_0-beta-1]: https://github.com/aviabird/angularspree/releases/tag/1.0.0-beta-1
+[tag-1_0_0-alpha-2]: https://github.com/aviabird/angularspree/releases/tag/1.0.0-alpha-2
+[tag-1_0_0-alpha]: https://github.com/aviabird/angularspree/releases/tag/1.0.0-alpha
 [tag-0_2]: https://github.com/aviabird/angularspree/releases/tag/v0.2
 [tag-0_1_0]: https://github.com/aviabird/angularspree/releases/tag/v0.1.0
