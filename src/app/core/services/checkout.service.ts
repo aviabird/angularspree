@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import * as CryptoJS from 'crypto-js';
 import { environment } from '../../../environments/environment';
 import { isPlatformBrowser } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class CheckoutService {
@@ -49,7 +50,7 @@ export class CheckoutService {
    */
   createNewLineItem(productId: number, quantity: number) {
     const params = this.buildOrderParams(productId, quantity)
-    return this.http.post<LineItem>(`http://localhost:3000/api/v1/line_items`, params).pipe(
+    return this.http.post<LineItem>(`api/v1/line_items`, params).pipe(
       tap(
         lineItem => {
           this.toastyService.success('Success!', 'Cart updated!');
@@ -69,7 +70,7 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   fetchCurrentOrder() {
-    return this.http.post<Order>('http://localhost:3000/api/v1/orders/current', {}).pipe(
+    return this.http.post<Order>('api/v1/orders/current', {}).pipe(
       map(order => {
         if (order) {
           this.setOrderTokenInLocalStorage(order.number);
@@ -91,7 +92,7 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   getOrder() {
-    const url = `http://localhost:3000/api/v1/orders/${this.orderNumber}`;
+    const url = `api/v1/orders/${this.orderNumber}`;
     return this.http.get<Order>(url);
   }
 
@@ -104,7 +105,7 @@ export class CheckoutService {
    */
   createEmptyOrder() {
     return this.http
-      .post<Order>('http://localhost:3000/api/v1/orders/blank', {})
+      .post<Order>('api/v1/orders/blank', {})
       .pipe(
         map(order => {
           this.setOrderTokenInLocalStorage(order.number);
@@ -123,22 +124,21 @@ export class CheckoutService {
   /**
    *
    *
-   * @param {LineItem} lineItem
-   * @returns
-   *
+   * @param {number} lineItemId
+   * @returns {Observable<Order>}
    * @memberof CheckoutService
    */
-  deleteLineItem(lineItem: LineItem) {
-    const url = `api/v1/orders/${this.orderId}/line_items/${
-      lineItem.id
-      }?order_token=${this.getOrderToken()}`;
-    return this.http
-      .delete(url)
-      .pipe(
-        map(() =>
-          this.store.dispatch(this.actions.removeLineItemSuccess(lineItem))
-        )
-      );
+  deleteLineItem(lineItemId: number) {
+    const param = {
+      data: { id: lineItemId, type: 'line_item' }
+    }
+
+    const url = `api/v1/line_items`
+    return this.http.request<{}>('delete', url, { body: param }).pipe(
+      map(resp => {
+        return resp;
+      })
+    )
   }
 
   /**
@@ -190,7 +190,7 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   availablePaymentMethods() {
-    const url = `http://localhost:3000/api/v1/payment/payment-methods`
+    const url = `api/v1/payment/payment-methods`
     return this.http.get<any>(url);
   }
 

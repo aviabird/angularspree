@@ -3,8 +3,8 @@ import { DEFAULT_META_DATA } from './meta-data';
 
 export const DEFAULT_CONFIG = {
   // Add Your custom configs hereh
-  prodApiEndpoint: 'https://ngspree-api.herokuapp.com/',
-  // prodApiEndpoint: 'http://localhost:3000/',
+  // prodApiEndpoint: 'https://ngspree-api.herokuapp.com/',
+  prodApiEndpoint: 'http://localhost:3000/',
   frontEndUrl: 'https://angularspree.firebaseapp.com/',
   appName: 'Angularspree',
   fevicon: 'https://via.placeholder.com/350x150',

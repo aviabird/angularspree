@@ -37,18 +37,16 @@ export class ProductService {
   getProduct(id: string): Observable<Product> {
     return this.http
       .get<Product>(
-        `http://localhost:3000/api/v1/products/${id}?${+new Date()}`
+        `api/v1/products/${id}?${+new Date()}`
       )
   }
 
   getProductReviews(products): Observable<any> {
-
-    // /product/:id/rating-summary
     return this.http.get(`products/${products}/reviews`);
   }
 
   getProductRatingSummery(productId: any): Observable<any> {
-    return this.http.get('http://localhost:3000/api/v1/product/productId/rating-summary')
+    return this.http.get('api/v1/product/productId/rating-summary')
   }
 
   /**
@@ -58,7 +56,7 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`http://localhost:3000/api/v1/taxonomies`); }
+  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies`); }
 
   /**
    *
@@ -71,7 +69,7 @@ export class ProductService {
     // sort=A-Z&filter[name]=Hill's&page[limit]=2&page[offset]=2
     return this.http
       .get<Array<Product>>(
-        `http://localhost:3000/api/v1/products?q[s]=avg_rating+desc&page[limit]=20&page[offset]=${pageNumber}`
+        `api/v1/products?q[s]=avg_rating+desc&page[limit]=20&page[offset]=${pageNumber}`
       )
   }
 
@@ -91,7 +89,6 @@ export class ProductService {
       .pipe(
         map(
           (resp: any) => resp.data
-          // resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
         )
       );
   }

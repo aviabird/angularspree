@@ -4,32 +4,33 @@ import { AppState } from './../../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { environment } from './../../../../../../environments/environment';
 import { LineItem } from './../../../../../core/models/line_item';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Price } from '../../../../../core/models/price';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-line-item',
   templateUrl: './line-item.component.html',
   styleUrls: ['./line-item.component.scss']
 })
-export class LineItemComponent implements OnInit {
+export class LineItemComponent implements OnInit, OnDestroy {
   @Input() isMobile;
   @Input() lineItem: LineItem;
   image: string;
   name: string;
   quantity: number;
   amount: number;
-  quantityCount: any;
-  optionTxt: any;
+  quantityCount: number;
+  optionTxt: string;
   noImageUrl = 'assets/default/no-image-available.jpg'
   unit_price: Price;
   currency = environment.config.currency_symbol;
+  subscriptionList$: Array<Subscription> = [];
 
   constructor(
     private store: Store<AppState>,
     private actions: CheckoutActions,
-    private checkoutService: CheckoutService,
-    private checkoutActions: CheckoutActions,
+    private checkoutService: CheckoutService
   ) { }
 
   ngOnInit() {
@@ -43,7 +44,10 @@ export class LineItemComponent implements OnInit {
   }
 
   removeLineItem() {
-    this.checkoutService.deleteLineItem(this.lineItem).subscribe();
+    this.subscriptionList$.push(
+      this.checkoutService.deleteLineItem(this.lineItem.id)
+        .subscribe(_ => { this.store.dispatch(this.actions.getOrderDetails()) })
+    );
   }
 
   removeQuantity() {
@@ -51,16 +55,22 @@ export class LineItemComponent implements OnInit {
     if (this.quantityCount <= 1) {
       this.quantityCount = 1;
       if (this.quantity > 1) {
-        this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, -1));
+        this.store.dispatch(this.actions.addToCart(this.lineItem.product.id, -1));
+        this.store.dispatch(this.actions.getOrderDetails());
       }
     } else if (this.quantityCount > 1) {
-      this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, -1));
+      this.store.dispatch(this.actions.addToCart(this.lineItem.product.id, -1));
+      this.store.dispatch(this.actions.getOrderDetails());
     }
   }
 
   addQuantity() {
     this.quantityCount += 1;
-    this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.product.id, 1));
+    this.store.dispatch(this.actions.addToCart(this.lineItem.product.id, 1));
     this.store.dispatch(this.actions.getOrderDetails());
+  }
+
+  ngOnDestroy() {
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }

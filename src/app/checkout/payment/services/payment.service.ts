@@ -27,7 +27,7 @@ export class PaymentService {
   addPaymentToOrder(paymentMethodId: number, orderId: number, orderAmount: number) {
     const amount = orderAmount.toString()
     const params = this.buildAddPaymentJson(paymentMethodId, orderId, amount);
-    const url = `http://localhost:3000/api/v1/orders/${orderId}/add-payment`;
+    const url = `api/v1/orders/${orderId}/add-payment`;
     return this.http.post<any>(url, params).pipe(
       map(order => {
         return order;
@@ -37,7 +37,7 @@ export class PaymentService {
 
   makeHostedPayment(orderId: number, paymentId: number, orderAmount: number, paymentMethodId: number) {
     const params = this.buildHostedPaymentJson(orderId, paymentId, orderAmount, paymentMethodId);
-    const url = `http://localhost:3000/api/v1/hosted-payment/payubiz-request`
+    const url = `api/v1/hosted-payment/payubiz-request`
     return this.http.post(url, params)
       .pipe(
         map(res => { return res }), error => { return error }

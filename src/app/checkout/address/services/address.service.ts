@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 import { Address } from '../../../core/models/address';
 import { map, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import { getCurrentUser } from '../../../auth/reducers/selectors';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
 import { Order } from '../../../core/models/order';
 import { CheckoutActions } from '../../actions/checkout.actions';
+import { User } from '../../../core/models/user';
 
 @Injectable()
 export class AddressService {
@@ -60,32 +60,10 @@ export class AddressService {
     };
   }
 
-  // updateAddress(updatedAddress, addressId, orderNumber) {
-  //   const url = `api/v1/orders/${orderNumber}/addresses/${addressId}?`
-  //     + `address[firstname]=${updatedAddress.firstname}`
-  //     + `&address[lastname]=${updatedAddress.lastname}`
-  //     + `&address[address1]=${updatedAddress.address1}`
-  //     + `&address[address2]=${updatedAddress.address2}`
-  //     + `&address[city]=${updatedAddress.city}`
-  //     + `&address[state_name]=${updatedAddress.state_name}`
-  //     + `&address[phone]=${updatedAddress.phone}`
-  //     + `&address[zipcode]=${updatedAddress.zipcode}`
-  //     + `&address[state_id]=${updatedAddress.state_id}`
-  //     + `&address[country_id]=${updatedAddress.country_id}`
-
-  //   return this.http.put(url, {}).pipe(
-  //     map(resp => { return resp }
-  //     ), tap(_ => { this.toastrService.success('Address Updated SuccesFully!', 'Success'); },
-  //       _ => { this.toastrService.error('Address Could not be Updated', 'Failed'); }
-  //     )
-  //   )
-  // }
-
   saveUserAddress(address: Address): Observable<Address> {
-    let userId: string;
-     let user = JSON.parse(localStorage.getItem('user'))
+    const user: User = JSON.parse(localStorage.getItem('user'))
     const params = this.buildAddressJson(address, user.id);
-    return this.http.post<Address>(`http://localhost:3000/api/v1/addresses`, params).pipe(
+    return this.http.post<Address>(`api/v1/addresses`, params).pipe(
       map(resp => {
         return resp;
       }), tap(_ => { this.toastrService.success('Address added successfully!', 'Success!') },
@@ -96,7 +74,7 @@ export class AddressService {
 
   bindAddressToOrder(address: Address, orderId: number): Observable<Order> {
     const params = this.buildSelectAddressJson(orderId, address);
-    return this.http.post<Order>(`http://localhost:3000/api/v1/orders/${orderId}/select_address/`, params).pipe(
+    return this.http.post<Order>(`api/v1/orders/${orderId}/select_address/`, params).pipe(
       map(resp => {
         return resp;
       })

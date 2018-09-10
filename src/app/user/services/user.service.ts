@@ -75,8 +75,8 @@ export class UserService {
   }
 
   updateUserAddress(updatedAddress) {
-      const url = `address/update_address`
-      return this.http.post(url, updatedAddress)
+    const url = `address/update_address`
+    return this.http.post(url, updatedAddress)
   }
 
   createUserAddress(updatedAddress) {
@@ -85,15 +85,15 @@ export class UserService {
   }
 
   getUserAddresses(): Observable<Array<Address>> {
-    return this.http.get<Array<Address>>(`http://localhost:3000/api/v1/addresses`)
+    return this.http.get<Array<Address>>(`api/v1/addresses`)
   }
 
   getCountires(): Observable<Array<Country>> {
-    return this.http.get<any>(`http://localhost:3000/api/v1/countries`)
+    return this.http.get<any>(`api/v1/countries`)
   }
 
   getAllStates(countryId: string): Observable<Array<State>> {
-    return this.http.get<Array<State>>(`http://localhost:3000/api/v1/countries/${countryId}/states`)
+    return this.http.get<Array<State>>(`api/v1/countries/${countryId}/states`)
   }
 }
 

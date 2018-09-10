@@ -52,7 +52,11 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
       }) as CheckoutState;
 
     case CheckoutActions.ADD_TO_CART_SUCCESS:
+      // _totalCartItems = payload.quantity
+      // _itemTotal = payload.total_price
       return state.merge({
+        // totalCartItems: _totalCartItems,
+        // itemTotal: _itemTotal
       }) as CheckoutState;
 
     case CheckoutActions.REMOVE_LINE_ITEM_SUCCESS:

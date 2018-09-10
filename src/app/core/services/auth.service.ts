@@ -43,7 +43,7 @@ export class AuthService {
 
   login({ email, password }): Observable<any> {
     const params = { data: { attributes: { email, password } } };
-    return this.http.post<User>('http://localhost:3000/api/v1/login', params).pipe(
+    return this.http.post<User>('api/v1/login', params).pipe(
       map(user => {
         this.setTokenInLocalStorage(user, 'user');
         this.store.dispatch(this.actions.getCurrentUserSuccess(JSON.parse(localStorage.getItem('user'))));
@@ -70,7 +70,7 @@ export class AuthService {
    */
   register(data: User): Observable<User> {
     const params = { data: { type: 'user', attributes: data } };
-    return this.http.post<User>('http://localhost:3000/api/v1/register', params).pipe(
+    return this.http.post<User>('api/v1/register', params).pipe(
       map(user => {
         return user;
       }),
@@ -139,7 +139,7 @@ export class AuthService {
    */
   authorized(): Observable<any> {
     return this.http
-      .get('http://localhost:3000/api/v1/authenticated')
+      .get('api/v1/authenticated')
       .pipe(catchError(error => of(error.error)));
   }
 
@@ -151,7 +151,7 @@ export class AuthService {
    * @memberof AuthService
    */
   logout() {
-    return this.http.post('http://localhost:3000/api/v1/logout', {}).pipe(
+    return this.http.post('api/v1/logout', {}).pipe(
       map((res: Response) => {
         if (isPlatformBrowser(this.platformId)) {
           localStorage.clear();
