@@ -40,7 +40,7 @@ export class LineItemComponent implements OnInit, OnDestroy {
     this.unit_price = this.lineItem.unit_price as Price;
     this.amount = (parseFloat(this.unit_price.amount) * this.quantity);
     this.quantityCount = this.quantity;
-    this.optionTxt = 'TODO'
+    this.optionTxt = '';
   }
 
   removeLineItem() {

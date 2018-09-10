@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
+import { Component, OnInit, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
@@ -8,7 +8,6 @@ import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentHeaderComponent implements OnInit {
-  @Output() toggleSize = new EventEmitter();
   @Input() paginationInfo;
   @Input() fillterList;
   subselectedItem;
@@ -35,7 +34,6 @@ export class ContentHeaderComponent implements OnInit {
 
   selectedOption = 'Relevance';
   isMobile: any;
-  selectedSize = 'COZY';
   searchKeyword = '';
   selectedEntry;
   isfilterModalShown;
@@ -68,18 +66,6 @@ export class ContentHeaderComponent implements OnInit {
     }
   }
 
-  toggleView(view) {
-    this.selectedSize = view;
-    this.toggleSize.emit({ size: view });
-  }
-
-  isSmallSelected(): boolean {
-    return this.selectedSize === 'COZY';
-  }
-
-  isBigSelected(): boolean {
-    return this.selectedSize === 'COMPACT';
-  }
   fltermodelstate(flag) {
     this.isfilterModalShown = flag;
   }

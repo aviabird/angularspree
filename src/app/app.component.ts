@@ -25,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
   checkoutUrls = ['/checkout/cart', '/checkout/address', '/checkout/payment'];
   layoutState$: Observable<LayoutState>;
   schema = {};
+  subscriptionList$: Array<Subscription> = [];
 
   constructor(
     private router: Router,
@@ -54,11 +55,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.store.select(getAuthStatus).subscribe((data: boolean) => {
-      if (data) {
-        this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
-      }
-    });
+    this.subscriptionList$.push(
+      this.store.select(getAuthStatus).subscribe((data: boolean) => {
+        if (data) {
+          this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
+        }
+      })
+    );
 
     this.layoutState$ = this.store.select(getlayoutStateJS);
 
@@ -87,6 +90,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.orderSub$.unsubscribe();
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 
   private addMetaInfo() {

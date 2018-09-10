@@ -16,9 +16,7 @@ export class AddressService {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private toastrService: ToastrService,
-    private store: Store<AppState>,
-    private checkoutActions: CheckoutActions
+    private toastrService: ToastrService
   ) { }
 
   initAddressForm() {

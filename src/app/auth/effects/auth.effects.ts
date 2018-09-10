@@ -5,7 +5,6 @@ import { Action } from '@ngrx/store';
 import { AuthService } from '../../core/services/auth.service';
 import { AuthActions } from '../actions/auth.actions';
 import { Observable } from 'rxjs';
-import { User } from '../../core/models/user';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -26,27 +25,20 @@ export class AuthenticationEffects {
     );
 
   // tslint:disable-next-line:member-ordering
-  // @Effect()
-  // OAuthLogin: Observable<Action> = this.actions$
-  //   .ofType(AuthActions.O_AUTH_LOGIN)
-  //   .pipe(
-  //     switchMap((action: any) => {
-  //       return this.authService.socialLogin(action.payload);
-  //     }),
-  //     filter(data => data !== null),
-  //     map(data => {
-  //       if (typeof data === typeof 'string') {
-  //         return this.authActions.noOp();
-  //       } else {
-  //         return this.authActions.loginSuccess();
-  //       }
-  //     })
-  //   );
-
-  // tslint:disable-next-line:member-ordering
-  // @Effect()
-  // GetCurrentUser$: Observable<Action> = this.actions$
-  //   .ofType(AuthActions.GET_CURRENT_USER).pipe(
-  //     switchMap((action: any) => this.authService.loadCurrentUser(action.payload)),
-  //     map((user: User) => this.authActions.getCurrentUserSuccess(user)));
+  @Effect()
+  OAuthLogin: Observable<Action> = this.actions$
+    .ofType(AuthActions.O_AUTH_LOGIN)
+    .pipe(
+      switchMap((action: any) => {
+        return this.authService.socialLogin(action.payload);
+      }),
+      filter(data => data !== null),
+      map(data => {
+        if (typeof data === typeof 'string') {
+          return this.authActions.noOp();
+        } else {
+          return this.authActions.loginSuccess();
+        }
+      })
+    );
 }

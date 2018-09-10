@@ -1,22 +1,18 @@
-
-import { tap } from 'rxjs/operators';
-import { getOrderState } from './../../../reducers/selectors';
-import { Router } from '@angular/router';
-import { CheckoutService } from './../../../../core/services/checkout.service';
-import { AppState } from './../../../../interfaces';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../interfaces';
+import { getAuthStatus } from '../../../../auth/reducers/selectors';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-order-total-summary',
   templateUrl: './order-total-summary.component.html',
   styleUrls: ['./order-total-summary.component.scss']
 })
-export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges {
-
-  stateSub$: Subscription;
+export class OrderTotalSummaryComponent implements OnInit, OnChanges, OnDestroy {
   orderState: string;
   @Input() itemTotal: number;
   @Input() isMobile;
@@ -25,24 +21,24 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
   shippingProgress;
   currency = environment.config.currency_symbol;
   freeShippingAmount = environment.config.freeShippingAmount;
+  isAuthenticated: boolean;
+  subscriptionList$: Array<Subscription> = [];
 
-  constructor(private store: Store<AppState>,
-    private checkoutService: CheckoutService,
-    private router: Router) {
-    this.stateSub$ = this.store.select(getOrderState)
-      .subscribe(state => this.orderState = state);
-  }
+  constructor(
+    private router: Router,
+    private store: Store<AppState>) { }
 
   ngOnInit() {
-
+    this.subscriptionList$.push(
+      this.store.select(getAuthStatus).
+        subscribe(authStatus => {
+          this.isAuthenticated = authStatus
+        })
+    );
   }
 
   ngOnChanges() {
     this.enableshippingcalculate()
-  }
-
-  placeOrder() {
-    this.router.navigate(['/checkout', 'address']);
   }
 
   enableshippingcalculate() {
@@ -55,11 +51,18 @@ export class OrderTotalSummaryComponent implements OnInit, OnDestroy, OnChanges 
         this.enableshipping = false;
         this.shippingProgress = 100;
       }
-
     }
-
   }
+
+  placeOrder() {
+    if (this.isAuthenticated) {
+      this.router.navigate(['/checkout', 'address']);
+    } else {
+      this.router.navigate(['/auth', 'login']);
+    }
+  }
+
   ngOnDestroy() {
-    this.stateSub$.unsubscribe();
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }

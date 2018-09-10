@@ -2,9 +2,10 @@ import { ActivatedRoute } from '@angular/router';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { SearchActions } from './../../reducers/search.actions';
-import { Component, OnInit, Input, EventEmitter, Output, OnChanges, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
-import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
+import { isPlatformBrowser } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -12,27 +13,28 @@ import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, OnDestroy {
   @Input() taxonomiList;
   @Input() isFilterOn;
   @Input() categoryLevel;
-
   @Output() onSelected = new EventEmitter<Object>();
   @Output() showAll = new EventEmitter<Object>();
-
   queryParams: any;
-  isItemSelected: any;
+  subscriptionList$: Array<Subscription> = [];
   brands: any;
+
   constructor(
     private searchActions: SearchActions,
     private store: Store<AppState>,
     private router: ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
-    this.router.queryParams
-      .subscribe(params => {
-        this.queryParams = params
-      });
+    this.subscriptionList$.push(
+      this.router.queryParams
+        .subscribe(params => {
+          this.queryParams = params
+        })
+    )
   }
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class CategoriesComponent implements OnInit {
   showAllCategory() {
     this.showAll.emit()
     if (isPlatformBrowser(this.platformId)) {
+      // Need refactoer this code
       window.location.reload();
     }
   }
@@ -64,5 +67,9 @@ export class CategoriesComponent implements OnInit {
   emitSelection(root) {
     this.catgeoryFilter()
     this.onSelected.emit({ id: this.queryParams.id, name: this.queryParams['q[name_cont]'] });
+  }
+
+  ngOnDestroy() {
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }

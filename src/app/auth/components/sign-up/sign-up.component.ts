@@ -69,8 +69,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
     const email = '';
     const password = '';
     const password_confirmation = '';
-    // const mobile = '';
-    // const gender = '';
     const first_name = '';
     const last_name = '';
 
@@ -79,9 +77,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
       'last_name': [last_name, Validators.compose([Validators.required])],
       'email': [email, Validators.compose([Validators.required, Validators.email])],
       'password': [password, Validators.compose([Validators.required, Validators.minLength(8)])],
-      'password_confirmation': [password_confirmation, Validators.compose([Validators.required, Validators.minLength(6)])],
-      // 'mobile': [mobile, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[0-9]{10}')])],
-      // 'gender': [gender, Validators.required]
+      'password_confirmation': [password_confirmation, Validators.compose([Validators.required, Validators.minLength(8)])],
     }, { validator: this.matchingPasswords('password', 'password_confirmation') }
     );
   }
@@ -100,8 +96,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
     return (group: FormGroup): { [key: string]: any } => {
-      let password = group.controls[passwordKey];
-      let confirmPassword = group.controls[confirmPasswordKey];
+      const password = group.controls[passwordKey];
+      const confirmPassword = group.controls[confirmPasswordKey];
 
       if (password.value !== confirmPassword.value) {
         return {
