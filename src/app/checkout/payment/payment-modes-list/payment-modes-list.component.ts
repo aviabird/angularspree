@@ -86,7 +86,7 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
 
     this.subscriptionList$.push(
       this.paymentService.makeHostedPayment(
-        this.orderId, this.payment.id, this.orderAmount, this.paymentMethodId).
+        this.orderNumber, this.payment.id, this.orderAmount, this.paymentMethodId).
         subscribe((resp: any) => {
           if (isPlatformBrowser(this.platformId)) {
             window.open(resp.url, '_self');
