@@ -1,7 +1,7 @@
 import { CUSTOM_APP_DATA } from './app-data';
 import { CUSTOM_META_DATA } from './meta-data';
 
-export const DEFAULT_CONFIG = {
+export const CUSTOM_CONFIG = {
   // Add Your custom configs hereh
   prodApiEndpoint: 'https://ngspree-api.herokuapp.com/',
   // prodApiEndpoint: 'http://localhost:3000/',
