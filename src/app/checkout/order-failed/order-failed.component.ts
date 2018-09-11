@@ -1,10 +1,13 @@
+import { getlayoutStateJS } from './../../layout/reducers/layout.selector';
+import { AppState } from './../../interfaces';
+import { Store } from '@ngrx/store';
+import { LayoutState } from './../../layout/reducers/layout.state';
+import { Observable } from 'rxjs/internal/Observable';
 import { LineItem } from './../../core/models/line_item';
 import { Order } from './../../core/models/order';
 import { UserService } from './../../user/services/user.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
-import { CheckoutService } from '../../core/services/checkout.service';
-import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-order-failed',
@@ -12,18 +15,17 @@ import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
   styleUrls: ['./order-failed.component.scss']
 })
 export class OrderFailedComponent implements OnInit {
-  queryParams: any;
-  orderDetails: Order
+  queryParams: Params;
+  orderDetails: Order;
   errorReason: string;
   isMobile = false;
-  screenwidth: any;
+  layoutState$: Observable<LayoutState>;
 
   constructor(
     private userService: UserService,
     private activatedRouter: ActivatedRoute,
     private route: Router,
-    private checkoutService: CheckoutService,
-    @Inject(PLATFORM_ID) private platformId: any
+    private store: Store<AppState>
   ) {
     this.activatedRouter.queryParams
       .subscribe(params => {
@@ -36,34 +38,17 @@ export class OrderFailedComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.layoutState$ = this.store.select(getlayoutStateJS);
     this.userService
       .getOrderDetail(this.queryParams.orderReferance)
       .subscribe(order => {
         this.orderDetails = order
-      })
-    this.screenwidth = window.innerWidth;
-
-    this.calculateInnerWidth();
+      });
   }
-  calculateInnerWidth() {
-    if (this.screenwidth <= 1000) {
 
-      this.isMobile = this.screenwidth;
-    }
-  }
   getProductImageUrl(line_item: LineItem) {
     const image_url = line_item.variant.images[0].small_url;
     return image_url;
   }
-
-  // retryPayment(order: Order) {
-  //   this.checkoutService.makePayment(+order.total, order.bill_address, order.number)
-  //     .subscribe((response: any) => {
-  //       response = response;
-  //       if (isPlatformBrowser(this.platformId)) {
-  //         window.open(response.url, '_self');
-  //       }
-  //     });
-  // }
 
 }

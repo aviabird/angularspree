@@ -45,7 +45,7 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
     private paymentService: PaymentService,
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
-    @Inject(PLATFORM_ID) private platformId: any) {
+    @Inject(PLATFORM_ID) private platformId: Object) {
 
     this.subscriptionList$.push(
       this.store.select(getAuthStatus).subscribe((auth) => {
@@ -87,7 +87,7 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
     this.subscriptionList$.push(
       this.paymentService.makeHostedPayment(
         this.orderNumber, this.payment.id, this.orderAmount, this.paymentMethodId).
-        subscribe((resp: any) => {
+        subscribe((resp: Response) => {
           if (isPlatformBrowser(this.platformId)) {
             window.open(resp.url, '_self');
           }

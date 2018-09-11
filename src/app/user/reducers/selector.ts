@@ -2,11 +2,10 @@ import { Product } from './../../core/models/product';
 import { AppState } from './../../interfaces';
 import { createSelector } from 'reselect';
 import { UserState } from './user.state';
-import { List } from 'immutable';
 import { Order } from '../../core/models/order';
 import { Address } from '../../core/models/address';
 import { Country } from '../../core/models/country';
-import { State } from '../../core/models/state';
+import { CState } from '../../core/models/state';
 
 // Base product state function
 /**
@@ -42,7 +41,7 @@ export function fetchCountries(state: UserState): Country[] {
     return state.countries.toJS();
 }
 
-export function fetchStates(state: UserState): State[] {
+export function fetchStates(state: UserState): CState[] {
     return state.states.toJS();
 }
 
