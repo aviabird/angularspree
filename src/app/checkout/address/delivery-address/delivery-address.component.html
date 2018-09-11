@@ -1,15 +1,14 @@
-<div class="items" *ngIf="address.full_name">
+<div class="items" *ngIf="address">
   <div class="address-row">
-    <strong>Edit</strong>
-    <div class="name">{{address.full_name}}</div>
+    <div class="name">{{address.first_name}} {{address.last_name}}</div>
     <div class="address">
       <div class="address-content">
-        <div class="address-field">{{address.address1}}</div>
-        <div class="address-field">{{address.address2}}</div>
+        <div class="address-field">{{address.address_line_1}}</div>
+        <div class="address-field">{{address.address_line_2}}</div>
         <span class="address-field">{{address.city}}</span>
-        <span class="address-field">-{{address.zipcode}}</span>
+        <span class="address-field">-{{address.zip_code}}</span>
         <br>
-        <span class="address-field">{{address.state?.name}}</span>
+        <!-- <span class="address-field">{{address.state?.name}}</span> -->
         <div class="mob">
           <span class="mob-lbl">Mobile: </span>
           <span class="mob-no">{{address.phone}}</span>

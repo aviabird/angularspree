@@ -22,7 +22,6 @@ import { OrderDetailComponent } from './components/orders/order-detail/order-det
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileEmailComponent } from './components/profile/profile-email/profile-email.component';
 import { ProfilePasswordComponent } from './components/profile/profile-password/profile-password.component';
-import { SavedAddressComponent } from './components/addresses/saved-address/saved-address.component';
 import { AddEditAddressComponent } from './components/addresses/add-edit-address/add-edit-address.component';
 import { AddressService } from '../checkout/address/services/address.service';
 
@@ -42,7 +41,6 @@ import { AddressService } from '../checkout/address/services/address.service';
     ProfileComponent,
     ProfileEmailComponent,
     ProfilePasswordComponent,
-    SavedAddressComponent,
     AddEditAddressComponent
     // pipes
 

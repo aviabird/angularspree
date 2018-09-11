@@ -29,7 +29,7 @@
               <ul>
                 <li>
                   List Price:</li>
-                <li>{{product.currency_symbol}}{{product.master.cost_price}}</li>
+                <li>{{product.currency_symbol}}{{product.max_retail_price.amount}}</li>
               </ul>
             </li>
             <li>
@@ -37,7 +37,7 @@
                 <li>Price:</li>
                 <li>
                   <span class="d-block float-left">
-                    {{product.display_price}}</span>
+                    {{product.selling_price.amount}}</span>
                   <span class="free-shipping d-block float-left d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
                     <span>Shipping on this item</span>
                   </span>

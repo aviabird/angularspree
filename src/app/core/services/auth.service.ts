@@ -7,10 +7,11 @@ import { Store } from '@ngrx/store';
 import { AuthActions } from '../../auth/actions/auth.actions';
 import { AuthService as OauthService } from 'ng2-ui-auth';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Authenticate, User } from '../models/user';
 import { HttpRequest } from '@angular/common/http/src/request';
 import { ToastrService, ActiveToast } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
+import { User } from '../models/user';
+
 
 @Injectable()
 export class AuthService {
@@ -39,23 +40,24 @@ export class AuthService {
    * @returns {Observable<User>}
    * @memberof AuthService
    */
-  login({ email, password }: Authenticate): Observable<User> {
-    const params = { spree_user: { email, password } };
-    return this.http.post<User>('login.json', params).pipe(
+
+  login({ email, password }): Observable<any> {
+    const params = { data: { attributes: { email, password } } };
+    return this.http.post<User>('api/v1/login', params).pipe(
       map(user => {
-        this.setTokenInLocalStorage(user);
-        this.store.dispatch(this.actions.loginSuccess());
+        this.setTokenInLocalStorage(user, 'user');
+        this.store.dispatch(this.actions.getCurrentUserSuccess(JSON.parse(localStorage.getItem('user'))));
+        this.store.dispatch(this.actions.loginSuccess())
         return user;
       }),
       tap(
         _ => this.router.navigate(['/']),
-        user => this.toastrService.error(user.error.error, 'ERROR!')
-      )
+        error => this.toastrService.error(error.error.errors.detail, 'ERROR!')
+      ),
+      catchError(error => {
+        return observableOf(error);
+      })
     );
-    // catch should be handled here with the http observable
-    // so that only the inner obs dies and not the effect Observable
-    // otherwise no further login requests will be fired
-    // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
   }
 
   /**
@@ -67,22 +69,19 @@ export class AuthService {
    * @memberof AuthService
    */
   register(data: User): Observable<User> {
-    const params = { spree_user: data };
-    return this.http.post<User>('auth/accounts', params).pipe(
+    const params = { data: { type: 'user', attributes: data } };
+    return this.http.post<User>('api/v1/register', params).pipe(
       map(user => {
-        this.setTokenInLocalStorage(user);
-        this.store.dispatch(this.actions.loginSuccess());
         return user;
       }),
       tap(
-        _ => _,
+        _ => {
+          this.toastrService.success('You are successfully registerd!', 'Success!!')
+          this.router.navigate(['auth', 'login']);
+        },
         _ => this.toastrService.error('Invalid/Existing data', 'ERROR!!')
       )
     );
-    // catch should be handled here with the http observable
-    // so that only the inner obs dies and not the effect Observable
-    // otherwise no further login requests will be fired
-    // MORE INFO https://youtu.be/3LKMwkuK0ZE?t=24m29s
   }
 
   /**
@@ -140,7 +139,7 @@ export class AuthService {
    */
   authorized(): Observable<any> {
     return this.http
-      .get('auth/authenticated')
+      .get('api/v1/authenticated')
       .pipe(catchError(error => of(error.error)));
   }
 
@@ -152,11 +151,10 @@ export class AuthService {
    * @memberof AuthService
    */
   logout() {
-    return this.http.get('logout.json').pipe(
+    return this.http.post('api/v1/logout', {}).pipe(
       map((res: Response) => {
-        // Setting token after login
         if (isPlatformBrowser(this.platformId)) {
-          localStorage.removeItem('user');
+          localStorage.clear();
         }
         this.store.dispatch(this.actions.logoutSuccess());
         return res;
@@ -171,22 +169,15 @@ export class AuthService {
    * @memberof AuthService
    */
   getTokenHeader(request: HttpRequest<any>): HttpHeaders {
-    const userJson = isPlatformBrowser(this.platformId) ? localStorage.getItem('user') : '{}';
+    if (this.getUserToken()) {
+      return new HttpHeaders({
+        'Content-Type': 'application/vnd.api+json',
+        'Authorization': `Bearer ${this.getUserToken()}`,
+      });
+    } else {
+      return new HttpHeaders({ 'Content-Type': 'application/vnd.api+json' });
+    }
 
-    const user: User =
-      ['undefined', null].indexOf(userJson) === -1
-        ? JSON.parse(userJson)
-        : {};
-
-    return new HttpHeaders({
-      'Content-Type': request.headers.get('Content-Type') || 'application/json',
-      'token-type': 'Bearer',
-      access_token: user.access_token || [],
-      client: user.client || [],
-      uid: user.uid || [],
-      'Auth-Token': user.spree_api_key || [],
-      // 'ng-api': 'true'
-    });
   }
 
   /**
@@ -197,17 +188,24 @@ export class AuthService {
    *
    * @memberof AuthService
    */
-  private setTokenInLocalStorage(user_data: any): void {
+  private setTokenInLocalStorage(user_data: any, keyName: string): void {
     const jsonData = JSON.stringify(user_data);
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('user', jsonData);
+      localStorage.setItem(keyName, jsonData);
     }
   }
 
+  /**
+   *
+   *
+   * @param {string} provider
+   * @returns
+   * @memberof AuthService
+   */
   socialLogin(provider: string) {
     return this.oAuthService.authenticate<User>(provider).pipe(
       map(user => {
-        this.setTokenInLocalStorage(user);
+        this.setTokenInLocalStorage(user, 'user');
         return user;
       }),
       catchError(_ => {
@@ -215,5 +213,14 @@ export class AuthService {
         return observableOf('Social login failed');
       })
     );
+  }
+
+  getUserToken() {
+    if (isPlatformBrowser(this.platformId)) {
+      const user: User = JSON.parse(localStorage.getItem('user'))
+      return user ? user.token : null
+    } else {
+      return null;
+    }
   }
 }

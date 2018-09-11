@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import { User } from '../../core/models/user';
 export class AuthActions {
   static LOGIN = 'LOGIN';
   static LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -11,6 +11,9 @@ export class AuthActions {
   static FORGET_PASSWORD_SUCCESS = 'FORGET_PASSWORD_SUCCESS';
   static UPDATE_PASSWORD = 'UPDATE_PASSWORD';
   static UPDATE_PASSWORD_SUCCESS = 'UPDATE_PASSWORD_SUCCESS';
+  static GET_CURRENT_USER = 'GET_CURRENT_USER';
+  static GET_CURRENT_USER_SUCCESS = 'GET_CURRENT_USER_SUCCESS';
+
 
   authorize() {
     return { type: AuthActions.AUTHORIZE };
@@ -29,14 +32,14 @@ export class AuthActions {
   forgetPasswordSuccess() {
     return { type: AuthActions.FORGET_PASSWORD_SUCCESS };
   }
-  forgetPassword(){
+  forgetPassword() {
     return { type: AuthActions.FORGET_PASSWORD };
   }
 
   updatePasswordSuccess() {
     return { type: AuthActions.UPDATE_PASSWORD_SUCCESS };
   }
-  updatePassword(){
+  updatePassword() {
     return { type: AuthActions.UPDATE_PASSWORD };
   }
 
@@ -54,5 +57,19 @@ export class AuthActions {
 
   noOp() {
     return { type: AuthActions.NO_OP };
+  }
+
+  getCurrentUser(token) {
+    return {
+      type: AuthActions.GET_CURRENT_USER,
+      payload: token
+    }
+  }
+
+  getCurrentUserSuccess(user: User) {
+    return {
+      type: AuthActions.GET_CURRENT_USER_SUCCESS,
+      payload: user
+    }
   }
 }

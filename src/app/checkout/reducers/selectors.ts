@@ -10,9 +10,10 @@ export function getCheckoutState(state: AppState): CheckoutState {
 
 // ******************** Individual selectors ***************************
 export function fetchLineItems(state: CheckoutState) {
-  const ids = state.lineItemIds.toJS();
-  const lineItemEntitites = state.lineItemEntities.toJS();
-  return ids.map(id => lineItemEntitites[id]);
+  return state.lineItems.toJS();
+  // const ids = state.lineItemIds.toJS();
+  // const lineItemEntitites = state.lineItemEntities.toJS();
+  // return ids.map(id => lineItemEntitites[id]);
 }
 
 export function fetchOrderNumber(state: CheckoutState) {
@@ -49,6 +50,18 @@ export function fetchItemTotal(state: CheckoutState) {
 export function fetchAdjustmentTotal(state: CheckoutState) {
   return state.adjustmentTotal;
 }
+
+export function fetchOrderId(state: CheckoutState) {
+  return state.orderId;
+}
+
+export function fetchPayments(state: CheckoutState) {
+  return state.payments.toJS();
+}
+
+export function fetchPaymentEntities(state: CheckoutState) {
+  return state.paymentEntities.toJS();
+}
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCheckoutState, fetchLineItems);
 export const getOrderNumber = createSelector(getCheckoutState, fetchOrderNumber);
@@ -60,3 +73,6 @@ export const getOrderState = createSelector(getCheckoutState, fetchOrderState);
 export const getShipTotal = createSelector(getCheckoutState, fetchShipTotal);
 export const getItemTotal = createSelector(getCheckoutState, fetchItemTotal);
 export const getAdjustmentTotal = createSelector(getCheckoutState, fetchAdjustmentTotal);
+export const getOrderId = createSelector(getCheckoutState, fetchOrderId);
+export const getPayments = createSelector(getCheckoutState, fetchPayments);
+export const getPaymentEntities = createSelector(getCheckoutState, fetchPaymentEntities);

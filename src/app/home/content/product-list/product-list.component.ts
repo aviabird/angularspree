@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Component, OnInit, Input, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../environments/environment';
-import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -14,9 +14,6 @@ import { isPlatformBrowser } from '../../../../../node_modules/@angular/common';
 export class ProductListComponent implements OnInit {
   @Input() products;
   @Input() paginationData;
-  // tslint:disable-next-line:no-input-rename
-  @Input('taxonIds') selectedTaxonIds;
-  @Input() toggleLayout;
   page: number;
   queryParams: any;
   screenwidth;
@@ -44,10 +41,6 @@ export class ProductListComponent implements OnInit {
     if (this.screenwidth <= 1000) {
       this.isMobile = this.screenwidth;
     }
-  }
-
-  getMargin() {
-    return this.toggleLayout.size === 'COZY' ? '0 7.5px 20px 7.5px' : '0 80px 20px 0';
   }
 
   pageChanged(event: any): void {

@@ -4,10 +4,12 @@
     <div class="size-buttons-size-header d-none d-sm-block">
       <h6>{{ variant.key }}</h6>
     </div>
-    <button class="option-buttons" *ngFor="let options of (variant.value | keys)" (click)="onOptionClick(options)" [class.selected]="options.key === currentSelectedOptions[variant.key]"
-      [ngClass]="{'disabled': isDisabled(correspondingOptions[variant.key], options.value['optionValue'].name)}">
+    <button class="option-buttons" *ngFor="let options of (variant.value | keys)" (click)="onOptionClick(options)" 
+      [class.selected]="options.key === currentSelectedOptions[variant.key]"
+      [class.selected]="options.key === (variant.value | keys)[0].key ? true: false"   
+      [ngClass]="{'disabled': isDisabled(correspondingOptions[variant.key], options.value['optionValue'].value)}">
       <p>
-        {{ options.value["optionValue"].presentation }}
+        {{ options.value['optionValue'].value }}
         <span class="strike"></span>
       </p>
     </button>

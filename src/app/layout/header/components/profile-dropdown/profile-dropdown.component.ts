@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
+import { User } from '../../../../core/models/user';
 
 @Component({
   selector: 'app-profile-dropdown',
@@ -11,9 +12,9 @@ import { AuthService } from '../../../../core/services/auth.service';
 })
 export class ProfileDropdownComponent implements OnInit, OnChanges {
   @Input() isAuthenticated;
-  email = '';
+  name: string;
   @Input() isMobile;
-  currentUser: any;
+  currentUser: User;
   subnav: boolean;
   isOpen: boolean;
 
@@ -22,18 +23,19 @@ export class ProfileDropdownComponent implements OnInit, OnChanges {
 
   ngOnInit() {
   }
+
   onOpenChange(data: boolean): void {
     this.isOpen = !this.isOpen;
   }
+
   ngOnChanges() {
     this.currentUser = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')) : null;
     if (this.currentUser) {
-      this.email = this.currentUser.email.split('@')[0];
+      this.name = this.currentUser.first_name;
     }
   }
 
   logout() {
-
     this.subnav = !this.subnav;
     this.authService.logout().
       subscribe(res => {

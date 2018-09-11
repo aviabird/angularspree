@@ -1,12 +1,17 @@
 <div class="address-section col-12 col-md-8 col-lg-8">
-	<div *ngIf=!editAddress>
-		<div *ngIf="shipAddress$ | async; let shipAddress" class="row m-0">
+	<div *ngIf="isUserSelectedAddress">
+		<div *ngIf="shipAddress" class="row m-0">
 			<div class="left col-12 col-md-8 col-lg-8 m-0 ">
 				<div class="edit-address">
 					<span class="edit-label">
 						Delivery Address
 					</span>
-					<br> click on address to update it.
+					<br>
+					<div class="reviewlink">
+					<strong (click)=changeAddress()>
+						Change
+					</strong>
+				</div>
 				</div>
 				<app-delivery-address (click)="userAddressEdit(shipAddress)" [address]="shipAddress"></app-delivery-address>
 			</div>
@@ -16,17 +21,22 @@
 			</div>
 		</div>
 	</div>
-	<div *ngIf="!(shipAddress$ | async)" class="row">
+	<div *ngIf="!isUserSelectedAddress" class="row">
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0">
-			<div class="add-address">
-				<span class="add-label">
-					ADD NEW ADDRESS
+			<div class="add-address reviewlink pl-1">
+				<span class="add-label" (click)=addNewAddress()>
+					+ ADD A NEW ADDRESS
 				</span>
 			</div>
-			<app-add-address [addressEdit]="null"></app-add-address>
+			<app-add-address [addressEdit]="null" *ngIf="isAddNewAddress" (cancelAddress)="cancelAddress($event)" [countries]="(this.countries$ | async)">
+			</app-add-address>
+		</div>
+		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0" *ngIf="userAddresses$ | async; let userAddresses">
+			<app-saved-address *ngIf="userAddresses.length > 0" [addressList]="userAddresses" (getSelectedAddress)="getSelectedAddress($event)">
+			</app-saved-address>
 		</div>
 	</div>
-	<div *ngIf="editAddress" class="row">
+	<div *ngIf="false" class="row">
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0">
 			<div class="add-address">
 				<span class="add-label">

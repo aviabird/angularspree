@@ -71,7 +71,7 @@ export class VariantRetriverService {
   setCurrentSelectedOptions() {
     const currSelectedOptionType = this.currSelectedOption.value
       .optionValue
-      .option_type_name;
+      .option_type.name;
     this.currentSelectedOptions[currSelectedOptionType] = this.currSelectedOption.key;
   }
 
@@ -93,6 +93,7 @@ export class VariantRetriverService {
      *
      *
      ** */
+
     for (const key in this.currentSelectedOptions) {
       if (this.currentSelectedOptions.hasOwnProperty(key)) {
         this.customSelectedOptions[this.currentSelectedOptions[key]] =
@@ -159,7 +160,9 @@ export class VariantRetriverService {
    */
   getVariantFromProduct() {
     const result = this.product.variants
-      .filter(v => { return v.id === parseInt(this.variantId, 10); });
+      .filter(v => {
+        return v.id === this.variantId;
+      });
     this.variant = result ? result[0] : null;
   }
 

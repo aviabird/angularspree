@@ -16,6 +16,7 @@ export class LineItemListComponent implements OnInit {
   lineItems$: Observable<LineItem[]>;
 
   constructor(private store: Store<AppState>, private actions: CheckoutActions) {
+    this.store.dispatch(this.actions.getOrderDetails());
     this.lineItems$ = this.store.select(getLineItems);
   }
 
