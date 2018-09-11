@@ -1,7 +1,7 @@
 import { Product } from './../../core/models/product';
 import { Order } from '../../core/models/order';
 import { Address } from '../../core/models/address';
-import { State } from '../../core/models/state';
+import { CState } from '../../core/models/state';
 import { Country } from '../../core/models/country';
 
 export class UserActions {
@@ -73,7 +73,7 @@ export class UserActions {
     }
   }
 
-  fetchStatesSuccess(states: State[]) {
+  fetchStatesSuccess(states: CState[]) {
     return {
       type: UserActions.FETCH_STATES_SUCCEESS,
       payload: states

@@ -1,3 +1,4 @@
+import { User } from './../../core/models/user';
 import { filter, switchMap, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
@@ -29,7 +30,7 @@ export class AuthenticationEffects {
   OAuthLogin: Observable<Action> = this.actions$
     .ofType(AuthActions.O_AUTH_LOGIN)
     .pipe(
-      switchMap((action: any) => {
+      switchMap<Action & { payload: string }, User>(action => {
         return this.authService.socialLogin(action.payload);
       }),
       filter(data => data !== null),

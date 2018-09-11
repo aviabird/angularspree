@@ -1,21 +1,21 @@
+import { Observable } from 'rxjs/internal/Observable';
+import { PaymentMode } from './../models/payment_mode';
 import { map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { getOrderNumber, getOrderId } from './../../checkout/reducers/selectors';
 import { CheckoutActions } from './../../checkout/actions/checkout.actions';
-import { Injectable, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { LineItem } from './../models/line_item';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Order } from '../models/order';
 import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
-import { Subscription } from 'rxjs';
 
 @Injectable()
-export class CheckoutService implements OnDestroy {
+export class CheckoutService {
   private orderId: number;
   private orderNumber: string;
-  subscriptionList$: Array<Subscription> = [];
 
   /**
    * Creates an instance of CheckoutService.
@@ -32,24 +32,22 @@ export class CheckoutService implements OnDestroy {
     private toastyService: ToastrService,
     @Inject(PLATFORM_ID) private platformId: any) {
 
-    this.subscriptionList$.push(
-      this.store.select(getOrderId)
-        .subscribe(orderId => (this.orderId = orderId)),
+    this.store.select(getOrderId)
+      .subscribe(orderId => (this.orderId = orderId));
 
-      this.store.select(getOrderNumber)
-        .subscribe(orderNumber => (this.orderNumber = orderNumber))
-    );
+    this.store.select(getOrderNumber)
+      .subscribe(orderNumber => (this.orderNumber = orderNumber));
   }
 
   /**
    *
    *
-   * @param {number} variant_id
-   * @returns
-   *
+   * @param {number} productId
+   * @param {number} quantity
+   * @returns {Observable<LineItem>}
    * @memberof CheckoutService
    */
-  createNewLineItem(productId: number, quantity: number) {
+  createNewLineItem(productId: number, quantity: number): Observable<LineItem> {
     const params = this.buildOrderParams(productId, quantity)
     return this.http.post<LineItem>(`api/v1/line_items`, params).pipe(
       tap(
@@ -122,7 +120,7 @@ export class CheckoutService implements OnDestroy {
    *
    *
    * @param {number} lineItemId
-   * @returns {Observable<Order>}
+   * @returns
    * @memberof CheckoutService
    */
   deleteLineItem(lineItemId: number) {
@@ -131,11 +129,7 @@ export class CheckoutService implements OnDestroy {
     }
 
     const url = `api/v1/line_items`
-    return this.http.request<{}>('delete', url, { body: param }).pipe(
-      map(resp => {
-        return resp;
-      })
-    )
+    return this.http.request<{}>('delete', url, { body: param });
   }
 
   /**
@@ -182,13 +176,12 @@ export class CheckoutService implements OnDestroy {
   /**
    *
    *
-   * @returns
-   *
+   * @returns {Observable<Array<PaymentMode>>}
    * @memberof CheckoutService
    */
-  availablePaymentMethods() {
+  availablePaymentMethods(): Observable<Array<PaymentMode>> {
     const url = `api/v1/payment/payment-methods`
-    return this.http.get<any>(url);
+    return this.http.get<Array<PaymentMode>>(url);
   }
 
   /**
@@ -272,9 +265,5 @@ export class CheckoutService implements OnDestroy {
       }
     }
     return params;
-  }
-
-  ngOnDestroy() {
-    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }

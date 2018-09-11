@@ -40,6 +40,7 @@ export class Order {
   ship_address: [Address];
   line_items: [LineItem];
   payments: [Payment];
+  display_total: string;
 }
 
 // NOTE: This just mimics the serializer exposed in the API

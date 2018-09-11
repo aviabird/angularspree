@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -5,6 +6,7 @@ import { Order } from '../../../core/models/order';
 import { map } from 'rxjs/operators';
 import { Address } from '../../../core/models/address';
 import { User } from '../../../core/models/user';
+import { PaymentMode } from '../../../core/models/payment_mode';
 
 @Injectable()
 export class PaymentService {
@@ -13,7 +15,14 @@ export class PaymentService {
   constructor(private http: HttpClient) { }
 
 
-  getDefaultSelectedMode(modes) {
+  /**
+   *
+   *
+   * @param {Array<PaymentMode>} modes
+   * @returns {PaymentMode}
+   * @memberof PaymentService
+   */
+  getDefaultSelectedMode(modes: Array<PaymentMode>): PaymentMode {
     let selectedMode;
     modes.forEach((mode) => {
       if (mode.name === this.paymentMethodName) {
@@ -23,28 +32,55 @@ export class PaymentService {
     return selectedMode;
   }
 
-
-  addPaymentToOrder(paymentMethodId: number, orderId: number, orderAmount: number) {
+  /**
+   *
+   *
+   * @param {number} paymentMethodId
+   * @param {number} orderId
+   * @param {number} orderAmount
+   * @returns {Observable<Order>}
+   * @memberof PaymentService
+   */
+  addPaymentToOrder(paymentMethodId: number, orderId: number, orderAmount: number): Observable<Order> {
     const amount = orderAmount.toString()
     const params = this.buildAddPaymentJson(paymentMethodId, orderId, amount);
     const url = `api/v1/orders/${orderId}/add-payment`;
-    return this.http.post<any>(url, params).pipe(
-      map(order => {
-        return order;
-      })
-    );
+    return this.http.post<Order>(url, params);
   }
 
+  /**
+   *
+   *
+   * @param {string} orderNumber
+   * @param {number} paymentId
+   * @param {number} orderAmount
+   * @param {number} paymentMethodId
+   * @returns
+   * @memberof PaymentService
+   */
   makeHostedPayment(orderNumber: string, paymentId: number, orderAmount: number, paymentMethodId: number) {
     const params = this.buildHostedPaymentJson(orderNumber, paymentId, orderAmount, paymentMethodId);
     const url = `api/v1/hosted-payment/payubiz-request`
     return this.http.post(url, params)
       .pipe(
-        map(res => { return res }), error => { return error }
+        map(
+          res => { return res }
+        ),
+        error => { return error }
       )
   }
 
-  buildHostedPaymentJson(orderNumber, paymentId, orderAmount, paymentMethodId) {
+  /**
+   *
+   *
+   * @param {string} orderNumber
+   * @param {number} paymentId
+   * @param {number} orderAmount
+   * @param {number} paymentMethodId
+   * @returns {Object}
+   * @memberof PaymentService
+   */
+  buildHostedPaymentJson(orderNumber: string, paymentId: number, orderAmount: number, paymentMethodId: number): Object {
     const user: User = JSON.parse(localStorage.getItem('user'));
     const params = {
       'data': {
@@ -62,7 +98,16 @@ export class PaymentService {
     return params;
   }
 
-  buildAddPaymentJson(paymentMethodId, orderId, orderAmount) {
+  /**
+   *
+   *
+   * @param {number} paymentMethodId
+   * @param {number} orderId
+   * @param {string} orderAmount
+   * @returns {Object}
+   * @memberof PaymentService
+   */
+  buildAddPaymentJson(paymentMethodId: number, orderId: number, orderAmount: string): Object {
     const params = {
       'data': {
         'type': 'orders',

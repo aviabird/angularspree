@@ -1,3 +1,5 @@
+import { Address } from './../../core/models/address';
+import { Action } from '@ngrx/store';
 import { map, switchMap } from 'rxjs/operators';
 import { LineItem } from './../../core/models/line_item';
 import { CheckoutService } from './../../core/services/checkout.service';
@@ -10,6 +12,50 @@ import { PaymentService } from '../payment/services/payment.service';
 
 @Injectable()
 export class CheckoutEffects {
+  @Effect()
+  AddToCart$ = this.actions$.ofType(CheckoutActions.ADD_TO_CART).pipe(
+    switchMap<Action & {payload: {variant_id: number, quantity: number}}, LineItem>(action => {
+      return this.checkoutService.createNewLineItem(
+        action.payload.variant_id,
+        action.payload.quantity
+      );
+    }),
+    switchMap(lineItem => [
+      this.actions.getOrderDetails(),
+      this.actions.addToCartSuccess(lineItem)
+    ])
+  );
+
+  @Effect()
+  OrderDetails$ = this.actions$.ofType(CheckoutActions.GET_ORDER_DETAILS).pipe(
+    switchMap<Action, Order>(_ => {
+      return this.checkoutService.getOrder();
+    }),
+    map(order => this.actions.getOrderDetailsSuccess(order))
+  );
+
+
+  @Effect()
+  BindAddress$ = this.actions$.ofType(CheckoutActions.BIND_ADDRESS).pipe(
+    switchMap<Action & {payload: {address: Address, orderId: number}}, Order>(action => {
+      return this.addressService.
+        bindAddressToOrder(action.payload.address, action.payload.orderId);
+    }),
+    map(order => this.actions.getOrderDetailsSuccess(order))
+  );
+
+
+  @Effect()
+  BindPayment$ = this.actions$.ofType(CheckoutActions.BIND_PAYMENT).pipe(
+    switchMap<Action & {payload: {paymentMethodId: number, orderId: number, orderAmount: number}}, Order>(action => {
+      return this.paymentService.addPaymentToOrder(
+        action.payload.paymentMethodId,
+        action.payload.orderId,
+        action.payload.orderAmount);
+    }),
+    map(order => this.actions.getOrderPaymentsSuccess(order))
+  );
+
   constructor(
     private actions$: Actions,
     private checkoutService: CheckoutService,
@@ -17,49 +63,4 @@ export class CheckoutEffects {
     private addressService: AddressService,
     private paymentService: PaymentService
   ) { }
-
-  // tslint:disable-next-line:member-ordering
-  @Effect()
-  AddToCart$ = this.actions$.ofType(CheckoutActions.ADD_TO_CART).pipe(
-    switchMap((action: any) => {
-      return this.checkoutService.createNewLineItem(
-        action.payload.variant_id,
-        action.payload.quantity
-      );
-    }),
-    map((lineItem: LineItem) => this.actions.addToCartSuccess(lineItem))
-  );
-
-  // tslint:disable-next-line:member-ordering
-  @Effect()
-  OrderDetails$ = this.actions$.ofType(CheckoutActions.GET_ORDER_DETAILS).pipe(
-    switchMap((action: any) => {
-      return this.checkoutService.getOrder();
-    }),
-    map((order: Order) => this.actions.getOrderDetailsSuccess(order))
-  );
-
-
-  // tslint:disable-next-line:member-ordering
-  @Effect()
-  BindAddress$ = this.actions$.ofType(CheckoutActions.BIND_ADDRESS).pipe(
-    switchMap((action: any) => {
-      return this.addressService.
-        bindAddressToOrder(action.payload.address, action.payload.orderId);
-    }),
-    map((order: Order) => this.actions.getOrderDetailsSuccess(order))
-  );
-
-
-  // tslint:disable-next-line:member-ordering
-  @Effect()
-  BindPayment$ = this.actions$.ofType(CheckoutActions.BIND_PAYMENT).pipe(
-    switchMap((action: any) => {
-      return this.paymentService.addPaymentToOrder(
-        action.payload.paymentMethodId,
-        action.payload.orderId,
-        action.payload.orderAmount);
-    }),
-    map((order: Order) => this.actions.getOrderPaymentsSuccess(order))
-  );
 }
