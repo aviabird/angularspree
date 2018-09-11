@@ -1,5 +1,6 @@
 import { LineItem } from './../../core/models/line_item';
 import { Order } from './../../core/models/order';
+import { Address } from '../../core/models/address';
 
 export class CheckoutActions {
   static FETCH_CURRENT_ORDER = 'FETCH_CURRENT_ORDER';
@@ -17,6 +18,9 @@ export class CheckoutActions {
   static ORDER_COMPLETE_SUCCESS = 'ORDER_COMPLETE_SUCCESS';
   static GET_ORDER_DETAILS = 'GET_ORDER_DETAILS';
   static GET_ORDER_DETAILS_SUCCESS = 'GET_ORDER_DETAILS_SUCCESS';
+  static BIND_ADDRESS = 'BIND_ADDRESS';
+  static BIND_PAYMENT = 'BIND_PAYMENT';
+  static GET_ORDER_PAYMENT_SUCCESS = 'GET_ORDER_PAYMENT_SUCCESS';
 
   fetchCurrentOrder() {
     return { type: CheckoutActions.FETCH_CURRENT_ORDER };
@@ -94,17 +98,38 @@ export class CheckoutActions {
     return { type: CheckoutActions.ORDER_COMPLETE_SUCCESS };
   }
 
-  getOrderDetails(order_number: string) {
+  getOrderDetails() {
     return {
-      type: CheckoutActions.GET_ORDER_DETAILS,
-      payload: order_number
+      type: CheckoutActions.GET_ORDER_DETAILS
     }
   }
 
   getOrderDetailsSuccess(order: Order) {
     return {
-      type: CheckoutActions.GET_ORDER_DETAILS,
+      type: CheckoutActions.GET_ORDER_DETAILS_SUCCESS,
+      payload: order
+    }
+  }
+
+  bindAddress(address: Address, orderId: number) {
+    return {
+      type: CheckoutActions.BIND_ADDRESS,
+      payload: { address, orderId }
+    }
+  }
+
+  bindPayment(paymentMethodId: number, orderId: number, orderAmount: number) {
+    return {
+      type: CheckoutActions.BIND_PAYMENT,
+      payload: { paymentMethodId, orderId, orderAmount }
+    }
+  }
+
+  getOrderPaymentsSuccess(order: Order) {
+    return {
+      type: CheckoutActions.GET_ORDER_PAYMENT_SUCCESS,
       payload: order
     }
   }
 }
+

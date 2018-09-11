@@ -4,28 +4,19 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-content',
   template: `
    <div *ngIf='paginationData.total_count > 0'>
-    <app-content-header [layoutState]="layoutState" (toggleSize)="toggleSize($event)"
+    <app-content-header
      [paginationInfo]="paginationData" [fillterList]="fillterList"></app-content-header>
-    <app-product-list [(toggleLayout)]='toggleLayout'
-     [products]='productsList' [paginationData]='paginationData' [taxonIds]="taxonIds"></app-product-list>
-    </div>
-  `,
+    <app-product-list
+     [products]='productsList' [paginationData]='paginationData'></app-product-list>
+    </div>`,
 })
 export class ContentComponent implements OnInit {
   @Input() productsList;
   @Input() paginationData;
-  @Input() taxonIds;
   @Input() fillterList;
-  @Input() layoutState;
-  toggleLayout = { size: 'COZY' };
 
   constructor() { }
 
   ngOnInit() {
   }
-
-  toggleSize(layoutInfo) {
-    this.toggleLayout = layoutInfo;
-  }
-
 }

@@ -8,8 +8,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class LpBrandsComponent implements OnInit {
   @Input() brands;
-  // To do : Finding alternate way to show image.
-  image = 'assets/default/no-image-available.png'
+  image = 'assets/default/no-image-available.jpg'
   constructor() { }
 
   ngOnInit() {

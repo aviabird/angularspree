@@ -1,18 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { CheckoutService } from './../../../../../core/services/checkout.service';
 import { CheckoutActions } from './../../../../actions/checkout.actions';
 import { AppState } from './../../../../../interfaces';
 import { LineItem } from './../../../../../core/models/line_item';
-import { ToastrService } from 'ngx-toastr';
+import { Price } from '../../../../../core/models/price';
+import { Subscription } from 'rxjs';
+import { environment } from './../../../../../../environments/environment';
 
 @Component({
   selector: 'app-line-item',
   templateUrl: './line-item.component.html',
   styleUrls: ['./line-item.component.scss']
 })
-export class LineItemComponent implements OnInit {
+export class LineItemComponent implements OnInit, OnDestroy {
   @Input() isMobile;
   @Input() lineItem: LineItem;
   image: string;
@@ -21,27 +23,32 @@ export class LineItemComponent implements OnInit {
   amount: number;
   quantityCount: number;
   optionTxt: string;
+  noImageUrl = 'assets/default/no-image-available.jpg'
+  unit_price: Price;
+  currency = environment.config.currency_symbol;
+  subscriptionList$: Array<Subscription> = [];
+
   constructor(
     private store: Store<AppState>,
-    private checkoutService: CheckoutService,
-    private checkoutActions: CheckoutActions,
-    private toastyService: ToastrService
+    private actions: CheckoutActions,
+    private checkoutService: CheckoutService
   ) { }
 
   ngOnInit() {
-    if (this.lineItem.variant.images[0]) {
-      this.image = this.lineItem.variant.images[0].product_url;
-    }
-    this.name = this.lineItem.variant.name;
+    this.image = this.noImageUrl;
+    this.name = this.lineItem.product.name;
     this.quantity = this.lineItem.quantity;
-    this.amount = this.lineItem.display_amount;
+    this.unit_price = this.lineItem.unit_price as Price;
+    this.amount = (parseFloat(this.unit_price.amount) * this.quantity);
     this.quantityCount = this.quantity;
-    this.optionTxt = this.lineItem.variant.options_text;
-
+    this.optionTxt = '';
   }
 
   removeLineItem() {
-    this.store.dispatch(this.checkoutActions.removeLineItem(this.lineItem));
+    this.subscriptionList$.push(
+      this.checkoutService.deleteLineItem(this.lineItem.id)
+        .subscribe(_ => { this.store.dispatch(this.actions.getOrderDetails()) })
+    );
   }
 
   removeQuantity() {
@@ -49,22 +56,22 @@ export class LineItemComponent implements OnInit {
     if (this.quantityCount <= 1) {
       this.quantityCount = 1;
       if (this.quantity > 1) {
-        this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, -1));
+        this.store.dispatch(this.actions.addToCart(this.lineItem.product.id, -1));
+        this.store.dispatch(this.actions.getOrderDetails());
       }
     } else if (this.quantityCount > 1) {
-      this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, -1));
+      this.store.dispatch(this.actions.addToCart(this.lineItem.product.id, -1));
+      this.store.dispatch(this.actions.getOrderDetails());
     }
   }
 
   addQuantity() {
-    const productInHands = this.lineItem.variant.total_on_hand;
-    const backOrderable = this.lineItem.variant.is_backorderable;
+    this.quantityCount += 1;
+    this.store.dispatch(this.actions.addToCart(this.lineItem.product.id, 1));
+    this.store.dispatch(this.actions.getOrderDetails());
+  }
 
-    if (productInHands >= (this.quantityCount + 1) || backOrderable === true) {
-      this.quantityCount += 1;
-      this.store.dispatch(this.checkoutActions.addToCart(this.lineItem.variant_id, 1));
-    } else {
-      this.toastyService.error('Sorry! You can not add more quantity for this product.')
-    }
+  ngOnDestroy() {
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }

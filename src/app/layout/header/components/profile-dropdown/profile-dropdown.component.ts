@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
+import { User } from '../../../../core/models/user';
 
 @Component({
   selector: 'app-profile-dropdown',
@@ -12,9 +13,9 @@ import { AuthService } from '../../../../core/services/auth.service';
 })
 export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
   @Input() isAuthenticated;
-  email = '';
+  name: string;
   @Input() isMobile;
-  currentUser: any;
+  currentUser: User;
   subnav: boolean;
   isOpen: boolean;
   subList$: Array<Subscription> = [];
@@ -25,16 +26,17 @@ export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
     @Inject(PLATFORM_ID) private platformId: any
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
-  onOpenChange(_): void {
+  onOpenChange(data: boolean): void {
     this.isOpen = !this.isOpen;
   }
 
   ngOnChanges() {
     this.currentUser = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')) : null;
     if (this.currentUser) {
-      this.email = this.currentUser.email.split('@')[0];
+      this.name = this.currentUser.first_name;
     }
   }
 

@@ -14,7 +14,6 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../interfaces';
-import { getAuthStatus } from '../../auth/reducers/selectors';
 import { Observable } from 'rxjs';
 import { AuthActions } from '../../auth/actions/auth.actions';
 import { TemplateRef, Inject, PLATFORM_ID } from '@angular/core';
@@ -24,6 +23,7 @@ import { Renderer2 } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { LayoutState } from '../reducers/layout.state';
 import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
+import { getAuthStatus, getCurrentUser } from '../../auth/reducers/selectors';
 
 @Component({
   selector: 'app-header',
@@ -38,8 +38,8 @@ export class HeaderComponent implements OnInit {
   currency = environment.config.currency_symbol
   isModalShown = false;
   isSearchopen = true;
-  isAuthenticated: Observable<boolean>;
-  totalCartItems: Observable<number>;
+  isAuthenticated$: Observable<boolean>;
+  totalCartItems$: Observable<number>;
   taxonomies$: Observable<any>;
   user$: Observable<any>;
   headerConfig = environment.config.header;
@@ -52,10 +52,8 @@ export class HeaderComponent implements OnInit {
   isMobile = false;
   screenwidth: any;
   modalRef: BsModalRef;
-  config = {
-    backdrop: false,
-    ignoreBackdropClick: false
-  };
+  config = { backdrop: false, ignoreBackdropClick: false };
+  isUser: boolean;
 
   constructor(
     private store: Store<AppState>,
@@ -86,10 +84,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.authActions.authorize());
-    this.store.dispatch(this.authActions.login());
-    this.isAuthenticated = this.store.select(getAuthStatus);
-    this.totalCartItems = this.store.select(getTotalCartItems);
+    this.store.dispatch(this.authActions.authorize())
+    this.isAuthenticated$ = this.store.select(getAuthStatus);
+    this.totalCartItems$ = this.store.select(getTotalCartItems);
+
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
     }

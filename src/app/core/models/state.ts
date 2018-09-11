@@ -1,6 +1,5 @@
-export class CState {
-  id: number;
+export class State {
+  id: string;
+  code: string;
   name: string;
-  abbr: string;
-  country_id: number;
 }

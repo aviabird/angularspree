@@ -32,16 +32,18 @@ export class ProductPriceInfoComponent implements OnInit {
   constructor(private variantParser: VariantParserService,
     @Inject(PLATFORM_ID) private platformId: any
   ) {
-   }
+  }
 
   ngOnInit() {
-    this.images = this.product.master.images;
-    this.variantId = this.product.master.id;
-    this.customOptionTypesHash = this.variantParser
-      .getOptionsToDisplay(this.product.variants, this.product.option_types);
-    this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
-    this.correspondingOptions = this.mainOptions;
-    this.isOrderable = this.product.master.is_orderable;
+    this.images = this.product.images;
+    this.variantId = this.product.id;
+    if (this.product.theme) {
+      this.customOptionTypesHash = this.variantParser
+        .getOptionsToDisplay(this.product.variants, this.product.theme.option_types);
+      this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
+      this.correspondingOptions = this.mainOptions;
+  }
+    this.isOrderable = true;
   }
 
   onOptionClick(option) {
@@ -54,19 +56,19 @@ export class ProductPriceInfoComponent implements OnInit {
 
     this.createNewCorrespondingOptions(
       result.newCorrespondingOptions,
-      option.value.optionValue.option_type_name
+      option.value.optionValue.option_type.name
     );
 
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
     this.variantId = newVariant.id;
     this.description = newVariant.description;
-    this.images = newVariant.images;
-    this.product.display_price = result.variant.display_price
+    // this.images = newVariant.images;
     this.getSelectedVariant(result.variant);
-    this.isOrderable = newVariant.is_orderable;
-    this.product.master.cost_price = newVariant.cost_price;
-    this.product.price = newVariant.price;
+    this.isOrderable = true;
+    this.product.max_retail_price = newVariant.max_retail_price;
+    this.product.selling_price = newVariant.selling_price;
+    this.product.name = newVariant.name;
   }
 
   makeGlobalOptinTypesHash(customOptionTypes) {
@@ -100,11 +102,11 @@ export class ProductPriceInfoComponent implements OnInit {
   }
 
   get discount() {
-    return Math.ceil(this.product.master.cost_price - this.product.price);
+    return Math.ceil(+this.product.max_retail_price.amount - +this.product.selling_price.amount);
   }
 
   get discountPercent() {
-    return `${Math.ceil(this.discount / this.product.master.cost_price * 100)}%`;
+    return `${Math.ceil(this.discount / +this.product.max_retail_price.amount * 100)}%`;
   }
 
   scrollToReview() {

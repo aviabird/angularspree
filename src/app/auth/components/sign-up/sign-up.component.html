@@ -9,7 +9,7 @@
 
             </div>
             <div id="existing-customer" class="panel-body" data-hook="login">
-              <div class="register-third-party-register">
+              <!-- <div class="register-third-party-register">
                 <p class="register-button-info-text register-info-text">EASILY USING</p>
                 <div class="register-button-container">
                   <button class="register-google register-button" id="gPlusLogin" (click)="socialLogin('google')">
@@ -18,7 +18,7 @@
                   </button>
                 </div>
               </div>
-              <p class="register-button-info-text register-info-text">- OR USING EMAIL -</p>
+              <p class="register-button-info-text register-info-text">- OR USING EMAIL -</p> -->
               <form class="register-register-form" novalidate="" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
                 <fieldset class="register-input-container">
 
@@ -27,7 +27,28 @@
                       autocomplete="off">
                     <div *ngIf="signUpForm.get('email').errors && signUpForm.get('email').touched">
                       <span class="register-error-icon">!</span>
-                      <p class="register-error-message">{{signUpForm.get('email').errors.msg  || 'Please enter a valid email id'}}</p>
+                      <p class="register-error-message">{{signUpForm.get('email').errors.msg || 'Please enter a valid email
+                        id'}}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="register-input-item">
+                    <input type="text" class="register-user-input-mobile register-user-input" name="first_name" formControlName="first_name"
+                      placeholder="Your First Name">
+                    <div *ngIf="signUpForm.get('first_name').errors && signUpForm.get('first_name').touched">
+                      <span class="register-error-icon">!</span>
+                      <p class="register-error-message">{{signUpForm.get('first_name').errors.msg || 'Please enter first
+                        name'}}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="register-input-item">
+                    <input type="text" class="register-user-input-mobile register-user-input" name="last_name" formControlName="last_name" placeholder="Your Last Name">
+                    <div *ngIf="signUpForm.get('last_name').errors && signUpForm.get('last_name').touched">
+                      <span class="register-error-icon">!</span>
+                      <p class="register-error-message">{{signUpForm.get('last_name').errors.msg || 'Please enter last name'}}</p>
                     </div>
                   </div>
 
@@ -36,7 +57,8 @@
                       placeholder="Choose Password" autocomplete="off">
                     <div *ngIf="signUpForm.get('password').errors && signUpForm.get('password').touched">
                       <span class="register-error-icon">!</span>
-                      <p class="register-error-message">{{signUpForm.get('password').errors.msg  || 'Password must be at least 6 characters'}}</p>
+                      <p class="register-error-message">{{signUpForm.get('password').errors.msg || 'Password must be at least
+                        8 characters'}}</p>
                     </div>
                   </div>
 
@@ -48,29 +70,6 @@
                       <p class="register-error-message">{{ 'Password must match'}}</p>
                     </div>
                   </div>
-
-                  <div class="register-input-item">
-                    <input type="number" class="register-user-input-mobile register-user-input" name="mobile" formControlName="mobile" placeholder="Mobile Number (For order status updates)">
-                    <div *ngIf="signUpForm.get('mobile').errors && signUpForm.get('mobile').touched">
-                      <span class="register-error-icon">!</span>
-                      <p class="register-error-message">{{signUpForm.get('mobile').errors.msg  || 'Please enter a valid mobile number (10 digits)'}}</p>
-                    </div>
-                  </div>
-
-                  <fieldset data-type="horizontal" class="register-gender">
-                    <legend class="register-gender-title">I'm a</legend>
-
-                    <input type="radio" class="register-gender-radio" id="male" name="gender" value="M" formControlName="gender">
-                    <label class="register-gender-label" for="male">Male</label>
-
-                    <input type="radio" class="register-gender-radio" id="female" name="gender" value="F" formControlName="gender">
-                    <label class="register-gender-label" for="female">Female</label>
-
-                    <div *ngIf="signUpForm.get('gender').errors && signUpForm.get('gender').touched">
-                      <span class="register-gender-error-icon register-error-icon">!</span>
-                      <p class="register-gender-error-message register-error-message">{{signUpForm.get('gender').errors.msg  || 'Please select your gender'}}</p>
-                    </div>
-                  </fieldset>
                 </fieldset>
                 <fieldset class="register-register-button-container">
                   <button class="btn register-register-button">REGISTER</button>

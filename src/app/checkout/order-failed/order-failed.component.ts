@@ -8,9 +8,7 @@ import { LineItem } from './../../core/models/line_item';
 import { Order } from './../../core/models/order';
 import { UserService } from './../../user/services/user.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { Component, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
-import { CheckoutService } from '../../core/services/checkout.service';
-import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, of } from 'rxjs';
 
 @Component({
@@ -29,8 +27,6 @@ export class OrderFailedComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private activatedRouter: ActivatedRoute,
     private route: Router,
-    private checkoutService: CheckoutService,
-    @Inject(PLATFORM_ID) private platformId: Object,
     private store: Store<AppState>,
   ) { }
 
@@ -65,15 +61,14 @@ export class OrderFailedComponent implements OnInit, OnDestroy {
     return image_url;
   }
 
-  retryPayment(order: Order) {
-    this.subscriptionList$.push(
-      this.checkoutService.makePayment(+order.total, order.bill_address, order.number)
-        .subscribe((resp: any) => {
-          if (isPlatformBrowser(this.platformId)) {
-            window.open(resp.url, '_self');
-          }
-        })
-    );
-  }
+  // retryPayment(order: Order) {
+  //   this.checkoutService.makePayment(+order.total, order.bill_address, order.number)
+  //     .subscribe((response: any) => {
+  //       response = response;
+  //       if (isPlatformBrowser(this.platformId)) {
+  //         window.open(response.url, '_self');
+  //       }
+  //     });
+  // }
 
 }

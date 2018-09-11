@@ -1,5 +1,4 @@
-import { environment } from './../../../../../../../environments/environment';
-import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-brand-list',
@@ -10,7 +9,7 @@ import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@a
 export class BrandListComponent implements OnInit {
   @Input() taxons;
   // To do : Finding alternateway to show image.
-  image = 'assets/default/no-image-available.png'
+  image = 'assets/default/no-image-available.jpg'
   constructor() { }
   ngOnInit() {
   }

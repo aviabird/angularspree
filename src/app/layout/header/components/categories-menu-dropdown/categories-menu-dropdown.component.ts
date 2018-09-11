@@ -1,8 +1,9 @@
+import { Subscription } from 'rxjs';
 import { SearchActions } from './../../../../search/reducers/search.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import {
   trigger,
   state,
@@ -29,7 +30,7 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CategoriesMenuDropdownComponent implements OnInit {
+export class CategoriesMenuDropdownComponent implements OnInit, OnDestroy {
   @Input() taxonomies;
   @Input() isScrolled;
   @Input() screenwidth;
@@ -43,16 +44,18 @@ export class CategoriesMenuDropdownComponent implements OnInit {
   subIsopen: boolean;
   index: any;
   selectedItem: 0;
-
+  subscriptionList$: Array<Subscription> = [];
 
   constructor(
     private route: ActivatedRoute,
     private searchActions: SearchActions,
     private store: Store<AppState>) {
-    this.route.queryParams
-      .subscribe(params => {
-        this.queryParams = params;
-      });
+    this.subscriptionList$.push(
+      this.route.queryParams
+        .subscribe(params => {
+          this.queryParams = params;
+        })
+    )
   }
 
   ngOnInit() {
@@ -95,5 +98,9 @@ export class CategoriesMenuDropdownComponent implements OnInit {
       this.menuTaxons = this.taxonomies[0].root.taxons[0];
       this.selectedItem = 0;
     }
+  }
+
+  ngOnDestroy() {
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }

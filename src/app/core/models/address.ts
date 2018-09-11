@@ -7,13 +7,13 @@ import { User } from './user';
 
 export class Address {
   id: string;
-  firstname: string;
-  lastname: string;
+  first_name: string;
+  last_name: string;
   full_name: string;
-  address1: string;
-  address2: string;
+  address_line_1: string;
+  address_line_2: string;
   city: string;
-  zipcode: string;
+  zip_code: string;
   phone: string;
   company: string;
   alternative_phone: string;

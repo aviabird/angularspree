@@ -1,31 +1,32 @@
-import { CheckoutService } from './../../../core/services/checkout.service';
-import { ToastrService } from 'ngx-toastr';
-import { map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { CState } from '../../../core/models/state';
+import { Address } from '../../../core/models/address';
+import { map, tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { Order } from '../../../core/models/order';
+import { User } from '../../../core/models/user';
 
 @Injectable()
 export class AddressService {
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private toastrService: ToastrService,
-    private checkoutService: CheckoutService
+    private toastrService: ToastrService
   ) { }
 
   initAddressForm() {
     return this.fb.group({
-      'firstname': ['', Validators.required],
-      'lastname': ['', Validators.required],
-      'address1': ['', Validators.required],
-      'address2': ['', Validators.required],
+      'first_name': ['', Validators.required],
+      'last_name': ['', Validators.required],
+      'address_line_1': ['', Validators.required],
+      'address_line_2': ['', Validators.required],
       'city': ['', Validators.required],
       'phone': ['', Validators.required],
-      'zipcode': ['', Validators.required],
-      'state_name': ['', Validators.required]
+      'zip_code': ['', Validators.required],
+      'state_name': ['', Validators.required],
+      'country_name': ['', Validators.required]
     });
   }
 
@@ -53,32 +54,62 @@ export class AddressService {
       }
     };
   }
-  // Country ID: 105 is for INDIA.
-  getAllStates(): Observable<Array<CState>> {
-    return this.http
-      .get<{states: Array<CState>}>(`api/v1/countries/105/states`)
-      .pipe(map(res => res.states));
+
+  saveUserAddress(address: Address): Observable<Address> {
+    const user: User = JSON.parse(localStorage.getItem('user'))
+    const params = this.buildAddressJson(address, user.id);
+    return this.http.post<Address>(`api/v1/addresses`, params).pipe(
+      map(resp => {
+        return resp;
+      }), tap(_ => { this.toastrService.success('Address added successfully!', 'Success!') },
+        _ => { this.toastrService.error('Could not save address!', 'Failed!') }
+      )
+    )
   }
 
-  updateAddress(updatedAddress, addressId, orderNumber) {
-    const url = `api/v1/orders/${orderNumber}/addresses/${addressId}?`
-      + `address[firstname]=${updatedAddress.firstname}`
-      + `&address[lastname]=${updatedAddress.lastname}`
-      + `&address[address1]=${updatedAddress.address1}`
-      + `&address[address2]=${updatedAddress.address2}`
-      + `&address[city]=${updatedAddress.city}`
-      + `&address[state_name]=${updatedAddress.state_name}`
-      + `&address[phone]=${updatedAddress.phone}`
-      + `&address[zipcode]=${updatedAddress.zipcode}`
-      + `&address[state_id]=${updatedAddress.state_id}`
-      + `&address[country_id]=${updatedAddress.country_id}`
-      + `&order_token=${this.checkoutService.getOrderToken()}`
-    return this.http.put(url, {})
-      .pipe(
-        tap(
-          _ => this.toastrService.success('Address Updated SuccesFully!', 'Success'),
-          _err => this.toastrService.error('Address Could not be Updated', 'Failed')
-        )
-      );
+  bindAddressToOrder(address: Address, orderId: number): Observable<Order> {
+    const params = this.buildSelectAddressJson(orderId, address);
+    return this.http.post<Order>(`api/v1/orders/${orderId}/select_address/`, params).pipe(
+      map(resp => {
+        return resp;
+      })
+    )
+  }
+
+  buildAddressJson(address: Address, userId: string) {
+    const params = {
+      'data':
+      {
+        'type': 'address',
+        'attributes':
+          address
+        , 'relationships':
+        {
+          'user':
+          {
+            'data':
+            {
+              'id': userId
+            }
+          }
+        }
+      }
+    };
+    return params;
+  }
+
+  buildSelectAddressJson(orderId: number, shipAddress: Address) {
+    const params = {
+      data: {
+        'id': orderId,
+        'type': 'order',
+        'attributes': {
+          // for now billing address is addeded as shipping address.
+          'billing_address': shipAddress,
+          'shipping_address': shipAddress
+        }
+      }
+    }
+    return params;
   }
 }

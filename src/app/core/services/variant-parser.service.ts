@@ -2,6 +2,7 @@ import { OptionValue } from './../models/option_value';
 import { Variant } from './../models/variant';
 import { OptionType } from './../models/option_type';
 import { Injectable } from '@angular/core';
+import { debug } from 'util';
 
 /**Custom Interface for return option hash */
 interface OptionTypesHash {
@@ -35,8 +36,9 @@ export class VariantParserService {
       /**For each optionType iterate over each variant in varaints */
       variants.forEach(variant => {
         /**For option values like [small, Red] etc in varaint iterate over each option value */
-        this.currVariantOptionValues = variant.option_values;
-        variant.option_values.forEach(optionValue => {
+        this.currVariantOptionValues = variant.options;
+
+        variant.options.forEach(optionValue => {
           /**
           * This loop runs for 750 times for 2 optiontypes and optionsvalues 3 and 5
           * Refactor this latter;
@@ -45,7 +47,7 @@ export class VariantParserService {
           /**Check if optionvalue's type i.e smalls type is tsize and then procced else not
            * i.e for tsize option type color option value like green will be ignored.
            */
-          if (optionValue.option_type_name === optionType.name) {
+          if (optionValue.option_type.name === optionType.name) {
             Object.assign(optionTypesHash, this.singleOptionTypeHashMaker(optionValue, optionTypesHash, optionType, variant));
           }
         });
@@ -89,7 +91,7 @@ export class VariantParserService {
   optionMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
     optionType: OptionType, variant: Variant) {
 
-    const name = optionValue.name;
+    const name = optionValue.value;
     const optionInnerValue = {};
     // e.g: optionInnverValue['small'] = {option_value: {etc ,etc}, variant_ids: [1,2,3,4]}
     optionInnerValue[name] = this.optionInnerValueMaker(optionValue, optionTypesHash, optionType, variant);
@@ -117,13 +119,14 @@ export class VariantParserService {
    */
   variantIdsMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
     optionType: OptionType, variant: Variant) {
+
     const currespondingOptionValues = this.getOtherOptionValues(optionValue, optionType);
-    if (optionTypesHash[optionType.name] != null && optionTypesHash[optionType.name][optionValue.name] != null) {
-      const variantArr = optionTypesHash[optionType.name][optionValue.name].variantIds;
-      variantArr.push({[variant.id]: currespondingOptionValues });
+    if (optionTypesHash[optionType.name] != null && optionTypesHash[optionType.name][optionValue.value] != null) {
+      const variantArr = optionTypesHash[optionType.name][optionValue.value].variantIds;
+      variantArr.push({ [variant.id]: currespondingOptionValues });
       return variantArr;
     } else {
-      return Array.of({[variant.id]: currespondingOptionValues});
+      return Array.of({ [variant.id]: currespondingOptionValues });
     }
   }
 
@@ -139,8 +142,8 @@ export class VariantParserService {
   getOtherOptionValues(optionValue, currOptionType) {
     const correspondingOptionValues: any = [];
     for (let i = 0; i < this.currVariantOptionValues.length; i++) {
-      if (this.currVariantOptionValues[i].option_type_name !== currOptionType.name) {
-        correspondingOptionValues.push({ [this.currVariantOptionValues[i].option_type_name]: this.currVariantOptionValues[i].name });
+      if (this.currVariantOptionValues[i].option_type.name !== currOptionType.name) {
+        correspondingOptionValues.push({ [this.currVariantOptionValues[i].option_type.name]: this.currVariantOptionValues[i].value });
       }
     }
     return correspondingOptionValues;

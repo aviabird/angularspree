@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
   address$: Observable<Address>;
-  orderNumber$: Observable<number>;
+  orderNumber$: Observable<string>;
   shipTotal$: Observable<number>;
   itemTotal$: Observable<number>;
   adjustmentTotal$: Observable<number>;
@@ -29,7 +29,9 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store<AppState>,
     private checkoutService: CheckoutService,
-    private router: Router) {
+    private router: Router) { }
+
+  ngOnInit() {
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.address$ = this.store.select(getShipAddress);
@@ -37,9 +39,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
     this.shipTotal$ = this.store.select(getShipTotal);
     this.itemTotal$ = this.store.select(getItemTotal);
     this.adjustmentTotal$ = this.store.select(getAdjustmentTotal);
-  }
 
-  ngOnInit() {
     this.store.select(getTotalCartValue)
       .subscribe(total => {
         if (total === 0) {

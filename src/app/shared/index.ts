@@ -18,6 +18,7 @@ import { ProductSliderComponent } from './components/product-slider/product-slid
 import { InnerIproductComponent } from './components/product-slider/inner-product/inner-product.component'
 // Directives
 import { ZoomableDirective } from './directives/zoomable.directive';
+import { SavedAddressComponent } from './components/saved-address/saved-address.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     ZoomableDirective,
     ProductSliderComponent,
     InnerIproductComponent,
+    SavedAddressComponent
   ],
   exports: [
     // components
@@ -43,6 +45,7 @@ import { ZoomableDirective } from './directives/zoomable.directive';
     HumanizePipe,
     ZoomableDirective,
     ProductSliderComponent,
+    SavedAddressComponent,
     NguCarouselModule
   ],
   imports: [

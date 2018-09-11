@@ -1,7 +1,6 @@
+import { LayoutState } from './../../../../layout/reducers/layout.state';
 import { Router } from '@angular/router';
-import { Component, OnInit, Output, EventEmitter, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
-import { LayoutState } from '../../../../layout/reducers/layout.state';
-
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
@@ -9,7 +8,6 @@ import { LayoutState } from '../../../../layout/reducers/layout.state';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentHeaderComponent implements OnInit {
-  @Output() toggleSize = new EventEmitter();
   @Input() paginationInfo;
   @Input() fillterList;
   @Input() layoutState: LayoutState;
@@ -35,7 +33,7 @@ export class ContentHeaderComponent implements OnInit {
   }
 
   selectedOption = 'Relevance';
-  selectedSize = 'COZY';
+  isMobile: any;
   searchKeyword = '';
   selectedEntry;
   isfilterModalShown;
@@ -63,18 +61,6 @@ export class ContentHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleView(view) {
-    this.selectedSize = view;
-    this.toggleSize.emit({ size: view });
-  }
-
-  isSmallSelected(): boolean {
-    return this.selectedSize === 'COZY';
-  }
-
-  isBigSelected(): boolean {
-    return this.selectedSize === 'COMPACT';
-  }
   fltermodelstate(flag) {
     this.isfilterModalShown = flag;
   }
