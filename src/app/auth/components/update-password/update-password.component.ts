@@ -83,7 +83,7 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-    return (group: FormGroup): { [key: string]: any } => {
+    return (group: FormGroup): { [key: string]: boolean } | null => {
       const password = group.controls[passwordKey];
       const confirmPassword = group.controls[confirmPasswordKey];
 

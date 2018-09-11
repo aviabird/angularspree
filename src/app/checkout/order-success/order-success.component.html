@@ -1,3 +1,4 @@
+
 <div class="container" *ngIf="orderDetails">
   <div class="col-12 thankyou mobileth shadow-sm mt-5 mb-3">
     <h1>Thank you for your order!</h1>
@@ -71,29 +72,8 @@
       </div>
     </div>
   </div>
-  <div class="order-items shadow-sm mt-3 mb-3" *ngIf="!isMobile">
-    <h3>Item(s)</h3>
-    <div class="row">
-      <div *ngFor="let item of  orderDetails.line_items" class="lineitems col-12 col-sm-6">
-        <div class="row">
-          <div class="col-12 pr-0 col-sm-2">
-            <a [routerLink]="['/', item.variant.slug]" class="col-sm col-3">
-              <img [src]="getProductImageUrl(item)">
-            </a>
-          </div>
-          <div class="col-12 col-sm-8" [routerLink]="['/', item.variant.slug]">
-            <div class="lineitems-name"> {{item.variant.name}}</div>
-            <div class="lineitems-info"> {{item.variant.options_text}}</div>
-          </div>
-          <div class="col-12 col-sm-2">
-            <div class="price">{{item.display_amount}}</div>
-            <div class="qty"> QTY: {{item.quantity}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="order-items shadow-sm mt-3 mb-3" *ngIf="isMobile">
+  <div *ngIf="layoutState$ | async; let layoutState">
+    <div class="order-items shadow-sm mt-3 mb-3" *ngIf="!layoutState.isMobileView">
       <h3>Item(s)</h3>
       <div class="row">
         <div *ngFor="let item of  orderDetails.line_items" class="lineitems col-12 col-sm-6">
@@ -103,20 +83,40 @@
                 <img [src]="getProductImageUrl(item)">
               </a>
             </div>
-            <div class="col-6 col-sm-8" [routerLink]="['/', item.variant.slug]">
+            <div class="col-12 col-sm-8" [routerLink]="['/', item.variant.slug]">
               <div class="lineitems-name"> {{item.variant.name}}</div>
               <div class="lineitems-info"> {{item.variant.options_text}}</div>
             </div>
-            <div class="col-6 col-sm-2">
-             
-              <div class="qty"> QTY: {{item.quantity}}</div>
+            <div class="col-12 col-sm-2">
               <div class="price">{{item.display_amount}}</div>
+              <div class="qty"> QTY: {{item.quantity}}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="order-items shadow-sm mt-3 mb-3" *ngIf="layoutState.isMobileView">
+        <h3>Item(s)</h3>
+        <div class="row">
+          <div *ngFor="let item of  orderDetails.line_items" class="lineitems col-12 col-sm-6">
+            <div class="row">
+              <div class="col-12 pr-0 col-sm-2">
+                <a [routerLink]="['/', item.variant.slug]" class="col-sm col-3">
+                  <img [src]="getProductImageUrl(item)">
+                </a>
+              </div>
+              <div class="col-6 col-sm-8" [routerLink]="['/', item.variant.slug]">
+                <div class="lineitems-name"> {{item.variant.name}}</div>
+                <div class="lineitems-info"> {{item.variant.options_text}}</div>
+              </div>
+              <div class="col-6 col-sm-2">
 
-
-  
+                <div class="qty"> QTY: {{item.quantity}}</div>
+                <div class="price">{{item.display_amount}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>

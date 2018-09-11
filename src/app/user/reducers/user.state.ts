@@ -4,7 +4,7 @@ import { User } from '../../core/models/user';
 import { Order } from '../../core/models/order';
 import { Address } from '../../core/models/address';
 import { Country } from '../../core/models/country';
-import { State } from '../../core/models/state';
+import { CState } from '../../core/models/state';
 
 /**
  *
@@ -19,7 +19,7 @@ export interface UserState extends Map<string, any> {
   favorite_products: List<Product>;
   userAddresses: List<Address>;
   countries: List<Country>;
-  states: List<State>;
+  states: List<CState>;
 }
 
 export const UserStateRecord = Record({

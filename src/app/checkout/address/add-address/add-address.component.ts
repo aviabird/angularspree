@@ -1,13 +1,14 @@
+import { Address } from './../../../core/models/address';
 import { Store } from '@ngrx/store';
 import { FormGroup } from '@angular/forms';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AddressService } from '../services/address.service';
 import { getAuthStatus } from '../../../auth/reducers/selectors';
 import { AppState } from '../../../interfaces';
 import { Subscription } from 'rxjs';
 import { UserActions } from '../../../user/actions/user.actions';
-import { State } from '../../../core/models/state';
+import { CState } from '../../../core/models/state';
 import { getStates } from '../../../user/reducers/selector';
 import { Country } from '../../../core/models/country';
 
@@ -17,16 +18,16 @@ import { Country } from '../../../core/models/country';
   templateUrl: './add-address.component.html',
   styleUrls: ['./add-address.component.scss']
 })
-export class AddAddressComponent implements OnInit {
+export class AddAddressComponent implements OnInit, OnDestroy {
   addressForm: FormGroup;
   emailForm: FormGroup;
   isAuthenticated: boolean;
-  states: State[];
+  states: CState[];
   countryId: string;
   subscriptionList$: Array<Subscription> = [];
 
-  @Input() addressEdit: any
-  @Input() orderNumber: string
+  @Input() addressEdit: Address;
+  @Input() orderNumber: string;
   @Input() countries: Country[];
   @Output() addressEdited = new EventEmitter<boolean>();
   @Output() cancelAddress = new EventEmitter<boolean>();
@@ -81,13 +82,13 @@ export class AddAddressComponent implements OnInit {
   }
 
   existingAddress(addressForm) {
-    addressForm.get('zipcode').setValue(this.addressEdit.zipcode);
-    addressForm.get('address2').setValue(this.addressEdit.address2);
+    addressForm.get('zipcode').setValue(this.addressEdit.zip_code);
+    addressForm.get('address2').setValue(this.addressEdit.address_line_2);
     addressForm.get('city').setValue(this.addressEdit.city);
     addressForm.get('state_name').setValue(this.addressEdit.state.name);
-    addressForm.get('firstname').setValue(this.addressEdit.firstname);
-    addressForm.get('lastname').setValue(this.addressEdit.lastname);
-    addressForm.get('address1').setValue(this.addressEdit.address1);
+    addressForm.get('firstname').setValue(this.addressEdit.first_name);
+    addressForm.get('lastname').setValue(this.addressEdit.last_name);
+    addressForm.get('address1').setValue(this.addressEdit.address_line_1);
     addressForm.get('phone').setValue(this.addressEdit.phone);
   }
 
