@@ -10,7 +10,7 @@ export class ProductVariantsComponent implements OnInit {
   @Input() mainOptions;
   @Input() correspondingOptions;
   @Output() onOptionClickEvent = new EventEmitter();
-  
+
   constructor() {
   }
 

@@ -4,6 +4,7 @@ import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { CheckoutActions } from '../actions/checkout.actions';
 
 @Component({
   selector: 'app-cart',
@@ -13,12 +14,16 @@ import { isPlatformBrowser } from '@angular/common';
 export class CartComponent implements OnInit {
   screenwidth;
   isMobile;
+
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
   shipTotal$: Observable<number>;
   itemTotal$: Observable<number>;
 
-  constructor(private store: Store<AppState>, @Inject(PLATFORM_ID) private platformId: any) {
+  constructor(private store: Store<AppState>,
+    private actions: CheckoutActions,
+    @Inject(PLATFORM_ID) private platformId: any) {
+    // this.store.dispatch(this.actions.getOrderDetails());
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.itemTotal$ = this.store.select(getItemTotal);

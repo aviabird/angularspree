@@ -21,11 +21,11 @@ export class OrderListItemComponent implements OnInit {
   getProductImageUrl(line_item: LineItem) {
     return line_item.variant.images[0].small_url;
   }
-  retryPayment(order: Order) {
-    this.checkoutService.makePayment(+order.total, order.bill_address, order.number)
-      .subscribe((response: any) => {
-        response = response
-        window.open(response.url, '_self');
-      });
-  }
+  // retryPayment(order: Order) {
+  //   this.checkoutService.makePayment(+order.total, order.bill_address, order.number)
+  //     .subscribe((response: any) => {
+  //       response = response
+  //       window.open(response.url, '_self');
+  //     });
+  // }
 }

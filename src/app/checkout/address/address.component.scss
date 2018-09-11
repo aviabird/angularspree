@@ -32,7 +32,6 @@
         color: $gray-700;
         font-weight: 600;
         font-family: $primary-font;
-        ;
       }
     }
   }
@@ -44,5 +43,12 @@
       padding: 0;
     }
    
+  }
+
+  .reviewlink {
+    cursor: pointer;
+    &:hover {
+      text-decoration: none
+    }
   }
 }

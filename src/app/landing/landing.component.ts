@@ -48,7 +48,7 @@ export class LandingComponent implements OnInit {
           return [];
         }
       }))
-    this.favoriteProducts$ = this.productService.getFavoriteProducts();
+    // this.favoriteProducts$ = this.productService.getFavoriteProducts();
   }
 
   ngOnInit() {

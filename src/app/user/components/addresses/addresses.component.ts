@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserService } from '../../services/user.service';
+import { AddressService } from '../../../checkout/address/services/address.service';
+import { Address } from '../../../core/models/address';
 
 @Component({
   selector: 'app-addresses',
@@ -9,37 +11,36 @@ import { UserService } from '../../services/user.service';
 })
 export class AddressesComponent implements OnInit {
 
-  userDetails$: Observable<any>
+  userAddresses$: Observable<Array<Address>>
   isEditAddrPressed: boolean;
+  selectedAddress: Address;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+    private addressService: AddressService) { }
 
   ngOnInit() {
-    this.getUser();
-  }
-  getUser() {
-    this.userDetails$ = this.userService.getUser();
+    this.getUserAddresses();
   }
 
-  editAddress() {
-    this.isEditAddrPressed = true;
+  getUserAddresses() {
+    //  this.userAddresses$ = this.addressService.getUserAddresses()
+  }
+
+  editAddress(event) {
+    this.isEditAddrPressed = event.isEditButtonPressed;
+    this.selectedAddress = event.address;
   }
 
   cancelAddressEdit() {
     this.isEditAddrPressed = false;
   }
 
-  buildAddressParams(userDetails) {
-    const params = {
-      user: {
-        email: userDetails.email,
-        ship_address: userDetails.ship_address
-      }
-    }
-    return params;
+  buildAddressParams() {
+    return this.selectedAddress;
   }
   addressEditedDone() {
-    this.userDetails$ = this.userService.getUser();
     this.isEditAddrPressed = false;
   }
+  
+  
 }

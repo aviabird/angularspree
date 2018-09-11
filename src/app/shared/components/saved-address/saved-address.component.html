@@ -1,0 +1,30 @@
+<div>
+  <div *ngFor="let address of addressList; index as i" class="card mb-3">
+    <div class="address-row reviewlink card-body" (click)="selectedAddress(i)">
+      <div class="row ">
+        <div class="col name " *ngIf="showDeliverHere && selectedIndex === i ">
+            <i class="fa fa-check-square-o"></i>
+          <div class="row">
+            <div class="col-md-3">
+              <button class='btn themebtnprimarybasic col-12 mb-3' (click)="selectedDeliveryAddress(address) ">Deliver here</button>
+            </div>
+            <!-- <div class="col-md-3">
+              <button class='btn themebtnprimarybasic col-12 mb-3' (click)="editAddress(address)">Edit</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col name ">
+          <span class="name mr-2 ">{{address.first_name}}</span>
+          <span class="name mr-2 ">{{address.last_name}}</span>
+          <span class="mob ">{{address.phone}}</span>
+        </div>
+      </div>
+      <div class="address ">{{address.address_line_1}} {{address.address_line_2}}
+        <span class="address-field ">{{address.city}}</span>,
+        <span class="address-field pin ">-{{address.zip_code}}</span>
+      </div>
+    </div>
+  </div>
+</div>

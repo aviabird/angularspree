@@ -4,7 +4,6 @@
       <div class="row">
         <div class="col-lg-3 sidebar d-sm-none d-xs-none d-none d-lg-block">
           <h1>Searched Results</h1>
-          <!-- <app-taxons [taxonomies]="taxonomies$ | async"></app-taxons> -->
           <app-categories [taxonomiList]="taxonomies" (onSelected)="OnCategeorySelected($event)" (showAll)="showAll()" [isFilterOn]="isFilterOn$ | async"
             [categoryLevel]="categoryLevel$ | async">
           </app-categories>
@@ -12,7 +11,6 @@
         </div>
         <div class="col-lg-9 col-12 col-sm-12" [ngClass]="[isMobile ? 'p-0' : '']">
           <app-content [productsList]="products$ | async" [paginationData]="paginationData" [fillterList]="taxonomies" class="col-12">
-            <!-- [taxonIds]="selectedTaxonIds$ | async"  -->
           </app-content>
         </div>
       </div>
@@ -23,7 +21,8 @@
     <div class="col-9 col-sm-6 m-auto nproduct">
       <img src="../../assets/custom/noproduct.png" />
       <h2 class="my-5">No Products Found</h2>
-      <button type="button" class="btn themebtnprimary themebtnprimarysade  mb-3 col-12 col-sm-5 m-auto" [routerLink]="['/']">Continue Shopping</button>
+      <button type="button" class="btn themebtnprimary themebtnprimarysade  mb-3 col-12 col-sm-5 m-auto" [routerLink]="['/']">Continue
+        Shopping</button>
       <div class="py-2"></div>
     </div>
   </div>
