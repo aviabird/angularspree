@@ -11,6 +11,7 @@ import { Observable, Subscription } from 'rxjs';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { CheckoutActions } from '../../actions/checkout.actions';
 
 @Component({
   selector: 'app-delivery-options',
@@ -26,6 +27,7 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   currency = environment.config.currency_symbol;
   freeShippingAmount = environment.config.freeShippingAmount
   orderSub$: Subscription;
+  subscriptionList$: Array<Subscription> = [];
 
   constructor(
     private checkoutService: CheckoutService,
@@ -45,5 +47,6 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.orderSub$.unsubscribe();
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }
