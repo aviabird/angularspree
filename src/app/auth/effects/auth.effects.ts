@@ -42,7 +42,6 @@ export class AuthenticationEffects {
     .ofType(AuthActions.LOGOUT_SUCCESS)
     .pipe(
       map(_ => this.checkoutActions.orderCompleteSuccess())
-      // here it used to cleare ngrx store afte usre logged out
     );
 
   constructor(
