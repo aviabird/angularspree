@@ -11,7 +11,7 @@ import { CheckoutService } from './core/services/checkout.service';
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
-import { isPlatformBrowser } from '../../node_modules/@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -59,6 +59,15 @@ export class AppComponent implements OnInit, OnDestroy {
       this.store.select(getAuthStatus).subscribe((data: boolean) => {
         if (data) {
           this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
+        } else {
+          if (isPlatformBrowser(this.platformId)) {
+            const guestOrder: string = localStorage.getItem('order_number') ? JSON.parse(localStorage.getItem('order_number')) : null;
+            if (guestOrder) {
+              this.subscriptionList$.push(
+                this.checkoutService.getOrder().subscribe()
+              )
+            }
+          }
         }
       })
     );

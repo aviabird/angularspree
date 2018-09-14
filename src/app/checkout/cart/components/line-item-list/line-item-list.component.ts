@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { LineItem } from './../../../../core/models/line_item';
 import { Observable } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
+import { CheckoutService } from '../../../../core/services/checkout.service';
 
 @Component({
   selector: 'app-line-item-list',
@@ -15,9 +16,12 @@ export class LineItemListComponent implements OnInit {
   @Input() isMobile;
   lineItems$: Observable<LineItem[]>;
 
-  constructor(private store: Store<AppState>, private actions: CheckoutActions) {
-    this.store.dispatch(this.actions.getOrderDetails());
-    this.lineItems$ = this.store.select(getLineItems);
+  constructor(private store: Store<AppState>,
+    private actions: CheckoutActions,
+    private checkoutService: CheckoutService) {
+    // this.store.dispatch(this.actions.getOrderDetails());
+    this.checkoutService.getOrder().subscribe(_ => this.lineItems$ = this.store.select(getLineItems))
+
   }
 
   ngOnInit() {
