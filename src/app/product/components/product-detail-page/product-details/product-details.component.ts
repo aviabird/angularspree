@@ -125,9 +125,10 @@ export class ProductDetailsComponent implements OnInit {
       })
     if (event.buyNow) {
       this.linesItems.find(item => {
-        if (item.variant_id === this.variantId && item.quantity === 1) {
+        if (item.product_id === +this.variantId && item.quantity === 1) {
           navigateToCart = true
         }
+
       })
       if (navigateToCart) {
         this.router.navigate(['checkout', 'cart'])

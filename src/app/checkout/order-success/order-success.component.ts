@@ -8,6 +8,9 @@ import { Order } from './../../core/models/order';
 import { UserService } from './../../user/services/user.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { CheckoutActions } from '../actions/checkout.actions';
+import { CheckoutService } from '../../core/services/checkout.service';
 
 @Component({
   selector: 'app-order-success',
@@ -17,8 +20,9 @@ import { Component, OnInit } from '@angular/core';
 export class OrderSuccessComponent implements OnInit {
   queryParams: Params;
   orderDetails: Order
-  retryCount = 0;
   layoutState$: Observable<LayoutState>;
+  noImageUrl = 'assets/default/no-image-available.jpg';
+  currency = environment.config.currency_symbol;
 
   constructor(
     private userService: UserService,
@@ -41,26 +45,11 @@ export class OrderSuccessComponent implements OnInit {
       .getOrderDetail(this.queryParams.orderReferance)
       .subscribe(order => {
         this.orderDetails = order
-        if (this.orderDetails.shipment_state !== 'ready') {
-          this.refresh()
-        }
       });
   }
 
   getProductImageUrl(line_item: LineItem) {
-    const image_url = line_item.variant.images[0].small_url;
+    const image_url =   this.noImageUrl;
     return image_url;
-  }
-
-  refresh() {
-    this.userService
-      .getOrderDetail(this.queryParams.orderReferance)
-      .subscribe(order => {
-        this.orderDetails = order
-        this.retryCount = this.retryCount + 1;
-        if (this.orderDetails.shipment_state !== 'ready' && this.retryCount <= 5) {
-          this.refresh()
-        }
-      })
   }
 }

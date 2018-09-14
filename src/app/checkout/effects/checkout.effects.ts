@@ -8,12 +8,13 @@ import { Injectable } from '@angular/core';
 import { Order } from '../../core/models/order';
 import { AddressService } from '../address/services/address.service';
 import { PaymentService } from '../payment/services/payment.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CheckoutEffects {
   @Effect()
   AddToCart$ = this.actions$.ofType(CheckoutActions.ADD_TO_CART).pipe(
-    switchMap<Action & {payload: {variant_id: number, quantity: number}}, Order>(action => {
+    switchMap<Action & { payload: { variant_id: number, quantity: number } }, Order>(action => {
       return this.checkoutService.createNewLineItem(
         action.payload.variant_id,
         action.payload.quantity
@@ -35,7 +36,7 @@ export class CheckoutEffects {
 
   @Effect()
   BindAddress$ = this.actions$.ofType(CheckoutActions.BIND_ADDRESS).pipe(
-    switchMap<Action & {payload: {address: Address, orderId: number}}, Order>(action => {
+    switchMap<Action & { payload: { address: Address, orderId: number } }, Order>(action => {
       return this.addressService.
         bindAddressToOrder(action.payload.address, action.payload.orderId);
     }),
@@ -45,7 +46,7 @@ export class CheckoutEffects {
 
   @Effect()
   BindPayment$ = this.actions$.ofType(CheckoutActions.BIND_PAYMENT).pipe(
-    switchMap<Action & {payload: {paymentMethodId: number, orderId: number, orderAmount: number}}, Order>(action => {
+    switchMap<Action & { payload: { paymentMethodId: number, orderId: number, orderAmount: number } }, Order>(action => {
       return this.paymentService.addPaymentToOrder(
         action.payload.paymentMethodId,
         action.payload.orderId,
@@ -54,11 +55,25 @@ export class CheckoutEffects {
     map(order => this.actions.getOrderPaymentsSuccess(order))
   );
 
+  @Effect()
+  ShippingPreferencess$ = this.actions$.ofType(CheckoutActions.SHIPPING_PREFERENCESS).pipe(
+    switchMap<Action & { payload: { orderId: number, packages: Array<{}> } }, Order>(action => {
+      return this.checkoutService.saveShippingPreferences(
+        action.payload.orderId,
+        action.payload.packages);
+    }),
+    map(order => {
+      this.router.navigate(['/checkout', 'payment'])
+      return this.actions.fetchCurrentOrderSuccess(order)
+    })
+  );
+
   constructor(
     private actions$: Actions,
     private checkoutService: CheckoutService,
     private actions: CheckoutActions,
     private addressService: AddressService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private router: Router
   ) { }
 }

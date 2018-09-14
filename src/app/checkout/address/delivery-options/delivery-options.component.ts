@@ -1,10 +1,18 @@
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
-import { getTotalCartValue, getTotalCartItems, getShipTotal, getItemTotal, getAdjustmentTotal } from './../../reducers/selectors';
+import {
+  getTotalCartValue,
+  getTotalCartItems,
+  getShipTotal,
+  getItemTotal,
+  getAdjustmentTotal,
+  getOrderId
+} from './../../reducers/selectors';
 import { Observable, Subscription } from 'rxjs';
 import { CheckoutService } from './../../../core/services/checkout.service';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { CheckoutActions } from '../../actions/checkout.actions';
 
 @Component({
   selector: 'app-delivery-options',
@@ -21,8 +29,15 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   currency = environment.config.currency_symbol;
   freeShippingAmount = environment.config.freeShippingAmount
   orderSub$: Subscription;
+  subscriptionList$: Array<Subscription> = [];
 
-  constructor(private checkoutService: CheckoutService, private store: Store<AppState>) {
+  constructor(
+    private checkoutService: CheckoutService,
+    private checkOurActions: CheckoutActions,
+    private store: Store<AppState>) { }
+
+  ngOnInit() {
+    this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.shipTotal$ = this.store.select(getShipTotal);
@@ -30,11 +45,8 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
     this.adjustmentTotal$ = this.store.select(getAdjustmentTotal);
   }
 
-  ngOnInit() {
-    this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
-  }
-
   ngOnDestroy() {
     this.orderSub$.unsubscribe();
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }

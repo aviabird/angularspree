@@ -231,6 +231,16 @@ export class CheckoutService {
       .pipe(map(_ => this.changeOrderState().subscribe()));
   }
 
+  saveShippingPreferences(orderId: number, packages: Array<{}>) {
+    const params = this.buildShippingParams(orderId, packages);
+    const url = `api/v1/orders/${orderId}/add-shipment`;
+    return this.http.patch(url, params).pipe(
+      map(resp => {
+        return resp;
+      })
+    )
+  }
+
   /**
    *
    *
@@ -290,7 +300,7 @@ export class CheckoutService {
     return params;
   }
 
-  getUserToken() {
+  private getUserToken() {
     if (isPlatformBrowser(this.platformId)) {
       const user: User = JSON.parse(localStorage.getItem('user'))
       return user ? user.token : null
@@ -299,7 +309,7 @@ export class CheckoutService {
     }
   }
 
-  buildGuestOrderParams(productId: number, quantity: number) {
+  private buildGuestOrderParams(productId: number, quantity: number) {
     const params = {
       'data': {
         'type': 'line_item',
@@ -313,6 +323,19 @@ export class CheckoutService {
               'type': 'product'
             }
           }
+        }
+      }
+    }
+    return params;
+  }
+
+  private buildShippingParams(orderId: number, packages: Array<{}>) {
+    const params = {
+      'data': {
+        'type': 'orders',
+        'attributes': {
+          'id': orderId,
+          'packages': packages
         }
       }
     }

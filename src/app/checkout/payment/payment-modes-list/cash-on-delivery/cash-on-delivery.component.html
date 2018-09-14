@@ -12,6 +12,10 @@
 	</div>
 </div>
 
-<div class="pay-btn-wrap">
-	<button (click)="onPay()" class="btn themebtnprimary">PAY ON DELIVERY</button>
-</div>
+<div class="pay-btn-wrap" *ngIf="!isPaymentAdded">
+		<button (click)="addPayment()" class="btn themebtnprimary">Continue</button>
+	</div>
+	
+	<div class="pay-btn-wrap" *ngIf="isPaymentAdded">
+		<button (click)="makePayment()" class="btn themebtnprimary">Pay On Delivery</button>
+	</div>

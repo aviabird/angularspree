@@ -20,6 +20,7 @@ export class CheckoutActions {
   static BIND_ADDRESS = 'BIND_ADDRESS';
   static BIND_PAYMENT = 'BIND_PAYMENT';
   static GET_ORDER_PAYMENT_SUCCESS = 'GET_ORDER_PAYMENT_SUCCESS';
+  static SHIPPING_PREFERENCESS = 'SHIPPING_PREFERENCESS';
 
   fetchCurrentOrder() {
     return { type: CheckoutActions.FETCH_CURRENT_ORDER };
@@ -57,13 +58,6 @@ export class CheckoutActions {
     return {
       type: CheckoutActions.REMOVE_LINE_ITEM_SUCCESS,
       payload: lineItem
-    };
-  }
-
-  changeLineItemQuantity(quantity: number, lineItemId: number) {
-    return {
-      type: CheckoutActions.CHANGE_LINE_ITEM_QUANTITY,
-      payload: { quantity, lineItemId }
     };
   }
 
@@ -121,6 +115,13 @@ export class CheckoutActions {
     return {
       type: CheckoutActions.GET_ORDER_PAYMENT_SUCCESS,
       payload: order
+    }
+  }
+
+  getShippingPreferencess(orderId: number, packages: Array<{}>) {
+    return {
+      type: CheckoutActions.SHIPPING_PREFERENCESS,
+      payload: { orderId, packages }
     }
   }
 }
