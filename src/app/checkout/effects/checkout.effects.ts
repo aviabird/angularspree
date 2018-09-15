@@ -1,7 +1,6 @@
 import { Address } from './../../core/models/address';
 import { Action } from '@ngrx/store';
 import { map, switchMap } from 'rxjs/operators';
-import { LineItem } from './../../core/models/line_item';
 import { CheckoutService } from './../../core/services/checkout.service';
 import { CheckoutActions } from './../actions/checkout.actions';
 import { Effect, Actions } from '@ngrx/effects';
@@ -14,15 +13,14 @@ import { PaymentService } from '../payment/services/payment.service';
 export class CheckoutEffects {
   @Effect()
   AddToCart$ = this.actions$.ofType(CheckoutActions.ADD_TO_CART).pipe(
-    switchMap<Action & {payload: {variant_id: number, quantity: number}}, LineItem>(action => {
+    switchMap<Action & {payload: {variant_id: number, quantity: number}}, Order>(action => {
       return this.checkoutService.createNewLineItem(
         action.payload.variant_id,
         action.payload.quantity
       );
     }),
-    switchMap(lineItem => [
-      this.actions.getOrderDetails(),
-      this.actions.addToCartSuccess(lineItem)
+    switchMap(order => [
+      this.actions.fetchCurrentOrderSuccess(order)
     ])
   );
 
@@ -31,7 +29,7 @@ export class CheckoutEffects {
     switchMap<Action, Order>(_ => {
       return this.checkoutService.getOrder();
     }),
-    map(order => this.actions.getOrderDetailsSuccess(order))
+    map(order => this.actions.fetchCurrentOrderSuccess(order))
   );
 
 
@@ -41,7 +39,7 @@ export class CheckoutEffects {
       return this.addressService.
         bindAddressToOrder(action.payload.address, action.payload.orderId);
     }),
-    map(order => this.actions.getOrderDetailsSuccess(order))
+    map(order => this.actions.fetchCurrentOrderSuccess(order))
   );
 
 

@@ -21,8 +21,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Renderer2 } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { LayoutState } from '../reducers/layout.state';
-import { isPlatformBrowser } from '../../../../node_modules/@angular/common';
-import { getAuthStatus, getCurrentUser } from '../../auth/reducers/selectors';
+import { isPlatformBrowser } from '@angular/common';
+import { getAuthStatus } from '../../auth/reducers/selectors';
 
 @Component({
   selector: 'app-header',

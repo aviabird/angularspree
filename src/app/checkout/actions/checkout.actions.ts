@@ -1,6 +1,5 @@
 import { LineItem } from './../../core/models/line_item';
 import { Order } from './../../core/models/order';
-import { Action } from '@ngrx/store';
 import { Address } from '../../core/models/address';
 
 export class CheckoutActions {
@@ -18,7 +17,6 @@ export class CheckoutActions {
   static UPDATE_ORDER_SUCCESS = 'UPDATE_ORDER_SUCCESS';
   static ORDER_COMPLETE_SUCCESS = 'ORDER_COMPLETE_SUCCESS';
   static GET_ORDER_DETAILS = 'GET_ORDER_DETAILS';
-  static GET_ORDER_DETAILS_SUCCESS = 'GET_ORDER_DETAILS_SUCCESS';
   static BIND_ADDRESS = 'BIND_ADDRESS';
   static BIND_PAYMENT = 'BIND_PAYMENT';
   static GET_ORDER_PAYMENT_SUCCESS = 'GET_ORDER_PAYMENT_SUCCESS';
@@ -41,10 +39,10 @@ export class CheckoutActions {
     };
   }
 
-  addToCartSuccess(lineItem: LineItem) {
+  addToCartSuccess(order: Order) {
     return {
       type: CheckoutActions.ADD_TO_CART_SUCCESS,
-      payload: lineItem
+      payload: order
     };
   }
 
@@ -102,13 +100,6 @@ export class CheckoutActions {
   getOrderDetails() {
     return {
       type: CheckoutActions.GET_ORDER_DETAILS
-    }
-  }
-
-  getOrderDetailsSuccess(order: Order) {
-    return {
-      type: CheckoutActions.GET_ORDER_DETAILS_SUCCESS,
-      payload: order
     }
   }
 

@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CheckoutActions } from '../actions/checkout.actions';
+import { CheckoutService } from '../../core/services/checkout.service';
 
 @Component({
   selector: 'app-cart',
@@ -22,11 +23,16 @@ export class CartComponent implements OnInit {
 
   constructor(private store: Store<AppState>,
     private actions: CheckoutActions,
+    private checkoutService: CheckoutService,
     @Inject(PLATFORM_ID) private platformId: Object) {
-    // this.store.dispatch(this.actions.getOrderDetails());
-    this.totalCartValue$ = this.store.select(getTotalCartValue);
-    this.totalCartItems$ = this.store.select(getTotalCartItems);
-    this.itemTotal$ = this.store.select(getItemTotal);
+
+
+    this.checkoutService.getOrder().subscribe(_ => {
+      this.totalCartValue$ = this.store.select(getTotalCartValue);
+      this.totalCartItems$ = this.store.select(getTotalCartItems);
+      this.itemTotal$ = this.store.select(getItemTotal);
+    })
+
   }
 
   ngOnInit() {

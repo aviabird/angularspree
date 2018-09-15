@@ -7,32 +7,21 @@ import { Effect, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { UserService } from '../services/user.service';
 import { UserActions } from '../actions/user.actions';
-import { AddressService } from '../../checkout/address/services/address.service';
 
 @Injectable()
 export class UserEffects {
-  constructor(
-    private actions$: Actions,
-    private userService: UserService,
-    private userActions: UserActions,
-    private productService: ProductService,
-  ) { }
-
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetUserOrders$: Observable<Action> = this.actions$
     .ofType(UserActions.GET_USER_ORDERS).pipe(
       switchMap((action: any) => this.userService.getOrders(action.payload.email, action.payload.page)),
       map((orders) => this.userActions.getUserOrdersSuccess(orders)));
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetUserFavoriteProducts$: Observable<Action> = this.actions$
     .ofType(UserActions.GET_USER_FAVORITE_PRODUCTS).pipe(
       switchMap(() => this.productService.getUserFavoriteProducts()),
       map((products) => this.userActions.getUserFavoriteProductsSuccess(products)));
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   FetchUserAddress$: Observable<Action> = this.actions$
     .ofType(UserActions.FETCH_USER_ADDRESS)
@@ -43,7 +32,6 @@ export class UserEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   FetchCountries$: Observable<Action> = this.actions$
     .ofType(UserActions.FETCH_COUNTRIES)
@@ -54,15 +42,22 @@ export class UserEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   FetchStates$: Observable<Action> = this.actions$
     .ofType(UserActions.FETCH_STATES)
     .pipe(
       switchMap((action: any) =>
-       this.userService.getAllStates(action.payload)),
+        this.userService.getAllStates(action.payload)),
       map((states) =>
         this.userActions.fetchStatesSuccess(states)
       )
     );
+
+  constructor(
+    private actions$: Actions,
+    private userService: UserService,
+    private userActions: UserActions,
+    private productService: ProductService,
+  ) { }
+
 }
