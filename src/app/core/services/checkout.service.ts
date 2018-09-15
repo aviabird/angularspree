@@ -167,16 +167,6 @@ export class CheckoutService {
       .post(`address/shipment_availability`, { pincode: pincode })
   }
 
-  saveShippingPreferences(orderId: number, packages: Array<{}>) {
-    const params = this.buildShippingParams(orderId, packages);
-    const url = `api/v1/orders/${orderId}/add-shipment`;
-    return this.http.patch(url, params).pipe(
-      map(resp => {
-        return resp;
-      })
-    )
-  }
-
   /**
    *
    *
