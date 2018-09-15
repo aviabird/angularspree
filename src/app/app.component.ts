@@ -12,6 +12,7 @@ import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core
 import { Router, NavigationEnd } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
+import { AuthActions } from './auth/actions/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private metaTitle: Title,
     private meta: Meta,
+    private authAction: AuthActions,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.router.events
@@ -58,14 +60,20 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscriptionList$.push(
       this.store.select(getAuthStatus).subscribe((data: boolean) => {
         if (data) {
-          this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
+          this.orderSub$ = this.checkoutService.fetchCurrentOrder()
+            .subscribe(_ => { },
+              _ => {
+                localStorage.clear()
+                this.store.dispatch(this.authAction.logoutSuccess())
+              }
+            );
         } else {
           if (isPlatformBrowser(this.platformId)) {
             const guestOrder: string = localStorage.getItem('order_number') ? JSON.parse(localStorage.getItem('order_number')) : null;
             if (guestOrder) {
               this.subscriptionList$.push(
                 this.checkoutService.getOrder().subscribe()
-              )
+              );
             }
           }
         }

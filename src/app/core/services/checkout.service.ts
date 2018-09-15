@@ -95,9 +95,9 @@ export class CheckoutService {
     return this.http.post<Order>('api/v1/orders/current', {}).pipe(
       map(order => {
         this.setOrderTokenInLocalStorage(order.number);
-        return this.store.dispatch(
-          this.actions.fetchCurrentOrderSuccess(order)
-        );
+        return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
+      },
+      error => {
       })
     );
   }
