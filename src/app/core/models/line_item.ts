@@ -11,7 +11,7 @@ export class LineItem {
   quantity: number;
   unit_price: Object;
   single_display_amount: number;
-  total: number;
+  total_price: number;
   display_amount: number;
   variant_id: number;
   variant: Variant;

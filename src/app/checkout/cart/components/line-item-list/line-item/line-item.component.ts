@@ -38,7 +38,7 @@ export class LineItemComponent implements OnInit, OnDestroy {
     this.name = this.lineItem.product.name;
     this.quantity = this.lineItem.quantity;
     this.unit_price = this.lineItem.unit_price as Price;
-    this.amount = (parseFloat(this.unit_price.amount) * this.quantity);
+    this.amount = this.lineItem.total_price;
     this.quantityCount = this.quantity;
     this.optionTxt = '';
   }
@@ -46,7 +46,7 @@ export class LineItemComponent implements OnInit, OnDestroy {
   removeLineItem() {
     this.subscriptionList$.push(
       this.checkoutService.deleteLineItem(this.lineItem.id)
-        .subscribe(_ => { this.store.dispatch(this.actions.getOrderDetails()) })
+        .subscribe(_ => { this.checkoutService.getOrder().subscribe(); })
     );
   }
 

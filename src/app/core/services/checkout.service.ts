@@ -5,17 +5,18 @@ import { HttpClient } from '@angular/common/http';
 import { getOrderNumber, getOrderId } from './../../checkout/reducers/selectors';
 import { CheckoutActions } from './../../checkout/actions/checkout.actions';
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { LineItem } from './../models/line_item';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Order } from '../models/order';
 import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
+import { User } from '../models/user';
 
 @Injectable()
 export class CheckoutService {
   private orderId: number;
   private orderNumber: string;
+  private guestOrderParams: {};
 
   /**
    * Creates an instance of CheckoutService.
@@ -47,19 +48,41 @@ export class CheckoutService {
    * @returns {Observable<LineItem>}
    * @memberof CheckoutService
    */
-  createNewLineItem(productId: number, quantity: number): Observable<LineItem> {
-    const params = this.buildOrderParams(productId, quantity)
-    return this.http.post<LineItem>(`api/v1/line_items`, params).pipe(
-      tap(
-        lineItem => {
+  createNewLineItem(productId: number, quantity: number): Observable<Order> {
+    if (this.getUserToken()) {
+      const params = this.buildOrderParams(productId, quantity)
+      return this.http.post<Order>(`api/v1/line_items`, params).pipe(
+        tap(
+          order => {
+            this.toastyService.success('Success!', 'Cart updated!');
+            return order;
+          },
+          error => { this.toastyService.error(error.error.error, 'Failed') }
+        )
+      );
+    } else if (!this.getUserToken()) {
+      return this.createGuestOrder(productId, quantity).pipe(
+        map(resp => {
           this.toastyService.success('Success!', 'Cart updated!');
-          return lineItem;
-        },
-        _ => this.toastyService.error('Something went wrong!', 'Failed')
-      )
-    );
+          return resp;
+        })
+      );
+    }
   }
 
+  createGuestOrder(productId: number, quantity: number): Observable<Order> {
+    if (this.orderId) {
+      this.guestOrderParams = this.buildOrderParams(productId, quantity)
+    } else {
+      this.guestOrderParams = this.buildGuestOrderParams(productId, quantity);
+    }
+    return this.http.post<Order>(`api/v1/guest/line_items`, this.guestOrderParams).pipe(
+      map(resp => {
+        this.setOrderTokenInLocalStorage(resp.number)
+        return resp;
+      })
+    )
+  }
 
   /**
    *
@@ -87,8 +110,11 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   getOrder() {
-    const url = `api/v1/orders/${this.orderNumber}`;
-    return this.http.get<Order>(url);
+    const orderNumber = JSON.parse(localStorage.getItem('order_number'))
+    const url = `api/v1/orders/${orderNumber}`;
+    return this.http.get<Order>(url).pipe(
+      map(order => { return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order)) })
+    )
   }
 
   /**
@@ -124,10 +150,7 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   deleteLineItem(lineItemId: number) {
-    const param = {
-      data: { id: lineItemId, type: 'line_item' }
-    }
-
+    const param = { data: { id: lineItemId, type: 'line_item' } }
     const url = `api/v1/line_items`
     return this.http.request<{}>('delete', url, { body: param });
   }
@@ -255,6 +278,35 @@ export class CheckoutService {
               'type': 'order'
             }
           },
+          'product': {
+            'data': {
+              'id': productId,
+              'type': 'product'
+            }
+          }
+        }
+      }
+    }
+    return params;
+  }
+
+  getUserToken() {
+    if (isPlatformBrowser(this.platformId)) {
+      const user: User = JSON.parse(localStorage.getItem('user'))
+      return user ? user.token : null
+    } else {
+      return null;
+    }
+  }
+
+  buildGuestOrderParams(productId: number, quantity: number) {
+    const params = {
+      'data': {
+        'type': 'line_item',
+        'attributes': {
+          'quantity': quantity
+        },
+        'relationships': {
           'product': {
             'data': {
               'id': productId,
