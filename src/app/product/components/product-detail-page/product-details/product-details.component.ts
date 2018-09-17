@@ -86,7 +86,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   initData() {
-    this.images = this.product.images;
     if (this.product.variants.length) {
       const product = this.product.variants[0];
       this.images = product.images;
@@ -130,18 +129,16 @@ export class ProductDetailsComponent implements OnInit {
         if (item.product_id === +this.variantId && item.quantity === 1) {
           navigateToCart = true
         }
-
       })
       if (navigateToCart) {
         this.router.navigate(['checkout', 'cart'])
       } else {
         this.store.dispatch(
-          this.checkoutActions.addToCart(this.variantId, event.count));
-        setTimeout(() => { this.router.navigate(['checkout', 'cart']); }, 1500)
+          this.checkoutActions.addToCart(this.variantId, event.count, true));
       }
     } else {
       this.store.dispatch(
-        this.checkoutActions.addToCart(this.variantId, event.count));
+        this.checkoutActions.addToCart(this.variantId, event.count, false));
     }
   }
 
@@ -158,7 +155,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   selectVariant(variant) {
-    // for now showing default image only.
     this.images = variant.images;
     this.variantId = variant.id;
     this.selectedVariant = variant;

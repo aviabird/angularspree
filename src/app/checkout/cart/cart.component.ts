@@ -1,11 +1,9 @@
-import { getTotalCartValue, getTotalCartItems, getItemTotal } from './../reducers/selectors';
+import { getTotalCartValue, getTotalCartItems, getItemTotal, getOrderNumber } from './../reducers/selectors';
 import { Observable } from 'rxjs';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { CheckoutActions } from '../actions/checkout.actions';
-import { CheckoutService } from '../../core/services/checkout.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,29 +11,27 @@ import { CheckoutService } from '../../core/services/checkout.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  screenwidth;
+  screenwidth: number;
   isMobile;
-
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
   shipTotal$: Observable<number>;
   itemTotal$: Observable<number>;
+  orderNumber: string;
 
   constructor(private store: Store<AppState>,
-    private actions: CheckoutActions,
-    private checkoutService: CheckoutService,
     @Inject(PLATFORM_ID) private platformId: Object) {
-
-
-    this.checkoutService.getOrder().subscribe(_ => {
-      this.totalCartValue$ = this.store.select(getTotalCartValue);
-      this.totalCartItems$ = this.store.select(getTotalCartItems);
-      this.itemTotal$ = this.store.select(getItemTotal);
-    })
-
   }
 
   ngOnInit() {
+    this.store.select(getOrderNumber).subscribe(number => {
+      if (number !== null) {
+        this.totalCartValue$ = this.store.select(getTotalCartValue);
+        this.totalCartItems$ = this.store.select(getTotalCartItems);
+        this.itemTotal$ = this.store.select(getItemTotal);
+      }
+    });
+
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
     }
@@ -46,6 +42,4 @@ export class CartComponent implements OnInit {
       this.isMobile = this.screenwidth;
     }
   }
-
-
 }

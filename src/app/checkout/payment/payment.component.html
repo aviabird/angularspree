@@ -11,7 +11,7 @@
 				</div>
 				<div *ngIf="orderNumber$ | async ; let orderNumber">
 					<div class="pay-body" *ngIf="orderNumber!=null">
-						<app-payment-modes-list [orderNumber]="orderNumber" [paymentAmount]="totalCartValue" [address]="address$ | async"></app-payment-modes-list>
+						<app-payment-modes-list></app-payment-modes-list>
 					</div>
 				</div>
 			</div>

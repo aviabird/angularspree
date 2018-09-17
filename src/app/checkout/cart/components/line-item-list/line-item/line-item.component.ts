@@ -71,7 +71,7 @@ export class LineItemComponent implements OnInit, OnDestroy {
   }
 
   updateLineItemQuantity(quantity: number) {
-    this.store.dispatch(this.actions.addToCart(this.lineItem.product.id, quantity));
+    this.store.dispatch(this.actions.addToCart(this.lineItem.product.id, quantity, false));
   }
 
   ngOnDestroy() {

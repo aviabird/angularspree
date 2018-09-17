@@ -11,11 +11,21 @@
 		NOTE: All authorised notes are accepted. Credit/Debit cards are also accepted.
 	</div>
 </div>
-
-<div class="pay-btn-wrap" *ngIf="!isPaymentAdded">
-	<button (click)="addPayment()" class="btn themebtnprimary">Continue</button>
-</div>
-
-<div class="pay-btn-wrap" *ngIf="isPaymentAdded">
-	<button (click)="makePayment()" class="btn themebtnprimary">Pay On Delivery</button>
+<div class=row>
+	<div class="col-md-6">
+		<div class="pay-btn-wrap">
+			<button (click)="addPayment()" 
+			[disabled]="isPaymentAdded" 
+			[ngClass]="!isPaymentAdded ? 'btn themebtnprimary' : 'btn themebtnprimary themebtndisable'"
+			>Continue</button>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="pay-btn-wrap">
+			<button (click)="processCod()" 
+			[disabled]="!isPaymentAdded" 
+			[ngClass]="isPaymentAdded ? 'btn themebtnprimary' : 'btn themebtnprimary themebtndisable'"
+			>Place Order</button>
+		</div>
+	</div>
 </div>
