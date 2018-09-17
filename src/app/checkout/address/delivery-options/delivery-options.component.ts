@@ -6,13 +6,11 @@ import {
   getShipTotal,
   getItemTotal,
   getAdjustmentTotal,
-  getOrderId
 } from './../../reducers/selectors';
 import { Observable, Subscription } from 'rxjs';
 import { CheckoutService } from './../../../core/services/checkout.service';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-import { CheckoutActions } from '../../actions/checkout.actions';
 
 @Component({
   selector: 'app-delivery-options',
@@ -20,7 +18,6 @@ import { CheckoutActions } from '../../actions/checkout.actions';
   styleUrls: ['./delivery-options.component.scss']
 })
 export class DeliveryOptionsComponent implements OnInit, OnDestroy {
-  @Input() orderNumber;
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
   itemTotal$: Observable<number>;
@@ -29,24 +26,24 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   currency = environment.config.currency_symbol;
   freeShippingAmount = environment.config.freeShippingAmount
   orderSub$: Subscription;
-  subscriptionList$: Array<Subscription> = [];
 
   constructor(
     private checkoutService: CheckoutService,
-    private checkOurActions: CheckoutActions,
     private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
-    this.totalCartValue$ = this.store.select(getTotalCartValue);
-    this.totalCartItems$ = this.store.select(getTotalCartItems);
-    this.shipTotal$ = this.store.select(getShipTotal);
-    this.itemTotal$ = this.store.select(getItemTotal);
-    this.adjustmentTotal$ = this.store.select(getAdjustmentTotal);
+    this.orderSub$ = this.checkoutService.fetchCurrentOrder()
+      .subscribe(_ => {
+        this.totalCartValue$ = this.store.select(getTotalCartValue);
+        this.totalCartItems$ = this.store.select(getTotalCartItems);
+        this.shipTotal$ = this.store.select(getShipTotal);
+        this.itemTotal$ = this.store.select(getItemTotal);
+        this.adjustmentTotal$ = this.store.select(getAdjustmentTotal);
+      });
+
   }
 
   ngOnDestroy() {
     this.orderSub$.unsubscribe();
-    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }

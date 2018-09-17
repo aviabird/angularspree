@@ -28,8 +28,6 @@ export class AddressComponent implements OnInit, OnDestroy {
   countries$: Observable<Country[]>;
   subscriptionList$: Array<Subscription> = [];
   orderNumber$: Observable<string>;
-  orderNumber
-
 
   constructor(private store: Store<AppState>,
     private userActions: UserActions,

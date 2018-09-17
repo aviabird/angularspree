@@ -16,7 +16,7 @@
 				<app-delivery-address (click)="userAddressEdit(shipAddress)" [address]="shipAddress"></app-delivery-address>
 			</div>
 			<div class="right col-12 col-md-4 col-lg-4 m-0 ">
-				<app-delivery-options [orderNumber]="orderNumber$ | async"></app-delivery-options>
+				<app-delivery-options></app-delivery-options>
 				<button (click)="checkoutToPayment()" class="btn themebtnprimary">continue to payment</button>
 			</div>
 		</div>
