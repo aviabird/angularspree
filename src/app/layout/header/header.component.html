@@ -43,7 +43,7 @@
     <div class="container">
       <div class="collapse navbar-collapse left-content-start">
         <app-categories-menu-dropdown [screenwidth]="screenwidth" [taxonomies]="taxonomies$ | async"></app-categories-menu-dropdown>
-        <app-brand-menu-dropdown [taxonomies]="taxonomies$ | async | slice:1:2"></app-brand-menu-dropdown>
+        <app-brand-menu-dropdown [brands]="brands$ | async "></app-brand-menu-dropdown>
         <div class="col text-right">
 
           <button type="button" class="btn shippingbtn"> FREE 1-2 DAY SHIPPING OVER {{currency}}{{freeShippingAmount}}

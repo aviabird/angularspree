@@ -7,17 +7,11 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { ProductService } from './../../core/services/product.service';
 import { Action } from '@ngrx/store';
+import { Brand } from '../../core/models/brand';
 
 @Injectable()
 export class ProductEffects {
-  constructor(
-    private actions$: Actions,
-    private productService: ProductService,
-    private productActions: ProductActions,
-    private searchActions: SearchActions
-  ) { }
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetAllProducts$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_ALL_PRODUCTS)
@@ -30,7 +24,6 @@ export class ProductEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetAllTaxonomies$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_ALL_TAXONOMIES)
@@ -41,7 +34,6 @@ export class ProductEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetProductDetail$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_PRODUCT_DETAIL)
@@ -54,7 +46,6 @@ export class ProductEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetProductsByKeyword$: Observable<Action> = this.actions$
     .ofType(SearchActions.GET_PRODUCTS_BY_KEYWORD)
@@ -67,7 +58,6 @@ export class ProductEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetProductsByTaxons$: Observable<Action> = this.actions$
     .ofType(SearchActions.GET_PRODUCTS_BY_TAXON)
@@ -80,7 +70,6 @@ export class ProductEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetChildTaxons$: Observable<Action> = this.actions$
     .ofType(SearchActions.GET_CHILD_TAXONS)
@@ -96,7 +85,6 @@ export class ProductEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetTaxonomiByName$: Observable<Action> = this.actions$
     .ofType(SearchActions.GET_TAXONOMIES_BY_NAME)
@@ -109,7 +97,6 @@ export class ProductEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetRelatedProducts$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_RELATED_PRODUCT)
@@ -122,7 +109,6 @@ export class ProductEffects {
       )
     );
 
-  // tslint:disable-next-line:member-ordering
   @Effect()
   GetReview$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_REVIEWS)
@@ -134,4 +120,20 @@ export class ProductEffects {
         this.productActions.getProductReviewsSuccess({ reviews: data })
       )
     );
+
+
+  @Effect()
+  GetBrands$ = this.actions$.ofType(ProductActions.GET_ALL_BRANDS).pipe(
+    switchMap<Action, Array<Brand>>(_ => {
+      return this.productService.getBrands();
+    }),
+    map(brands => this.productActions.getBrandsSuccess(brands))
+  );
+
+  constructor(
+    private actions$: Actions,
+    private productService: ProductService,
+    private productActions: ProductActions,
+    private searchActions: SearchActions
+  ) { }
 }

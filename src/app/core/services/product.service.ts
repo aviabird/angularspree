@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Brand } from '../models/brand';
 
 @Injectable()
 export class ProductService {
@@ -65,10 +66,9 @@ export class ProductService {
    * @memberof ProductService
    */
   getProducts(pageNumber: number): Observable<Array<Product>> {
-    // sort=A-Z&filter[name]=Hill's&page[limit]=2&page[offset]=2
     return this.http
       .get<Array<Product>>(
-        `api/v1/products?q[s]=avg_rating+desc&page[limit]=20&page[offset]=${pageNumber}`
+        `api/v1/products?q[s]=avg_rating+desc&page[limit]=6&page[offset]=${pageNumber}`
       )
   }
 
@@ -156,10 +156,7 @@ export class ProductService {
       );
   }
 
-  getChildTaxons(
-    taxonomyId: string,
-    taxonId: string
-  ): Observable<Array<Taxonomy>> {
+  getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
     return this.http.get<Array<Taxonomy>>(
       `/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`
     );
@@ -195,5 +192,13 @@ export class ProductService {
           resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
         )
       );
+  }
+
+  getBrands(): Observable<Array<Brand>> {
+    return this.http.get<Array<Brand>>(`api/v1/brands`).pipe(
+      map(brands => {
+        return brands;
+      })
+    )
   }
 }

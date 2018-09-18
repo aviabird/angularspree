@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
 import { Subscription } from 'rxjs';
+import { Brand } from '../../../../core/models/brand';
 
 @Component({
   selector: 'app-brand-menu-dropdown',
@@ -13,7 +14,7 @@ import { Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrandMenuDropdownComponent implements OnInit, OnDestroy {
-  @Input() taxonomies;
+  @Input() brands: Array<Brand>;
   queryParams: any;
   isOpen: any;
   subscriptionList$: Array<Subscription> = [];

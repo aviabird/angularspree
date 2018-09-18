@@ -2,12 +2,13 @@ import { environment } from './../../environments/environment';
 import { switchMap } from 'rxjs/operators';
 import { ProductService } from './../core/services/product.service';
 import { Observable } from 'rxjs';
-import { getProducts } from './../product/reducers/selectors';
+import { getProducts, getBrands } from './../product/reducers/selectors';
 import { ProductActions } from './../product/actions/product-actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../interfaces';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { Brand } from '../core/models/brand';
 
 @Component({
   selector: 'app-landing',
@@ -22,7 +23,7 @@ export class LandingComponent implements OnInit {
   taxons_id: string;
   favoriteProducts$: any;
   dealsType = environment.config.Deals.type;
-  brands$: Observable<any>;
+  brands$: Observable<Brand[]>;
   freeShippingAmount = environment.config.freeShippingAmount;
   currency = environment.config.currency_symbol;
 
@@ -32,12 +33,12 @@ export class LandingComponent implements OnInit {
     private actions: ProductActions,
     private productService: ProductService,
     private meta: Meta,
-    private metaTitle: Title) {
+    private metaTitle: Title) {}
+
+  ngOnInit() {
     this.store.dispatch(this.actions.getAllProducts());
     this.products$ = this.store.select(getProducts);
-    // #TO DO: Brands name hardcoded for now.
-    this.brands$ = this.productService.getTaxonByName('Brands');
-
+    this.brands$ = this.store.select(getBrands);
     this.products_by_taxons$ = this.productService.getTaxonByName(this.dealsType).pipe(
       switchMap(response => {
         this.taxon_by_name = response;
@@ -48,10 +49,7 @@ export class LandingComponent implements OnInit {
           return [];
         }
       }))
-    // this.favoriteProducts$ = this.productService.getFavoriteProducts();
-  }
 
-  ngOnInit() {
     this.addMetaInfo()
   }
 

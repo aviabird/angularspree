@@ -1,7 +1,9 @@
-import { Taxonomy } from './../../../core/models/taxonomy';
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../core/services/product.service';
+import { Brand } from '../../../core/models/brand';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../interfaces';
+import { getBrands } from '../../../product/reducers/selectors';
 
 @Component({
   selector: 'app-brands-page',
@@ -9,13 +11,12 @@ import { ProductService } from '../../../core/services/product.service';
   styleUrls: ['./brands-page.component.scss']
 })
 export class BrandsPageComponent implements OnInit {
-  public brands$: Observable<Taxonomy[]>;
-
-  constructor(  private productService: ProductService) {
-    this.brands$ = this.productService.getTaxonByName('Brands');
-   }
+  brands$: Observable<Array<Brand>>;
+  
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.brands$ = this.store.select(getBrands);
   }
 
 }

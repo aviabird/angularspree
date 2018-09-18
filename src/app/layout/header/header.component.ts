@@ -2,7 +2,7 @@ import { ProductActions } from './../../product/actions/product-actions';
 import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
 import { SearchActions } from './../../home/reducers/search.actions';
-import { getTaxonomies } from './../../product/reducers/selectors';
+import { getTaxonomies, getBrands } from './../../product/reducers/selectors';
 import { getTotalCartItems } from './../../checkout/reducers/selectors';
 import {
   Component,
@@ -23,6 +23,8 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { LayoutState } from '../reducers/layout.state';
 import { isPlatformBrowser } from '@angular/common';
 import { getAuthStatus } from '../../auth/reducers/selectors';
+import { ProductService } from '../../core/services/product.service';
+import { Brand } from '../../core/models/brand';
 
 @Component({
   selector: 'app-header',
@@ -55,6 +57,7 @@ export class HeaderComponent implements OnInit {
   modalRef: BsModalRef;
   config = { backdrop: false, ignoreBackdropClick: false };
   isUser: boolean;
+  brands$: Observable<Array<Brand>>;
 
   constructor(
     private store: Store<AppState>,
@@ -64,18 +67,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private modalService: BsModalService,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: any
-  ) {
-    this.store.dispatch(this.actions.getAllTaxonomies());
-    this.taxonomies$ = this.store.select(getTaxonomies);
-    if (isPlatformBrowser(this.platformId)) {
-      if (this.isSearchopen) {
-        this.renderer.addClass(document.body, 'issearchopen');
-      } else {
-        this.renderer.removeClass(document.body, 'issearchopen');
-      }
-    }
-  }
+    private productService: ProductService,
+    @Inject(PLATFORM_ID) private platformId: any) { }
 
   openModalWithClass(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
@@ -85,6 +78,18 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch(this.actions.getAllTaxonomies());
+    this.taxonomies$ = this.store.select(getTaxonomies);
+    this.store.dispatch(this.actions.getBrands());
+    this.brands$ = this.store.select(getBrands);
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.isSearchopen) {
+        this.renderer.addClass(document.body, 'issearchopen');
+      } else {
+        this.renderer.removeClass(document.body, 'issearchopen');
+      }
+    }
+
     this.store.dispatch(this.authActions.authorize())
     this.isAuthenticated$ = this.store.select(getAuthStatus);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
@@ -94,12 +99,14 @@ export class HeaderComponent implements OnInit {
     }
     this.isMobile = this.layoutState.isMobileView;
     if (this.isMobile) { this.isScrolled = false; }
+
   }
 
   selectTaxon(taxon) {
     this.router.navigateByUrl('/');
     this.store.dispatch(this.searchActions.addFilter(taxon));
   }
+
   showModal(): void {
     this.isModalShown = !this.isModalShown;
     this.isSearchopen = !this.isSearchopen;

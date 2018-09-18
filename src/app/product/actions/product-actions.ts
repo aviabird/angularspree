@@ -1,3 +1,5 @@
+import { Brand } from "../../core/models/brand";
+
 export class ProductActions {
   static GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
   static GET_ALL_PRODUCTS_SUCCESS = 'GET_ALL_PRODUCTS_SUCCESS';
@@ -11,6 +13,8 @@ export class ProductActions {
   static GET_RELATED_PRODUCT_SUCCESS = 'GET_RELATED_PRODUCT_SUCCESS';
   static GET_REVIEWS = 'GET_REVIEWS';
   static GET_REVIEWS_SUCCESS = 'GET_REVIEWS_SUCCESS';
+  static GET_ALL_BRANDS = 'GET_ALL_BRANDS';
+  static GET_ALL_BRANDS_SUCCESS = 'GET_ALL_BRANDS_SUCCESS';
 
   getAllProducts(pageNumber = 1) {
     return {
@@ -82,5 +86,18 @@ export class ProductActions {
       type: ProductActions.GET_REVIEWS_SUCCESS,
       payload: reviews
     };
+  }
+
+  getBrands() {
+    return {
+      type: ProductActions.GET_ALL_BRANDS
+    }
+  }
+
+  getBrandsSuccess(brands: Array<Brand>) {
+    return {
+      type: ProductActions.GET_ALL_BRANDS_SUCCESS,
+      payload: brands
+    }
   }
 }
