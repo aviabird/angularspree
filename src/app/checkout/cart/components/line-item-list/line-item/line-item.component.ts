@@ -21,7 +21,8 @@ export class LineItemComponent implements OnInit, OnDestroy {
   quantity: number;
   amount: number;
   quantityCount: number;
-  optionTxt: string;
+  optionName: string;
+  optionValue: string;
   noImageUrl = 'assets/default/no-image-available.jpg'
   unit_price: Price;
   currency = environment.config.currency_symbol;
@@ -34,13 +35,15 @@ export class LineItemComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.image = this.noImageUrl;
+    const lineItem = this.lineItem.product;
+    this.image = lineItem.images[0] ? lineItem.images[0].product_url : this.noImageUrl;
     this.name = this.lineItem.product.name;
     this.quantity = this.lineItem.quantity;
     this.unit_price = this.lineItem.unit_price as Price;
     this.amount = this.lineItem.total_price;
     this.quantityCount = this.quantity;
-    this.optionTxt = '';
+    // this.optionName = lineItem.options.length ? lineItem.options[0].option_type.display_name : '';
+    // this.optionValue = lineItem.options.length ? lineItem.options[0].value : '';
   }
 
   removeLineItem() {

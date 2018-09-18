@@ -5,13 +5,13 @@
       <div class="col-1">
         <div class="thumbnails-vertical-container d-none d-lg-block">
           <button class="thumbnails-thumbnail-button" *ngFor="let image of images">
-            <img class="thumbnails-thumbnail img-fluid" [src]="getProductImageUrl(image.small_url)" [alt]="image.alt" (mouseover)="onMouseOver(image)">
+            <img class="thumbnails-thumbnail img-fluid" [src]="getProductImageUrl(image.product_url)" [alt]="image.alt" (mouseover)="onMouseOver(image)">
           </button>
         </div>
       </div>
       <div class="col-11" *ngIf="selectedImage">
         <!-- <img itemprop="image" [zoomable]='zoomOptions' [src]="getProductImageUrl(selectedImage.large_url)" [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid" -->
-        <img itemprop="image" [zoomable]='zoomOptions' [zoomableSrc]='getProductImageUrl(selectedImage.large_url)' [src]="getProductImageUrl(selectedImage.large_url)"
+        <img itemprop="image" [zoomable]='zoomOptions' [zoomableSrc]='getProductImageUrl(selectedImage.product_url)' [src]="getProductImageUrl(selectedImage.product_url)"
           [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid">
       </div>
     </div>

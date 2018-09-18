@@ -13,8 +13,9 @@
 </div>
 
 <div class="pay-btn-wrap" *ngIf="!isPaymentAdded">
-    <button (click)="addPayment()" class="btn themebtnprimary">Continue</button>
-  </div>
+  <button (click)="addPayment()" class="btn themebtnprimary">Continue</button>
+</div>
+
 <div class="pay-btn-wrap" *ngIf="isPaymentAdded">
-  <button (click)="payNow()" class="btn themebtnprimary">PAY NOW</button>
+  <button (click)="payNow()" class="btn themebtnprimary">Pay Now</button>
 </div>

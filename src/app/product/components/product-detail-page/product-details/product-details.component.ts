@@ -86,9 +86,10 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   initData() {
-    this.images = this.imagesPlaceHolder(this.noImageUrl);
+    this.images = this.product.images;
     if (this.product.variants.length) {
       const product = this.product.variants[0];
+      this.images = product.images;
       this.description = product.description;
       this.product.name = product.name;
       this.variantId = product.id;
@@ -97,6 +98,7 @@ export class ProductDetailsComponent implements OnInit {
       this.product.selling_price = product.selling_price;
       this.product.max_retail_price = product.max_retail_price;
     } else {
+      this.images = this.product.images;
       this.description = this.product.description;
       this.variantId = this.product.id;
       this.productID = this.product.id;
@@ -125,9 +127,10 @@ export class ProductDetailsComponent implements OnInit {
       })
     if (event.buyNow) {
       this.linesItems.find(item => {
-        if (item.variant_id === this.variantId && item.quantity === 1) {
+        if (item.product_id === +this.variantId && item.quantity === 1) {
           navigateToCart = true
         }
+
       })
       if (navigateToCart) {
         this.router.navigate(['checkout', 'cart'])
@@ -156,7 +159,7 @@ export class ProductDetailsComponent implements OnInit {
 
   selectVariant(variant) {
     // for now showing default image only.
-    this.images = this.images;
+    this.images = variant.images;
     this.variantId = variant.id;
     this.selectedVariant = variant;
     // this.addJsonLD(this.product);

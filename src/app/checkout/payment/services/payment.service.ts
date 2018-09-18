@@ -58,15 +58,22 @@ export class PaymentService {
    * @returns
    * @memberof PaymentService
    */
-  makeHostedPayment(orderNumber: string, paymentId: number, orderAmount: number, paymentMethodId: number) {
-    const params = this.buildHostedPaymentJson(orderNumber, paymentId, orderAmount, paymentMethodId);
+  makeHostedPayment(orderId: number, orderNumber: string, paymentId: number, orderAmount: number, paymentMethodId: number) {
+    const params = this.buildHostedPaymentJson(orderId, orderNumber, paymentId, orderAmount, paymentMethodId);
     const url = `api/v1/hosted-payment/payubiz-request`
     return this.http.post(url, params)
       .pipe(
-        map(
-          res => { return res }
-        ),
-        error => { return error }
+        map(res => { return res })
+      )
+  }
+
+
+  makeCodPayment(orderId: number) {
+    const params = this.buildCodPaymentJson(orderId);
+    const url = `api/v1/payment/cod_payment`
+    return this.http.post(url, params)
+      .pipe(
+        map(res => { return res })
       )
   }
 
@@ -80,11 +87,12 @@ export class PaymentService {
    * @returns {Object}
    * @memberof PaymentService
    */
-  buildHostedPaymentJson(orderNumber: string, paymentId: number, orderAmount: number, paymentMethodId: number): Object {
+  buildHostedPaymentJson(orderId: number, orderNumber: string, paymentId: number, orderAmount: number, paymentMethodId: number): Object {
     const user: User = JSON.parse(localStorage.getItem('user'));
     const params = {
       'data': {
         'attributes': {
+          'order_id': orderId,
           'order_number': orderNumber,
           'payment_id': paymentId,
           'payment_method_id': paymentMethodId,
@@ -115,6 +123,25 @@ export class PaymentService {
           'id': orderId,
           'amount': orderAmount,
           'payment_method_id': paymentMethodId
+        }
+      }
+    }
+    return params;
+  }
+
+  /**
+   *
+   *
+   * @param {number} orderId
+   * @returns
+   * @memberof PaymentService
+   */
+  buildCodPaymentJson(orderId: number) {
+    const params = {
+      'data': {
+        'type': 'orders',
+        'attributes': {
+          'order_id': orderId
         }
       }
     }

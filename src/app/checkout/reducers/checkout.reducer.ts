@@ -109,7 +109,8 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
         lineItems: _lineItems,
         lineItemEntities: _lineItemEntities,
         payments: _payments,
-        paymentEntities: _paymentEntities
+        paymentEntities: _paymentEntities,
+        isPaymentAdded: true
       }) as CheckoutState;
 
     default:

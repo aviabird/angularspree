@@ -17,8 +17,9 @@ export interface CheckoutState extends Map<string, any> {
   adjustmentTotal: number;
   orderId: number;
   lineItems: List<LineItem>;
-  payments: List<Payment>
+  payments: List<Payment>;
   paymentEntities: Map<number, Payment>;
+  isPaymentAdded: boolean;
 }
 
 export const CheckoutStateRecord = Record({
@@ -36,5 +37,6 @@ export const CheckoutStateRecord = Record({
   orderId: null,
   lineItems: List([]),
   payments: List([]),
-  paymentEntities: Map({})
+  paymentEntities: Map({}),
+  isPaymentAdded: false
 });

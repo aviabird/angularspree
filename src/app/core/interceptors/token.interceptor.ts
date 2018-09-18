@@ -17,8 +17,7 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const auth = this.injector.get(AuthService);
-
-    const clonedRequest = request.clone({
+      const clonedRequest = request.clone({
       headers: auth.getTokenHeader(request),
       url: this.fixUrl(request.url)
     });

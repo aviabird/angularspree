@@ -18,6 +18,6 @@ export class InnerIproductComponent implements OnInit {
   ngOnInit() {
   }
   get imageUrl() {
-    return this.product.product_url ? this.product.product_url : this.noImageUrl
+    return this.product.images[0] ? this.product.images[0].product_url : this.noImageUrl
   }
 }
