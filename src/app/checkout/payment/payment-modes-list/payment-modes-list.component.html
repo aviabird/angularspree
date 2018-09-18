@@ -7,7 +7,7 @@
   <div *ngIf="selectedMode">
     <div class="selected-mode" [ngSwitch]="selectedMode.name">
       <ng-template [ngSwitchCase]="cashOnDelivery">
-        <app-cash-on-delivery (payOnDelivery)="makePaymentCod()"></app-cash-on-delivery>
+        <app-cash-on-delivery  [paymentMethodId]="selectedMode.id"></app-cash-on-delivery>
       </ng-template>
       <ng-template [ngSwitchCase]="payubiz">
         <app-credit-card (onAddPayment)="addPayment(selectedMode.id)" (onPayNow)=makePaymentPayubiz()></app-credit-card>

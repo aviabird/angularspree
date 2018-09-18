@@ -1,4 +1,4 @@
-import { getOrderId } from './../reducers/selectors';
+import { getOrderId, getOrderNumber } from './../reducers/selectors';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
@@ -27,12 +27,15 @@ export class AddressComponent implements OnInit, OnDestroy {
   isUserSelectedAddress: boolean;
   countries$: Observable<Country[]>;
   subscriptionList$: Array<Subscription> = [];
+  orderNumber$: Observable<string>;
+  orderNumber
 
 
   constructor(private store: Store<AppState>,
     private userActions: UserActions,
     private checkoutAction: CheckoutActions,
-    private router: Router) {
+    private router: Router,
+    private checkOutActions: CheckoutActions) {
     this.store.dispatch(this.userActions.fetchUserAddress());
   }
 
@@ -43,6 +46,7 @@ export class AddressComponent implements OnInit, OnDestroy {
     this.userAddresses$ = this.store.select(getUserAddressess);
     this.store.dispatch(this.userActions.fetchCountries());
     this.countries$ = this.store.select(getCountries);
+    this.orderNumber$ = this.store.select(getOrderNumber);
   }
 
   userAddressEdit(addressData) {
@@ -73,7 +77,13 @@ export class AddressComponent implements OnInit, OnDestroy {
   }
 
   checkoutToPayment() {
-    this.router.navigate(['/checkout', 'payment']);
+    this.subscriptionList$.push(
+      this.store.select(getOrderId)
+        .subscribe(orderId => {
+          this.store.dispatch(this.checkOutActions.getShippingPreferences(orderId, []))
+        })
+    );
+
   }
 
   ngOnDestroy() {

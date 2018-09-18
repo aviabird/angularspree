@@ -67,16 +67,6 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
 
   }
 
-  private fetchAllPayments() {
-    this.subscriptionList$.push(
-      this.checkoutService.availablePaymentMethods()
-        .subscribe((payments) => {
-          this.paymentModes = payments;
-          this.selectedMode = this.paymentService.getDefaultSelectedMode(this.paymentModes);
-        })
-    )
-  }
-
   makePaymentPayubiz() {
     this.subscriptionList$.push(
       this.store.select(getPaymentEntities).subscribe(data => {
@@ -86,8 +76,8 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
 
     this.subscriptionList$.push(
       this.paymentService.makeHostedPayment(
-        this.orderNumber, this.payment.id, this.orderAmount, this.paymentMethodId).
-        subscribe((resp: Response) => {
+        this.orderId, this.orderNumber, this.payment.id, this.orderAmount, this.paymentMethodId)
+        .subscribe((resp: Response) => {
           if (isPlatformBrowser(this.platformId)) {
             window.open(resp.url, '_self');
           }
@@ -98,6 +88,16 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
   addPayment(selectedPaymentMethodId: number) {
     this.paymentMethodId = selectedPaymentMethodId;
     this.store.dispatch(this.checkoutActions.bindPayment(this.paymentMethodId, this.orderId, this.orderAmount))
+  }
+
+  private fetchAllPayments() {
+    this.subscriptionList$.push(
+      this.checkoutService.availablePaymentMethods()
+        .subscribe((payments) => {
+          this.paymentModes = payments;
+          this.selectedMode = this.paymentService.getDefaultSelectedMode(this.paymentModes);
+        })
+    )
   }
 
   ngOnDestroy() {

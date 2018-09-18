@@ -7,12 +7,12 @@
 import { LineItem } from './line_item';
 import { Address } from './address';
 import { Payment } from './payment';
+import { Price } from './price';
 
 export class Order {
   id: number;
   number: string;
   item_total: string;
-  total: string;
   ship_total: string;
   state: string;
   adjustment_total: string;
@@ -25,22 +25,16 @@ export class Order {
   payment_state: string;
   email: string;
   special_instructions: string;
-  channel: string;
-  included_tax_total: string;
-  additional_tax_total: string;
-  display_included_tax_total: string;
-  display_additional_tax_total: string;
   tax_total: string;
   currency: string;
-  considered_risky: boolean;
-  canceler_id: string;
   total_quantity: string;
   token: string;
-  bill_address: [Address];
-  ship_address: [Address];
   line_items: [LineItem];
   payments: [Payment];
   display_total: string;
+  item_count: number;
+  order_total_amount: Price;
+  shipping_address: Address;
 }
 
 // NOTE: This just mimics the serializer exposed in the API

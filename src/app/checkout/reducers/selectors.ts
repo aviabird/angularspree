@@ -61,6 +61,10 @@ export function fetchPayments(state: CheckoutState) {
 export function fetchPaymentEntities(state: CheckoutState) {
   return state.paymentEntities.toJS();
 }
+
+export function fetchIsPaymentAdded(state: CheckoutState) {
+  return state.isPaymentAdded;
+}
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCheckoutState, fetchLineItems);
 export const getOrderNumber = createSelector(getCheckoutState, fetchOrderNumber);
@@ -75,3 +79,4 @@ export const getAdjustmentTotal = createSelector(getCheckoutState, fetchAdjustme
 export const getOrderId = createSelector(getCheckoutState, fetchOrderId);
 export const getPayments = createSelector(getCheckoutState, fetchPayments);
 export const getPaymentEntities = createSelector(getCheckoutState, fetchPaymentEntities);
+export const getIsPaymentAdded = createSelector(getCheckoutState, fetchIsPaymentAdded);

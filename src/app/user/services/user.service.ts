@@ -42,7 +42,8 @@ export class UserService {
    * @memberof UserService
    */
   getOrderDetail(orderNumber: string): Observable<Order> {
-    return this.http.get<Order>(`api/v1/orders/${orderNumber}`)
+    const url = `api/v1/orders/${orderNumber}`;
+    return this.http.get<Order>(url);
   }
 
   /**

@@ -9,6 +9,7 @@ import { Classification } from './classification';
 import { ProductProperty } from './product_property';
 import { Variant } from './variant';
 import { OptionValue } from './option_value';
+import { Image } from './image';
 
 export class Product {
   id: number;
@@ -37,5 +38,6 @@ export class Product {
   selling_price: Object;
   max_retail_price: Object;
   options: OptionValue[];
+  images: Image[];
 
 }
