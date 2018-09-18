@@ -8,8 +8,8 @@ import { isPlatformBrowser } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentHeaderComponent implements OnInit {
-  @Input() paginationInfo;
-  @Input() fillterList;
+  // @Input() paginationInfo;
+  // @Input() fillterList;
   subselectedItem;
   childselectedItem;
   screenWidth: any;

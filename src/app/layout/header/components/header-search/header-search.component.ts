@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
-import { Directive, Renderer2, ElementRef, PLATFORM_ID, Inject } from '@angular/core';
+import { Renderer2, PLATFORM_ID, Inject } from '@angular/core';
 import {
   Component,
   OnInit,
@@ -13,7 +13,6 @@ import {
   EventEmitter,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { URLSearchParams } from '@angular/http';
 @Component({
   selector: 'app-header-search',
   templateUrl: './header-search.component.html',
@@ -33,15 +32,14 @@ export class HeaderSearchComponent implements OnInit {
     private router: Router,
     private activatedRouter: ActivatedRoute,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: any
-  ) {
+    @Inject(PLATFORM_ID) private platformId: any) { }
+
+  ngOnInit() {
     this.activatedRouter.queryParams.subscribe(params => {
       this.queryParams = params;
       this.loadPage();
     });
   }
-
-  ngOnInit() { }
 
   showsearch() {
     this.isSearchopen = !this.isSearchopen;
@@ -56,66 +54,27 @@ export class HeaderSearchComponent implements OnInit {
   }
 
   onSearch(keyword: string) {
-
     if (keyword !== '') {
       keyword = keyword.trim();
-      const search = new URLSearchParams();
-      search.set('q[name_cont_any]', keyword);
-
-      if ('page' in this.queryParams) {
-        search.set('page', this.queryParams.page);
-      }
-      if ('q[s]' in this.queryParams) {
-        search.set('q[s]', this.queryParams['q[s]']);
-      }
-      this.store.dispatch(
-        this.searchActions.getproductsByKeyword(search.toString())
-      );
-      this.router.navigate(['/search'], {
-        queryParams: {
-          'q[name_cont_any]': keyword,
-          page: this.queryParams.page,
-          'q[s]': this.queryParams['q[s]']
-        }
-      });
-      this.store.dispatch(this.searchActions.clearCategeoryLevel());
+      this.router.navigate(['/search'], { queryParams: { 'filter[name]': keyword } });
+      this.store.dispatch(this.searchActions.getproductsByKeyword({ 'filter[name]': keyword }));
     }
   }
 
-  catgeoryFilter() {
-    const search = new URLSearchParams();
-    search.set('id', this.queryParams.id);
-    search.set('page', this.queryParams.page);
-    if ('q[s]' in this.queryParams) {
-      search.set('q[s]', this.queryParams['q[s]']);
-    }
+  onUrlChange(urlParams: Object) {
     this.store.dispatch(
-      this.searchActions.getProductsByTaxon(search.toString())
+      this.searchActions.getproductsByKeyword(urlParams)
     );
   }
 
   loadPage() {
-    if ('q[name_cont_any]' in this.queryParams && 'page' in this.queryParams) {
-      this.onSearch(this.queryParams['q[name_cont_any]']);
-    } else if ('q[name_cont_any]' in this.queryParams) {
-      this.onSearch(this.queryParams['q[name_cont_any]']);
-    }
-
-    if ('id' in this.queryParams && 'page' in this.queryParams) {
-      this.catgeoryFilter();
-    } else if ('id' in this.queryParams && 'q[s]' in this.queryParams) {
-      this.catgeoryFilter();
-    } else if ('id' in this.queryParams) {
-      this.catgeoryFilter();
-    }
-
-    if ('q[s]' in this.queryParams && 'q[name_cont_any]' in this.queryParams) {
-      this.onSearch(this.queryParams['q[name_cont_any]']);
-    }
+    this.onUrlChange(this.queryParams)
   }
+
   onFoucs() {
     this.showGo = true;
   }
+
   onFoucsOut() {
     this.showGo = false;
   }

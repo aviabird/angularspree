@@ -13,12 +13,13 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class ProductListComponent implements OnInit {
   @Input() products;
-  @Input() paginationData;
+  // @Input() paginationData;
   page: number;
   queryParams: any;
   screenwidth;
   isMobile;
   appConfig = environment.config;
+  currency = environment.config.currency_symbol;
   constructor(
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
@@ -43,13 +44,13 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  pageChanged(event: any): void {
-    this.page = event.page;
-    const urlTree = this.routernomal.createUrlTree([], {
-      queryParams: { page: this.page },
-      queryParamsHandling: 'merge',
-      preserveFragment: true
-    });
-    this.routernomal.navigateByUrl(urlTree);
-  }
+  // pageChanged(event: any): void {
+  //   this.page = event.page;
+  //   const urlTree = this.routernomal.createUrlTree([], {
+  //     queryParams: { page: this.page },
+  //     queryParamsHandling: 'merge',
+  //     preserveFragment: true
+  //   });
+  //   this.routernomal.navigateByUrl(urlTree);
+  // }
 }
