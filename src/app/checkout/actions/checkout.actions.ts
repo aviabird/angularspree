@@ -20,7 +20,7 @@ export class CheckoutActions {
   static BIND_ADDRESS = 'BIND_ADDRESS';
   static BIND_PAYMENT = 'BIND_PAYMENT';
   static GET_ORDER_PAYMENT_SUCCESS = 'GET_ORDER_PAYMENT_SUCCESS';
-  static SHIPPING_PREFERENCESS = 'SHIPPING_PREFERENCESS';
+  static SHIPPING_PREFERENCES = 'SHIPPING PREFERENCES';
 
   fetchCurrentOrder() {
     return { type: CheckoutActions.FETCH_CURRENT_ORDER };
@@ -118,9 +118,9 @@ export class CheckoutActions {
     }
   }
 
-  getShippingPreferencess(orderId: number, packages: Array<{}>) {
+  getShippingPreferences(orderId: number, packages: Array<{}>) {
     return {
-      type: CheckoutActions.SHIPPING_PREFERENCESS,
+      type: CheckoutActions.SHIPPING_PREFERENCES,
       payload: { orderId, packages }
     }
   }

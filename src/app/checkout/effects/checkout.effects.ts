@@ -56,7 +56,7 @@ export class CheckoutEffects {
   );
 
   @Effect()
-  ShippingPreferencess$ = this.actions$.ofType(CheckoutActions.SHIPPING_PREFERENCESS).pipe(
+  ShippingPreferencess$ = this.actions$.ofType(CheckoutActions.SHIPPING_PREFERENCES).pipe(
     switchMap<Action & { payload: { orderId: number, packages: Array<{}> } }, Order>(action => {
       return this.checkoutService.saveShippingPreferences(
         action.payload.orderId,

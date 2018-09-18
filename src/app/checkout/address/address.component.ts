@@ -80,8 +80,7 @@ export class AddressComponent implements OnInit, OnDestroy {
     this.subscriptionList$.push(
       this.store.select(getOrderId)
         .subscribe(orderId => {
-          this.store.dispatch(this.checkOutActions.getShippingPreferencess(orderId, []))
-          // this.router.navigate(['/checkout', 'payment']);
+          this.store.dispatch(this.checkOutActions.getShippingPreferences(orderId, []))
         })
     );
 

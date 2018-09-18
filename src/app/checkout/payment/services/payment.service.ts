@@ -63,10 +63,7 @@ export class PaymentService {
     const url = `api/v1/hosted-payment/payubiz-request`
     return this.http.post(url, params)
       .pipe(
-        map(
-          res => { return res }
-        ),
-        error => { return error }
+        map(res => { return res })
       )
   }
 
@@ -76,10 +73,7 @@ export class PaymentService {
     const url = `api/v1/payment/cod_payment`
     return this.http.post(url, params)
       .pipe(
-        map(
-          res => { return res }
-        ),
-        error => { return error }
+        map(res => { return res })
       )
   }
 
