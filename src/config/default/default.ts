@@ -3,7 +3,7 @@ import { DEFAULT_META_DATA } from './meta-data';
 
 export const DEFAULT_CONFIG = {
   // Add Your custom configs hereh
-  prodApiEndpoint: 'http://18.130.150.22:3000',
+  prodApiEndpoint: 'http://18.130.150.22:3000/',
   frontEndUrl: 'https://angularspree.firebaseapp.com/',
   appName: 'Angularspree',
   fevicon: 'https://via.placeholder.com/350x150',
