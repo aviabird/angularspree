@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NetBankingComponent } from './net-banking.component';
+import { HostedPaymentComponent } from './hosted-payment.component';
 
-describe('NetBankingComponent', () => {
-  let component: NetBankingComponent;
-  let fixture: ComponentFixture<NetBankingComponent>;
+describe('CreditCardComponent', () => {
+  let component: HostedPaymentComponent;
+  let fixture: ComponentFixture<HostedPaymentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NetBankingComponent ]
+      declarations: [ HostedPaymentComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NetBankingComponent);
+    fixture = TestBed.createComponent(HostedPaymentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

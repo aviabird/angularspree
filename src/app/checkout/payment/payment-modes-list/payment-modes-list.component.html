@@ -1,24 +1,22 @@
 <div *ngIf="paymentModes?.length !== 0 ;  else elseBlock">
-  <div class="pay-modes">
+  <div class="pay-modes" disabled>
     <div class="mode" [ngClass]="{'selected': mode.id == selectedMode.id}" *ngFor="let mode of paymentModes" (click)="selectedPaymentMode(mode)">
       {{mode.name}}
     </div>
   </div>
-  <div *ngIf="selectedMode">
-    <div class="selected-mode" [ngSwitch]="selectedMode.name">
-      <ng-template [ngSwitchCase]="cashOnDelivery">
-        <app-cash-on-delivery  [paymentMethodId]="selectedMode.id"></app-cash-on-delivery>
-      </ng-template>
-      <ng-template [ngSwitchCase]="payubiz">
-        <app-credit-card (onAddPayment)="addPayment(selectedMode.id)" (onPayNow)=makePaymentPayubiz()></app-credit-card>
-      </ng-template>
-    </div>
+  <div class="selected-mode" [ngSwitch]="selectedMode.code">
+    <ng-template [ngSwitchCase]="'cod'">
+      <app-cash-on-delivery [paymentMethodId]="selectedMode.id"></app-cash-on-delivery>
+    </ng-template>
+    <ng-template [ngSwitchCase]="'hpm'">
+      <app-hosted-payment [paymentMethodId]="selectedMode.id"></app-hosted-payment>
+    </ng-template>
   </div>
   <br>
-  <div *ngIf="showDummyCardInfo &&  selectedMode?.name === payubiz">
+  <div *ngIf="showDummyCardInfo &&  selectedMode?.code === 'hpm'">
     <div class="alert alert-info">
       <h6>
-        <strong>Note:</strong> Use following <strong>Test Card</strong> for making payment with payubiz.</h6>
+        <strong>Note:</strong> Use following <strong>Test Card</strong> for making payment with {{selectedMode?.name}}</h6>
     </div>
     <div class="alert alert-warning">
       <table class="table table-sm table-bordered">
@@ -50,5 +48,4 @@
   <h3 class="mt-2">No payment modes found.
     Ask your admin to create it.
   </h3>
-
 </ng-template>

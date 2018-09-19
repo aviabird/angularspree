@@ -12,17 +12,23 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class CheckoutEffects {
+  isBuyNowAction: boolean;
+
   @Effect()
   AddToCart$ = this.actions$.ofType(CheckoutActions.ADD_TO_CART).pipe(
-    switchMap<Action & { payload: { variant_id: number, quantity: number } }, Order>(action => {
+    switchMap<Action & { payload: { variant_id: number, quantity: number, isBuyNow: boolean } }, Order>(action => {
+      this.isBuyNowAction = action.payload.isBuyNow;
       return this.checkoutService.createNewLineItem(
         action.payload.variant_id,
         action.payload.quantity
       );
     }),
-    switchMap(order => [
-      this.actions.fetchCurrentOrderSuccess(order)
-    ])
+    map(order => {
+      if (this.isBuyNowAction) {
+        this.router.navigate(['checkout', 'cart'])
+      }
+      return this.actions.fetchCurrentOrderSuccess(order)
+    })
   );
 
   @Effect()

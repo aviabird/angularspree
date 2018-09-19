@@ -41,11 +41,10 @@ export class CashOnDeliveryComponent implements OnInit, OnDestroy {
     );
   }
 
-  makePayment() {
+  processCod() {
     this.subscriptionList$.push(
       this.paymentService.makeCodPayment(this.orderId)
         .subscribe((order: Order) => {
-          this.store.dispatch(this.checkoutActions.orderCompleteSuccess());
           this.checkOutService.fetchCurrentOrder().subscribe(_ => {
             this.redirectToSuccessPage(order.number)
           });

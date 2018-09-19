@@ -7,12 +7,9 @@ export const initialState: CheckoutState = new CheckoutStateRecord() as Checkout
 
 export function reducer(state = initialState, { type, payload }: any): CheckoutState {
 
-  let _lineItems, _lineItemEntities, _lineItemIds,
-    _lineItem, _lineItemEntity, _lineItemId,
-    _totalCartItems = 0, _totalCartValue,
-    _ship_address, _bill_address,
-    _orderState, _shipTotal = 0, _itemTotal, _adjustmentTotal,
-    _paymentEntities, _payments, _paymentIds, _orderNumber, _orderId;
+  let _lineItems, _lineItemEntities, _lineItemIds, _totalCartItems = 0, _totalCartValue,
+    _ship_address, _bill_address, _orderState, _shipTotal = 0, _itemTotal, _adjustmentTotal,
+    _paymentEntities, _payments, _orderNumber, _orderId, _paymentIds;
 
   switch (type) {
 
@@ -48,25 +45,13 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
         billAddress: _bill_address,
         shipTotal: _shipTotal,
         itemTotal: _itemTotal,
-        adjustmentTotal: _adjustmentTotal
+        adjustmentTotal: _adjustmentTotal,
+        isPaymentAdded: false
       }) as CheckoutState;
 
     case CheckoutActions.ADD_TO_CART_SUCCESS:
       return state.merge({
       }) as CheckoutState;
-
-    case CheckoutActions.CHANGE_ORDER_STATE_SUCCESS:
-      _orderState = payload.state;
-      _ship_address = payload.ship_address;
-      _bill_address = payload.bill_address;
-
-      return state.merge({
-        orderState: _orderState,
-        shipAddress: _ship_address,
-        billAddress: _bill_address,
-
-      }) as CheckoutState;
-
 
     case CheckoutActions.ORDER_COMPLETE_SUCCESS:
       return initialState;
@@ -83,19 +68,13 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
       _lineItems = payload.line_items;
       _lineItemIds = _lineItems.map(lineItem => lineItem.id);
       _lineItemEntities = _lineItems.reduce((lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
-        return Object.assign(lineItems, {
-          [lineItem.id]: lineItem
-        });
+        return Object.assign(lineItems, { [lineItem.id]: lineItem })
       }, {});
-
-      //Payments
 
       _payments = payload.payments;
       _paymentIds = _payments.map(payment => payment.payment_method_id);
       _paymentEntities = _payments.reduce((payments: { [id: number]: Payment }, payment: Payment) => {
-        return Object.assign(payments, {
-          [payment.payment_method_id]: payment
-        });
+        return Object.assign(payments, { [payment.payment_method_id]: payment })
       }, {});
 
       return state.merge({
