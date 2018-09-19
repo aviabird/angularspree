@@ -68,7 +68,7 @@ export class ProductService {
   getProducts(pageNumber: number): Observable<Array<Product>> {
     return this.http
       .get<Array<Product>>(
-        `api/v1/products?q[s]=avg_rating+desc&page[limit]=6&page[offset]=${pageNumber}`
+        `api/v1/products?sort=date&page[limit]=20&page[offset]=${pageNumber}`
       )
   }
 
@@ -140,7 +140,7 @@ export class ProductService {
 
   getproductsByKeyword(keywords: any): Observable<Array<Product>> {
     return this.http
-      .get<Array<Product>>(`api/v1/products?page[limit]=10&page[offset]=1`, { params: keywords}).pipe(
+      .get<Array<Product>>(`api/v1/products?page[limit]=20&page[offset]=1`, { params: keywords }).pipe(
         map(resp => {
           return resp
         })

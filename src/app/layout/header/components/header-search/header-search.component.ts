@@ -34,12 +34,7 @@ export class HeaderSearchComponent implements OnInit {
     private renderer: Renderer2,
     @Inject(PLATFORM_ID) private platformId: any) { }
 
-  ngOnInit() {
-    this.activatedRouter.queryParams.subscribe(params => {
-      this.queryParams = params;
-      this.loadPage();
-    });
-  }
+  ngOnInit() {}
 
   showsearch() {
     this.isSearchopen = !this.isSearchopen;
@@ -57,7 +52,7 @@ export class HeaderSearchComponent implements OnInit {
     if (keyword !== '') {
       keyword = keyword.trim();
       this.router.navigate(['/search'], { queryParams: { 'filter[name]': keyword } });
-      this.store.dispatch(this.searchActions.getproductsByKeyword({ 'filter[name]': keyword }));
+      this.setKeywordToLocalStorage(keyword);
     }
   }
 
@@ -77,5 +72,11 @@ export class HeaderSearchComponent implements OnInit {
 
   onFoucsOut() {
     this.showGo = false;
+  }
+
+  setKeywordToLocalStorage(keyword) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('keyword', keyword);
+    }
   }
 }

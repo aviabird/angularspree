@@ -1,36 +1,14 @@
 <div class="row results-base m-0" *ngIf="!isMobile">
   <div class="col-12 col-sm-4 col-lg-3 p-2 m-0" *ngFor="let product of products" itemscope itemtype="https://schema.org/Product">
-    <a itemprop="url" [routerLink]="['/', product.slug]" class="product-base p-1 d-block">
-      <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="product.images[0].product_url">
-      <div class="product-productMetaInfo">
-        <div class="morechoices">
-          More Choices Available
-        </div>
-        <div itemprop="name" class="product-brand">{{ product.name }}</div>
-        <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
-          <span>
-            <span itemprop="price" class="product-discountedPrice">{{currency}} {{ product.selling_price.amount }}</span>
-            <span *ngIf="product; let cost_price">
-              <span itemprop="price" class="disableprize">{{currency}} {{product.max_retail_price.amount}}</span>
-            </span>
-          </span>
-        </div>
-        <div class="ngrating">
-          <ngx-input-star-rating disabled="true" [value]="5"></ngx-input-star-rating>
-        </div>
-        <small class="shipping">
-          FREE 1-2 day shipping over {{appConfig.currency_symbol}}{{appConfig.freeShippingAmount}}
-        </small>
-      </div>
-    </a>
+    <app-product-list-item [product]="product"></app-product-list-item>
   </div>
-  <!-- <div class="col-12 mt-3">
+  <div class="col-12 mt-3">
     <div class="row">
-      <pagination *ngIf="paginationData.total_count > paginationData.per_page" [totalItems]="paginationData.total_count" [itemsPerPage]="paginationData.per_page"
-        [(ngModel)]="paginationData.current_page" (pageChanged)="pageChanged($event)" class="m-auto" [maxSize]="5"></pagination>
+      <!-- <pagination *ngIf="paginationData.total_count > paginationData.per_page" [totalItems]="paginationData.total_count" [itemsPerPage]="paginationData.per_page"
+        [(ngModel)]="paginationData.current_page" (pageChanged)="pageChanged($event)" class="m-auto" [maxSize]="5"></pagination> -->
     </div>
 
-  </div> -->
+  </div>
 </div>
 
 <div class="row results-base m-0" *ngIf="isMobile">
@@ -38,7 +16,7 @@
     <a itemprop="url" [routerLink]="['/', product.slug]">
       <div class="row">
         <div class="col-5 p-0 searchimg">
-          <img itemprop="image" class="product-thumb img-fluid" alt="{{product.name}}" [src]="product.product_url">
+          <img itemprop="image" class="product-thumb img-fluid" alt="{{product.name}}" [src]="product.images[0].product_url">
           <div class="morechoices">
             More Choices Available
           </div>
@@ -58,7 +36,7 @@
               <b>FREE 1-2 day</b> shipping at {{appConfig.currency_symbol}}{{appConfig.freeShippingAmount}}
             </p>
             <div class="ngrating">
-              <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}"></ngx-input-star-rating>
+              <ngx-input-star-rating disabled="true" value="5"></ngx-input-star-rating>
             </div>
           </div>
         </div>

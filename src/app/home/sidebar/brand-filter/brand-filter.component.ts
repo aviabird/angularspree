@@ -4,6 +4,7 @@ import { AppState } from './../../../interfaces';
 import { SearchActions } from './../../reducers/search.actions';
 import { Component, OnInit, Input } from '@angular/core';
 import { URLSearchParams } from '@angular/http'
+import { Brand } from '../../../core/models/brand';
 
 @Component({
   selector: 'app-brand-filter',
@@ -11,26 +12,17 @@ import { URLSearchParams } from '@angular/http'
   styleUrls: ['./brand-filter.component.scss']
 })
 export class BrandFilterComponent implements OnInit {
-  @Input() taxonomiList;
-  @Input() isFilterOn;
+  @Input() brandsList: Array<Brand>;
 
-  queryParams: any;
+  queryParams: Object;
   constructor(
     private searchActions: SearchActions,
     private store: Store<AppState>,
-    private router: ActivatedRoute) {
-    this.router.queryParams
-      .subscribe(params => {
-        this.queryParams = params
-      });
-  }
+    private router: ActivatedRoute) {}
 
   ngOnInit() {
   }
 
-  brandFilter() {
-    const search = new URLSearchParams();
-    search.set('id', this.queryParams.id);
-    this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()));
+  brandFilter(s) {
   }
 }

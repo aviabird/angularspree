@@ -9,12 +9,14 @@ import { Brand } from '../../../../../../core/models/brand';
 })
 export class BrandListComponent implements OnInit {
   @Input() brand: Brand;
-  image = 'assets/default/no-image-available.jpg'
+  imageUrl = 'assets/default/no-image-available.jpg'
+
   constructor() { }
+
   ngOnInit() {
   }
 
   getBrandImageUrl(url) {
-    return url || this.image;
+    return url || this.imageUrl;
   }
 }

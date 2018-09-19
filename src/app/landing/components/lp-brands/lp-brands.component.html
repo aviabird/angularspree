@@ -7,9 +7,9 @@
   <div class="row m-0">
     <div class="col-4 col-sm-2  col-md-3 col-lg-2 p-0" *ngFor="let brand of brands">
       <div class="card">
-        <!-- <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': brand.name, id: brand.id}"> -->
+        <a [routerLink]="['/search']" [queryParams]="{product_brand: brand.id}">
           <img class="card-img-top" [src]="getBrandImageUrl(brand.image_url)">
-        <!-- </a> -->
+        </a>
       </div>
     </div>
   </div>

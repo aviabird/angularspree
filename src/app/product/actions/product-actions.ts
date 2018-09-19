@@ -1,4 +1,4 @@
-import { Brand } from "../../core/models/brand";
+import { Brand } from '../../core/models/brand';
 
 export class ProductActions {
   static GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
