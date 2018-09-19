@@ -1,4 +1,3 @@
-import { deserialize } from 'jsonapi-deserializer';
 import { JsonApiParserService } from './json-api-parser.service';
 import { CJsonApi } from './../models/jsonapi';
 import { ToastrService } from 'ngx-toastr';

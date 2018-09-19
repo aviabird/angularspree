@@ -97,8 +97,7 @@ export class CheckoutService {
         this.setOrderTokenInLocalStorage(order.number);
         return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
       },
-      error => {
-      })
+        error => { return error })
     );
   }
 
@@ -120,31 +119,6 @@ export class CheckoutService {
   /**
    *
    *
-   * @returns
-   *
-   * @memberof CheckoutService
-   */
-  createEmptyOrder() {
-    return this.http
-      .post<Order>('api/v1/orders/blank', {})
-      .pipe(
-        map(order => {
-          this.setOrderTokenInLocalStorage(order.number);
-          return this.store.dispatch(
-            this.actions.fetchCurrentOrderSuccess(order)
-          );
-        }),
-        tap(
-          _ => _,
-          _ =>
-            this.toastyService.error('Unable to create empty order', 'ERROR!!')
-        )
-      );
-  }
-
-  /**
-   *
-   *
    * @param {number} lineItemId
    * @returns
    * @memberof CheckoutService
@@ -158,79 +132,26 @@ export class CheckoutService {
   /**
    *
    *
-   * @returns
-   *
-   * @memberof CheckoutService
-   */
-  changeOrderState() {
-    const url = `api/v1/checkouts/${
-      this.orderNumber
-      }/next.json?order_token=${this.getOrderToken()}`;
-    return this.http
-      .put<Order>(url, {})
-      .pipe(
-        map(order =>
-          this.store.dispatch(this.actions.changeOrderStateSuccess(order))
-        )
-      );
-  }
-
-  /**
-   *
-   *
-   * @param {any} params
-   * @returns
-   *
-   * @memberof CheckoutService
-   */
-  updateOrder(params: any) {
-    const url = `api/v1/checkouts/${
-      this.orderId
-      }.json?order_token=${this.getOrderToken()}`;
-    return this.http
-      .put<Order>(url, params)
-      .pipe(
-        map(order =>
-          this.store.dispatch(this.actions.updateOrderSuccess(order))
-        )
-      );
-  }
-
-  /**
-   *
-   *
    * @returns {Observable<Array<PaymentMode>>}
    * @memberof CheckoutService
    */
   availablePaymentMethods(): Observable<Array<PaymentMode>> {
     const url = `api/v1/payment/payment-methods`
-    return this.http.get<Array<PaymentMode>>(url);
+    return this.http.get<Array<PaymentMode>>(url).pipe(
+      map(resp => { return resp },
+        error => { return error }
+      )
+    );
   }
 
   /**
    *
    *
-   * @param {number} paymentModeId
-   * @param {number} paymentAmount
+   * @param {number} orderId
+   * @param {Array<{}>} packages
    * @returns
    * @memberof CheckoutService
    */
-  createNewPayment(paymentModeId: number, paymentAmount: number) {
-    return this.http
-      .post(
-        `api/v1/orders/${
-        this.orderId
-        }/payments?order_token=${this.getOrderToken()}`,
-        {
-          payment: {
-            payment_method_id: paymentModeId,
-            amount: paymentAmount
-          }
-        }
-      )
-      .pipe(map(_ => this.changeOrderState().subscribe()));
-  }
-
   saveShippingPreferences(orderId: number, packages: Array<{}>) {
     const params = this.buildShippingParams(orderId, packages);
     const url = `api/v1/orders/${orderId}/add-shipment`;
@@ -239,6 +160,11 @@ export class CheckoutService {
         return resp;
       })
     )
+  }
+
+  shipmentAvailability(pincode: number) {
+    return this.http
+      .post(`address/shipment_availability`, { pincode: pincode })
   }
 
   /**
@@ -253,11 +179,6 @@ export class CheckoutService {
     const order = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('order')) : {};
     const token = order.order_token;
     return token;
-  }
-
-  shipmentAvailability(pincode: number) {
-    return this.http
-      .post(`address/shipment_availability`, { pincode: pincode })
   }
   /**
    *

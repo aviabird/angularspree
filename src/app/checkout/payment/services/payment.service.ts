@@ -1,36 +1,13 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Order } from '../../../core/models/order';
 import { map } from 'rxjs/operators';
-import { Address } from '../../../core/models/address';
 import { User } from '../../../core/models/user';
-import { PaymentMode } from '../../../core/models/payment_mode';
 
 @Injectable()
 export class PaymentService {
-  paymentMethodName = environment.config.defaultPaymentMethod;
-
   constructor(private http: HttpClient) { }
-
-
-  /**
-   *
-   *
-   * @param {Array<PaymentMode>} modes
-   * @returns {PaymentMode}
-   * @memberof PaymentService
-   */
-  getDefaultSelectedMode(modes: Array<PaymentMode>): PaymentMode {
-    let selectedMode;
-    modes.forEach((mode) => {
-      if (mode.name === this.paymentMethodName) {
-        selectedMode = mode;
-      }
-    });
-    return selectedMode;
-  }
 
   /**
    *
@@ -62,9 +39,7 @@ export class PaymentService {
     const params = this.buildHostedPaymentJson(orderId, orderNumber, paymentId, orderAmount, paymentMethodId);
     const url = `api/v1/hosted-payment/payubiz-request`
     return this.http.post(url, params)
-      .pipe(
-        map(res => { return res })
-      )
+      .pipe(map(res => { return res }, error => { return error }))
   }
 
 
@@ -73,7 +48,10 @@ export class PaymentService {
     const url = `api/v1/payment/cod_payment`
     return this.http.post(url, params)
       .pipe(
-        map(res => { return res })
+        map(
+          res => { return res }
+        ),
+        error => { return error }
       )
   }
 
