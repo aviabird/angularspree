@@ -18,7 +18,6 @@
         </button>
       </div>
     </div>
-
   </div>
   <div class="order shadow-sm">
     <div class="row">
@@ -27,17 +26,17 @@
         <table>
           <tr>
             <td>Order ID:</td>
-            <td>{{orderDetails.number}}({{orderDetails.total_quantity}} Item(s))</td>
+            <td>{{orderDetails.number}}({{orderDetails.item_count}} Item(s))</td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td>Order Date:</td>
             <td>{{orderDetails.created_at}}</td>
-          </tr>
+          </tr>-->
           <tr>
-            <td>Total Amount:</td>
-            <td>{{orderDetails.display_total}} through {{orderDetails.payments[0].payment_method.name}}</td>
-          </tr>
-          <tr *ngIf=orderDetails.payment_state>
+              <td>Total Amount:</td>
+              <td>{{currency}} {{orderDetails.order_total_amount.amount}}</td>
+            </tr>
+          <!-- <tr *ngIf=orderDetails.payment_state>
             <td>Payment Status:</td>
             <td>
               <b class="text-uppercase">
@@ -45,42 +44,43 @@
               </b>
 
             </td>
-          </tr>
+          </tr> -->
         </table>
       </div>
 
       <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         <h3>Delivery Address</h3>
         <table>
-          <tr>
-            <td>Name: </td>
-            <td>{{orderDetails.ship_address.full_name}}</td>
-          </tr>
-          <tr>
-            <td>Address:</td>
-            <td>{{orderDetails.ship_address.address1}}, {{orderDetails.ship_address.address2}}, {{orderDetails.ship_address.city}}</td>
-          </tr>
-          <tr>
-            <td>Pincode:</td>
-            <td>{{orderDetails.ship_address.zipcode}}</td>
-          </tr>
-          <tr>
-            <td>Phone:</td>
-            <td>{{orderDetails.ship_address.phone}}</td>
-          </tr>
-          <tr>
+            <tr>
+                <td>Name: </td>
+                <td>{{orderDetails.shipping_address.first_name}} {{orderDetails.shipping_address.last_name}}</td>
+              </tr>
+              <tr>
+                <td>Address:</td>
+                <td>{{orderDetails.shipping_address.address_line_1}}, {{orderDetails.shipping_address.address_line_2}},
+                  {{orderDetails.shipping_address.city}}</td>
+              </tr>
+              <tr>
+                <td>Pincode:</td>
+                <td>{{orderDetails.shipping_address.zip_code}}</td>
+              </tr>
+              <tr>
+                <td>Phone:</td>
+                <td>{{orderDetails.shipping_address.phone}}</td>
+              </tr>
+          <!-- <tr>
             <td>Email:</td>
             <td>{{orderDetails.email}}</td>
-          </tr>
+          </tr> -->
         </table>
       </div>
-      <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+      <!-- <div class="col-12 col-sm-4 col-md-4 col-lg-4">
         <h3>Shipping</h3>
         <div class="col-sm text-uppercase p-0">
           <p>Shipping Status: </p>
           <b>{{orderDetails.shipment_state | humanize | uppercase}}</b>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -91,16 +91,16 @@
         <div *ngFor="let item of  orderDetails.line_items" class="lineitems col-12 col-sm-6">
           <div class="row">
             <div class="col-12 pr-0 col-sm-2">
-              <a [routerLink]="['/', item.variant.slug]" class="col-sm col-3">
+              <a [routerLink]="['/', item.product.slug]" class="col-sm col-3">
                 <img [src]="getProductImageUrl(item)">
               </a>
             </div>
             <div class="col-12 col-sm-8" [routerLink]="['/', item.variant.slug]">
-              <div class="lineitems-name"> {{item.variant.name}}</div>
-              <div class="lineitems-info"> {{item.variant.options_text}}</div>
+              <div class="lineitems-name"> {{item.product.name}}</div>
+              <!-- <div class="lineitems-info"> {{item.product.options_text}}</div> -->
             </div>
             <div class="col-12 col-sm-2">
-              <div class="price">{{item.display_amount}}</div>
+              <div class="price">{{item.total_price}}</div>
               <div class="qty"> QTY: {{item.quantity}}</div>
             </div>
           </div>
@@ -113,18 +113,18 @@
         <div *ngFor="let item of  orderDetails.line_items" class="lineitems col-12 col-sm-6">
           <div class="row">
             <div class="col-12 pr-0 col-sm-2">
-              <a [routerLink]="['/', item.variant.slug]" class="col-sm col-3">
+              <a [routerLink]="['/', item.product.slug]" class="col-sm col-3">
                 <img [src]="getProductImageUrl(item)">
               </a>
             </div>
-            <div class="col-6 col-sm-8" [routerLink]="['/', item.variant.slug]">
-              <div class="lineitems-name"> {{item.variant.name}}</div>
-              <div class="lineitems-info"> {{item.variant.options_text}}</div>
+            <div class="col-6 col-sm-8" [routerLink]="['/', item.product.slug]">
+              <div class="lineitems-name"> {{item.product.name}}</div>
+              <!-- <div class="lineitems-info"> {{item.product.options_text}}</div> -->
             </div>
             <div class="col-6 col-sm-2 text-right">
 
               <div class="qty"> QTY: {{item.quantity}}</div>
-              <div class="price">{{item.display_amount}}</div>
+              <div class="price">{{item.total_price}}</div>
             </div>
           </div>
         </div>

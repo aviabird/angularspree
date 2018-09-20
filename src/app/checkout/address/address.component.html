@@ -28,11 +28,16 @@
 					+ ADD A NEW ADDRESS
 				</span>
 			</div>
-			<app-add-address [addressEdit]="null" *ngIf="isAddNewAddress" (cancelAddress)="cancelAddress($event)" [countries]="(this.countries$ | async)">
+			<app-add-address [addressEdit]="null" 
+				*ngIf="isAddNewAddress" 
+				(cancelAddress)="cancelAddress($event)" 
+				[countries]="(this.countries$ | async)">
 			</app-add-address>
 		</div>
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0" *ngIf="userAddresses$ | async; let userAddresses">
-			<app-saved-address *ngIf="userAddresses.length > 0" [addressList]="userAddresses" (getSelectedAddress)="getSelectedAddress($event)">
+			<app-saved-address *ngIf="userAddresses.length > 0" 
+				[addressList]="userAddresses" 
+				(getSelectedAddress)="getSelectedAddress($event)">
 			</app-saved-address>
 		</div>
 	</div>

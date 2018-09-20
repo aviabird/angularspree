@@ -10,7 +10,6 @@
 
   </div>
 </div>
-
 <div class="row results-base m-0" *ngIf="isMobile">
   <div class="col-12 product-base" *ngFor="let product of products" itemscope itemtype="https://schema.org/Product">
     <a itemprop="url" [routerLink]="['/', product.slug]">
@@ -26,14 +25,12 @@
             <div itemprop="name" class="product-brand">{{ product.name }}</div>
             <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
               <span>
-                <span itemprop="price" class="product-discountedPrice">{{product.currency_symbol}} {{ product.price }}</span>
-                <span *ngIf="product.cost_price; let cost_price">
-                  <span itemprop="price" class="disableprize">{{product.currency_symbol}}{{cost_price}}</span>
-                </span>
+                <span itemprop="price" class="product-discountedPrice">{{currency}} {{ product.selling_price.amount }}</span>
+                <span itemprop="price" class="disableprize">{{currency}}{{product.max_retail_price.amount}}</span>
               </span>
             </div>
             <p class="shipping border-top border-bottom mt-1 mb-2">
-              <b>FREE 1-2 day</b> shipping at {{appConfig.currency_symbol}}{{appConfig.freeShippingAmount}}
+              <b>FREE 1-2 day</b> shipping at {{currency}}{{appConfig.freeShippingAmount}}
             </p>
             <div class="ngrating">
               <ngx-input-star-rating disabled="true" value="5"></ngx-input-star-rating>

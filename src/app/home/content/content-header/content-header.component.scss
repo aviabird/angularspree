@@ -16,8 +16,13 @@
   .dropdown-menu {
     width: 85%;
     right: 18px !important;
+    padding: 0px;
     li {
-      border-bottom: 0 solid
+      padding:0 .2rem;
+      border-bottom: 0 solid;
+      a{
+        &:after{display:none;}
+      }
     }
   }
   .dropdown-toggle::after {
@@ -224,7 +229,7 @@ ul {
       font-weight: bold;
       color: $gray-900;
     }
-    padding: 0.1rem 0.2rem;
+    padding: 1.1rem 0.2rem;
     border-bottom: 1px solid $gray-10;
     color: $gray-900;
     cursor: pointer;

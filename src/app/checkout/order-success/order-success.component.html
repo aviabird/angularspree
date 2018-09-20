@@ -18,7 +18,7 @@
         <table>
           <tr>
             <td>Order ID:</td>
-            <td>{{orderDetails.number | humanize | uppercase }}({{orderDetails.item_count}} Item(s))</td>
+            <td>{{orderDetails.number}}({{orderDetails.item_count}} Item(s))</td>
           </tr>
           <!-- <tr>
             <td>Order Date:</td>
@@ -100,11 +100,11 @@
         <div *ngFor="let item of  orderDetails.line_items" class="lineitems col-12 col-sm-6">
           <div class="row">
             <div class="col-12 pr-0 col-sm-2">
-              <a [routerLink]="['/', item.variant.slug]" class="col-sm col-3">
+              <a [routerLink]="['/', item.product.slug]" class="col-sm col-3">
                 <img [src]="getProductImageUrl(item)">
               </a>
             </div>
-            <div class="col-6 col-sm-8" [routerLink]="['/', item.variant.slug]">
+            <div class="col-6 col-sm-8" [routerLink]="['/', item.product.slug]">
               <div class="lineitems-name"> {{item.product.name}}</div>
               <!-- <div class="lineitems-info"> {{item.variant.options_text}}</div> -->
             </div>

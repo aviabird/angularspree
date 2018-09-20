@@ -46,17 +46,6 @@ export class ProductEffects {
       )
     );
 
-  // @Effect()
-  // GetProductsByKeyword$: Observable<Action> = this.actions$
-  //   .ofType(SearchActions.GET_PRODUCTS_BY_KEYWORD)
-  //   .pipe(
-  //     switchMap((action: any) =>
-  //       this.productService.getproductsByKeyword(action.payload)
-  //     ),
-  //     map(products => this.searchActions.getProducsByKeywordSuccess(products))
-  //   );
-
-
     @Effect()
     GetProductsByKeyword$ = this.actions$.ofType(SearchActions.GET_PRODUCTS_BY_KEYWORD).pipe(
       switchMap<Action & { payload }, Array<Product>>(action => {
