@@ -43,13 +43,10 @@ export class PaymentService {
   }
 
 
-  makeCodPayment(orderId: number) {
+  makeCodPayment(orderId: number): Observable<Order> {
     const params = this.buildCodPaymentJson(orderId);
     const url = `api/v1/payment/cod_payment`
-    return this.http.post(url, params)
-      .pipe(
-        map(res => { return res })
-      )
+    return this.http.post<Order>(url, params);
   }
 
   /**

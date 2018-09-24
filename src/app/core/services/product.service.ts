@@ -140,11 +140,7 @@ export class ProductService {
 
   getproductsByKeyword(keywords: any): Observable<Array<Product>> {
     return this.http
-      .get<Array<Product>>(`api/v1/products?page[limit]=20&page[offset]=1`, { params: keywords }).pipe(
-        map(resp => {
-          return resp
-        })
-      );
+      .get<Array<Product>>(`api/v1/products?page[limit]=20&page[offset]=1`, { params: keywords });
   }
 
   getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
@@ -186,10 +182,6 @@ export class ProductService {
   }
 
   getBrands(): Observable<Array<Brand>> {
-    return this.http.get<Array<Brand>>(`api/v1/brands`).pipe(
-      map(brands => {
-        return brands;
-      })
-    )
+    return this.http.get<Array<Brand>>(`api/v1/brands`);
   }
 }
