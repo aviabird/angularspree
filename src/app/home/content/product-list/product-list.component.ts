@@ -53,4 +53,5 @@ export class ProductListComponent implements OnInit {
   //   });
   //   this.routernomal.navigateByUrl(urlTree);
   // }
+  
 }

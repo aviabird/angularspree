@@ -11,10 +11,13 @@ export class ProductActions {
   static GET_ALL_PRODUCTS_SEARCH_SUCCESS = 'GET_ALL_PRODUCTS_SEARCH_SUCCESS';
   static GET_RELATED_PRODUCT = 'GET_RELATED_PRODUCT';
   static GET_RELATED_PRODUCT_SUCCESS = 'GET_RELATED_PRODUCT_SUCCESS';
-  static GET_REVIEWS = 'GET_REVIEWS';
+  static GET_PRODUCT_REVIEWS = 'GET_PRODUCT_REVIEWS';
   static GET_REVIEWS_SUCCESS = 'GET_REVIEWS_SUCCESS';
   static GET_ALL_BRANDS = 'GET_ALL_BRANDS';
   static GET_ALL_BRANDS_SUCCESS = 'GET_ALL_BRANDS_SUCCESS';
+  static WRITE_PRODUCT_REVIEW = 'WRITE_PRODUCT_REVIEW';
+  static WRITE_REVIEW_SUCCESS = 'WRITE_REVIEW_SUCCESS';
+
 
   getAllProducts(pageNumber = 1) {
     return {
@@ -74,10 +77,10 @@ export class ProductActions {
     };
   }
 
-  getProductReviews(product_id: any) {
+  getProductReviews(productId: number) {
     return {
-      type: ProductActions.GET_REVIEWS,
-      payload: product_id
+      type: ProductActions.GET_PRODUCT_REVIEWS,
+      payload: productId
     };
   }
 
@@ -100,4 +103,12 @@ export class ProductActions {
       payload: brands
     }
   }
+
+  writeProductReview(reviewParams: Object) {
+    return {
+      type: ProductActions.WRITE_PRODUCT_REVIEW,
+      payload: reviewParams
+    }
+  }
+
 }

@@ -8,6 +8,9 @@ import { Product } from '../models/product';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Brand } from '../models/brand';
+import { RatingCategory } from '../models/rating_category';
+import { RatingOption } from '../models/rating_option';
+import { Review } from '../models/review';
 
 @Injectable()
 export class ProductService {
@@ -41,12 +44,12 @@ export class ProductService {
       )
   }
 
-  getProductReviews(products): Observable<any> {
-    return this.http.get(`products/${products}/reviews`);
+  getProductReviews(productId: string): Observable<Array<Review>> {
+    return this.http.get<Array<Review>>(`api/v1/product/${productId}/reviews`);
   }
 
-  getProductRatingSummery(productId: any): Observable<any> {
-    return this.http.get('api/v1/product/productId/rating-summary')
+  getProductRatingSummery(productId: string): Observable<any> {
+    return this.http.get('api/v1/product/${productId}/rating-summary')
   }
 
   /**
@@ -149,26 +152,8 @@ export class ProductService {
     );
   }
 
-  submitReview(productId: any, params: any) {
-    return this.http.post(`products/${productId}/reviews`, params).pipe(
-      map(
-        success => {
-          this.success = success;
-          if (this.success.type === 'info') {
-            this.toastrService.info(this.success.message, this.success.type);
-            return this.success.type;
-          } else {
-            this.toastrService.success(this.success.message, this.success.type);
-            return this.success.type;
-          }
-        },
-        error => {
-          this.error = error;
-          this.toastrService.error(this.error.message, this.error.type);
-          return this.error.type;
-        }
-      )
-    );
+  submitReview(params: Object) {
+    return this.http.post(`api/v1/reviews`, params)
   }
 
   getRelatedProducts(productId: any): Observable<Array<Product>> {
@@ -184,4 +169,13 @@ export class ProductService {
   getBrands(): Observable<Array<Brand>> {
     return this.http.get<Array<Brand>>(`api/v1/brands`);
   }
+
+  getRatingCategories(): Observable<Array<RatingCategory>> {
+    return this.http.get<Array<RatingCategory>>(`api/v1/ratings/`);
+  }
+
+  getProductRatingOptions(ratingCategoryId: number): Observable<Array<RatingOption>>  {
+    return this.http.get<Array<RatingOption>>(`api/v1/ratings/${ratingCategoryId}`);
+  }
+
 }

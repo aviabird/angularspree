@@ -39,7 +39,7 @@ export class ProductDetailsComponent implements OnInit {
   description: any;
   images: any;
   variantId: any;
-  productID: any;
+  productId: number;
   isMobile = false;
   screenwidth: any;
   isAuthenticated: boolean;
@@ -71,6 +71,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.product)
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
     }
@@ -79,7 +80,7 @@ export class ProductDetailsComponent implements OnInit {
     this.initData();
     // this.store.dispatch(this.productsActions.getRelatedProduct(this.productID));
     // this.relatedProducts$ = this.store.select(relatedProducts);
-    // this.store.dispatch(this.productsActions.getProductReviews(this.productID));
+    // this.store.dispatch(this.productsActions.getProductReviews(this.productId));
     // this.reviewProducts$ = this.store.select(productReviews);
     // this.findBrand();
     // this.addJsonLD(this.product);
@@ -93,14 +94,14 @@ export class ProductDetailsComponent implements OnInit {
       this.product.name = product.name;
       this.variantId = product.id;
       this.selectedVariant = product;
-      this.productID = this.product.id;
+      this.productId = this.product.id;
       this.product.selling_price = product.selling_price;
       this.product.max_retail_price = product.max_retail_price;
     } else {
       this.images = this.product.images;
       this.description = this.product.description;
       this.variantId = this.product.id;
-      this.productID = this.product.id;
+      this.productId = this.product.id;
       this.selectedVariant = this.product.variants[0];
     }
 
@@ -150,7 +151,7 @@ export class ProductDetailsComponent implements OnInit {
 
   showReviewForm() {
     this.router.navigate([this.product.slug, 'write_review'], {
-      queryParams: { prodId: this.productID }
+      queryParams: { prodId: this.productId }
     });
   }
 
@@ -195,8 +196,8 @@ export class ProductDetailsComponent implements OnInit {
       },
       'aggregateRating': {
         '@type': 'AggregateRating',
-        'ratingValue': product.avg_rating,
-        'reviewCount': `${product.reviews_count}`,
+        'ratingValue': product.rating_summary.average_rating,
+        'reviewCount': `${product.rating_summary.review_count}`,
         'bestRating': '5',
         'worstRating': '0'
       },

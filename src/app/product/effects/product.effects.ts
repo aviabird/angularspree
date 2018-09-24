@@ -8,6 +8,7 @@ import { Effect, Actions } from '@ngrx/effects';
 import { ProductService } from './../../core/services/product.service';
 import { Action } from '@ngrx/store';
 import { Brand } from '../../core/models/brand';
+import { Review } from '../../core/models/review';
 
 @Injectable()
 export class ProductEffects {
@@ -105,21 +106,36 @@ export class ProductEffects {
       )
     );
 
-  @Effect()
-  GetReview$: Observable<Action> = this.actions$
-    .ofType(ProductActions.GET_REVIEWS)
-    .pipe(
-      switchMap((action: any) =>
-        this.productService.getProductReviews(action.payload)
-      ),
-      map((data: any) =>
-        this.productActions.getProductReviewsSuccess({ reviews: data })
-      )
-    );
+  // @Effect()
+  // GetProductReviews$: Observable<Action> = this.actions$
+  //   .ofType(ProductActions.GET_PRODUCT_REVIEWS)
+  //   .pipe(
+  //     switchMap((action: any) =>
+  //       this.productService.getProductReviews(action.payload)
+  //     ),
+  //     map((reviewsList: any) =>
+  //       this.productActions.getProductReviewsSuccess(reviewsList)
+  //     )
+  //   );
 
+  @Effect()
+  GetProductReviews$ = this.actions$.ofType(ProductActions.GET_PRODUCT_REVIEWS).pipe(
+    switchMap<Action & {payload}, Array<Review>>(action => {
+      return this.productService.getProductReviews(action.payload);
+    }),
+    map(reviewsList => this.productActions.getProductReviewsSuccess(reviewsList))
+  );
 
   @Effect()
   GetBrands$ = this.actions$.ofType(ProductActions.GET_ALL_BRANDS).pipe(
+    switchMap<Action, Array<Brand>>(_ => {
+      return this.productService.getBrands();
+    }),
+    map(brands => this.productActions.getBrandsSuccess(brands))
+  );
+
+  @Effect()
+  WriteProductReview$ = this.actions$.ofType(ProductActions.WRITE_PRODUCT_REVIEW).pipe(
     switchMap<Action, Array<Brand>>(_ => {
       return this.productService.getBrands();
     }),

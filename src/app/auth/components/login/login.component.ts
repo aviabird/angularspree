@@ -1,7 +1,7 @@
 
-import {tap} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { AuthActions } from './../../actions/auth.actions';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
@@ -10,6 +10,9 @@ import { AppState } from '../../../interfaces';
 import { Router, ActivatedRoute } from '@angular/router';
 import { getAuthStatus } from '../../reducers/selectors';
 import { Subscription } from 'rxjs';
+import { ProductService } from '../../../core/services/product.service';
+import { RatingCategory } from '../../../core/models/rating_category';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -28,8 +31,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private actions: AuthActions,
-    private authService: AuthService
-  ) {
+    private authService: AuthService,
+    private productService: ProductService,
+    @Inject(PLATFORM_ID) private platformId: any) {
     this.redirectIfUserLoggedIn();
   }
 
@@ -46,12 +50,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.signInForm.valid) {
       this.loginSubs = this.authService
         .login(values).pipe(
-        tap(_ => _, (user) => {
-          const errors = user.error.error || 'Something went wrong';
-          keys.forEach(val => {
-            this.pushErrorFor(val, errors);
-          });
-        })).subscribe();
+          tap(_ => this.setRatingOptions(), (user) => {
+            const errors = user.error.error || 'Something went wrong';
+            keys.forEach(val => {
+              this.pushErrorFor(val, errors);
+            });
+          })).subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.signInForm.controls[val];
@@ -91,5 +95,30 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   socialLogin(provider: string) {
     this.store.dispatch(this.actions.oAuthLogin(provider));
+  }
+
+  setRatingOptions() {
+    this.productService.getRatingCategories().subscribe((ratingCategory: Array<RatingCategory>) => {
+      const ratingCategories = {}
+      ratingCategory.forEach(element => {
+        ratingCategories[element.code] = element.id;
+      })
+
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('rating_categories', JSON.stringify(ratingCategories))
+        this.getRatingsOptions();
+      }
+    })
+  }
+
+  getRatingsOptions() {
+    if (isPlatformBrowser(this.platformId)) {
+      const ratingCategory = JSON.parse(localStorage.getItem('rating_categories'));
+      if (ratingCategory) {
+        this.productService.getProductRatingOptions(ratingCategory.product).subscribe(resp => {
+          localStorage.setItem('product_rating_options', JSON.stringify(resp))
+        });
+      }
+    }
   }
 }

@@ -43,7 +43,7 @@ export function reducer(state = initialState, { type, payload }: any): ProductSt
       }) as ProductState;
 
     case ProductActions.GET_REVIEWS_SUCCESS:
-      const _productReviews = payload.reviews
+      const _productReviews = payload
       return state.merge({
         productReviews: _productReviews
       }) as ProductState;
