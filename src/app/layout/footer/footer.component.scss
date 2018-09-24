@@ -1,4 +1,5 @@
 @import "../../shared/scss/_selected_theme_variables.scss";
+
 $break-small: 320px;
 footer {
   height: 50px;
@@ -14,10 +15,13 @@ footer {
 }
 .quicklinks {
   padding: 2rem 0;
+  background-color: $theme-main-sub-color2;
+  color: $footer-font-color;
 }
 
 .cpy {
-  border-top: 1px solid $gray-13;
+  color: $footer-font-color;
+  background-color: $theme-main-sub-color4;
 }
 
 .cpy1 {
@@ -39,7 +43,7 @@ footer {
 
 @media screen and (min-width: $break-small) and (max-width: 767px) {
   .quicklinks .row {
-    margin: 0px
+    margin: 0px;
   }
   .cpy1 {
     ul.copy {
