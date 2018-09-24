@@ -8,6 +8,7 @@ import { Order } from './../../core/models/order';
 import { UserService } from './../../user/services/user.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-order-failed',
@@ -20,6 +21,8 @@ export class OrderFailedComponent implements OnInit {
   errorReason: string;
   isMobile = false;
   layoutState$: Observable<LayoutState>;
+  noImageUrl = 'assets/default/no-image-available.jpg';
+  currency = environment.config.currency_symbol;
 
   constructor(
     private userService: UserService,
@@ -47,7 +50,7 @@ export class OrderFailedComponent implements OnInit {
   }
 
   getProductImageUrl(line_item: LineItem) {
-    const image_url = line_item.variant.images[0].small_url;
+    const image_url = line_item.product.images[0] ? line_item.product.images[0].product_url : this.noImageUrl;
     return image_url;
   }
 

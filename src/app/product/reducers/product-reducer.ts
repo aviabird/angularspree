@@ -33,7 +33,6 @@ export function reducer(state = initialState, { type, payload }: any): ProductSt
       const _taxonomies = payload.taxonomies.taxonomies;
       return state.merge({
         taxonomies: _taxonomies,
-        //rootTaxonomyId: payload.taxonomies.taxonomies[0].id,
       }) as ProductState;
 
     case ProductActions.GET_RELATED_PRODUCT_SUCCESS:
@@ -47,6 +46,12 @@ export function reducer(state = initialState, { type, payload }: any): ProductSt
       const _productReviews = payload.reviews
       return state.merge({
         productReviews: _productReviews
+      }) as ProductState;
+
+      case ProductActions.GET_ALL_BRANDS_SUCCESS:
+      const _brands = payload
+      return state.merge({
+        brands: _brands
       }) as ProductState;
 
     default:

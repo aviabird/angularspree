@@ -1,17 +1,17 @@
-<div *ngIf="!isFilterOn" class="catgeory">
-  <ul class="list-group" *ngIf="taxonomiList[1]; let brands_taxonomy">
+<!-- <div class="catgeory">
+  <ul class="list-group" *ngIf="brandsList">
     <h4>Brands</h4>
-    <li *ngFor="let brandItem of brands_taxonomy.root.taxons" (click)="brandFilter(brandItem.name)">
-      <a class="list-group-item list-group-item-action" [routerLink]="['.']" [queryParams]="{'q[name_cont]': brandItem.name, id: brandItem.id}">{{brandItem.name}}</a>
+    <li *ngFor="let brandItem of brandsList" (click)="brandFilter(brandItem.id)">
+      <a class="list-group-item list-group-item-action" [routerLink]="['.']" [queryParams]="{id: brandItem.id}">{{brandItem.name}}</a>
     </li>
   </ul>
-</div>
-<div *ngIf="isFilterOn" class="catgeory">
-  <div *ngIf="taxonomiList.length!=0">
-    <ul class="list-group" *ngIf="taxonomiList; let brands_taxonomy">
+</div> -->
+<div *ngIf="true" class="catgeory">
+  <div *ngIf="brandsList.length!=0">
+    <ul class="list-group" *ngIf="brandsList">
       <h4>Brands</h4>
-      <li *ngFor="let brandItem of brands_taxonomy" (click)="brandFilter(brandItem.name)">
-        <a class="list-group-item list-group-item-action" [routerLink]="['.']" [queryParams]="{'q[name_cont]': brandItem.name, id: brandItem.id}">{{brandItem.name}}</a>
+      <li *ngFor="let brandItem of brandsList" (click)="brandFilter(brandItem.name)">
+        <a class="list-group-item list-group-item-action" [routerLink]="['.']" [queryParams]="{product_brand: brandItem.id}">{{brandItem.name}}</a>
       </li>
     </ul>
   </div>

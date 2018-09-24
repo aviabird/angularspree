@@ -53,7 +53,7 @@ export class SearchActions {
     };
   }
 
-  getproductsByKeyword(keyword: string) {
+  getproductsByKeyword(keyword: any) {
     return {
       type: SearchActions.GET_PRODUCTS_BY_KEYWORD,
       payload: keyword

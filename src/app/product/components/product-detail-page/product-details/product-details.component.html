@@ -7,8 +7,8 @@
         </app-image-container>
       </div>
       <div class="col-md-7 col-12">
-        <app-product-price-info [brand]="brand" [product]="product" (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
-          (selectedVariant)="selectVariant($event)" class="row">
+        <app-product-price-info [brand]="brand" [product]="product" (onAddToCart)="addToCart($event)"
+          (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
       </div>
     </div>
@@ -47,7 +47,6 @@
   <div class="container">
     <!-- <app-product-review [product]="product" [reviewList]='reviewProducts$ | async'></app-product-review> -->
   </div>
-
 </div>
 <div *ngIf="isMobile" class="bg">
   <div class="container p-0">
@@ -88,8 +87,8 @@
         </app-image-container>
       </div>
       <div class="col-md-7 col-12 p-0 p-sm-0">
-        <app-product-price-info [product]="product" [isMobile]='isMobile' (onAddToCart)="addToCart($event)" (onMarkAsFavorites)="markAsFavorite()"
-          (selectedVariant)="selectVariant($event)" class="row">
+        <app-product-price-info [product]="product" [isMobile]='isMobile' (onAddToCart)="addToCart($event)"
+          (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectVariant($event)" class="row">
         </app-product-price-info>
       </div>
     </div>
@@ -100,7 +99,7 @@
         <h2>
           Related products
         </h2>
-        <app-product-slider [productsList]="relatedProducts"></app-product-slider>
+        <!-- <app-product-slider [productsList]="relatedProducts"></app-product-slider> -->
       </div>
     </div>
   </div>
@@ -121,11 +120,11 @@
         <h2>
           Similar products
         </h2>
-        <app-product-slider [productsList]="similarProducts"></app-product-slider>
+        <!-- <app-product-slider [productsList]="similarProducts"></app-product-slider> -->
       </div>
     </div>
   </div>
   <div class="container">
-    <app-product-review [product]="product" [isMobile]='isMobile' [reviewList]='reviewProducts$ | async'></app-product-review>
+    <!-- <app-product-review [product]="product" [isMobile]='isMobile' [reviewList]='reviewProducts$ | async'></app-product-review> -->
   </div>
 </div>

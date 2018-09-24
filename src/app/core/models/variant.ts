@@ -1,5 +1,6 @@
 import { Image } from './image';
 import { OptionValue } from './option_value';
+import { Price } from './price';
 /*
  * Product model
  * Detailed info http://guides.spreecommerce.org/developer/products.html#variants
@@ -30,6 +31,6 @@ export class Variant {
   is_orderable: boolean;
   images: Image[];
   options: any;
-  selling_price: Object;
-  max_retail_price: Object;
+  selling_price: Price;
+  max_retail_price: Price;
 }

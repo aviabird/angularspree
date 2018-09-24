@@ -9,8 +9,7 @@ import { UserService } from './../../user/services/user.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { CheckoutActions } from '../actions/checkout.actions';
-import { CheckoutService } from '../../core/services/checkout.service';
+
 
 @Component({
   selector: 'app-order-success',

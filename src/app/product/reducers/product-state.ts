@@ -9,6 +9,7 @@ import { Taxonomy } from './../../core/models/taxonomy';
 
 import { Product } from './../../core/models/product';
 import { Map, Record, List } from 'immutable';
+import { Brand } from '../../core/models/brand';
 
 export interface ProductState extends Map<string, any> {
   productIds: List<number>;
@@ -20,6 +21,7 @@ export interface ProductState extends Map<string, any> {
   relatedProducts: List<Product>;
   productReviews: List<any>;
   rootTaxonomyId: number;
+  brands: List<Brand>;
 }
 
 export const ProductStateRecord = Record({
@@ -31,5 +33,6 @@ export const ProductStateRecord = Record({
   showAllProducts: List([]),
   relatedProducts: List([]),
   productReviews: List([]),
-  rootTaxonomyId: 0
+  rootTaxonomyId: 0,
+  brands: List([])
 });
