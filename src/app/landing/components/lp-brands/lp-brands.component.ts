@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Brand } from '../../../core/models/brand';
 
 @Component({
   selector: 'app-lp-brands',
@@ -7,16 +8,15 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LpBrandsComponent implements OnInit {
-  @Input() brands;
-  image = 'assets/default/no-image-available.jpg'
+  @Input() brands: Array<Brand>;
+  imageUrl = 'assets/default/no-image-available.jpg'
+
   constructor() { }
 
   ngOnInit() {
   }
 
   getBrandImageUrl(url) {
-    if (url) {
-      return url;
-    } else { return this.image }
+    return url || this.imageUrl;
   }
 }

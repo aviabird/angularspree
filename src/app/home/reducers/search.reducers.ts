@@ -45,11 +45,9 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
       }) as SearchState;
 
     case SearchActions.GET_PRODUCTS_BY_KEYWORD_SUCCESS:
-      const productsByKeyword: Product[] = payload.products;
-      const paginationData = payload.pagination;
+      const _productsByKeyword: Product[] = payload;
       return state.merge({
-        productsByKeyword: productsByKeyword,
-        paginationData: paginationData || {}
+        productsByKeyword: _productsByKeyword,
       }) as SearchState;
 
     case SearchActions.GET_CHILD_TAXONS_SUCCESS:

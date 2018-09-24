@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import { Subscription, Observable } from 'rxjs';
 import { CheckoutService } from './core/services/checkout.service';
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
 import { AuthActions } from './auth/actions/auth.actions';

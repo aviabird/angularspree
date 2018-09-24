@@ -38,9 +38,8 @@ export class AddressesComponent implements OnInit {
   buildAddressParams() {
     return this.selectedAddress;
   }
+  
   addressEditedDone() {
     this.isEditAddrPressed = false;
   }
-  
-  
 }

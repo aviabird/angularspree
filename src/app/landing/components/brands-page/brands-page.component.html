@@ -1,5 +1,4 @@
-
-<div class="container my-3">
-  <app-lp-brands [brands]="brands$ | async"></app-lp-brands>
+<div class="container my-3" *ngIf="brands$ | async ; let brandsList" >
+  <app-lp-brands [brands]="brandsList"></app-lp-brands>
 </div>
 

@@ -5,10 +5,7 @@ import { Injectable } from '@angular/core';
 import { Address } from '../../../core/models/address';
 import { map, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../../interfaces';
 import { Order } from '../../../core/models/order';
-import { CheckoutActions } from '../../actions/checkout.actions';
 import { User } from '../../../core/models/user';
 
 @Injectable()
@@ -33,31 +30,6 @@ export class AddressService {
     });
   }
 
-  initEmailForm() {
-    return this.fb.group({
-      email: ['', Validators.required]
-    });
-  }
-
-  createAddresAttributes(address) {
-    return {
-      order: {
-        bill_address_attributes: address,
-        ship_address_attributes: address
-      }
-    };
-  }
-
-  createGuestAddressAttributes(address, email) {
-    return {
-      order: {
-        email: email,
-        bill_address_attributes: address,
-        ship_address_attributes: address
-      }
-    };
-  }
-
   saveUserAddress(address: Address): Observable<Address> {
     const user: User = JSON.parse(localStorage.getItem('user'))
     const params = this.buildAddressJson(address, user.id);
@@ -79,7 +51,7 @@ export class AddressService {
     )
   }
 
-  buildAddressJson(address: Address, userId: string) {
+  private buildAddressJson(address: Address, userId: string) {
     const params = {
       'data':
       {
@@ -101,7 +73,7 @@ export class AddressService {
     return params;
   }
 
-  buildSelectAddressJson(orderId: number, shipAddress: Address) {
+  private buildSelectAddressJson(orderId: number, shipAddress: Address) {
     const params = {
       data: {
         'id': orderId,

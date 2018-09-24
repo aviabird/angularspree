@@ -4,6 +4,7 @@ import { VariantRetriverService } from './../../../../core/services/variant-retr
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
 import { Taxon } from '../../../../core/models/taxon';
 import { isPlatformBrowser } from '@angular/common';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-product-price-info',
@@ -28,6 +29,7 @@ export class ProductPriceInfoComponent implements OnInit {
   variantId: any;
   selectedVariantPrice: any;
   isOrderable: boolean;
+  currency =  environment.config.currency_symbol;
 
   constructor(private variantParser: VariantParserService,
     @Inject(PLATFORM_ID) private platformId: any
@@ -63,7 +65,7 @@ export class ProductPriceInfoComponent implements OnInit {
     const newVariant: Variant = result.variant;
     this.variantId = newVariant.id;
     this.description = newVariant.description;
-    // this.images = newVariant.images;
+    this.images = newVariant.images;
     this.getSelectedVariant(result.variant);
     this.isOrderable = true;
     this.product.max_retail_price = newVariant.max_retail_price;

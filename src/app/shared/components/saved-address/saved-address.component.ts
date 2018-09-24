@@ -9,8 +9,8 @@ import { Address } from '../../../core/models/address';
 export class SavedAddressComponent implements OnInit {
 
   @Input() addressList;
-  showDeliverHere: boolean;
   selectedIndex: number;
+
   @Output() getSelectedAddress = new EventEmitter<Object>();
   constructor() { }
 
@@ -19,11 +19,6 @@ export class SavedAddressComponent implements OnInit {
 
   editAddress(selectedAddress) {
     // this.isEditButtonPressed.emit({ address: selectedAddress, isEditButtonPressed: true })
-  }
-
-  selectedAddress(index: number) {
-    this.showDeliverHere = true;
-    this.selectedIndex = index;
   }
 
   selectedDeliveryAddress(address: Address) {

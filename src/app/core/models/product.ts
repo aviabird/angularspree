@@ -10,6 +10,7 @@ import { ProductProperty } from './product_property';
 import { Variant } from './variant';
 import { OptionValue } from './option_value';
 import { Image } from './image';
+import { Price } from './price';
 
 export class Product {
   id: number;
@@ -35,8 +36,8 @@ export class Product {
   reviews_count: number;
   product_url?: string;
   currency: string;
-  selling_price: Object;
-  max_retail_price: Object;
+  selling_price: Price;
+  max_retail_price: Price;
   options: OptionValue[];
   images: Image[];
 

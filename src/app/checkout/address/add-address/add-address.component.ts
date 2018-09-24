@@ -51,16 +51,16 @@ export class AddAddressComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const address = this.addressForm.value;
-    for (const state of this.states) {
-      if (state.name === address.state_name) {
-        address['state_id'] = state.id;
-        address['country_id'] = this.countryId;
-        address['state_name'] = state.name;
-        break;
-      }
-    }
-
     if (this.addressForm.valid) {
+      for (const state of this.states) {
+        if (state.name === address.state_name) {
+          address['state_id'] = state.id;
+          address['country_id'] = this.countryId;
+          address['state_name'] = state.name;
+          break;
+        }
+      }
+
       if (this.addressEdit != null) {
         if (this.isAuthenticated) {
 

@@ -3,8 +3,8 @@ import { AppState } from './../../../../interfaces';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { URLSearchParams } from '@angular/http'
 import { Subscription } from 'rxjs';
+import { Brand } from '../../../../core/models/brand';
 
 @Component({
   selector: 'app-brand-menu-dropdown',
@@ -13,30 +13,18 @@ import { Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrandMenuDropdownComponent implements OnInit, OnDestroy {
-  @Input() taxonomies;
+  @Input() brands: Array<Brand>;
   queryParams: any;
   isOpen: any;
   subscriptionList$: Array<Subscription> = [];
   constructor(
     private route: ActivatedRoute,
     private searchActions: SearchActions,
-    private store: Store<AppState>) {
-    this.subscriptionList$.push(
-      this.route.queryParams
-        .subscribe(params => {
-          this.queryParams = params
-        })
-    );
-  }
+    private store: Store<AppState>) {}
 
   ngOnInit() {
   }
 
-  getBrands() {
-    const search = new URLSearchParams();
-    search.set('id', this.queryParams.id);
-    this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()));
-  }
   onOpenChange(data: boolean): void {
     this.isOpen = !this.isOpen;
   }

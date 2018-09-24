@@ -8,27 +8,24 @@ import { isPlatformBrowser } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContentHeaderComponent implements OnInit {
-  @Input() paginationInfo;
-  @Input() fillterList;
+  // @Input() paginationInfo;
+  // @Input() fillterList;
   subselectedItem;
   childselectedItem;
   screenWidth: any;
+  searchedKeyword: string;
 
   options = [
     { name: 'Newest', value: 1 },
-    { name: 'Avg.Customer Review', value: 2 },
-    { name: 'Most Reviews', value: 3 },
-    { name: 'A To Z', value: 4 },
-    { name: 'Z To A', value: 5 },
-    { name: 'Relevence', value: 6 }
+    { name: 'A To Z', value: 2 },
+    { name: 'Z To A', value: 3 },
+    { name: 'Relevence', value: 4 }
   ]
 
   queryMap = {
-    Newest: 'updated_at+asc',
-    'Avg.Customer Review': 'avg_rating+desc',
-    'Most Reviews': 'reviews_count+desc',
-    'A To Z': 'name+asc',
-    'Z To A': 'name+desc',
+    Newest: 'date',
+    'A To Z': 'A-Z',
+    'Z To A': 'Z-A',
     Relevance: '',
   }
 
@@ -41,12 +38,22 @@ export class ContentHeaderComponent implements OnInit {
   defaultselectedEntry = 'Relevance';
   constructor(private routernomal: Router, @Inject(PLATFORM_ID) private platformId: any) { }
 
+  ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      if (window.screen.width <= 768) {
+        this.screenWidth = window.screen.width;
+      }
+      this.searchedKeyword = JSON.stringify(localStorage.getItem('keyword'));
+    }
+  }
+
   sortModalShow() { this.issortModalShown = true; }
   sortModalhide() { this.issortModalShown = false; }
 
   filterModalShow() {
     this.isfilterModalShown = true;
   }
+
   filterModalhide() {
     this.isfilterModalShown = false;
   }
@@ -58,21 +65,15 @@ export class ContentHeaderComponent implements OnInit {
     this.selectedOption = entry;
   }
 
-  ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      if (window.screen.width <= 768) {
-        this.screenWidth = window.screen.width;
-      }
-    }
-  }
-
   fltermodelstate(flag) {
     this.isfilterModalShown = flag;
   }
+
   selectedInput(newVal) {
     this.subselectedItem = newVal;
 
   }
+
   childselectedInput(newVal) {
     this.childselectedItem = newVal;
 
@@ -80,11 +81,13 @@ export class ContentHeaderComponent implements OnInit {
 
   sortFilter(i) {
     const urlTree = this.routernomal.createUrlTree([], {
-      queryParams: { 'q[s]': this.queryMap[i] },
+      queryParams: { 'sort': this.queryMap[i] },
       queryParamsHandling: 'merge',
       preserveFragment: true,
     });
     this.routernomal.navigateByUrl(urlTree);
     this.selectedOption = i;
   }
+
+
 }

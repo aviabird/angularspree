@@ -38,6 +38,10 @@ const fetchRootTaxonId = function (state: ProductState) {
   return state.rootTaxonomyId;
 };
 
+const fetchBrands = function (state: ProductState) {
+  return state.brands.toJS();
+};
+
 // *************************** PUBLIC API's ****************************
 export const getSelectedProduct = createSelector(getProductState, fetchSelectedProduct);
 export const getProducts = createSelector(getProductState, fetchProducts);
@@ -46,4 +50,5 @@ export const showAllProducts = createSelector(getProductState, fetchAllProductSe
 export const relatedProducts = createSelector(getProductState, fetchReletedProducts);
 export const productReviews = createSelector(getProductState, fetchProductReviews);
 export const rootTaxonomyId = createSelector(getProductState, fetchRootTaxonId);
+export const getBrands = createSelector(getProductState, fetchBrands);
 

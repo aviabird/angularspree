@@ -19,6 +19,7 @@ export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
   subnav: boolean;
   isOpen: boolean;
   subList$: Array<Subscription> = [];
+  isScrolled: false;
 
   constructor(
     private authService: AuthService,
