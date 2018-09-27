@@ -42,6 +42,13 @@ const fetchBrands = function (state: ProductState) {
   return state.brands.toJS();
 };
 
+const fetchProductRatingOptions = function (state: ProductState) {
+  return state.productRatingOptions.toJS();
+};
+
+const fetchIsReviewSubmitted = function (state: ProductState) {
+  return state.isReviewSubmitted;
+};
 // *************************** PUBLIC API's ****************************
 export const getSelectedProduct = createSelector(getProductState, fetchSelectedProduct);
 export const getProducts = createSelector(getProductState, fetchProducts);
@@ -51,4 +58,6 @@ export const relatedProducts = createSelector(getProductState, fetchReletedProdu
 export const productReviews = createSelector(getProductState, fetchProductReviews);
 export const rootTaxonomyId = createSelector(getProductState, fetchRootTaxonId);
 export const getBrands = createSelector(getProductState, fetchBrands);
+export const getProductRatingOptions = createSelector(getProductState, fetchProductRatingOptions);
+export const getIsReviewSubmitted = createSelector(getProductState, fetchIsReviewSubmitted);
 

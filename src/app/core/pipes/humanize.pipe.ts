@@ -1,9 +1,8 @@
-import { Pipe } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
-// tslint:disable-next-line:use-pipe-transform-interface
 @Pipe({ name: 'humanize' })
 
-export class HumanizePipe {
+export class HumanizePipe implements PipeTransform {
 
   /**
    *
@@ -15,7 +14,7 @@ export class HumanizePipe {
    */
   transform(value) {
     let updated_val = value;
-    if (typeof(value) === 'string') {
+    if (typeof (value) === 'string') {
       updated_val = value.replace(/\_/g, ' ');
     }
     return updated_val;

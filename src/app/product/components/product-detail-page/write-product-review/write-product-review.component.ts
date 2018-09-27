@@ -4,25 +4,34 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from './../../../../core/services/product.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
 import { getAuthStatus } from '../../../../auth/reducers/selectors';
 import { User } from '../../../../core/models/user';
 import { RatingOption } from '../../../../core/models/rating_option';
+import { getProductRatingOptions, getIsReviewSubmitted } from '../../../reducers/selectors';
+import { Subscription, Observable } from 'rxjs';
+import { ProductActions } from '../../../actions/product-actions';
 
 @Component({
   selector: 'app-write-product-review',
   templateUrl: './write-product-review.component.html',
   styleUrls: ['./write-product-review.component.scss']
 })
-export class WriteProductReviewComponent implements OnInit {
+export class WriteProductReviewComponent implements OnInit, OnDestroy {
   reviewForm: FormGroup;
   queryParams: Object;
   showThanks = false;
   product: Product;
   submitReview = true;
   isAuthenticated: boolean;
+  noImageUrl = 'assets/default/no-image-available.jpg'
+  ratingOptions: Array<RatingOption>;
+  ratingId: string;
+  userInfo: User;
+  subscriptionList$: Array<Subscription> = [];
+  isReviewSubmitted: boolean;
 
   constructor(private fb: FormBuilder,
     private productService: ProductService,
@@ -30,17 +39,16 @@ export class WriteProductReviewComponent implements OnInit {
     private toastrService: ToastrService,
     private router: Router,
     private store: Store<AppState>,
-    @Inject(PLATFORM_ID) private platformId: any) {
-
-    this.store.select(getAuthStatus).subscribe(auth => {
-      this.isAuthenticated = auth;
-    });
-
-  }
+    private productAction: ProductActions,
+    @Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit() {
+    this.subscriptionList$.push(
+      this.store.select(getAuthStatus).subscribe(auth => { this.isAuthenticated = auth })
+    );
+    this.product = this.activeRoute.snapshot.data['product'];    
     this.initForm();
-    this.product = this.activeRoute.snapshot.data['product'];
+    this.userInfo = this.getUserFromLocalStorage();
   }
 
   initForm() {
@@ -54,13 +62,11 @@ export class WriteProductReviewComponent implements OnInit {
         review: [review, Validators.required]
       }
       );
-    } else {
-      this.router.navigate(['auth', 'login'])
-    }
+    } else { this.router.navigate([this.product.slug]) }
   }
 
-  getProductImageUrl(url) {
-    return url;
+  getProductImageUrl() {
+    return this.product.images[0] ? this.product.images[0].product_url : this.noImageUrl;
   }
 
   getUserFromLocalStorage() {
@@ -73,37 +79,31 @@ export class WriteProductReviewComponent implements OnInit {
 
   onSubmit() {
     if (this.reviewForm.valid) {
-      const values = this.reviewForm.value;
-      const params = this.buildReviewJson(values)
-
-      this.productService.submitReview(params)
-        .subscribe(_ => {
-          this.showThanks = true;
-          this.submitReview = false;
-        });
+      const formValues = this.reviewForm.value;
+      const params = this.buildReviewJson(formValues, this.userInfo, this.product.id, this.getRatingId(formValues.rating))
+      this.store.dispatch(this.productAction.writeProductReview(params));
+      this.subscriptionList$.push(
+        this.store.select(getIsReviewSubmitted).subscribe(status => this.isReviewSubmitted = status)
+      );
     } else {
       this.toastrService.error('All fields are rquired', 'Invalid!')
     }
   }
 
-  goToProduct(prodId) {
-    this.router.navigate([prodId])
+  goToProduct(prodSlug) {
+    this.router.navigate([prodSlug])
   }
 
   getRatingId(userRatingValue: number) {
-    const ratingOptions = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('product_rating_options')) : null
-    const ratingOptionArray: Array<RatingOption> = ratingOptions.rating_options;
-    let temp: string;
-    ratingOptionArray.forEach(element => {
-      if (element.value === userRatingValue) {
-        temp = element.id;
-      }
+    this.store.select(getProductRatingOptions)
+      .subscribe(ratingOptionsList => { this.ratingOptions = ratingOptionsList })
+    this.ratingOptions.forEach(element => {
+      if (element.value === userRatingValue) { this.ratingId = element.id }
     })
-    return temp;
+    return this.ratingId;
   }
 
-  buildReviewJson(formData) {
-    const user: User = this.getUserFromLocalStorage();
+  buildReviewJson(formData, user: User, productId: number, ratingId: string) {
     const params = {
       'data': {
         'type': 'reviews',
@@ -121,14 +121,18 @@ export class WriteProductReviewComponent implements OnInit {
             }
           },
           'product': {
-            'data': { 'type': 'products', 'id': this.product.id }
+            'data': { 'type': 'products', 'id': productId }
           },
           'rating_option': {
-            'data': { 'type': 'rating_options', 'id': this.getRatingId(formData.rating) }
+            'data': { 'type': 'rating_options', 'id': ratingId }
           }
         }
       }
     }
     return params;
+  }
+
+  ngOnDestroy() {
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 }

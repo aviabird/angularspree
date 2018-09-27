@@ -1,4 +1,5 @@
 import { User } from '../../core/models/user';
+import { RatingCategory } from '../../core/models/rating_category';
 export class AuthActions {
   static LOGIN = 'LOGIN';
   static LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -13,6 +14,8 @@ export class AuthActions {
   static UPDATE_PASSWORD_SUCCESS = 'UPDATE_PASSWORD_SUCCESS';
   static GET_CURRENT_USER = 'GET_CURRENT_USER';
   static GET_CURRENT_USER_SUCCESS = 'GET_CURRENT_USER_SUCCESS';
+  static GET_RATING_CATEGEORY = 'GET_RATING_CATEGEORY';
+  static GET_RATING_CATEGEORY_SUCCESS = 'GET_RATING_CATEGEORY_SUCCESS';
 
 
   authorize() {
@@ -70,6 +73,19 @@ export class AuthActions {
     return {
       type: AuthActions.GET_CURRENT_USER_SUCCESS,
       payload: user
+    }
+  }
+
+  getRatingCategories() {
+    return {
+      type: AuthActions.GET_RATING_CATEGEORY
+    }
+  }
+
+  getRatingCategoriesSuccess(ratingCategories: Array<RatingCategory>) {
+    return {
+      type: AuthActions.GET_RATING_CATEGEORY_SUCCESS,
+      payload: ratingCategories
     }
   }
 }

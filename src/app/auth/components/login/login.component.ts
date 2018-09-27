@@ -11,8 +11,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { getAuthStatus } from '../../reducers/selectors';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../../../core/services/product.service';
-import { RatingCategory } from '../../../core/models/rating_category';
-import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -50,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.signInForm.valid) {
       this.loginSubs = this.authService
         .login(values).pipe(
-          tap(_ => this.setRatingOptions(), (user) => {
+          tap(_ => _, (user) => {
             const errors = user.error.error || 'Something went wrong';
             keys.forEach(val => {
               this.pushErrorFor(val, errors);
@@ -95,30 +93,5 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   socialLogin(provider: string) {
     this.store.dispatch(this.actions.oAuthLogin(provider));
-  }
-
-  setRatingOptions() {
-    this.productService.getRatingCategories().subscribe((ratingCategory: Array<RatingCategory>) => {
-      const ratingCategories = {}
-      ratingCategory.forEach(element => {
-        ratingCategories[element.code] = element.id;
-      })
-
-      if (isPlatformBrowser(this.platformId)) {
-        localStorage.setItem('rating_categories', JSON.stringify(ratingCategories))
-        this.getRatingsOptions();
-      }
-    })
-  }
-
-  getRatingsOptions() {
-    if (isPlatformBrowser(this.platformId)) {
-      const ratingCategory = JSON.parse(localStorage.getItem('rating_categories'));
-      if (ratingCategory) {
-        this.productService.getProductRatingOptions(ratingCategory.product).subscribe(resp => {
-          localStorage.setItem('product_rating_options', JSON.stringify(resp))
-        });
-      }
-    }
   }
 }

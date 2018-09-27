@@ -152,7 +152,7 @@ export class ProductService {
     );
   }
 
-  submitReview(params: Object) {
+  writeProductReview(params: Object) {
     return this.http.post(`api/v1/reviews`, params)
   }
 
@@ -168,10 +168,6 @@ export class ProductService {
 
   getBrands(): Observable<Array<Brand>> {
     return this.http.get<Array<Brand>>(`api/v1/brands`);
-  }
-
-  getRatingCategories(): Observable<Array<RatingCategory>> {
-    return this.http.get<Array<RatingCategory>>(`api/v1/ratings/`);
   }
 
   getProductRatingOptions(ratingCategoryId: number): Observable<Array<RatingOption>>  {

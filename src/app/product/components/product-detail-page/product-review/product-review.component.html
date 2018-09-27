@@ -16,7 +16,8 @@
         </div>
         <div class="write-review">
         </div>
-        <div class="row rataingpercentage" *ngFor="let rating of ratingOptions.reverse()">
+        <div *ngIf="(ratingOptions$ |async); let ratingOptions">
+        <div class="row rataingpercentage" *ngFor="let rating of ratingOptions | reverse">
           <div class="col-3 col-md-2 col-lg-2 pl-2 pr-0">
             {{rating.value}} Star
           </div>
@@ -37,6 +38,7 @@
             <b *ngIf="productRating.rating_list[rating.value]; let ratingBar else showZero">
               {{ratingBar.value | number:'1.0-0'}}% </b>
           </div>
+        </div>
         </div>
       </div>
       <div class="col-12 col-md-4 offset-md-1 mt-5 pt-5">
@@ -77,7 +79,8 @@
           <div *ngIf="product.reviews">
             <div *ngFor="let item of product.reviews" class="rating-inner">
               <div class="rating-head">
-                <ngx-input-star-rating disabled="true" value="{{item.rating_option_vote.rating_option.value}}" required></ngx-input-star-rating>
+                <ngx-input-star-rating disabled="true" value="{{item.rating_option_vote?.rating_option?.value}}"
+                  required></ngx-input-star-rating>
                 <span class="pl-3">{{item.title}}</span>
               </div>
               <div class="rating-by">
@@ -92,11 +95,11 @@
       </div>
     </div>
   </div>
-  <!-- <div class="cust-reviews" *ngIf="isMobile" id="review">
+  <div class="cust-reviews" *ngIf="isMobile" id="review">
     <h1>Customer Reviews</h1>
     <div class="row">
-      <div class="col-12 col-md-6" *ngIf="reviewList">
-        <div class="avg-review" *ngIf="hasReviews; else noReviews">
+      <div class="col-12 col-md-6">
+        <div class="avg-review" *ngIf="productRating.review_count > 0; else noReviews">
           <div class="row">
             <div class="col-5">
               <div class="review-percentage">
@@ -114,9 +117,9 @@
             </div>
             <div class="review col-7 text-left mb-5 pl-2">
               <p>{{reviewPercent}}% OF REVIEWERS
-                <br> RECOMMEND THIS PRODUCT</p>
-              <ngx-input-star-rating disabled="true" value="{{product.avg_rating}}" required></ngx-input-star-rating>
-              {{product.avg_rating | number:'1.1-1'}} / 5
+                <br>RECOMMEND THIS PRODUCT</p>
+              <ngx-input-star-rating disabled="true" value="{{productRating.average_rating}}" required></ngx-input-star-rating>
+              {{productRating.average_rating | number:'1.1-1'}} / {{reviewsDisplayLimit}}
             </div>
           </div>
           <div class="write-review">
@@ -133,36 +136,30 @@
         </div>
       </ng-template>
     </div>
-    <div class="review-display" *ngIf="reviewList.total_ratings > 0">
+    <div class="review-display" *ngIf="productRating.review_count > 0">
       <div class="row">
         <div class="col-md-8">
           <div class="review-sort-filter mt-1 mb-4">
             <div class="row">
-              <div class="float-left col-md-4 pt-2">Showing {{product.reviews_count }} Reviews</div>
+              <div class="float-left col-md-4 pt-2">Showing {{product?.reviews?.length}} of {{
+                productRating.review_count }} reviews</div>
             </div>
           </div>
-          <div *ngIf="reviewList">
-            <div *ngFor="let item of content" class="rating-inner">
+          <div>
+            <div *ngFor="let item of product.reviews" class="rating-inner">
               <div class="rating-head">
-                <ngx-input-star-rating disabled="true" value="{{item.rating }}" required></ngx-input-star-rating>
+                <ngx-input-star-rating disabled="true" value="{{item.rating_option_vote?.rating_option?.value}}"
+                  required></ngx-input-star-rating>
                 <span class="pl-3">{{item.title}}</span>
               </div>
               <div class="rating-by">
-                By {{item?.name.split('@')[0]}} on {{item.created_at | date}}
+                By {{item.name}} on {{item.updated_at | date}}
               </div>
-              <p class="description">
-                {{item.review}}
-              </p>
+              <p class="description">{{item.title}}</p>
             </div>
-            <button *ngIf="activeShowMore" class="btn themebtnprimarybasic" (click)="showMore()">
-              Show more
-            </button>
-            <button *ngIf="activeShowLess" class="btn themebtnprimarybasic" (click)="showLess()">
-              Show less
-            </button>
           </div>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </div>

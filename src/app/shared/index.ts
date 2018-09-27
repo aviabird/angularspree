@@ -18,6 +18,7 @@ import { InnerIproductComponent } from './components/product-slider/inner-produc
 // Directives
 import { ZoomableDirective } from './directives/zoomable.directive';
 import { SavedAddressComponent } from './components/saved-address/saved-address.component';
+import { ReversePipe } from '../core/pipes/reverse.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SavedAddressComponent } from './components/saved-address/saved-address.
     // pipes
     KeysPipe,
     HumanizePipe,
+    ReversePipe,
     ZoomableDirective,
     ProductSliderComponent,
     InnerIproductComponent,
@@ -41,6 +43,7 @@ import { SavedAddressComponent } from './components/saved-address/saved-address.
     // pipes
     KeysPipe,
     HumanizePipe,
+    ReversePipe,
     ZoomableDirective,
     ProductSliderComponent,
     SavedAddressComponent,

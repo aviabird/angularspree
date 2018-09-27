@@ -1,4 +1,3 @@
-import { Taxonomy } from './../../core/models/taxonomy';
 import { Product } from './../../core/models/product';
 import { ProductActions } from './../actions/product-actions';
 import { ProductState, ProductStateRecord } from './product-state';
@@ -48,10 +47,22 @@ export function reducer(state = initialState, { type, payload }: any): ProductSt
         productReviews: _productReviews
       }) as ProductState;
 
-      case ProductActions.GET_ALL_BRANDS_SUCCESS:
+    case ProductActions.GET_ALL_BRANDS_SUCCESS:
       const _brands = payload
       return state.merge({
         brands: _brands
+      }) as ProductState;
+
+    case ProductActions.GET_RATING_OPTIONS_SUCCESS:
+      const _productRatingOptions = payload.rating_options
+      return state.merge({
+        productRatingOptions: _productRatingOptions,
+        isReviewSubmitted: false
+      }) as ProductState;
+
+    case ProductActions.WRITE_REVIEW_SUCCESS:
+      return state.merge({
+        isReviewSubmitted: true
       }) as ProductState;
 
     default:
