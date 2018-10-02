@@ -16,7 +16,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Product } from '../core/models/product';
-import { isPlatformBrowser } from '../../../node_modules/@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Taxonomy } from '../core/models/taxonomy';
 import { Brand } from '../core/models/brand';

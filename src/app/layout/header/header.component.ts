@@ -64,6 +64,7 @@ export class HeaderComponent implements OnInit {
     private authActions: AuthActions,
     private searchActions: SearchActions,
     private actions: ProductActions,
+    private authAction: AuthActions,
     private router: Router,
     private modalService: BsModalService,
     private renderer: Renderer2,
@@ -78,10 +79,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch(this.authActions.authorize())
     this.store.dispatch(this.actions.getAllTaxonomies());
-    this.taxonomies$ = this.store.select(getTaxonomies);
     this.store.dispatch(this.actions.getBrands());
+    this.store.dispatch(this.authAction.getRatingCategories());
+    this.isAuthenticated$ = this.store.select(getAuthStatus);
+    this.taxonomies$ = this.store.select(getTaxonomies);
     this.brands$ = this.store.select(getBrands);
+    this.totalCartItems$ = this.store.select(getTotalCartItems);
+
     if (isPlatformBrowser(this.platformId)) {
       if (this.isSearchopen) {
         this.renderer.addClass(document.body, 'issearchopen');
@@ -90,16 +96,11 @@ export class HeaderComponent implements OnInit {
       }
     }
 
-    this.store.dispatch(this.authActions.authorize())
-    this.isAuthenticated$ = this.store.select(getAuthStatus);
-    this.totalCartItems$ = this.store.select(getTotalCartItems);
-
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
     }
     this.isMobile = this.layoutState.isMobileView;
     if (this.isMobile) { this.isScrolled = false; }
-
   }
 
   selectTaxon(taxon) {

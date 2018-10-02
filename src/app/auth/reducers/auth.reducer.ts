@@ -21,6 +21,16 @@ export function reducer(state = initialState, { type, payload }: Action & { payl
         currentUser: _currentUser,
       }) as AuthState;
 
+    case AuthActions.GET_RATING_CATEGEORY_SUCCESS:
+      const ratingCategoryList = payload
+      const _ratingCategories = {}
+      ratingCategoryList.forEach(element => {
+        _ratingCategories[element.code] = element.id;
+      })
+      return state.merge({
+        ratingCategories: _ratingCategories
+      }) as AuthState;
+
     default:
       return state;
   }

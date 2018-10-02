@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="container">
-    <!-- <app-product-review [product]="product" [reviewList]='reviewProducts$ | async'></app-product-review> -->
+    <app-product-review [product]="product"></app-product-review>
   </div>
 </div>
 <div *ngIf="isMobile" class="bg">
@@ -66,9 +66,10 @@
         <div class="product-header-extras col-7 p-0">
           <div class="ugc pr-3">
             <a class="hide-phone js-revScrollTo reviewlink" (click)="scrollToReviewMobile()">
-              <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" class="rating" required></ngx-input-star-rating>
+              <ngx-input-star-rating disabled="true" value="{{product.rating_summary.average_rating }}" class="rating"
+                required></ngx-input-star-rating>
               <span class="rating-count">
-                {{product.reviews_count}}
+                {{product.rating_summary.review_count}}
               </span>
             </a>
           </div>
@@ -125,6 +126,6 @@
     </div>
   </div>
   <div class="container">
-    <!-- <app-product-review [product]="product" [isMobile]='isMobile' [reviewList]='reviewProducts$ | async'></app-product-review> -->
+    <app-product-review [product]="product" [isMobile]='isMobile'></app-product-review>
   </div>
 </div>
