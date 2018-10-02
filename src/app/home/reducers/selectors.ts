@@ -42,6 +42,10 @@ function fetchPaginationData(state: SearchState) {
 function fetchSearchFliterStatus(state: SearchState) {
   return state.searchFilter;
 }
+
+function fetchSearchFliterKeyword(state: SearchState) {
+  return state.searchKeyword;
+}
 /******************* Public Selector API's ******************/
 export const getFilters = createSelector(getSearchState, fetchSelectedFilters);
 export const getSelectedTaxonIds = createSelector(getSearchState, fetchSelectedTaxonIds);
@@ -51,4 +55,5 @@ export const getChildTaxons = createSelector(getSearchState, fetchChildTaxons);
 export const categeoryLevel = createSelector(getSearchState, fetchCategeoryLevel);
 export const taxonomiByName = createSelector(getSearchState, fetchTaxonomiByName);
 export const searchFilterStatus = createSelector(getSearchState, fetchSearchFliterStatus);
+export const searchKeyword = createSelector(getSearchState, fetchSearchFliterKeyword);
 

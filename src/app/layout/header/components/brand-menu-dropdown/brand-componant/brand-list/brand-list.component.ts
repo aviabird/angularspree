@@ -19,4 +19,8 @@ export class BrandListComponent implements OnInit {
   getBrandImageUrl(url) {
     return url || this.imageUrl;
   }
+
+  getBrandName(brandName: string) {
+   localStorage.setItem('keyword', brandName);
+  }
 }

@@ -1,3 +1,3 @@
-<a [routerLink]="['/search']" [queryParams]="{product_brand: brand.id}">
+<a [routerLink]="['/search']" [queryParams]="{product_brand: brand.id}" (click)=getBrandName(brand.name)>
   <img [src]="getBrandImageUrl(brand.image_url)" class="img-fit">
 </a>

@@ -48,6 +48,7 @@ export function reducer(state = initialState, { type, payload }: any): SearchSta
       const _productsByKeyword: Product[] = payload;
       return state.merge({
         productsByKeyword: _productsByKeyword,
+        searchKeyword: localStorage.getItem('keyword')
       }) as SearchState;
 
     case SearchActions.GET_CHILD_TAXONS_SUCCESS:

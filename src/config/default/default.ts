@@ -3,8 +3,8 @@ import { DEFAULT_META_DATA } from './meta-data';
 
 export const DEFAULT_CONFIG = {
   // Add Your custom configs hereh
-  prodApiEndpoint: 'http://18.130.150.22:3000/',
-  frontEndUrl: 'https://angularspree.firebaseapp.com/',
+  prodApiEndpoint: 'https://api.aviacommerce.org/',
+  frontEndUrl: 'https://test-aviacommerce.netlify.com/',
   appName: 'Angularspree',
   fevicon: 'https://via.placeholder.com/350x150',
   header: {
@@ -14,7 +14,7 @@ export const DEFAULT_CONFIG = {
       height: '42',
       width: '140'
     },
-    searchPlaceholder: 'Find good furniture for me',
+    searchPlaceholder: 'Search for prducts',
     showGithubRibon: false
   },
   showDummyCardInfo: true,
