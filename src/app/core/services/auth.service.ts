@@ -11,6 +11,7 @@ import { HttpRequest } from '@angular/common/http/src/request';
 import { ToastrService, ActiveToast } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
 import { User } from '../models/user';
+import { RatingCategory } from '../models/rating_category';
 
 
 @Injectable()
@@ -42,7 +43,7 @@ export class AuthService {
    */
 
   login({ email, password }): Observable<any> {
-    const params = { data: { attributes: { email, password } } };
+    const params = { data: { attributes: { 'email': email, 'password': password } } };
     return this.http.post<User>('api/v1/login', params).pipe(
       map(user => {
         this.setTokenInLocalStorage(user, 'user');
@@ -222,5 +223,9 @@ export class AuthService {
     } else {
       return null;
     }
+  }
+
+  getRatingCategories(): Observable<Array<RatingCategory>> {
+    return this.http.get<Array<RatingCategory>>(`api/v1/ratings/`);
   }
 }

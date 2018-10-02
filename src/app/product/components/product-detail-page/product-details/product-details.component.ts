@@ -1,6 +1,6 @@
-import { relatedProducts, productReviews } from './../../../reducers/selectors';
+import { relatedProducts, productReviews} from './../../../reducers/selectors';
 import { ProductActions } from './../../../actions/product-actions';
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 import { getProductsByKeyword } from './../../../../home/reducers/selectors';
 import { SearchActions } from './../../../../home/reducers/search.actions';
 import { ToastrService } from 'ngx-toastr';
@@ -35,11 +35,10 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class ProductDetailsComponent implements OnInit {
   @Input() product: Product;
-
   description: any;
   images: any;
   variantId: any;
-  productID: any;
+  productId: number;
   isMobile = false;
   screenwidth: any;
   isAuthenticated: boolean;
@@ -54,6 +53,7 @@ export class ProductDetailsComponent implements OnInit {
   isCodAvilable$: Observable<any>;
   linesItems: any
   noImageUrl = 'assets/default/no-image-available.jpg'
+  ratingCategories1$: Observable<Object>;
 
   constructor(
     private checkoutActions: CheckoutActions,
@@ -77,10 +77,6 @@ export class ProductDetailsComponent implements OnInit {
     this.calculateInnerWidth();
     this.addMetaInfo(this.product);
     this.initData();
-    // this.store.dispatch(this.productsActions.getRelatedProduct(this.productID));
-    // this.relatedProducts$ = this.store.select(relatedProducts);
-    // this.store.dispatch(this.productsActions.getProductReviews(this.productID));
-    // this.reviewProducts$ = this.store.select(productReviews);
     // this.findBrand();
     // this.addJsonLD(this.product);
   }
@@ -88,19 +84,19 @@ export class ProductDetailsComponent implements OnInit {
   initData() {
     if (this.product.variants.length) {
       const product = this.product.variants[0];
-      this.images = product.images;
+      this.images = product.images ? product.images : this.imagesPlaceHolder(this.noImageUrl);
       this.description = product.description;
       this.product.name = product.name;
       this.variantId = product.id;
       this.selectedVariant = product;
-      this.productID = this.product.id;
+      this.productId = this.product.id;
       this.product.selling_price = product.selling_price;
       this.product.max_retail_price = product.max_retail_price;
     } else {
-      this.images = this.product.images;
+      this.images = this.product.images.length ? this.product.images : this.imagesPlaceHolder(this.noImageUrl);
       this.description = this.product.description;
       this.variantId = this.product.id;
-      this.productID = this.product.id;
+      this.productId = this.product.id;
       this.selectedVariant = this.product.variants[0];
     }
 
@@ -142,15 +138,11 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  markAsFavorite() {
-    this.productService.markAsFavorite(this.product.id).subscribe(res => {
-      this.toastrService.info(res['message'], 'info');
-    });
-  }
+  markAsFavorite() {}
 
   showReviewForm() {
     this.router.navigate([this.product.slug, 'write_review'], {
-      queryParams: { prodId: this.productID }
+      queryParams: { prodId: this.productId }
     });
   }
 
@@ -195,8 +187,8 @@ export class ProductDetailsComponent implements OnInit {
       },
       'aggregateRating': {
         '@type': 'AggregateRating',
-        'ratingValue': product.avg_rating,
-        'reviewCount': `${product.reviews_count}`,
+        'ratingValue': product.rating_summary.average_rating,
+        'reviewCount': `${product.rating_summary.review_count}`,
         'bestRating': '5',
         'worstRating': '0'
       },

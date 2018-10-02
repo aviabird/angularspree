@@ -7,6 +7,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { AuthActions } from '../actions/auth.actions';
 import { Observable } from 'rxjs';
 import { CheckoutActions } from '../../checkout/actions/checkout.actions';
+import { RatingCategory } from '../../core/models/rating_category';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -43,6 +44,16 @@ export class AuthenticationEffects {
     .pipe(
       map(_ => this.checkoutActions.orderCompleteSuccess())
     );
+
+  // ToDo
+  // Needs to move in seprate effects.
+  @Effect()
+  GetRatingCategories$ = this.actions$.ofType(AuthActions.GET_RATING_CATEGEORY).pipe(
+    switchMap<Action, Array<RatingCategory>>(_ => {
+      return this.authService.getRatingCategories();
+    }),
+    map(ratingCategory => this.authActions.getRatingCategoriesSuccess(ratingCategory))
+  );
 
   constructor(
     private actions$: Actions,
