@@ -18,11 +18,7 @@ export class ResponseInterceptor implements HttpInterceptor {
 
   }
 
-  private modifyBody({body: body, url: url}) {
-    if (!url.match(/3000/)) {
-      return body;
-    }
-
+  private modifyBody({ body: body, url: url }) {
     return body ? deserialize(body) : body;
   }
 }

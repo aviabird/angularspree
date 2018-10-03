@@ -5,6 +5,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, Inject, PLATFORM_ID 
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../../environments/environment';
 import { isPlatformBrowser } from '@angular/common';
+import { Product } from '../../../core/models/product';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -20,6 +21,8 @@ export class ProductListComponent implements OnInit {
   isMobile;
   appConfig = environment.config;
   currency = environment.config.currency_symbol;
+  noImageUrl = 'assets/default/no-image-available.jpg';
+  
   constructor(
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
@@ -38,10 +41,15 @@ export class ProductListComponent implements OnInit {
     }
     this.calculateInnerWidth();
   }
+
   calculateInnerWidth() {
     if (this.screenwidth <= 1000) {
       this.isMobile = this.screenwidth;
     }
+  }
+
+  getImage(product: Product) {
+    return product.images[0] ? product.images[0].product_url : this.noImageUrl;
   }
 
   // pageChanged(event: any): void {
@@ -53,5 +61,5 @@ export class ProductListComponent implements OnInit {
   //   });
   //   this.routernomal.navigateByUrl(urlTree);
   // }
-  
+
 }

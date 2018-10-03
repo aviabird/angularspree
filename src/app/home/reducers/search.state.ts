@@ -21,6 +21,7 @@ export interface SearchState extends Map<string, any> {
   categeoryLevel: List<any>;
   taxonomiByName: List<any>;
   paginationData: Map<string, any>;
+  searchKeyword: String;
   searchFilter: boolean;
 }
 
@@ -32,5 +33,6 @@ export const SearchStateRecord = Record({
   categeoryLevel: List([]),
   taxonomiByName: List([]),
   paginationData: Map({}),
+  searchKeyword: '',
   searchFilter: false
 });
