@@ -1,6 +1,6 @@
 <div *ngIf="product">
   <a itemprop="url" [routerLink]="['/', product.slug]" class="product-base p-1 d-block">
-    <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="product.images[0].product_url">
+    <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product)">
     <div class="product-productMetaInfo">
       <div class="morechoices">
         More Choices Available
@@ -15,7 +15,7 @@
         </span>
       </div>
       <div class="ngrating">
-        <ngx-input-star-rating disabled="true" [value]="5"></ngx-input-star-rating>
+        <ngx-input-star-rating disabled="true" [value]="product.rating_summary.average_rating"></ngx-input-star-rating>
       </div>
       <small class="shipping">
         FREE 1-2 day shipping over {{currency}} {{appConfig.freeShippingAmount}}

@@ -1,6 +1,10 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../interfaces';
+import { searchKeyword } from '../../reducers/selectors';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-content-header',
   templateUrl: './content-header.component.html',
@@ -13,7 +17,7 @@ export class ContentHeaderComponent implements OnInit {
   subselectedItem;
   childselectedItem;
   screenWidth: any;
-  searchedKeyword: string;
+  searchKeyword$: Observable<String>;
 
   options = [
     { name: 'Newest', value: 1 },
@@ -36,15 +40,17 @@ export class ContentHeaderComponent implements OnInit {
   isfilterModalShown;
   issortModalShown
   defaultselectedEntry = 'Relevance';
-  constructor(private routernomal: Router, @Inject(PLATFORM_ID) private platformId: any) { }
+  constructor(private routernomal: Router,
+    private store: Store<AppState>, 
+    @Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       if (window.screen.width <= 768) {
         this.screenWidth = window.screen.width;
       }
-      this.searchedKeyword = JSON.stringify(localStorage.getItem('keyword'));
     }
+    this.searchKeyword$ =  this.store.select(searchKeyword);
   }
 
   sortModalShow() { this.issortModalShown = true; }

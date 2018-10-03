@@ -12,13 +12,14 @@ export class ProductListItemComponent implements OnInit {
   @Input() product: Product;
   appConfig = environment.config;
   currency = environment.config.currency_symbol;
+  noImageUrl = 'assets/default/no-image-available.jpg';
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  getProductImageUrl(url) {
-    return url;
+  getProductImageUrl(product: Product) {
+    return product.images[0] ? product.images[0].product_url : this.noImageUrl;
   }
 }
