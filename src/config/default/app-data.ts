@@ -1,4 +1,4 @@
-const cdn_url = 'https://res.cloudinary.com/aviabird/image/upload/h_500/v1538744730/aviacommerce/';
+const cdn_url = 'https://res.cloudinary.com/aviabird/image/upload/h_500/v1538746481/aviacommerce/';
 
 export const DEFAULT_APP_DATA = {
   landing_page_banner: [
