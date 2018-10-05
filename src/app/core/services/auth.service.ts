@@ -42,7 +42,7 @@ export class AuthService {
    * @memberof AuthService
    */
 
-  login({ email, password }): Observable<any> {
+  login({ email, password }): Observable<User> {
     const params = { data: { attributes: { 'email': email, 'password': password } } };
     return this.http.post<User>('api/v1/login', params).pipe(
       map(user => {
@@ -174,9 +174,13 @@ export class AuthService {
       return new HttpHeaders({
         'Content-Type': 'application/vnd.api+json',
         'Authorization': `Bearer ${this.getUserToken()}`,
+        'Accept': '*/*'
       });
     } else {
-      return new HttpHeaders({ 'Content-Type': 'application/vnd.api+json' });
+      return new HttpHeaders({
+        'Content-Type': 'application/vnd.api+json',
+        'Accept': '*/*'
+      });
     }
 
   }
