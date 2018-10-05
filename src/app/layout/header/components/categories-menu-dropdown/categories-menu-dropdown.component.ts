@@ -84,17 +84,21 @@ export class CategoriesMenuDropdownComponent implements OnInit, OnDestroy {
       this.menuTaxons = this.taxonomies[0].root.taxons[i];
     }
   }
+
   backtolist() {
     this.show = !this.show;
   }
+
   getCategeory() {
     const search = new URLSearchParams();
     search.set('id', this.queryParams.id);
     this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()))
   }
+
   childCatLoaded(status) {
     this.backBtnShow = status;
   }
+
   onOpenChange(data: boolean): void {
     if (typeof this.taxonomies[0].root !== 'undefined') {
       this.isOpen = !this.isOpen;
