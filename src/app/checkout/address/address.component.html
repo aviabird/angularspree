@@ -8,16 +8,15 @@
 					</span>
 					<br>
 					<div class="reviewlink">
-					<strong (click)=changeAddress()>
-						Change
-					</strong>
-				</div>
+						<strong (click)=changeAddress()>
+							Change
+						</strong>
+					</div>
 				</div>
 				<app-delivery-address (click)="userAddressEdit(shipAddress)" [address]="shipAddress"></app-delivery-address>
 			</div>
-			<div class="right col-12 col-md-4 col-lg-4 m-0 ">
-				<app-delivery-options></app-delivery-options>
-				<button (click)="checkoutToPayment()" class="btn themebtnprimary">continue to payment</button>
+			<div class="right col-12 col-md-4 col-lg-4 m-0">
+				<app-delivery-options (onCheckoutToPayment)="checkoutToPayment()"></app-delivery-options>
 			</div>
 		</div>
 	</div>
@@ -28,16 +27,11 @@
 					+ ADD A NEW ADDRESS
 				</span>
 			</div>
-			<app-add-address [addressEdit]="null" 
-				*ngIf="isAddNewAddress" 
-				(cancelAddress)="cancelAddress($event)" 
-				[countries]="(this.countries$ | async)">
+			<app-add-address [addressEdit]="null" *ngIf="isAddNewAddress" (cancelAddress)="cancelAddress($event)" [countries]="(this.countries$ | async)">
 			</app-add-address>
 		</div>
 		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0" *ngIf="userAddresses$ | async; let userAddresses">
-			<app-saved-address *ngIf="userAddresses.length > 0" 
-				[addressList]="userAddresses" 
-				(getSelectedAddress)="getSelectedAddress($event)">
+			<app-saved-address *ngIf="userAddresses.length > 0" [addressList]="userAddresses" (getSelectedAddress)="getSelectedAddress($event)">
 			</app-saved-address>
 		</div>
 	</div>

@@ -6,10 +6,11 @@ import {
   getShipTotal,
   getItemTotal,
   getAdjustmentTotal,
+  getOrderState,
 } from './../../reducers/selectors';
 import { Observable, Subscription } from 'rxjs';
 import { CheckoutService } from './../../../core/services/checkout.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -18,6 +19,7 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./delivery-options.component.scss']
 })
 export class DeliveryOptionsComponent implements OnInit, OnDestroy {
+  @Output() onCheckoutToPayment = new EventEmitter<boolean>();
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
   itemTotal$: Observable<number>;
@@ -26,6 +28,8 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   currency = environment.config.currency_symbol;
   freeShippingAmount = environment.config.freeShippingAmount
   orderSub$: Subscription;
+  orderState$: Observable<string>;
+
 
   constructor(
     private checkoutService: CheckoutService,
@@ -39,11 +43,16 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
         this.shipTotal$ = this.store.select(getShipTotal);
         this.itemTotal$ = this.store.select(getItemTotal);
         this.adjustmentTotal$ = this.store.select(getAdjustmentTotal);
+        this.orderState$ = this.store.select(getOrderState);
       });
 
   }
 
   ngOnDestroy() {
     this.orderSub$.unsubscribe();
+  }
+
+  checkoutToPayment() {
+    this.onCheckoutToPayment.emit();
   }
 }
