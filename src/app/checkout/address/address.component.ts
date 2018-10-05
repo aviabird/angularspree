@@ -2,18 +2,20 @@ import { getOrderId, getOrderNumber } from './../reducers/selectors';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Address } from './../../core/models/address';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { UserActions } from '../../user/actions/user.actions';
 import { getUserAddressess, getCountries } from '../../user/reducers/selector';
 import { Country } from '../../core/models/country';
 import { CheckoutActions } from '../actions/checkout.actions';
 import { Router } from '@angular/router';
+import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
 
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.scss'],
+  animations: [fadeInAnimation],
 })
 export class AddressComponent implements OnInit, OnDestroy {
   stateSub$: Subscription;
@@ -28,6 +30,9 @@ export class AddressComponent implements OnInit, OnDestroy {
   countries$: Observable<Country[]>;
   subscriptionList$: Array<Subscription> = [];
   orderNumber$: Observable<string>;
+  @HostBinding('@fadeInAnimation')
+  public animatePage = true;
+
 
   constructor(private store: Store<AppState>,
     private userActions: UserActions,
