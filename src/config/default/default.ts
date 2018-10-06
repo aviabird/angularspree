@@ -2,8 +2,8 @@ import { DEFAULT_APP_DATA } from './app-data';
 import { DEFAULT_META_DATA } from './meta-data';
 
 export const DEFAULT_CONFIG = {
-  // Add Your custom configs hereh
   prodApiEndpoint: 'https://api.aviacommerce.org/',
+  // prodApiEndpoint: 'http://localhost:3000/',
   frontEndUrl: 'https://test-aviacommerce.netlify.com/',
   appName: 'Angularspree',
   fevicon: 'https://via.placeholder.com/350x150',
@@ -14,7 +14,7 @@ export const DEFAULT_CONFIG = {
       height: '42',
       width: '140'
     },
-    searchPlaceholder: 'Search for prducts',
+    searchPlaceholder: 'Search for products',
     showGithubRibon: false
   },
   showDummyCardInfo: true,
