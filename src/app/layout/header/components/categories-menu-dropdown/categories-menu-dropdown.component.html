@@ -15,8 +15,11 @@
       <div class="row m-0" *ngIf="catgeory_taxonomy?.root?.taxons">
         <div class="col-md-3 p-0">
           <ul class="h-100">
-            <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)"
+            <!-- <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)"
               [ngClass]="{'active': selectedItem == i}" [routerLink]="['c' ,taxon.name]">
+              {{taxon.name}}</li> -->
+              <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)"
+              [ngClass]="{'active': selectedItem == i}">
               {{taxon.name}}</li>
           </ul>
         </div>

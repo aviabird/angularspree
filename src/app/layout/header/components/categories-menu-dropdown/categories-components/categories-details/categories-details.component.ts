@@ -67,7 +67,7 @@ export class CategoriesDetailsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', this.taxonName));
-    this.brandLists$ = this.store.select(taxonomiByName);
+    // this.store.dispatch(this.searchActions.getTaxonomiesByName('Brands', this.taxonName));
+    // this.brandLists$ = this.store.select(taxonomiByName);
   }
 }

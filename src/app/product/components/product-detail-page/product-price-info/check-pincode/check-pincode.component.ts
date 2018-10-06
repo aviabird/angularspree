@@ -27,9 +27,9 @@ export class CheckPincodeComponent implements OnInit {
   }
 
   checkCodAvilability() {
-    if (this.checkPincodeForm.valid) {
-      const pincode = this.checkPincodeForm.value.pincode;
-      this.isCodAvilable$ = this.checkoutService.shipmentAvailability(pincode)
-    }
+    // if (this.checkPincodeForm.valid) {
+    //   const pincode = this.checkPincodeForm.value.pincode;
+    //   this.isCodAvilable$ = this.checkoutService.shipmentAvailability(pincode)
+    // }
   }
 }
