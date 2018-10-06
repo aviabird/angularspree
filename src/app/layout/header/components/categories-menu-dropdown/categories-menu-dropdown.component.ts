@@ -92,7 +92,7 @@ export class CategoriesMenuDropdownComponent implements OnInit, OnDestroy {
   getCategeory() {
     const search = new URLSearchParams();
     search.set('id', this.queryParams.id);
-    this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()))
+    // this.store.dispatch(this.searchActions.getProductsByTaxon(search.toString()))
   }
 
   childCatLoaded(status) {

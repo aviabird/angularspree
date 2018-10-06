@@ -1,10 +1,6 @@
-import { Store } from '@ngrx/store';
-import { ActivatedRoute } from '@angular/router';
-import { AppState } from './../../../interfaces';
-import { SearchActions } from './../../reducers/search.actions';
-import { Component, OnInit, Input } from '@angular/core';
-import { URLSearchParams } from '@angular/http'
+import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
 import { Brand } from '../../../core/models/brand';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-brand-filter',
@@ -14,15 +10,17 @@ import { Brand } from '../../../core/models/brand';
 export class BrandFilterComponent implements OnInit {
   @Input() brandsList: Array<Brand>;
 
-  queryParams: Object;
   constructor(
-    private searchActions: SearchActions,
-    private store: Store<AppState>,
-    private router: ActivatedRoute) {}
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
   ngOnInit() {
   }
 
-  brandFilter(s) {
+  brandFilter(brandName: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('keyword', brandName);
+    }
   }
+
 }
