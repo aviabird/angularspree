@@ -24,7 +24,7 @@
           </ul>
         </div>
         <div class="col-md-9 no-gutters detailcontainer p-0" *ngIf="menuTaxons">
-          <app-categories-details [taxons]="menuTaxons.taxons" [taxonName]="menuTaxons.name" [taxonImageLink]="menuTaxons.icon" (click)="getCategeory()"></app-categories-details>
+          <app-categories-details [taxons]="menuTaxons.taxons" [taxonName]="menuTaxons.name" [taxonImageLink]="menuTaxons.image_url" (click)="getCategeory()"></app-categories-details>
         </div>
       </div>
     </div>

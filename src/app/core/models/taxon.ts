@@ -8,4 +8,5 @@ export class Taxon {
   checked: boolean = false;
   taxons: Taxon[];
   icon: string;
+  image_url: string;
 }
