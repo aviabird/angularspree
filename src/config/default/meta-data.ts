@@ -3,15 +3,15 @@ export const DEFAULT_META_DATA = {
   // Global
   metaInfo: {
     googleSiteVerification: 'nG3sJH9BDF5kFOQrsvNkx_xbWVEO_wqNiE5dirqo3Yk',
-    title: `AngularSpree Plug and play frontend application for SPREE
-    E-Commerce API built with ❤️ using Angular2, Redux, Observables & ImmutableJs.`,
-    description: `AngularSpree Plug and play frontend application for SPREE E-Commerce
+    title: `AviaCommerce Online Shop Plug and play frontend application for AviaCommerce
+    API built with ❤️ using Angular2, Redux, Observables & ImmutableJs.`,
+    description: `AviaCommerce Plug and play frontend application for AviaCommerce
     API built with ❤️ using Angular6, Redux, Observables & ImmutableJs.`,
     // Page specific
     landingPage: {
-      title: `AngularSpree Plug and play frontend application for SPREE
-      E-Commerce API built with ❤️ using Angular2, Redux, Observables & ImmutableJs.`,
-      description: `AngularSpree Plug and play frontend application for SPREE E-Commerce
+      title: `AviaCommerce  Online Shop Plug and play frontend application for AviaCommerce
+       API built with ❤️ using Angular2, Redux, Observables & ImmutableJs.`,
+      description: `AviaCommerce Online Shop Plug and play frontend application for AviaCommerce
       API built with ❤️ using Angular6, Redux, Observables & ImmutableJs.`
     },
   },

@@ -5,12 +5,12 @@ export const DEFAULT_CONFIG = {
   prodApiEndpoint: 'https://api.aviacommerce.org/',
   // prodApiEndpoint: 'http://localhost:3000/',
   frontEndUrl: 'https://test-aviacommerce.netlify.com/',
-  appName: 'Angularspree',
+  appName: 'AviaCommerce Online Shop',
   fevicon: '/assets/default/favicon.ico',
   header: {
     brand: {
       logo: '/assets/default/logo.svg',
-      name: 'Angularspree',
+      name: 'AviaCommerce',
       height: '42',
       width: '140'
     },
