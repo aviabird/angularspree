@@ -73,39 +73,39 @@ export const DEFAULT_APP_DATA = {
   ],
   footer_social_links: [
     {
-      link_url: 'https://twitter.com/angularspree',
+      link_url: 'https://twitter.com/aviacommerce',
       name: 'Twitter',
       icon: 'fa fa-twitter-square'
     },
     {
-      link_url: 'https://www.instagram.com/angularspree/',
+      link_url: 'https://www.instagram.com/aviacommerce/',
       name: 'Instagram',
       icon: 'fa fa-instagram'
     },
     {
       link_url:
-        'https://plus.google.com/b/110371544800340671090/110371544800340671090',
+        'https://plus.google.com/',
       name: 'Google +',
       icon: 'fa fa-google-plus-square'
     },
     {
-      link_url: 'https://in.pinterest.com/angularspree/',
+      link_url: 'https://in.pinterest.com/aviacommerce/',
       name: 'Pinterest',
       icon: 'fa fa-pinterest-square'
     },
     {
-      link_url: 'https://www.facebook.com/angularspree/',
+      link_url: 'https://www.facebook.com/aviacommerce/',
       name: 'Facebook',
       icon: 'fa fa-facebook-square'
     },
     {
-      link_url: 'https://www.youtube.com/channel/UCFBvY3QxKAKBAI_chAzRpjQ',
+      link_url: 'https://www.youtube.com/',
       name: 'Youtube',
       icon: 'fa fa-youtube-square'
     }
   ],
   contact_info: {
     contact_no: '888-888-xxx',
-    copyright: 'Copyright © 2018 AngularSpree, Inc.'
+    copyright: 'Copyright © 2018 AviaCommerce, Inc.'
   }
 };
