@@ -52,3 +52,32 @@ img {
   width: 200px;
   height: 020px;
 }
+
+.ngucarouselPoint {
+  list-style-type: none;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: auto;
+  position: relative;
+  left: 0;
+  box-sizing: border-box;
+  background-color: transparent;
+  margin: 0 auto -28px;
+  align-self: center;
+  width: fit-content;
+  border-radius: 5px 5px 0 0;
+}
+.ngucarouselPoint li {
+  display: inline-block;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 255, 0.55);
+  padding: 5px;
+  margin: 0 3px;
+  transition: .4s ease all;
+}
+.ngucarouselPoint li a img{height:190px;margin:auto}
+.ngucarouselPoint li.active {
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 255, 0.55);
+    width: 10px;
+}
