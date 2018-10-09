@@ -4,11 +4,10 @@
       <div class="row m-0">
         <div class="col-md-4 p-3" *ngFor="let taxon of taxons">
           <div>
-            <!-- <a [routerLink]="['/search']" [queryParams]="{id: taxon.id}" class="headlinks">
+            <!-- <a [routerLink]="['/search']" [queryParams]="{taxon: taxon.id}" class="headlinks">
               {{taxon.name}} </a> -->
 
-              <a class="headlinks">
-                {{taxon.name}} </a>
+              <a class="headlinks">{{taxon.name}} </a>
             <app-categories-list [taxons]="taxon.taxons"></app-categories-list>
           </div>
         </div>
@@ -32,12 +31,10 @@
         <div class="col-6 col-sm-6   p-0 no-gutters brandsmenu" [@popOverState]="stateName">
           <ul>
             <li *ngFor="let taxon of taxons let i= index" (click)="showCategoryonclick(taxon)">
-              <!-- <a class="sucathead" [routerLink]="['/search']" [queryParams]="{id: taxon.id}">
+              <!-- <a class="sucathead" [routerLink]="['/search']" [queryParams]="{taxon: taxon.id}" (click)="getTaxonName(taxon.name)">
                 {{taxon.name}}
               </a> -->
-              <a class="sucathead">
-                {{taxon.name}}
-              </a>
+              <a class="sucathead">{{taxon.name}}</a>
             </li>
           </ul>
         </div>

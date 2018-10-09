@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Output, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
 import {
   trigger,
   state,
@@ -8,6 +8,7 @@ import {
 } from '@angular/animations';
 import { ElementRef, EventEmitter } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-category-mobile-menu',
   templateUrl: './category-mobile-menu.component.html',
@@ -38,11 +39,9 @@ import { environment } from '../../../../../environments/environment';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryMobileMenuComponent implements OnInit {
-  @Output()
-  onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() taxonomies;
   @Input() isScrolled;
-
   @Input() screenwidth;
   subChild: any;
   dropdownWidth: any;
@@ -53,11 +52,15 @@ export class CategoryMobileMenuComponent implements OnInit {
   showChild = false;
   backBtnShow = false;
   contactno = environment.config.contact_info.contact_no;
-  constructor(private el: ElementRef) { }
+
+  constructor(private el: ElementRef,
+    @Inject(PLATFORM_ID) private platformId: Object) { }
+
   showCategory(i) {
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
     this.showParrent = !this.showParrent;
   }
+
   get getparrentState() {
     return this.showParrent ? 'show' : 'hide'
   }
@@ -74,12 +77,19 @@ export class CategoryMobileMenuComponent implements OnInit {
   parrantBack() {
     this.showParrent = !this.showParrent;
   }
+
   childBack() {
     this.showChild = !this.showChild;
   }
-  onCloseMobilemenu() {
+
+  onCloseMobilemenu(taxonName: string) {
     this.onSubCatClicked.emit(false);
-   }
+
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('keyword', taxonName);
+    }
+  }
+
   ngOnInit() {
   }
 }

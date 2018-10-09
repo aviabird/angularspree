@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-categories-list',
@@ -9,7 +10,15 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class CategoriesListComponent implements OnInit {
   @Input() taxons;
   @Input() screenwidth
-  constructor() { }
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+
   ngOnInit() {
+  }
+
+  getTaxonName(taxonName: string){
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('keyword', taxonName);
+    }
   }
 }

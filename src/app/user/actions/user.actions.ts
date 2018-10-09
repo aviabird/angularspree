@@ -17,11 +17,10 @@ export class UserActions {
   static FETCH_STATES = 'FETCH_STATES';
   static FETCH_STATES_SUCCEESS = 'FETCH_STATES_SUCCEESS';
 
-  getUserOrders(email: string, page: number) {
+  getUserOrders() {
     return {
       type: UserActions.GET_USER_ORDERS,
-      payload: { email, page }
-    };
+    }
   }
 
   getUserOrdersSuccess(orders: Order[]) {

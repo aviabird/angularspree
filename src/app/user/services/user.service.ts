@@ -16,7 +16,7 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private toastrService: ToastrService,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   /**
@@ -26,11 +26,8 @@ export class UserService {
    *
    * @memberof UserService
    */
-  getOrders(email, page): Observable<Array<Order>> {
-    return this.http.get<Array<Order>>(`api/v1/orders/mine?q[s]=id%20desc&page=${page}&per_page=5`)
-      .pipe(
-        map(data => data)
-      )
+  getOrders(): Observable<Array<Order>> {
+    return this.http.get<Array<Order>>(`api/v1/orders`);
   }
 
   /**
