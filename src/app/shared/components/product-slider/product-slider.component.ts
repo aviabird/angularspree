@@ -1,4 +1,4 @@
-import { NguCarousel } from '@ngu/carousel';
+import { NguCarouselConfig } from '@ngu/carousel';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -9,7 +9,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class ProductSliderComponent implements OnInit {
   @Input() productsList = new Array(10);
-  public carouselOne: NguCarousel;
+  public carouselOne: NguCarouselConfig;
   @Input() showRating: boolean;
   constructor() {
     this.carouselOne = {

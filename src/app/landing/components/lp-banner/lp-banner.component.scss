@@ -2,7 +2,7 @@
 :host {
   /deep/ .banner {
     .bannerStyle {
-      min-height: 20vh;
+      max-height: 350px;
       img {
         background-color: $theme-main-color - 50;
       }
