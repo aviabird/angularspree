@@ -7,14 +7,18 @@ import { Effect, Actions } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { UserService } from '../services/user.service';
 import { UserActions } from '../actions/user.actions';
+import { Order } from '../../core/models/order';
 
 @Injectable()
 export class UserEffects {
+
   @Effect()
-  GetUserOrders$: Observable<Action> = this.actions$
-    .ofType(UserActions.GET_USER_ORDERS).pipe(
-      switchMap((action: any) => this.userService.getOrders(action.payload.email, action.payload.page)),
-      map((orders) => this.userActions.getUserOrdersSuccess(orders)));
+  GetUserOrders$ = this.actions$.ofType(UserActions.GET_USER_ORDERS).pipe(
+    switchMap<Action, Array<Order>>(_ => {
+      return this.userService.getOrders();
+    }),
+    map(orders => this.userActions.getUserOrdersSuccess(orders))
+  );
 
   @Effect()
   GetUserFavoriteProducts$: Observable<Action> = this.actions$
