@@ -19,8 +19,8 @@
 </div>
 <div *ngIf="isMobile">
   <div *ngIf="images">
-    <ngu-carousel [inputs]="carouselOne">
-      <ngu-item NguCarouselItem *ngFor="let image of images" class="bannerStyle">
+    <ngu-carousel [inputs]="carouselOne" [dataSource]="images">
+      <ngu-item NguCarouselItem *nguCarouselDef="let image" class="bannerStyle">
         <a>
           <img [src]="getProductImageUrl(image.product_url)" alt="" style="display: block; width: 100%;">
         </a>
