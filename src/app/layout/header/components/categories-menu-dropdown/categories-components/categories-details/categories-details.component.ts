@@ -4,7 +4,7 @@ import { SearchActions } from './../../../../../../home/reducers/search.actions'
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../../../interfaces';
 import { environment } from './../../../../../../../environments/environment';
-import { Component, OnInit, Input, OnChanges, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
 import {
   trigger,
   state,

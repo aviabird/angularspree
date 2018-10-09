@@ -29,9 +29,9 @@
     <ul class="bg-color" *ngIf="subChild">
       <li (click)="childBack()" class="backbtn">
         <i class="fa fa-chevron-left mr-2"></i> Back</li>
-      <div class="subhead" (click)="onCloseMobilemenu()" [routerLink]="['search']" [queryParams]="{'q[name_cont]': subChild.name, id: subChild.id}">{{subChild.name}}</div>
-      <li *ngFor="let taxon of subChild.taxons; let i= index" [routerLink]="['search']" [queryParams]="{'q[name_cont]': taxon.name, id: taxon.id}"
-        (click)="onCloseMobilemenu()">{{taxon.name}}</li>
+      <div class="subhead" (click)="onCloseMobilemenu()" [routerLink]="['search']" [queryParams]="{taxon: subChild.id}">{{subChild.name}}</div>
+      <li *ngFor="let taxon of subChild.taxons; let i= index" [routerLink]="['search']" [queryParams]="{taxon: taxon.id}"
+        (click)="onCloseMobilemenu(taxon.name)">{{taxon.name}}</li>
     </ul>
   </div>
   <div class="need-help">Need help?{{contactno}}</div>
