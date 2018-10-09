@@ -82,11 +82,11 @@
                 <img [src]="getProductImageUrl(item)">
               </a>
             </div>
-            <div class="col-12 col-sm-8" [routerLink]="['/', item.product.slug]">
+            <div class="col-12 col-sm-7" [routerLink]="['/', item.product.slug]">
               <div class="lineitems-name"> {{item.product.name}}</div>
               <!-- <div class="lineitems-info"> {{item.variant.options_text}}</div> -->
             </div>
-            <div class="col-12 col-sm-2">
+            <div class="col-12 col-sm-3">
               <div class="price">{{currency}} {{item.total_price}}</div>
               <div class="qty"> QTY: {{item.quantity}}</div>
             </div>
@@ -109,7 +109,6 @@
               <!-- <div class="lineitems-info"> {{item.variant.options_text}}</div> -->
             </div>
             <div class="col-6 col-sm-2">
-
               <div class="qty"> QTY: {{item.quantity}}</div>
               <div class="price">{{currency}} {{item.total_price}}</div>
             </div>
