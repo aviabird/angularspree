@@ -69,13 +69,17 @@
       <select class="form-control" formControlName="country_name" [(ngModel)]="countryId" (change)="selectedCountry(countryId)">
         <option *ngFor="let country of countries" [value]="country.id">{{country.name}}</option>
       </select>
+      <p *ngIf="addressForm.get('country_name').hasError('required') &&  addressForm.get('country_name')"
+        class="value-err text-danger show">This is a mandatory field</p>
     </div>
 
     <div class="form-group col-sm-6">
       <label> State </label>
-      <select ng-disabled="true" class="form-control" formControlName="state_name" ng-disabled="true" placeholder="Your Email">
+      <select ng-disabled="true" class="form-control" formControlName="state_name" ng-disabled="true">
         <option *ngFor="let state of states">{{state.name}}</option>
       </select>
+      <p *ngIf="addressForm.get('state_name').hasError('required') &&  addressForm.get('state_name')"
+        class="value-err text-danger show">This is a mandatory field</p>
     </div>
 
     <div *ngIf="isAuthenticated" class="save-button col-12 col-sm-6">
