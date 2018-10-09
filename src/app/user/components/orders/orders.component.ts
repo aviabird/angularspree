@@ -21,18 +21,11 @@ export class OrdersComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private userActions: UserActions,
-    @Inject(PLATFORM_ID) private platformId: any
-  ) {
-
-    this.orders$ = this.store.select(getUserOrders);
-
-  }
+    @Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId) && JSON.parse(localStorage.getItem('user'))) {
-      this.email = JSON.parse(localStorage.getItem('user')).email
-      this.store.dispatch(this.userActions.getUserOrders(this.email, 1));
-    }
+    this.store.dispatch(this.userActions.getUserOrders());
+    this.orders$ = this.store.select(getUserOrders); 
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
     }
@@ -46,7 +39,7 @@ export class OrdersComponent implements OnInit {
 
   pageChanged(event: any): void {
     this.page = event.page;
-    this.store.dispatch(this.userActions.getUserOrders(this.email, this.page));
+    this.store.dispatch(this.userActions.getUserOrders());
   }
 
 }
