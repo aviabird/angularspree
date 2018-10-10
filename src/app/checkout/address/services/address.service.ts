@@ -21,12 +21,14 @@ export class AddressService {
       'first_name': ['', Validators.required],
       'last_name': ['', Validators.required],
       'address_line_1': ['', Validators.required],
-      'address_line_2': ['', Validators.required],
+      'address_line_2': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
       'city': ['', Validators.required],
-      'phone': ['', Validators.required],
+      'phone': ['', Validators.compose([
+        Validators.required, Validators.minLength(10),
+        Validators.maxLength(10), Validators.pattern('[0-9]{10}')])],
       'zip_code': ['', Validators.required],
-      'state_name': ['', Validators.required],
-      'country_name': ['', Validators.required]
+      'state_id': ['', Validators.required],
+      'country_id': ['', Validators.required]
     });
   }
 
