@@ -21,17 +21,18 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   isMobile = false;
   screenwidth: any;
   currency = environment.config.currency_symbol;
+  noImageUrl = 'assets/default/no-image-available.jpg';
 
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
     private checkoutService: CheckoutService,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   ngOnInit() {
     this.routeSubscription$ = this.route.params.subscribe(
-      (params: any) => {
+      (params: Object) => {
         this.orderNumber = params['number'];
         this.orderSubscription$ =
           this.userService
@@ -52,7 +53,8 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   }
 
   getProductImageUrl(line_item: LineItem) {
-    return line_item.product.images[0].product_url;
+    const imageUrl = line_item.product.images[0];
+    return imageUrl ? imageUrl.product_url : this.noImageUrl;
   }
 
   ngOnDestroy() {

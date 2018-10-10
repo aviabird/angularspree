@@ -1,5 +1,5 @@
 <div>
-  <div *ngFor="let address of addressList; index as i" class="card mb-3">
+  <div *ngFor="let address of addressList | reverse; index as i" class="card mb-3">
     <div class="address-row reviewlink card-body">
       <div class="row ">
         <div class="col name">
