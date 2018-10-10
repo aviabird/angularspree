@@ -20,8 +20,8 @@ export class AddressService {
     return this.fb.group({
       'first_name': ['', Validators.required],
       'last_name': ['', Validators.required],
-      'address_line_1': ['', Validators.required],
-      'address_line_2': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
+      'address_line_2': ['', Validators.required],
+      'address_line_1': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
       'city': ['', Validators.required],
       'phone': ['', Validators.compose([
         Validators.required, Validators.minLength(10),
