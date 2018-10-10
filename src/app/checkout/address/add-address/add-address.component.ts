@@ -24,6 +24,7 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean;
   states: CState[];
   countryId: string;
+  stateId: string;
   subscriptionList$: Array<Subscription> = [];
 
   @Input() addressEdit: Address;
@@ -31,6 +32,9 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   @Input() countries: Country[];
   @Output() addressEdited = new EventEmitter<boolean>();
   @Output() cancelAddress = new EventEmitter<boolean>();
+  default: '';
+  stateName: string;
+  addressFromData: Address;
 
   constructor(
     private addressService: AddressService,
@@ -41,7 +45,7 @@ export class AddAddressComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.addressForm = this.addressService.initAddressForm();
-
+    this.addressFromData = this.addressForm.value;
     this.subscriptionList$.push(
       this.store.select(getAuthStatus).subscribe(auth => {
         this.isAuthenticated = auth;
@@ -50,25 +54,17 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const address = this.addressForm.value;
+    this.addressFromData = this.addressForm.value;
+    const keys = Object.keys(this.addressFromData);
     if (this.addressForm.valid) {
-      for (const state of this.states) {
-        if (state.name === address.state_name) {
-          address['state_id'] = state.id;
-          address['country_id'] = this.countryId;
-          address['state_name'] = state.name;
-          break;
-        }
-      }
-
       if (this.addressEdit != null) {
         if (this.isAuthenticated) {
-
+          // for edit address features
         }
       } else if (this.addressEdit === null) {
         if (this.isAuthenticated) {
           this.subscriptionList$.push(
-            this.addressService.saveUserAddress(address).
+            this.addressService.saveUserAddress(this.addressFromData).
               subscribe(_ => {
                 this.closeAddressForm();
                 this.store.dispatch(this.userActions.fetchUserAddress());
@@ -77,8 +73,19 @@ export class AddAddressComponent implements OnInit, OnDestroy {
         }
       }
     } else {
-      this.toastrService.error('Some fields are blank!', 'Unable to save address!');
+      this.toastrService.error('Some fields are blank/invalid', 'Error!');
+      keys.forEach(val => {
+        const ctrl = this.addressForm.controls[val];
+        if (!ctrl.valid) {
+          this.pushErrorFor(val, null);
+          ctrl.markAsTouched();
+        };
+      });
     }
+  }
+
+  private pushErrorFor(ctrl_name: string, msg: string) {
+    this.addressForm.controls[ctrl_name].setErrors({ 'msg': msg });
   }
 
   existingAddress(addressForm) {
@@ -102,12 +109,17 @@ export class AddAddressComponent implements OnInit, OnDestroy {
 
   selectedCountry(countryId: string) {
     this.countryId = countryId;
+    this.addressForm.get('state_id').reset();
     this.store.dispatch(this.userActions.fetchStates(countryId));
     this.subscriptionList$.push(
       this.store.select(getStates).subscribe(state => {
         this.states = state;
       })
     );
+  }
+
+  selectedState(stateId) {
+    this.stateId = stateId;
   }
 
   ngOnDestroy() {
