@@ -10,17 +10,18 @@ import { CheckoutService } from '../../../../core/services/checkout.service';
   styleUrls: ['./order-list-item.component.scss']
 })
 export class OrderListItemComponent implements OnInit {
-  @Input() orders;
-  @Input() isMobile;
+  @Input() orders: Array<Order>;
+  @Input() isMobile: boolean;
   currency = environment.config.currency_symbol;
+  noImageUrl = 'assets/default/no-image-available.jpg';
 
-  constructor( ) { }
+  constructor() { }
 
   ngOnInit() {
-    console.log(this.orders);
   }
 
   getProductImageUrl(line_item: LineItem) {
-    return line_item.product.images[0].product_url;
+    const imageUrl = line_item.product.images[0];
+    return imageUrl ? imageUrl.product_url : this.noImageUrl;
   }
 }
