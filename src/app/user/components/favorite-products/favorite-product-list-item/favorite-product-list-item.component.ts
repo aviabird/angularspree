@@ -25,7 +25,7 @@ export class FavoriteProductListItemComponent implements OnInit {
 
   removeFromFavorite(id: number) {
     this.productService.removeFromFavorite(id).subscribe((status) => {
-      this.store.dispatch(this.userActions.removeFromFavoriteProducts(id));
+      // this.store.dispatch(this.userActions.removeFromFavoriteProducts(id));
     });
   }
 }

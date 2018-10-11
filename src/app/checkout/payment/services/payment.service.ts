@@ -35,7 +35,7 @@ export class PaymentService {
    * @returns
    * @memberof PaymentService
    */
-  makeHostedPayment(orderId: number, orderNumber: string, paymentId: number, orderAmount: number, paymentMethodId: number) {
+  makeHostedPayment(orderId: number, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number) {
     const params = this.buildHostedPaymentJson(orderId, orderNumber, paymentId, orderAmount, paymentMethodId);
     const url = `api/v1/hosted-payment/payubiz-request`
     return this.http.post(url, params)
@@ -59,7 +59,7 @@ export class PaymentService {
    * @returns {Object}
    * @memberof PaymentService
    */
-  buildHostedPaymentJson(orderId: number, orderNumber: string, paymentId: number, orderAmount: number, paymentMethodId: number): Object {
+  buildHostedPaymentJson(orderId: number, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number): Object {
     const user: User = JSON.parse(localStorage.getItem('user'));
     const params = {
       'data': {
