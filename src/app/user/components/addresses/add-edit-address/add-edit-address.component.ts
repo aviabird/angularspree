@@ -43,22 +43,22 @@ export class AddEditAddressComponent implements OnInit {
       }
     }
     if (this.addressForm.valid) {
-      if (this.isEditAddrPressed) {
-        this.addressParams.user.ship_address = address;
-        this.userService.updateUserAddress(this.addressParams)
-          .subscribe((res: any) => {
-            this.navigatePage();
-            this.toastrService.success(res.status, 'Success!')
-          })
+      // if (this.isEditAddrPressed) {
+      //   this.addressParams.user.ship_address = address;
+      //   this.userService.updateUserAddress(this.addressParams)
+      //     .subscribe((res: any) => {
+      //       this.navigatePage();
+      //       this.toastrService.success(res.status, 'Success!')
+      //     })
 
-      } else {
-        this.addressParams.user.ship_address = address;
-        this.userService.createUserAddress(this.addressParams)
-          .subscribe((res: any) => {
-            this.navigatePage();
-            this.toastrService.success(res.status, 'Success!')
-          })
-      }
+      // } else {
+      //   this.addressParams.user.ship_address = address;
+      //   this.userService.createUserAddress(this.addressParams)
+      //     .subscribe((res: any) => {
+      //       this.navigatePage();
+      //       this.toastrService.success(res.status, 'Success!')
+      //     })
+      // }
     } else {
       this.toastrService.error('Some fields are blank!', 'Unable to save address!');
     }

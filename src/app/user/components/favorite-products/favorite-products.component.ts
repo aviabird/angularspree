@@ -23,7 +23,7 @@ export class FavoriteProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.userActions.getUserFavoriteProducts());
+    // this.store.dispatch(this.userActions.getUserFavoriteProducts());
   }
 
 }
