@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Address } from '../../../core/models/address';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../interfaces';
+import { UserActions } from '../../../user/actions/user.actions';
 
 @Component({
   selector: 'app-saved-address',
@@ -10,15 +13,21 @@ export class SavedAddressComponent implements OnInit {
 
   @Input() addressList;
   selectedIndex: number;
-
   @Output() getSelectedAddress = new EventEmitter<Object>();
-  constructor() { }
+
+  constructor(
+    private store: Store<AppState>,
+    private userAction: UserActions) { }
 
   ngOnInit() {
   }
 
   editAddress(selectedAddress) {
     // this.isEditButtonPressed.emit({ address: selectedAddress, isEditButtonPressed: true })
+  }
+
+  deleteAddress(addressId: string) {
+    this.store.dispatch(this.userAction.deleteUserAddress(addressId));
   }
 
   selectedDeliveryAddress(address: Address) {
