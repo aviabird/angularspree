@@ -17,8 +17,18 @@
 
 .reviewlink {
   cursor: pointer;
+}
+
+.select {
   &:hover {
     text-decoration: none;
     background-color: #62ff0009;
   }
+}
+
+.address-option {
+  left: 18px !important;
+  right: auto;
+  top: -2% !important;
+  transform: translateY(0px);
 }

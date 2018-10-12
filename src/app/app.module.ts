@@ -18,7 +18,6 @@ import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 // Modules
 import { SharedModule } from './shared/index';
-import { UserModule } from './user/index';
 import { HomeModule } from './home/index';
 import { LayoutModule } from './layout/index';
 import { CoreModule } from './core/index';
@@ -28,6 +27,7 @@ import { CheckoutHeaderComponent } from './layout/checkout-header/checkout-heade
 import { CheckoutFooterComponent } from './layout/checkout-footer/checkout-footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { AddressService } from './checkout/address/services/address.service';
 
 
 @NgModule({
@@ -79,7 +79,7 @@ import { ToastrModule } from 'ngx-toastr';
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [AppPreloadingStrategy],
+  providers: [AppPreloadingStrategy, AddressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
