@@ -1,5 +1,6 @@
 <form class="form" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-  <div class="row">
+  <hr>
+  <div class="row mt-3">
     <div class="form-group col-sm-6">
       <label>Pin Code
         <span class="required">*</span>
@@ -9,7 +10,6 @@
         <p class="value-err text-danger show">Please enter Pincode!</p>
       </div>
     </div>
-
     <div class="form-group col-sm-6">
       <label>Mobile No
         <span class="required">*</span>
@@ -19,7 +19,6 @@
         <p class="value-err text-danger show">Please enter valid phone number!</p>
       </div>
     </div>
-
     <div class="form-group col-sm-6">
       <label>First Name
         <span class="required">*</span>
@@ -38,7 +37,6 @@
         <p class="value-err text-danger show">Please enter last name!</p>
       </div>
     </div>
-
     <div class="form-group col-sm-6">
       <label> Locality / Town
         <span class="required">*</span>
@@ -48,7 +46,6 @@
         <p class="value-err text-danger show">Please enter locality / town!</p>
       </div>
     </div>
-
     <div class="form-group col-sm-6">
       <label>City / District
         <span class="required">*</span>
@@ -58,7 +55,6 @@
         <p class="value-err text-danger show">Please enter city / district!</p>
       </div>
     </div>
-
     <div class="form-group col-sm-12">
       <label>Address
         <span class="required">*</span>
@@ -68,33 +64,36 @@
         <p class="value-err text-danger show">Please enter address(minimum 10 characters long)!</p>
       </div>
     </div>
-
     <div class="form-group col-sm-6">
       <label> Country </label>
       <span class="required">*</span>
       <select class="form-control" formControlName="country_id" [(ngModel)]="countryId" (change)="selectedCountry(countryId)">
-        <option [ngValue]="default">Select Country</option>
+        <ng-template #showDefaultOption>
+          <option>Select Country</option>
+        </ng-template>
+        <option *ngIf="modifiedAddress!=null && !isCountryChanged; else showDefaultOption" [ngValue]="countryId">{{modifiedAddress.country.name}}</option>
         <option *ngFor="let country of countries" [ngValue]="country.id">{{country.name}}</option>
       </select>
       <div *ngIf="addressForm.get('country_id').errors && addressForm.get('country_id').touched">
         <p class="value-err text-danger show">Please select country!</p>
       </div>
     </div>
-
     <div class="form-group col-sm-6">
       <label> State </label>
       <span class="required">*</span>
       <select class="form-control" formControlName="state_id" [(ngModel)]="stateId" (change)="selectedState(stateId)">
-        <option [ngValue]="default">Select State</option>
-        <option *ngFor="let state of states" [ngValue]="state.id">{{state.name}}</option>
+        <ng-template #showDefault>
+          <option>Select State</option>
+        </ng-template>
+        <option *ngIf="modifiedAddress!=null && !isStateChanged; else showDefault" [ngValue]="stateId">{{modifiedAddress.state.name}}</option>
+        <option *ngFor="let state of (states$ | async)" [ngValue]="state.id">{{state.name}}</option>
       </select>
       <div *ngIf="addressForm.get('state_id').errors && addressForm.get('state_id').touched">
         <p class="value-err text-danger show">Please select state!</p>
       </div>
     </div>
-
     <div *ngIf="isAuthenticated" class="save-button col-12 col-sm-6">
-      <button class="btn themebtnprimary">SAVE</button>
+      <button class="btn themebtnprimary">Save</button>
     </div>
     <div class="col-12 col-sm-2 " style="padding-top: 15px;">
       <button class="btn themebtnprimarybasic mb-3" (click)="closeAddressForm()">Cancel</button>
