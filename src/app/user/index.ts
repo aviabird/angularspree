@@ -24,6 +24,7 @@ import { ProfileEmailComponent } from './components/profile/profile-email/profil
 import { ProfilePasswordComponent } from './components/profile/profile-password/profile-password.component';
 import { AddEditAddressComponent } from './components/addresses/add-edit-address/add-edit-address.component';
 import { AddressService } from '../checkout/address/services/address.service';
+import { AddressModule } from '../checkout/address/address.module';
 
 @NgModule({
   declarations: [
@@ -45,22 +46,14 @@ import { AddressService } from '../checkout/address/services/address.service';
     // pipes
 
   ],
-  exports: [
-    // components
-    // OverviewComponent,
-    // OrderListItemComponent,
-    // OrdersComponent,
-    // ReturnsComponent,
-    // ReturnListItemComponent,
-
-  ],
+  exports: [],
   providers: [
     AddressService,
   ],
   imports: [
     RouterModule.forChild(routes),
     SharedModule,
-    PaginationModule,
+    PaginationModule, AddressModule
   ]
 })
 export class UserModule { }

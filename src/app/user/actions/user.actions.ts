@@ -1,8 +1,8 @@
-import { Product } from './../../core/models/product';
 import { Order } from '../../core/models/order';
 import { Address } from '../../core/models/address';
 import { CState } from '../../core/models/state';
 import { Country } from '../../core/models/country';
+import { state } from '@angular/animations';
 
 export class UserActions {
   static GET_USER_ORDERS = 'GET_USER_ORDERS';
@@ -16,27 +16,14 @@ export class UserActions {
   static FETCH_COUNTRIES_SUCCEESS = 'FETCH_COUNTRIES_SUCCEESS';
   static FETCH_STATES = 'FETCH_STATES';
   static FETCH_STATES_SUCCEESS = 'FETCH_STATES_SUCCEESS';
+  static DELETE_ADDRESS = 'DELETE_ADDRESS';
 
   getUserOrders() {
-    return {
-      type: UserActions.GET_USER_ORDERS,
-    }
+    return { type: UserActions.GET_USER_ORDERS }
   }
 
   getUserOrdersSuccess(orders: Order[]) {
     return { type: UserActions.GET_USER_ORDERS_SUCCESS, payload: orders };
-  }
-
-  getUserFavoriteProducts() {
-    return { type: UserActions.GET_USER_FAVORITE_PRODUCTS };
-  }
-
-  getUserFavoriteProductsSuccess(products: Product[]) {
-    return { type: UserActions.GET_USER_FAVORITE_PRODUCTS_SUCCESS, payload: products };
-  }
-
-  removeFromFavoriteProducts(id: number) {
-    return { type: UserActions.REMOVE_FROM_FAVORITE_PRODUCTS, payload: id };
   }
 
   fetchUserAddress() {
@@ -76,6 +63,13 @@ export class UserActions {
     return {
       type: UserActions.FETCH_STATES_SUCCEESS,
       payload: states
+    }
+  }
+
+  deleteUserAddress(addressId: string) {
+    return {
+      type: UserActions.DELETE_ADDRESS,
+      payload: addressId
     }
   }
 }

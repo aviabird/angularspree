@@ -39,10 +39,10 @@ export class AddressComponent implements OnInit, OnDestroy {
     private checkoutAction: CheckoutActions,
     private router: Router,
     private checkOutActions: CheckoutActions) {
-    this.store.dispatch(this.userActions.fetchUserAddress());
   }
 
   ngOnInit() {
+    this.store.dispatch(this.userActions.fetchUserAddress());
     this.subscriptionList$.push(
       this.store.select(getOrderId).subscribe(orderId => this.orderId = orderId)
     );
@@ -86,7 +86,6 @@ export class AddressComponent implements OnInit, OnDestroy {
           this.store.dispatch(this.checkOutActions.getShippingPreferences(orderId, []))
         })
     );
-
   }
 
   ngOnDestroy() {

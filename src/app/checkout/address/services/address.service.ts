@@ -7,6 +7,8 @@ import { map, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Order } from '../../../core/models/order';
 import { User } from '../../../core/models/user';
+import { Country } from '../../../core/models/country';
+import { CState } from '../../../core/models/state';
 
 @Injectable()
 export class AddressService {
@@ -51,6 +53,23 @@ export class AddressService {
         return resp;
       })
     )
+  }
+
+  deleteAddress(addressId: string) {
+    return this.http.delete(`api/v1/addresses/${addressId}`).pipe(
+      tap(_ => this.toastrService.success('Address deleted', 'Success!')))
+  }
+
+  getUserAddresses(): Observable<Array<Address>> {
+    return this.http.get<Array<Address>>(`api/v1/addresses`)
+  }
+
+  getCountires(): Observable<Array<Country>> {
+    return this.http.get<any>(`api/v1/countries`)
+  }
+
+  getAllStates(countryId: string): Observable<Array<CState>> {
+    return this.http.get<Array<CState>>(`api/v1/countries/${countryId}/states`)
   }
 
   private buildAddressJson(address: Address, userId: string) {
