@@ -72,6 +72,13 @@ export class AddressService {
     return this.http.get<Array<CState>>(`api/v1/countries/${countryId}/states`)
   }
 
+  updateUserAddress(address: Address, addressId: string) {
+    const params = this.buildUpdateAddressJson(address, addressId);
+    return this.http.put<Address>(`api/v1/addresses/${addressId}`, params).pipe(
+      tap(_ => this.toastrService.success('Address updated!', 'Success!'))
+    )
+  }
+
   private buildAddressJson(address: Address, userId: string) {
     const params = {
       'data':
@@ -94,13 +101,24 @@ export class AddressService {
     return params;
   }
 
+  private buildUpdateAddressJson(address: Address, addressId: string) {
+    const params = {
+      'data': {
+        'type': 'address',
+        'id': addressId,
+        'attributes': address
+      }
+    }
+    return params;
+  }
+
   private buildSelectAddressJson(orderId: number, shipAddress: Address) {
     const params = {
       data: {
         'id': orderId,
         'type': 'order',
         'attributes': {
-          // for now billing address is addeded as shipping address. 
+          // for now billing address is addeded as shipping address.
           'billing_address': shipAddress,
           'shipping_address': shipAddress
         }

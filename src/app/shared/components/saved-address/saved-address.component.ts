@@ -14,6 +14,7 @@ export class SavedAddressComponent implements OnInit {
   @Input() addressList;
   selectedIndex: number;
   @Output() getSelectedAddress = new EventEmitter<Object>();
+  @Output() editButtonPressed = new EventEmitter<Object>();
 
   constructor(
     private store: Store<AppState>,
@@ -23,7 +24,7 @@ export class SavedAddressComponent implements OnInit {
   }
 
   editAddress(selectedAddress) {
-    // this.isEditButtonPressed.emit({ address: selectedAddress, isEditButtonPressed: true })
+    this.editButtonPressed.emit(selectedAddress)
   }
 
   deleteAddress(addressId: string) {
