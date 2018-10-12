@@ -12,8 +12,5 @@ export class DeliveryAddressComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() { }
 }

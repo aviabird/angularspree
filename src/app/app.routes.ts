@@ -16,6 +16,7 @@ export const routes: Routes = [
   {
     path: 'checkout',
     loadChildren: './checkout/checkout.module#CheckoutModule',
+    canActivate: [ CanActivateViaAuthGuard ],
     data: { preload: true, delay: true },
   },
   {

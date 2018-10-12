@@ -8,7 +8,6 @@ import { UserActions } from '../../user/actions/user.actions';
 import { getUserAddressess, getCountries } from '../../user/reducers/selector';
 import { Country } from '../../core/models/country';
 import { CheckoutActions } from '../actions/checkout.actions';
-import { Router } from '@angular/router';
 import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
 
 @Component({
@@ -18,12 +17,10 @@ import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
   animations: [fadeInAnimation],
 })
 export class AddressComponent implements OnInit, OnDestroy {
-  stateSub$: Subscription;
-  orderState: string;
   orderId: number;
   shipAddress: Address;
   isEditButtonPressed: boolean;
-  addressData: Address;
+  modifiedAddress: Address;
   isAddNewAddress: boolean;
   userAddresses$: Observable<Array<Address>>;
   isUserSelectedAddress: boolean;
@@ -37,7 +34,6 @@ export class AddressComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>,
     private userActions: UserActions,
     private checkoutAction: CheckoutActions,
-    private router: Router,
     private checkOutActions: CheckoutActions) {
   }
 
@@ -52,27 +48,24 @@ export class AddressComponent implements OnInit, OnDestroy {
     this.orderNumber$ = this.store.select(getOrderNumber);
   }
 
-  userAddressEdit(addressData) {
-    this.addressData = addressData
-    this.isEditButtonPressed = true;
-  }
-
-  addressEditedDone() {
-    this.isEditButtonPressed = false;
-  }
-
   addNewAddress() {
     this.isAddNewAddress = true;
   }
 
   cancelAddress(event) {
-    return this.isAddNewAddress = event;
+    this.isAddNewAddress = event;
+    this.isEditButtonPressed = event;
   }
 
-  getSelectedAddress(event) {
-    this.shipAddress = event;
+  getSelectedAddress(address: Address) {
+    this.shipAddress = address;
     this.isUserSelectedAddress = true;
     this.store.dispatch(this.checkoutAction.bindAddress(this.shipAddress, this.orderId))
+  }
+
+  editSelectedAddress(selectedAddress: Address) {
+    this.isEditButtonPressed = true;
+    this.modifiedAddress = selectedAddress;
   }
 
   changeAddress() {
