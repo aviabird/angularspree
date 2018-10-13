@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://angularspree.firebaseapp.com/" target='_blank'>
-    <img alt="AngualreSpree Logo" title="AngularSpree Logo" src="https://res.cloudinary.com/aviabird/image/upload/v1539065176/aviacommerce/logo/main.png" width="250">
+  <a href="https://aviacommerce.org" target='_blank'>
+    <img alt="AviaCommerce Logo" title="AngularCommerce Logo" src="https://res.cloudinary.com/aviabird/image/upload/v1539065176/aviacommerce/logo/main.png" width="250">
   </a>
 </p>
 
