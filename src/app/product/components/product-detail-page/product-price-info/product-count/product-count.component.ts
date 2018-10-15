@@ -7,6 +7,7 @@ import { AppState } from '../../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { getTotalCartItems } from '../../../../../checkout/reducers/selectors';
 import { getAuthStatus } from '../../../../../auth/reducers/selectors';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-count',
@@ -28,7 +29,7 @@ export class ProductCountComponent implements OnInit, OnDestroy {
   appConfig = environment.config;
 
   constructor(private router: Router,
-    private store: Store<AppState>) {
+    private store: Store<AppState>, private toastrService: ToastrService) {
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.subscriptionList$.push(
       this.store.select(getAuthStatus)
@@ -57,7 +58,9 @@ export class ProductCountComponent implements OnInit, OnDestroy {
 
   addToCart(count: number) {
     if (this.isValidUser) {
-      this.onAddToCart.emit({ count: count, buyNow: false });
+      if (this.isOrderable) {
+        this.onAddToCart.emit({ count: count, buyNow: false });
+      } else { this.toastrService.error('This product is Out of stock!', 'Error!'); }
     } else {
       this.redirectToLogin();
     }
