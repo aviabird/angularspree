@@ -5,6 +5,8 @@ import { VariantParserService } from './../../../../core/services/variant-parser
 import { Taxon } from '../../../../core/models/taxon';
 import { isPlatformBrowser } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
+import { Image } from '../../../../core/models/image';
+import { Price } from '../../../../core/models/price';
 
 @Component({
   selector: 'app-product-price-info',
@@ -23,13 +25,13 @@ export class ProductPriceInfoComponent implements OnInit {
   customOptionTypesHash: any;
   currentSelectedOptions = {};
   description: any;
-  images: any;
+  images: Array<Image>;
   mainOptions: any;
   correspondingOptions: any;
-  variantId: any;
-  selectedVariantPrice: any;
+  variantId: number;
+  selectedVariantPrice: Price;
   isOrderable: boolean;
-  currency =  environment.config.currency_symbol;
+  currency = environment.config.currency_symbol;
 
   constructor(private variantParser: VariantParserService,
     @Inject(PLATFORM_ID) private platformId: any
@@ -44,8 +46,8 @@ export class ProductPriceInfoComponent implements OnInit {
         .getOptionsToDisplay(this.product.variants, this.product.theme.option_types);
       this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
       this.correspondingOptions = this.mainOptions;
-  }
-    this.isOrderable = true;
+    }
+    this.isOrderable = this.product.is_orderable;
   }
 
   onOptionClick(option) {
@@ -67,7 +69,7 @@ export class ProductPriceInfoComponent implements OnInit {
     this.description = newVariant.description;
     this.images = newVariant.images;
     this.getSelectedVariant(result.variant);
-    this.isOrderable = true;
+    this.isOrderable = newVariant.is_orderable;
     this.product.max_retail_price = newVariant.max_retail_price;
     this.product.selling_price = newVariant.selling_price;
     this.product.name = newVariant.name;
