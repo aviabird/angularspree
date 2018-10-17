@@ -78,7 +78,7 @@ export class ProductDetailsComponent implements OnInit {
     this.addMetaInfo(this.product);
     this.initData();
     // this.findBrand();
-    // this.addJsonLD(this.product);
+    this.addJsonLD(this.product);
   }
 
   initData() {
@@ -150,7 +150,7 @@ export class ProductDetailsComponent implements OnInit {
     this.images = variant.images;
     this.variantId = variant.id;
     this.selectedVariant = variant;
-    // this.addJsonLD(this.product);
+    this.addJsonLD(this.product);
   }
 
   get selectedImage() { return this.images ? this.images[0] : ''; }
@@ -183,7 +183,7 @@ export class ProductDetailsComponent implements OnInit {
       'itemCondition': 'https://schema.org/NewCondition',
       'brand': {
         '@type': 'Thing',
-        'name': `${this.brand.name}`
+        'name': `AviaCommerce`
       },
       'aggregateRating': {
         '@type': 'AggregateRating',
@@ -199,8 +199,8 @@ export class ProductDetailsComponent implements OnInit {
         '@type': 'Offer',
         'itemCondition': 'https://schema.org/NewCondition',
         'availability': `https://schema.org/${stockStatus}`,
-        'price': this.selectedVariant.price,
-        'priceCurrency': product.currency,
+        'price': this.selectedVariant.selling_price.amount,
+        'priceCurrency': this.selectedVariant.selling_price.currency,
       }]
     };
   }
