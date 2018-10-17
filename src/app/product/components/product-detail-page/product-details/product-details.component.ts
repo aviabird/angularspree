@@ -150,7 +150,7 @@ export class ProductDetailsComponent implements OnInit {
     this.images = variant.images;
     this.variantId = variant.id;
     this.selectedVariant = variant;
-    this.addJsonLD(this.product);
+    this.addJsonLD(this.selectedVariant);
   }
 
   get selectedImage() { return this.images ? this.images[0] : ''; }
@@ -175,7 +175,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addJsonLD(product: Product) {
-    const stockStatus = this.selectedVariant.is_orderable ? 'InStock' : 'OutOfStock';
+    const stockStatus = product.is_orderable ? 'InStock' : 'OutOfStock';
     this.schema = {
       '@context': 'https://schema.org',
       '@type': 'Product',
@@ -199,8 +199,8 @@ export class ProductDetailsComponent implements OnInit {
         '@type': 'Offer',
         'itemCondition': 'https://schema.org/NewCondition',
         'availability': `https://schema.org/${stockStatus}`,
-        'price': this.selectedVariant.selling_price.amount,
-        'priceCurrency': this.selectedVariant.selling_price.currency,
+        'price': product.selling_price.amount,
+        'priceCurrency': product.selling_price.currency,
       }]
     };
   }
