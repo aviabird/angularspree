@@ -5,7 +5,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -65,7 +64,6 @@ import { AddressService } from './checkout/address/services/address.service';
     BrowserTransferStateModule,
     TransferHttpCacheModule,
     FormsModule,
-    HttpModule,
     HomeModule,
     LayoutModule,
     Ng2UiAuthModule.forRoot(myAuthConfig),
