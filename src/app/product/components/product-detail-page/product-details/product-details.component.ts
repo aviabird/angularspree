@@ -1,9 +1,4 @@
-import { relatedProducts, productReviews} from './../../../reducers/selectors';
-import { ProductActions } from './../../../actions/product-actions';
-import { Observable, observable } from 'rxjs';
-import { getProductsByKeyword } from './../../../../home/reducers/selectors';
-import { SearchActions } from './../../../../home/reducers/search.actions';
-import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
@@ -19,7 +14,6 @@ import {
 } from '@angular/core';
 
 import { Product } from './../../../../core/models/product';
-import { ProductService } from './../../../../core/services/product.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from '../../../../../environments/environment';
 import { Taxon } from '../../../../core/models/taxon';
@@ -35,9 +29,9 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class ProductDetailsComponent implements OnInit {
   @Input() product: Product;
-  description: any;
+  description: string;
   images: any;
-  variantId: any;
+  variantId: number;
   productId: number;
   isMobile = false;
   screenwidth: any;
@@ -58,11 +52,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private checkoutActions: CheckoutActions,
     private store: Store<AppState>,
-    private productService: ProductService,
     private router: Router,
-    private toastrService: ToastrService,
-    private searchActions: SearchActions,
-    private productsActions: ProductActions,
     private meta: Meta,
     private title: Title,
     @Inject(PLATFORM_ID) private platformId: any
@@ -77,21 +67,21 @@ export class ProductDetailsComponent implements OnInit {
     this.calculateInnerWidth();
     this.addMetaInfo(this.product);
     this.initData();
-    // this.findBrand();
-    // this.addJsonLD(this.product);
+    this.addJsonLD(this.product);
   }
 
   initData() {
     if (this.product.variants.length) {
-      const product = this.product.variants[0];
-      this.images = product.images ? product.images : this.imagesPlaceHolder(this.noImageUrl);
-      this.description = product.description;
-      this.product.name = product.name;
-      this.variantId = product.id;
-      this.selectedVariant = product;
+      const varinatProduct = this.product.variants[0];
+      this.images = varinatProduct.images.length ? varinatProduct.images : this.imagesPlaceHolder(this.noImageUrl);
+      this.description = varinatProduct.description;
+      this.product.name = varinatProduct.name;
+      this.variantId = varinatProduct.id;
+      this.selectedVariant = varinatProduct;
       this.productId = this.product.id;
-      this.product.selling_price = product.selling_price;
-      this.product.max_retail_price = product.max_retail_price;
+      this.product.selling_price = varinatProduct.selling_price;
+      this.product.max_retail_price = varinatProduct.max_retail_price;
+      this.product.is_orderable = varinatProduct.is_orderable;
     } else {
       this.images = this.product.images.length ? this.product.images : this.imagesPlaceHolder(this.noImageUrl);
       this.description = this.product.description;
@@ -99,13 +89,6 @@ export class ProductDetailsComponent implements OnInit {
       this.productId = this.product.id;
       this.selectedVariant = this.product.variants[0];
     }
-
-    // if (this.product.taxon_ids[0]) {
-    //   this.store.dispatch(
-    //     this.searchActions.getProductsByTaxon(`id=${this.product.taxon_ids[0]}`)
-    //   );
-    //   this.similarProducts$ = this.store.select(getProductsByKeyword);
-    // }
   }
 
   calculateInnerWidth() {
@@ -138,7 +121,7 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  markAsFavorite() {}
+  markAsFavorite() { }
 
   showReviewForm() {
     this.router.navigate([this.product.slug, 'write_review'], {
@@ -147,10 +130,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   selectVariant(variant) {
-    this.images = variant.images;
+    this.images = variant.images.length ? variant.images : this.imagesPlaceHolder(this.noImageUrl);
     this.variantId = variant.id;
     this.selectedVariant = variant;
-    // this.addJsonLD(this.product);
   }
 
   get selectedImage() { return this.images ? this.images[0] : ''; }
@@ -175,7 +157,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addJsonLD(product: Product) {
-    const stockStatus = this.selectedVariant.is_orderable ? 'InStock' : 'OutOfStock';
+    const stockStatus = product.is_orderable ? 'InStock' : 'OutOfStock';
     this.schema = {
       '@context': 'https://schema.org',
       '@type': 'Product',
@@ -183,7 +165,7 @@ export class ProductDetailsComponent implements OnInit {
       'itemCondition': 'https://schema.org/NewCondition',
       'brand': {
         '@type': 'Thing',
-        'name': `${this.brand.name}`
+        'name': `AviaCommerce`
       },
       'aggregateRating': {
         '@type': 'AggregateRating',
@@ -199,8 +181,8 @@ export class ProductDetailsComponent implements OnInit {
         '@type': 'Offer',
         'itemCondition': 'https://schema.org/NewCondition',
         'availability': `https://schema.org/${stockStatus}`,
-        'price': this.selectedVariant.price,
-        'priceCurrency': product.currency,
+        'price': product.selling_price.amount,
+        'priceCurrency': product.selling_price.currency,
       }]
     };
   }
