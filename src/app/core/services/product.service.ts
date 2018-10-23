@@ -152,8 +152,8 @@ export class ProductService {
     );
   }
 
-  writeProductReview(params: Object) {
-    return this.http.post(`api/v1/reviews`, params)
+  writeProductReview(params: Object): Observable<Review> {
+    return this.http.post<Review>(`api/v1/reviews`, params)
   }
 
   getRelatedProducts(productId: any): Observable<Array<Product>> {

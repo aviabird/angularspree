@@ -25,7 +25,7 @@ export class AuthenticationEffects {
   OAuthLogin: Observable<Action> = this.actions$
     .ofType(AuthActions.O_AUTH_LOGIN)
     .pipe(
-      switchMap<Action & { payload: string }, User>(action => {
+      switchMap<Action & { payload: string }, string | User>(action => {
         return this.authService.socialLogin(action.payload);
       }),
       filter(data => data !== null),

@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
+    var tabs = document.getElementsByClassName('nav-tabs')[0],
+        tabsCollection = tabs.getElementsByTagName('A'),
+        treeTab;
+    var len = tabsCollection.length;
+    for(var i = 0; i < len; i++) {
+        if (tabsCollection[i].getAttribute('id') === 'tree-tab') {
+            treeTab = tabsCollection[i];
+        }
+    }
+
+    // short-circuit if no tree tab
+    if (!treeTab) return;
+
     var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function(error, dom) {
         if (error) {
             console.log('handler ko');
@@ -118,15 +131,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         },
+        
+        loadTree = function () {
+            setTimeout(function() {
+                container.style.height = document.getElementsByClassName('content')[0].offsetHeight - 140 + 'px';
+                var network = new vis.Network(container, data, options);
+                network.on('click', handleClickNode);
+            }, 200); // Fade is 0.150
+        };
 
-        myTabs = document.getElementsByClassName('nav-tabs')[0],
-        myTabsCollection = myTabs.getElementsByTagName('A'),
-        myLastTab = myTabsCollection[myTabsCollection.length - 1];
-    myLastTab.addEventListener('click', function(event) {
-        setTimeout(function() {
-            container.style.height = document.getElementsByClassName('content')[0].offsetHeight - 140 + 'px';
-            var network = new vis.Network(container, data, options);
-            network.on('click', handleClickNode);
-        }, 200); // Fade is 0.150
+    loadTree();
+    treeTab.addEventListener('click', function() {
+        loadTree();
     });
 });
