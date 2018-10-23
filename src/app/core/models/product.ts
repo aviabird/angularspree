@@ -34,5 +34,5 @@ export class Product {
   images: Image[];
   reviews: Array<Review>;
   rating_summary: RatingSummary;
-
+  is_orderable: boolean;
 }

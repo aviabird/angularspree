@@ -24,7 +24,7 @@ export class ProductPriceInfoComponent implements OnInit {
 
   customOptionTypesHash: any;
   currentSelectedOptions = {};
-  description: any;
+  description: string;
   images: Array<Image>;
   mainOptions: any;
   correspondingOptions: any;
@@ -34,7 +34,7 @@ export class ProductPriceInfoComponent implements OnInit {
   currency = environment.config.currency_symbol;
 
   constructor(private variantParser: VariantParserService,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: object
   ) {
   }
 
@@ -62,7 +62,6 @@ export class ProductPriceInfoComponent implements OnInit {
       result.newCorrespondingOptions,
       option.value.optionValue.option_type.name
     );
-
     this.currentSelectedOptions = result.newSelectedoptions;
     const newVariant: Variant = result.variant;
     this.variantId = newVariant.id;
