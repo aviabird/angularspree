@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.signInForm.valid) {
       this.loginSubs = this.authService
         .login(values).pipe(
-          tap(_ => this.router.navigate([this.returnUrl]), (user) => {
+          tap(_ => this.router.navigateByUrl(this.returnUrl), (user) => {
             const errors = user.error.error || 'Something went wrong';
             keys.forEach(val => {
               this.pushErrorFor(val, errors);
@@ -82,7 +82,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   redirectIfUserLoggedIn() {
     this.store.select(getAuthStatus).subscribe(
       data => {
-        if (data === true) { this.router.navigate([this.returnUrl]); }
+        if (data === true) {
+          this.router.navigateByUrl(this.returnUrl);
+        }
       }
     );
   }
