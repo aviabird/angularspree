@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Order } from '../../../core/models/order';
 import { map } from 'rxjs/operators';
 import { User } from '../../../core/models/user';
+import { Address } from '../../../core/models/address';
 
 @Injectable()
 export class PaymentService {
@@ -49,10 +50,11 @@ export class PaymentService {
   }
 
   makeStripePayment(cardToken: any, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number,
-    orderId: number): Observable<Order> {
-    const params = this.buildHostedStripePaymentJosn(orderId, orderNumber, paymentId, orderAmount, paymentMethodId, cardToken)
+    orderId: number, address: Address): Observable<Order> {
+    const params = this.buildHostedStripePaymentJosn(orderId, orderNumber, paymentId, orderAmount, paymentMethodId, cardToken, address)
+    debugger
     const url = `api/v1/hosted-payment/stripe-pay`;
-    return this.http.post<Order>(url, params);
+    return this.http.post<Order>(url, params)
   }
 
   getStripeKey(paymentMethodId: number) {
@@ -61,7 +63,7 @@ export class PaymentService {
 
   buildHostedStripePaymentJosn(orderId: number, orderNumber: string,
     paymentId: string, orderAmount: number,
-    paymentMethodId: number, cardToken: any) {
+    paymentMethodId: number, cardToken: any, address: Address) {
     const user: User = JSON.parse(localStorage.getItem('user'));
     const params = {
       'data': {
@@ -75,14 +77,7 @@ export class PaymentService {
           'product_info': 'aviacommerce_products',
           'first_name': user.first_name,
           'email': user.email,
-          'address': {
-            'street1': '123 Main',
-            'street2': 'Suite 100',
-            'city': 'New York',
-            'region': 'NY',
-            'country': 'US',
-            'postal_code': '11111'
-          }
+          'address': address
         }
       }
     }

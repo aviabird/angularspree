@@ -21,8 +21,9 @@
 	</div>
 	<div class="col-md-6">
 		<div class="pay-btn-wrap">
-			<button (click)="stripePayment()" [disabled]="!isPaymentAdded" [ngClass]="isPaymentAdded ? 'btn themebtnprimary' : 'btn themebtnprimary themebtndisable'">Pay
-				Now</button>
+			<button (click)="stripePayment()" [disabled]="!isPaymentAdded" 
+			[ngClass]="isPaymentAdded ? 'btn themebtnprimary' : 'btn themebtnprimary themebtndisable'">
+			Pay Now</button>
 		</div>
 	</div>
 </div>

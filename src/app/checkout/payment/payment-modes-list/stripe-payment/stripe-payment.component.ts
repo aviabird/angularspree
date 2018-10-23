@@ -1,14 +1,24 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, HostListener } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
 import { environment } from '../../../../../environments/environment';
 import { Subscription } from 'rxjs';
 import { Payment } from '../../../../core/models/payment';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
-import { getOrderId, getTotalCartValue, getOrderNumber, getIsPaymentAdded, getPaymentEntities } from '../../../reducers/selectors';
+import {
+  getOrderId,
+  getTotalCartValue,
+  getOrderNumber,
+  getIsPaymentAdded,
+  getPaymentEntities,
+  getShipAddress
+} from '../../../reducers/selectors';
 import { CheckoutActions } from '../../../actions/checkout.actions';
 import { StripeKey } from '../../../../core/models/stripe';
 import { Router } from '@angular/router';
+import { CheckoutService } from '../../../../core/services/checkout.service';
+import { Address } from '../../../../core/models/address';
+
 
 @Component({
   selector: 'app-stripe-payment',
@@ -24,12 +34,14 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
   payment: Payment;
   orderNumber: string;
   handler: any;
+  address: Address;
 
   constructor(
     private paymentService: PaymentService,
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
-    private router: Router
+    private router: Router,
+    private checkOutService: CheckoutService,
   ) { }
 
   ngOnInit() {
@@ -38,7 +50,8 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
       this.store.select(getTotalCartValue).subscribe(resOrderAmt => this.orderAmount = resOrderAmt),
       this.store.select(getOrderNumber).subscribe(orderNumber => this.orderNumber = orderNumber),
       this.store.select(getIsPaymentAdded).subscribe(status => this.isPaymentAdded = status),
-      this.store.select(getPaymentEntities).subscribe(data => { this.payment = data[this.paymentMethodId] })
+      this.store.select(getPaymentEntities).subscribe(data => { this.payment = data[this.paymentMethodId] }),
+      this.store.select(getShipAddress).subscribe(address => { this.address = address })
     );
   }
 
@@ -50,6 +63,11 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
       description: 'Make your payment.',
       amount: amountInCents
     });
+
+    this.handler.open({
+      closed: function () {
+      }
+    })
   }
 
   stripeRequestHandler() {
@@ -57,7 +75,7 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
       this.paymentService.getStripeKey(this.paymentMethodId).subscribe((responseKey: StripeKey) => {
         this.handler = StripeCheckout.configure({
           key: responseKey.publishable_key,
-          image: environment.config.header.brand.logo,
+          image: environment.config.header.brand.logoPng,
           locale: 'auto',
           // Token to sent to Aviacommerce API to complete the payment process.
           token: cardToken => {
@@ -71,10 +89,12 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
   makeStripeRequest(token: string) {
     this.subscriptionList$.push(
       this.paymentService.makeStripePayment(token, this.orderNumber,
-        this.payment.id, this.orderAmount, this.paymentMethodId, this.orderId).subscribe(_ => {
-          this.redirectToSuccessPage(this.orderNumber);
+        this.payment.id, this.orderAmount, this.paymentMethodId, this.orderId, this.address).subscribe(order => {
+          this.checkOutService.fetchCurrentOrder().subscribe(_ => {
+            this.redirectToSuccessPage(order.number)
+          });
         })
-    );
+    )
   }
 
   addPayment() {
@@ -88,12 +108,12 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
     this.handler.close();
   }
 
-  ngOnDestroy() {
-  }
-
   private redirectToSuccessPage(orderNumber) {
     this.router.navigate(['checkout', 'order-success'],
       { queryParams: { orderReferance: orderNumber } });
   }
 
+  ngOnDestroy() {
+    this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
+  }
 }

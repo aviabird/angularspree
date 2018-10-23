@@ -6,14 +6,14 @@
   </div>
   <!-- // TODO: Applying switch case on source.  -->
   <div class="selected-mode" [ngSwitch]="selectedMode.name">
+    <ng-template [ngSwitchCase]="'Stripe'">
+      <app-stripe-payment [paymentMethodId]="selectedMode.id"></app-stripe-payment>
+    </ng-template>
     <ng-template [ngSwitchCase]="'COD'">
       <app-cash-on-delivery [paymentMethodId]="selectedMode.id"></app-cash-on-delivery>
     </ng-template>
     <ng-template [ngSwitchCase]="'Payubiz'">
       <app-hosted-payment [paymentMethodId]="selectedMode.id"></app-hosted-payment>
-    </ng-template>
-    <ng-template [ngSwitchCase]="'Stripe'">
-      <app-stripe-payment [paymentMethodId]="selectedMode.id"></app-stripe-payment>
     </ng-template>
   </div>
   <br>
