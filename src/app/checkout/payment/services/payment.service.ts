@@ -50,11 +50,10 @@ export class PaymentService {
   }
 
   makeStripePayment(cardToken: any, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number,
-    orderId: number, address: Address): Observable<Order> {
+    orderId: number, address: Address): Observable<{order: {order_number}}> {
     const params = this.buildHostedStripePaymentJosn(orderId, orderNumber, paymentId, orderAmount, paymentMethodId, cardToken, address)
-    debugger
     const url = `api/v1/hosted-payment/stripe-pay`;
-    return this.http.post<Order>(url, params)
+    return this.http.post<{order: {order_number}}>(url, params)
   }
 
   getStripeKey(paymentMethodId: number) {
@@ -77,7 +76,14 @@ export class PaymentService {
           'product_info': 'aviacommerce_products',
           'first_name': user.first_name,
           'email': user.email,
-          'address': address
+          'address': {
+            'street1': '123 Main',
+            'street2': 'Suite 100',
+            'city': 'New York',
+            'region': 'NY',
+            'country': 'US',
+            'postal_code': '11111'
+          }
         }
       }
     }

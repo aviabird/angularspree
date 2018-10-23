@@ -18,8 +18,6 @@ import { StripeKey } from '../../../../core/models/stripe';
 import { Router } from '@angular/router';
 import { CheckoutService } from '../../../../core/services/checkout.service';
 import { Address } from '../../../../core/models/address';
-
-
 @Component({
   selector: 'app-stripe-payment',
   templateUrl: './stripe-payment.component.html',
@@ -91,7 +89,7 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
       this.paymentService.makeStripePayment(token, this.orderNumber,
         this.payment.id, this.orderAmount, this.paymentMethodId, this.orderId, this.address).subscribe(order => {
           this.checkOutService.fetchCurrentOrder().subscribe(_ => {
-            this.redirectToSuccessPage(order.number)
+            this.redirectToSuccessPage(order.order.order_number)
           });
         })
     )
