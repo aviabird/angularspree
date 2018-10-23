@@ -108,12 +108,10 @@ export class CheckoutService {
    * @returns
    * @memberof CheckoutService
    */
-  getOrder() {
+  getOrder(): Observable<Order> {
     const orderNumber = JSON.parse(localStorage.getItem('order_number'))
     const url = `api/v1/orders/${orderNumber}`;
-    return this.http.get<Order>(url).pipe(
-      map(order => { return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order)) })
-    )
+    return this.http.get<Order>(url);
   }
 
   /**
@@ -149,17 +147,13 @@ export class CheckoutService {
    *
    * @param {number} orderId
    * @param {Array<{}>} packages
-   * @returns
+   * @returns {Observable<Order>}
    * @memberof CheckoutService
    */
-  saveShippingPreferences(orderId: number, packages: Array<{}>) {
+  saveShippingPreferences(orderId: number, packages: Array<{}>): Observable<Order> {
     const params = this.buildShippingParams(orderId, packages);
     const url = `api/v1/orders/${orderId}/add-shipment`;
-    return this.http.patch(url, params).pipe(
-      map(resp => {
-        return resp;
-      })
-    )
+    return this.http.patch<Order>(url, params);
   }
 
   shipmentAvailability(pincode: number) {

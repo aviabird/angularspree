@@ -48,7 +48,7 @@ export class UserEffects {
 
   @Effect()
   DeleteUserAddress$ = this.actions$.ofType(UserActions.DELETE_ADDRESS).pipe(
-    switchMap<Action & { payload }, void>(action => {
+    switchMap<Action & { payload }, Object>(action => {
       return this.addressService.deleteAddress(action.payload);
     }),
     map(_ => this.userActions.fetchUserAddress())

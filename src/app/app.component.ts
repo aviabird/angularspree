@@ -20,7 +20,6 @@ import { AuthActions } from './auth/actions/auth.actions';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  orderSub$: Subscription;
   currentUrl: string;
   currentStep: string;
   checkoutUrls = ['/checkout/cart', '/checkout/address', '/checkout/payment'];
@@ -60,13 +59,15 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscriptionList$.push(
       this.store.select(getAuthStatus).subscribe((data: boolean) => {
         if (data) {
-          this.orderSub$ = this.checkoutService.fetchCurrentOrder()
-            .subscribe(_ => { },
-              _ => {
-                localStorage.clear()
-                this.store.dispatch(this.authAction.logoutSuccess())
-              }
-            );
+          this.subscriptionList$.push(
+            this.checkoutService.fetchCurrentOrder()
+              .subscribe(_ => { },
+                _ => {
+                  localStorage.clear()
+                  this.store.dispatch(this.authAction.logoutSuccess())
+                }
+              )
+          )
         } else {
           if (isPlatformBrowser(this.platformId)) {
             const guestOrder: string = localStorage.getItem('order_number') ? JSON.parse(localStorage.getItem('order_number')) : null;
@@ -108,7 +109,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.orderSub$.unsubscribe();
     this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
 
