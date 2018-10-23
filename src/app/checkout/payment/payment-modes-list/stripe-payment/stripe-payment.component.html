@@ -23,7 +23,8 @@
 		<div class="pay-btn-wrap">
 			<button (click)="stripePayment()" [disabled]="!isPaymentAdded" 
 			[ngClass]="isPaymentAdded ? 'btn themebtnprimary' : 'btn themebtnprimary themebtndisable'">
-			Pay Now</button>
+			<i *ngIf="loader" class="fa fa-circle-o-notch fa-spin"></i>
+			<span *ngIf="!loader">Pay Now</span></button>
 		</div>
 	</div>
 </div>

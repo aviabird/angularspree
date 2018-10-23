@@ -11,7 +11,7 @@ import {
   getOrderNumber,
   getIsPaymentAdded,
   getPaymentEntities,
-  getShipAddress
+  getShipAddress,
 } from '../../../reducers/selectors';
 import { CheckoutActions } from '../../../actions/checkout.actions';
 import { StripeKey } from '../../../../core/models/stripe';
@@ -33,6 +33,7 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
   orderNumber: string;
   handler: any;
   address: Address;
+  loader: boolean;
 
   constructor(
     private paymentService: PaymentService,
@@ -77,6 +78,7 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
           locale: 'auto',
           // Token to sent to Aviacommerce API to complete the payment process.
           token: cardToken => {
+            this.loader = true;
             this.makeStripeRequest(cardToken);
           }
         })
@@ -89,6 +91,7 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
       this.paymentService.makeStripePayment(token, this.orderNumber,
         this.payment.id, this.orderAmount, this.paymentMethodId, this.orderId, this.address).subscribe(order => {
           this.checkOutService.fetchCurrentOrder().subscribe(_ => {
+            this.loader = false;
             this.redirectToSuccessPage(order.order.order_number)
           });
         })
