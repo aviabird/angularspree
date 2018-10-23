@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Brand } from '../../../core/models/brand';
 import { Store } from '@ngrx/store';

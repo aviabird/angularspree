@@ -1,17 +1,26 @@
 @import '../../shared/scss/selected_theme_variables';
 .navbar {
-  transition: all 500ms;
   padding: 0px;
   padding-top: 1rem;
-  &.page-scroll-header {
+  &#main{
+    transition: all 500ms;
     position: fixed;
-    z-index: 100;
     width: 100%;
+    z-index: 100;
   }
   &:not(#main),
   &.page-scroll-header {
     box-shadow: 0 8px 6px -8px $gray-900;
     z-index: 1;
+  }
+  &#sub-header {
+    transition: all 150ms;
+    width: 100%;
+    z-index: 1;
+    top: 50px;
+    &.hide-sub-header {
+      top: 0;
+    }
   }
 }
 
@@ -162,7 +171,6 @@
 }
 
 .main-nav-trigger {
-  ms-touch-action: manipulation;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   left: 3px;

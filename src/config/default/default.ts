@@ -11,8 +11,8 @@ export const DEFAULT_CONFIG = {
     brand: {
       logo: '/assets/default/logo.svg',
       name: 'AviaCommerce',
-      height: '42',
-      width: '140'
+      height: '40',
+      width: '135'
     },
     searchPlaceholder: 'Search for products',
     showGithubRibon: false

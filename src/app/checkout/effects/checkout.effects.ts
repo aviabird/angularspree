@@ -33,9 +33,7 @@ export class CheckoutEffects {
 
   @Effect()
   OrderDetails$ = this.actions$.ofType(CheckoutActions.GET_ORDER_DETAILS).pipe(
-    switchMap<Action, Order>(_ => {
-      return this.checkoutService.getOrder();
-    }),
+    switchMap<Action, Order>(_ => this.checkoutService.getOrder()),
     map(order => this.actions.fetchCurrentOrderSuccess(order))
   );
 
