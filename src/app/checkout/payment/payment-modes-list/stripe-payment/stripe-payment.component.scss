@@ -1,0 +1,38 @@
+@import '../../../../shared/scss/selected_theme_variables';
+.cod-block {
+  .section-help {
+    padding: 23px 0px 36px !important;
+    text-transform: uppercase;
+    width: 100% !important;
+    border-bottom: 1px solid $gray-10 !important;
+    height: 66px;
+    .lbl {
+      color: $gray-800;
+      font-size: 16px;
+      display: block;
+      font-weight: 600;
+      font-family: $primary-font;
+      ;
+    }
+    .sub-lbl {
+      display: block;
+      font-size: 12px;
+      color: $gray-800;
+      text-transform: none;
+    }
+  }
+  .cod-info {
+    padding: 10px 10px 10px 0;
+    font-weight: 600;
+    color: $gray-900;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: $primary-font;
+    ;
+  }
+}
+
+.pay-btn-wrap {
+
+}

@@ -4,7 +4,7 @@ import { DEFAULT_META_DATA } from './meta-data';
 export const DEFAULT_CONFIG = {
   prodApiEndpoint: 'https://api.aviacommerce.org/',
   // prodApiEndpoint: 'http://localhost:3000/',
-  frontEndUrl: 'https://test-aviacommerce.netlify.com/',
+  frontEndUrl: 'https://demo.aviacommerce.com/',
   appName: 'AviaCommerce Online Shop',
   fevicon: '/assets/default/favicon.ico',
   header: {

@@ -42,13 +42,53 @@ export class PaymentService {
       .pipe(map(res => { return res }, error => { return error }))
   }
 
-
   makeCodPayment(orderId: number): Observable<Order> {
     const params = this.buildCodPaymentJson(orderId);
     const url = `api/v1/payment/cod_payment`
     return this.http.post<Order>(url, params);
   }
 
+  makeStripePayment(cardToken: any, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number,
+    orderId: number): Observable<Order> {
+    const params = this.buildHostedStripePaymentJosn(orderId, orderNumber, paymentId, orderAmount, paymentMethodId, cardToken)
+    const url = `api/v1/hosted-payment/stripe-pay`;
+    return this.http.post<Order>(url, params);
+  }
+
+  getStripeKey(paymentMethodId: number) {
+    return this.http.get(`api/v1/hosted-payment/stripe-request?id=${paymentMethodId}`);
+  }
+
+  buildHostedStripePaymentJosn(orderId: number, orderNumber: string,
+    paymentId: string, orderAmount: number,
+    paymentMethodId: number, cardToken: any) {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+    const params = {
+      'data': {
+        'attributes': {
+          'token': cardToken.id,
+          'order_id': orderId,
+          'order_number': orderNumber,
+          'payment_id': paymentId,
+          'payment_method_id': paymentMethodId,
+          'amount': orderAmount.toString(),
+          'product_info': 'aviacommerce_products',
+          'first_name': user.first_name,
+          'email': user.email,
+          'address': {
+            'street1': '123 Main',
+            'street2': 'Suite 100',
+            'city': 'New York',
+            'region': 'NY',
+            'country': 'US',
+            'postal_code': '11111'
+          }
+        }
+      }
+    }
+
+    return params;
+  }
   /**
    *
    *
@@ -69,7 +109,7 @@ export class PaymentService {
           'payment_id': paymentId,
           'payment_method_id': paymentMethodId,
           'amount': orderAmount.toString(),
-          'product_info': 'snitch_products',
+          'product_info': 'aviacommerce_products',
           'first_name': user.first_name,
           'email': user.email
         }
