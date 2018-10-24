@@ -76,14 +76,7 @@ export class PaymentService {
           'product_info': 'aviacommerce_products',
           'first_name': user.first_name,
           'email': user.email,
-          'address': {
-            'street1': '123 Main',
-            'street2': 'Suite 100',
-            'city': 'New York',
-            'region': 'NY',
-            'country': 'US',
-            'postal_code': '11111'
-          }
+          'address': address
         }
       }
     }
