@@ -4,11 +4,15 @@
       {{mode.name}}
     </div>
   </div>
-  <div class="selected-mode" [ngSwitch]="selectedMode.code">
-    <ng-template [ngSwitchCase]="'cod'">
+  <!-- // TODO: Applying switch case on source.  -->
+  <div class="selected-mode" [ngSwitch]="selectedMode.name">
+    <ng-template [ngSwitchCase]="'Stripe'">
+      <app-stripe-payment [paymentMethodId]="selectedMode.id"></app-stripe-payment>
+    </ng-template>
+    <ng-template [ngSwitchCase]="'COD'">
       <app-cash-on-delivery [paymentMethodId]="selectedMode.id"></app-cash-on-delivery>
     </ng-template>
-    <ng-template [ngSwitchCase]="'hpm'">
+    <ng-template [ngSwitchCase]="'Payubiz'">
       <app-hosted-payment [paymentMethodId]="selectedMode.id"></app-hosted-payment>
     </ng-template>
   </div>
@@ -30,7 +34,8 @@
         </tr>
         <tr>
           <th>Card Number</th>
-          <th>4012001037141112</th>
+          <th *ngIf="selectedMode?.name === 'Payubiz'">4012001037141112</th>
+          <th *ngIf="selectedMode?.name === 'Stripe'">4242424242424242</th>
         </tr>
         <tr>
           <th>Expiry Date</th>
