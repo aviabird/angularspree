@@ -8,13 +8,15 @@ import { PaymentModesListComponent } from './payment-modes-list/payment-modes-li
 import { CashOnDeliveryComponent } from './payment-modes-list/cash-on-delivery/cash-on-delivery.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { HostedPaymentComponent } from './payment-modes-list/hosted-payment/hosted-payment.component';
+import { StripePaymentComponent } from './payment-modes-list/stripe-payment/stripe-payment.component';
 
 @NgModule({
   declarations: [
     PaymentComponent,
     PaymentModesListComponent,
     HostedPaymentComponent,
-    CashOnDeliveryComponent
+    CashOnDeliveryComponent,
+    StripePaymentComponent
   ],
   exports: [],
   imports: [
