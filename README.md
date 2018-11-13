@@ -18,11 +18,11 @@
   <a href="https://aviacommerce.org" target="_blank"><img alt="Aviacommerce" src="https://res.cloudinary.com/aviabird/image/upload/v1539069450/aviacommerce/flyer.jpg"></a>
 </p>
 
-**AngularSpree is an open source Angular(6.x+) front-end e-commerce application for [Aviacommerce](https://aviacommerce.org).**
+**AngularSpree is an open source Angular (7.x+) front-end e-commerce application supported by Aviacommerce API**
 
 It is a plug and play frontend application for [AviaCommerce API](https://www.aviacommerce.org/docs/apis-getting-started.html) built using Angular6, Redux, Observables & ImmutableJs.
 
-However, it is not limited to aviacommerce and can also be used with any e-commerce solution with an api interface. Such as spreecommerce, magento, opencart etc.
+**However, it is not limited to aviacommerce and can also be used with any e-commerce solution with an api interface. Such as spreecommerce, magento, opencart etc.**
 
 For enquiries send a mail at `hello@aviabird.com`
 
