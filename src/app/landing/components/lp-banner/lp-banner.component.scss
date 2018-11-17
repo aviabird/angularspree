@@ -28,6 +28,7 @@
       width: fit-content;
       border-radius: 5px 5px 0 0;
       bottom: 27px;
+      cursor: pointer;
       @media (min-width: '768px') {
         bottom: 0;
       }
@@ -53,6 +54,7 @@
   .leftRs,
   .rightRs {
     position: absolute;
+    cursor: pointer;
     margin: auto;
     top: -10%;
     bottom: 0;
@@ -64,9 +66,6 @@
     padding: 0 4rem;
     filter: drop-shadow(0 2px 2px #444);
     background-size: 3rem;
-    @media (max-width: 768px) {
-      display: none !important;
-    }
   }
   .leftRs {
     left: 0;

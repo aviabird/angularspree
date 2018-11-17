@@ -52,7 +52,7 @@ import { ResponseInterceptor } from './interceptors/reponse.interceptor';
     NgProgressModule.forRoot({
       meteor: false
     }),
-    NgProgressHttpModule,
+    NgProgressHttpModule.forRoot(),
   ],
   providers: [
     VariantParserService,

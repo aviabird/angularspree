@@ -51,10 +51,14 @@
 
 :host {
   /deep/ .banner {
+    .ngucarousel {
+      padding-top: 3rem;
+    }
+
     .leftRs,
     .rightRs {
       position: absolute;
-      top: -3.1rem;
+      top: 0rem;
       margin: auto;
       right: 0;
       background-color: transparent;

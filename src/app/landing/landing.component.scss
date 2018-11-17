@@ -30,6 +30,7 @@
     color: $black;
     text-transform: capitalize;
     font-weight: 600;
+    position: absolute;
   }
   /deep/ .scrollbar-hidden {
     overflow: hidden !important;
