@@ -16,9 +16,7 @@
   <div *ngIf="relatedProducts$ | async; let relatedProducts">
     <div class="slider" *ngIf="relatedProducts.length >0">
       <div class="container">
-        <h2>
-          Related products
-        </h2>
+        <h2 class="position-absolute">Related products</h2>
         <app-product-slider [productsList]="relatedProducts"></app-product-slider>
       </div>
     </div>
@@ -37,9 +35,7 @@
   <div *ngIf="similarProducts$ | async; let similarProducts">
     <div class="slider" *ngIf="similarProducts.length >0">
       <div class="container">
-        <h2>
-          Similar products
-        </h2>
+        <h2 class="position-absolute">Similar products</h2>
         <app-product-slider [productsList]="similarProducts"></app-product-slider>
       </div>
     </div>
@@ -97,9 +93,8 @@
   <div *ngIf="relatedProducts$ | async; let relatedProducts">
     <div class="slider mb-5 pb-4" *ngIf="relatedProducts.length >0">
       <div class="container">
-        <h2>
-          Related products
-        </h2>
+        <h2 class="position-absolute">Related products</h2>
+
         <!-- <app-product-slider [productsList]="relatedProducts"></app-product-slider> -->
       </div>
     </div>
@@ -118,9 +113,7 @@
   <div *ngIf="similarProducts$ | async; let similarProducts">
     <div class="slider mb-3 pb-4 pt-3 " *ngIf="similarProducts.length >0">
       <div class="container">
-        <h2>
-          Similar products
-        </h2>
+        <h2 class="position-absolute">Similar products</h2>
         <!-- <app-product-slider [productsList]="similarProducts"></app-product-slider> -->
       </div>
     </div>

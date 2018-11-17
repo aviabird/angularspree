@@ -1,6 +1,6 @@
 import { environment } from './../../../../environments/environment';
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { NguCarousel, NguCarouselStore } from '@ngu/carousel';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
   selector: 'app-lp-banner',
@@ -8,31 +8,27 @@ import { NguCarousel, NguCarouselStore } from '@ngu/carousel';
   styleUrls: ['./lp-banner.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LpBannerComponent implements OnInit {
+export class LpBannerComponent implements OnInit, AfterViewInit {
   public bannerItems = environment.config.landing_page_banner;
-  public carouselOne: NguCarousel;
-  @ViewChild('landingBanners') landingBanners: NguCarouselStore;
+  public carouselTileConfig: NguCarouselConfig = {
+    grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
+    slide: 1,
+    speed: 500,
+    point: {
+      visible: true
+    },
+    touch: true,
+    velocity: 0,
+    loop: true,
+    interval: { timing: 5000 },
+    animation: 'lazy',
+    custom: 'banner'
+  };
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {
-    this.carouselOne = {
-      grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
-      slide: 1,
-      speed: 400,
-      interval: 4000,
-      point: {
-        visible: true,
-        pointStyles: '.ngucarouselPoint {}' // To apply our modification
-      },
-      load: 2,
-      touch: true,
-      loop: true,
-      custom: 'banner'
-    };
-  }
+  ngOnInit() {}
 
-  onMoveBanner(store: NguCarouselStore) {
-    this.landingBanners.currentSlide = store.currentSlide;
+  ngAfterViewInit() {
   }
 }

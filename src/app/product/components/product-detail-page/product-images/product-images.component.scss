@@ -31,11 +31,48 @@
   }
 }
 
-.bannerStyle {
-  img {
-    height: 190px;
-    margin: auto;
-    width: auto !important;
+:host {
+  /deep/ .banner {
+    .ngucarouselPoint {
+      list-style-type: none;
+      padding: 3px;
+      white-space: nowrap;
+      overflow: auto;
+      left: 0;
+      box-sizing: border-box;
+      background-color: $white;
+      margin: 0 auto -28px;
+      align-self: center;
+      width: fit-content;
+      border-radius: 5px 5px 0 0;
+      bottom: 27px;
+      cursor: pointer;
+      @media (min-width: '768px') {
+        bottom: 0;
+      }
+    }
+
+    .ngucarouselPoint li {
+      display: inline-block;
+      border-radius: 999px;
+      background-color: $theme-main-color;
+      border: 1px solid $theme-main-color;
+      padding: 5px;
+      margin: 0 3px;
+      transition: .4s ease all;
+    }
+
+    .ngucarouselPoint li.active {
+      background-color: $white;
+    }
+
+    .bannerStyle {
+      img {
+        height: 240px;
+        margin: auto;
+        width: auto !important;
+      }
+    }
   }
 }
 
