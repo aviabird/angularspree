@@ -1,11 +1,6 @@
 import { Image } from './../../../../core/models/image';
-import { environment } from './../../../../../environments/environment';
-import { Product } from './../../../../core/models/product';
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { NguCarousel } from '@ngu/carousel';
-
-const img1 = require('../../../../../assets/thumbnail.jpg');
-const img2 = require('../../../../../assets/thumbnail2.jpg');
+import { NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
   selector: 'app-image-container',
@@ -14,8 +9,6 @@ const img2 = require('../../../../../assets/thumbnail2.jpg');
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductImagesComponent implements OnInit {
-  imageSource1 = img1;
-  imageSource2 = img2;
   @Input() images: Image[] = null;
   @Input() selectedImage: Image = null;
   zoomOptions = {
@@ -30,53 +23,24 @@ export class ProductImagesComponent implements OnInit {
     }
   };
   @Input() isMobile;
-  public carouselOne: NguCarousel;
+  public carouselTileConfig: NguCarouselConfig = {
+    grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
+    slide: 1,
+    speed: 500,
+    point: {
+      visible: true
+    },
+    touch: true,
+    velocity: 0,
+    loop: true,
+    interval: { timing: 5000 },
+    animation: 'lazy',
+    custom: 'banner'
+  };
+
   constructor() { }
 
   ngOnInit() {
-    this.carouselOne = {
-      grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
-      slide: 1,
-      speed: 400,
-      interval: 4000,
-      point: {
-        visible: true,
-        pointStyles: `
-          .ngucarouselPoint {
-            list-style-type: none;
-            padding: 10px;
-            white-space: nowrap;
-            overflow: auto;
-            position: relative;
-            left: 0;
-            box-sizing: border-box;
-            background-color: transparent;
-            margin: 0 auto -28px;
-            align-self: center;
-            width: fit-content;
-            border-radius: 5px 5px 0 0;
-          }
-          .ngucarouselPoint li {
-            display: inline-block;
-            border-radius: 999px;
-            background-color: rgba(0, 0, 255, 0.55);
-            padding: 5px;
-            margin: 0 3px;
-            transition: .4s ease all;
-          }
-          .ngucarouselPoint li a img{height:190px;margin:auto}
-          .ngucarouselPoint li.active {
-              background-color: transparent;
-              border: 1px solid rgba(0, 0, 255, 0.55);
-              width: 10px;
-          }
-        `
-      },
-      load: 2,
-      touch: true,
-      loop: true,
-      custom: 'banner'
-    }
   }
 
 

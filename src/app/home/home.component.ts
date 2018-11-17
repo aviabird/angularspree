@@ -28,7 +28,7 @@ import { Brand } from '../core/models/brand';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  taxonomies$: Observable<Taxonomy>;
+  taxonomies$: Observable<Taxonomy[]>;
   brands$: Observable<Array<Brand>>;
   selectedTaxonIds$: Observable<number[]>;
   categoryLevel$: Observable<any>;
