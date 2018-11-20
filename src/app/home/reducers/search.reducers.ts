@@ -3,7 +3,7 @@ import { Product } from './../../core/models/product';
 import { SearchActions } from './search.actions';
 import { SearchState, SearchStateRecord } from './search.state';
 
-export const initialState: SearchState = new SearchStateRecord() as SearchState;
+export const initialState: SearchState = new SearchStateRecord() as unknown as SearchState;
 let isUpdated: boolean;
 let updatedCategory: any;
 export function reducer(state = initialState, { type, payload }: any): SearchState {

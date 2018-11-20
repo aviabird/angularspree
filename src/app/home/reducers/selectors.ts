@@ -1,51 +1,29 @@
+import { Brand } from './../../core/models/brand';
+import { Taxon } from './../../core/models/taxon';
+import { Product } from './../../core/models/product';
 import { HomeState } from './index';
 import { SearchState } from './search.state';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { Taxonomy } from '../../core/models/taxonomy';
 
 /******************* Base Search State ******************/
 export const getHomeState = createFeatureSelector<HomeState>('home');
-
 export const getSearchState = createSelector(
   getHomeState,
   (state: HomeState) => state.search
 );
 
 /******************* Individual selectors ******************/
-function fetchSelectedFilters(state: SearchState) {
-  return state.selectedFilters.toJS();
-};
+const fetchSelectedFilters = (state: SearchState) => state.selectedFilters;
+const fetchSelectedTaxonIds = (state: SearchState) => state.selectedTaxonIds as unknown as number[];
+const fetchProductsByKeyword = (state: SearchState) => state.productsByKeyword as unknown as Product[];
+const fetchChildTaxons = (state: SearchState) => state.getChildTaxons as unknown as Taxon[] & Taxonomy[];
+const fetchCategeoryLevel = (state: SearchState) => state.categeoryLevel;
+const fetchTaxonomiByName = (state: SearchState) => state.taxonomiByName as unknown as Taxonomy[] & Brand[];
+const fetchPaginationData = (state: SearchState) => state.paginationData;
+const fetchSearchFliterStatus = (state: SearchState) => state.searchFilter;
+const fetchSearchFliterKeyword = (state: SearchState) => state.searchKeyword;
 
-function fetchSelectedTaxonIds(state: SearchState) {
-  return state.selectedTaxonIds.toJS();
-}
-
-function fetchProductsByKeyword(state: SearchState) {
-  return state.productsByKeyword.toJS();
-}
-
-function fetchChildTaxons(state: SearchState) {
-  return state.getChildTaxons.toJS();
-}
-
-function fetchCategeoryLevel(state: SearchState) {
-  return state.categeoryLevel.toJS();
-}
-
-function fetchTaxonomiByName(state: SearchState) {
-  return state.taxonomiByName.toJS();
-}
-
-function fetchPaginationData(state: SearchState) {
-  return state.paginationData.toJS();
-}
-
-function fetchSearchFliterStatus(state: SearchState) {
-  return state.searchFilter;
-}
-
-function fetchSearchFliterKeyword(state: SearchState) {
-  return state.searchKeyword;
-}
 /******************* Public Selector API's ******************/
 export const getFilters = createSelector(getSearchState, fetchSelectedFilters);
 export const getSelectedTaxonIds = createSelector(getSearchState, fetchSelectedTaxonIds);

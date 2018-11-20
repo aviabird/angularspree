@@ -3,7 +3,7 @@ import { CheckoutActions } from './../actions/checkout.actions';
 import { CheckoutState, CheckoutStateRecord } from './checkout.state';
 import { Payment } from '../../core/models/payment';
 
-export const initialState: CheckoutState = new CheckoutStateRecord() as CheckoutState;
+export const initialState: CheckoutState = new CheckoutStateRecord() as unknown as CheckoutState;
 
 export function reducer(state = initialState, { type, payload }: any): CheckoutState {
 

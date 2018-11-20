@@ -63,7 +63,7 @@
     "crypto-js": "^3.1.9-1",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
-    "immutable": "^3.8.2",
+    "immutable": "^4.0.0-rc.12",
     "jsonapi-deserializer": "^0.1.1",
     "ng2-ui-auth": "^9.2.0",
     "ngx-bootstrap": "^3.1.1",

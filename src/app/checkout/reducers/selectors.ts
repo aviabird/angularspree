@@ -1,70 +1,35 @@
+import { Address } from './../../core/models/address';
+import { LineItem } from './../../core/models/line_item';
 import { CheckoutState } from './checkout.state';
 import { AppState } from './../../interfaces';
 import { createSelector } from 'reselect';
+import { Payment } from '../../core/models/payment';
 
 // Base Cart State function
-export function getCheckoutState(state: AppState): CheckoutState {
-  return state.checkout;
-}
+const getCheckoutState = (state: AppState): CheckoutState => state.checkout;
 
 // ******************** Individual selectors ***************************
-export function fetchLineItems(state: CheckoutState) {
-  return state.lineItems.toJS();
-  // const ids = state.lineItemIds.toJS();
-  // const lineItemEntitites = state.lineItemEntities.toJS();
-  // return ids.map(id => lineItemEntitites[id]);
+const fetchLineItems = (state: CheckoutState): LineItem[] => {
+  return state.lineItems as unknown as LineItem[];
 }
+const fetchOrderNumber = (state: CheckoutState): string => state.orderNumber;
+const fetchTotalCartItems = (state: CheckoutState): number => state.totalCartItems;
+const fetchTotalCartValue = (state: CheckoutState): number => state.totalCartValue;
+const fetchShipAddress = (state: CheckoutState): Address => {
+  return (state.shipAddress ? state.shipAddress : state.shipAddress) as Address;
+}
+const fetchBillAddress = (state: CheckoutState): Address => {
+  return (state.billAddress ? state.billAddress : state.billAddress) as Address;
+}
+const fetchOrderState = (state: CheckoutState): string => state.orderState;
+const fetchShipTotal = (state: CheckoutState): number => state.shipTotal;
+const fetchItemTotal = (state: CheckoutState): number => state.itemTotal;
+const fetchAdjustmentTotal = (state: CheckoutState): number => state.adjustmentTotal;
+const fetchOrderId = (state: CheckoutState): number => state.orderId;
+const fetchPayments = (state: CheckoutState): Payment[] => state.payments as unknown as Payment[];
+const fetchPaymentEntities = (state: CheckoutState) => state.paymentEntities;
+const fetchIsPaymentAdded = (state: CheckoutState): boolean => state.isPaymentAdded;
 
-export function fetchOrderNumber(state: CheckoutState) {
-  return state.orderNumber;
-}
-
-export function fetchTotalCartItems(state: CheckoutState) {
-  return state.totalCartItems;
-}
-
-export function fetchTotalCartValue(state: CheckoutState) {
-  return state.totalCartValue;
-}
-
-export function fetchShipAddress(state: CheckoutState) {
-  return state.shipAddress ? state.shipAddress.toJS() : state.shipAddress;
-}
-
-export function fetchBillAddress(state: CheckoutState) {
-  return state.billAddress ? state.billAddress.toJS() : state.billAddress;
-}
-
-export function fetchOrderState(state: CheckoutState) {
-  return state.orderState;
-}
-export function fetchShipTotal(state: CheckoutState) {
-  return state.shipTotal;
-}
-
-export function fetchItemTotal(state: CheckoutState) {
-  return state.itemTotal;
-}
-
-export function fetchAdjustmentTotal(state: CheckoutState) {
-  return state.adjustmentTotal;
-}
-
-export function fetchOrderId(state: CheckoutState) {
-  return state.orderId;
-}
-
-export function fetchPayments(state: CheckoutState) {
-  return state.payments.toJS();
-}
-
-export function fetchPaymentEntities(state: CheckoutState) {
-  return state.paymentEntities.toJS();
-}
-
-export function fetchIsPaymentAdded(state: CheckoutState) {
-  return state.isPaymentAdded;
-}
 // *************************** PUBLIC API's ****************************
 export const getLineItems = createSelector(getCheckoutState, fetchLineItems);
 export const getOrderNumber = createSelector(getCheckoutState, fetchOrderNumber);
