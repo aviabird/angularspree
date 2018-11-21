@@ -15,7 +15,8 @@
       <div class="ugc pr-3">
         <a class="hide-phone js-revScrollTo reviewlink pl-1" (click)="scrollToReview()">
           <ngx-input-star-rating disabled="true" value={{product.rating_summary.average_rating}} required></ngx-input-star-rating>
-          {{product.rating_summary.review_count}} Reviews</a>
+          {{product.rating_summary.review_count}} Reviews
+        </a>
       </div>
     </div>
   </div>
@@ -45,7 +46,7 @@
               </ul>
             </li>
             <li>
-              <ul>
+              <ul *ngIf="discount > 0">
                 <li>You Save:</li>
                 <li>
                   {{currency}}{{discount}} ({{discountPercent}})
@@ -56,8 +57,9 @@
           <div class="clearfix"></div>
         </div>
         <div id="featured-promotions" class="pt-3" *ngIf="customOptionTypesHash">
-          <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
-            [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
+          <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions"
+            (onOptionClickEvent)="onOptionClick($event)" [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions"
+            class="row m-0"></app-product-variants>
 
         </div>
         <!-- <app-check-pincode></app-check-pincode> -->
@@ -85,16 +87,15 @@
                 <li> Price:</li>
                 <li>
                   <span class="ga-eec__price">
-                      {{currency}}{{product.selling_price.amount}}</span>
+                    {{currency}}{{product.selling_price.amount}}</span>
                   <span class="free-shipping  d-xs-none d-sm-none d-none d-lg-block">FREE 1-2 Day
                     <span>Shipping on this item</span>
                   </span>
                 </li>
               </ul>
-
             </li>
             <li>
-              <ul>
+              <ul *ngIf="discount > 0">
                 <li> You Save:</li>
                 <li> {{currency}}{{discount}} ({{discountPercent}})</li>
               </ul>
@@ -103,8 +104,9 @@
           <div class="clearfix"></div>
         </div>
         <div id="featured-promotions" *ngIf="customOptionTypesHash">
-          <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions" (onOptionClickEvent)="onOptionClick($event)"
-            [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions" class="row m-0"></app-product-variants>
+          <app-product-variants [customOptionTypesHash]="customOptionTypesHash" [currentSelectedOptions]="currentSelectedOptions"
+            (onOptionClickEvent)="onOptionClick($event)" [correspondingOptions]="correspondingOptions" [mainOptions]="mainOptions"
+            class="row m-0"></app-product-variants>
 
         </div>
       </div>
