@@ -1,7 +1,7 @@
 import { LayoutState, LayoutStateRecord } from './layout.state';
 import { LayoutActions, LayoutActionTypes } from '../actions/layout.actions';
 
-export const initialState: LayoutState = new LayoutStateRecord() as LayoutState;
+export const initialState: LayoutState = new LayoutStateRecord() as unknown as LayoutState;
 
 export function reducer(state = initialState, action: LayoutActions): LayoutState {
   switch (action.type) {
