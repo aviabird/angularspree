@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
 import { environment } from '../../../../../environments/environment';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import { Payment } from '../../../../core/models/payment';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
@@ -18,13 +18,15 @@ import { Router } from '@angular/router';
 import { CheckoutService } from '../../../../core/services/checkout.service';
 import { Address } from '../../../../core/models/address';
 import { PaymentKey } from '../../../../core/models/payment_key';
-import { switchMap, tap } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
+
+declare var Razorpay: any;
 @Component({
-  selector: 'app-stripe-payment',
-  templateUrl: './stripe-payment.component.html',
-  styleUrls: ['./stripe-payment.component.scss']
+  selector: 'app-razor-payment',
+  templateUrl: './razor-payment.component.html',
+  styleUrls: ['./razor-payment.component.scss']
 })
-export class StripePaymentComponent implements OnInit, OnDestroy {
+export class RazorPaymentComponent implements OnInit, OnDestroy {
   @Input() paymentMethodId: number;
   subscriptionList$: Array<Subscription> = [];
   isPaymentAdded: boolean;
@@ -32,8 +34,8 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
   orderAmount: number;
   payment: Payment;
   orderNumber: string;
-  handler: any;
   address: Address;
+  paymentHandler: any;
   loader: boolean;
 
   constructor(
@@ -55,65 +57,60 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
     );
   }
 
-  stripePayment() {
-    // Stripe accepts order amount in `cents`.
-    const amountInCents = (this.orderAmount * 100);
-    this.handler.open({
-      name: `${environment.appName}`,
-      description: 'Make your payment.',
-      amount: amountInCents
-    });
-
-    this.handler.open({
-      closed: function () {
-      }
-    })
+  addPayment() {
+    this.store.dispatch(this.checkoutActions.bindPayment(this.paymentMethodId, this.orderId, this.orderAmount));
+    this.razorPayRequestHandler();
   }
 
-  stripeRequestHandler() {
+  razorPayment() {
+    // This will open the popup for RazorPay Manual Checkout
+    this.paymentHandler.open();
+  }
+
+  razorPayRequestHandler() {
+    // RazorPay accepts order amount in `paise`.
+    const amountInPaisa = Math.ceil((this.orderAmount * 100));
     this.subscriptionList$.push(
-      this.paymentService.getStripeKey(this.paymentMethodId).subscribe((responseKey: PaymentKey) => {
-        this.handler = StripeCheckout.configure({
-          key: responseKey.publishable_key,
-          image: environment.config.header.brand.logoPng,
-          locale: 'auto',
-          // Token to sent to Aviacommerce API to complete the payment process.
-          token: (cardToken: { id: string }) => {
-            this.loader = true;
-            this.makeStripeRequest(cardToken.id);
-          }
-        })
+      this.paymentService.getRazorKey(this.paymentMethodId).subscribe((responseKey: PaymentKey) => {
+        const params = this.razorPayParams(amountInPaisa, responseKey.key_id);
+        this.paymentHandler = new Razorpay(params);
       })
     );
   }
 
-  makeStripeRequest(token: string) {
+  razorPayParams(amountInPaisa: number, razorPayKey: string) {
+    const params = {
+      key: razorPayKey,
+      name: `${environment.appName}`,
+      description: this.orderNumber,
+      amount: amountInPaisa,
+      image: environment.config.header.brand.logoPng,
+      handler: (response) => {
+        this.loader = true;
+        this.processPayment(response);
+      }
+    }
+    return params;
+  }
+
+  processPayment(response) {
+    const razorPaymentId = response.razorpay_payment_id;
     this.subscriptionList$.push(
-      this.paymentService.makeStripePayment(
-        token, this.orderNumber, this.payment.id,
-        this.orderAmount, this.paymentMethodId,
-        this.orderId, this.address
+      this.paymentService.makeRazorPayPayment(
+        razorPaymentId, this.orderNumber,
+        this.payment.id, this.orderAmount,
+        this.paymentMethodId, this.orderId, this.address
       ).pipe(
         switchMap(order => {
           return this.checkOutService.fetchCurrentOrder().pipe(
             tap(_ => {
               this.loader = false;
-              this.redirectToSuccessPage(order.order.order_number)
+              this.redirectToSuccessPage(order.order.order_number);
             })
           )
         })
       ).subscribe()
     )
-  }
-
-  addPayment() {
-    this.store.dispatch(this.checkoutActions.bindPayment(this.paymentMethodId, this.orderId, this.orderAmount));
-    this.stripeRequestHandler();
-  }
-
-  @HostListener('window:popstate')
-  onPopstate() {
-    this.handler.close();
   }
 
   private redirectToSuccessPage(orderNumber) {
