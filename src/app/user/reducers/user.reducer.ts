@@ -13,10 +13,10 @@ export function reducer(state = initialState, { type, payload }: any): UserState
 
     case UserActions.REMOVE_FROM_FAVORITE_PRODUCTS:
       const deletedId = payload;
-      let products = state.favorite_products;
-      products = products.filter((product) => product.id !== deletedId);
+      const products = state.favorite_products;
+      const productToRemove = products.filter((product) => product.id !== deletedId);
 
-      return state.merge({ favorite_products: products }) as UserState;
+      return state.merge({ favorite_products: productToRemove }) as UserState;
 
     case UserActions.FETCH_USER_ADDRESS_SUCCEESS:
       return state.merge({ userAddresses: payload }) as UserState;

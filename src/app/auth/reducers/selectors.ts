@@ -10,9 +10,7 @@ const getAuthState = (state: AppState): AuthState => state.auth;
 // ******************** Individual selectors ***************************
 const fetchAuthStatus = (state: AuthState): boolean => state.isAuthenticated;
 const fetchCurrentUser = (state: AuthState): User => state.currentUser;
-const fetchRatingCategories =
-  (state: AuthState): RatingCategory[] =>
-    state.ratingCategories as unknown as RatingCategory[];
+const fetchRatingCategories = (state: AuthState) => state.ratingCategories as unknown as {[code: string]: number};
 
 // *************************** PUBLIC API's ****************************
 export const getAuthStatus = createSelector(getAuthState, fetchAuthStatus);
