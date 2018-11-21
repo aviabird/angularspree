@@ -1,54 +1,31 @@
+import { Brand } from './../../core/models/brand';
 import { AppState } from './../../interfaces';
 import { ProductState } from './product-state';
 import { createSelector } from 'reselect';
-import { Map, List, fromJS } from 'immutable';
+import { Product } from '../../core/models/product';
+import { Taxonomy } from '../../core/models/taxonomy';
+import { Review } from '../../core/models/review';
+import { RatingOption } from '../../core/models/rating_option';
 
 // Base product state selector function
-export function getProductState(state: AppState): ProductState {
-  return state.products;
-}
+const getProductState = (state: AppState): ProductState => state.products;
 
 // ******************** Individual selectors ***************************
-export function fetchProducts(state: ProductState) {
-  const ids = state.productIds.toJS();
-  const productEntities = state.productEntities.toJS();
-  return ids.map(id => productEntities[id]);
+export function fetchProducts(state: ProductState): Product[] {
+  const ids = state.productIds;
+  const productEntities = state.productEntities;
+  return ids.map(id => productEntities[id]) as unknown as Product[];
 }
+const fetchAllTaxonomies = (state: ProductState) => state.taxonomies as unknown as Taxonomy[];
+const fetchSelectedProduct = (state: ProductState) => state.selectedProduct;
+const fetchAllProductSearch = (state: ProductState) => state.showAllProducts as unknown as Product[];
+const fetchReletedProducts = (state: ProductState) => state.relatedProducts as unknown as Product[];
+const fetchProductReviews = (state: ProductState) => state.productReviews as unknown as Review[];
+const fetchRootTaxonId = (state: ProductState) => state.rootTaxonomyId;
+const fetchBrands = (state: ProductState) => state.brands as unknown as Brand[];
+const fetchProductRatingOptions = (state: ProductState) => state.productRatingOptions as unknown as RatingOption[];
+const fetchIsReviewSubmitted = (state: ProductState) => state.isReviewSubmitted;
 
-export function fetchAllTaxonomies(state: ProductState) {
-  return state.taxonomies.toJS();
-}
-
-const fetchSelectedProduct = function (state: ProductState) {
-  return state.selectedProduct;
-};
-
-const fetchAllProductSearch = function (state: ProductState) {
-  return state.showAllProducts.toJS();
-};
-
-const fetchReletedProducts = function (state: ProductState) {
-  return state.relatedProducts.toJS();
-};
-const fetchProductReviews = function (state: ProductState) {
-  return state.productReviews.toJS();
-};
-
-const fetchRootTaxonId = function (state: ProductState) {
-  return state.rootTaxonomyId;
-};
-
-const fetchBrands = function (state: ProductState) {
-  return state.brands.toJS();
-};
-
-const fetchProductRatingOptions = function (state: ProductState) {
-  return state.productRatingOptions.toJS();
-};
-
-const fetchIsReviewSubmitted = function (state: ProductState) {
-  return state.isReviewSubmitted;
-};
 // *************************** PUBLIC API's ****************************
 export const getSelectedProduct = createSelector(getProductState, fetchSelectedProduct);
 export const getProducts = createSelector(getProductState, fetchProducts);
