@@ -8,42 +8,14 @@ import { Country } from '../../core/models/country';
 import { CState } from '../../core/models/state';
 
 // Base product state function
-/**
- *
- *
- * @param {AppState} state
- * @returns {UserState}
- */
-function getUserState(state: AppState): UserState {
-    return state.users;
-}
+const getUserState = (state: AppState): UserState => state.users;
 
 // ******************** Individual selectors ***************************
-/**
- *
- *
- * @param {UserState} state
- * @returns {Order[]}
- */
-const fetchUserOrders = function(state: UserState): Order[] {
-    return state.orders.toJS();
-};
-
-const fetchUserFavoriteProducts = function(state: UserState): Product[] {
-    return state.favorite_products.toJS();
-}
-
-export function fetchUserAddresses(state: UserState): Address[] {
-    return state.userAddresses.toJS();
-}
-
-export function fetchCountries(state: UserState): Country[] {
-    return state.countries.toJS();
-}
-
-export function fetchStates(state: UserState): CState[] {
-    return state.states.toJS();
-}
+const fetchUserOrders = (state: UserState): Order[] => state.orders as unknown as Order[];
+const fetchUserFavoriteProducts = (state: UserState): Product[] => state.favorite_products as unknown as Product[];
+const fetchUserAddresses = (state: UserState): Address[] => state.userAddresses as unknown as Address[];
+const fetchCountries = (state: UserState): Country[] => state.countries as unknown as Country[];
+const fetchStates = (state: UserState): CState[] => state.states as unknown as CState[];
 
 // *************************** PUBLIC API's ****************************
 export const getUserOrders = createSelector(getUserState, fetchUserOrders);

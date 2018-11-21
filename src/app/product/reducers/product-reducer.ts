@@ -2,7 +2,7 @@ import { Product } from './../../core/models/product';
 import { ProductActions } from './../actions/product-actions';
 import { ProductState, ProductStateRecord } from './product-state';
 
-export const initialState: ProductState = new ProductStateRecord() as ProductState;
+export const initialState: ProductState = new ProductStateRecord() as unknown as ProductState;
 
 export function reducer(state = initialState, { type, payload }: any): ProductState {
   switch (type) {
