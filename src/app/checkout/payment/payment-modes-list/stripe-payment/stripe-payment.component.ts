@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 import { CheckoutService } from '../../../../core/services/checkout.service';
 import { Address } from '../../../../core/models/address';
 import { PaymentKey } from '../../../../core/models/payment_key';
+import { switchMap, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-stripe-payment',
   templateUrl: './stripe-payment.component.html',
@@ -77,7 +78,7 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
           image: environment.config.header.brand.logoPng,
           locale: 'auto',
           // Token to sent to Aviacommerce API to complete the payment process.
-          token: (cardToken: {id: string}) => {
+          token: (cardToken: { id: string }) => {
             this.loader = true;
             this.makeStripeRequest(cardToken.id);
           }
@@ -88,13 +89,20 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
 
   makeStripeRequest(token: string) {
     this.subscriptionList$.push(
-      this.paymentService.makeStripePayment(token, this.orderNumber,
-        this.payment.id, this.orderAmount, this.paymentMethodId, this.orderId, this.address).subscribe(order => {
-          this.checkOutService.fetchCurrentOrder().subscribe(_ => {
-            this.loader = false;
-            this.redirectToSuccessPage(order.order.order_number)
-          });
+      this.paymentService.makeStripePayment(
+        token, this.orderNumber, this.payment.id,
+        this.orderAmount, this.paymentMethodId,
+        this.orderId, this.address
+      ).pipe(
+        switchMap(order => {
+          return this.checkOutService.fetchCurrentOrder().pipe(
+            tap(_ => {
+              this.loader = false;
+              this.redirectToSuccessPage(order.order.order_number)
+            })
+          )
         })
+      ).subscribe()
     )
   }
 

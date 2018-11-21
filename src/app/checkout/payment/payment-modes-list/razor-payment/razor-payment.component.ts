@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
 import { environment } from '../../../../../environments/environment';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import { Payment } from '../../../../core/models/payment';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 import { CheckoutService } from '../../../../core/services/checkout.service';
 import { Address } from '../../../../core/models/address';
 import { PaymentKey } from '../../../../core/models/payment_key';
+import { tap, switchMap } from 'rxjs/operators';
 
 declare var Razorpay: any;
 @Component({
@@ -95,13 +96,20 @@ export class RazorPaymentComponent implements OnInit, OnDestroy {
   processPayment(response) {
     const razorPaymentId = response.razorpay_payment_id;
     this.subscriptionList$.push(
-      this.paymentService.makeRazorPayPayment(razorPaymentId, this.orderNumber,
-        this.payment.id, this.orderAmount, this.paymentMethodId, this.orderId, this.address).subscribe(order => {
-          this.checkOutService.fetchCurrentOrder().subscribe(_ => {
-            this.loader = false;
-            this.redirectToSuccessPage(order.order.order_number)
-          });
+      this.paymentService.makeRazorPayPayment(
+        razorPaymentId, this.orderNumber,
+        this.payment.id, this.orderAmount,
+        this.paymentMethodId, this.orderId, this.address
+      ).pipe(
+        switchMap(order => {
+          return this.checkOutService.fetchCurrentOrder().pipe(
+            tap(_ => {
+              this.loader = false;
+              this.redirectToSuccessPage(order.order.order_number);
+            })
+          )
         })
+      ).subscribe()
     )
   }
 
