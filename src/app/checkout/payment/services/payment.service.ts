@@ -5,6 +5,7 @@ import { Order } from '../../../core/models/order';
 import { map } from 'rxjs/operators';
 import { User } from '../../../core/models/user';
 import { Address } from '../../../core/models/address';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class PaymentService {
@@ -37,7 +38,7 @@ export class PaymentService {
    * @memberof PaymentService
    */
   makeHostedPayment(orderId: number, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number) {
-    const params = this.buildHostedPaymentJson(orderId, orderNumber, paymentId, orderAmount, paymentMethodId);
+    const params = this.buildPayubizPaymentJson(orderId, orderNumber, paymentId, orderAmount, paymentMethodId);
     const url = `api/v1/hosted-payment/payubiz-request`
     return this.http.post(url, params)
       .pipe(map(res => { return res }, error => { return error }))
@@ -50,30 +51,41 @@ export class PaymentService {
   }
 
   makeStripePayment(cardToken: any, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number,
-    orderId: number, address: Address): Observable<{order: {order_number}}> {
-    const params = this.buildHostedStripePaymentJosn(orderId, orderNumber, paymentId, orderAmount, paymentMethodId, cardToken, address)
+    orderId: number, address: Address): Observable<{ order: { order_number } }> {
+    const params = this.buildHostedPaymentJosn(orderId, orderNumber, paymentId, orderAmount, paymentMethodId, cardToken, address)
     const url = `api/v1/hosted-payment/stripe-pay`;
-    return this.http.post<{order: {order_number}}>(url, params)
+    return this.http.post<{ order: { order_number } }>(url, params)
+  }
+
+  makeRazorPayPayment(cardToken: string, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number,
+    orderId: number, address: Address): Observable<{ order: { order_number } }> {
+    const params = this.buildHostedPaymentJosn(orderId, orderNumber, paymentId, orderAmount, paymentMethodId, cardToken, address)
+    const url = `api/v1/hosted-payment/rzpay`;
+    return this.http.post<{ order: { order_number } }>(url, params)
   }
 
   getStripeKey(paymentMethodId: number) {
     return this.http.get(`api/v1/hosted-payment/stripe-request?id=${paymentMethodId}`);
   }
 
-  buildHostedStripePaymentJosn(orderId: number, orderNumber: string,
+  getRazorKey(paymentMethodId: number) {
+    return this.http.get(`api/v1/hosted-payment/rzpay-request?id=${paymentMethodId}`);
+  }
+
+  buildHostedPaymentJosn(orderId: number, orderNumber: string,
     paymentId: string, orderAmount: number,
     paymentMethodId: number, cardToken: any, address: Address) {
     const user: User = JSON.parse(localStorage.getItem('user'));
     const params = {
       'data': {
         'attributes': {
-          'token': cardToken.id,
+          'token': cardToken,
           'order_id': orderId,
           'order_number': orderNumber,
           'payment_id': paymentId,
           'payment_method_id': paymentMethodId,
           'amount': orderAmount.toString(),
-          'product_info': 'aviacommerce_products',
+          'product_info': `${environment.appName} Products`,
           'first_name': user.first_name,
           'email': user.email,
           'address': address
@@ -93,7 +105,7 @@ export class PaymentService {
    * @returns {Object}
    * @memberof PaymentService
    */
-  buildHostedPaymentJson(orderId: number, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number): Object {
+  buildPayubizPaymentJson(orderId: number, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number): Object {
     const user: User = JSON.parse(localStorage.getItem('user'));
     const params = {
       'data': {
