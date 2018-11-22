@@ -20,12 +20,11 @@ import { AuthActions } from './auth/actions/auth.actions';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  currentUrl: string;
-  currentStep: string;
   checkoutUrls = ['/checkout/cart', '/checkout/address', '/checkout/payment'];
   layoutState$: Observable<LayoutState>;
   schema = {};
   subscriptionList$: Array<Subscription> = [];
+  initialized: boolean = false;
 
   constructor(
     private router: Router,
@@ -39,12 +38,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
-        this.currentUrl = e.url;
-        this.findCurrentStep(this.currentUrl);
         if (isPlatformBrowser(this.platformId)) {
           window.scrollTo(0, 0);
         }
         this.addMetaInfo();
+        this.initialized = true;
       });
 
     this.schema = {
@@ -100,12 +98,6 @@ export class AppComponent implements OnInit, OnDestroy {
       link.href = environment.config.fevicon;
       document.getElementsByTagName('head')[0].appendChild(link);
     }
-  }
-
-  private findCurrentStep(currentRoute) {
-    const currRouteFragments = currentRoute.split('/');
-    const length = currRouteFragments.length;
-    this.currentStep = currentRoute.split('/')[length - 1];
   }
 
   ngOnDestroy() {

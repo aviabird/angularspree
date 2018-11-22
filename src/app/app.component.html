@@ -3,11 +3,11 @@
   <section>
     <ng-progress [color]="'red'" [spinner]="false"></ng-progress>
 
-    <app-header *ngIf="currentUrl" [layoutState]="layoutState$ | async"></app-header>
+    <app-header *ngIf="initialized" [layoutState]="layoutState$ | async"></app-header>
 
     <main class="main-body">
       <router-outlet></router-outlet>
     </main>
-    <app-footer *ngIf="currentUrl"></app-footer>
+    <app-footer *ngIf="initialized"></app-footer>
   </section>
 </div>
