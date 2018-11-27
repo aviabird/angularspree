@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
 import { environment } from '../../../../../environments/environment';
-import { Subscription, of } from 'rxjs';
+import { Subscription} from 'rxjs';
 import { Payment } from '../../../../core/models/payment';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';

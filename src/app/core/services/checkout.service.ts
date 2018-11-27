@@ -121,7 +121,7 @@ export class CheckoutService {
    * @returns
    * @memberof CheckoutService
    */
-  deleteLineItem(lineItemId: number) {
+  deleteLineItem(lineItemId: number): Observable<{}> {
     const param = { data: { id: lineItemId, type: 'line_item' } }
     const url = `api/v1/line_items`
     return this.http.request<{}>('delete', url, { body: param });

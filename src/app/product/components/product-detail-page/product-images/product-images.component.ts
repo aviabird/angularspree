@@ -11,17 +11,6 @@ import { NguCarouselConfig } from '@ngu/carousel';
 export class ProductImagesComponent implements OnInit {
   @Input() images: Image[] = null;
   @Input() selectedImage: Image = null;
-  zoomOptions = {
-    peepView: {
-      borderColor: '#fff',
-      borderWidth: '2px',
-      borderStyle: 'solid',
-      cursor: 'zoom-in',
-    },
-    settings: {
-      zoom: 4,
-    }
-  };
   @Input() isMobile;
   public carouselTileConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
