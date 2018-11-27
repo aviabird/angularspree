@@ -47,9 +47,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     if (this.signInForm.valid) {
       this.loginSubs = this.authService
-        .login(values).pipe(
-          tap(_ => this.router.navigateByUrl(this.returnUrl), (user) => {
-            const errors = user.error.error || 'Something went wrong';
+        .login(values)
+        .pipe(
+          tap(_ => _,
+            (error) => {
+            const errors = error.error.error || 'invalid email or password';
             keys.forEach(val => {
               this.pushErrorFor(val, errors);
             });

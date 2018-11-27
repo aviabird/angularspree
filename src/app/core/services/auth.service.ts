@@ -6,7 +6,7 @@ import { AppState } from '../../interfaces';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '../../auth/actions/auth.actions';
 import { AuthService as OauthService } from 'ng2-ui-auth';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpRequest } from '@angular/common/http/src/request';
 import { ToastrService, ActiveToast } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
@@ -56,10 +56,11 @@ export class AuthService {
         error => this.toastrService.error(error.error.errors.detail, 'ERROR!')
       ),
       catchError(error => {
-        return observableOf(error);
-      })
+        return of(error);
+      }) as any
     );
   }
+
 
   /**
    *

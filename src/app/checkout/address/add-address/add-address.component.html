@@ -5,7 +5,7 @@
       <label>Pin Code
         <span class="required">*</span>
       </label>
-      <input type="tel" class="form-control" formControlName="zip_code">
+      <input type="tel" class="form-control" formControlName="zip_code" autocomplete="none">
       <div *ngIf="addressForm.get('zip_code').errors && addressForm.get('zip_code').touched">
         <p class="value-err text-danger show">Please enter Pincode!</p>
       </div>
@@ -14,7 +14,7 @@
       <label>Mobile No
         <span class="required">*</span>
       </label>
-      <input type="tel" class="form-control" formControlName="phone">
+      <input type="tel" class="form-control" formControlName="phone" autocomplete="none">
       <div *ngIf="addressForm.get('phone').errors && addressForm.get('phone').touched">
         <p class="value-err text-danger show">Please enter valid phone number!</p>
       </div>
@@ -23,7 +23,7 @@
       <label>First Name
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="first_name">
+      <input type="text" class="form-control" formControlName="first_name" autocomplete="none">
       <div *ngIf="addressForm.get('first_name').errors && addressForm.get('first_name').touched">
         <p class="value-err text-danger show">Please enter first name!</p>
       </div>
@@ -32,7 +32,7 @@
       <label> Last Name
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="last_name">
+      <input type="text" class="form-control" formControlName="last_name" autocomplete="none">
       <div *ngIf="addressForm.get('last_name').errors && addressForm.get('last_name').touched">
         <p class="value-err text-danger show">Please enter last name!</p>
       </div>
@@ -41,7 +41,7 @@
       <label> Locality / Town
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="address_line_2">
+      <input type="text" class="form-control" formControlName="address_line_2" autocomplete="none">
       <div *ngIf="addressForm.get('address_line_2').errors && addressForm.get('address_line_2').touched">
         <p class="value-err text-danger show">Please enter locality / town!</p>
       </div>
@@ -50,7 +50,7 @@
       <label>City / District
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="city">
+      <input type="text" class="form-control" formControlName="city" autocomplete="none">
       <div *ngIf="addressForm.get('city').errors && addressForm.get('city').touched">
         <p class="value-err text-danger show">Please enter city / district!</p>
       </div>
@@ -59,7 +59,7 @@
       <label>Address
         <span class="required">*</span>
       </label>
-      <textarea type="text" class="form-control" formControlName="address_line_1"></textarea>
+      <textarea type="text" class="form-control" formControlName="address_line_1" autocomplete="none"></textarea>
       <div *ngIf="addressForm.get('address_line_1').errors && addressForm.get('address_line_1').touched">
         <p class="value-err text-danger show">Please enter address(minimum 10 characters long)!</p>
       </div>
