@@ -7,6 +7,7 @@ import { LineItem } from './../../../../../core/models/line_item';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Price } from '../../../../../core/models/price';
 import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-line-item',
@@ -36,20 +37,25 @@ export class LineItemComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const lineItem = this.lineItem.product;
-    this.image = lineItem.images[0] ? lineItem.images[0].product_url : this.noImageUrl;
-    this.name = this.lineItem.product.name;
-    this.quantity = this.lineItem.quantity;
-    this.unit_price = this.lineItem.unit_price as Price;
-    this.amount = this.lineItem.total_price;
-    this.quantityCount = this.quantity;
-    // this.optionName = lineItem.options.length ? lineItem.options[0].option_type.display_name : '';
-    // this.optionValue = lineItem.options.length ? lineItem.options[0].value : '';
+    if (lineItem) {
+      this.image = lineItem.images[0] ? lineItem.images[0].product_url : this.noImageUrl;
+      this.name = lineItem.name;
+      this.quantity = this.lineItem.quantity;
+      this.unit_price = this.lineItem.unit_price as Price;
+      this.amount = this.lineItem.total_price;
+      this.quantityCount = this.quantity;
+      // this.optionName = lineItem.options.length ? lineItem.options[0].option_type.display_name : '';
+      // this.optionValue = lineItem.options.length ? lineItem.options[0].value : '';
+    }
   }
 
   removeLineItem() {
     this.subscriptionList$.push(
-      this.checkoutService.deleteLineItem(this.lineItem.id)
-        .subscribe(_ => { this.checkoutService.getOrder().subscribe(); })
+      this.checkoutService.deleteLineItem(this.lineItem.id).pipe(
+        switchMap(_ => {
+          return this.checkoutService.fetchCurrentOrder();
+        })
+      ).subscribe()
     );
   }
 
