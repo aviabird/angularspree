@@ -10,8 +10,7 @@
         </div>
       </div>
       <div class="col-11" *ngIf="selectedImage">
-        <!-- <img itemprop="image" [zoomable]='zoomOptions' [src]="getProductImageUrl(selectedImage.large_url)" [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid" -->
-        <img itemprop="image" [zoomable]='zoomOptions' [zoomableSrc]='getProductImageUrl(selectedImage.product_url)' [src]="getProductImageUrl(selectedImage.product_url)"
+        <img itemprop="image" [src]="getProductImageUrl(selectedImage.product_url)"
           [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid">
       </div>
     </div>

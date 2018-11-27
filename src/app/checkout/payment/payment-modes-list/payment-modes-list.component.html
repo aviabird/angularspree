@@ -18,11 +18,11 @@
     <ng-template [ngSwitchCase]="'Payubiz'">
       <app-hosted-payment [paymentMethodId]="selectedMode.id"></app-hosted-payment>
     </ng-template>
-
   </div>
   <br>
+  <br>
   <div *ngIf="showDummyCardInfo &&  selectedMode?.code === 'hpm'">
-    <div class="alert alert-info">
+    <div class="alert alert-success">
       <h6>
         <strong>Note:</strong> Use following <strong>Test Card</strong> for making payment with {{selectedMode?.name}}</h6>
     </div>
