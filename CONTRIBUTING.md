@@ -21,7 +21,7 @@ Even if you have little to no experience with Angular, I'll be more than happy t
 11. Add yourself to the [contributor's list](https://github.com/aviabird/angularspree#contributors) in the README!
 12. Commit your changes and reference the issue you're addressing (for example: `git commit -am 'Commit message. Closes #5'`)
 13. Push your branch to your fork
-14. Create a pull request from your branch on your fork to `master` on this repo
+14. Create a pull request from your branch on your fork to `develop` on this repo
 15. Have your branch get merged in! :star2:
 
 If you experience a problem at any point, please don't hesitate to file an issue or send me a message!
