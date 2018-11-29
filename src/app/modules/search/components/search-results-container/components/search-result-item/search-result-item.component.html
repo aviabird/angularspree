@@ -1,0 +1,24 @@
+<div class="product-base">
+  <div class="product-image-container">
+    <picture class="img-responsive">
+      <img src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/productimage/2018/11/23/8d7f5b60-4942-4e95-bb51-6638338fe65c1542980571814-1.jpg"
+        class="img-responsive w-100">
+    </picture>
+  </div>
+  <div class="product-meta-info">
+    <div class="product-brand">
+      United Colors of Benetton
+    </div>
+    <div class="product-name">
+      {{product.name}}
+    </div>
+    <div class="product-price">
+      <span>
+        <span class="product-discountedPrice">{{ product.selling_price.amount }}</span>
+        <span *ngIf="product; let cost_price">
+          <span class="disableprize">{{product.max_retail_price.amount}}</span>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>

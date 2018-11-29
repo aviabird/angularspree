@@ -15,6 +15,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductSliderComponent } from './components/product-slider/product-slider.component'
 import { InnerIproductComponent } from './components/product-slider/inner-product/inner-product.component'
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 // Directives
 import { ZoomableDirective } from './directives/zoomable.directive';
 import { SavedAddressComponent } from './components/saved-address/saved-address.component';
@@ -32,7 +33,8 @@ import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
     ZoomableDirective,
     ProductSliderComponent,
     InnerIproductComponent,
-    SavedAddressComponent
+    SavedAddressComponent,
+    BreadcrumbsComponent,
   ],
   exports: [
     // components
@@ -50,7 +52,8 @@ import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
     ZoomableDirective,
     ProductSliderComponent,
     SavedAddressComponent,
-    NguCarouselModule
+    NguCarouselModule,
+    BreadcrumbsComponent,
   ],
   imports: [
     FormsModule,

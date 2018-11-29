@@ -59,6 +59,7 @@ import { AddressService } from './checkout/address/services/address.service';
      * See: https://github.com/ngrx/platform/blob/master/docs/effects/api.md#forroot
      */
     EffectsModule.forRoot([]),
+
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'ng-spree' }),
     BrowserTransferStateModule,
