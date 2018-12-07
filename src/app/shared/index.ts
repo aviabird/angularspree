@@ -19,6 +19,7 @@ import { InnerIproductComponent } from './components/product-slider/inner-produc
 import { ZoomableDirective } from './directives/zoomable.directive';
 import { SavedAddressComponent } from './components/saved-address/saved-address.component';
 import { ReversePipe } from '../core/pipes/reverse.pipe';
+import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ReversePipe } from '../core/pipes/reverse.pipe';
     KeysPipe,
     HumanizePipe,
     ReversePipe,
+    SanitizeHtmlPipe,
     ZoomableDirective,
     ProductSliderComponent,
     InnerIproductComponent,
@@ -44,6 +46,7 @@ import { ReversePipe } from '../core/pipes/reverse.pipe';
     KeysPipe,
     HumanizePipe,
     ReversePipe,
+    SanitizeHtmlPipe,
     ZoomableDirective,
     ProductSliderComponent,
     SavedAddressComponent,
