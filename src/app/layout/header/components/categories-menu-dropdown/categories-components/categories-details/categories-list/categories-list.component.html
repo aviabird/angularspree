@@ -6,7 +6,7 @@
 <div class="subbrandmenu" *ngIf="screenwidth">
   <ul>
     <li *ngFor="let taxon of taxons">
-      <a [routerLink]="['/search']" [queryParams]="{taxon: taxon.id}"(click)="getTaxonName(taxon.name)">{{taxon.name}} </a>
+      <a [routerLink]="['/search']" [queryParams]="{taxon: taxon.id}" (click)="getTaxonName(taxon.name)">{{taxon.name}} </a>
     </li>
   </ul>
 </div>
