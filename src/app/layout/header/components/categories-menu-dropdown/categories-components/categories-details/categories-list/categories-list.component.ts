@@ -16,7 +16,7 @@ export class CategoriesListComponent implements OnInit {
   ngOnInit() {
   }
 
-  getTaxonName(taxonName: string){
+  getTaxonName(taxonName: string) {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.setItem('keyword', taxonName);
     }

@@ -20,20 +20,22 @@ export class ContentHeaderComponent implements OnInit {
   searchKeyword$: Observable<String>;
 
   options = [
-    { name: 'Newest', value: 1 },
-    { name: 'A To Z', value: 2 },
-    { name: 'Z To A', value: 3 },
-    { name: 'Relevence', value: 4 }
+    { name: 'Featured', value: 1 },
+    { name: 'Newest', value: 2 },
+    { name: 'Price: Low to High', value: 3 },
+    { name: 'Price: High to Low', value: 4 },
+    { name: 'Avg: Customer Review', value: 5 }
   ]
 
   queryMap = {
+    Featured: '',
     Newest: 'date',
-    'A To Z': 'A-Z',
-    'Z To A': 'Z-A',
-    Relevance: '',
+    'Price: Low to High': 'price-asc-rank',
+    'Price: High to Low': 'price-desc-rank',
+    'Avg: Customer Review': 'avg_rating',
   }
 
-  selectedOption = 'Relevance';
+  selectedOption = 'Featured';
   isMobile: any;
   searchKeyword = '';
   selectedEntry;
@@ -41,7 +43,7 @@ export class ContentHeaderComponent implements OnInit {
   issortModalShown
   defaultselectedEntry = 'Relevance';
   constructor(private routernomal: Router,
-    private store: Store<AppState>, 
+    private store: Store<AppState>,
     @Inject(PLATFORM_ID) private platformId: any) { }
 
   ngOnInit() {
@@ -50,7 +52,7 @@ export class ContentHeaderComponent implements OnInit {
         this.screenWidth = window.screen.width;
       }
     }
-    this.searchKeyword$ =  this.store.select(searchKeyword);
+    this.searchKeyword$ = this.store.select(searchKeyword);
   }
 
   sortModalShow() { this.issortModalShown = true; }
