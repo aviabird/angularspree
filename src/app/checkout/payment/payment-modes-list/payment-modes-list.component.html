@@ -9,6 +9,9 @@
     <ng-template [ngSwitchCase]="'Stripe'">
       <app-stripe-payment [paymentMethodId]="selectedMode.id"></app-stripe-payment>
     </ng-template>
+    <ng-template [ngSwitchCase]="'RazorPay'">
+      <app-razor-payment [paymentMethodId]="selectedMode.id"></app-razor-payment>
+    </ng-template>
     <ng-template [ngSwitchCase]="'COD'">
       <app-cash-on-delivery [paymentMethodId]="selectedMode.id"></app-cash-on-delivery>
     </ng-template>
@@ -17,8 +20,9 @@
     </ng-template>
   </div>
   <br>
+  <br>
   <div *ngIf="showDummyCardInfo &&  selectedMode?.code === 'hpm'">
-    <div class="alert alert-info">
+    <div class="alert alert-success">
       <h6>
         <strong>Note:</strong> Use following <strong>Test Card</strong> for making payment with {{selectedMode?.name}}</h6>
     </div>
@@ -34,8 +38,9 @@
         </tr>
         <tr>
           <th>Card Number</th>
-          <th *ngIf="selectedMode?.name === 'Payubiz'">4012001037141112</th>
-          <th *ngIf="selectedMode?.name === 'Stripe'">4242424242424242</th>
+          <th *ngIf="selectedMode?.name === 'Payubiz'">4012 0010 3714 1112</th>
+          <th *ngIf="selectedMode?.name === 'Stripe'">4242 4242 4242 4242</th>
+          <th *ngIf="selectedMode?.name === 'RazorPay'">4111 1111 1111 1111</th>
         </tr>
         <tr>
           <th>Expiry Date</th>
@@ -50,7 +55,7 @@
   </div>
 </div>
 <ng-template #elseBlock>
-  <h3 class="mt-2">No payment modes found.
-    Ask your admin to create it.
+  <h3 class="mt-2">
+    No payment modes found. Ask your admin to create it.
   </h3>
 </ng-template>

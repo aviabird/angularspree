@@ -7,7 +7,7 @@
             <!-- <a [routerLink]="['/search']" [queryParams]="{taxon: taxon.id}" class="headlinks">
               {{taxon.name}} </a> -->
 
-              <a class="headlinks">{{taxon.name}} </a>
+            <a class="headlinks" [routerLink]="['/search']" [queryParams]="{taxon: taxon.id}">{{taxon.name}} </a>
             <app-categories-list [taxons]="taxon.taxons"></app-categories-list>
           </div>
         </div>

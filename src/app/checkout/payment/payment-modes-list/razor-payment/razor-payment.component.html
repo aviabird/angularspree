@@ -1,0 +1,30 @@
+<div class="cod-block">
+	<div class="section-help">
+		<span class="lbl">
+			Card Payment Using RazorPay.
+		</span>
+		<span class="sub-lbl">
+			We will Not save your card details.
+		</span>
+	</div>
+	<div class="cod-info">
+		NOTE: After clicking pay button RazorPay popup will ask for details.
+	</div>
+</div>
+<div class=row>
+	<div class="col-md-6">
+		<div class="pay-btn-wrap">
+			<button (click)="addPayment()" 
+			[disabled]="isPaymentAdded" 
+			[ngClass]="!isPaymentAdded ? 'btn themebtnprimary' : 'btn themebtnprimary themebtndisable'">Continue</button>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="pay-btn-wrap">
+			<button (click)="razorPayment()" [disabled]="!isPaymentAdded" 
+			[ngClass]="isPaymentAdded ? 'btn themebtnprimary' : 'btn themebtnprimary themebtndisable'">
+			<i *ngIf="loader" class="fa fa-circle-o-notch fa-spin"></i>
+			<span *ngIf="!loader">Pay Now</span></button>
+		</div>
+	</div>
+</div>

@@ -2,8 +2,8 @@
   <div class="" [ngClass]="[isOpen ? 'open main-nav-trigger-open':'',isScrolled ? 'main-nav-trigger':'cust-menu-btn']" (mouseenter)="dropdown.show()"
     (mouseleave)="dropdown.hide()">
     <span *ngIf="isScrolled"></span>
-    <strong *ngIf="!isScrolled">Shop By
-      <a>{{catgeory_taxonomy.name}}
+    <strong *ngIf="!isScrolled">Shop By Category
+      <a>
         <i class="fa pl-3 fa-chevron-down"></i>
       </a>
     </strong>
