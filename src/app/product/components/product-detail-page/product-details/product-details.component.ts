@@ -1,3 +1,4 @@
+import { Variant } from './../../../../core/models/variant';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppState } from './../../../../interfaces';
@@ -31,7 +32,7 @@ export class ProductDetailsComponent implements OnInit {
   @Input() product: Product;
   description: string;
   images: any;
-  variantId: number;
+  @Input() variantId: number;
   productId: number;
   isMobile = false;
   screenwidth: any;
@@ -72,16 +73,15 @@ export class ProductDetailsComponent implements OnInit {
 
   initData() {
     if (this.product.variants.length) {
-      const varinatProduct = this.product.variants[0];
-      this.images = varinatProduct.images.length ? varinatProduct.images : this.imagesPlaceHolder(this.noImageUrl);
-      this.description = varinatProduct.description;
-      this.product.name = varinatProduct.name;
-      this.variantId = varinatProduct.id;
-      this.selectedVariant = varinatProduct;
+      const variantProduct = this.product.variants.find(variant => variant.id === this.variantId) || this.product.variants[0];
+      this.images = variantProduct.images.length ? variantProduct.images : this.imagesPlaceHolder(this.noImageUrl);
+      this.description = variantProduct.description;
+      this.product.name = variantProduct.name;
+      this.selectedVariant = variantProduct;
       this.productId = this.product.id;
-      this.product.selling_price = varinatProduct.selling_price;
-      this.product.max_retail_price = varinatProduct.max_retail_price;
-      this.product.is_orderable = varinatProduct.is_orderable;
+      this.product.selling_price = variantProduct.selling_price;
+      this.product.max_retail_price = variantProduct.max_retail_price;
+      this.product.is_orderable = variantProduct.is_orderable;
     } else {
       this.images = this.product.images.length ? this.product.images : this.imagesPlaceHolder(this.noImageUrl);
       this.description = this.product.description;
@@ -97,14 +97,14 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  addToCart(event) {
+  addToCart(event: { buyNow: any; count: number; }) {
     let navigateToCart: boolean;
     this.store.select(getLineItems)
       .subscribe(res => {
         this.linesItems = res
       })
     if (event.buyNow) {
-      this.linesItems.find(item => {
+      this.linesItems.find((item: { product_id: number; quantity: number; }) => {
         if (item.product_id === +this.variantId && item.quantity === 1) {
           navigateToCart = true
         }
@@ -129,7 +129,7 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  selectVariant(variant) {
+  selectVariant(variant: Variant) {
     this.images = variant.images.length ? variant.images : this.imagesPlaceHolder(this.noImageUrl);
     this.variantId = variant.id;
     this.selectedVariant = variant;
@@ -200,7 +200,7 @@ export class ProductDetailsComponent implements OnInit {
     this.brand = brandClassification ? brandClassification.taxon : {} as Taxon;
   }
 
-  imagesPlaceHolder(url) {
+  imagesPlaceHolder(url: string) {
     const images = [{
       product_url: url,
       large_url: url,
