@@ -7,13 +7,14 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-product-detail-page',
   template: `
-    <app-product-details [product]="product$ | async"></app-product-details>
+    <app-product-details [product]="product$ | async" [variantId]="variantId$ | async"></app-product-details>
   `,
-  styleUrls: ['./product-detail-page.component.scss'],
+  styles: [''],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailPageComponent implements OnInit {
   product$: Observable<Product>;
+  variantId$: Observable<number>;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,7 @@ export class ProductDetailPageComponent implements OnInit {
 
   ngOnInit() {
     this.product$ = this.route.data.pipe(map(({ product }) => product));
+    this.variantId$ = this.route.params.pipe(map(p => p.variantId));
   }
 
 }
