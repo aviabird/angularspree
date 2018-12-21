@@ -1,5 +1,5 @@
 <div *ngIf="product">
-  <a itemprop="url" [routerLink]="['/', product.slug]" class="product-base p-1 d-block">
+  <a itemprop="url" [routerLink]="['/', product.slug, product.id]" class="product-base p-1 d-block">
     <img itemprop="image" class="product-thumb" alt="{{product.name}}" [src]="getProductImageUrl(product)">
     <div class="product-productMetaInfo">
       <div class="morechoices">
@@ -8,9 +8,9 @@
       <div itemprop="name" class="product-brand">{{ product.name }}</div>
       <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="product-price">
         <span>
-          <span itemprop="price" class="product-discountedPrice">{{currency}} {{ product.selling_price.amount }}</span>
+          <span itemprop="price" class="product-discountedPrice">{{currency}} {{ product.selling_price.amount | number:'2.1-2' }}</span>
           <span *ngIf="product; let cost_price">
-            <span itemprop="price" class="disableprize">{{currency}} {{product.max_retail_price.amount}}</span>
+            <span itemprop="price" class="disableprize">{{currency}} {{product.max_retail_price.amount | number:'2.1-2'}}</span>
           </span>
         </span>
       </div>
