@@ -7,8 +7,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ProductVariantsComponent implements OnInit {
   @Input() customOptionTypesHash: any;
   @Input() currentSelectedOptions = {};
-  @Input() mainOptions;
-  @Input() correspondingOptions;
+  @Input() mainOptions: any;
+  @Input() correspondingOptions: any;
   @Output() onOptionClickEvent = new EventEmitter();
 
   constructor() {
@@ -17,11 +17,11 @@ export class ProductVariantsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onOptionClick(option) {
+  onOptionClick(option: {}) {
     this.onOptionClickEvent.emit(option);
   }
 
-  isDisabled(arrayTocheck, value) {
+  isDisabled(arrayTocheck: { indexOf: (arg0: any) => number; }, value: any) {
     return (arrayTocheck.indexOf(value) === -1);
   }
 
