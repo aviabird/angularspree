@@ -12,18 +12,18 @@ const routes: Routes = [
     }
   },
   {
-    path: ':id/:variantId', component: ProductDetailPageComponent,
-    resolve: {
-      product: ProductResolver
-    }
-  },
-  {
     path: ':id/write_review',
     component: WriteProductReviewComponent,
     resolve: {
       product: ProductResolver
     }
-  }
+  },
+  {
+    path: ':id/:variantId', component: ProductDetailPageComponent,
+    resolve: {
+      product: ProductResolver
+    }
+  },
 ];
 
 @NgModule({
