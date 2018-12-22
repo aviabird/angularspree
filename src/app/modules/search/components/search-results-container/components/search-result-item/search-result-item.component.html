@@ -1,24 +1,30 @@
-<div class="product-base">
+<div class="product-base pointer" [routerLink]="['/', product.slug, product.id]">
   <div class="product-image-container">
     <picture class="img-responsive">
-      <img src="https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/productimage/2018/11/23/8d7f5b60-4942-4e95-bb51-6638338fe65c1542980571814-1.jpg"
-        class="img-responsive w-100">
+      <img [defaultImage]="noImageUrl" [lazyLoad]="getProductImageUrl(product)" [offset]="50" class="img-responsive w-100 bg-rand-{{ '' | random:1:10}}">
     </picture>
   </div>
   <div class="product-meta-info">
-    <div class="product-brand">
-      United Colors of Benetton
-    </div>
-    <div class="product-name">
+    <b class="product-brand text-capitalize text-truncate">
+      {{product.brand?.name || '&nbsp;'}}
+    </b>
+    <div class="product-name font-weight-light text-truncate">
       {{product.name}}
     </div>
     <div class="product-price">
       <span>
-        <span class="product-discountedPrice">{{ product.selling_price.amount }}</span>
+        <b class="product-discountedPrice">{{currency}} {{ product.selling_price.amount | number:'2.1-2' }}</b>
         <span *ngIf="product; let cost_price">
-          <span class="disableprize">{{product.max_retail_price.amount}}</span>
+          <small class="disablePrice text-dark font-weight-light ml-1">{{currency}} {{product.max_retail_price.amount | number:'2.1-2'}}</small>
         </span>
+        <small class="product-discountPercentage font-weight-light ml-1">{{discountPercent}}</small>
       </span>
     </div>
+    <div class="product-starRating">
+      <ngx-input-star-rating disabled="true" [value]="product.rating_summary.average_rating"></ngx-input-star-rating>
+    </div>
+    <small class="shipping">
+      FREE 1-2 day shipping over {{currency}} {{appConfig.freeShippingAmount}}
+    </small>
   </div>
 </div>

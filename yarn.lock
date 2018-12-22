@@ -5716,6 +5716,11 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
+ng-lazyload-image@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/ng-lazyload-image/-/ng-lazyload-image-5.0.0.tgz#b2ba9ca27eb4b8a4a3603878d8f7e289ce774156"
+  integrity sha512-3EGTO2Evd28NLFioDXfKBWqwCdtciV3klMuUW3e6r2kctvbrZ5jQV7uzwNKoK53j88mD2O2BAojoQ6Otd6Gt0A==
+
 ng2-ui-auth@^9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/ng2-ui-auth/-/ng2-ui-auth-9.2.0.tgz#b9355a67646c16bf8c7877a7b01ea73de926952c"

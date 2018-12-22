@@ -1,3 +1,4 @@
+import { environment } from './../../../../../../../environments/environment';
 import { Product } from './../../../../../../core/models/product';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -8,7 +9,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SearchResultItemComponent implements OnInit {
   @Input() product: Product;
-  noImageUrl = 'assets/default/no-image-available.jpg';
+  noImageUrl = 'https://via.placeholder.com/210x280';
+  appConfig = environment.config;
+  currency = environment.config.currency_symbol;
 
   constructor() { }
 
@@ -16,7 +19,14 @@ export class SearchResultItemComponent implements OnInit {
   }
 
   getProductImageUrl(product: Product) {
-    return product.images[0] ? product.images[0].product_url : this.noImageUrl;
+    return product.images[0] ? product.product_url : this.noImageUrl;
   }
 
+  get discount() {
+    return Math.ceil(+this.product.max_retail_price.amount - +this.product.selling_price.amount);
+  }
+
+  get discountPercent() {
+    return `(${Math.ceil(this.discount / +this.product.max_retail_price.amount * 100)}% OFF)`;
+  }
 }
