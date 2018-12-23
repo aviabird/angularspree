@@ -12,7 +12,7 @@ export class ProductListItemComponent implements OnInit {
   @Input() product: Product;
   appConfig = environment.config;
   currency = environment.config.currency_symbol;
-  noImageUrl = 'assets/default/image-placeholder.svg';
+  noImageUrl = 'assets/default/no-image-available.jpg';
 
   constructor() { }
 

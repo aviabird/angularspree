@@ -13,10 +13,7 @@
     "target": "es5",
     "module": "es2015",
     "baseUrl": "",
-    "types": [],
-    "paths": {
-      "@core": ["./app/core/*"]
-    }
+    "types": []
   },
   "exclude": [
     "test.ts",

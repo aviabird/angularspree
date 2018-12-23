@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
   isMobile;
   appConfig = environment.config;
   currency = environment.config.currency_symbol;
-  noImageUrl = 'assets/default/image-placeholder.svg';
+  noImageUrl = 'assets/default/no-image-available.jpg';
   
   constructor(
     private store: Store<AppState>,

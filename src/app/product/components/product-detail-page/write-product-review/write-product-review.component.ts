@@ -26,7 +26,7 @@ export class WriteProductReviewComponent implements OnInit, OnDestroy {
   product: Product;
   submitReview = true;
   isAuthenticated: boolean;
-  noImageUrl = 'assets/default/image-placeholder.svg'
+  noImageUrl = 'assets/default/no-image-available.jpg'
   ratingOptions: Array<RatingOption>;
   ratingId: string;
   userInfo: User;
