@@ -1,8 +1,0 @@
-<ul class="bread_crumb">
-  <li *ngFor="let breadcrumb of breadcrumbs; let i = index;">
-    <a *ngIf="i != breadcrumbs.length - 1; else elseBlock" href="#" class="crumb">
-      <span>{{breadcrumb}}</span>
-    </a>
-    <ng-template #elseBlock>{{breadcrumb}}</ng-template>
-  </li>
-</ul>
