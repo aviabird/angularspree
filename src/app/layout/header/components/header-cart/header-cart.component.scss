@@ -1,10 +1,13 @@
 @import '../../../../shared/scss/selected_theme_variables';
-.header-cart{background-color: $theme-main-color - 30!important}
+.header-cart {
+  border: 1px solid $theme-action-color;
+}
+
 @media screen and(min-width: 320px) and(max-width: 768px) {
   .header-cart {
     font-size: 20px !important;
     padding: 0px !important;
-    background-color: transparent!important;
+    border: 0;
   }
   .btn .badge {
     position: relative;
