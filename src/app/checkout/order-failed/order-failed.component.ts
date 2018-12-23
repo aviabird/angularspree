@@ -21,7 +21,7 @@ export class OrderFailedComponent implements OnInit {
   errorReason: string;
   isMobile = false;
   layoutState$: Observable<LayoutState>;
-  noImageUrl = 'assets/default/no-image-available.jpg';
+  noImageUrl = 'assets/default/image-placeholder.svg';
   currency = environment.config.currency_symbol;
 
   constructor(

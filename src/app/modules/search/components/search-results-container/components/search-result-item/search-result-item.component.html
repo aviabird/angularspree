@@ -1,7 +1,7 @@
 <div class="product-base pointer" [routerLink]="['/', product.slug, product.id]">
   <div class="product-image-container">
     <picture class="img-responsive d-block bg-rand-{{ '' | random:1:10}}">
-      <img [lazyLoad]="getProductImageUrl(product)" [offset]="50" class="img-responsive w-100">
+      <img [defaultImage]="noImageUrl" [lazyLoad]="getProductImageUrl(product)" [offset]="50" class="img-responsive w-100">
     </picture>
   </div>
   <div class="product-meta-info">

@@ -24,7 +24,7 @@ export class LineItemComponent implements OnInit, OnDestroy {
   quantityCount: number;
   optionName: string;
   optionValue: string;
-  noImageUrl = 'assets/default/no-image-available.jpg'
+  noImageUrl = 'assets/default/image-placeholder.svg'
   unit_price: Price;
   currency = environment.config.currency_symbol;
   subscriptionList$: Array<Subscription> = [];

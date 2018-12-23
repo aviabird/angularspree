@@ -9,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SearchResultItemComponent implements OnInit {
   @Input() product: Product;
-  noImageUrl = 'https://via.placeholder.com/210x280';
+  noImageUrl = 'https://shoesonloose.com/SOL/static/images/notfound_placeholder.svg';
   appConfig = environment.config;
   currency = environment.config.currency_symbol;
 
