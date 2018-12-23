@@ -47,7 +47,7 @@ export class ProductDetailsComponent implements OnInit {
   checkPincodeForm: FormGroup;
   isCodAvilable$: Observable<any>;
   linesItems: any
-  noImageUrl = 'assets/default/no-image-available.jpg'
+  noImageUrl = 'assets/default/image-placeholder.svg'
   ratingCategories1$: Observable<Object>;
 
   constructor(
