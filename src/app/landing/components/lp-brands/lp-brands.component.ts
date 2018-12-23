@@ -10,7 +10,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class LpBrandsComponent implements OnInit {
   @Input() brands: Array<Brand>;
-  imageUrl = 'assets/default/no-image-available.jpg'
+  imageUrl = 'assets/default/image-placeholder.svg'
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
