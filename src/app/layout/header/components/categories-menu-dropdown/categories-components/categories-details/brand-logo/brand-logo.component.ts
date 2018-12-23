@@ -11,7 +11,7 @@ export class BrandLogoComponent implements OnInit {
   @Input() brandList;
 
   // To do : Finding alternateway to show image.
-  image = 'assets/default/no-image-available.jpg'
+  image = 'assets/default/image-placeholder.svg'
 
   constructor() { }
 

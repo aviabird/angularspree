@@ -14,6 +14,11 @@ export const routes: Routes = [
     data: { preload: false, delay: false },
   },
   {
+    path: 's',
+    loadChildren: './modules/search/search.module#SearchModule',
+    data: { preload: false, delay: false },
+  },
+  {
     path: 'checkout',
     loadChildren: './checkout/checkout.module#CheckoutModule',
     data: { preload: true, delay: true },
