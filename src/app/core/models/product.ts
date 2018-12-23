@@ -35,4 +35,5 @@ export class Product {
   reviews: Array<Review>;
   rating_summary: RatingSummary;
   is_orderable: boolean;
+  brand: {name: string, id: number};
 }

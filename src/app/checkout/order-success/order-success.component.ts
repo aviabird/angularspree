@@ -20,7 +20,7 @@ export class OrderSuccessComponent implements OnInit {
   queryParams: Params;
   orderDetails: Order
   layoutState$: Observable<LayoutState>;
-  noImageUrl = 'assets/default/no-image-available.jpg';
+  noImageUrl = 'assets/default/image-placeholder.svg';
   currency = environment.config.currency_symbol;
 
   constructor(

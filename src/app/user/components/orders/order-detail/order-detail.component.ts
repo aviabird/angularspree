@@ -21,7 +21,7 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   isMobile = false;
   screenwidth: any;
   currency = environment.config.currency_symbol;
-  noImageUrl = 'assets/default/no-image-available.jpg';
+  noImageUrl = 'assets/default/image-placeholder.svg';
 
   constructor(
     private userService: UserService,
