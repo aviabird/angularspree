@@ -10,7 +10,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class BrandListComponent implements OnInit {
   @Input() brand: Brand;
-  imageUrl = 'assets/default/image-placeholder.svg'
+  imageUrl = 'assets/default/no-image-available.jpg'
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 

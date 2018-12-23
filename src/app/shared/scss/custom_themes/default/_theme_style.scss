@@ -3,21 +3,21 @@
 @import '../../selected_theme_variables';
 .selected-theme {
   @import "header";
-  input,
-  button {
+  @import "badge";
+  @import "notify";
+
+  input, button {
     &:focus {
       outline: none;
     }
   }
+
   .panel {
-    box-shadow: 0 0 4px rgba(40, 44, 63, 0.08);
+    box-shadow: 0 0 4px rgba(40,44,63,0.08);
   }
+
   .strong {
     font-family: $primary-font;
     font-weight: 800;
-  }
-  color: $gray-700;
-  .pointer {
-    cursor: pointer;
   }
 }

@@ -93,17 +93,3 @@ body {
     max-width: 100%;
   }
 }
-
-$s-min: 20;
-$s-max: 70;
-$l-min: 30;
-$l-max: 90;
-@for $i from 1 through 20 {
-  .bg-rand-#{$i} {
-    background-color: hsla(random(360), $s-min+random($s-max+-$s-min), $l-min+random($l-max+-$l-min), 0.3);
-  }
-}
-
-.pointer {
-  cursor: pointer;
-}
