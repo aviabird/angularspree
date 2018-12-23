@@ -13,7 +13,7 @@ export class OrderListItemComponent implements OnInit {
   @Input() orders: Array<Order>;
   @Input() isMobile: boolean;
   currency = environment.config.currency_symbol;
-  noImageUrl = 'assets/default/image-placeholder.svg';
+  noImageUrl = 'assets/default/no-image-available.jpg';
 
   constructor() { }
 

@@ -15,6 +15,9 @@ import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 // Components
 import { HomeComponent } from './home.component';
 
+// Breadcrumb components
+import { BreadcrumbComponent } from './breadcrumb/components/breadcrumb/breadcrumb.component';
+
 // Content components
 import { ProductListComponent } from './content/product-list/product-list.component';
 import { ProductListItemComponent } from './content/product-list/product-list-item/product-list-item.component';
@@ -36,6 +39,7 @@ import { CategoryPageComponent } from './category-page/category-page.component';
     HomeComponent,
     ProductListComponent,
     ProductListItemComponent,
+    BreadcrumbComponent,
     ContentHeaderComponent,
     CustomizeComponent,
     FilterSummaryComponent,

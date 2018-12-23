@@ -1,9 +1,0 @@
-<ul class="list-group border border-left-0 border-bottom-0 py-3">
-  <small class="font-weight-bold pb-3 text-uppercase">{{filter.display_name}}</small>
-  <li *ngFor="let child of filter.items" class="list-group-item border-0 p-0">
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="{{child.value}}">
-      <label class="custom-control-label font-weight-light" for="{{child.value}}">{{child.display_name}}</label>
-    </div>
-  </li>
-</ul>
