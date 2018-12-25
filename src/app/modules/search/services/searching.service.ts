@@ -21,7 +21,7 @@ export class SearchingService {
     private http: HttpClient,
   ) { }
 
-  search(searchParams: SearchParam): Observable<Array<Product>> {
-    return this.http.post<Array<Product>>(`api/v1/products`, searchParams);
+  search(searchParams: SearchParam) {
+    return this.http.post<{data: Array<Product>, links: any, meta: any}>(`api/v1/products`, searchParams);
   }
 }

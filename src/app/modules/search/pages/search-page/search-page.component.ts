@@ -1,5 +1,5 @@
 import { Observable, Subscription } from 'rxjs';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { SearchParam } from '../../models/search-param';
 import { SearchingService } from '../../services';
 import { Product } from '../../../../core/models';
@@ -10,12 +10,13 @@ import { Product } from '../../../../core/models';
   // changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./search-page.component.scss']
 })
-export class SearchPageComponent implements OnInit {
+export class SearchPageComponent implements OnInit, OnDestroy {
   appliedFilters: SearchParam = {
     page: { limit: '20', offset: '1' }
   };
   searchResults: Array<Product>;
   searchSubs$: Subscription;
+  metaInfo: any;
 
   constructor(
     private searchService: SearchingService
@@ -33,7 +34,15 @@ export class SearchPageComponent implements OnInit {
   search(filterParams: SearchParam) {
     if (this.searchSubs$) { this.searchSubs$.unsubscribe() }
     this.searchSubs$ = this.searchService.search(filterParams)
-      .subscribe(products => this.searchResults = [...products]);
+      .subscribe(resp => {
+        const {data, meta} = resp;
+        this.searchResults = data;
+        this.metaInfo = meta;
+      });
+  }
+
+  ngOnDestroy() {
+    this.searchSubs$.unsubscribe();
   }
 
 }
