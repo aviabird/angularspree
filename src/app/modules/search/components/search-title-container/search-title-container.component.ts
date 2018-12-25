@@ -6,7 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./search-title-container.component.scss']
 })
 export class SearchTitleContainerComponent implements OnInit {
-  @Input() metaInfo;
+  @Input() title = 'Placeholder';
+  @Input() metaInfo: any;
 
   constructor() { }
 
