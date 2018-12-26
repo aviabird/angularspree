@@ -16,7 +16,7 @@ export class MultiselectFilterComponent implements OnInit {
   ngOnInit() {
   }
 
-  get showFilter() { return this.filter.items.length > 1 }
+  get showFilter() { return this.filter.items.length > 0 }
 
   selectedItem(value: string | number) {
     this.filterClick.emit(value);

@@ -27,11 +27,18 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe((params: Object) => {
+      this.updateFilters({
+        ...this.appliedFilters,
+        ...params
+      })
+    });
+
     this.searchSubs$ = this.route.data
-      .subscribe(({resp: { data, meta }}) => {
+      .subscribe(({ resp: { data, meta } }) => {
         this.searchResults = data;
-        meta.aggregations = {
-          ...meta.aggregations,
+        meta.aggregations.filters = {
+          ...meta.aggregations.filters,
           ...this.selectedAggregation
         }
         this.metaInfo = meta;
@@ -48,8 +55,8 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.searchSubs$ = this.searchService.search(filterParams)
       .subscribe(({ data, meta }) => {
         this.searchResults = data;
-        meta.aggregations = {
-          ...meta.aggregations,
+        meta.aggregations.filters = {
+          ...meta.aggregations.filters,
           ...this.selectedAggregation
         }
         this.metaInfo = meta;

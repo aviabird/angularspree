@@ -94,7 +94,7 @@ export class SearchFiltersContainerComponent implements OnInit {
     const if_exists = filterValues.find((val: any) => val === value);
     filterValues = filterValues.filter((val: any) => val !== value);
 
-    this.selectedAggregation.emit({ [filterName]: this.metaInfo.aggregations[filterName] });
+    this.selectedAggregation.emit({ [filterName]: this.metaInfo.aggregations.filters[filterName] });
 
     this.filterUpdated.emit(
       Object.assign(
