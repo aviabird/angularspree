@@ -6,7 +6,7 @@
     <app-search-title-container [metaInfo]="metaInfo"></app-search-title-container>
   </div>
   <div class="col pr-0 d-none d-sm-block verticalFilterContainer">
-    <app-search-filters-container [appliedFilters]="appliedFilters" [metaInfo]="metaInfo" (filterCleared)="clearFilters()" (filterUpdated)="updateFilters($event)"></app-search-filters-container>
+    <app-search-filters-container [appliedFilters]="appliedFilters" [metaInfo]="metaInfo" (filterCleared)="clearFilters()" (filterUpdated)="updateFilters($event)" (selectedAggregation)="selectAggregation($event)"></app-search-filters-container>
   </div>
   <div class="col">
     <div class="row d-none d-sm-flex">

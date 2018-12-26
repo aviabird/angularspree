@@ -1,8 +1,10 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SearchParam } from '../../models/search-param';
 import { SearchingService } from '../../services';
 import { Product } from '../../../../core/models';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-page',
@@ -10,17 +12,30 @@ import { Product } from '../../../../core/models';
   styleUrls: ['./search-page.component.scss']
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
-  appliedFilters: SearchParam = {...SearchingService.DEFAULT_FILTER};
+  appliedFilters: SearchParam = { ...SearchingService.DEFAULT_FILTER };
   searchResults: Array<Product>;
   searchSubs$: Subscription;
+  selectedAggregation: any;
   metaInfo: any;
 
   constructor(
-    private searchService: SearchingService
-  ) { }
+    private searchService: SearchingService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit() {
-    this.search(this.appliedFilters);
+    this.searchSubs$ = this.route.data
+      .subscribe(({resp: { data, meta }}) => {
+        this.searchResults = data;
+        meta.aggregations = {
+          ...meta.aggregations,
+          ...this.selectedAggregation
+        }
+        this.metaInfo = meta;
+      });
   }
 
   updateFilters(updatedFilter: SearchParam) {
@@ -31,9 +46,12 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   search(filterParams: SearchParam) {
     if (this.searchSubs$) { this.searchSubs$.unsubscribe() }
     this.searchSubs$ = this.searchService.search(filterParams)
-      .subscribe(resp => {
-        const {data, meta} = resp;
+      .subscribe(({ data, meta }) => {
         this.searchResults = data;
+        meta.aggregations = {
+          ...meta.aggregations,
+          ...this.selectedAggregation
+        }
         this.metaInfo = meta;
       });
   }
@@ -43,7 +61,12 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   clearFilters() {
-    this.updateFilters({...SearchingService.DEFAULT_FILTER});
+    this.updateFilters({ ...SearchingService.DEFAULT_FILTER });
+    this.selectedAggregation = {};
+  }
+
+  selectAggregation(aggregation) {
+    this.selectedAggregation = aggregation;
   }
 
 }

@@ -12,6 +12,7 @@ export class SearchFiltersContainerComponent implements OnInit {
   @Input() appliedFilters: SearchParam;
   @Output() filterCleared = new EventEmitter();
   @Output() filterUpdated = new EventEmitter();
+  @Output() selectedAggregation = new EventEmitter();
 
   constructor() { }
 
@@ -28,7 +29,7 @@ export class SearchFiltersContainerComponent implements OnInit {
       items: []
     };
 
-    const { aggregations: { categories: { taxon: { buckets: categories } } } } = this.metaInfo;
+    const { aggregations: { filters: { categories: categories } } } = this.metaInfo;
     return {
       ...filter,
       items: categories.map(category => this.formatFilter(category, 'categories'))
@@ -53,9 +54,11 @@ export class SearchFiltersContainerComponent implements OnInit {
 
     const formattedFilters = options.reduce((rv: any, option: any) => {
       const [filter, value] = option.key.split('|');
+
       const isSelected = (
         (this.appliedFilters.filter_options || []).find(fo => fo.name === filter) || { value: [] }
       ).value.find(val => val === value);
+
       rv[filter] = {
         name: filter,
         items: [
@@ -77,20 +80,21 @@ export class SearchFiltersContainerComponent implements OnInit {
   }
 
   private formatFilter(filter, filterName) {
-    const [id, name] = filter.key.split('|');
-    const isSelected = (this.appliedFilters[filterName] || []).find(val => val === id);
+    const isSelected = (this.appliedFilters[filterName] || []).find(val => val === filter.id);
     return {
-      value: id,
-      name: name,
-      count: filter.doc_count,
+      value: filter.id,
+      name: filter.name,
+      count: filter.count,
       selected: isSelected
     };
   }
 
   multiFilterUpdated(value: any, filterName: string) {
     let filterValues = this.appliedFilters[filterName] || [];
-    const if_exists = filterValues.find((category: any) => category === value);
-    filterValues = filterValues.filter((category: any) => category !== value);
+    const if_exists = filterValues.find((val: any) => val === value);
+    filterValues = filterValues.filter((val: any) => val !== value);
+
+    this.selectedAggregation.emit({ [filterName]: this.metaInfo.aggregations[filterName] });
 
     this.filterUpdated.emit(
       Object.assign(
