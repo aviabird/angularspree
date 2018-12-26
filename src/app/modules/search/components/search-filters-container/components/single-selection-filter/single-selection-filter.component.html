@@ -1,6 +1,6 @@
-<ul class="list-group border border-left-0 border-bottom-0 py-3" *ngIf="filter.items.length">
+<ul class="list-group border border-left-0 border-bottom-0 py-3" *ngIf="showFilter">
   <small class="font-weight-bold pb-3 text-uppercase">{{filter.name}}</small>
-  <li *ngFor="let item of filter.items | slice:1" class="list-group-item border-0 p-0">
+  <li *ngFor="let item of filter.items | slice: 1" class="list-group-item border-0 p-0">
     <div class="custom-control custom-radio">
       <input type="radio" class="custom-control-input" id="{{item.value}}">
       <label class="custom-control-label" for="{{item.value}}">{{item.name}}</label>

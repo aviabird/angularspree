@@ -1,60 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-search-filters-container',
   templateUrl: './search-filters-container.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: []
 })
 export class SearchFiltersContainerComponent implements OnInit {
   @Input() metaInfo: any;
-
-  optionFilters = [
-    {
-      'name': 'Size',
-      'items': [
-        {
-          'count': 1,
-          'name': 'S',
-          'value': 'S'
-        },
-        {
-          'count': 2,
-          'name': 'M',
-          'value': 'M'
-        },
-        {
-          'count': 3,
-          'name': 'L',
-          'value': 'L'
-        },
-        {
-          'count': 4,
-          'name': 'X',
-          'value': 'X'
-        }
-      ]
-    },
-    {
-      'name': 'Material',
-      'items': [
-        {
-          'count': 1,
-          'name': 'Cotton',
-          'value': 'cotton'
-        },
-        {
-          'count': 2,
-          'name': 'Crepe',
-          'value': 'crepe'
-        },
-        {
-          'count': 3,
-          'name': 'Silk',
-          'value': 'silk'
-        }
-      ]
-    }
-  ];
 
   constructor() { }
 
@@ -70,8 +23,6 @@ export class SearchFiltersContainerComponent implements OnInit {
       items: []
     };
 
-    if (!this.metaInfo) { return filter };
-
     const { aggregations: { categories: { taxon: { buckets: categories } } } } = this.metaInfo;
     return {
       ...filter,
@@ -85,13 +36,35 @@ export class SearchFiltersContainerComponent implements OnInit {
       items: []
     };
 
-    if (!this.metaInfo) { return filter };
-
     const { aggregations: { brand: { buckets: brands } } } = this.metaInfo;
     return {
       ...filter,
       items: brands.map(this.formatFilter)
     };
+  }
+
+  get optionFilters() {
+    const { aggregations: { options: { option: { buckets: options } } } } = this.metaInfo;
+
+    const formattedFilters =  options.reduce((rv: any, option: any) => {
+      const [filter, value] = option.key.split('|');
+      rv[filter] = {
+        name: filter,
+        items: [
+          ...(rv[filter] || { items: [] })['items'],
+          ...[
+            {
+              name: value,
+              value: value,
+              count: option.doc_count
+            }
+          ]
+        ]
+      }
+      return rv;
+    }, {});
+
+    return Object.keys(formattedFilters).map(filterName => formattedFilters[filterName])
   }
 
   private formatFilter(filter) {
