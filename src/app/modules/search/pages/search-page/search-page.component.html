@@ -5,10 +5,10 @@
   <div class="col-12 mb-4">
     <app-search-title-container [metaInfo]="metaInfo"></app-search-title-container>
   </div>
-  <div class="col-2 pr-0 d-none d-sm-block">
+  <div class="col pr-0 d-none d-sm-block verticalFilterContainer">
     <app-search-filters-container [metaInfo]="metaInfo"></app-search-filters-container>
   </div>
-  <div class="col-12 col-md-10">
+  <div class="col">
     <div class="row d-none d-sm-flex">
       <app-filter-summary-container class="col-12 pb-3 my-1" [appliedFilters]="appliedFilters" (updatedFilters)="filterUpdated($event)"></app-filter-summary-container>
     </div>
