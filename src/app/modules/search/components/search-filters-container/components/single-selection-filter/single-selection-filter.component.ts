@@ -9,6 +9,7 @@ import { filter } from 'rxjs/operators';
 })
 export class SingleSelectionFilterComponent implements OnInit {
   @Input() filter: any;
+  @Input() skipCount = 0;
 
   constructor() { }
 

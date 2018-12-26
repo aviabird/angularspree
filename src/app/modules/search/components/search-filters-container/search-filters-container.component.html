@@ -4,7 +4,7 @@
     CLEAR ALL
   </a>
 </div>
-<app-multiselect-filter [filter]="categoryFilter"></app-multiselect-filter>
+<app-multiselect-filter [filter]="categoryFilter" skipCount="1"></app-multiselect-filter>
 <app-multiselect-filter [filter]="brandFilter"></app-multiselect-filter>
 <div *ngFor="let optionFilter of optionFilters">
   <app-multiselect-filter [filter]="optionFilter"></app-multiselect-filter>

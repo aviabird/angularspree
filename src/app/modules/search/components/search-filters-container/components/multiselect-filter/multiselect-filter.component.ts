@@ -8,6 +8,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class MultiselectFilterComponent implements OnInit {
   @Input() filter: any;
+  @Input() skipCount = 0;
 
   constructor() { }
 
