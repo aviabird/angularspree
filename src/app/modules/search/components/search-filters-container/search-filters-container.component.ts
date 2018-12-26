@@ -103,10 +103,10 @@ export class SearchFiltersContainerComponent implements OnInit {
     );
   }
 
-  multiOptionFilterUpdated(value: any, filterName: string) {
+  multiOptionFilterUpdated(value: string, filterName: string) {
     let filterOptions = this.appliedFilters.filter_options || [];
     const selectedFilterOption = filterOptions.find(option => option.name === filterName) || { value: [] };
-    const if_exists = selectedFilterOption.value.find((ov: any) => ov === value);
+    const if_exists = selectedFilterOption.value.find(ov => ov === value);
     const selectedFilterOptionValues = selectedFilterOption.value.filter(ov => ov !== value)
     filterOptions = filterOptions.filter(fo => fo.name !== filterName);
 
