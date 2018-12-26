@@ -9,6 +9,10 @@ import { SortFilter } from '../models/sort-filter';
   providedIn: 'root'
 })
 export class SearchingService {
+  static DEFAULT_FILTER = {
+    page: { limit: '20', offset: '1' }
+  };
+
   static SORT_CONFIG: Array<SortFilter> = [
     { name: 'Recommended', value: '', default: true },
     { name: 'Price: High to Low', value: 'price-desc-rank' },

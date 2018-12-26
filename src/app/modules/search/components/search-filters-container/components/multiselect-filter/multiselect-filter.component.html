@@ -2,7 +2,7 @@
   <small class="font-weight-bold pb-3 text-uppercase">{{filter.name}}</small>
   <li *ngFor="let item of filter.items | slice: skipCount" class="list-group-item border-0 p-0">
     <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="{{item.value}}">
+      <input type="checkbox" class="custom-control-input" id="{{item.value}}" [(ngModel)]="item.selected" (change)="selectedItem(item.value)">
       <label class="custom-control-label text-capitalize" for="{{item.value}}">{{item.name}}</label>
       <small class="text-secondary font-weight-light"> ( {{item.count}} ) </small>
     </div>

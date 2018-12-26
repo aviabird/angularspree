@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-multiselect-filter',
@@ -9,6 +9,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class MultiselectFilterComponent implements OnInit {
   @Input() filter: any;
   @Input() skipCount = 0;
+  @Output() filterClick = new EventEmitter();
 
   constructor() { }
 
@@ -16,5 +17,9 @@ export class MultiselectFilterComponent implements OnInit {
   }
 
   get showFilter() { return this.filter.items.length > 1 }
+
+  selectedItem(value: string | number) {
+    this.filterClick.emit(value);
+  }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { SearchParam } from '../../models/search-param';
 
 @Component({
   selector: 'app-search-filters-container',
@@ -8,6 +9,9 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class SearchFiltersContainerComponent implements OnInit {
   @Input() metaInfo: any;
+  @Input() appliedFilters: SearchParam;
+  @Output() filterCleared = new EventEmitter();
+  @Output() filterUpdated = new EventEmitter();
 
   constructor() { }
 
@@ -15,6 +19,7 @@ export class SearchFiltersContainerComponent implements OnInit {
   }
 
   clearSearchFilters() {
+    this.filterCleared.emit('');
   }
 
   get categoryFilter() {
@@ -26,7 +31,7 @@ export class SearchFiltersContainerComponent implements OnInit {
     const { aggregations: { categories: { taxon: { buckets: categories } } } } = this.metaInfo;
     return {
       ...filter,
-      items: categories.map(this.formatFilter)
+      items: categories.map(category => this.formatFilter(category, 'categories'))
     };
   }
 
@@ -39,15 +44,18 @@ export class SearchFiltersContainerComponent implements OnInit {
     const { aggregations: { brand: { buckets: brands } } } = this.metaInfo;
     return {
       ...filter,
-      items: brands.map(this.formatFilter)
+      items: brands.map(brand => this.formatFilter(brand, 'brand'))
     };
   }
 
   get optionFilters() {
     const { aggregations: { options: { option: { buckets: options } } } } = this.metaInfo;
 
-    const formattedFilters =  options.reduce((rv: any, option: any) => {
+    const formattedFilters = options.reduce((rv: any, option: any) => {
       const [filter, value] = option.key.split('|');
+      const isSelected = (
+        (this.appliedFilters.filter_options || []).find(fo => fo.name === filter) || { value: [] }
+      ).value.find(val => val === value);
       rv[filter] = {
         name: filter,
         items: [
@@ -56,7 +64,8 @@ export class SearchFiltersContainerComponent implements OnInit {
             {
               name: value,
               value: value,
-              count: option.doc_count
+              count: option.doc_count,
+              selected: isSelected
             }
           ]
         ]
@@ -67,13 +76,54 @@ export class SearchFiltersContainerComponent implements OnInit {
     return Object.keys(formattedFilters).map(filterName => formattedFilters[filterName])
   }
 
-  private formatFilter(filter) {
+  private formatFilter(filter, filterName) {
     const [id, name] = filter.key.split('|');
+    const isSelected = (this.appliedFilters[filterName] || []).find(val => val === id);
     return {
       value: id,
       name: name,
-      count: filter.doc_count
+      count: filter.doc_count,
+      selected: isSelected
     };
+  }
+
+  multiFilterUpdated(value: any, filterName: string) {
+    let filterValues = this.appliedFilters[filterName] || [];
+    const if_exists = filterValues.find((category: any) => category === value);
+    filterValues = filterValues.filter((category: any) => category !== value);
+
+    this.filterUpdated.emit(
+      Object.assign(
+        {},
+        this.appliedFilters,
+        {
+          [filterName]: if_exists ? filterValues : [...filterValues, value]
+        }
+      )
+    );
+  }
+
+  multiOptionFilterUpdated(value: any, filterName: string) {
+    let filterOptions = this.appliedFilters.filter_options || [];
+    const selectedFilterOption = filterOptions.find(option => option.name === filterName) || { value: [] };
+    const if_exists = selectedFilterOption.value.find((ov: any) => ov === value);
+    const selectedFilterOptionValues = selectedFilterOption.value.filter(ov => ov !== value)
+    filterOptions = filterOptions.filter(fo => fo.name !== filterName);
+
+    this.appliedFilters.filter_options = [
+      ...filterOptions,
+      {
+        name: filterName,
+        value: if_exists ? selectedFilterOptionValues : [...selectedFilterOptionValues, value]
+      }
+    ]
+
+    this.filterUpdated.emit(
+      Object.assign(
+        {},
+        this.appliedFilters
+      )
+    );
   }
 
 }

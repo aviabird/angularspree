@@ -10,9 +10,7 @@ import { Product } from '../../../../core/models';
   styleUrls: ['./search-page.component.scss']
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
-  appliedFilters: SearchParam = {
-    page: { limit: '20', offset: '1' }
-  };
+  appliedFilters: SearchParam = {...SearchingService.DEFAULT_FILTER};
   searchResults: Array<Product>;
   searchSubs$: Subscription;
   metaInfo: any;
@@ -25,7 +23,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.search(this.appliedFilters);
   }
 
-  filterUpdated(updatedFilter: SearchParam) {
+  updateFilters(updatedFilter: SearchParam) {
     this.appliedFilters = updatedFilter;
     this.search(updatedFilter);
   }
@@ -42,6 +40,10 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.searchSubs$.unsubscribe();
+  }
+
+  clearFilters() {
+    this.updateFilters({...SearchingService.DEFAULT_FILTER});
   }
 
 }
