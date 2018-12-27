@@ -24,7 +24,7 @@ export class UserService {
    * @memberof UserService
    */
   getOrders(): Observable<Array<Order>> {
-    return this.http.get<Array<Order>>(`api/v1/orders`);
+    return this.http.get<{data: Array<Order>}>(`api/v1/orders`).pipe(map(resp => resp.data));
   }
 
   /**
@@ -37,7 +37,7 @@ export class UserService {
    */
   getOrderDetail(orderNumber: string): Observable<Order> {
     const url = `api/v1/orders/${orderNumber}`;
-    return this.http.get<Order>(url);
+    return this.http.get<{data: Order}>(url).pipe(map(resp => resp.data));
   }
 
   /**
@@ -49,11 +49,11 @@ export class UserService {
    */
   getUser(): Observable<User> {
     const user_id = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')).id : null;
-    return this.http.get<User>(`api/v1/users/${user_id}`);
+    return this.http.get<{data: User}>(`api/v1/users/${user_id}`).pipe(map(resp => resp.data));
   }
 
   updateUser(params: any): Observable<User> {
-    return this.http.put<User>(`api/v1/users/${params.user_id}`, params);
+    return this.http.put<{data: User}>(`api/v1/users/${params.user_id}`, params).pipe(map(resp => resp.data));
   }
 
   updateUserPassword(params: any) {

@@ -1,17 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { filter } from 'rxjs/operators';
+import { MultiselectFilterComponent } from './../multiselect-filter/multiselect-filter.component';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-single-selection-filter',
   templateUrl: './single-selection-filter.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./single-selection-filter.component.scss']
 })
-export class SingleSelectionFilterComponent implements OnInit {
-  @Input() filter;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class SingleSelectionFilterComponent extends MultiselectFilterComponent {
 }

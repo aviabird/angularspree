@@ -39,17 +39,17 @@ export class ProductService {
    */
   getProduct(id: string): Observable<Product> {
     return this.http
-      .get<Product>(
+      .get<{data: Product}>(
         `api/v1/products/${id}?${+new Date()}`
-      )
+      ).pipe(map(resp => resp.data));
   }
 
   getProductReviews(productId: string): Observable<Array<Review>> {
-    return this.http.get<Array<Review>>(`api/v1/product/${productId}/reviews`);
+    return this.http.get<{data: Array<Review>}>(`api/v1/product/${productId}/reviews`).pipe(map(resp => resp.data));
   }
 
   getProductRatingSummery(productId: string): Observable<any> {
-    return this.http.get('api/v1/product/${productId}/rating-summary')
+    return this.http.get<any>('api/v1/product/${productId}/rating-summary').pipe(map(resp => resp.data));
   }
 
   /**
@@ -70,9 +70,9 @@ export class ProductService {
    */
   getProducts(pageNumber: number): Observable<Array<Product>> {
     return this.http
-      .get<Array<Product>>(
-        `api/v1/products?sort=date&page[limit]=20&page[offset]=${pageNumber}`
-      )
+      .get<{data: Array<Product>}>(
+        `api/v1/products?sort=date&rows=20&o=${(pageNumber - 1) * 20}`
+      ).pipe(map(resp => resp.data));
   }
 
   markAsFavorite(id: number): Observable<{}> {
@@ -85,93 +85,69 @@ export class ProductService {
 
   getFavoriteProducts(): Observable<Array<Product>> {
     return this.http
-      .get<{ data: CJsonApi[] }>(
+      .get<{ data: Array<Product> }>(
         `favorite_products.json?per_page=20&data_set=small`
       )
-      .pipe(
-        map(
-          (resp: any) => resp.data
-        )
-      );
+      .pipe(map(res => res.data));
   }
 
   getUserFavoriteProducts(): Observable<Array<Product>> {
     return this.http
-      .get<{ data: CJsonApi[] }>(
+      .get<{ data: Array<Product> }>(
         `spree/user_favorite_products.json?data_set=small`
       )
-      .pipe(
-        map(
-          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
-        )
-      );
+      .pipe(map(res => res.data));
   }
 
   getProductsByTaxon(id: string): Observable<any> {
     return this.http
-      .get<{ data: CJsonApi[]; pagination: Object }>(
+      .get<{ data: Array<Product> }>(
         `api/v1/taxons/products?${id}&per_page=20&data_set=small`
       )
-      .pipe(
-        map(resp => {
-          return {
-            pagination: resp.pagination,
-            products: this.apiParser.parseArrayofObject(resp.data) as Array<Product>
-          };
-        })
-      );
+      .pipe(map(res => res.data));
   }
 
   getProductsByTaxonNP(id: string): Observable<Array<Product>> {
     return this.http
-      .get<{ data: CJsonApi[] }>(
+      .get<{ data: Array<Product> }>(
         `api/v1/taxons/products?id=${id}&per_page=20&data_set=small`
       )
-      .pipe(
-        map(
-          (resp: any) => resp.data
-          // resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
-        )
-      );
+      .pipe(map(res => res.data))
   }
 
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
-    return this.http.get<Array<Taxonomy>>(
+    return this.http.get<{data: Array<Taxonomy>}>(
       `api/v1/taxonomies?q[name_cont]=${name}&set=nested&per_page=2`
-    );
+    ).pipe(map(res => res.data));
   }
 
   getproductsByKeyword(keywords: any): Observable<Array<Product>> {
     return this.http
-      .get<Array<Product>>(`api/v1/products?page[limit]=20&page[offset]=1`, { params: keywords });
+      .get<{data: Array<Product>}>(`api/v1/products?rows=20&o=1`, { params: keywords }).pipe(map(res => res.data));
   }
 
   getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
-    return this.http.get<Array<Taxonomy>>(
+    return this.http.get<{data: Array<Taxonomy>}>(
       `/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`
-    );
+    ).pipe(map(res => res.data));
   }
 
   writeProductReview(params: Object): Observable<Review> {
-    return this.http.post<Review>(`api/v1/reviews`, params)
+    return this.http.post<{data: Review}>(`api/v1/reviews`, params).pipe(map(res => res.data));
   }
 
   getRelatedProducts(productId: any): Observable<Array<Product>> {
     return this.http
-      .get<{ data: CJsonApi[] }>(`api/products/${productId}/relations`)
-      .pipe(
-        map(
-          resp => this.apiParser.parseArrayofObject(resp.data) as Array<Product>
-        )
-      );
+      .get<{ data: Array<Product> }>(`api/products/${productId}/relations`)
+      .pipe(map(res => res.data));
   }
 
   getBrands(): Observable<Array<Brand>> {
-    return this.http.get<Array<Brand>>(`api/v1/brands`);
+    return this.http.get<{data: Array<Brand>}>(`api/v1/brands`).pipe(map(resp => resp.data));
   }
 
   getProductRatingOptions(ratingCategoryId: number): Observable<Array<RatingOption>>  {
-    return this.http.get<Array<RatingOption>>(`api/v1/ratings/${ratingCategoryId}`);
+    return this.http.get<{data: Array<RatingOption>}>(`api/v1/ratings/${ratingCategoryId}`).pipe(map(resp => resp.data));
   }
 
 }

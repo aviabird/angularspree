@@ -11,6 +11,8 @@ picture {
   height: 280px;
   img {
     height: 100%;
+    filter: drop-shadow(0 0 33px $pink);
+    -webkit-filter: drop-shadow(0 0 33px $pink);
   }
 }
 

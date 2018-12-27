@@ -51,14 +51,15 @@ export class CheckoutService {
   createNewLineItem(productId: number, quantity: number): Observable<Order> {
     if (this.getUserToken()) {
       const params = this.buildOrderParams(productId, quantity)
-      return this.http.post<Order>(`api/v1/line_items`, params).pipe(
+      return this.http.post<{ data: Order }>(`api/v1/line_items`, params).pipe(
         tap(
-          order => {
+          ({ data: order }) => {
             this.toastyService.success('Success!', 'Cart updated!');
             return order;
           },
           error => { this.toastyService.error(error.error.error, 'Failed') }
-        )
+        ),
+        map(resp => resp.data)
       );
     } else if (!this.getUserToken()) {
       return this.createGuestOrder(productId, quantity).pipe(
@@ -76,10 +77,10 @@ export class CheckoutService {
     } else {
       this.guestOrderParams = this.buildGuestOrderParams(productId, quantity);
     }
-    return this.http.post<Order>(`api/v1/guest/line_items`, this.guestOrderParams).pipe(
-      map(resp => {
-        this.setOrderTokenInLocalStorage(resp.number)
-        return resp;
+    return this.http.post<{ data: Order }>(`api/v1/guest/line_items`, this.guestOrderParams).pipe(
+      map(({ data: order }) => {
+        this.setOrderTokenInLocalStorage(order.number)
+        return order;
       })
     )
   }
@@ -92,12 +93,12 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   fetchCurrentOrder() {
-    return this.http.post<Order>('api/v1/orders/current', {}).pipe(
-      map(order => {
+    return this.http.post<{ data: Order }>('api/v1/orders/current', {}).pipe(
+      map(({ data: order }) => {
         this.setOrderTokenInLocalStorage(order.number);
         return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
       },
-        error => { return error })
+      error => { return error })
     );
   }
 
@@ -111,7 +112,7 @@ export class CheckoutService {
   getOrder(): Observable<Order> {
     const orderNumber = JSON.parse(localStorage.getItem('order_number'))
     const url = `api/v1/orders/${orderNumber}`;
-    return this.http.get<Order>(url);
+    return this.http.get<{data: Order}>(url).pipe(map(resp => resp.data));
   }
 
   /**
@@ -135,8 +136,8 @@ export class CheckoutService {
    */
   availablePaymentMethods(): Observable<Array<PaymentMode>> {
     const url = `api/v1/payment/payment-methods`
-    return this.http.get<Array<PaymentMode>>(url).pipe(
-      map(resp => { return resp },
+    return this.http.get<{data: Array<PaymentMode>}>(url).pipe(
+      map(resp => { return resp.data },
         error => { return error }
       )
     );
@@ -153,7 +154,7 @@ export class CheckoutService {
   saveShippingPreferences(orderId: number, packages: Array<{}>): Observable<Order> {
     const params = this.buildShippingParams(orderId, packages);
     const url = `api/v1/orders/${orderId}/add-shipment`;
-    return this.http.patch<Order>(url, params);
+    return this.http.patch<{data: Order}>(url, params).pipe(map(resp => resp.data));
   }
 
   shipmentAvailability(pincode: number) {
