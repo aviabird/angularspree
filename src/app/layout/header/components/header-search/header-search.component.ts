@@ -51,7 +51,7 @@ export class HeaderSearchComponent implements OnInit {
   onSearch(keyword: string) {
     if (keyword !== '') {
       keyword = keyword.trim();
-      this.router.navigate(['/search'], { queryParams: { 'filter[name]': keyword } });
+      this.router.navigate(['/s'], { queryParams: { 'q': keyword } });
       this.setKeywordToLocalStorage(keyword);
     }
   }

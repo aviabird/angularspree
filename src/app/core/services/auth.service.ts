@@ -44,8 +44,8 @@ export class AuthService {
 
   login({ email, password }): Observable<User> {
     const params = { data: { attributes: { 'email': email, 'password': password } } };
-    return this.http.post<User>('api/v1/login', params).pipe(
-      map(user => {
+    return this.http.post<{data: User}>('api/v1/login', params).pipe(
+      map(({data: user}) => {
         this.setTokenInLocalStorage(user, 'user');
         this.store.dispatch(this.actions.getCurrentUserSuccess(JSON.parse(localStorage.getItem('user'))));
         this.store.dispatch(this.actions.loginSuccess())
@@ -72,8 +72,8 @@ export class AuthService {
    */
   register(data: User): Observable<User> {
     const params = { data: { type: 'user', attributes: data } };
-    return this.http.post<User>('api/v1/register', params).pipe(
-      map(user => {
+    return this.http.post<{data: User}>('api/v1/register', params).pipe(
+      map(({data: user}) => {
         return user;
       }),
       tap(
@@ -231,6 +231,6 @@ export class AuthService {
   }
 
   getRatingCategories(): Observable<Array<RatingCategory>> {
-    return this.http.get<Array<RatingCategory>>(`api/v1/ratings/`);
+    return this.http.get<{data: Array<RatingCategory>}>(`api/v1/ratings/`).pipe(map(resp => resp.data));
   }
 }

@@ -1,3 +1,4 @@
+import { SearchResolver } from './guards/search-resolver';
 import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,6 +18,9 @@ import { COMPONENTS } from './';
     NgxInputStarRatingModule,
 
     SharedModule
+  ],
+  providers: [
+    SearchResolver
   ]
 })
 export class SearchModule { }
