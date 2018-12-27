@@ -32,21 +32,23 @@ export class SearchingService {
 
   search(appliedParams: SearchAppliedParams) {
     return this.http
-      .post<{ data: Array<Product>, links: any, meta: any }>(
+      .get<{ data: Array<Product>, links: any, meta: any }>(
         `api/v1/products`,
         {
-          ...this.convertToAPISearchParams(appliedParams),
-          ...this.pageData
+          params: this.convertToAPISearchParams(appliedParams)
+            .set('o', '0')
+            .set('p', '1')
         }
       );
   }
 
-  convertToAPISearchParams({ sort, filters, rangeFilters }: SearchAppliedParams) {
-    return {
-      f: this.stringifySearchFilter(filters),
-      rf: this.stringifySearchFilter(rangeFilters),
-      sort: sort
-    }
+  convertToAPISearchParams({ sort, filters, rangeFilters, q }: SearchAppliedParams): HttpParams {
+    return new HttpParams()
+      .set('f', this.stringifySearchFilter(filters))
+      .set('rf', this.stringifySearchFilter(rangeFilters))
+      .set('sort', sort)
+      .set('rows', '50')
+      .set('q', q || '')
   }
 
   private stringifySearchFilter(searchFilter: Array<SearchFilter>) {
