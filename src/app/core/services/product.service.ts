@@ -71,7 +71,7 @@ export class ProductService {
   getProducts(pageNumber: number): Observable<Array<Product>> {
     return this.http
       .get<{data: Array<Product>}>(
-        `api/v1/products?sort=date&page[limit]=20&page[offset]=${pageNumber}`
+        `api/v1/products?sort=date&rows=20&o=${(pageNumber - 1) * 20}`
       ).pipe(map(resp => resp.data));
   }
 
@@ -123,7 +123,7 @@ export class ProductService {
 
   getproductsByKeyword(keywords: any): Observable<Array<Product>> {
     return this.http
-      .get<{data: Array<Product>}>(`api/v1/products?page[limit]=20&page[offset]=1`, { params: keywords }).pipe(map(res => res.data));
+      .get<{data: Array<Product>}>(`api/v1/products?rows=20&o=1`, { params: keywords }).pipe(map(res => res.data));
   }
 
   getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
