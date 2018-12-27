@@ -10,7 +10,7 @@
   </div>
   <div class="col">
     <div class="row d-none d-sm-flex">
-      <app-filter-summary-container class="col-12 pb-3 my-1" [appliedParams]="appliedParams" (updatedFilters)="updateFilters($event)"></app-filter-summary-container>
+      <app-filter-summary-container class="col-12 my-1" [appliedParams]="appliedParams" (updatedFilters)="updateFilters($event)"></app-filter-summary-container>
     </div>
     <app-search-results-container [searchResults]="searchResults"></app-search-results-container>
   </div>

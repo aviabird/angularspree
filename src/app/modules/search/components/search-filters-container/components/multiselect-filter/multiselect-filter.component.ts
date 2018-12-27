@@ -1,5 +1,6 @@
-import { FilterAgg } from './../../../../models/search-param';
+import { SearchFilter, FilterAgg, FilterValueAgg } from './../../../../models/search-param';
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-multiselect-filter',
@@ -8,14 +9,16 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter
   styleUrls: ['./multiselect-filter.component.scss']
 })
 export class MultiselectFilterComponent implements OnInit {
-  @Input() filter: any;
+  @Input() filter: FilterAgg;
   @Input() skipCount = 0;
   @Output() filterClick = new EventEmitter<string>();
+  @Input() appliedFilters: Array<SearchFilter>;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   get showFilter() { return this.filter.filterValues.length > 0 }
 
@@ -23,4 +26,14 @@ export class MultiselectFilterComponent implements OnInit {
     this.filterClick.emit(id);
   }
 
+  isSelected(id: string) {
+    const currentFilter = this.appliedFilters
+      .find(filter => filter.id === this.filter.id);
+
+    if (currentFilter) {
+      return currentFilter.values.indexOf(id) !== -1;
+    } else {
+      return false
+    }
+  }
 }

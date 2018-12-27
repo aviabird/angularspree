@@ -1,4 +1,4 @@
-import { SearchFilter } from './../../models/search-param';
+import { SearchFilter, FilterAgg } from './../../models/search-param';
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { SearchAppliedParams } from '../../models/search-param';
 
@@ -9,7 +9,11 @@ import { SearchAppliedParams } from '../../models/search-param';
   styles: []
 })
 export class SearchFiltersContainerComponent implements OnInit {
-  @Input() metaInfo: any;
+  @Input() metaInfo: {
+    aggregations: {
+      filters: Array<FilterAgg>
+    }
+  };
   @Input() appliedParams: SearchAppliedParams;
   @Output() filterCleared = new EventEmitter();
   @Output() filterUpdated = new EventEmitter();

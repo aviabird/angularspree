@@ -87,7 +87,7 @@ export class SearchingService {
 
     Object.keys(params)
       .filter(param => params[param])
-      .map(param => newParam = {...newParam, [param]: params[param]})
+      .map(param => newParam = { ...newParam, [param]: params[param] })
 
     return newParam;
   }

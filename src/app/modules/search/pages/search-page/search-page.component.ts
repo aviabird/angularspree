@@ -4,7 +4,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SearchParam, SearchAppliedParams } from '../../models/search-param';
 import { SearchingService } from '../../services';
 import { Product } from '../../../../core/models';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-page',
@@ -15,6 +14,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   appliedParams: SearchAppliedParams = SearchingService.DEFAULT_APPLIED_FILTERS;
   searchResults: Array<Product>;
   subsArray$: Array<Subscription> = [];
+  searchSubs$: Subscription;
   selectedAggregation: any;
   metaInfo: any;
 
@@ -34,7 +34,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
           this.metaInfo = meta;
         }),
       this.route.queryParams.subscribe((params: SearchParam) => {
-        // this.updateFilters(this.searchService.convertToAppliedParams(params));
+        this.updateFilters(this.searchService.convertToAppliedParams(params));
       })
     );
 
@@ -49,13 +49,12 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   search(appliedParams: SearchAppliedParams) {
     const apiParams = this.searchService.convertToAPISearchParams(appliedParams);
-    this.subsArray$.push(
-      this.searchService.search(apiParams)
-        .subscribe(({ data, meta }) => {
-          this.searchResults = data;
-          this.metaInfo = meta;
-        })
-    );
+    if (this.searchSubs$) { this.searchSubs$.unsubscribe() }
+    this.searchSubs$ = this.searchService.search(apiParams)
+      .subscribe(({ data, meta }) => {
+        this.searchResults = [...data];
+        this.metaInfo = {...meta};
+      })
   }
 
   ngOnDestroy() {

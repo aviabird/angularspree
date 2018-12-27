@@ -14,8 +14,4 @@ export class SearchResultListComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  trackBy(product) {
-    return product.id
-  }
 }

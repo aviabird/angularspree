@@ -14,9 +14,16 @@ export interface SearchParam {
   o?: string;
 }
 
+// ex: {id: 'Color', {id: 'red', count: 100, meta: 'red'}}
+// ex: {id: 'Category', {id: 'tshirt', count: 100, meta: ''}}
 export interface FilterAgg {
+  id: string,
+  filterValues: Array<FilterValueAgg>
+}
+
+// ex: {id: 'red', count: 100, meta: 'red'}
+export interface FilterValueAgg {
   id: string;
-  value: string;
   count: string;
   meta: string;
 }

@@ -5,5 +5,5 @@
   </a>
 </div>
 <div *ngFor="let filter of primaryFilters">
-  <app-multiselect-filter [filter]="filter" (filterClick)="updateFilter($event, filter.id)"></app-multiselect-filter>
+  <app-multiselect-filter [appliedFilters]="appliedParams.filters" [filter]="filter" (filterClick)="updateFilter($event, filter.id)"></app-multiselect-filter>
 </div>

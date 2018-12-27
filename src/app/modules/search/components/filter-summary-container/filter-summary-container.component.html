@@ -1,6 +1,6 @@
-<section class="row">
+<section class="row px-4">
   <div class="col-8">
-    <app-filter-summary-filter-list></app-filter-summary-filter-list>
+    <app-filter-summary-filter-list [appliedParams]="appliedParams"></app-filter-summary-filter-list>
   </div>
   <app-filter-summary-sort-by class="col-4" (selectedSort)="filterUpdated($event)"></app-filter-summary-sort-by>
 </section>
