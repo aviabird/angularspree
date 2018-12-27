@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
 export class SearchPageComponent implements OnInit, OnDestroy {
   appliedParams: SearchAppliedParams = SearchingService.DEFAULT_APPLIED_FILTERS;
   searchResults: Array<Product>;
-  searchSubs$: Subscription;
+  subsArray$: Array<Subscription> = [];
   selectedAggregation: any;
   metaInfo: any;
 
@@ -27,35 +27,39 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params: Object) => {
-      this.updateFilters({
-        ...this.appliedParams
+    this.subsArray$.push(
+      this.route.data
+        .subscribe(({ resp: { data, meta } }) => {
+          this.searchResults = data;
+          this.metaInfo = meta;
+        }),
+      this.route.queryParams.subscribe((params: SearchParam) => {
+        // this.updateFilters(this.searchService.convertToAppliedParams(params));
       })
-    });
+    );
 
-    this.searchSubs$ = this.route.data
-      .subscribe(({ resp: { data, meta } }) => {
-        this.searchResults = data;
-        this.metaInfo = meta;
-      });
   }
 
   updateFilters(appliedParams: SearchAppliedParams) {
     this.appliedParams = appliedParams;
+    const queryParams = this.searchService.convertToAPISearchParams(appliedParams);
+    this.router.navigate(['/s'], { queryParams });
     this.search(appliedParams);
   }
 
   search(appliedParams: SearchAppliedParams) {
-    if (this.searchSubs$) { this.searchSubs$.unsubscribe() }
-    this.searchSubs$ = this.searchService.search(appliedParams)
-      .subscribe(({ data, meta }) => {
-        this.searchResults = data;
-        this.metaInfo = meta;
-      });
+    const apiParams = this.searchService.convertToAPISearchParams(appliedParams);
+    this.subsArray$.push(
+      this.searchService.search(apiParams)
+        .subscribe(({ data, meta }) => {
+          this.searchResults = data;
+          this.metaInfo = meta;
+        })
+    );
   }
 
   ngOnDestroy() {
-    this.searchSubs$.unsubscribe();
+    this.subsArray$.map(subs => subs.unsubscribe());
   }
 
   clearFilters() {
@@ -69,7 +73,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   get breadcrumbs() {
     return [
-      { crumb: this.appliedParams.q || 'All Categories', link: '#'}
+      { crumb: this.appliedParams.q || 'All Categories', link: '#' }
     ]
   }
 

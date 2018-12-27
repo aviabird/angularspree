@@ -29,9 +29,12 @@ export interface FilterAgg {
  */
 export interface SearchAppliedParams {
   q?: string;
-  filters: Array<SearchFilter>;
-  rangeFilters: Array<SearchFilter>;
-  sort: string;
+  filters?: Array<SearchFilter>;
+  rangeFilters?: Array<SearchFilter>;
+  sort?: string;
+  limit?: string;
+  offset?: string;
+  page?: string;
 }
 
 export interface SearchFilter {

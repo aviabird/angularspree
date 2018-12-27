@@ -17,12 +17,8 @@ export class SearchResolver implements Resolve<any> {
   ) { }
 
   resolve(route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<any> {
-    const query = route.queryParams['q'];
-    const appliedFilters = {
-      ...this.appliedFilters,
-      q: query
-    };
-    return this.searchingService.search(appliedFilters).pipe(
+    const queryParams = this.searchingService.convertToAPISearchParams(route.queryParams);
+    return this.searchingService.search(queryParams).pipe(
       catchError(_ => {
         this.toastrService.error('', 'Bad search query');
         this.router.navigate(['']);
