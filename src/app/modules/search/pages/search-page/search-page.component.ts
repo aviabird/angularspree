@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./search-page.component.scss']
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
-  appliedFilters: SearchParam = { ...SearchingService.DEFAULT_FILTER };
+  appliedParams: SearchParam = { ...SearchingService.DEFAULT_FILTER };
   searchResults: Array<Product>;
   searchSubs$: Subscription;
   selectedAggregation: any;
@@ -29,7 +29,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.queryParams.subscribe((params: Object) => {
       this.updateFilters({
-        ...this.appliedFilters,
+        ...this.appliedParams,
         ...params
       })
     });
@@ -46,7 +46,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   updateFilters(updatedFilter: SearchParam) {
-    this.appliedFilters = updatedFilter;
+    this.appliedParams = updatedFilter;
     this.search(updatedFilter);
   }
 
@@ -78,7 +78,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   get breadcrumbs() {
     return [
-      { crumb: this.appliedFilters.q || 'All Categories', link: '#'}
+      { crumb: this.appliedParams.q || 'All Categories', link: '#'}
     ]
   }
 

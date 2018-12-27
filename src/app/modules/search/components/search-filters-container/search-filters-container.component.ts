@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { SearchParam } from '../../models/search-param';
+import { SearchAppliedParams } from '../../models/search-param';
 
 @Component({
   selector: 'app-search-filters-container',
@@ -9,7 +9,7 @@ import { SearchParam } from '../../models/search-param';
 })
 export class SearchFiltersContainerComponent implements OnInit {
   @Input() metaInfo: any;
-  @Input() appliedFilters: SearchParam;
+  @Input() appliedParams: SearchAppliedParams;
   @Output() filterCleared = new EventEmitter();
   @Output() filterUpdated = new EventEmitter();
   @Output() selectedAggregation = new EventEmitter();
@@ -42,7 +42,7 @@ export class SearchFiltersContainerComponent implements OnInit {
       items: []
     };
 
-    const { aggregations: { brand: { buckets: brands } } } = this.metaInfo;
+    const { aggregations: { filters: { brands: brands } } } = this.metaInfo;
     return {
       ...filter,
       items: brands.map(brand => this.formatFilter(brand, 'brand'))
@@ -50,37 +50,12 @@ export class SearchFiltersContainerComponent implements OnInit {
   }
 
   get optionFilters() {
-    const { aggregations: { options: { option: { buckets: options } } } } = this.metaInfo;
-
-    const formattedFilters = options.reduce((rv: any, option: any) => {
-      const [filter, value] = option.key.split('|');
-
-      const isSelected = (
-        (this.appliedFilters.filter_options || []).find(fo => fo.name === filter) || { value: [] }
-      ).value.find(val => val === value);
-
-      rv[filter] = {
-        name: filter,
-        items: [
-          ...(rv[filter] || { items: [] })['items'],
-          ...[
-            {
-              name: value,
-              value: value,
-              count: option.doc_count,
-              selected: isSelected
-            }
-          ]
-        ]
-      }
-      return rv;
-    }, {});
-
-    return Object.keys(formattedFilters).map(filterName => formattedFilters[filterName])
+    const { aggregations: { filters: { optionFilters: optionFilters } } } = this.metaInfo;
+    return optionFilters;
   }
 
   private formatFilter(filter, filterName) {
-    const isSelected = (this.appliedFilters[filterName] || []).find(val => val === filter.id);
+    const isSelected = (this.appliedParams[filterName] || []).find(val => val === filter.id);
     return {
       value: filter.id,
       name: filter.name,
@@ -90,7 +65,7 @@ export class SearchFiltersContainerComponent implements OnInit {
   }
 
   multiFilterUpdated(value: any, filterName: string) {
-    let filterValues = this.appliedFilters[filterName] || [];
+    let filterValues = this.appliedParams.filters[filterName] || [];
     const if_exists = filterValues.find((val: any) => val === value);
     filterValues = filterValues.filter((val: any) => val !== value);
 
@@ -99,7 +74,7 @@ export class SearchFiltersContainerComponent implements OnInit {
     this.filterUpdated.emit(
       Object.assign(
         {},
-        this.appliedFilters,
+        this.appliedParams,
         {
           [filterName]: if_exists ? filterValues : [...filterValues, value]
         }
@@ -108,26 +83,6 @@ export class SearchFiltersContainerComponent implements OnInit {
   }
 
   multiOptionFilterUpdated(value: string, filterName: string) {
-    let filterOptions = this.appliedFilters.filter_options || [];
-    const selectedFilterOption = filterOptions.find(option => option.name === filterName) || { value: [] };
-    const if_exists = selectedFilterOption.value.find(ov => ov === value);
-    const selectedFilterOptionValues = selectedFilterOption.value.filter(ov => ov !== value)
-    filterOptions = filterOptions.filter(fo => fo.name !== filterName);
-
-    this.appliedFilters.filter_options = [
-      ...filterOptions,
-      {
-        name: filterName,
-        value: if_exists ? selectedFilterOptionValues : [...selectedFilterOptionValues, value]
-      }
-    ]
-
-    this.filterUpdated.emit(
-      Object.assign(
-        {},
-        this.appliedFilters
-      )
-    );
   }
 
 }

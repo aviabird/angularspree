@@ -10,7 +10,8 @@ import { SortFilter } from '../models/sort-filter';
 })
 export class SearchingService {
   static DEFAULT_FILTER = {
-    page: { limit: '20', offset: '1' }
+    rows: '50',
+    o: '0'
   };
 
   static SORT_CONFIG: Array<SortFilter> = [
