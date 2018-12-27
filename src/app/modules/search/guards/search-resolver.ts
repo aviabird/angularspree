@@ -1,14 +1,14 @@
-import { SearchParam } from './../models/search-param';
+import { SearchAppliedParams } from './../models/search-param';
 import { SearchingService } from './../services/searching.service';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Observable ,  of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
 @Injectable()
 export class SearchResolver implements Resolve<any> {
-  appliedFilters: SearchParam = {...SearchingService.DEFAULT_FILTER};
+  appliedFilters: SearchAppliedParams = SearchingService.DEFAULT_APPLIED_FILTERS;
 
   constructor(
     private searchingService: SearchingService,
@@ -18,11 +18,11 @@ export class SearchResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Observable<any> {
     const query = route.queryParams['q'];
-    const searchParams = {
+    const appliedFilters = {
       ...this.appliedFilters,
       q: query
     };
-    return this.searchingService.search(searchParams).pipe(
+    return this.searchingService.search(appliedFilters).pipe(
       catchError(_ => {
         this.toastrService.error('', 'Bad search query');
         this.router.navigate(['']);

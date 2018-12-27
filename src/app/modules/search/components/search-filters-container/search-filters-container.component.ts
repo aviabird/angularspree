@@ -1,3 +1,4 @@
+import { SearchFilter } from './../../models/search-param';
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { SearchAppliedParams } from '../../models/search-param';
 
@@ -13,6 +14,7 @@ export class SearchFiltersContainerComponent implements OnInit {
   @Output() filterCleared = new EventEmitter();
   @Output() filterUpdated = new EventEmitter();
   @Output() selectedAggregation = new EventEmitter();
+  mainFilter = ['Category', 'Brand'];
 
   constructor() { }
 
@@ -23,66 +25,42 @@ export class SearchFiltersContainerComponent implements OnInit {
     this.filterCleared.emit('');
   }
 
-  get categoryFilter() {
-    const filter = {
-      name: 'Category',
-      items: []
-    };
-
-    const { aggregations: { filters: { categories: categories } } } = this.metaInfo;
-    return {
-      ...filter,
-      items: categories.map(category => this.formatFilter(category, 'categories'))
-    };
+  get primaryFilters() {
+    const { aggregations: { filters: filters } } = this.metaInfo;
+    return filters;
   }
 
-  get brandFilter() {
-    const filter = {
-      name: 'Brand',
-      items: []
-    };
+  updateFilter(updatedVal: any, filterName: string) {
+    const currentAppliedFilters = this.appliedParams.filters;
+    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName);
+    let newCurrentFilters: Array<SearchFilter>;
 
-    const { aggregations: { filters: { brands: brands } } } = this.metaInfo;
-    return {
-      ...filter,
-      items: brands.map(brand => this.formatFilter(brand, 'brand'))
-    };
-  }
-
-  get optionFilters() {
-    const { aggregations: { filters: { optionFilters: optionFilters } } } = this.metaInfo;
-    return optionFilters;
-  }
-
-  private formatFilter(filter, filterName) {
-    const isSelected = (this.appliedParams[filterName] || []).find(val => val === filter.id);
-    return {
-      value: filter.id,
-      name: filter.name,
-      count: filter.count,
-      selected: isSelected
-    };
-  }
-
-  multiFilterUpdated(value: any, filterName: string) {
-    let filterValues = this.appliedParams.filters[filterName] || [];
-    const if_exists = filterValues.find((val: any) => val === value);
-    filterValues = filterValues.filter((val: any) => val !== value);
-
-    this.selectedAggregation.emit({ [filterName]: this.metaInfo.aggregations.filters[filterName] });
-
-    this.filterUpdated.emit(
-      Object.assign(
-        {},
-        this.appliedParams,
+    if (filterToUpdate) {
+      const currentValues = filterToUpdate.values;
+      const exists = currentValues.find(v => v === updatedVal);
+      const filteredValues = currentValues.filter(v => v !== updatedVal);
+      const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
+      newCurrentFilters = [
+        ...filteredAppliedFilters,
         {
-          [filterName]: if_exists ? filterValues : [...filterValues, value]
+          ...filterToUpdate,
+          values: exists ? filteredValues : [...filteredValues, updatedVal]
         }
-      )
-    );
-  }
+      ]
+    } else {
+      newCurrentFilters = [
+        ...currentAppliedFilters,
+        {
+          id: filterName,
+          values: [updatedVal]
+        }
+      ]
+    }
 
-  multiOptionFilterUpdated(value: string, filterName: string) {
+    this.filterUpdated.emit({
+      ...this.appliedParams,
+      filters: newCurrentFilters
+    });
   }
 
 }

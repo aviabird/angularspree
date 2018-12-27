@@ -1,8 +1,11 @@
+/**
+ * Allowed API parameters
+ *
+ * @export
+ * @interface SearchParam
+ */
 export interface SearchParam {
   q?: string;
-  categories?: Array<string>;
-  brands?: Array<string>;
-  filter_options?: Array<FilterOption>;
   f?: string;
   p?: string;
   rf?: string;
@@ -11,12 +14,21 @@ export interface SearchParam {
   o?: string;
 }
 
-export interface FilterOption {
-  name: string;
-  value: Array<string>;
+export interface FilterAgg {
+  id: string;
+  value: string;
+  count: string;
+  meta: string;
 }
 
+/**
+ * Applied Search params in angular components,
+ * which will be converted to API SearchParams
+ * @export
+ * @interface SearchAppliedParams
+ */
 export interface SearchAppliedParams {
+  q?: string;
   filters: Array<SearchFilter>;
   rangeFilters: Array<SearchFilter>;
   sort: string;

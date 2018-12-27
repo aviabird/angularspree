@@ -4,8 +4,6 @@
     CLEAR ALL
   </a>
 </div>
-<app-multiselect-filter [filter]="categoryFilter" skipCount="0" (filterClick)="multiFilterUpdated($event, 'Category')"></app-multiselect-filter>
-<app-multiselect-filter [filter]="brandFilter" (filterClick)="multiFilterUpdated($event, 'Brand')"></app-multiselect-filter>
-<div *ngFor="let optionFilter of optionFilters">
-  <app-multiselect-filter [filter]="optionFilter" (filterClick)="multiOptionFilterUpdated($event, optionFilter.name)"></app-multiselect-filter>
+<div *ngFor="let filter of primaryFilters">
+  <app-multiselect-filter [filter]="filter" (filterClick)="updateFilter($event, filter.id)"></app-multiselect-filter>
 </div>

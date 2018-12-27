@@ -1,3 +1,4 @@
+import { FilterAgg } from './../../../../models/search-param';
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,17 +10,17 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter
 export class MultiselectFilterComponent implements OnInit {
   @Input() filter: any;
   @Input() skipCount = 0;
-  @Output() filterClick = new EventEmitter();
+  @Output() filterClick = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  get showFilter() { return this.filter.items.length > 0 }
+  get showFilter() { return this.filter.filterValues.length > 0 }
 
-  selectedItem(value: string | number) {
-    this.filterClick.emit(value);
+  selectedItem(id: string) {
+    this.filterClick.emit(id);
   }
 
 }
