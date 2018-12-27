@@ -14,5 +14,4 @@ export class SearchResultListComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

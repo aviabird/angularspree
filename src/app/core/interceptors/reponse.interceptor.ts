@@ -18,7 +18,8 @@ export class ResponseInterceptor implements HttpInterceptor {
 
   }
 
-  private modifyBody({ body: body, url: url }) {
-    return body ? deserialize(body) : body;
+  private modifyBody({ body: body }) {
+    if (!body) { return body }
+    return { ...body, data: deserialize(body) };
   }
 }
