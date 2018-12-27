@@ -106,4 +106,7 @@ $l-max: 90;
 
 .pointer {
   cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 }

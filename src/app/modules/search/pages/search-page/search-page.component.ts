@@ -76,4 +76,10 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.selectedAggregation = aggregation;
   }
 
+  get breadcrumbs() {
+    return [
+      { crumb: this.appliedFilters.q || 'All Categories', link: '#'}
+    ]
+  }
+
 }
