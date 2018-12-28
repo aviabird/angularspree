@@ -34,7 +34,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
           this.metaInfo = meta;
         }),
       this.route.queryParams.subscribe((params: SearchParam) => {
-        this.updateFilters(this.searchService.convertToAppliedParams(params));
+        this.search(this.searchService.convertToAppliedParams(params));
       })
     );
 
@@ -44,7 +44,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.appliedParams = appliedParams;
     const queryParams = this.searchService.convertToAPISearchParams(appliedParams);
     this.router.navigate(['/s'], { queryParams });
-    this.search(appliedParams);
   }
 
   search(appliedParams: SearchAppliedParams) {
