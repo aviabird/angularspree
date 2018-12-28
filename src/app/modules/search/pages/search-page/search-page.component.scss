@@ -5,3 +5,10 @@
     min-width: 250px;
   }
 }
+
+.search-failed-container {
+  padding: 2rem 1rem 10rem;
+  @media (max-width: 720px) {
+    padding: 10rem 1rem;
+  }
+}

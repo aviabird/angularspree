@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 48 48" style="enable-background:new 0 0 48 48;" xml:space="preserve">
+  <rect x="34.575" y="29" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -15.1436 35.5721)" style="fill:#616161;" width="3.999" height="17.003"></rect>
+  <circle style="fill: #f7a2a2;" cx="19.969" cy="19.98" r="16"></circle>
+  <rect x="36.188" y="32.106" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -15.8662 37.1076)" style="fill: #f7a2a2;" width="3.999" height="12.299"></rect>
+  <circle style="fill: #ffffff;" cx="19.969" cy="19.98" r="13"></circle>
+  <path style="fill: #616161;" d="M26.764,25.286C25.1,23.232,22.651,22,20.007,22s-5.092,1.232-6.757,3.286   c-0.394,0.413-0.295,1.132,0.096,1.44c0.394,0.41,1.078,0.305,1.373-0.104c1.369-1.646,3.208-2.61,5.267-2.61   c2.059,0,3.938,0.964,5.308,2.61c0.199,0.204,0.799,0.61,1.374,0.204C27.13,26.502,27.059,25.7,26.764,25.286z"></path>
+  <circle style="fill-rule:evenodd;clip-rule:evenodd;fill: #616161;" cx="14.5" cy="16.5" r="1.5"></circle>
+  <circle style="fill-rule:evenodd;clip-rule:evenodd;fill: #616161;" cx="25.5" cy="16.5" r="1.5"></circle>
+</svg>

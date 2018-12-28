@@ -1,3 +1,4 @@
+import { environment } from './../../../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -17,6 +18,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   searchSubs$: Subscription;
   selectedAggregation: any;
   metaInfo: any;
+  noSearchImg = '/assets/default/no-search-result.svg';
+  searchPlaceholder = environment.config.header.searchPlaceholder;
+  searchFound = false;
 
   constructor(
     private searchService: SearchingService,
@@ -49,10 +53,12 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   search(appliedParams: SearchAppliedParams) {
     const apiParams = this.searchService.convertToAPISearchParams(appliedParams);
     if (this.searchSubs$) { this.searchSubs$.unsubscribe() }
+    this.searchFound = true;
     this.searchSubs$ = this.searchService.search(apiParams)
       .subscribe(({ data, meta }) => {
         this.searchResults = [...data];
         this.metaInfo = {...meta};
+        this.searchFound = data.length > 0;
       })
   }
 
@@ -73,6 +79,13 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     return [
       { crumb: this.appliedParams.q || 'All Categories', link: '#' }
     ]
+  }
+
+  onSearch(keyword: string) {
+    if (keyword !== '') {
+      keyword = keyword.trim();
+      this.router.navigate(['/s'], { queryParams: { 'q': keyword } });
+    }
   }
 
 }
