@@ -21,11 +21,11 @@
 
 # AngularSpree
 
-**AngularSpree Angular(7) e-commerce application. Free to use**
+**AngularSpree is an Angular(7) e-commerce application.**
 
-It is a plug and play frontend application for [AviaCommerce API](https://www.aviacommerce.org/docs/apis-getting-started.html) built using Angular6, Redux, Observables & ImmutableJs.
+It is a plug and play frontend application for [AviaCommerce API](https://www.aviacommerce.org/docs/apis-getting-started.html) built using Angular(7), Redux, Observables & ImmutableJs.
 
-**However, it is not limited to aviacommerce and can also be used with any e-commerce solution with an api interface. Such as spreecommerce, magento, opencart etc.**
+It is not limited to aviacommerce and can also be used with any e-commerce solution with an api interface. Such as spreecommerce, magento, opencart etc.**
 
 * 🌍 [https://aviacommerce.org/][aviacommerce] - Learn more about AngularSpree
 * 📖 [Documentation](https://www.aviacommerce.org/docs/frontend-install.html)
@@ -36,9 +36,15 @@ It is a plug and play frontend application for [AviaCommerce API](https://www.av
 * 🗨 [Forums](https://forum.aviacommerce.org/) - Discussions -> Coming soon... 
 * 👪 [Community Chat][gitter] - Gitter 
 
+### Important Note
+AngularSpree is now a part of [Aviacommerce Project](https://aviacommerce.org). Further development of angularspree will happen on aviacommerce [repo](https://github.com/aviacommerce/avia). Please check the front-end folder.
+
+However, this repo will continue to receive updates every 15 days. So essentially, it's a mirror for aviacommerce/front-end repo.
+
 ## Features
 
-Features of this mobile appliction are:-
+### Features of this mobile appliction are:-
+
 1. Product List Page
 2. Product Detail Page
 3. Filters by Category, options, size etc 
@@ -50,7 +56,8 @@ Features of this mobile appliction are:-
 9. Payment methods(COD, Stripe, Payubiz, RazorPay and 29 others)
 
 
-Admin has following features for sellers:-
+### Admin has following features for sellers:-
+
 1. Add/update products/inventory. 
 2. Manage orders 
 3. Manage Categories/Taxonomies 
@@ -60,7 +67,7 @@ Admin has following features for sellers:-
 5. Manage Users(admin, user types)
 6. Send emails and notifications.
 
-For enquiries send a mail to `hello@aviabird.com`.
+For any questions or suggestions send a mail to `hello@aviabird.com`.
 
 ### Quick Links
 [Gitter](https://gitter.im/avia-commerce/Lobby) | [Contributing](https://www.aviacommerce.org/docs/how-to-contribute.html) | [API Specs](https://www.aviacommerce.org/docs/apis-getting-started.html) | 
