@@ -42,6 +42,7 @@ AngularSpree is now a part of [Aviacommerce Project](https://aviacommerce.org). 
 However, this repo will continue to receive updates every 15 days. So essentially, it's a mirror for aviacommerce/front-end repo.
 
 ## Features
+Please check the online demo [here](https://www.aviacommerce.org/demo/demo.html).
 
 ### Features of this mobile appliction are:-
 
@@ -54,7 +55,6 @@ However, this repo will continue to receive updates every 15 days. So essentiall
 7. Notifications for order update notification, payment failure
 8. Chat with seller feature, messaging
 9. Payment methods(COD, Stripe, Payubiz, RazorPay and 29 others)
-
 
 ### Admin has following features for sellers:-
 
