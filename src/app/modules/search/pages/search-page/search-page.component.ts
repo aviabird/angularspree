@@ -38,6 +38,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
           this.metaInfo = meta;
         }),
       this.route.queryParams.subscribe((params: SearchParam) => {
+        this.appliedParams = this.searchService.convertToAppliedParams(params);
         this.search(this.searchService.convertToAppliedParams(params));
       })
     );

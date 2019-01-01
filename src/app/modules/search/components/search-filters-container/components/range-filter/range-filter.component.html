@@ -1,0 +1,6 @@
+<ul class="list-group border border-left-0 border-bottom-0 py-3">
+  <small class="font-weight-bold pb-3 text-uppercase">{{filter.id}}</small>
+  <li class="list-group-item border-0 p-0 pr-1">
+    <ng5-slider [(value)]="filter.min" [(highValue)]="filter.max" (userChangeEnd)="filterUpdated($event)"></ng5-slider>
+  </li>
+</ul>
