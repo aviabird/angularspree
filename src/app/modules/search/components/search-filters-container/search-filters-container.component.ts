@@ -75,7 +75,7 @@ export class SearchFiltersContainerComponent implements OnInit {
 
   updateRangeFilter(updatedVal: any, filterName: string) {
     const currentAppliedFilters = this.appliedParams.rangeFilters;
-    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName);
+    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName) || {id: filterName};
     let newCurrentFilters: Array<SearchFilter>;
     const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
 
