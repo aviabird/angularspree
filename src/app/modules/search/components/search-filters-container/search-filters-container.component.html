@@ -6,9 +6,9 @@
 </div>
 
 <div *ngFor="let filter of primaryFilters">
-  <app-multiselect-filter [appliedFilters]="appliedParams.filters" [filter]="filter" (filterClick)="updateFilter($event, filter.id, 'filters')"></app-multiselect-filter>
+  <app-multiselect-filter [appliedFilters]="appliedParams.filters" [filter]="filter" (filterClick)="updateFilter($event, filter.id)"></app-multiselect-filter>
 </div>
 
 <div *ngFor="let filter of rangeFilters">
-  <app-range-filter [filter]="filter" (rangeSeleted)="updateFilter($event, filter.id, 'rangeFilters')"></app-range-filter>
+  <app-range-filter [filter]="filter" (rangeSeleted)="updateRangeFilter($event, filter.id)"></app-range-filter>
 </div>

@@ -40,8 +40,8 @@ export class SearchFiltersContainerComponent implements OnInit {
     return filters;
   }
 
-  updateFilter(updatedVal: any, filterName: string, filterType: string) {
-    const currentAppliedFilters = this.appliedParams[filterType];
+  updateFilter(updatedVal: any, filterName: string) {
+    const currentAppliedFilters = this.appliedParams.filters;
     const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName);
     let newCurrentFilters: Array<SearchFilter>;
 
@@ -69,7 +69,27 @@ export class SearchFiltersContainerComponent implements OnInit {
 
     this.filterUpdated.emit({
       ...this.appliedParams,
-      [filterType]: newCurrentFilters
+      filters: newCurrentFilters
+    });
+  }
+
+  updateRangeFilter(updatedVal: any, filterName: string) {
+    const currentAppliedFilters = this.appliedParams.rangeFilters;
+    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName);
+    let newCurrentFilters: Array<SearchFilter>;
+    const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
+
+    newCurrentFilters = [
+      ...filteredAppliedFilters,
+      {
+        ...filterToUpdate,
+        values: [updatedVal]
+      }
+    ]
+
+    this.filterUpdated.emit({
+      ...this.appliedParams,
+      rangeFilters: newCurrentFilters
     });
   }
 
