@@ -36,4 +36,5 @@ export class Product {
   rating_summary: RatingSummary;
   is_orderable: boolean;
   brand: {name: string, id: number};
+  discount: number;
 }
