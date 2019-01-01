@@ -14,11 +14,19 @@ export interface SearchParam {
   o?: string;
 }
 
-// ex: {id: 'Color', {id: 'red', count: 100, meta: 'red'}}
-// ex: {id: 'Category', {id: 'tshirt', count: 100, meta: ''}}
+// ex: {id: 'Color', filterValues: [{id: 'red', count: 100, meta: 'red'}]}
+// ex: {id: 'Category', filterValues: [{id: 'tshirt', count: 100, meta: ''}]}
 export interface FilterAgg {
   id: string,
-  filterValues: Array<FilterValueAgg>
+  values: Array<FilterValueAgg>
+}
+
+// ex: {id: 'Price', min: 20, max: 100, {id: 'Price', count: 100, meta: 'red'}}
+// ex: {id: 'Discount', min: 20, max: 100, {id: 'Discount', count: 100, meta: 'red'}}
+export interface RangeAgg {
+  id: string,
+  min: number;
+  max: number;
 }
 
 // ex: {id: 'red', count: 100, meta: 'red'}

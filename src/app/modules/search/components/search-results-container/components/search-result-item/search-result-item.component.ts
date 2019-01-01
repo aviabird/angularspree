@@ -21,12 +21,4 @@ export class SearchResultItemComponent implements OnInit {
   getProductImageUrl(product: Product) {
     return product.images[0] ? product.images[0].product_url : this.noImageUrl;
   }
-
-  get discount() {
-    return Math.ceil(+this.product.max_retail_price.amount - +this.product.selling_price.amount);
-  }
-
-  get discountPercent() {
-    return `(${Math.ceil(this.discount / +this.product.max_retail_price.amount * 100)}% OFF)`;
-  }
 }

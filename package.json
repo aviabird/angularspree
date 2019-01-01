@@ -52,6 +52,7 @@
     "@nguniversal/express-engine": "^7.0.2",
     "@nguniversal/module-map-ngfactory-loader": "^7.0.2",
     "@ngx-lite/input-star-rating": "^0.2.5",
+    "ng5-slider": "^1.1.11",
     "@ngx-lite/json-ld": "^0.5.2",
     "@ngx-progressbar/core": "^5.2.1",
     "@ngx-progressbar/http": "^5.2.1",
