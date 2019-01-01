@@ -10,7 +10,8 @@
 picture {
   height: 280px;
   img {
-    object-fit: cover;
+    mix-blend-mode: darken;
+    object-fit: scale-down;
   }
 }
 
