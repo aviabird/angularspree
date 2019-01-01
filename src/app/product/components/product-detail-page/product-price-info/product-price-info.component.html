@@ -2,7 +2,7 @@
   <div class="col-12 p-0">
     <h1 itemprop="name" class="title">{{product.name}}</h1>
     <div class="product-subtitle">
-      <a [routerLink]="['/search']" [queryParams]="{'q[name_cont]': brand.name, id: brand.id}" *ngIf="brand">
+      <a [routerLink]="['/s']" [queryParams]="{f: 'Brand:' + brand.name}" *ngIf="brand">
         <small>
           By {{brand.name}}
           <span itemprop="brand"></span>

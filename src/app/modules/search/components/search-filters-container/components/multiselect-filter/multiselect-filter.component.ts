@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-multiselect-filter',
   templateUrl: './multiselect-filter.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./multiselect-filter.component.scss']
 })
 export class MultiselectFilterComponent implements OnInit {
@@ -20,7 +19,7 @@ export class MultiselectFilterComponent implements OnInit {
 
   ngOnInit() { }
 
-  get showFilter() { return this.filter.filterValues.length > 0 }
+  get showFilter() { return this.filter.values.length > 0 }
 
   selectedItem(id: string) {
     this.filterClick.emit(id);

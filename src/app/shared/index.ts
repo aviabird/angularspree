@@ -68,7 +68,8 @@ import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
     RouterModule,
     NgxInputStarRatingModule,
     NguCarouselModule,
-    NgxJsonLdModule
+    NgxJsonLdModule,
+    LazyLoadImageModule
   ]
 })
 export class SharedModule { }
