@@ -9,8 +9,11 @@
 
 picture {
   height: 280px;
+  &.bg-img-none {
+    background-image: none;
+  }
   img {
-    object-fit: fill;
+    object-fit: scale-down;
   }
 }
 

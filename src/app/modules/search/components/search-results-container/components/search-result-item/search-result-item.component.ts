@@ -12,6 +12,7 @@ export class SearchResultItemComponent implements OnInit {
   noImageUrl = '/assets/default/image-placeholder.svg';
   appConfig = environment.config;
   currency = environment.config.currency_symbol;
+  imageLoaded = false;
 
   constructor() { }
 
@@ -20,5 +21,9 @@ export class SearchResultItemComponent implements OnInit {
 
   getProductImageUrl(product: Product) {
     return product.images[0] ? product.images[0].product_url : this.noImageUrl;
+  }
+
+  imageLoadedSuccess(event: boolean) {
+    this.imageLoaded = event;
   }
 }
