@@ -39,7 +39,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "serviceWorker": false
+            "serviceWorker": true
           },
           "configurations": {
             "mock-ng-spree": {
