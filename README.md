@@ -27,7 +27,7 @@ It is a plug and play frontend application for [AviaCommerce API](https://www.av
 
 It is not limited to aviacommerce and can also be used with any e-commerce solution with an api interface. Such as spreecommerce, magento, opencart etc.**
 
-* 🌍 [https://aviacommerce.org/][aviacommerce] - Learn more about AngularSpree
+* 🌍 [aviacommerce](https://aviacommerce.org/) - Learn more about AngularSpree
 * 📖 [Documentation](https://www.aviacommerce.org/docs/frontend-install.html)
 * 📚 [API Documentation](https://www.aviacommerce.org/docs/apis-getting-started.html)
 * 👍 Like us on [Facebook](https://www.facebook.com/aviacommerce)
