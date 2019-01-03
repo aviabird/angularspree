@@ -5,12 +5,12 @@
       <div class="col-1">
         <div class="thumbnails-vertical-container d-none d-lg-block">
           <button class="thumbnails-thumbnail-button" *ngFor="let image of images">
-            <img class="thumbnails-thumbnail img-fluid" [src]="getProductImageUrl(image.product_url)" [alt]="image.alt" (mouseover)="onMouseOver(image)">
+            <img class="thumbnails-thumbnail img-fluid" [src]="getProductImageUrl(image.small)" [alt]="image.alt" (mouseover)="onMouseOver(image)">
           </button>
         </div>
       </div>
       <div class="col-11" *ngIf="selectedImage">
-        <img itemprop="image" [src]="getProductImageUrl(selectedImage.product_url)"
+        <img itemprop="image" [src]="getProductImageUrl(selectedImage.large)"
           [alt]="selectedImage.alt" class="thumbnails-selected-image img-fluid">
       </div>
     </div>
@@ -21,7 +21,7 @@
     <ngu-carousel #productSlider [inputs]="carouselTileConfig" [dataSource]="images">
       <ngu-item *nguCarouselDef="let image; let i = index;" class="bannerStyle">
         <a>
-          <img [src]="getProductImageUrl(image.product_url)" alt="" style="display: block; width: 100%;">
+          <img [src]="getProductImageUrl(image.thumb)" alt="" style="display: block; width: 100%;">
         </a>
       </ngu-item>
       <button NguCarouselPrev class='leftRs d-none'></button>

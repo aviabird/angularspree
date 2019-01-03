@@ -1,17 +1,17 @@
-import { SearchFilter, FilterAgg } from './../../models/search-param';
-import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { SearchFilter, FilterAgg, RangeAgg } from './../../models/search-param';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SearchAppliedParams } from '../../models/search-param';
 
 @Component({
   selector: 'app-search-filters-container',
   templateUrl: './search-filters-container.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: []
 })
 export class SearchFiltersContainerComponent implements OnInit {
   @Input() metaInfo: {
     aggregations: {
-      filters: Array<FilterAgg>
+      filters: Array<FilterAgg>,
+      range_filters: Array<RangeAgg>
     }
   };
   @Input() appliedParams: SearchAppliedParams;
@@ -30,7 +30,13 @@ export class SearchFiltersContainerComponent implements OnInit {
   }
 
   get primaryFilters() {
-    const { aggregations: { filters: filters } } = this.metaInfo;
+    let { aggregations: { filters: filters } } = this.metaInfo;
+    filters = filters.sort(filter => filter.id === 'Category' ? -1 : 0)
+    return filters;
+  }
+
+  get rangeFilters() {
+    const { aggregations: { range_filters: filters } } = this.metaInfo;
     return filters;
   }
 
@@ -64,6 +70,26 @@ export class SearchFiltersContainerComponent implements OnInit {
     this.filterUpdated.emit({
       ...this.appliedParams,
       filters: newCurrentFilters
+    });
+  }
+
+  updateRangeFilter(updatedVal: any, filterName: string) {
+    const currentAppliedFilters = this.appliedParams.rangeFilters;
+    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName) || {id: filterName};
+    let newCurrentFilters: Array<SearchFilter>;
+    const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
+
+    newCurrentFilters = [
+      ...filteredAppliedFilters,
+      {
+        ...filterToUpdate,
+        values: [updatedVal]
+      }
+    ]
+
+    this.filterUpdated.emit({
+      ...this.appliedParams,
+      rangeFilters: newCurrentFilters
     });
   }
 

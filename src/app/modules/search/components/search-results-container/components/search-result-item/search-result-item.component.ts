@@ -12,6 +12,7 @@ export class SearchResultItemComponent implements OnInit {
   noImageUrl = '/assets/default/image-placeholder.svg';
   appConfig = environment.config;
   currency = environment.config.currency_symbol;
+  imageLoaded = false;
 
   constructor() { }
 
@@ -22,11 +23,7 @@ export class SearchResultItemComponent implements OnInit {
     return product.images[0] ? product.images[0].product_url : this.noImageUrl;
   }
 
-  get discount() {
-    return Math.ceil(+this.product.max_retail_price.amount - +this.product.selling_price.amount);
-  }
-
-  get discountPercent() {
-    return `(${Math.ceil(this.discount / +this.product.max_retail_price.amount * 100)}% OFF)`;
+  imageLoadedSuccess(event: boolean) {
+    this.imageLoaded = event;
   }
 }
