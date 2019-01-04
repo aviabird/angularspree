@@ -26,4 +26,12 @@ export class SearchResultItemComponent implements OnInit {
   imageLoadedSuccess(event: boolean) {
     this.imageLoaded = event;
   }
+
+  get discount() {
+    return Math.ceil(+this.product.max_retail_price.amount - +this.product.selling_price.amount);
+  }
+
+  get discountPercent() {
+    return `(${Math.ceil(this.discount / +this.product.max_retail_price.amount * 100)}% OFF)`;
+  }
 }
