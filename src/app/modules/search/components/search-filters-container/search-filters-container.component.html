@@ -10,5 +10,5 @@
 </div>
 
 <div *ngFor="let filter of rangeFilters">
-  <app-range-filter [filter]="filter" (rangeSeleted)="updateRangeFilter($event, filter.id)"></app-range-filter>
+  <app-range-filter [appliedFilters]="appliedParams.rangeFilters" [filter]="filter" (rangeSeleted)="updateRangeFilter($event, filter.id)"></app-range-filter>
 </div>
