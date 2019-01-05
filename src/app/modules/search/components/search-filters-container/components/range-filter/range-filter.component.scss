@@ -1,0 +1,48 @@
+::ng-deep {
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: #f8d1d0;
+    height: 2px;
+  }
+  .custom-slider .ng5-slider .ng5-slider-selection {
+    background: #e18582;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer {
+    width: 11px;
+    height: 11px;
+    border-radius: 100px;
+    top: auto;
+    bottom: -2px;
+    background-color: #ffffff;
+    box-shadow: 0 0px 3px 0px #c96360;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-bubble {
+    bottom: 14px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-limit {
+    font-weight: bold;
+    color: orange;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #ffe4d1;
+    top: -1px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+    background: orange;
+  }
+}
