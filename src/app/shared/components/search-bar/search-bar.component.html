@@ -1,0 +1,15 @@
+<div class="desktop-query form-inline my-2 my-lg-0">
+  <input
+    class="desktop-search-bar bg-white"
+    [(ngModel)]="asyncSelected"
+    [typeaheadAsync]="true"
+    [typeahead]="dataSource"
+    (typeaheadLoading)="changeTypeaheadLoading($event)"
+    (typeaheadOnSelect)="typeaheadOnSelect($event)"
+    [typeaheadOptionsLimit]="7"
+    typeaheadOptionField="name"
+    [placeholder]="searchPlaceholder">
+  <a class="desktop-submit bg-white">
+    <span class="web-sprite desktop-iconSearch sprites-search"></span>
+  </a>
+</div>

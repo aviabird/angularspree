@@ -1,0 +1,64 @@
+@import '../../scss/selected_theme_variables';
+
+:host /deep/ .dropdown-menu {
+  .dropdown-item {
+    padding: 1.0rem 1.5rem;
+    transition: background-color 700ms;
+    &.active {
+      background-color: $theme-action-color + 70;
+      box-shadow: inset 0 0 5px 0px $theme-action-color - 20;
+      color: black;
+    }
+  }
+}
+
+.desktop-query {
+  line-height: 0;
+  margin: 4px 10px 20px 0;
+  input.desktop-search-bar {
+    width: 82%;
+    font-family: $primary-font;
+    display: inline-block;
+    font-size: 16px;
+    height: 20px;
+    line-height: 24px;
+    color: $gray-900;
+    box-sizing: content-box;
+    padding: 9px 10px 9px;
+    margin: 0;
+    outline: 0;
+    border: 1px solid $theme-main-color;
+    border-radius: 4px 0 0 4px;
+    border-right: 0;
+    background: $gray-200;
+    &:focus,
+    &:focus+a.desktop-submit {
+      background-color: $white;
+      box-shadow: 0 0 3px -1px $theme-main-color + 50;
+    }
+  }
+  a.desktop-submit {
+    box-sizing: content-box;
+    display: inline-block;
+    height: 28px;
+    width: 5%;
+    text-align: center;
+    padding: 8px 10px 2px;
+    background: $gray-200;
+    border: 1px solid $theme-main-color;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    .desktop-iconSearch {
+      display: inline-block;
+    }
+    .sprites-search {
+      width: 21px;
+      height: 21px; // background-position: -284px -160px;
+    }
+    .web-sprite {
+      background: url(/assets/default/search-sprite.png);
+      background-position: -209px -148px; // background-size: 1404px 105px;
+      display: inline-block;
+    }
+  }
+}
