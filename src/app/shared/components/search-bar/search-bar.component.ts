@@ -20,24 +20,18 @@ export class SearchBarComponent {
 
   constructor(private http: HttpClient) {
     this.dataSource = Observable.create((observer: any) => {
-      // Runs on every search
       observer.next(this.asyncSelected);
-    })
-      .pipe(
-        mergeMap((token: string) => this.getStatesAsObservable(token))
-      );
+    }).pipe(
+      mergeMap((token: string) => this.getStatesAsObservable(token))
+    );
   }
 
   getStatesAsObservable(token: string): Observable<any> {
-    const query = new RegExp(token, 'i');
-
     return this.http.get<{ data: any }>('api/v1/products/suggest', {
       params: {
         q: token
       }
-    }).pipe(map(resp => resp.data.filter((state: any) => {
-      return query.test(state.name);
-    })))
+    }).pipe(map(resp => resp.data))
   }
 
   changeTypeaheadLoading(e: boolean): void {
