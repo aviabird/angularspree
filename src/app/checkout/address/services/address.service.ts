@@ -48,11 +48,8 @@ export class AddressService {
 
   bindAddressToOrder(address: Address, orderId: number): Observable<Order> {
     const params = this.buildSelectAddressJson(orderId, address);
-    return this.http.post<Order>(`api/v1/orders/${orderId}/select_address/`, params).pipe(
-      map(resp => {
-        return resp;
-      })
-    )
+    return this.http.post<{data: Order}>(`api/v1/orders/${orderId}/select_address/`, params)
+    .pipe(map(res => res.data))
   }
 
   deleteAddress(addressId: string) {
@@ -61,15 +58,16 @@ export class AddressService {
   }
 
   getUserAddresses(): Observable<Array<Address>> {
-    return this.http.get<Array<Address>>(`api/v1/addresses`)
+    return this.http.get<{data: Array<Address>}>(`api/v1/addresses`).pipe(map(res => res.data));
   }
 
   getCountires(): Observable<Array<Country>> {
-    return this.http.get<any>(`api/v1/countries`)
+    return this.http.get<{data: Array<Country>}>(`api/v1/countries`).pipe(map(res => res.data));
   }
 
   getAllStates(countryId: string): Observable<Array<CState>> {
-    return this.http.get<Array<CState>>(`api/v1/countries/${countryId}/states`)
+    return this.http.get<{data: Array<CState>}>(`api/v1/countries/${countryId}/states`)
+    .pipe(map(res => res.data));
   }
 
   updateUserAddress(address: Address, addressId: string) {
