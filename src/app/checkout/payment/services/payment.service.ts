@@ -24,7 +24,7 @@ export class PaymentService {
     const amount = orderAmount.toString()
     const params = this.buildAddPaymentJson(paymentMethodId, orderId, amount);
     const url = `api/v1/orders/${orderId}/add-payment`;
-    return this.http.post<Order>(url, params);
+    return this.http.post<{data: Order}>(url, params).pipe(map(res => res.data));
   }
 
   /**
