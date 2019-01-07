@@ -21,6 +21,6 @@ export class OrderListItemComponent implements OnInit {
 
   getProductImageUrl(line_item: LineItem) {
     const imageUrl = line_item.product.images[0];
-    return imageUrl ? imageUrl.thumb : this.noImageUrl;
+    return imageUrl ? imageUrl.small : this.noImageUrl;
   }
 }

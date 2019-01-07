@@ -48,7 +48,7 @@ export class OrderSuccessComponent implements OnInit {
   }
 
   getProductImageUrl(line_item: LineItem) {
-    const image_url = line_item.product.images[0] ? line_item.product.images[0].thumb : this.noImageUrl;
+    const image_url = line_item.product.images[0] ? line_item.product.images[0].small : this.noImageUrl;
     return image_url;
   }
 }

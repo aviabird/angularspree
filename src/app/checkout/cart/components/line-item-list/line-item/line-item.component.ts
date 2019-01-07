@@ -38,7 +38,7 @@ export class LineItemComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const lineItem = this.lineItem.product;
     if (lineItem) {
-      this.image = lineItem.images[0] ? lineItem.images[0].thumb : this.noImageUrl;
+      this.image = lineItem.images[0] ? lineItem.images[0].small : this.noImageUrl;
       this.name = lineItem.name;
       this.quantity = this.lineItem.quantity;
       this.unit_price = this.lineItem.unit_price as Price;
