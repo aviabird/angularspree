@@ -1,6 +1,15 @@
-<div class="desktop-query form-inline my-2 my-lg-0">
+<div class="input-group searchBar">
   <input
-    class="desktop-search-bar bg-white"
+    type="text"
+    class="form-control"
+    placeholder="Search"
+    aria-label="Search"
+    aria-describedby="search-button"
+    type="search"
+    placeholder="{{searchPlaceholder}}"
+    aria-label="Search"
+    #box
+    (keyup.enter)="onSearch(box.value)"
     [(ngModel)]="asyncSelected"
     [typeaheadAsync]="true"
     [typeahead]="dataSource"
@@ -10,7 +19,12 @@
     typeaheadOptionField="name"
     typeaheadWaitMs="300"
     [placeholder]="searchPlaceholder">
-  <a class="desktop-submit bg-white">
-    <span class="web-sprite desktop-iconSearch sprites-search"></span>
-  </a>
+  <div class="input-group-append">
+    <button
+      class="btn btn-outline-light searchBar-btn"
+      type="button"
+      (click)="onSearch(box.value)">
+      <span class="fa fa-search searchBar-btn-icon"></span>
+    </button>
+  </div>
 </div>

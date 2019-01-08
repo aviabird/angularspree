@@ -15,24 +15,8 @@
       (click)="showsearch()"></i>
   </a>
   <div
-    (click)="onSearch(box.value)"
     *ngIf="isSearchopen"
     class="searchinput">
-    <div class="search-container">
-      <input
-        class="desktop-search-bar bg-white"
-        type="search"
-        placeholder="{{searchPlaceholder}}"
-        aria-label="Search"
-        #box
-        (keyup.enter)="onSearch(box.value)"
-        (focus)="onFoucs()"
-        (blur)="onFoucsOut()">
-      <button
-        *ngIf="showGo"
-        class="gobtn">
-        Go
-      </button>
-    </div>
+    <app-search-bar></app-search-bar>
   </div>
 </form>

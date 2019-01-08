@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -18,7 +19,7 @@ export class SearchBarComponent {
   statesComplex: any[] = [];
   searchPlaceholder = environment.config.header.searchPlaceholder;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.dataSource = Observable.create((observer: any) => {
       observer.next(this.asyncSelected);
     }).pipe(
@@ -42,4 +43,10 @@ export class SearchBarComponent {
     console.log('Selected value: ', e.value);
   }
 
+  onSearch(keyword: string) {
+    if (keyword !== '') {
+      keyword = keyword.trim();
+      this.router.navigate(['/s'], { queryParams: { 'q': keyword } });
+    }
+  }
 }
