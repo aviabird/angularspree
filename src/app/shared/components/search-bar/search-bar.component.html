@@ -9,7 +9,6 @@
     placeholder="{{searchPlaceholder}}"
     aria-label="Search"
     #box
-    (keyup.enter)="onSearch(box.value)"
     [(ngModel)]="asyncSelected"
     [typeaheadAsync]="true"
     [typeahead]="dataSource"
@@ -23,7 +22,7 @@
     <button
       class="btn btn-outline-light searchBar-btn"
       type="button"
-      (click)="onSearch(box.value)">
+      (click)="doSearch(box.value)">
       <span class="fa fa-search searchBar-btn-icon"></span>
     </button>
   </div>

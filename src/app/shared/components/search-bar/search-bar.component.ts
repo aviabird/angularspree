@@ -32,7 +32,14 @@ export class SearchBarComponent {
       params: {
         q: token
       }
-    }).pipe(map(resp => resp.data))
+    }).pipe(
+      map(resp =>
+        resp.data.map((item: { name: string; category: any; }) => {
+          item.name = `${token} in ${item.category}`;
+          return item;
+        })
+      )
+    )
   }
 
   changeTypeaheadLoading(e: boolean): void {
@@ -40,13 +47,18 @@ export class SearchBarComponent {
   }
 
   typeaheadOnSelect(e: TypeaheadMatch): void {
-    console.log('Selected value: ', e.value);
+    this.doSearch(e.value);
   }
 
-  onSearch(keyword: string) {
+  doSearch(keyword: string) {
     if (keyword !== '') {
-      keyword = keyword.trim();
-      this.router.navigate(['/s'], { queryParams: { 'q': keyword } });
+      const [q, category] = keyword.trim().split(' in ');
+      this.router.navigate(['/s'], {
+        queryParams: {
+          'q': q,
+          'f': `Category:${category}`
+        }
+      });
     }
   }
 }

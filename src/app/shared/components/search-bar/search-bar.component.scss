@@ -1,5 +1,14 @@
 @import '../../scss/selected_theme_variables';
-
+:host /deep/ .dropdown-menu {
+  .dropdown-item {
+    transition: background-color 700ms;
+    &.active {
+      background-color: $theme-action-color + 70;
+      box-shadow: inset 0 0 5px 0px $theme-action-color - 20;
+      color: black;
+    }
+  }
+}
 
 .searchBar {
   .searchBar-btn {
