@@ -34,8 +34,8 @@ export class SearchBarComponent {
       }
     }).pipe(
       map(resp =>
-        resp.data.map((item: { name: string; category: any; }) => {
-          item.name = `${token} in ${item.category}`;
+        resp.data.map((item: { name: string; category: string; term: string}) => {
+          item.name = `${item.term} in ${item.category}`;
           return item;
         })
       )
