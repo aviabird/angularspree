@@ -1,0 +1,29 @@
+@import '../../scss/selected_theme_variables';
+:host /deep/ .dropdown-menu {
+  .dropdown-item {
+    transition: background-color 700ms;
+    @media screen and(min-width: 320px) and(max-width: 768px) {
+      padding: 1.15rem 0.7rem;
+    }
+    &.active {
+      background-color: $theme-action-color + 70;
+      box-shadow: inset 0 0 5px 0px $theme-action-color - 20;
+      color: black;
+    }
+  }
+}
+
+.searchBar {
+  input {
+    border: none;
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+  .searchBar-btn {
+    .searchBar-btn-icon {
+      font-size: 1.3rem;
+    }
+  }
+}

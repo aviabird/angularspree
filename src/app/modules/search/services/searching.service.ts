@@ -1,8 +1,6 @@
-import { filter } from 'rxjs/operators';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { SearchParam, SearchAppliedParams, SearchFilter } from './../models/search-param';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Product } from '../../../core/models';
 import { SortFilter } from '../models/sort-filter';
 

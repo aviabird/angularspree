@@ -1,28 +1,22 @@
-<form class="desktop-query form-inline my-2 my-lg-0" *ngIf="!isMobile">
-  <input class="desktop-search-bar bg-white"
-    type="search"
-    placeholder="{{searchPlaceholder}}"
-    aria-label="Search"
-    #box (keyup.enter)="onSearch(box.value)">
-  <a class="desktop-submit bg-white">
-    <span class="web-sprite desktop-iconSearch sprites-search" (click)="onSearch(box.value)"></span>
-  </a>
+<form *ngIf="!isMobile">
+  <app-search-bar></app-search-bar>
 </form>
-<form class="desktop-query form-inline  my-lg-0" *ngIf="isMobile" [ngClass]="{
+<form
+  class="desktop-query form-inline  my-lg-0"
+  *ngIf="isMobile"
+  [ngClass]="{
   'bg-white desktop-query-updated':isSearchopen }">
-  <a class="desktop-submit" [ngClass]="{
+  <a
+    class="desktop-submit"
+    [ngClass]="{
     'themecolor':isSearchopen }">
-    <i class="fa fa-search" (click)="showsearch()"></i>
+    <i
+      class="fa fa-search"
+      (click)="showsearch()"></i>
   </a>
-  <div (click)="onSearch(box.value)" *ngIf="isSearchopen" class="searchinput">
-    <div class="search-container">
-      <input class="desktop-search-bar bg-white"
-        type="search" placeholder="{{searchPlaceholder}}"
-        aria-label="Search"
-        #box (keyup.enter)="onSearch(box.value)"
-        (focus)="onFoucs()"
-        (blur)="onFoucsOut()">
-      <button *ngIf="showGo" class="gobtn">Go</button>
-    </div>
+  <div
+    *ngIf="isSearchopen"
+    class="searchinput">
+    <app-search-bar></app-search-bar>
   </div>
 </form>
