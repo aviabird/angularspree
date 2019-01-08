@@ -56,7 +56,7 @@ export class SearchBarComponent {
       this.router.navigate(['/s'], {
         queryParams: {
           'q': q,
-          'f': `Category:${category}`
+          'f': `Category:${category || ''}`
         }
       });
     }
