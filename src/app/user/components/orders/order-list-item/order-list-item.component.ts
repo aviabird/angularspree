@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Order } from '../../../../core/models/order';
 import { LineItem } from '../../../../core/models/line_item';
 import { environment } from '../../../../../environments/environment.dev-ng-spree';
-import { CheckoutService } from '../../../../core/services/checkout.service';
 
 @Component({
   selector: 'app-order-list-item',
@@ -22,6 +21,6 @@ export class OrderListItemComponent implements OnInit {
 
   getProductImageUrl(line_item: LineItem) {
     const imageUrl = line_item.product.images[0];
-    return imageUrl ? imageUrl.product_url : this.noImageUrl;
+    return imageUrl ? imageUrl.small : this.noImageUrl;
   }
 }
