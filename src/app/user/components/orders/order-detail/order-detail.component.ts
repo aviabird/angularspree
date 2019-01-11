@@ -53,8 +53,8 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
   }
 
   getProductImageUrl(line_item: LineItem) {
-    const imageUrl = line_item.product.images[0];
-    return imageUrl ? imageUrl.product_url : this.noImageUrl;
+    const imageUrl = line_item.product.default_image;
+    return imageUrl ? imageUrl.default_product_url : this.noImageUrl;
   }
 
   ngOnDestroy() {

@@ -47,7 +47,8 @@ export class PaymentService {
   makeCodPayment(orderId: number): Observable<Order> {
     const params = this.buildCodPaymentJson(orderId);
     const url = `api/v1/payment/cod_payment`
-    return this.http.post<Order>(url, params);
+    return this.http.post<{data: Order}>(url, params)
+    .pipe(map(res => res.data));
   }
 
   makeStripePayment(cardToken: any, orderNumber: string, paymentId: string, orderAmount: number, paymentMethodId: number,
