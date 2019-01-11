@@ -6,7 +6,7 @@ import { SearchActionTypes } from '../actions/search.actions';
 export class SearchEffects {
 
   @Effect()
-  loadFoos$ = this.actions$.pipe(ofType(SearchActionTypes.LoadSearchs));
+  loadFoos$ = this.actions$.pipe(ofType(SearchActionTypes.LoadSearchResults));
 
   constructor(private actions$: Actions) {}
 }
