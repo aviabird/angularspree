@@ -8,6 +8,10 @@ import { SearchRoutingModule } from './search-routing.module';
 import { SharedModule } from './../../shared/index';
 
 import { COMPONENTS } from './';
+import { StoreModule } from '@ngrx/store';
+import * as fromSearch from './search/reducers/search.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { SearchEffects } from './search/effects/search.effects';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { COMPONENTS } from './';
 
     SharedModule,
 
-    Ng5SliderModule
+    Ng5SliderModule,
+
+    StoreModule.forFeature('search', fromSearch.reducer),
+
+    EffectsModule.forFeature([SearchEffects])
   ],
   providers: [
     SearchResolver
