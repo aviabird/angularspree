@@ -37,4 +37,5 @@ export class Product {
   is_orderable: boolean;
   brand: {name: string, id: number};
   discount: number;
+  default_image:  { default_product_url: string};
 }
