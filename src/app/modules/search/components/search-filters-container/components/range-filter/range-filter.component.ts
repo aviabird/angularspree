@@ -1,11 +1,12 @@
 import { SearchFilter } from './../../../../models/search-param';
 import { Options, LabelType } from 'ng5-slider';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { RangeAgg } from '../../../../models/search-param';
 
 @Component({
   selector: 'app-range-filter',
   templateUrl: './range-filter.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./range-filter.component.scss']
 })
 export class RangeFilterComponent implements OnInit {
