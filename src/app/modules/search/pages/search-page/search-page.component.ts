@@ -50,8 +50,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   updateFilters(appliedParams: SearchAppliedParams) {
     const queryParams = this.searchService.convertToAPISearchParams(appliedParams);
-    this.appliedParams = appliedParams;
-    console.log('updated', this.appliedParams)
     this.router.navigate(['/s'], { queryParams });
     this.store.dispatch(new ApplySearchParams(appliedParams))
   }

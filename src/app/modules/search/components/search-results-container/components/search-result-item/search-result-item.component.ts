@@ -11,6 +11,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 export class SearchResultItemComponent implements OnInit {
   @Input() product: Product;
   noImageUrl = '/assets/default/image-placeholder.svg';
+  loaderImageUrl = '/assets/default/loader.svg';
   appConfig = environment.config;
   currency = environment.config.currency_symbol;
   imageLoaded = false;

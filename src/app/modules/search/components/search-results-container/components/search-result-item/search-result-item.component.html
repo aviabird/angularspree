@@ -1,7 +1,7 @@
 <div class="product-base pointer" [routerLink]="['/', product.slug, product.id]">
   <div class="product-image-container">
     <picture class="img-responsive d-block bg-rand-{{ '' | random:1:10}}" [ngClass]="{'bg-img-none': imageLoaded}">
-      <img [alt]="product.name" (onLoad)="imageLoadedSuccess($event)" [errorImage]="noImageUrl" [lazyLoad]="getProductImageUrl(product)" [offset]="50" class="img-responsive w-100 h-100">
+      <img [defaultImage]="loaderImageUrl" [alt]="product.name" (onLoad)="imageLoadedSuccess($event)" [errorImage]="noImageUrl" [lazyLoad]="getProductImageUrl(product)" [offset]="50" class="img-responsive w-100 h-100">
     </picture>
   </div>
   <div class="product-meta-info">
