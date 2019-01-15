@@ -32,7 +32,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     private router: Router,
     private store: Store<AppState>
   ) {
-    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {
@@ -43,7 +42,11 @@ export class SearchPageComponent implements OnInit, OnDestroy {
           this.metaInfo = metaInfo;
           this.appliedParams = appliedParams;
           this.searchFound = searchResults.length > 0;
-        })
+        }),
+      this.route.queryParams.subscribe(params => {
+        const appliedParams = this.searchService.convertToAppliedParams(params);
+        this.store.dispatch(new ApplySearchParams(appliedParams));
+      })
     );
 
   }
@@ -51,7 +54,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   updateFilters(appliedParams: SearchAppliedParams) {
     const queryParams = this.searchService.convertToAPISearchParams(appliedParams);
     this.router.navigate(['/s'], { queryParams });
-    this.store.dispatch(new ApplySearchParams(appliedParams))
   }
 
   ngOnDestroy() {
