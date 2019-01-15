@@ -1,7 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { environment } from './../../../../../environments/environment';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SearchActions } from './../../../../home/reducers/search.actions';
 import { AppState } from './../../../../interfaces';
 import { Store } from '@ngrx/store';
 import { Renderer2, PLATFORM_ID, Inject } from '@angular/core';
@@ -28,7 +27,6 @@ export class HeaderSearchComponent implements OnInit {
   showGo = false;
   constructor(
     private store: Store<AppState>,
-    private searchActions: SearchActions,
     private router: Router,
     private activatedRouter: ActivatedRoute,
     private renderer: Renderer2,
@@ -54,16 +52,6 @@ export class HeaderSearchComponent implements OnInit {
       this.router.navigate(['/s'], { queryParams: { 'q': keyword } });
       this.setKeywordToLocalStorage(keyword);
     }
-  }
-
-  onUrlChange(urlParams: Object) {
-    this.store.dispatch(
-      this.searchActions.getproductsByKeyword(urlParams)
-    );
-  }
-
-  loadPage() {
-    this.onUrlChange(this.queryParams)
   }
 
   onFoucs() {

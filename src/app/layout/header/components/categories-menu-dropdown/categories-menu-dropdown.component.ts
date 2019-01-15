@@ -1,4 +1,3 @@
-import { SearchActions } from './../../../../home/reducers/search.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
 import { ActivatedRoute } from '@angular/router';
@@ -53,7 +52,6 @@ export class CategoriesMenuDropdownComponent implements OnInit, OnDestroy {
   }
   constructor(
     private route: ActivatedRoute,
-    private searchActions: SearchActions,
     private store: Store<AppState>) {
     this.subscriptionList$.push(
       this.route.queryParams

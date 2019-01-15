@@ -1,6 +1,5 @@
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
-import { SearchActions } from './../../../../home/reducers/search.actions';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -19,7 +18,6 @@ export class BrandMenuDropdownComponent implements OnInit, OnDestroy {
   subscriptionList$: Array<Subscription> = [];
   constructor(
     private route: ActivatedRoute,
-    private searchActions: SearchActions,
     private store: Store<AppState>) {}
 
   ngOnInit() {

@@ -9,11 +9,6 @@ export const routes: Routes = [
     data: { preload: true, delay: true },
   },
   {
-    path: 'search',
-    loadChildren: './home/index#HomeModule',
-    data: { preload: false, delay: false },
-  },
-  {
     path: 's',
     loadChildren: './modules/search/search.module#SearchModule',
     data: { preload: false, delay: false },
