@@ -1,7 +1,6 @@
 import { ProductActions } from './../../product/actions/product-actions';
 import { environment } from './../../../environments/environment';
 import { Router } from '@angular/router';
-import { SearchActions } from './../../home/reducers/search.actions';
 import { getTaxonomies, getBrands } from './../../product/reducers/selectors';
 import { getTotalCartItems } from './../../checkout/reducers/selectors';
 import {
@@ -66,7 +65,6 @@ export class HeaderComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private authActions: AuthActions,
-    private searchActions: SearchActions,
     private actions: ProductActions,
     private authAction: AuthActions,
     private router: Router,
@@ -108,8 +106,7 @@ export class HeaderComponent implements OnInit {
   }
 
   selectTaxon(taxon) {
-    this.router.navigateByUrl('/');
-    this.store.dispatch(this.searchActions.addFilter(taxon));
+    this.router.navigateByUrl('/s', {queryParams: {f: `Category:${taxon.name}`}});
   }
 
   showModal(): void {

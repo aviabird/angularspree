@@ -1,5 +1,4 @@
 import { map, switchMap } from 'rxjs/operators';
-import { SearchActions } from './../../home/reducers/search.actions';
 import { Product } from './../../core/models/product';
 import { ProductActions } from './../actions/product-actions';
 import { Observable } from 'rxjs';
@@ -48,54 +47,6 @@ export class ProductEffects {
       )
     );
 
-  @Effect()
-  GetProductsByKeyword$ = this.actions$
-    .pipe(
-      ofType(SearchActions.GET_PRODUCTS_BY_KEYWORD),
-      switchMap<Action & { payload }, Array<Product>>(action => {
-        return this.productService.getproductsByKeyword(action.payload)
-      }),
-      map(products => this.searchActions.getProducsByKeywordSuccess(products))
-    );
-
-  @Effect()
-  GetProductsByTaxons$: Observable<Action> = this.actions$
-    .pipe(
-      ofType(SearchActions.GET_PRODUCTS_BY_TAXON),
-      switchMap((action: any) =>
-        this.productService.getProductsByTaxon(action.payload)
-      ),
-      map(({ products, pagination }) =>
-        this.searchActions.getProducsByKeywordSuccess({ products, pagination })
-      )
-    );
-
-  @Effect()
-  GetChildTaxons$: Observable<Action> = this.actions$
-    .pipe(
-      ofType(SearchActions.GET_CHILD_TAXONS),
-      switchMap((action: any) =>
-        this.productService.getChildTaxons(
-          action.payload.taxonomiesId,
-          action.payload.taxonId
-        )
-      ),
-      map((data: any) =>
-        this.searchActions.getChildTaxonsSuccess({ taxonList: data })
-      )
-    );
-
-  @Effect()
-  GetTaxonomiByName$: Observable<Action> = this.actions$
-    .pipe(
-      ofType(SearchActions.GET_TAXONOMIES_BY_NAME),
-      switchMap((action: any) =>
-        this.productService.getTaxonByName(action.payload)
-      ),
-      map((data: any) =>
-        this.searchActions.getTaxonomiesByNameSuccess({ taxonomiList: data })
-      )
-    );
 
   @Effect()
   GetRelatedProducts$: Observable<Action> = this.actions$
@@ -153,6 +104,5 @@ export class ProductEffects {
     private actions$: Actions,
     private productService: ProductService,
     private productActions: ProductActions,
-    private searchActions: SearchActions
   ) { }
 }

@@ -17,7 +17,6 @@ import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 // Modules
 import { SharedModule } from './shared/index';
-import { HomeModule } from './home/index';
 import { LayoutModule } from './layout/index';
 import { CoreModule } from './core/index';
 import { StoreModule } from '@ngrx/store';
@@ -65,7 +64,6 @@ import { AddressService } from './checkout/address/services/address.service';
     BrowserTransferStateModule,
     TransferHttpCacheModule,
     FormsModule,
-    HomeModule,
     LayoutModule,
     Ng2UiAuthModule.forRoot(myAuthConfig),
     ToastrModule.forRoot({
