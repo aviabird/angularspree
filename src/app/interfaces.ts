@@ -1,3 +1,4 @@
+import { SearchState } from './modules/search/store/states/search.state';
 import { ProductState } from './product/reducers/product-state';
 import { AuthState } from './auth/reducers/auth.state';
 import { UserState } from './user/reducers/user.state';
@@ -17,4 +18,5 @@ export interface AppState {
   auth: AuthState;
   checkout: CheckoutState;
   users: UserState;
+  search: SearchState;
 }

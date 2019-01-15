@@ -60,13 +60,15 @@ export interface SearchFilter {
 
 export interface SearchResponse {
   data: Array<Product>,
-  meta: {
-    aggregations: {
-      filters: Array<FilterAgg>,
-      range_filters: Array<RangeAgg>
-    },
-    total: number;
-    applied_params: SearchParam
-  };
+  meta: SearchMetaInfo,
   links: any
+}
+
+export interface SearchMetaInfo {
+  aggregations: {
+    filters: Array<FilterAgg>,
+    range_filters: Array<RangeAgg>
+  },
+  total: number;
+  applied_params: SearchParam
 }

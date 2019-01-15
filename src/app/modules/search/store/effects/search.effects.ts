@@ -10,18 +10,15 @@ import * as actions from './../actions';
 @Injectable()
 export class SearchEffects {
 
-  // @Effect()
-  // appliedSearchParams$ = this.actions$.pipe(
-  //   ofType(SearchActionTypes.ApplySearchParams),
-  //   switchMap<ApplySearchParams, SearchResponse>(action => {
-  //     const params = this.searchService.convertToAPISearchParams(action.payload);
-  //     return this.searchService.search(params);
-  //   }),
-  //   map(resp => new actions.LoadedSearchResults(resp))
-  // );
-
-  // @Effect()
-  // loadedSearchResult$ = this.actions$.pipe(ofType(SearchActionTypes.LoadedSearchResults));
+  @Effect()
+  appliedSearchParams$ = this.actions$.pipe(
+    ofType(SearchActionTypes.ApplySearchParams),
+    switchMap<ApplySearchParams, SearchResponse>(action => {
+      const params = this.searchService.convertToAPISearchParams(action.payload);
+      return this.searchService.search(params);
+    }),
+    map(resp => new actions.LoadedSearchResults(resp))
+  );
 
   constructor(private actions$: Actions, private searchService: SearchingService) {}
 }
