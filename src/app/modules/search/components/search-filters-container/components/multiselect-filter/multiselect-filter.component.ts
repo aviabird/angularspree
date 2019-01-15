@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-multiselect-filter',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './multiselect-filter.component.html',
   styleUrls: ['./multiselect-filter.component.scss']
 })

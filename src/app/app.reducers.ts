@@ -3,6 +3,7 @@ import * as fromProduct from './product/reducers/product-reducer';
 import * as fromUser from './user/reducers/user.reducer';
 import * as fromCheckout from './checkout/reducers/checkout.reducer';
 import * as fromAuth from './auth/reducers/auth.reducer';
+import * as fromSearch from './modules/search/store/reducers/search.reducer';
 import {Action} from '@ngrx/store';
 
 /**
@@ -38,7 +39,8 @@ export const reducers: ActionReducerMap<State> = {
   products: fromProduct.reducer,
   auth: fromAuth.reducer,
   checkout: fromCheckout.reducer,
-  users: fromUser.reducer
+  users: fromUser.reducer,
+  search: fromSearch.reducer
 };
 
 // console.log all actions

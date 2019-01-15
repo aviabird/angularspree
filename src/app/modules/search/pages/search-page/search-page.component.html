@@ -1,17 +1,27 @@
-<section class="row search-container my-3 mx-auto" *ngIf="searchFound; else notFound">
+<section
+  class="row search-container my-3 mx-auto"
+  *ngIf="searchFound; else notFound">
   <div class="col-12">
     <app-breadcrumbs [breadcrumbs]="breadcrumbs"></app-breadcrumbs>
   </div>
   <div class="col-12 mb-4">
-    <app-search-title-container [title]="'All Categories'" [metaInfo]="metaInfo"></app-search-title-container>
+    <app-search-title-container
+      [title]="'All Categories'"
+      [metaInfo]="metaInfo"></app-search-title-container>
   </div>
   <div class="col pr-0 d-none d-sm-block verticalFilterContainer">
-    <app-search-filters-container [appliedParams]="appliedParams" [metaInfo]="metaInfo" (filterCleared)="clearFilters()"
-      (filterUpdated)="updateFilters($event)" (selectedAggregation)="selectAggregation($event)"></app-search-filters-container>
+    <app-search-filters-container
+      [appliedParams]="appliedParams"
+      [metaInfo]="metaInfo"
+      (filterCleared)="clearFilters()"
+      (filterUpdated)="updateFilters($event)"></app-search-filters-container>
   </div>
   <div class="col">
     <div class="row d-none d-sm-flex">
-      <app-filter-summary-container class="col-12 my-1" [appliedParams]="appliedParams" (updatedFilters)="updateFilters($event)"></app-filter-summary-container>
+      <app-filter-summary-container
+        class="col-12 my-1"
+        [appliedParams]="appliedParams"
+        (updatedFilters)="updateFilters($event)"></app-filter-summary-container>
     </div>
     <app-search-results-container [searchResults]="searchResults"></app-search-results-container>
   </div>
@@ -21,17 +31,34 @@
   <div class="container search-failed-container">
     <section class="row justify-content-center">
       <div class="col-12 col-md-6 text-center">
-        <img [src]="noSearchImg" class="w-25 mx-auto" alt="No Search Found">
+        <img
+          [src]="noSearchImg"
+          class="w-25 mx-auto"
+          alt="No Search Found">
         <h3 class="font-weight-light">We couldn't find any matches!</h3>
-        <small class="text-secondary">Please check the spelling or try searching something else</small>
+        <small class="text-secondary">
+          Please check the spelling or try searching something else
+        </small>
         <div class="input-group my-5">
-          <input type="text" class="form-control rounded-0" placeholder="Search" aria-label="Search"
-            aria-describedby="search-button" type="search"
+          <input
+            type="text"
+            class="form-control rounded-0"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-button"
+            type="search"
             placeholder="{{searchPlaceholder}}"
             aria-label="Search"
-            #box (keyup.enter)="onSearch(box.value)">
+            #box
+            (keyup.enter)="onSearch(box.value)">
           <div class="input-group-append">
-            <button class="btn btn-outline-info rounded-0" type="button" id="search-button" (click)="onSearch(box.value)">Search</button>
+            <button
+              class="btn btn-outline-info rounded-0"
+              type="button"
+              id="search-button"
+              (click)="onSearch(box.value)">
+              Search
+            </button>
           </div>
         </div>
       </div>
