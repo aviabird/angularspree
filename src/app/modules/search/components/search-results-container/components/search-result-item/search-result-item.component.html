@@ -1,27 +1,40 @@
-<div class="product-base pointer" [routerLink]="['/', product.slug, product.id]">
+<div
+  class="product-base pointer"
+  [routerLink]="['/', product.slug, product.id]">
   <div class="product-image-container">
-    <picture class="img-responsive d-block bg-rand-{{ '' | random:1:10}}" [ngClass]="{'bg-img-none': imageLoaded}">
-      <img [defaultImage]="loaderImageUrl" [alt]="product.name" (onLoad)="imageLoadedSuccess($event)" [errorImage]="noImageUrl" [lazyLoad]="getProductImageUrl(product)" [offset]="50" class="img-responsive w-100 h-100">
+    <picture
+      class="img-responsive d-block bg-rand-{{ '' | random:1:10}}"
+      [ngClass]="{'bg-img-none': imageLoaded}">
+      <img
+        [defaultImage]="loaderImageUrl"
+        [alt]="product.name"
+        (onLoad)="imageLoadedSuccess($event)"
+        [errorImage]="noImageUrl"
+        [lazyLoad]="getProductImageUrl(product)"
+        [offset]="50"
+        class="img-responsive w-100 h-100">
     </picture>
   </div>
   <div class="product-meta-info">
-    <b class="product-brand text-capitalize text-truncate">
-      {{product.brand?.name || '&nbsp;'}}
-    </b>
-    <div class="product-name font-weight-light text-truncate">
-      {{product.name}}
-    </div>
+    <b class="product-brand text-capitalize text-truncate">{{product.brand?.name || '&nbsp;'}}</b>
+    <div class="product-name font-weight-light text-truncate">{{product.name}}</div>
     <div class="product-price">
       <span>
-        <b class="product-discountedPrice">{{currency}} {{ product.selling_price.amount | number:'2.1-2' }}</b>
+        <b class="product-discountedPrice">
+          {{currency}} {{ product.selling_price.amount | number:'2.1-2' }}
+        </b>
         <span *ngIf="product; let cost_price">
-          <small class="disablePrice text-dark font-weight-light ml-1">{{currency}} {{product.max_retail_price.amount | number:'2.1-2'}}</small>
+          <small class="disablePrice text-dark font-weight-light ml-1">
+            {{currency}} {{product.max_retail_price.amount | number:'2.1-2'}}
+          </small>
         </span>
-        <small class="product-discountPercentage font-weight-light ml-1"> ({{discountPercent}}</small>
+        <small class="product-discountPercentage font-weight-light ml-1">({{discountPercent}}</small>
       </span>
     </div>
     <div class="product-starRating">
-      <ngx-input-star-rating disabled="true" [value]="product.rating_summary.average_rating"></ngx-input-star-rating>
+      <ngx-input-star-rating
+        disabled="true"
+        [value]="product.rating_summary.average_rating"></ngx-input-star-rating>
     </div>
     <small class="shipping">
       FREE 1-2 day shipping over {{currency}} {{appConfig.freeShippingAmount}}

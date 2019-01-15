@@ -1,7 +1,9 @@
 <div class="col-12">
   <div class="row">
     <div *ngFor="let filter of filterList">
-      <app-filter-summary-filter class="border" [filter]="filter">
+      <app-filter-summary-filter
+        class="border"
+        [filter]="filter">
       </app-filter-summary-filter>
     </div>
   </div>
