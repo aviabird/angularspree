@@ -15,4 +15,6 @@ export class SearchResultListComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  trackBy(index: number) { return index; }
 }
