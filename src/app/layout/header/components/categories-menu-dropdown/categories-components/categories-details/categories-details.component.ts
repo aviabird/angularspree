@@ -1,10 +1,16 @@
 import { Observable } from 'rxjs';
-import { taxonomiByName } from './../../../../../../home/reducers/selectors';
-import { SearchActions } from './../../../../../../home/reducers/search.actions';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../../../interfaces';
 import { environment } from './../../../../../../../environments/environment';
-import { Component, OnInit, Input, OnChanges, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit, Input,
+  OnChanges,
+  ViewEncapsulation,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   trigger,
   state,
@@ -48,8 +54,7 @@ export class CategoriesDetailsComponent implements OnInit, OnChanges {
     return this.show ? 'show' : 'hide'
   }
 
-  constructor(private store: Store<AppState>,
-    private searchActions: SearchActions) {
+  constructor(private store: Store<AppState>) {
   }
 
   showCategoryonclick(taxon) {
