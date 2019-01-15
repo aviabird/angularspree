@@ -9,14 +9,15 @@ export function reducer(state = initialState, action: SearchActions): SearchStat
 
     case SearchActionTypes.ApplySearchParams:
       return state.merge({
-        searchAppliedParams: action.payload
+        searchAppliedParams: action.payload,
+        isLoading: true
       }) as SearchState;
 
     case SearchActionTypes.LoadedSearchResults:
       return state.merge({
         isLoading: false,
         searchResults: action.payload.data,
-        meta: action.payload.meta
+        metaInfo: action.payload.meta
       }) as SearchState;
 
 

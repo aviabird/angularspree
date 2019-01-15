@@ -4,7 +4,7 @@ import { ApplySearchParams } from './../../store/actions/search.actions';
 import { environment } from './../../../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { SearchParam, SearchAppliedParams } from '../../models/search-param';
 import { SearchingService } from '../../services';
 import { Product } from '../../../../core/models';
@@ -15,6 +15,7 @@ import * as fromSearch from './../../store/selectors/search.selector';
 
 @Component({
   selector: 'app-search-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss']
 })
@@ -40,21 +41,12 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subsArray$.push(
-      // this.route.data
-      //   .subscribe(({ resp: { data, meta } }) => {
-      //     this.searchResults = data;
-      //     this.metaInfo = meta;
-      //     this.searchFound = data.length > 0;
-      //   }),
-      this.route.queryParams.subscribe((params: SearchParam) => {
-        this.appliedParams = this.searchService.convertToAppliedParams(params);
-        this.search(this.searchService.convertToAppliedParams(params));
-      }),
-      this.store.pipe(map(fromSearch.searchResponse)).subscribe(search => {
-        this.searchResults = search.searchResults;
-        this.metaInfo = search.meta;
-        this.searchFound = true;
-      })
+      this.store.pipe(map(fromSearch.searchResponse)).subscribe(
+        ({ searchResults, metaInfo }) => {
+          this.searchResults = searchResults;
+          this.metaInfo = metaInfo;
+          this.searchFound = searchResults.length > 0;
+        })
     );
 
   }
@@ -63,10 +55,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.appliedParams = appliedParams;
     const queryParams = this.searchService.convertToAPISearchParams(appliedParams);
     this.router.navigate(['/s'], { queryParams });
-  }
-
-  search(appliedParams: SearchAppliedParams) {
-    this.store.dispatch(new ApplySearchParams(appliedParams));
+    this.store.dispatch(new ApplySearchParams(appliedParams))
   }
 
   ngOnDestroy() {

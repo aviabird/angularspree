@@ -1,9 +1,10 @@
 import { environment } from './../../../../../../../environments/environment';
 import { Product } from './../../../../../../core/models/product';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-search-result-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './search-result-item.component.html',
   styleUrls: ['./search-result-item.component.scss']
 })

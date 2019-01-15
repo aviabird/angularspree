@@ -10,6 +10,6 @@ export const selectSearch = createFeatureSelector<AppState, SearchState>('search
 export const searchResponse = createSelector(selectSearch, state => {
   return {
     searchResults: state.searchResults as unknown as Array<Product>,
-    meta: state.meta as unknown as SearchMetaInfo,
+    metaInfo: state.metaInfo as unknown as SearchMetaInfo,
   }
 })

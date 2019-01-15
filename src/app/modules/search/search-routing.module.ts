@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '', component: SearchPageComponent,
-        // resolve: { resp: SearchResolver }
+        resolve: { resp: SearchResolver }
       }
     ]
   }
