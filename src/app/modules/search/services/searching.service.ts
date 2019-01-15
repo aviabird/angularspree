@@ -1,9 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { SearchParam, SearchAppliedParams, SearchFilter } from './../models/search-param';
+import { SearchParam, SearchAppliedParams, SearchFilter, SearchResponse } from './../models/search-param';
 import { Injectable } from '@angular/core';
 import { Product } from '../../../core/models';
 import { SortFilter } from '../models/sort-filter';
+import { Observable } from 'rxjs';
 
+/**
+ *
+ *
+ * @export
+ * @class SearchingService
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -24,11 +31,24 @@ export class SearchingService {
     { name: 'Avg. Customer Review', value: 'avg_rating' },
     { name: 'Newest Arrivals', value: 'date' },
   ];
+
+  /**
+   *Creates an instance of SearchingService.
+   * @param {HttpClient} http
+   * @memberof SearchingService
+   */
   constructor(
     private http: HttpClient,
   ) { }
 
-  search(apiParams: SearchParam) {
+  /**
+   *
+   *
+   * @param {SearchParam} apiParams
+   * @returns {Observable<SearchResponse>}
+   * @memberof SearchingService
+   */
+  search(apiParams: SearchParam): Observable<SearchResponse> {
     return this.http
       .get<{ data: Array<Product>, links: any, meta: any }>(
         `api/v1/products`,
@@ -38,6 +58,13 @@ export class SearchingService {
       );
   }
 
+  /**
+   *
+   *
+   * @param {SearchAppliedParams} { sort, filters, rangeFilters, q, limit, page, offset }
+   * @returns {SearchParam}
+   * @memberof SearchingService
+   */
   convertToAPISearchParams({ sort, filters, rangeFilters, q, limit, page, offset }: SearchAppliedParams): SearchParam {
     return this.sanitizeParams({
       f: this.stringifySearchFilter(filters),
@@ -50,6 +77,13 @@ export class SearchingService {
     });
   }
 
+  /**
+   *
+   *
+   * @param {SearchParam} { f, q, rf, rows, sort, o, p }
+   * @returns {SearchAppliedParams}
+   * @memberof SearchingService
+   */
   convertToAppliedParams({ f, q, rf, rows, sort, o, p }: SearchParam): SearchAppliedParams {
     return this.sanitizeParams({
       filters: this.parseStringSearchFilter(f),
@@ -62,6 +96,14 @@ export class SearchingService {
     });
   }
 
+  /**
+   *
+   *
+   * @private
+   * @param {string} str
+   * @returns {Array<SearchFilter>}
+   * @memberof SearchingService
+   */
   private parseStringSearchFilter(str: string): Array<SearchFilter> {
     return (str || '').split('::')
       .filter(fs => fs.split(':').length === 2)
@@ -72,6 +114,14 @@ export class SearchingService {
       })
   }
 
+  /**
+   *
+   *
+   * @private
+   * @param {Array<SearchFilter>} searchFilters
+   * @returns
+   * @memberof SearchingService
+   */
   private stringifySearchFilter(searchFilters: Array<SearchFilter>) {
     return (searchFilters || [])
       .filter(({ values }) => values.length)
@@ -80,6 +130,14 @@ export class SearchingService {
       }).join('::');
   }
 
+  /**
+   *
+   *
+   * @private
+   * @param {*} params
+   * @returns
+   * @memberof SearchingService
+   */
   private sanitizeParams(params) {
     let newParam = {};
 

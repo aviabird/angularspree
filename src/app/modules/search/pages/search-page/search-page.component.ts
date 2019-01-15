@@ -1,10 +1,15 @@
+import { ApplySearchParams } from './../../store/actions/search.actions';
 import { environment } from './../../../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SearchParam, SearchAppliedParams } from '../../models/search-param';
+import {SearchAppliedParams } from '../../models/search-param';
 import { SearchingService } from '../../services';
 import { Product } from '../../../../core/models';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../interfaces';
+import { map } from 'rxjs/operators';
+import * as fromSearch from './../../store/selectors/search.selector';
 
 @Component({
   selector: 'app-search-page',
@@ -16,7 +21,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   searchResults: Array<Product>;
   subsArray$: Array<Subscription> = [];
   searchSubs$: Subscription;
-  selectedAggregation: any;
   metaInfo: any;
   noSearchImg = '/assets/default/no-search-result.svg';
   searchPlaceholder = environment.config.header.searchPlaceholder;
@@ -25,43 +29,31 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   constructor(
     private searchService: SearchingService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
   ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit() {
     this.subsArray$.push(
-      this.route.data
-        .subscribe(({ resp: { data, meta } }) => {
-          this.searchResults = data;
-          this.metaInfo = meta;
-          this.searchFound = data.length > 0;
+      this.store.pipe(map(fromSearch.searchResponse)).subscribe(
+        ({ searchResults, metaInfo, appliedParams }) => {
+          this.searchResults = searchResults;
+          this.metaInfo = metaInfo;
+          this.appliedParams = appliedParams;
+          this.searchFound = searchResults.length > 0;
         }),
-      this.route.queryParams.subscribe((params: SearchParam) => {
-        this.appliedParams = this.searchService.convertToAppliedParams(params);
-        this.search(this.searchService.convertToAppliedParams(params));
+      this.route.queryParams.subscribe(params => {
+        const appliedParams = this.searchService.convertToAppliedParams(params);
+        this.store.dispatch(new ApplySearchParams(appliedParams));
       })
     );
 
   }
 
   updateFilters(appliedParams: SearchAppliedParams) {
-    this.appliedParams = appliedParams;
     const queryParams = this.searchService.convertToAPISearchParams(appliedParams);
     this.router.navigate(['/s'], { queryParams });
-  }
-
-  search(appliedParams: SearchAppliedParams) {
-    const apiParams = this.searchService.convertToAPISearchParams(appliedParams);
-    if (this.searchSubs$) { this.searchSubs$.unsubscribe() }
-    this.searchFound = true;
-    this.searchSubs$ = this.searchService.search(apiParams)
-      .subscribe(({ data, meta }) => {
-        this.searchResults = [...data];
-        this.metaInfo = {...meta};
-        this.searchFound = data.length > 0;
-      })
   }
 
   ngOnDestroy() {
@@ -70,11 +62,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
 
   clearFilters() {
     this.updateFilters(SearchingService.DEFAULT_APPLIED_FILTERS);
-    this.selectedAggregation = {};
-  }
-
-  selectAggregation(aggregation) {
-    this.selectedAggregation = aggregation;
   }
 
   get breadcrumbs() {

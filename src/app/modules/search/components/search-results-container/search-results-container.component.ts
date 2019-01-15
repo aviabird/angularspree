@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Product } from '../../../../core/models';
 
 @Component({
   selector: 'app-search-results-container',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './search-results-container.component.html',
   styleUrls: ['./search-results-container.component.scss']
 })

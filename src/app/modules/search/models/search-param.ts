@@ -1,3 +1,4 @@
+import { Product } from './../../../core/models/product';
 /**
  * Allowed API parameters
  *
@@ -55,4 +56,19 @@ export interface SearchAppliedParams {
 export interface SearchFilter {
   id: string,
   values: Array<string>;
+}
+
+export interface SearchResponse {
+  data: Array<Product>,
+  meta: SearchMetaInfo,
+  links: any
+}
+
+export interface SearchMetaInfo {
+  aggregations: {
+    filters: Array<FilterAgg>,
+    range_filters: Array<RangeAgg>
+  },
+  total: number;
+  applied_params: SearchParam
 }
