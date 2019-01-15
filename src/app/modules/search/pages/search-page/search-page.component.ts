@@ -1,3 +1,4 @@
+import { ApplySearchParams, LoadedSearchResults } from './../../store/actions/search.actions';
 import { environment } from './../../../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -5,6 +6,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SearchParam, SearchAppliedParams } from '../../models/search-param';
 import { SearchingService } from '../../services';
 import { Product } from '../../../../core/models';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../../interfaces';
 
 @Component({
   selector: 'app-search-page',
@@ -25,7 +28,8 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   constructor(
     private searchService: SearchingService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private store: Store<AppState>
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -59,7 +63,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     this.searchSubs$ = this.searchService.search(apiParams)
       .subscribe(({ data, meta }) => {
         this.searchResults = [...data];
-        this.metaInfo = {...meta};
+        this.metaInfo = { ...meta };
         this.searchFound = data.length > 0;
       })
   }
