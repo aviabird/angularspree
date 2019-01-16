@@ -6,7 +6,7 @@ export const routes: Routes = [
   {
     path: '',
     loadChildren: './landing/landing.module#LandingModule',
-    data: { preload: true, delay: true },
+    data: { preload: false, delay: false },
   },
   {
     path: 's',
