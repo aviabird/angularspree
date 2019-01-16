@@ -25,7 +25,7 @@
 
 It is a plug and play frontend application for [AviaCommerce API](https://www.aviacommerce.org/docs/apis-getting-started.html) built using Angular(7), Redux, Observables & ImmutableJs.
 
-It is not limited to aviacommerce and can also be used with any e-commerce solution with an api interface. Such as spreecommerce, magento, opencart etc.**
+**It is not limited to aviacommerce and can also be used with any e-commerce solution with an api interface. Such as spreecommerce, magento, opencart etc.**
 
 * 🌍 [aviacommerce](https://aviacommerce.org/) - Learn more about AngularSpree
 * 📖 [Documentation](https://www.aviacommerce.org/docs/frontend-install.html)
@@ -33,13 +33,11 @@ It is not limited to aviacommerce and can also be used with any e-commerce solut
 * 👍 Like us on [Facebook](https://www.facebook.com/aviacommerce)
 * 🕊 Twitter: [@aviacommerce](https://twitter.com/aviacommerce) - Get the latest news
 * 🐞 Issue Tracker: - [Issues](https://github.com/aviacommerce/avia/issues) - Report bugs here
-* 🗨 [Forums](https://forum.aviacommerce.org/) - Discussions -> Coming soon... 
-* 👪 [Community Chat][gitter] - Gitter 
+* 🗨 [Forums](https://forum.aviacommerce.org/) - Discussions(Coming soon) 
+* 👪 [Community Chat](https://gitter.im/avia-commerce/Lobby) - Gitter 
 
 ### Important Note
-AngularSpree is now a part of [Aviacommerce Project](https://aviacommerce.org). Further development of angularspree will happen on aviacommerce [repo](https://github.com/aviacommerce/avia). Please check the front-end folder.
-
-However, this repo will continue to receive updates every 15 days. So essentially, it's a mirror for aviacommerce/front-end repo.
+AngularSpree is now a part of [Aviacommerce Project](https://aviacommerce.org). Further development of angularspree will happen in *this repository only*. Also, check the [aviacommerce repo](https://github.com/aviacommerce/avia) where this repository exists as a submodule.
 
 ## Features
 Please check the online demo [here](https://www.aviacommerce.org/demo/demo.html).
@@ -50,7 +48,7 @@ Please check the online demo [here](https://www.aviacommerce.org/demo/demo.html)
 2. Product Detail Page
 3. Filters by Category, options, size etc 
 4. Sort(New arrival, Price)
-5. Advanced searching with Elasticsearch
+5. Advanced searching and autocomplete with Elasticsearch
 6. Add/update to cart
 7. Notifications for order update notification, payment failure
 8. Chat with seller feature, messaging
@@ -65,10 +63,14 @@ Please check the online demo [here](https://www.aviacommerce.org/demo/demo.html)
 5. Shipping settings/policy(free shipping, shipping rules)
 6. Promotions(coupons per user, total usage count)
 5. Manage Users(admin, user types)
-6. Send emails and notifications.
-
-For any questions or suggestions send a mail to `hello@aviabird.com`.
+6. Taxation
+7. Send emails and notifications.
 
 ### Quick Links
 [Gitter](https://gitter.im/avia-commerce/Lobby) | [Contributing](https://www.aviacommerce.org/docs/how-to-contribute.html) | [API Specs](https://www.aviacommerce.org/docs/apis-getting-started.html) | 
 |---|---|---|
+
+
+This project is an open-source initiative by[ Aviabird Technologies](https://aviabird.com) under the [Aviacommerce](https://aviacommerce.org) open-source project.
+
+For any questions or suggestions send a mail to `hello@aviabird.com` or chat with the core-team on [gitter](https://gitter.im/avia-commerce/Lobby).
