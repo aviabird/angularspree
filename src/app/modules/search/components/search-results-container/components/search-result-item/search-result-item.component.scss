@@ -1,16 +1,20 @@
 @import '../../../../../../shared/scss/selected_theme_variables';
 :host {
   display: block;
-  @media screen and(min-width: 768px) {
+  @media screen and(min-width: 576px) {
     min-width: 230px;
     max-width: 230px;
     padding: 0.8rem;
-    box-shadow: 0 0 43px -16px #aaa;
+    &:hover {
+      box-shadow: 0 0 43px -16px #aaa;
+    }
   }
-  @media screen and(min-width: 310px) and(max-width: 768px){
+  @media screen and(min-width: 310px) and(max-width: 576px) {
     padding: 0;
     max-width: 50%;
     min-width: 50%;
+    box-shadow: 0 0 1px -1px #aaa;
+    border: none;
     .product-meta-info {
       padding: 0 5px;
     }
@@ -19,10 +23,14 @@
 
 picture {
   height: 280px;
+  @media screen and(min-width: 310px) and(max-width: 576px) {
+    height: 240px;
+  }
   &.bg-img-none {
     background-image: none;
   }
   img {
+    mix-blend-mode: darken;
     object-fit: scale-down;
   }
 }
