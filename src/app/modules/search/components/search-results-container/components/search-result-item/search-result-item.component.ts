@@ -12,7 +12,6 @@ export class SearchResultItemComponent implements OnInit {
   @Input() product: Product;
   noImageUrl = '/assets/default/image-placeholder.svg';
   loaderImageUrl = '/assets/default/loader.svg';
-  appConfig = environment.config;
   currency = environment.config.currency_symbol;
   imageLoaded = false;
 
@@ -35,5 +34,10 @@ export class SearchResultItemComponent implements OnInit {
 
   get discountPercent() {
     return `(${Math.ceil(this.discount / +this.product.max_retail_price.amount * 100)}% OFF)`;
+  }
+
+  get reviewCount() {
+    const count = this.product.rating_summary.review_count
+    return count > 0 ? `${count} reviews` : '' ;
   }
 }
