@@ -1,5 +1,13 @@
 import { Address } from './../../core/models/address';
-import { getTotalCartValue, getOrderNumber, getTotalCartItems, getShipAddress, getShipTotal, getItemTotal, getAdjustmentTotal } from './../reducers/selectors';
+import {
+  getTotalCartValue,
+  getOrderNumber,
+  getTotalCartItems,
+  getShipAddress,
+  getShipTotal,
+  getItemTotal,
+  getAdjustmentTotal
+} from './../reducers/selectors';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -7,6 +15,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { CheckoutService } from '../../core/services/checkout.service';
+import { order as loadScripts } from 'scriptjs';
 
 @Component({
   selector: 'app-payment',
@@ -30,6 +39,15 @@ export class PaymentComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit() {
+    loadScripts(
+      [
+        'https://checkout.stripe.com/checkout.js',
+        'https://checkout.razorpay.com/v1/checkout.js'
+      ],
+      'payments',
+      () => { }
+    );
+
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.address$ = this.store.select(getShipAddress);
