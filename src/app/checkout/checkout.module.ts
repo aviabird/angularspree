@@ -1,3 +1,4 @@
+import { StoreModule } from '@ngrx/store';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { PaymentModule } from './payment/payment.module';
 import { AddressModule } from './address/address.module';
@@ -11,14 +12,14 @@ import { RouterModule } from '@angular/router';
 import { routes } from './checkout.routes';
 import { OrderFailedComponent } from './order-failed/order-failed.component';
 import { SharedModule } from '../shared';
+import * as fromCheckout from './reducers/checkout.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    EffectsModule.forRoot([
-      CheckoutEffects
-    ]),
+    StoreModule.forFeature('checkout', fromCheckout.reducer),
+    EffectsModule.forRoot([CheckoutEffects]),
     CartModule,
     AddressModule,
     PaymentModule,

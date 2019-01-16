@@ -45,7 +45,6 @@ import { ResponseInterceptor } from './interceptors/reponse.interceptor';
     EffectsModule.forFeature([
       AuthenticationEffects,
       ProductEffects,
-      // CheckoutEffects,
       UserEffects
     ]),
     HttpClientModule,
