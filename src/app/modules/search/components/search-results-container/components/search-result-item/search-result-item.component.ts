@@ -21,7 +21,7 @@ export class SearchResultItemComponent implements OnInit {
   }
 
   getProductImageUrl(product: Product) {
-    return product.images[0] ? 'product.images[0].product_url' : this.noImageUrl;
+    return product.images[0] ? product.images[0].product_url : this.noImageUrl;
   }
 
   imageLoadedSuccess(event: boolean) {
