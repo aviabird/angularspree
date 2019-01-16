@@ -1,18 +1,37 @@
 @import '../../../../../../shared/scss/selected_theme_variables';
-
 :host {
   display: block;
-  min-width: 210px;
-  max-width: 210px;
-  height: 380px;
+  @media screen and(min-width: 576px) {
+    min-width: 230px;
+    max-width: 230px;
+    padding: 0.8rem;
+    &:hover {
+      box-shadow: 0 0 43px -16px #aaa;
+    }
+  }
+  @media screen and(min-width: 310px) and(max-width: 576px) {
+    padding: 0;
+    max-width: 50%;
+    min-width: 50%;
+    box-shadow: 0 0 1px -1px #aaa;
+    border: none;
+    .product-meta-info {
+      padding: 0 5px;
+      font-size: 0.8rem;
+    }
+  }
 }
 
 picture {
   height: 280px;
+  @media screen and(min-width: 310px) and(max-width: 576px) {
+    height: 240px;
+  }
   &.bg-img-none {
     background-image: none;
   }
   img {
+    mix-blend-mode: darken;
     object-fit: scale-down;
   }
 }
@@ -30,7 +49,5 @@ picture {
 }
 
 .product-starRating {
-  transform: scale(0.7);
-  display: block;
-  margin-left: -2.5rem;
+  font-size: 0.9rem;
 }
