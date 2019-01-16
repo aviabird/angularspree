@@ -1,10 +1,20 @@
 @import '../../../../../../shared/scss/selected_theme_variables';
-
 :host {
   display: block;
-  min-width: 210px;
-  max-width: 210px;
-  height: 380px;
+  @media screen and(min-width: 768px) {
+    min-width: 230px;
+    max-width: 230px;
+    padding: 0.8rem;
+    box-shadow: 0 0 43px -16px #aaa;
+  }
+  @media screen and(min-width: 310px) and(max-width: 768px){
+    padding: 0;
+    max-width: 50%;
+    min-width: 50%;
+    .product-meta-info {
+      padding: 0 5px;
+    }
+  }
 }
 
 picture {
@@ -30,7 +40,5 @@ picture {
 }
 
 .product-starRating {
-  transform: scale(0.7);
-  display: block;
-  margin-left: -2.5rem;
+  font-size: 0.9rem;
 }
