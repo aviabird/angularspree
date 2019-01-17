@@ -25,7 +25,7 @@
 picture {
   height: 280px;
   @media screen and(min-width: 310px) and(max-width: 576px) {
-    height: 240px;
+    height: 210px;
   }
   &.bg-img-none {
     background-image: none;
