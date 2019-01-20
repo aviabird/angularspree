@@ -10,7 +10,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class SearchResultItemComponent implements OnInit {
   @Input() product: Product;
-  noImageUrl = '/assets/default/image-placeholder.svg';
+  noImageUrl = '/assets/default/image-laceholder.svg';
   loaderImageUrl = '/assets/default/loader.svg';
   currency = environment.config.currency_symbol;
   imageLoaded = false;
@@ -20,8 +20,12 @@ export class SearchResultItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  getProductImageUrl(product: Product) {
-    return product.images[0] ? product.images[0].product_url : this.noImageUrl;
+  getProductImageUrl(format = '.jpg') {
+    if (this.defaultImage) {
+      return this.defaultImage.product_url.replace(/.\jpg/, format);
+    } else {
+      return this.noImageUrl;
+    }
   }
 
   imageLoadedSuccess(event: boolean) {
@@ -38,6 +42,8 @@ export class SearchResultItemComponent implements OnInit {
 
   get reviewCount() {
     const count = this.product.rating_summary.review_count
-    return count > 0 ? `${count} reviews` : '' ;
+    return count > 0 ? `${count} reviews` : '';
   }
+
+  get defaultImage() { return this.product.images[0]; }
 }

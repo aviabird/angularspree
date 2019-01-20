@@ -3,9 +3,15 @@ ngx-input-star-rating {
   transform: scale(0.8) translateX(-10%);
 }
 
-img {
-  width: 100%;
-  object-fit: contain;
+picture {
+  height: 200px;
+  &.bg-img-none {
+    background-image: none;
+  }
+  img {
+    mix-blend-mode: darken;
+    object-fit: scale-down;
+  }
 }
 
 .rating {
@@ -13,6 +19,6 @@ img {
   left: .8em;
   @media screen and(min-width: 320px) and(max-width: 768px) {
     position: relative;
-    left:8.5px;
+    left: 8.5px;
   }
 }

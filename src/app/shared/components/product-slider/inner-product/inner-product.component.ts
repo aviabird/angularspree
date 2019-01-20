@@ -17,7 +17,14 @@ export class InnerIproductComponent implements OnInit {
 
   ngOnInit() {
   }
-  get imageUrl() {
-    return this.product.images[0] ? this.product.images[0].product_url : this.noImageUrl
+
+  getProductImageUrl(format = '.jpg') {
+    if (this.defaultImage) {
+      return this.defaultImage.product_url.replace(/.\jpg/, format);
+    } else {
+      return this.noImageUrl;
+    }
   }
+
+  get defaultImage() { return this.product.images[0]; }
 }

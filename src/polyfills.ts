@@ -48,6 +48,7 @@ import 'core-js/es7/reflect';
 /** ALL Firefox browsers require the following to support `@angular/animation`. **/
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 import 'hammerjs';
+import 'picturefill';
 
 
 /***************************************************************************************************

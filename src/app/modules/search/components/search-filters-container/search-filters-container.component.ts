@@ -26,9 +26,8 @@ export class SearchFiltersContainerComponent implements OnInit {
   }
 
   get primaryFilters() {
-    let { aggregations: { filters: filters } } = this.metaInfo;
-    filters = filters.sort(filter => filter.id === 'Category' ? -1 : 0)
-    return filters;
+    const { aggregations: { filters: filters } } = this.metaInfo;
+    return filters.sort(filter => filter.id === 'Category' ? -1 : 0);
   }
 
   get rangeFilters() {
