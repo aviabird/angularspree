@@ -5,12 +5,17 @@
     <picture
       class="img-responsive d-block bg-rand-{{ '' | random:1:10}}"
       [ngClass]="{'bg-img-none': imageLoaded}">
+      <source
+        [attr.lazyLoad]="getProductImageUrl('.webp')"
+        [attr.defaultImage]="loaderImageUrl"
+        [attr.errorImage]="noImageUrl"
+        type="image/webp">
       <img
         [defaultImage]="loaderImageUrl"
         [alt]="product.name"
         (onLoad)="imageLoadedSuccess($event)"
         [errorImage]="noImageUrl"
-        [lazyLoad]="getProductImageUrl(product)"
+        [lazyLoad]="getProductImageUrl()"
         [offset]="50"
         class="img-responsive w-100 h-100">
     </picture>
