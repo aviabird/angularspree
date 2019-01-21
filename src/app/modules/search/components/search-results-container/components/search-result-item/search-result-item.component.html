@@ -5,24 +5,19 @@
     <picture
       class="img-responsive d-block bg-rand-{{ '' | random:1:10}}"
       [ngClass]="{'bg-img-none': imageLoaded}">
-      <source
-        [attr.lazyLoad]="getProductImageUrl('.webp')"
-        [attr.defaultImage]="loaderImageUrl"
-        [attr.errorImage]="noImageUrl"
-        type="image/webp">
       <img
         [defaultImage]="loaderImageUrl"
         [alt]="product.name"
         (onLoad)="imageLoadedSuccess($event)"
         [errorImage]="noImageUrl"
         [lazyLoad]="getProductImageUrl()"
-        [offset]="50"
+        [offset]="100"
         class="img-responsive w-100 h-100">
     </picture>
   </div>
   <div class="product-meta-info mb-2">
     <b class="product-brand text-capitalize text-truncate">{{product.brand?.name || '&nbsp;'}}</b>
-    <div class="product-name font-weight-light text-truncate">{{product.name}}</div>
+    <div class="product-name text-truncate">{{product.name}}</div>
     <div class="product-price">
       <span>
         <b class="product-discountedPrice">
