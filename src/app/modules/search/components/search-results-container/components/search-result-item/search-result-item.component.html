@@ -16,7 +16,7 @@
     </picture>
   </div>
   <div class="product-meta-info mb-2">
-    <b class="product-brand text-capitalize text-truncate">{{product.brand?.name || '&nbsp;'}}</b>
+    <b class="product-brand text-capitalize font-weight-lighter text-truncate">{{product.brand?.name || '&nbsp;'}}</b>
     <div class="product-name text-truncate">{{product.name}}</div>
     <div class="product-price">
       <span>
@@ -24,14 +24,14 @@
           {{currency}} {{ product.selling_price.amount | number:'2.1-2' }}
         </b>
         <span *ngIf="product; let cost_price">
-          <small class="disablePrice text-dark font-weight-light ml-1">
+          <small class="disablePrice font-weight-lighter ml-1">
             {{currency}} {{product.max_retail_price.amount | number:'2.1-2'}}
           </small>
         </span>
-        <small class="product-discountPercentage font-weight-light ml-1">{{discountPercent}}</small>
+        <small class="product-discountPercentage font-weight-lighter ml-1">{{discountPercent}}</small>
       </span>
     </div>
-    <div class="product-starRating font-weight-light">
+    <div class="product-starRating font-weight-lighter">
       <rating
         [ngModel]="product.rating_summary.average_rating"
         readonly="true"
