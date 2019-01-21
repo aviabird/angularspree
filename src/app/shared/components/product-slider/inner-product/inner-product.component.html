@@ -2,15 +2,11 @@
   <a [routerLink]="['/', product.slug, product.id]">
     <picture
       class="img-responsive d-block">
-      <source
-        [attr.lazyLoad]="getProductImageUrl('.webp')"
-        [attr.errorImage]="noImageUrl"
-        type="image/webp">
       <img
         [alt]="product.name"
         [errorImage]="noImageUrl"
         [lazyLoad]="getProductImageUrl()"
-        [offset]="50"
+        [offset]="100"
         class="img-responsive w-100 h-100">
     </picture>
     <ngx-input-star-rating

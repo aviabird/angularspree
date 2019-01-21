@@ -5,8 +5,10 @@
     min-width: 210px;
     max-width: 210px;
     padding: 0.8rem;
+    transition: all 300ms;
     &:hover {
-      box-shadow: 0 0 43px -16px #aaa;
+      box-shadow: 0 5px 43px -16px #aaa;
+      transform: translateY(-5px);
     }
   }
   @media screen and(min-width: 310px) and(max-width: 576px) {
@@ -23,9 +25,9 @@
 }
 
 picture {
-  height: 280px;
+  height: 250px;
   @media screen and(min-width: 310px) and(max-width: 576px) {
-    height: 210px;
+    height: 200px;
   }
   &.bg-img-none {
     background-image: none;
