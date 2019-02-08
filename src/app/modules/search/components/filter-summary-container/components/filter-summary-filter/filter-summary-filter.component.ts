@@ -7,14 +7,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FilterSummaryFilterComponent implements OnInit {
   @Input() filter;
-  @Output() removeFilter = new EventEmitter();
+  @Output() removeFilter = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {}
 
-  removeFilterClicked() {
-    this.removeFilter.emit();
+  removeFilterClicked(id: string) {
+    this.removeFilter.emit(id);
   }
 
 }
