@@ -147,4 +147,46 @@ export class SearchingService {
 
     return newParam;
   }
+
+  /**
+   * This will update the applied parameters as per the updated filter values.
+   *
+   * @param {SearchAppliedParams} appliedParams
+   * @param {*} updatedVal
+   * @param {string} filterName
+   * @returns {SearchAppliedParams}
+   * @memberof SearchingService
+   */
+  updateFilter(appliedParams: SearchAppliedParams, updatedVal: any, filterName: string): SearchAppliedParams {
+    const currentAppliedFilters = appliedParams.filters;
+    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName);
+    let newCurrentFilters: Array<SearchFilter>;
+
+    if (filterToUpdate) {
+      const currentValues = filterToUpdate.values;
+      const exists = currentValues.find(v => v === updatedVal);
+      const filteredValues = currentValues.filter(v => v !== updatedVal);
+      const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
+      newCurrentFilters = [
+        ...filteredAppliedFilters,
+        {
+          ...filterToUpdate,
+          values: exists ? filteredValues : [...filteredValues, updatedVal]
+        }
+      ]
+    } else {
+      newCurrentFilters = [
+        ...currentAppliedFilters,
+        {
+          id: filterName,
+          values: [updatedVal]
+        }
+      ]
+    }
+
+    return {
+      ...appliedParams,
+      filters: newCurrentFilters
+    }
+  }
 }

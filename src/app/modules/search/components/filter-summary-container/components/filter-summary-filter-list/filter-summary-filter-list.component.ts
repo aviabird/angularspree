@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SearchFilter, SearchAppliedParams } from '../../../../models/search-param';
+import { SearchAppliedParams } from '../../../../models/search-param';
+import { SearchingService } from '../../../../services';
 
 @Component({
   selector: 'app-filter-summary-filter-list',
@@ -10,49 +11,22 @@ export class FilterSummaryFilterListComponent implements OnInit {
   @Input() appliedParams: SearchAppliedParams;
   @Output() filterUpdated = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private searchingService: SearchingService
+  ) { }
 
   ngOnInit() {
   }
 
   get filterList() {
-    return this.appliedParams.filters
-      .reduce((acc, filter) => acc.concat(filter.values), []);
+    return this.appliedParams.filters;
   }
 
 
   updateFilter(updatedVal: any, filterName: string) {
-    console.log(this.updateFilter);
-    const currentAppliedFilters = this.appliedParams.filters;
-    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName);
-    let newCurrentFilters: Array<SearchFilter>;
-
-    if (filterToUpdate) {
-      const currentValues = filterToUpdate.values;
-      const exists = currentValues.find(v => v === updatedVal);
-      const filteredValues = currentValues.filter(v => v !== updatedVal);
-      const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
-      newCurrentFilters = [
-        ...filteredAppliedFilters,
-        {
-          ...filterToUpdate,
-          values: exists ? filteredValues : [...filteredValues, updatedVal]
-        }
-      ]
-    } else {
-      newCurrentFilters = [
-        ...currentAppliedFilters,
-        {
-          id: filterName,
-          values: [updatedVal]
-        }
-      ]
-    }
-
-    this.filterUpdated.emit({
-      ...this.appliedParams,
-      filters: newCurrentFilters
-    });
+    this.filterUpdated.emit(
+      this.searchingService.updateFilter(this.appliedParams, updatedVal, filterName)
+    );
   }
 
 }

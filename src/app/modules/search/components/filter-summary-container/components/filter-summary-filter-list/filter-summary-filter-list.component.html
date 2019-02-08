@@ -2,10 +2,11 @@
   <div class="row">
     <div *ngFor="let filter of filterList">
       <app-filter-summary-filter
+        *ngFor="let filterValue of filter.values"
         id="{{filter.id}}"
-        (removeFilter)="updateFilter(filter, 'Category')"
+        (removeFilter)="updateFilter(filterValue, filter.id)"
         class="border"
-        [filter]="filter">
+        [filterValue]="filterValue">
       </app-filter-summary-filter>
     </div>
   </div>
