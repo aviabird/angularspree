@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SearchAppliedParams } from '../../../../models/search-param';
+import { SearchingService } from '../../../../services';
 
 @Component({
   selector: 'app-filter-summary-filter-list',
@@ -8,15 +9,24 @@ import { SearchAppliedParams } from '../../../../models/search-param';
 })
 export class FilterSummaryFilterListComponent implements OnInit {
   @Input() appliedParams: SearchAppliedParams;
+  @Output() filterUpdated = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private searchingService: SearchingService
+  ) { }
 
   ngOnInit() {
   }
 
   get filterList() {
-    return this.appliedParams.filters
-      .reduce((acc, filter) => acc.concat(filter.values), []);
+    return this.appliedParams.filters;
+  }
+
+
+  updateFilter(updatedVal: any, filterName: string) {
+    this.filterUpdated.emit(
+      this.searchingService.updateFilter(this.appliedParams, updatedVal, filterName)
+    );
   }
 
 }

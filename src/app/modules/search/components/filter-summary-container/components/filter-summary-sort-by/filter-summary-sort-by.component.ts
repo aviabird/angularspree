@@ -24,7 +24,7 @@ export class FilterSummarySortByComponent implements OnInit {
 
   sortOrder(sortOption: SortFilter) {
     this.currentSort = sortOption;
-    this.selectedSort.emit({name: 'sort', value: sortOption.value});
+    this.selectedSort.emit({ name: 'sort', value: sortOption.value });
   }
 
 }
