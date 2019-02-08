@@ -27,7 +27,7 @@ export class SearchFiltersContainerComponent implements OnInit {
 
   get primaryFilters() {
     const { aggregations: { filters: filters } } = this.metaInfo;
-    return filters.sort(filter => filter.id === 'Category' ? -1 : 0);
+    return filters.slice().sort(filter => filter.id === 'Category' ? -1 : 0);
   }
 
   get rangeFilters() {
@@ -70,7 +70,7 @@ export class SearchFiltersContainerComponent implements OnInit {
 
   updateRangeFilter(updatedVal: any, filterName: string) {
     const currentAppliedFilters = this.appliedParams.rangeFilters;
-    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName) || {id: filterName};
+    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName) || { id: filterName };
     let newCurrentFilters: Array<SearchFilter>;
     const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
 
