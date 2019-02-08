@@ -1,5 +1,11 @@
 :host-context() {
   margin: 3px;
-  padding: 0 1rem;
+  padding: 0.2rem 1rem;
   border-radius: 20px;
+  &:hover {
+    border-color: #000 !important;
+  }
+  .cross-btn {
+    cursor: pointer;
+  }
 }
