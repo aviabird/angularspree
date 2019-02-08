@@ -1,6 +1,7 @@
 import { SearchFilter, FilterAgg, RangeAgg, SearchMetaInfo } from './../../models/search-param';
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { SearchAppliedParams } from '../../models/search-param';
+import { SearchingService } from '../../services';
 
 @Component({
   selector: 'app-search-filters-container',
@@ -16,7 +17,7 @@ export class SearchFiltersContainerComponent implements OnInit {
   @Output() selectedAggregation = new EventEmitter();
   mainFilter = ['Category', 'Brand'];
 
-  constructor() { }
+  constructor(private searchingService: SearchingService) { }
 
   ngOnInit() {
   }
@@ -26,9 +27,8 @@ export class SearchFiltersContainerComponent implements OnInit {
   }
 
   get primaryFilters() {
-    let { aggregations: { filters: filters } } = this.metaInfo;
-    filters = filters.sort(filter => filter.id === 'Category' ? -1 : 0)
-    return filters;
+    const { aggregations: { filters: filters } } = this.metaInfo;
+    return filters.slice().sort(filter => filter.id === 'Category' ? -1 : 0);
   }
 
   get rangeFilters() {
@@ -37,41 +37,14 @@ export class SearchFiltersContainerComponent implements OnInit {
   }
 
   updateFilter(updatedVal: any, filterName: string) {
-    const currentAppliedFilters = this.appliedParams.filters;
-    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName);
-    let newCurrentFilters: Array<SearchFilter>;
-
-    if (filterToUpdate) {
-      const currentValues = filterToUpdate.values;
-      const exists = currentValues.find(v => v === updatedVal);
-      const filteredValues = currentValues.filter(v => v !== updatedVal);
-      const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
-      newCurrentFilters = [
-        ...filteredAppliedFilters,
-        {
-          ...filterToUpdate,
-          values: exists ? filteredValues : [...filteredValues, updatedVal]
-        }
-      ]
-    } else {
-      newCurrentFilters = [
-        ...currentAppliedFilters,
-        {
-          id: filterName,
-          values: [updatedVal]
-        }
-      ]
-    }
-
-    this.filterUpdated.emit({
-      ...this.appliedParams,
-      filters: newCurrentFilters
-    });
+    this.filterUpdated.emit(
+      this.searchingService.updateFilter(this.appliedParams, updatedVal, filterName)
+    );
   }
 
   updateRangeFilter(updatedVal: any, filterName: string) {
     const currentAppliedFilters = this.appliedParams.rangeFilters;
-    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName) || {id: filterName};
+    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName) || { id: filterName };
     let newCurrentFilters: Array<SearchFilter>;
     const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
 

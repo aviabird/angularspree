@@ -6,12 +6,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./filter-summary-filter.component.scss']
 })
 export class FilterSummaryFilterComponent implements OnInit {
-  @Input() filter;
+  @Input() filterValue: string;
   @Output() removeFilter = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   removeFilterClicked() {
     this.removeFilter.emit();

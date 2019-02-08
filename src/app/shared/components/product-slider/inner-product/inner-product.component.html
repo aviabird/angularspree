@@ -1,7 +1,19 @@
 <div class="product-tile">
   <a [routerLink]="['/', product.slug, product.id]">
-    <img [defaultImage]="noImageUrl" [lazyLoad]="imageUrl" [offset]="50" width="150" height="200" class="mb-1" >
-    <ngx-input-star-rating *ngIf="showRating" value="{{product.rating_summary.average_rating}}" class="rating" disabled="true"></ngx-input-star-rating>
-    <p class="mt-1 mb-2 text-dark"> {{ product.name }} </p>
+    <picture
+      class="img-responsive d-block">
+      <img
+        [alt]="product.name"
+        [errorImage]="noImageUrl"
+        [lazyLoad]="getProductImageUrl()"
+        [offset]="100"
+        class="img-responsive w-100 h-100">
+    </picture>
+    <ngx-input-star-rating
+      *ngIf="showRating"
+      value="{{product.rating_summary.average_rating}}"
+      class="rating"
+      disabled="true"></ngx-input-star-rating>
+    <p class="mt-1 mb-2 text-dark">{{ product.name }}</p>
   </a>
 </div>
