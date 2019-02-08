@@ -1,5 +1,13 @@
+@import "../../../../../../shared/scss/selected_theme_variables";
 :host-context() {
   margin: 3px;
-  padding: 0 1rem;
+  padding: 0.2rem 1rem;
   border-radius: 20px;
+  transition: all 500ms;
+  &:hover {
+    border-color: $gray-600 !important;
+  }
+  .cross-btn {
+    cursor: pointer;
+  }
 }

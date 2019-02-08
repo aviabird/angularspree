@@ -1,6 +1,7 @@
 <span>{{filter}}</span>
 <span
-  class="ml-2"
-  (click)="removeFilterClicked()">
+  id="{{filter}}"
+  class="ml-2 cross-btn"
+  (click)="removeFilterClicked(filter)">
   X
 </span>
