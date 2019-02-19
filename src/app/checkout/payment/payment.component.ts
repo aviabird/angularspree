@@ -11,11 +11,17 @@ import {
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { CheckoutService } from '../../core/services/checkout.service';
-import { order as loadScripts } from 'scriptjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-payment',
@@ -36,18 +42,22 @@ export class PaymentComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<AppState>,
     private checkoutService: CheckoutService,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit() {
-    loadScripts(
-      [
-        'https://checkout.stripe.com/checkout.js',
-        'https://checkout.razorpay.com/v1/checkout.js'
-      ],
-      'payments',
-      () => {}
-    );
+    if (isPlatformBrowser(this.platformId)) {
+      const scriptjs = require('scriptjs');
+      scriptjs(
+        [
+          'https://checkout.stripe.com/checkout.js',
+          'https://checkout.razorpay.com/v1/checkout.js'
+        ],
+        'payments',
+        () => {}
+      );
+    }
 
     this.totalCartValue$ = this.store.select(getTotalCartValue);
     this.totalCartItems$ = this.store.select(getTotalCartItems);
