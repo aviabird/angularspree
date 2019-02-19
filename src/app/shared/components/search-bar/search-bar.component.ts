@@ -22,24 +22,26 @@ export class SearchBarComponent {
   constructor(private http: HttpClient, private router: Router) {
     this.dataSource = Observable.create((observer: any) => {
       observer.next(this.asyncSelected);
-    }).pipe(
-      mergeMap((token: string) => this.getStatesAsObservable(token))
-    );
+    }).pipe(mergeMap((token: string) => this.getStatesAsObservable(token)));
   }
 
   getStatesAsObservable(token: string): Observable<any> {
-    return this.http.get<{ data: any }>('api/v1/products/suggest', {
-      params: {
-        q: token
-      }
-    }).pipe(
-      map(resp =>
-        resp.data.map((item: { name: string; category: string; term: string}) => {
-          item.name = `${item.term} in ${item.category}`;
-          return item;
-        })
-      )
-    )
+    return this.http
+      .get<{ data: any }>('api/v1/products/suggest', {
+        params: {
+          q: token
+        }
+      })
+      .pipe(
+        map(resp =>
+          resp.data.map(
+            (item: { name: string; category: string; term: string }) => {
+              item.name = `${item.term} in ${item.category}`;
+              return item;
+            }
+          )
+        )
+      );
   }
 
   changeTypeaheadLoading(e: boolean): void {
@@ -55,8 +57,8 @@ export class SearchBarComponent {
       const [q, category] = keyword.trim().split(' in ');
       this.router.navigate(['/s'], {
         queryParams: {
-          'q': q,
-          'f': `Category:${category || ''}`
+          q: q,
+          f: `Category:${category || ''}`
         }
       });
     }

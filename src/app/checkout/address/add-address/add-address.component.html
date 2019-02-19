@@ -1,94 +1,208 @@
 <form class="form" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-  <hr>
+  <hr />
   <div class="row mt-3">
     <div class="form-group col-sm-6">
-      <label>Pin Code
+      <label
+        >Pin Code
         <span class="required">*</span>
       </label>
-      <input type="tel" class="form-control" formControlName="zip_code" autocomplete="none">
-      <div *ngIf="addressForm.get('zip_code').errors && addressForm.get('zip_code').touched">
+      <input
+        type="tel"
+        class="form-control"
+        formControlName="zip_code"
+        autocomplete="none"
+      />
+      <div
+        *ngIf="
+          addressForm.get('zip_code').errors &&
+          addressForm.get('zip_code').touched
+        "
+      >
         <p class="value-err text-danger show">Please enter Pincode!</p>
       </div>
     </div>
     <div class="form-group col-sm-6">
-      <label>Mobile No
+      <label
+        >Mobile No
         <span class="required">*</span>
       </label>
-      <input type="tel" class="form-control" formControlName="phone" autocomplete="none">
-      <div *ngIf="addressForm.get('phone').errors && addressForm.get('phone').touched">
-        <p class="value-err text-danger show">Please enter valid phone number!</p>
+      <input
+        type="tel"
+        class="form-control"
+        formControlName="phone"
+        autocomplete="none"
+      />
+      <div
+        *ngIf="
+          addressForm.get('phone').errors && addressForm.get('phone').touched
+        "
+      >
+        <p class="value-err text-danger show">
+          Please enter valid phone number!
+        </p>
       </div>
     </div>
     <div class="form-group col-sm-6">
-      <label>First Name
+      <label
+        >First Name
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="first_name" autocomplete="none">
-      <div *ngIf="addressForm.get('first_name').errors && addressForm.get('first_name').touched">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="first_name"
+        autocomplete="none"
+      />
+      <div
+        *ngIf="
+          addressForm.get('first_name').errors &&
+          addressForm.get('first_name').touched
+        "
+      >
         <p class="value-err text-danger show">Please enter first name!</p>
       </div>
     </div>
     <div class="form-group col-sm-6">
-      <label> Last Name
+      <label>
+        Last Name
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="last_name" autocomplete="none">
-      <div *ngIf="addressForm.get('last_name').errors && addressForm.get('last_name').touched">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="last_name"
+        autocomplete="none"
+      />
+      <div
+        *ngIf="
+          addressForm.get('last_name').errors &&
+          addressForm.get('last_name').touched
+        "
+      >
         <p class="value-err text-danger show">Please enter last name!</p>
       </div>
     </div>
     <div class="form-group col-sm-6">
-      <label> Locality / Town
+      <label>
+        Locality / Town
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="address_line_2" autocomplete="none">
-      <div *ngIf="addressForm.get('address_line_2').errors && addressForm.get('address_line_2').touched">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="address_line_2"
+        autocomplete="none"
+      />
+      <div
+        *ngIf="
+          addressForm.get('address_line_2').errors &&
+          addressForm.get('address_line_2').touched
+        "
+      >
         <p class="value-err text-danger show">Please enter locality / town!</p>
       </div>
     </div>
     <div class="form-group col-sm-6">
-      <label>City / District
+      <label
+        >City / District
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="city" autocomplete="none">
-      <div *ngIf="addressForm.get('city').errors && addressForm.get('city').touched">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="city"
+        autocomplete="none"
+      />
+      <div
+        *ngIf="
+          addressForm.get('city').errors && addressForm.get('city').touched
+        "
+      >
         <p class="value-err text-danger show">Please enter city / district!</p>
       </div>
     </div>
     <div class="form-group col-sm-12">
-      <label>Address
+      <label
+        >Address
         <span class="required">*</span>
       </label>
-      <textarea type="text" class="form-control" formControlName="address_line_1" autocomplete="none"></textarea>
-      <div *ngIf="addressForm.get('address_line_1').errors && addressForm.get('address_line_1').touched">
-        <p class="value-err text-danger show">Please enter address(minimum 10 characters long)!</p>
+      <textarea
+        type="text"
+        class="form-control"
+        formControlName="address_line_1"
+        autocomplete="none"
+      ></textarea>
+      <div
+        *ngIf="
+          addressForm.get('address_line_1').errors &&
+          addressForm.get('address_line_1').touched
+        "
+      >
+        <p class="value-err text-danger show">
+          Please enter address(minimum 10 characters long)!
+        </p>
       </div>
     </div>
     <div class="form-group col-sm-6">
       <label> Country </label>
       <span class="required">*</span>
-      <select class="form-control" formControlName="country_id" [(ngModel)]="countryId" (change)="selectedCountry(countryId)">
+      <select
+        class="form-control"
+        formControlName="country_id"
+        [(ngModel)]="countryId"
+        (change)="selectedCountry(countryId)"
+      >
         <ng-template #showDefaultOption>
           <option>Select Country</option>
         </ng-template>
-        <option *ngIf="modifiedAddress!=null && !isCountryChanged; else showDefaultOption" [ngValue]="countryId">{{modifiedAddress.country.name}}</option>
-        <option *ngFor="let country of countries" [ngValue]="country.id">{{country.name}}</option>
+        <option
+          *ngIf="
+            modifiedAddress != null && !isCountryChanged;
+            else showDefaultOption
+          "
+          [ngValue]="countryId"
+          >{{ modifiedAddress.country.name }}</option
+        >
+        <option *ngFor="let country of countries" [ngValue]="country.id">{{
+          country.name
+        }}</option>
       </select>
-      <div *ngIf="addressForm.get('country_id').errors && addressForm.get('country_id').touched">
+      <div
+        *ngIf="
+          addressForm.get('country_id').errors &&
+          addressForm.get('country_id').touched
+        "
+      >
         <p class="value-err text-danger show">Please select country!</p>
       </div>
     </div>
     <div class="form-group col-sm-6">
       <label> State </label>
       <span class="required">*</span>
-      <select class="form-control" formControlName="state_id" [(ngModel)]="stateId" (change)="selectedState(stateId)">
+      <select
+        class="form-control"
+        formControlName="state_id"
+        [(ngModel)]="stateId"
+        (change)="selectedState(stateId)"
+      >
         <ng-template #showDefault>
           <option>Select State</option>
         </ng-template>
-        <option *ngIf="modifiedAddress!=null && !isStateChanged; else showDefault" [ngValue]="stateId">{{modifiedAddress.state.name}}</option>
-        <option *ngFor="let state of (states$ | async)" [ngValue]="state.id">{{state.name}}</option>
+        <option
+          *ngIf="modifiedAddress != null && !isStateChanged; else showDefault"
+          [ngValue]="stateId"
+          >{{ modifiedAddress.state.name }}</option
+        >
+        <option *ngFor="let state of (states$ | async)" [ngValue]="state.id">{{
+          state.name
+        }}</option>
       </select>
-      <div *ngIf="addressForm.get('state_id').errors && addressForm.get('state_id').touched">
+      <div
+        *ngIf="
+          addressForm.get('state_id').errors &&
+          addressForm.get('state_id').touched
+        "
+      >
         <p class="value-err text-danger show">Please select state!</p>
       </div>
     </div>
@@ -96,7 +210,12 @@
       <button class="btn themebtnprimary">Save</button>
     </div>
     <div class="col-12 col-sm-2 " style="padding-top: 15px;">
-      <button class="btn themebtnprimarybasic mb-3" (click)="closeAddressForm()">Cancel</button>
+      <button
+        class="btn themebtnprimarybasic mb-3"
+        (click)="closeAddressForm()"
+      >
+        Cancel
+      </button>
     </div>
   </div>
 </form>

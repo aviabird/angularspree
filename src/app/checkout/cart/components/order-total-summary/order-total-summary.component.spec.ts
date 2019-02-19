@@ -8,9 +8,8 @@ describe('OrderTotalSummaryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrderTotalSummaryComponent ]
-    })
-    .compileComponents();
+      declarations: [OrderTotalSummaryComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

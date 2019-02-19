@@ -14,7 +14,7 @@ export class FilterSummarySortByComponent implements OnInit {
   );
   @Output() selectedSort = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.sortConfig = this.sortConfig.filter(
@@ -26,5 +26,4 @@ export class FilterSummarySortByComponent implements OnInit {
     this.currentSort = sortOption;
     this.selectedSort.emit({ name: 'sort', value: sortOption.value });
   }
-
 }

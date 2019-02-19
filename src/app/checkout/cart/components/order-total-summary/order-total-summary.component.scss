@@ -3,8 +3,7 @@
   .order-summary-span {
     position: relative;
     padding: none;
-    .bag-total,
-      {
+    .bag-total {
       padding: 1rem 0;
       border-bottom: 1px solid $gray-10;
       @media screen and(min-width: 320px) and(max-width: 768px) {
@@ -24,11 +23,11 @@
         font-size: 1.2em;
       }
     }
-    .bag-total>.value,
-    .coupon>.apply-coupon,
-    .shipping>.shipping-fee {
+    .bag-total > .value,
+    .coupon > .apply-coupon,
+    .shipping > .shipping-fee {
       @media screen and(min-width: 320px) and(max-width: 768px) {
-        position:static;
+        position: static;
       }
       position: absolute;
       right: 0;
@@ -37,11 +36,11 @@
       font-size: 1.2em;
       font-weight: 600;
     }
-    .coupon>.c-blue {
+    .coupon > .c-blue {
       color: $theme-action-color - 50;
       cursor: pointer;
     }
-    .shipping>.c-green {
+    .shipping > .c-green {
       color: $theme-action-color - 80;
       width: 11.8em;
       font-size: 14px;
@@ -55,7 +54,6 @@
     clear: right;
     .place-order {
       text-align: right;
-      
     }
   }
 }
@@ -72,7 +70,7 @@
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     filter: FlipH;
-    -ms-filter: "FlipH";
+    -ms-filter: 'FlipH';
   }
   &:hover {
     background-color: $theme-main-color - 20 !important;
@@ -114,13 +112,13 @@
     left: 10vw;
   }
   .progress {
-    background-color: rgba(0, 0, 0, .1);
-    height: .9em;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 0.9em;
     top: 4px;
     position: relative;
     z-index: 0;
     .progress-bar {
-      background-color: $red
+      background-color: $red;
     }
   }
 }

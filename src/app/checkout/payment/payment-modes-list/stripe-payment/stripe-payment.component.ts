@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, OnDestroy, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnDestroy,
+  HostListener
+} from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
 import { environment } from '../../../../../environments/environment';
 import { Subscription } from 'rxjs';
@@ -11,7 +17,7 @@ import {
   getOrderNumber,
   getIsPaymentAdded,
   getPaymentEntities,
-  getShipAddress,
+  getShipAddress
 } from '../../../reducers/selectors';
 import { CheckoutActions } from '../../../actions/checkout.actions';
 import { Router } from '@angular/router';
@@ -41,23 +47,35 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private checkoutActions: CheckoutActions,
     private router: Router,
-    private checkOutService: CheckoutService,
-  ) { }
+    private checkOutService: CheckoutService
+  ) {}
 
   ngOnInit() {
     this.subscriptionList$.push(
-      this.store.select(getOrderId).subscribe(resOrderId => this.orderId = resOrderId),
-      this.store.select(getTotalCartValue).subscribe(resOrderAmt => this.orderAmount = resOrderAmt),
-      this.store.select(getOrderNumber).subscribe(orderNumber => this.orderNumber = orderNumber),
-      this.store.select(getIsPaymentAdded).subscribe(status => this.isPaymentAdded = status),
-      this.store.select(getPaymentEntities).subscribe(data => { this.payment = data[this.paymentMethodId] }),
-      this.store.select(getShipAddress).subscribe(address => { this.address = address })
+      this.store
+        .select(getOrderId)
+        .subscribe(resOrderId => (this.orderId = resOrderId)),
+      this.store
+        .select(getTotalCartValue)
+        .subscribe(resOrderAmt => (this.orderAmount = resOrderAmt)),
+      this.store
+        .select(getOrderNumber)
+        .subscribe(orderNumber => (this.orderNumber = orderNumber)),
+      this.store
+        .select(getIsPaymentAdded)
+        .subscribe(status => (this.isPaymentAdded = status)),
+      this.store.select(getPaymentEntities).subscribe(data => {
+        this.payment = data[this.paymentMethodId];
+      }),
+      this.store.select(getShipAddress).subscribe(address => {
+        this.address = address;
+      })
     );
   }
 
   stripePayment() {
     // Stripe accepts order amount in `cents`.
-    const amountInCents = (this.orderAmount * 100);
+    const amountInCents = this.orderAmount * 100;
     this.handler.open({
       name: `${environment.appName}`,
       description: 'Make your payment.',
@@ -65,49 +83,63 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
     });
 
     this.handler.open({
-      closed: function () {
-      }
-    })
+      closed: function() {}
+    });
   }
 
   stripeRequestHandler() {
     this.subscriptionList$.push(
-      this.paymentService.getStripeKey(this.paymentMethodId).subscribe((responseKey: PaymentKey) => {
-        this.handler = StripeCheckout.configure({
-          key: responseKey.publishable_key,
-          image: environment.config.header.brand.logoPng,
-          locale: 'auto',
-          // Token to sent to Aviacommerce API to complete the payment process.
-          token: (cardToken: { id: string }) => {
-            this.loader = true;
-            this.makeStripeRequest(cardToken.id);
-          }
+      this.paymentService
+        .getStripeKey(this.paymentMethodId)
+        .subscribe((responseKey: PaymentKey) => {
+          this.handler = StripeCheckout.configure({
+            key: responseKey.publishable_key,
+            image: environment.config.header.brand.logoPng,
+            locale: 'auto',
+            // Token to sent to Aviacommerce API to complete the payment process.
+            token: (cardToken: { id: string }) => {
+              this.loader = true;
+              this.makeStripeRequest(cardToken.id);
+            }
+          });
         })
-      })
     );
   }
 
   makeStripeRequest(token: string) {
     this.subscriptionList$.push(
-      this.paymentService.makeStripePayment(
-        token, this.orderNumber, this.payment.id,
-        this.orderAmount, this.paymentMethodId,
-        this.orderId, this.address
-      ).pipe(
-        switchMap(order => {
-          return this.checkOutService.fetchCurrentOrder().pipe(
-            tap(_ => {
-              this.loader = false;
-              this.redirectToSuccessPage(order.order.order_number)
-            })
-          )
-        })
-      ).subscribe()
-    )
+      this.paymentService
+        .makeStripePayment(
+          token,
+          this.orderNumber,
+          this.payment.id,
+          this.orderAmount,
+          this.paymentMethodId,
+          this.orderId,
+          this.address
+        )
+        .pipe(
+          switchMap(order => {
+            return this.checkOutService.fetchCurrentOrder().pipe(
+              tap(_ => {
+                this.loader = false;
+                this.redirectToSuccessPage(order.order.order_number);
+              })
+            );
+          })
+        )
+        .subscribe()
+    );
   }
 
   addPayment() {
-    this.store.dispatch(this.checkoutActions.bindPayment(this.paymentMethodId, this.orderId, this.orderAmount));
+    this.store.dispatch(
+      this.checkoutActions.bindPayment(
+        this.paymentMethodId,
+        this.orderId,
+        this.orderAmount
+      )
+    );
     this.stripeRequestHandler();
   }
 
@@ -117,8 +149,9 @@ export class StripePaymentComponent implements OnInit, OnDestroy {
   }
 
   private redirectToSuccessPage(orderNumber) {
-    this.router.navigate(['checkout', 'order-success'],
-      { queryParams: { orderReferance: orderNumber } });
+    this.router.navigate(['checkout', 'order-success'], {
+      queryParams: { orderReferance: orderNumber }
+    });
   }
 
   ngOnDestroy() {

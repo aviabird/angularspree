@@ -1,4 +1,4 @@
-<div *ngIf="itemTotal$ | async;let itemTotal">
+<div *ngIf="(itemTotal$ | async); let itemTotal">
   <div class="del-lbl">
     DELIVERY TYPE
   </div>
@@ -10,28 +10,43 @@
     </div>
   </div>
   <div class="mini-bag-summary">
-    <div class="items">{{totalCartItems$ | async}} ITEMS</div>
+    <div class="items">{{ totalCartItems$ | async }} ITEMS</div>
     <div class="order-total">
       <span>Sub Total</span>
-      <span class="value">{{currency}}{{itemTotal | number:'1.2-2'}}</span>
+      <span class="value">{{ currency }}{{ itemTotal | number: '1.2-2' }}</span>
     </div>
 
-    <div class="shipping" *ngIf="(shipTotal$ | async);let shipTotal">
+    <div class="shipping" *ngIf="(shipTotal$ | async); let shipTotal">
       <span>Delivery</span>
-      <span class="shipping-fee c-green" *ngIf="shipTotal > 0">{{currency}}{{shipTotal | number:'1.2-2'}}</span>
+      <span class="shipping-fee c-green" *ngIf="shipTotal > 0"
+        >{{ currency }}{{ shipTotal | number: '1.2-2' }}</span
+      >
 
-      <span class="shipping-fee c-green" *ngIf="shipTotal ==='0.0' && itemTotal >= freeShippingAmount ">Free</span>
-      <span class="shipping-fee c-green" *ngIf="shipTotal ==='0.0' && itemTotal < freeShippingAmount ">Only {{currency}}{{(freeShippingAmount - itemTotal)| number:'1.2-2'}} to go for free shipping.</span>
+      <span
+        class="shipping-fee c-green"
+        *ngIf="shipTotal === '0.0' && itemTotal >= freeShippingAmount"
+        >Free</span
+      >
+      <span
+        class="shipping-fee c-green"
+        *ngIf="shipTotal === '0.0' && itemTotal < freeShippingAmount"
+        >Only {{ currency
+        }}{{ freeShippingAmount - itemTotal | number: '1.2-2' }} to go for free
+        shipping.</span
+      >
     </div>
-    <div *ngIf="adjustmentTotal$ | async;let adjustmentTotal">
+    <div *ngIf="(adjustmentTotal$ | async); let adjustmentTotal">
       <div class="order-total" *ngIf="adjustmentTotal > 0">
         <span>Adjustment</span>
-        <span class="value">{{adjustmentTotal}}</span>
+        <span class="value">{{ adjustmentTotal }}</span>
       </div>
     </div>
   </div>
-  <button 
-    [disabled]="(orderState$ | async) !=='address'" 
-    (click)="checkoutToPayment()" 
-    class="btn themebtnprimary">continue to payment</button>
+  <button
+    [disabled]="(orderState$ | async) !== 'address'"
+    (click)="checkoutToPayment()"
+    class="btn themebtnprimary"
+  >
+    continue to payment
+  </button>
 </div>

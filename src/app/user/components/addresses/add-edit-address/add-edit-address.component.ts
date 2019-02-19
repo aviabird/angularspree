@@ -15,13 +15,16 @@ export class AddEditAddressComponent implements OnInit {
   states: any;
   @Input() isEditAddrPressed: boolean;
   @Input() addressParams: any;
-  @Output() isAddressEdited: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() isAddressEdited: EventEmitter<boolean> = new EventEmitter<
+    boolean
+  >();
   @Input() stateName: any;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private addrService: AddressService,
     private toastrService: ToastrService,
-    private userService: UserService,
+    private userService: UserService
   ) {
     this.addressForm = addrService.initAddressForm();
   }
@@ -50,7 +53,6 @@ export class AddEditAddressComponent implements OnInit {
       //       this.navigatePage();
       //       this.toastrService.success(res.status, 'Success!')
       //     })
-
       // } else {
       //   this.addressParams.user.ship_address = address;
       //   this.userService.createUserAddress(this.addressParams)
@@ -60,7 +62,10 @@ export class AddEditAddressComponent implements OnInit {
       //     })
       // }
     } else {
-      this.toastrService.error('Some fields are blank!', 'Unable to save address!');
+      this.toastrService.error(
+        'Some fields are blank!',
+        'Unable to save address!'
+      );
     }
   }
 
@@ -75,6 +80,6 @@ export class AddEditAddressComponent implements OnInit {
     addressForm.get('phone').setValue(existingAddress.phone);
   }
   navigatePage() {
-    this.isAddressEdited.emit(true)
+    this.isAddressEdited.emit(true);
   }
 }

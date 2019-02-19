@@ -14,7 +14,7 @@ import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
   selector: 'app-address',
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.scss'],
-  animations: [fadeInAnimation],
+  animations: [fadeInAnimation]
 })
 export class AddressComponent implements OnInit, OnDestroy {
   orderId: number;
@@ -30,17 +30,19 @@ export class AddressComponent implements OnInit, OnDestroy {
   @HostBinding('@fadeInAnimation')
   public animatePage = true;
 
-
-  constructor(private store: Store<AppState>,
+  constructor(
+    private store: Store<AppState>,
     private userActions: UserActions,
     private checkoutAction: CheckoutActions,
-    private checkOutActions: CheckoutActions) {
-  }
+    private checkOutActions: CheckoutActions
+  ) {}
 
   ngOnInit() {
     this.store.dispatch(this.userActions.fetchUserAddress());
     this.subscriptionList$.push(
-      this.store.select(getOrderId).subscribe(orderId => this.orderId = orderId)
+      this.store
+        .select(getOrderId)
+        .subscribe(orderId => (this.orderId = orderId))
     );
     this.userAddresses$ = this.store.select(getUserAddressess);
     this.store.dispatch(this.userActions.fetchCountries());
@@ -60,7 +62,9 @@ export class AddressComponent implements OnInit, OnDestroy {
   getSelectedAddress(address: Address) {
     this.shipAddress = address;
     this.isUserSelectedAddress = true;
-    this.store.dispatch(this.checkoutAction.bindAddress(this.shipAddress, this.orderId))
+    this.store.dispatch(
+      this.checkoutAction.bindAddress(this.shipAddress, this.orderId)
+    );
   }
 
   editSelectedAddress(selectedAddress: Address) {
@@ -74,10 +78,11 @@ export class AddressComponent implements OnInit, OnDestroy {
 
   checkoutToPayment() {
     this.subscriptionList$.push(
-      this.store.select(getOrderId)
-        .subscribe(orderId => {
-          this.store.dispatch(this.checkOutActions.getShippingPreferences(orderId, []))
-        })
+      this.store.select(getOrderId).subscribe(orderId => {
+        this.store.dispatch(
+          this.checkOutActions.getShippingPreferences(orderId, [])
+        );
+      })
     );
   }
 

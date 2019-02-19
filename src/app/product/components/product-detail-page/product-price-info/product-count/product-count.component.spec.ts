@@ -1,16 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductPriceInfoComponent } from '../product-price-info.component';
 
-
 describe('ProductPriceInfoComponent', () => {
   let component: ProductPriceInfoComponent;
   let fixture: ComponentFixture<ProductPriceInfoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductPriceInfoComponent ]
-    })
-    .compileComponents();
+      declarations: [ProductPriceInfoComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

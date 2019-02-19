@@ -18,13 +18,12 @@ export class FavoriteProductListItemComponent implements OnInit {
     private productService: ProductService,
     private store: Store<AppState>,
     private userActions: UserActions
-  ) { }
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   removeFromFavorite(id: number) {
-    this.productService.removeFromFavorite(id).subscribe((status) => {
+    this.productService.removeFromFavorite(id).subscribe(status => {
       // this.store.dispatch(this.userActions.removeFromFavoriteProducts(id));
     });
   }

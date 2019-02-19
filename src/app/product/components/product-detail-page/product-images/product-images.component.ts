@@ -1,5 +1,10 @@
 import { Image } from './../../../../core/models/image';
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
@@ -27,11 +32,9 @@ export class ProductImagesComponent implements OnInit {
     custom: 'banner'
   };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 
   getProductImageUrl(url) {
     return url;

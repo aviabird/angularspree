@@ -2,7 +2,7 @@
 // <div class="selected-theme">...
 @import '../../selected_theme_variables';
 .selected-theme {
-  @import "header";
+  @import 'header';
   input,
   button {
     &:focus {

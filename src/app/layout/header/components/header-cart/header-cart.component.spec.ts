@@ -8,9 +8,8 @@ describe('HeaderCartComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderCartComponent ]
-    })
-    .compileComponents();
+      declarations: [HeaderCartComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

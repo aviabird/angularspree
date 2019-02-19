@@ -9,8 +9,7 @@ describe('OrderFailedComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [OrderFailedComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

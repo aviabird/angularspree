@@ -4,7 +4,7 @@
   margin: 0 auto;
   padding: 2em 0;
   border-radius: 4px;
-  border:1px solid $gray-10;
+  border: 1px solid $gray-10;
   label {
     font-size: 1em;
     color: $gray-900;
@@ -13,19 +13,25 @@
     background-color: $gray-100;
     border-radius: 4px;
     padding: 1em;
-    margin:0 15px;
+    margin: 0 15px;
   }
-  h4{color: $gray-900;font-size: 1.2em;}
-  h2{color: $gray-900;font-size: 1.7em;}
+  h4 {
+    color: $gray-900;
+    font-size: 1.2em;
+  }
+  h2 {
+    color: $gray-900;
+    font-size: 1.7em;
+  }
   ul {
     list-style: inside;
     text-indent: -22px;
     padding: 1rem 0rem 1rem 1.4rem;
     line-height: 1.5em;
     li {
-      padding-bottom: .5rem;
+      padding-bottom: 0.5rem;
       font-size: 1em;
-      color:$gray-900;
+      color: $gray-900;
     }
   }
 }

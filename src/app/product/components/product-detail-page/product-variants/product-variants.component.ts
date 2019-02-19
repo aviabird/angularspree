@@ -11,18 +11,15 @@ export class ProductVariantsComponent implements OnInit {
   @Input() correspondingOptions: any;
   @Output() onOptionClickEvent = new EventEmitter();
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onOptionClick(option: {}) {
     this.onOptionClickEvent.emit(option);
   }
 
-  isDisabled(arrayTocheck: { indexOf: (arg0: any) => number; }, value: any) {
-    return (arrayTocheck.indexOf(value) === -1);
+  isDisabled(arrayTocheck: { indexOf: (arg0: any) => number }, value: any) {
+    return arrayTocheck.indexOf(value) === -1;
   }
-
 }

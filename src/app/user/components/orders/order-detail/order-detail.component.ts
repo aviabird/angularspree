@@ -1,5 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { Order } from '../../../../core/models/order';
 import { ActivatedRoute } from '@angular/router';
@@ -28,18 +34,15 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private checkoutService: CheckoutService,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.routeSubscription$ = this.route.params.subscribe(
-      (params: Object) => {
-        this.orderNumber = params['number'];
-        this.orderSubscription$ =
-          this.userService
-            .getOrderDetail(this.orderNumber)
-            .subscribe(order => this.order = order);
-      }
-    );
+    this.routeSubscription$ = this.route.params.subscribe((params: Object) => {
+      this.orderNumber = params['number'];
+      this.orderSubscription$ = this.userService
+        .getOrderDetail(this.orderNumber)
+        .subscribe(order => (this.order = order));
+    });
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
     }

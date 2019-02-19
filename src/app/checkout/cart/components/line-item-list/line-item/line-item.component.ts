@@ -24,7 +24,7 @@ export class LineItemComponent implements OnInit, OnDestroy {
   quantityCount: number;
   optionName: string;
   optionValue: string;
-  noImageUrl = 'assets/default/image-placeholder.svg'
+  noImageUrl = 'assets/default/image-placeholder.svg';
   unit_price: Price;
   currency = environment.config.currency_symbol;
   subscriptionList$: Array<Subscription> = [];
@@ -33,12 +33,14 @@ export class LineItemComponent implements OnInit, OnDestroy {
     private store: Store<AppState>,
     private actions: CheckoutActions,
     private checkoutService: CheckoutService
-  ) { }
+  ) {}
 
   ngOnInit() {
     const lineItem = this.lineItem.product;
     if (lineItem) {
-      this.image = lineItem.images[0] ? lineItem.images[0].small : this.noImageUrl;
+      this.image = lineItem.images[0]
+        ? lineItem.images[0].small
+        : this.noImageUrl;
       this.name = lineItem.name;
       this.quantity = this.lineItem.quantity;
       this.unit_price = this.lineItem.unit_price as Price;
@@ -51,11 +53,14 @@ export class LineItemComponent implements OnInit, OnDestroy {
 
   removeLineItem() {
     this.subscriptionList$.push(
-      this.checkoutService.deleteLineItem(this.lineItem.id).pipe(
-        switchMap(_ => {
-          return this.checkoutService.fetchCurrentOrder();
-        })
-      ).subscribe()
+      this.checkoutService
+        .deleteLineItem(this.lineItem.id)
+        .pipe(
+          switchMap(_ => {
+            return this.checkoutService.fetchCurrentOrder();
+          })
+        )
+        .subscribe()
     );
   }
 
@@ -77,7 +82,9 @@ export class LineItemComponent implements OnInit, OnDestroy {
   }
 
   updateLineItemQuantity(quantity: number) {
-    this.store.dispatch(this.actions.addToCart(this.lineItem.product.id, quantity, false));
+    this.store.dispatch(
+      this.actions.addToCart(this.lineItem.product.id, quantity, false)
+    );
   }
 
   ngOnDestroy() {

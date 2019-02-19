@@ -10,13 +10,14 @@ import { Address } from '../../../core/models/address';
   styleUrls: ['./addresses.component.scss']
 })
 export class AddressesComponent implements OnInit {
-
-  userAddresses$: Observable<Array<Address>>
+  userAddresses$: Observable<Array<Address>>;
   isEditAddrPressed: boolean;
   selectedAddress: Address;
 
-  constructor(private userService: UserService,
-    private addressService: AddressService) { }
+  constructor(
+    private userService: UserService,
+    private addressService: AddressService
+  ) {}
 
   ngOnInit() {
     this.getUserAddresses();
@@ -38,7 +39,7 @@ export class AddressesComponent implements OnInit {
   buildAddressParams() {
     return this.selectedAddress;
   }
-  
+
   addressEditedDone() {
     this.isEditAddrPressed = false;
   }

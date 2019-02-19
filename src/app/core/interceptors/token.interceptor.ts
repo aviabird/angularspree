@@ -11,13 +11,14 @@ import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+  constructor(private injector: Injector) {}
 
-  constructor(private injector: Injector) { }
-
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     const auth = this.injector.get(AuthService);
-      const clonedRequest = request.clone({
+    const clonedRequest = request.clone({
       headers: auth.getTokenHeader(request),
       url: this.fixUrl(request.url)
     });

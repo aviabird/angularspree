@@ -5,9 +5,9 @@
       <i class="fa fa-check-circle text-success"></i>
     </div>
     <div>
-      <p class="w-75 text-success thankyoumsg"> Your order has been placed and is being processed. When the item(s) are
-        shipped, you will receive an email with the
-        details.
+      <p class="w-75 text-success thankyoumsg">
+        Your order has been placed and is being processed. When the item(s) are
+        shipped, you will receive an email with the details.
       </p>
     </div>
   </div>
@@ -18,7 +18,9 @@
         <table>
           <tr>
             <td>Order ID:</td>
-            <td>{{orderDetails.number}}({{orderDetails.item_count}} Item(s))</td>
+            <td>
+              {{ orderDetails.number }}({{ orderDetails.item_count }} Item(s))
+            </td>
           </tr>
           <!-- <tr>
             <td>Order Date:</td>
@@ -26,7 +28,7 @@
           </tr> -->
           <tr>
             <td>Total Amount:</td>
-            <td>{{currency}} {{orderDetails.order_total_amount.amount}}</td>
+            <td>{{ currency }} {{ orderDetails.order_total_amount.amount }}</td>
           </tr>
           <!-- <tr>
             <td>Payment Status:</td>
@@ -40,21 +42,27 @@
         <h3>Delivery Address</h3>
         <table>
           <tr>
-            <td>Name: </td>
-            <td>{{orderDetails.shipping_address.first_name}} {{orderDetails.shipping_address.last_name}}</td>
+            <td>Name:</td>
+            <td>
+              {{ orderDetails.shipping_address.first_name }}
+              {{ orderDetails.shipping_address.last_name }}
+            </td>
           </tr>
           <tr>
             <td>Address:</td>
-            <td>{{orderDetails.shipping_address.address_line_1}}, {{orderDetails.shipping_address.address_line_2}},
-              {{orderDetails.shipping_address.city}}</td>
+            <td>
+              {{ orderDetails.shipping_address.address_line_1 }},
+              {{ orderDetails.shipping_address.address_line_2 }},
+              {{ orderDetails.shipping_address.city }}
+            </td>
           </tr>
           <tr>
             <td>Pincode:</td>
-            <td>{{orderDetails.shipping_address.zip_code}}</td>
+            <td>{{ orderDetails.shipping_address.zip_code }}</td>
           </tr>
           <tr>
             <td>Phone:</td>
-            <td>{{orderDetails.shipping_address.phone}}</td>
+            <td>{{ orderDetails.shipping_address.phone }}</td>
           </tr>
           <!-- <tr>
             <td>Email:</td>
@@ -71,46 +79,61 @@
       </div> -->
     </div>
   </div>
-  <div *ngIf="layoutState$ | async; let layoutState">
-    <div class="order-items shadow-sm mt-3 mb-3" *ngIf="!layoutState.isMobileView">
+  <div *ngIf="(layoutState$ | async); let layoutState">
+    <div
+      class="order-items shadow-sm mt-3 mb-3"
+      *ngIf="!layoutState.isMobileView"
+    >
       <h3>Item(s)</h3>
       <div class="row">
-        <div *ngFor="let item of  orderDetails.line_items" class="lineitems col-12 col-sm-6">
+        <div
+          *ngFor="let item of orderDetails.line_items"
+          class="lineitems col-12 col-sm-6"
+        >
           <div class="row">
             <div class="col-12 pr-0 col-sm-2">
               <a [routerLink]="['/', item.product.slug]" class="col-sm col-3">
-                <img [src]="getProductImageUrl(item)">
+                <img [src]="getProductImageUrl(item)" />
               </a>
             </div>
-            <div class="col-12 col-sm-7" [routerLink]="['/', item.product.slug]">
-              <div class="lineitems-name"> {{item.product.name}}</div>
+            <div
+              class="col-12 col-sm-7"
+              [routerLink]="['/', item.product.slug]"
+            >
+              <div class="lineitems-name">{{ item.product.name }}</div>
               <!-- <div class="lineitems-info"> {{item.variant.options_text}}</div> -->
             </div>
             <div class="col-12 col-sm-3">
-              <div class="price">{{currency}} {{item.total_price}}</div>
-              <div class="qty"> QTY: {{item.quantity}}</div>
+              <div class="price">{{ currency }} {{ item.total_price }}</div>
+              <div class="qty">QTY: {{ item.quantity }}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="order-items shadow-sm mt-3 mb-3" *ngIf="layoutState.isMobileView">
+    <div
+      class="order-items shadow-sm mt-3 mb-3"
+      *ngIf="layoutState.isMobileView"
+    >
       <h3>Item(s)</h3>
       <div class="row">
-        <div *ngFor="let item of  orderDetails.line_items" class="lineitems col-12 col-sm-6">
+        <div
+          *ngFor="let item of orderDetails.line_items"
+          class="lineitems col-12 col-sm-6"
+        >
           <div class="row">
             <div class="col-12 pr-0 col-sm-2">
               <a [routerLink]="['/', item.product.slug]" class="col-sm col-3">
-                <img [src]="getProductImageUrl(item)">
+                <img [src]="getProductImageUrl(item)" />
               </a>
             </div>
             <div class="col-6 col-sm-8" [routerLink]="['/', item.product.slug]">
-              <div class="lineitems-name"> {{item.product.name}}</div>
+              <div class="lineitems-name">{{ item.product.name }}</div>
               <!-- <div class="lineitems-info"> {{item.variant.options_text}}</div> -->
             </div>
             <div class="col-6 col-sm-2">
-              <div class="qty"> QTY: {{item.quantity}}</div>
-              <div class="price">{{currency}} {{item.total_price}}</div>
+              <div class="qty">QTY: {{ item.quantity }}</div>
+              <div class="price">{{ currency }} {{ item.total_price }}</div>
             </div>
           </div>
         </div>

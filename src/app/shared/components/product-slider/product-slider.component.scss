@@ -1,4 +1,4 @@
-@import "../../scss/selected_theme_variables";
+@import '../../scss/selected_theme_variables';
 :host {
   /deep/ .section-title {
     color: $black;
@@ -81,6 +81,5 @@
       background-image: url(../../../../assets/custom/arrow-right.png);
       background-position: 11px 8px;
     }
-
   }
 }

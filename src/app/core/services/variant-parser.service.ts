@@ -10,16 +10,16 @@ import { debug } from 'util';
 interface OptionTypesHash {
   [id: string]: {
     [id: string]: {
-      optionValue: {},
+      optionValue: {};
       variantIds: Array<any>;
-    }
+    };
   };
 }
 
 @Injectable()
 export class VariantParserService {
   currVariantOptionValues: any;
-  constructor() { }
+  constructor() {}
 
   /**
    *
@@ -42,15 +42,23 @@ export class VariantParserService {
 
         variant.options.forEach(optionValue => {
           /**
-          * This loop runs for 750 times for 2 optiontypes and optionsvalues 3 and 5
-          * Refactor this latter;
-          */
+           * This loop runs for 750 times for 2 optiontypes and optionsvalues 3 and 5
+           * Refactor this latter;
+           */
 
           /**Check if optionvalue's type i.e smalls type is tsize and then procced else not
            * i.e for tsize option type color option value like green will be ignored.
            */
           if (optionValue.option_type.name === optionType.name) {
-            Object.assign(optionTypesHash, this.singleOptionTypeHashMaker(optionValue, optionTypesHash, optionType, variant));
+            Object.assign(
+              optionTypesHash,
+              this.singleOptionTypeHashMaker(
+                optionValue,
+                optionTypesHash,
+                optionType,
+                variant
+              )
+            );
           }
         });
       });
@@ -65,22 +73,31 @@ export class VariantParserService {
    *
    * @return: {tsize: {small: {etc etc etc}}};
    */
-  singleOptionTypeHashMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
-    optionType: OptionType, variant: Variant) {
-
+  singleOptionTypeHashMaker(
+    optionValue: OptionValue,
+    optionTypesHash: OptionTypesHash,
+    optionType: OptionType,
+    variant: Variant
+  ) {
     const optionTypeName: string = optionType.name;
     if (optionTypesHash[optionTypeName] != null) {
-
       // This will become value of op["tsize"] i.e {small: {etc, etc}};
-      optionTypesHash[optionTypeName] = Object.assign({},
+      optionTypesHash[optionTypeName] = Object.assign(
+        {},
         optionTypesHash[optionTypeName],
-        this.optionMaker(optionValue, optionTypesHash, optionType, variant));
+        this.optionMaker(optionValue, optionTypesHash, optionType, variant)
+      );
 
       return optionTypesHash;
     } else {
       const singleOption = {};
       // e.g: singleOption["tsize"] = {small: {etc, etc}};
-      singleOption[optionTypeName] = this.optionMaker(optionValue, optionTypesHash, optionType, variant);
+      singleOption[optionTypeName] = this.optionMaker(
+        optionValue,
+        optionTypesHash,
+        optionType,
+        variant
+      );
       return singleOption;
     }
   }
@@ -90,13 +107,21 @@ export class VariantParserService {
    * say optionType is tsize  i.e key then here we making value of that option OptionType
    * like { small: {optionvalue: {}, variant_ids: [1,2,3,4]}};
    */
-  optionMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
-    optionType: OptionType, variant: Variant) {
-
+  optionMaker(
+    optionValue: OptionValue,
+    optionTypesHash: OptionTypesHash,
+    optionType: OptionType,
+    variant: Variant
+  ) {
     const name = optionValue.value;
     const optionInnerValue = {};
     // e.g: optionInnverValue['small'] = {option_value: {etc ,etc}, variant_ids: [1,2,3,4]}
-    optionInnerValue[name] = this.optionInnerValueMaker(optionValue, optionTypesHash, optionType, variant);
+    optionInnerValue[name] = this.optionInnerValueMaker(
+      optionValue,
+      optionTypesHash,
+      optionType,
+      variant
+    );
     return optionInnerValue;
   }
 
@@ -104,13 +129,24 @@ export class VariantParserService {
    * Creates Inner Values of optionValue
    * like { option_value: {}, varaint_ids: [1,2,3,4]};
    */
-  optionInnerValueMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
-    optionType: OptionType, variant: Variant) {
-
-    return Object.assign({}, {
-      optionValue: optionValue,
-      variantIds: this.variantIdsMaker(optionValue, optionTypesHash, optionType, variant)
-    });
+  optionInnerValueMaker(
+    optionValue: OptionValue,
+    optionTypesHash: OptionTypesHash,
+    optionType: OptionType,
+    variant: Variant
+  ) {
+    return Object.assign(
+      {},
+      {
+        optionValue: optionValue,
+        variantIds: this.variantIdsMaker(
+          optionValue,
+          optionTypesHash,
+          optionType,
+          variant
+        )
+      }
+    );
   }
 
   /**
@@ -119,12 +155,22 @@ export class VariantParserService {
    * then take arr of the variant ids and push a new id in it and return;
    * else create a new array of the varaint id and return;
    */
-  variantIdsMaker(optionValue: OptionValue, optionTypesHash: OptionTypesHash,
-    optionType: OptionType, variant: Variant) {
-
-    const currespondingOptionValues = this.getOtherOptionValues(optionValue, optionType);
-    if (optionTypesHash[optionType.name] != null && optionTypesHash[optionType.name][optionValue.value] != null) {
-      const variantArr = optionTypesHash[optionType.name][optionValue.value].variantIds;
+  variantIdsMaker(
+    optionValue: OptionValue,
+    optionTypesHash: OptionTypesHash,
+    optionType: OptionType,
+    variant: Variant
+  ) {
+    const currespondingOptionValues = this.getOtherOptionValues(
+      optionValue,
+      optionType
+    );
+    if (
+      optionTypesHash[optionType.name] != null &&
+      optionTypesHash[optionType.name][optionValue.value] != null
+    ) {
+      const variantArr =
+        optionTypesHash[optionType.name][optionValue.value].variantIds;
       variantArr.push({ [variant.id]: currespondingOptionValues });
       return variantArr;
     } else {
@@ -144,11 +190,15 @@ export class VariantParserService {
   getOtherOptionValues(optionValue, currOptionType) {
     const correspondingOptionValues: any = [];
     for (let i = 0; i < this.currVariantOptionValues.length; i++) {
-      if (this.currVariantOptionValues[i].option_type.name !== currOptionType.name) {
-        correspondingOptionValues.push({ [this.currVariantOptionValues[i].option_type.name]: this.currVariantOptionValues[i].value });
+      if (
+        this.currVariantOptionValues[i].option_type.name !== currOptionType.name
+      ) {
+        correspondingOptionValues.push({
+          [this.currVariantOptionValues[i].option_type.name]: this
+            .currVariantOptionValues[i].value
+        });
       }
     }
     return correspondingOptionValues;
   }
 }
-

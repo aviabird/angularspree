@@ -22,9 +22,6 @@ export class ProductActions {
   static GET_RATING_OPTIONS = 'GET_RATING_OPTIONS';
   static GET_RATING_OPTIONS_SUCCESS = 'GET_RATING_OPTIONS_SUCCESS';
 
-
-
-
   getAllProducts(pageNumber = 1) {
     return {
       type: ProductActions.GET_ALL_PRODUCTS,
@@ -99,41 +96,41 @@ export class ProductActions {
   getBrands() {
     return {
       type: ProductActions.GET_ALL_BRANDS
-    }
+    };
   }
 
   getBrandsSuccess(brands: Array<Brand>) {
     return {
       type: ProductActions.GET_ALL_BRANDS_SUCCESS,
       payload: brands
-    }
+    };
   }
 
   writeProductReview(reviewParams: Object) {
     return {
       type: ProductActions.WRITE_PRODUCT_REVIEW,
       payload: reviewParams
-    }
+    };
   }
 
   writeProductReviewSuccess(review: Review) {
     return {
       type: ProductActions.WRITE_REVIEW_SUCCESS,
       payload: review
-    }
+    };
   }
 
   getRatingsOptions(ratingCategoryId: number) {
     return {
       type: ProductActions.GET_RATING_OPTIONS,
       payload: ratingCategoryId
-    }
+    };
   }
 
   getRatingsOptionsSuccess(ratingOptions: Array<RatingOption>) {
-  return {
-    type: ProductActions.GET_RATING_OPTIONS_SUCCESS,
-    payload: ratingOptions
+    return {
+      type: ProductActions.GET_RATING_OPTIONS_SUCCESS,
+      payload: ratingOptions
+    };
   }
-}
 }

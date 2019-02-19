@@ -1,3 +1,7 @@
-<a [routerLink]="['/s']" [queryParams]="{f: 'Brand:' + brand.name}" (click)=getBrandName(brand.name)>
-  <img [src]="getBrandImageUrl(brand.image_url)" class="img-fit">
+<a
+  [routerLink]="['/s']"
+  [queryParams]="{ f: 'Brand:' + brand.name }"
+  (click)="getBrandName(brand.name)"
+>
+  <img [src]="getBrandImageUrl(brand.image_url)" class="img-fit" />
 </a>

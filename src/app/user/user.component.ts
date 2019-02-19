@@ -1,5 +1,9 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '../../../node_modules/@angular/router';
+import {
+  Router,
+  NavigationEnd,
+  ActivatedRoute
+} from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +18,7 @@ export class UserComponent implements OnInit {
     { name: 'My Orders', url: '/user/orders' },
     { name: 'My Address', url: '/user/addresses' },
     { name: 'My Favorite Products', url: '/user/favorite-products' }
-  ]
+  ];
   constructor(private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -23,11 +27,11 @@ export class UserComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   showSelectedMenu(url) {
     this.selectedProfileMenu = this.profileOption.find(element =>
-      element.url.includes(url))
+      element.url.includes(url)
+    );
   }
 }

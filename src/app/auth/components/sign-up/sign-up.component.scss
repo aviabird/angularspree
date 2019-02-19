@@ -1,4 +1,4 @@
-@import "../../../shared/scss/selected_theme_variables";
+@import '../../../shared/scss/selected_theme_variables';
 .loginwindow {
   margin: 0 auto;
   overflow: hidden;
@@ -53,7 +53,7 @@
   border: 0;
   text-transform: uppercase;
   border-radius: 3px;
-  background-color:  $theme-action-color - 50;
+  background-color: $theme-action-color - 50;
 }
 
 .register-input-item {
@@ -134,8 +134,8 @@ legend {
   margin-right: 5px;
 }
 
-[type=checkbox],
-[type=radio] {
+[type='checkbox'],
+[type='radio'] {
   box-sizing: border-box;
   padding: 0;
 }
@@ -222,16 +222,16 @@ a {
   text-align: left;
 }
 
-[type=reset],
-[type=submit],
+[type='reset'],
+[type='submit'],
 button,
-html [type=button] {
+html [type='button'] {
   -webkit-appearance: button;
 }
 
-[type=button],
-[type=reset],
-[type=submit],
+[type='button'],
+[type='reset'],
+[type='submit'],
 button {
   cursor: pointer;
 }
@@ -244,8 +244,8 @@ input[type='number'] {
 
 /* Webkit browsers like Safari and Chrome */
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -281,7 +281,8 @@ textarea {
 }
 
 .register-sprite {
-  background: url(http://res.cloudinary.com/mally/image/upload/v1489480940/148948096411965_w5wbjb.png) no-repeat 0 0;
+  background: url(http://res.cloudinary.com/mally/image/upload/v1489480940/148948096411965_w5wbjb.png)
+    no-repeat 0 0;
   background-size: 159px 48px;
   display: inline-block;
 }
@@ -336,10 +337,10 @@ textarea {
   max-height: 500px;
   -webkit-transition-property: all;
   transition-property: all;
-  -webkit-transition-duration: .5s;
-  transition-duration: .5s;
-  -webkit-transition-timing-function: cubic-bezier(0, 1, .5, 1);
-  transition-timing-function: cubic-bezier(0, 1, .5, 1);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
 .register-gender-error-icon {

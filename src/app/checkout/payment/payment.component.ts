@@ -23,7 +23,6 @@ import { order as loadScripts } from 'scriptjs';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit, OnDestroy {
-
   totalCartValue$: Observable<number>;
   totalCartItems$: Observable<number>;
   address$: Observable<Address>;
@@ -34,9 +33,11 @@ export class PaymentComponent implements OnInit, OnDestroy {
   currency = environment.config.currency_symbol;
   orderSub$: Subscription;
 
-  constructor(private store: Store<AppState>,
+  constructor(
+    private store: Store<AppState>,
     private checkoutService: CheckoutService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit() {
     loadScripts(
@@ -45,7 +46,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
         'https://checkout.razorpay.com/v1/checkout.js'
       ],
       'payments',
-      () => { }
+      () => {}
     );
 
     this.totalCartValue$ = this.store.select(getTotalCartValue);
@@ -56,12 +57,11 @@ export class PaymentComponent implements OnInit, OnDestroy {
     this.itemTotal$ = this.store.select(getItemTotal);
     this.adjustmentTotal$ = this.store.select(getAdjustmentTotal);
 
-    this.store.select(getTotalCartValue)
-      .subscribe(total => {
-        if (total === 0) {
-          this.router.navigate(['/checkout', 'cart']);
-        }
-      });
+    this.store.select(getTotalCartValue).subscribe(total => {
+      if (total === 0) {
+        this.router.navigate(['/checkout', 'cart']);
+      }
+    });
     this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe();
   }
 

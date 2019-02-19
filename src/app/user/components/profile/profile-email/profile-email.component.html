@@ -1,20 +1,56 @@
 <div class="row" *ngIf="userDetails">
   <div class="col-md-12">
     <div class="alert alert-success col-12">
-      <strong>Welcome!</strong> {{userDetails.email}}
+      <strong>Welcome!</strong> {{ userDetails.email }}
     </div>
     <h5 class="d-block">Email Address</h5>
-    <form [formGroup]="emailForm" (ngSubmit)="emailConfirmModal(emailModal, userDetails.id)" class="form-inline">
+    <form
+      [formGroup]="emailForm"
+      (ngSubmit)="emailConfirmModal(emailModal, userDetails.id)"
+      class="form-inline"
+    >
       <div class="form-group mr-sm-3 d-none d-sm-block">
-       
-        <input type="email" [readonly]="!isEditEmailPressed" class="form-control mt-1" placeholder="Email Address" formControlName="email">
+        <input
+          type="email"
+          [readonly]="!isEditEmailPressed"
+          class="form-control mt-1"
+          placeholder="Email Address"
+          formControlName="email"
+        />
       </div>
-      <div class="form-group mr-sm-3 col-12 p-0 d-bolck d-sm-none">        
-        <input type="email" [readonly]="!isEditEmailPressed" class="form-control mt-1" placeholder="Email Address" formControlName="email">
+      <div class="form-group mr-sm-3 col-12 p-0 d-bolck d-sm-none">
+        <input
+          type="email"
+          [readonly]="!isEditEmailPressed"
+          class="form-control mt-1"
+          placeholder="Email Address"
+          formControlName="email"
+        />
       </div>
-      <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-2" (click)="editEmail()" *ngIf="!isEditEmailPressed">Edit</button>
-      <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-3 mr-3" *ngIf="isEditEmailPressed" [disabled]="!emailForm.valid">Save</button>
-      <button type="submit" class="btn themebtnprimarybasic col-12 col-sm-3 mt-2 mt-sm-0" *ngIf="isEditEmailPressed" (click)="cancelEmail()">Cancel</button>
+      <button
+        type="submit"
+        class="btn themebtnprimarybasic col-12 col-sm-2"
+        (click)="editEmail()"
+        *ngIf="!isEditEmailPressed"
+      >
+        Edit
+      </button>
+      <button
+        type="submit"
+        class="btn themebtnprimarybasic col-12 col-sm-3 mr-3"
+        *ngIf="isEditEmailPressed"
+        [disabled]="!emailForm.valid"
+      >
+        Save
+      </button>
+      <button
+        type="submit"
+        class="btn themebtnprimarybasic col-12 col-sm-3 mt-2 mt-sm-0"
+        *ngIf="isEditEmailPressed"
+        (click)="cancelEmail()"
+      >
+        Cancel
+      </button>
     </form>
   </div>
 </div>
@@ -23,7 +59,9 @@
   <div class="modal-body text-center">
     <p>After updating email, you will be automatically logged out!</p>
     <p>Do you want to confirm?</p>
-    <button type="button" class="btn btn-success mr-3" (click)="confirm()">Yes</button>
+    <button type="button" class="btn btn-success mr-3" (click)="confirm()">
+      Yes
+    </button>
     <button type="button" class="btn btn-danger" (click)="decline()">No</button>
   </div>
 </ng-template>

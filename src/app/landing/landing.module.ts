@@ -39,5 +39,4 @@ const COMPONENTS = [
   ],
   declarations: [...COMPONENTS]
 })
-
-export class LandingModule { }
+export class LandingModule {}

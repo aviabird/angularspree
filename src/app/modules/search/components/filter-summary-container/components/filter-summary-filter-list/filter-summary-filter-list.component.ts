@@ -11,22 +11,21 @@ export class FilterSummaryFilterListComponent implements OnInit {
   @Input() appliedParams: SearchAppliedParams;
   @Output() filterUpdated = new EventEmitter();
 
-  constructor(
-    private searchingService: SearchingService
-  ) { }
+  constructor(private searchingService: SearchingService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   get filterList() {
     return this.appliedParams.filters;
   }
 
-
   updateFilter(updatedVal: any, filterName: string) {
     this.filterUpdated.emit(
-      this.searchingService.updateFilter(this.appliedParams, updatedVal, filterName)
+      this.searchingService.updateFilter(
+        this.appliedParams,
+        updatedVal,
+        filterName
+      )
     );
   }
-
 }

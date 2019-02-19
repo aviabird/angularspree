@@ -1,13 +1,32 @@
 <div *ngIf="!isMobile">
   <div *ngIf="!isAuthenticated">
-    <div class="btn  helpbtn" [ngClass]="[isOpen ? 'openhelp':'']" (mouseenter)="dropdown.show()" (mouseleave)="dropdown.hide()">
+    <div
+      class="btn  helpbtn"
+      [ngClass]="[isOpen ? 'openhelp' : '']"
+      (mouseenter)="dropdown.show()"
+      (mouseleave)="dropdown.hide()"
+    >
       <strong>Login & SignUp</strong>
       <i class="fa pl-3 fa-chevron-down"></i>
     </div>
-    <div class="dpmenu" dropdown #dropdown="bs-dropdown" [autoClose]="false" (isOpenChange)="onOpenChange($event)" (mouseenter)="dropdown.show()"
-      (mouseleave)="dropdown.hide()" (click)="dropdown.hide()">
-      <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu text-center" [ngClass]="[isScrolled ? '':'notscrolled']"
-        role="menu" aria-labelledby="button-triggers-manual">
+    <div
+      class="dpmenu"
+      dropdown
+      #dropdown="bs-dropdown"
+      [autoClose]="false"
+      (isOpenChange)="onOpenChange($event)"
+      (mouseenter)="dropdown.show()"
+      (mouseleave)="dropdown.hide()"
+      (click)="dropdown.hide()"
+    >
+      <div
+        id="dropdown-triggers-manual"
+        *dropdownMenu
+        class="dropdown-menu text-center"
+        [ngClass]="[isScrolled ? '' : 'notscrolled']"
+        role="menu"
+        aria-labelledby="button-triggers-manual"
+      >
         <ul>
           <li role="menuitem">
             <a class="dropdown-item" (click)="login()">Login</a>
@@ -21,16 +40,37 @@
     </div>
   </div>
   <div *ngIf="isAuthenticated">
-    <div class="btn  helpbtn" [ngClass]="[isOpen ? 'openhelp':'']" (mouseenter)="dropdown.show()" (mouseleave)="dropdown.hide()">
+    <div
+      class="btn  helpbtn"
+      [ngClass]="[isOpen ? 'openhelp' : '']"
+      (mouseenter)="dropdown.show()"
+      (mouseleave)="dropdown.hide()"
+    >
       <i class="fa fa-user mr-2" aria-hidden="true"></i>
-      <strong class="text-capitalize">{{name}}
+      <strong class="text-capitalize"
+        >{{ name }}
         <i class="fa pl-3 fa-chevron-down"></i>
       </strong>
     </div>
-    <div class="dpmenu" dropdown #dropdown="bs-dropdown" [autoClose]="false" (isOpenChange)="onOpenChange($event)" (mouseenter)="dropdown.show()"
-      (mouseleave)="dropdown.hide()" (click)="dropdown.hide()">
-      <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu text-center" [ngClass]="[isAuthenticated ? 'arrowalignement':'']"
-        [ngClass]="[isScrolled ? '':'notscrolled']" role="menu" aria-labelledby="button-triggers-manual">
+    <div
+      class="dpmenu"
+      dropdown
+      #dropdown="bs-dropdown"
+      [autoClose]="false"
+      (isOpenChange)="onOpenChange($event)"
+      (mouseenter)="dropdown.show()"
+      (mouseleave)="dropdown.hide()"
+      (click)="dropdown.hide()"
+    >
+      <div
+        id="dropdown-triggers-manual"
+        *dropdownMenu
+        class="dropdown-menu text-center"
+        [ngClass]="[isAuthenticated ? 'arrowalignement' : '']"
+        [ngClass]="[isScrolled ? '' : 'notscrolled']"
+        role="menu"
+        aria-labelledby="button-triggers-manual"
+      >
         <ul>
           <!-- <li role="menuitem">
             <a class="dropdown-item" routerLink="/user/profile">My Profile</a>
@@ -55,15 +95,31 @@
       </div>
     </div>
   </div>
-
 </div>
 <div *ngIf="isMobile" class="mobileusericon">
-  <i class="fa fa-user mr-2" (click)="login()" aria-hidden="true" *ngIf="!isAuthenticated"></i>
+  <i
+    class="fa fa-user mr-2"
+    (click)="login()"
+    aria-hidden="true"
+    *ngIf="!isAuthenticated"
+  ></i>
   <div class="btn-group" dropdown *ngIf="isAuthenticated">
-    <button id="button-basic" dropdownToggle type="button" class="btn pr-0 pl-0" aria-controls="dropdown-basic">
+    <button
+      id="button-basic"
+      dropdownToggle
+      type="button"
+      class="btn pr-0 pl-0"
+      aria-controls="dropdown-basic"
+    >
       <i class="fa fa-user mr-2" aria-hidden="true"></i>
     </button>
-    <ul id="dropdown-split" *dropdownMenu class="dropdown-menu mobile-profile" role="menu" aria-labelledby="button-split">
+    <ul
+      id="dropdown-split"
+      *dropdownMenu
+      class="dropdown-menu mobile-profile"
+      role="menu"
+      aria-labelledby="button-split"
+    >
       <li role="menuitem">
         <!-- <a class="dropdown-item" routerLink="/user/profile">My Profile</a> -->
       </li>
@@ -83,7 +139,6 @@
       <li role="menuitem">
         <a class="dropdown-item" (click)="logout()">Logout</a>
       </li>
-
     </ul>
   </div>
 </div>

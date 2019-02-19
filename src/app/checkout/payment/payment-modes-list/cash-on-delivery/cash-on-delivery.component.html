@@ -1,31 +1,46 @@
 <div class="cod-block">
-	<div class="section-help">
-		<span class="lbl">
-			Cash/Card On Delivery
-		</span>
-		<span class="sub-lbl">
-			Pay with Cash or Card when your order is delivered
-		</span>
-	</div>
-	<div class="cod-info">
-		NOTE: All authorised notes are accepted. Credit/Debit cards are also accepted.
-	</div>
+  <div class="section-help">
+    <span class="lbl">
+      Cash/Card On Delivery
+    </span>
+    <span class="sub-lbl">
+      Pay with Cash or Card when your order is delivered
+    </span>
+  </div>
+  <div class="cod-info">
+    NOTE: All authorised notes are accepted. Credit/Debit cards are also
+    accepted.
+  </div>
 </div>
-<div class=row>
-	<div class="col-md-6">
-		<div class="pay-btn-wrap">
-			<button (click)="addPayment()" 
-			[disabled]="isPaymentAdded" 
-			[ngClass]="!isPaymentAdded ? 'btn themebtnprimary' : 'btn themebtnprimary themebtndisable'"
-			>Continue</button>
-		</div>
-	</div>
-	<div class="col-md-6">
-		<div class="pay-btn-wrap">
-			<button (click)="processCod()" 
-			[disabled]="!isPaymentAdded" 
-			[ngClass]="isPaymentAdded ? 'btn themebtnprimary' : 'btn themebtnprimary themebtndisable'"
-			>Place Order</button>
-		</div>
-	</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="pay-btn-wrap">
+      <button
+        (click)="addPayment()"
+        [disabled]="isPaymentAdded"
+        [ngClass]="
+          !isPaymentAdded
+            ? 'btn themebtnprimary'
+            : 'btn themebtnprimary themebtndisable'
+        "
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="pay-btn-wrap">
+      <button
+        (click)="processCod()"
+        [disabled]="!isPaymentAdded"
+        [ngClass]="
+          isPaymentAdded
+            ? 'btn themebtnprimary'
+            : 'btn themebtnprimary themebtndisable'
+        "
+      >
+        Place Order
+      </button>
+    </div>
+  </div>
 </div>

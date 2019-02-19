@@ -1,4 +1,11 @@
-import { Component, OnInit, PLATFORM_ID, Inject, Input, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  PLATFORM_ID,
+  Inject,
+  Input,
+  OnDestroy
+} from '@angular/core';
 import { CheckoutActions } from '../../../actions/checkout.actions';
 import { AppState } from '../../../../interfaces';
 import { Store } from '@ngrx/store';
@@ -28,31 +35,46 @@ export class HostedPaymentComponent implements OnInit, OnDestroy {
   payment: Payment;
   orderNumber: string;
 
-  constructor(private paymentService: PaymentService,
+  constructor(
+    private paymentService: PaymentService,
     private checkoutActions: CheckoutActions,
     private store: Store<AppState>,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.subscriptionList$.push(
-      this.store.select(getOrderId).subscribe(resOrderId => this.orderId = resOrderId),
-      this.store.select(getTotalCartValue).subscribe(resOrderAmt => this.orderAmount = resOrderAmt),
-      this.store.select(getOrderNumber).subscribe(orderNumber => this.orderNumber = orderNumber),
-      this.store.select(getIsPaymentAdded).subscribe(status => this.isPaymentAdded = status)
+      this.store
+        .select(getOrderId)
+        .subscribe(resOrderId => (this.orderId = resOrderId)),
+      this.store
+        .select(getTotalCartValue)
+        .subscribe(resOrderAmt => (this.orderAmount = resOrderAmt)),
+      this.store
+        .select(getOrderNumber)
+        .subscribe(orderNumber => (this.orderNumber = orderNumber)),
+      this.store
+        .select(getIsPaymentAdded)
+        .subscribe(status => (this.isPaymentAdded = status))
     );
   }
 
   makePaymentPayubiz() {
     this.subscriptionList$.push(
       this.store.select(getPaymentEntities).subscribe(data => {
-        this.payment = data[this.paymentMethodId]
+        this.payment = data[this.paymentMethodId];
       })
     );
 
     this.subscriptionList$.push(
-      this.paymentService.makeHostedPayment(
-        this.orderId, this.orderNumber, this.payment.id, this.orderAmount, this.paymentMethodId)
+      this.paymentService
+        .makeHostedPayment(
+          this.orderId,
+          this.orderNumber,
+          this.payment.id,
+          this.orderAmount,
+          this.paymentMethodId
+        )
         .subscribe((resp: Response) => {
           if (isPlatformBrowser(this.platformId)) {
             window.open(resp.url, '_self');
@@ -62,7 +84,13 @@ export class HostedPaymentComponent implements OnInit, OnDestroy {
   }
 
   addPayment() {
-    this.store.dispatch(this.checkoutActions.bindPayment(this.paymentMethodId, this.orderId, this.orderAmount))
+    this.store.dispatch(
+      this.checkoutActions.bindPayment(
+        this.paymentMethodId,
+        this.orderId,
+        this.orderAmount
+      )
+    );
   }
 
   ngOnDestroy() {

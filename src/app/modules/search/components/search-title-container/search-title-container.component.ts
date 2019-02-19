@@ -9,9 +9,7 @@ export class SearchTitleContainerComponent implements OnInit {
   @Input() title = 'Placeholder';
   @Input() metaInfo: any;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

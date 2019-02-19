@@ -1,17 +1,29 @@
 <section *ngIf="brands">
   <div class="slider-section mb-2">
     <div>
-      <a *ngIf="brands.length != 0" href=# class="section-title h3 position-relative">100+ Brands in Stock!</a>
+      <a
+        *ngIf="brands.length != 0"
+        href="#"
+        class="section-title h3 position-relative"
+        >100+ Brands in Stock!</a
+      >
     </div>
   </div>
   <div class="row m-0">
-    <div class="col-4 col-sm-2  col-md-3 col-lg-2 p-0" *ngFor="let brand of brands">
+    <div
+      class="col-4 col-sm-2  col-md-3 col-lg-2 p-0"
+      *ngFor="let brand of brands"
+    >
       <div class="card">
-        <a [routerLink]="['/s']" [queryParams]="{f: 'Brand:' + brand.name}" (click)="setBrandName(brand.name)">
-          <img class="card-img-top" [src]="getBrandImageUrl(brand.image_url)">
+        <a
+          [routerLink]="['/s']"
+          [queryParams]="{ f: 'Brand:' + brand.name }"
+          (click)="setBrandName(brand.name)"
+        >
+          <img class="card-img-top" [src]="getBrandImageUrl(brand.image_url)" />
         </a>
       </div>
     </div>
   </div>
-  <hr>
+  <hr />
 </section>

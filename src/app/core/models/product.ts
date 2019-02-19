@@ -35,7 +35,7 @@ export class Product {
   reviews: Array<Review>;
   rating_summary: RatingSummary;
   is_orderable: boolean;
-  brand: {name: string, id: number};
+  brand: { name: string; id: number };
   discount: number;
-  default_image:  { default_product_url: string};
+  default_image: { default_product_url: string };
 }

@@ -1,5 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { SearchParam, SearchAppliedParams, SearchFilter, SearchResponse } from './../models/search-param';
+import {
+  SearchParam,
+  SearchAppliedParams,
+  SearchFilter,
+  SearchResponse
+} from './../models/search-param';
 import { Injectable } from '@angular/core';
 import { Product } from '../../../core/models';
 import { SortFilter } from '../models/sort-filter';
@@ -29,7 +34,7 @@ export class SearchingService {
     { name: 'Price: High to Low', value: 'price-desc-rank' },
     { name: 'Price: Low to High', value: 'price-asc-rank' },
     { name: 'Avg. Customer Review', value: 'avg_rating' },
-    { name: 'Newest Arrivals', value: 'date' },
+    { name: 'Newest Arrivals', value: 'date' }
   ];
 
   /**
@@ -37,9 +42,7 @@ export class SearchingService {
    * @param {HttpClient} http
    * @memberof SearchingService
    */
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) {}
 
   /**
    *
@@ -49,13 +52,12 @@ export class SearchingService {
    * @memberof SearchingService
    */
   search(apiParams: SearchParam): Observable<SearchResponse> {
-    return this.http
-      .get<{ data: Array<Product>, links: any, meta: any }>(
-        `api/v1/products`,
-        {
-          params: <any>apiParams
-        }
-      );
+    return this.http.get<{ data: Array<Product>; links: any; meta: any }>(
+      `api/v1/products`,
+      {
+        params: <any>apiParams
+      }
+    );
   }
 
   /**
@@ -65,7 +67,15 @@ export class SearchingService {
    * @returns {SearchParam}
    * @memberof SearchingService
    */
-  convertToAPISearchParams({ sort, filters, rangeFilters, q, limit, page, offset }: SearchAppliedParams): SearchParam {
+  convertToAPISearchParams({
+    sort,
+    filters,
+    rangeFilters,
+    q,
+    limit,
+    page,
+    offset
+  }: SearchAppliedParams): SearchParam {
     return this.sanitizeParams({
       f: this.stringifySearchFilter(filters),
       rf: this.stringifySearchFilter(rangeFilters),
@@ -84,7 +94,15 @@ export class SearchingService {
    * @returns {SearchAppliedParams}
    * @memberof SearchingService
    */
-  convertToAppliedParams({ f, q, rf, rows, sort, o, p }: SearchParam): SearchAppliedParams {
+  convertToAppliedParams({
+    f,
+    q,
+    rf,
+    rows,
+    sort,
+    o,
+    p
+  }: SearchParam): SearchAppliedParams {
     return this.sanitizeParams({
       filters: this.parseStringSearchFilter(f),
       rangeFilters: this.parseStringSearchFilter(rf),
@@ -105,13 +123,14 @@ export class SearchingService {
    * @memberof SearchingService
    */
   private parseStringSearchFilter(str: string): Array<SearchFilter> {
-    return (str || '').split('::')
+    return (str || '')
+      .split('::')
       .filter(fs => fs.split(':').length === 2)
       .map(fs => {
         const [filterName, valStr] = fs.split(':');
         const values = valStr.split(',');
-        return { id: filterName, values: values }
-      })
+        return { id: filterName, values: values };
+      });
   }
 
   /**
@@ -127,7 +146,8 @@ export class SearchingService {
       .filter(({ values }) => values.length)
       .map(({ id, values }) => {
         return `${id}:${values.join(',')}`;
-      }).join('::');
+      })
+      .join('::');
   }
 
   /**
@@ -143,7 +163,7 @@ export class SearchingService {
 
     Object.keys(params)
       .filter(param => params[param])
-      .map(param => newParam = { ...newParam, [param]: params[param] })
+      .map(param => (newParam = { ...newParam, [param]: params[param] }));
 
     return newParam;
   }
@@ -157,7 +177,11 @@ export class SearchingService {
    * @returns {SearchAppliedParams}
    * @memberof SearchingService
    */
-  updateFilter(appliedParams: SearchAppliedParams, updatedVal: any, filterName: string): SearchAppliedParams {
+  updateFilter(
+    appliedParams: SearchAppliedParams,
+    updatedVal: any,
+    filterName: string
+  ): SearchAppliedParams {
     const currentAppliedFilters = appliedParams.filters;
     const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName);
     let newCurrentFilters: Array<SearchFilter>;
@@ -166,14 +190,16 @@ export class SearchingService {
       const currentValues = filterToUpdate.values;
       const exists = currentValues.find(v => v === updatedVal);
       const filteredValues = currentValues.filter(v => v !== updatedVal);
-      const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
+      const filteredAppliedFilters = currentAppliedFilters.filter(
+        f => f.id !== filterName
+      );
       newCurrentFilters = [
         ...filteredAppliedFilters,
         {
           ...filterToUpdate,
           values: exists ? filteredValues : [...filteredValues, updatedVal]
         }
-      ]
+      ];
     } else {
       newCurrentFilters = [
         ...currentAppliedFilters,
@@ -181,12 +207,12 @@ export class SearchingService {
           id: filterName,
           values: [updatedVal]
         }
-      ]
+      ];
     }
 
     return {
       ...appliedParams,
       filters: newCurrentFilters
-    }
+    };
   }
 }

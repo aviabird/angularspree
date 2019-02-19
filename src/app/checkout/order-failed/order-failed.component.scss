@@ -1,4 +1,4 @@
-@import "../../shared/scss/selected_theme_variables";
+@import '../../shared/scss/selected_theme_variables';
 @media only screen and (min-width: 320px) and (max-width: 767px) {
   .thankyou1 {
     margin-top: 4em !important;
@@ -12,15 +12,12 @@
   font-size: 1.5em;
   width: 40px;
   height: 40px;
-  color: $white!important;
+  color: $white !important;
 }
-
-
-
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
   .mobileth {
-    margin-top: 4em !important
+    margin-top: 4em !important;
   }
 }
 
@@ -31,7 +28,7 @@
     margin: 10px 0px;
   }
   background-color: transparent;
-  border:1px solid $gray-10;
+  border: 1px solid $gray-10;
   h1 {
     font-size: 1.7em;
     text-transform: capitalize;
@@ -62,7 +59,8 @@
 
 .order-items {
   .order {
-    @media screen and(min-width: 320px) and(max-width: 768px) {}
+    @media screen and(min-width: 320px) and(max-width: 768px) {
+    }
     padding: 0px;
   }
   @extend .thankyou;
@@ -73,13 +71,12 @@
 }
 
 .lineitems {
-
   .row {
     border-bottom: 1px solid $gray-10;
     margin: 0;
     padding: 5px 0;
   }
-  padding: .5rem;
+  padding: 0.5rem;
   img {
     height: 75px;
     width: 100%;
@@ -97,7 +94,7 @@
     cursor: pointer;
   }
   .lineitems-info {
-    font-size: .8em;
+    font-size: 0.8em;
     color: $gray-900;
     cursor: pointer;
   }
@@ -105,10 +102,10 @@
     color: $red;
     font-size: 1.2em;
     font-weight: bold;
-    text-align:right;
+    text-align: right;
   }
   .qty {
-    font-size: .8em;
-    text-align:right;
+    font-size: 0.8em;
+    text-align: right;
   }
 }

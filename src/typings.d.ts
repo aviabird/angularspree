@@ -2,4 +2,4 @@
 // declare var module: {
 //   id: string;
 // };
- declare var StripeCheckout: any;
+declare var StripeCheckout: any;

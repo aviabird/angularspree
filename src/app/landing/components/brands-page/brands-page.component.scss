@@ -1,25 +1,25 @@
 @import '../../../shared/scss/_selected_theme_variables';
 :host {
-    /deep/ .section-title {
-      color: $black;
-      text-transform: capitalize;
-      font-weight: 600;
-    }
-    /deep/ .scrollbar-hidden {
-      overflow: hidden !important;
-    }
-    /deep/ .product-tile {
-      text-align: center;
-      a {
-        color: $gray-900;
-        img {
-          object-fit: scale-down;
-          height: 200px;
-          width: 100%;
-        }
-        &:hover {
-          text-decoration: none;
-        }
+  /deep/ .section-title {
+    color: $black;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  /deep/ .scrollbar-hidden {
+    overflow: hidden !important;
+  }
+  /deep/ .product-tile {
+    text-align: center;
+    a {
+      color: $gray-900;
+      img {
+        object-fit: scale-down;
+        height: 200px;
+        width: 100%;
+      }
+      &:hover {
+        text-decoration: none;
       }
     }
+  }
 }

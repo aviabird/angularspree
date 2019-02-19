@@ -1,10 +1,28 @@
 <div class="dpmenu" *ngIf="brands; let brandsList">
-  <div class="cust-menu-btn" [ngClass]="[isOpen ? 'open':'']" (mouseenter)="dropdown.show()" (mouseleave)="dropdown.hide()">
+  <div
+    class="cust-menu-btn"
+    [ngClass]="[isOpen ? 'open' : '']"
+    (mouseenter)="dropdown.show()"
+    (mouseleave)="dropdown.hide()"
+  >
     <span>Shop By Brands<i class="fa pl-3 fa-chevron-down"></i></span>
   </div>
-  <div dropdown #dropdown="bs-dropdown" [autoClose]="false" (isOpenChange)="onOpenChange($event)" (mouseenter)="dropdown.show()"
-    (mouseleave)="dropdown.hide()" (click)="dropdown.hide()">
-    <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-triggers-manual">
+  <div
+    dropdown
+    #dropdown="bs-dropdown"
+    [autoClose]="false"
+    (isOpenChange)="onOpenChange($event)"
+    (mouseenter)="dropdown.show()"
+    (mouseleave)="dropdown.hide()"
+    (click)="dropdown.hide()"
+  >
+    <div
+      id="dropdown-triggers-manual"
+      *dropdownMenu
+      class="dropdown-menu"
+      role="menu"
+      aria-labelledby="button-triggers-manual"
+    >
       <div *ngIf="brandsList">
         <ul>
           <li *ngFor="let brand of brandsList" class="col-2">

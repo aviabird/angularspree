@@ -15,9 +15,9 @@ export const UserRoutes = [
       // { path: 'overview', component: OverviewComponent, redirectTo: 'orders' },
       { path: 'orders', component: OrdersComponent },
       { path: 'orders/detail/:number', component: OrderDetailComponent },
-      { path: 'addresses', component: AddressesComponent},
+      { path: 'addresses', component: AddressesComponent },
       { path: 'favorite-products', component: FavoriteProductsComponent },
-      {path: 'profile', component: ProfileComponent}
+      { path: 'profile', component: ProfileComponent }
     ]
-  },
+  }
 ];

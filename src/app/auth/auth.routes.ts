@@ -7,6 +7,6 @@ export const AuthRoutes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full' },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'recover', component: ForgetPasswordComponent},
-  { path: 'updatePassword', component: UpdatePasswordComponent}
+  { path: 'recover', component: ForgetPasswordComponent },
+  { path: 'updatePassword', component: UpdatePasswordComponent }
 ];

@@ -10,10 +10,7 @@ describe('SearchEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        SearchEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [SearchEffects, provideMockActions(() => actions$)]
     });
 
     effects = TestBed.get(SearchEffects);

@@ -8,9 +8,8 @@ describe('InnerIproductComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InnerIproductComponent ]
-    })
-    .compileComponents();
+      declarations: [InnerIproductComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

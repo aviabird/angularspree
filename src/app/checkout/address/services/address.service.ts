@@ -16,81 +16,102 @@ export class AddressService {
     private fb: FormBuilder,
     private http: HttpClient,
     private toastrService: ToastrService
-  ) { }
+  ) {}
 
   initAddressForm() {
     return this.fb.group({
-      'first_name': ['', Validators.required],
-      'last_name': ['', Validators.required],
-      'address_line_2': ['', Validators.required],
-      'address_line_1': ['', Validators.compose([Validators.required, Validators.minLength(10)])],
-      'city': ['', Validators.required],
-      'phone': ['', Validators.compose([
-        Validators.required, Validators.minLength(10),
-        Validators.maxLength(10), Validators.pattern('[0-9]{10}')])],
-      'zip_code': ['', Validators.required],
-      'state_id': ['', Validators.required],
-      'country_id': ['', Validators.required]
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      address_line_2: ['', Validators.required],
+      address_line_1: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(10)])
+      ],
+      city: ['', Validators.required],
+      phone: [
+        '',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10),
+          Validators.pattern('[0-9]{10}')
+        ])
+      ],
+      zip_code: ['', Validators.required],
+      state_id: ['', Validators.required],
+      country_id: ['', Validators.required]
     });
   }
 
   saveUserAddress(address: Address): Observable<Address> {
-    const user: User = JSON.parse(localStorage.getItem('user'))
+    const user: User = JSON.parse(localStorage.getItem('user'));
     const params = this.buildAddressJson(address, user.id);
     return this.http.post<Address>(`api/v1/addresses`, params).pipe(
       map(resp => {
         return resp;
-      }), tap(_ => { this.toastrService.success('Address added successfully!', 'Success!') },
-        _ => { this.toastrService.error('Could not save address!', 'Failed!') }
+      }),
+      tap(
+        _ => {
+          this.toastrService.success('Address added successfully!', 'Success!');
+        },
+        _ => {
+          this.toastrService.error('Could not save address!', 'Failed!');
+        }
       )
-    )
+    );
   }
 
   bindAddressToOrder(address: Address, orderId: number): Observable<Order> {
     const params = this.buildSelectAddressJson(orderId, address);
-    return this.http.post<{data: Order}>(`api/v1/orders/${orderId}/select_address/`, params)
-    .pipe(map(res => res.data))
+    return this.http
+      .post<{ data: Order }>(`api/v1/orders/${orderId}/select_address/`, params)
+      .pipe(map(res => res.data));
   }
 
   deleteAddress(addressId: string) {
-    return this.http.delete(`api/v1/addresses/${addressId}`).pipe(
-      tap(_ => this.toastrService.success('Address deleted', 'Success!')))
+    return this.http
+      .delete(`api/v1/addresses/${addressId}`)
+      .pipe(
+        tap(_ => this.toastrService.success('Address deleted', 'Success!'))
+      );
   }
 
   getUserAddresses(): Observable<Array<Address>> {
-    return this.http.get<{data: Array<Address>}>(`api/v1/addresses`).pipe(map(res => res.data));
+    return this.http
+      .get<{ data: Array<Address> }>(`api/v1/addresses`)
+      .pipe(map(res => res.data));
   }
 
   getCountires(): Observable<Array<Country>> {
-    return this.http.get<{data: Array<Country>}>(`api/v1/countries`).pipe(map(res => res.data));
+    return this.http
+      .get<{ data: Array<Country> }>(`api/v1/countries`)
+      .pipe(map(res => res.data));
   }
 
   getAllStates(countryId: string): Observable<Array<CState>> {
-    return this.http.get<{data: Array<CState>}>(`api/v1/countries/${countryId}/states`)
-    .pipe(map(res => res.data));
+    return this.http
+      .get<{ data: Array<CState> }>(`api/v1/countries/${countryId}/states`)
+      .pipe(map(res => res.data));
   }
 
   updateUserAddress(address: Address, addressId: string) {
     const params = this.buildUpdateAddressJson(address, addressId);
-    return this.http.put<Address>(`api/v1/addresses/${addressId}`, params).pipe(
-      tap(_ => this.toastrService.success('Address updated!', 'Success!'))
-    )
+    return this.http
+      .put<Address>(`api/v1/addresses/${addressId}`, params)
+      .pipe(
+        tap(_ => this.toastrService.success('Address updated!', 'Success!'))
+      );
   }
 
   private buildAddressJson(address: Address, userId: string) {
     const params = {
-      'data':
-      {
-        'type': 'address',
-        'attributes':
-          address
-        , 'relationships':
-        {
-          'user':
-          {
-            'data':
-            {
-              'id': userId
+      data: {
+        type: 'address',
+        attributes: address,
+        relationships: {
+          user: {
+            data: {
+              id: userId
             }
           }
         }
@@ -101,27 +122,27 @@ export class AddressService {
 
   private buildUpdateAddressJson(address: Address, addressId: string) {
     const params = {
-      'data': {
-        'type': 'address',
-        'id': addressId,
-        'attributes': address
+      data: {
+        type: 'address',
+        id: addressId,
+        attributes: address
       }
-    }
+    };
     return params;
   }
 
   private buildSelectAddressJson(orderId: number, shipAddress: Address) {
     const params = {
       data: {
-        'id': orderId,
-        'type': 'order',
-        'attributes': {
+        id: orderId,
+        type: 'order',
+        attributes: {
           // for now billing address is addeded as shipping address.
-          'billing_address': shipAddress,
-          'shipping_address': shipAddress
+          billing_address: shipAddress,
+          shipping_address: shipAddress
         }
       }
-    }
+    };
     return params;
   }
 }

@@ -11,16 +11,35 @@ import { CState } from '../../core/models/state';
 const getUserState = (state: AppState): UserState => state.users;
 
 // ******************** Individual selectors ***************************
-const fetchUserOrders = (state: UserState): Order[] => state.orders as unknown as Order[];
-const fetchUserFavoriteProducts = (state: UserState): Product[] => state.favorite_products as unknown as Product[];
-const fetchUserAddresses = (state: UserState): Address[] => state.userAddresses as unknown as Address[];
-const fetchCountries = (state: UserState): Country[] => state.countries as unknown as Country[];
-const fetchStates = (state: UserState): CState[] => state.states as unknown as CState[];
+const fetchUserOrders = (state: UserState): Order[] =>
+  (state.orders as unknown) as Order[];
+const fetchUserFavoriteProducts = (state: UserState): Product[] =>
+  (state.favorite_products as unknown) as Product[];
+const fetchUserAddresses = (state: UserState): Address[] =>
+  (state.userAddresses as unknown) as Address[];
+const fetchCountries = (state: UserState): Country[] =>
+  (state.countries as unknown) as Country[];
+const fetchStates = (state: UserState): CState[] =>
+  (state.states as unknown) as CState[];
 
 // *************************** PUBLIC API's ****************************
-export const getUserOrders = createSelector(getUserState, fetchUserOrders);
-export const getUserFavoriteProducts = createSelector(getUserState, fetchUserFavoriteProducts);
-export const getUserAddressess = createSelector(getUserState, fetchUserAddresses);
-export const getCountries = createSelector(getUserState, fetchCountries);
-export const getStates = createSelector(getUserState, fetchStates);
-
+export const getUserOrders = createSelector(
+  getUserState,
+  fetchUserOrders
+);
+export const getUserFavoriteProducts = createSelector(
+  getUserState,
+  fetchUserFavoriteProducts
+);
+export const getUserAddressess = createSelector(
+  getUserState,
+  fetchUserAddresses
+);
+export const getCountries = createSelector(
+  getUserState,
+  fetchCountries
+);
+export const getStates = createSelector(
+  getUserState,
+  fetchStates
+);

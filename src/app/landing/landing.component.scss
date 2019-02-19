@@ -1,4 +1,4 @@
-@import "../shared/scss/_selected_theme_variables.scss";
+@import '../shared/scss/_selected_theme_variables.scss';
 .shippingbtn {
   font-size: 1em !important;
   width: 100%;
@@ -11,7 +11,7 @@
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     filter: FlipH;
-    -ms-filter: "FlipH";
+    -ms-filter: 'FlipH';
   }
   &:hover {
     background-color: $theme-main-color - 20 !important;
@@ -21,7 +21,7 @@
 .landing {
   margin-top: 2rem;
   @media screen and (min-width: 320px) and (max-width: 768px) {
-    margin-top:1rem;
+    margin-top: 1rem;
   }
 }
 

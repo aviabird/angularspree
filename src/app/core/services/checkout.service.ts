@@ -2,7 +2,10 @@ import { Observable } from 'rxjs/internal/Observable';
 import { PaymentMode } from './../models/payment_mode';
 import { map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { getOrderNumber, getOrderId } from './../../checkout/reducers/selectors';
+import {
+  getOrderNumber,
+  getOrderId
+} from './../../checkout/reducers/selectors';
 import { CheckoutActions } from './../../checkout/actions/checkout.actions';
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { AppState } from './../../interfaces';
@@ -31,12 +34,14 @@ export class CheckoutService {
     private actions: CheckoutActions,
     private store: Store<AppState>,
     private toastyService: ToastrService,
-    @Inject(PLATFORM_ID) private platformId: any) {
-
-    this.store.select(getOrderId)
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {
+    this.store
+      .select(getOrderId)
       .subscribe(orderId => (this.orderId = orderId));
 
-    this.store.select(getOrderNumber)
+    this.store
+      .select(getOrderNumber)
       .subscribe(orderNumber => (this.orderNumber = orderNumber));
   }
 
@@ -50,14 +55,16 @@ export class CheckoutService {
    */
   createNewLineItem(productId: number, quantity: number): Observable<Order> {
     if (this.getUserToken()) {
-      const params = this.buildOrderParams(productId, quantity)
+      const params = this.buildOrderParams(productId, quantity);
       return this.http.post<{ data: Order }>(`api/v1/line_items`, params).pipe(
         tap(
           ({ data: order }) => {
             this.toastyService.success('Success!', 'Cart updated!');
             return order;
           },
-          error => { this.toastyService.error(error.error.error, 'Failed') }
+          error => {
+            this.toastyService.error(error.error.error, 'Failed');
+          }
         ),
         map(resp => resp.data)
       );
@@ -73,16 +80,18 @@ export class CheckoutService {
 
   createGuestOrder(productId: number, quantity: number): Observable<Order> {
     if (this.orderId) {
-      this.guestOrderParams = this.buildOrderParams(productId, quantity)
+      this.guestOrderParams = this.buildOrderParams(productId, quantity);
     } else {
       this.guestOrderParams = this.buildGuestOrderParams(productId, quantity);
     }
-    return this.http.post<{ data: Order }>(`api/v1/guest/line_items`, this.guestOrderParams).pipe(
-      map(({ data: order }) => {
-        this.setOrderTokenInLocalStorage(order.number)
-        return order;
-      })
-    )
+    return this.http
+      .post<{ data: Order }>(`api/v1/guest/line_items`, this.guestOrderParams)
+      .pipe(
+        map(({ data: order }) => {
+          this.setOrderTokenInLocalStorage(order.number);
+          return order;
+        })
+      );
   }
 
   /**
@@ -94,11 +103,17 @@ export class CheckoutService {
    */
   fetchCurrentOrder() {
     return this.http.post<{ data: Order }>('api/v1/orders/current', {}).pipe(
-      map(({ data: order }) => {
-        this.setOrderTokenInLocalStorage(order.number);
-        return this.store.dispatch(this.actions.fetchCurrentOrderSuccess(order));
-      },
-      error => { return error })
+      map(
+        ({ data: order }) => {
+          this.setOrderTokenInLocalStorage(order.number);
+          return this.store.dispatch(
+            this.actions.fetchCurrentOrderSuccess(order)
+          );
+        },
+        error => {
+          return error;
+        }
+      )
     );
   }
 
@@ -110,9 +125,9 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   getOrder(): Observable<Order> {
-    const orderNumber = JSON.parse(localStorage.getItem('order_number'))
+    const orderNumber = JSON.parse(localStorage.getItem('order_number'));
     const url = `api/v1/orders/${orderNumber}`;
-    return this.http.get<{data: Order}>(url).pipe(map(resp => resp.data));
+    return this.http.get<{ data: Order }>(url).pipe(map(resp => resp.data));
   }
 
   /**
@@ -123,8 +138,8 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   deleteLineItem(lineItemId: number): Observable<{}> {
-    const param = { data: { id: lineItemId, type: 'line_item' } }
-    const url = `api/v1/line_items`
+    const param = { data: { id: lineItemId, type: 'line_item' } };
+    const url = `api/v1/line_items`;
     return this.http.request<{}>('delete', url, { body: param });
   }
 
@@ -135,10 +150,15 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   availablePaymentMethods(): Observable<Array<PaymentMode>> {
-    const url = `api/v1/payment/payment-methods`
-    return this.http.get<{data: Array<PaymentMode>}>(url).pipe(
-      map(resp => { return resp.data },
-        error => { return error }
+    const url = `api/v1/payment/payment-methods`;
+    return this.http.get<{ data: Array<PaymentMode> }>(url).pipe(
+      map(
+        resp => {
+          return resp.data;
+        },
+        error => {
+          return error;
+        }
       )
     );
   }
@@ -151,15 +171,21 @@ export class CheckoutService {
    * @returns {Observable<Order>}
    * @memberof CheckoutService
    */
-  saveShippingPreferences(orderId: number, packages: Array<{}>): Observable<Order> {
+  saveShippingPreferences(
+    orderId: number,
+    packages: Array<{}>
+  ): Observable<Order> {
     const params = this.buildShippingParams(orderId, packages);
     const url = `api/v1/orders/${orderId}/add-shipment`;
-    return this.http.patch<{data: Order}>(url, params).pipe(map(resp => resp.data));
+    return this.http
+      .patch<{ data: Order }>(url, params)
+      .pipe(map(resp => resp.data));
   }
 
   shipmentAvailability(pincode: number) {
-    return this.http
-      .post(`address/shipment_availability`, { pincode: pincode })
+    return this.http.post(`address/shipment_availability`, {
+      pincode: pincode
+    });
   }
 
   /**
@@ -171,7 +197,9 @@ export class CheckoutService {
    * @memberof CheckoutService
    */
   private getOrderToken() {
-    const order = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('order')) : {};
+    const order = isPlatformBrowser(this.platformId)
+      ? JSON.parse(localStorage.getItem('order'))
+      : {};
     const token = order.order_token;
     return token;
   }
@@ -192,34 +220,34 @@ export class CheckoutService {
 
   private buildOrderParams(productId: number, quantity: number) {
     const params = {
-      'data': {
-        'type': 'line_item',
-        'attributes': {
-          'quantity': quantity
+      data: {
+        type: 'line_item',
+        attributes: {
+          quantity: quantity
         },
-        'relationships': {
-          'order': {
-            'data': {
-              'id': this.orderId,
-              'type': 'order'
+        relationships: {
+          order: {
+            data: {
+              id: this.orderId,
+              type: 'order'
             }
           },
-          'product': {
-            'data': {
-              'id': productId,
-              'type': 'product'
+          product: {
+            data: {
+              id: productId,
+              type: 'product'
             }
           }
         }
       }
-    }
+    };
     return params;
   }
 
   private getUserToken() {
     if (isPlatformBrowser(this.platformId)) {
-      const user: User = JSON.parse(localStorage.getItem('user'))
-      return user ? user.token : null
+      const user: User = JSON.parse(localStorage.getItem('user'));
+      return user ? user.token : null;
     } else {
       return null;
     }
@@ -227,34 +255,34 @@ export class CheckoutService {
 
   private buildGuestOrderParams(productId: number, quantity: number) {
     const params = {
-      'data': {
-        'type': 'line_item',
-        'attributes': {
-          'quantity': quantity
+      data: {
+        type: 'line_item',
+        attributes: {
+          quantity: quantity
         },
-        'relationships': {
-          'product': {
-            'data': {
-              'id': productId,
-              'type': 'product'
+        relationships: {
+          product: {
+            data: {
+              id: productId,
+              type: 'product'
             }
           }
         }
       }
-    }
+    };
     return params;
   }
 
   private buildShippingParams(orderId: number, packages: Array<{}>) {
     const params = {
-      'data': {
-        'type': 'orders',
-        'attributes': {
-          'id': orderId,
-          'packages': packages
+      data: {
+        type: 'orders',
+        attributes: {
+          id: orderId,
+          packages: packages
         }
       }
-    }
+    };
     return params;
   }
 }

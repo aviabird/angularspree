@@ -13,8 +13,10 @@ export class CheckPincodeComponent implements OnInit {
   checkPincodeForm: FormGroup;
   isCodAvilable$: Observable<any>;
 
-  constructor(private fb: FormBuilder,
-    private checkoutService: CheckoutService) { }
+  constructor(
+    private fb: FormBuilder,
+    private checkoutService: CheckoutService
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -22,7 +24,7 @@ export class CheckPincodeComponent implements OnInit {
   initForm() {
     const pincode = '';
     this.checkPincodeForm = this.fb.group({
-      'pincode': [pincode, Validators.required]
+      pincode: [pincode, Validators.required]
     });
   }
 

@@ -1,15 +1,13 @@
-<div
-  class="btn-group float-right"
-  dropdown
-  triggers="mouseover">
+<div class="btn-group float-right" dropdown triggers="mouseover">
   <button
     id="button-basic"
     dropdownToggle
     type="button"
     class="btn dropdown-toggle border text-secondary float-right text-left"
-    aria-controls="dropdown-basic">
+    aria-controls="dropdown-basic"
+  >
     Sort by:
-    <b class="px-2">{{currentSort.name}}</b>
+    <b class="px-2">{{ currentSort.name }}</b>
     <span class="caret"></span>
   </button>
   <ul
@@ -17,14 +15,11 @@
     *dropdownMenu
     class="dropdown-menu"
     role="menu"
-    aria-labelledby="button-basic">
-    <li
-      role="menuitem"
-      *ngFor="let sortOption of sortConfig">
-      <a
-        class="dropdown-item"
-        (click)="sortOrder(sortOption)">
-        {{sortOption.name}}
+    aria-labelledby="button-basic"
+  >
+    <li role="menuitem" *ngFor="let sortOption of sortConfig">
+      <a class="dropdown-item" (click)="sortOrder(sortOption)">
+        {{ sortOption.name }}
       </a>
     </li>
   </ul>

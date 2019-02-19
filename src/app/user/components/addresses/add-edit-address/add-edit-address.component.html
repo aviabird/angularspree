@@ -1,69 +1,129 @@
 <form class="form" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="form-group col-sm-6">
-      <label>Pin Code
+      <label
+        >Pin Code
         <span class="required">*</span>
       </label>
-      <input type="tel" class="form-control" formControlName="zipcode">
-      <p *ngIf="addressForm.get('zipcode').hasError('required') && addressForm.get('zipcode').touched" class="value-err  text-danger show">This
-        is a mandatory field</p>
+      <input type="tel" class="form-control" formControlName="zipcode" />
+      <p
+        *ngIf="
+          addressForm.get('zipcode').hasError('required') &&
+          addressForm.get('zipcode').touched
+        "
+        class="value-err  text-danger show"
+      >
+        This is a mandatory field
+      </p>
     </div>
     <div class="form-group col-sm-6">
-      <label> Locality / Town
+      <label>
+        Locality / Town
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="address2">
-      <p *ngIf="addressForm.get('address2').hasError('required') && addressForm.get('address2').touched" class="value-err text-danger show">This
-        is a mandatory field</p>
+      <input type="text" class="form-control" formControlName="address2" />
+      <p
+        *ngIf="
+          addressForm.get('address2').hasError('required') &&
+          addressForm.get('address2').touched
+        "
+        class="value-err text-danger show"
+      >
+        This is a mandatory field
+      </p>
     </div>
     <div class="form-group col-sm-6">
-      <label>City / District
+      <label
+        >City / District
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="city">
-      <p *ngIf="addressForm.get('city').hasError('required') &&  addressForm.get('city').touched" class="value-err text-danger show">This
-        is a mandatory field</p>
+      <input type="text" class="form-control" formControlName="city" />
+      <p
+        *ngIf="
+          addressForm.get('city').hasError('required') &&
+          addressForm.get('city').touched
+        "
+        class="value-err text-danger show"
+      >
+        This is a mandatory field
+      </p>
     </div>
     <div class="form-group col-sm-6">
       <label> State</label>
       <select class="form-control" formControlName="state_name">
-        <option *ngIf="stateName">{{stateName}}
-        <option *ngFor="let state of states">{{state.name}}</option>
+        <option *ngIf="stateName">{{ stateName }} </option
+        ><option *ngFor="let state of states">{{ state.name }}</option>
       </select>
     </div>
 
     <div class="form-group col-sm-6">
-      <label>First Name
+      <label
+        >First Name
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="firstname">
-      <p *ngIf="addressForm.get('firstname').hasError('required') &&  addressForm.get('firstname').touched" class="value-err text-danger show">This
-        is a mandatory field</p>
+      <input type="text" class="form-control" formControlName="firstname" />
+      <p
+        *ngIf="
+          addressForm.get('firstname').hasError('required') &&
+          addressForm.get('firstname').touched
+        "
+        class="value-err text-danger show"
+      >
+        This is a mandatory field
+      </p>
     </div>
     <div class="form-group col-sm-6">
-      <label> Last Name
+      <label>
+        Last Name
         <span class="required">*</span>
       </label>
-      <input type="text" class="form-control" formControlName="lastname">
-      <p *ngIf="addressForm.get('lastname').hasError('required') &&  addressForm.get('lastname').touched" class="value- text-danger show">This
-        is a mandatory field</p>
+      <input type="text" class="form-control" formControlName="lastname" />
+      <p
+        *ngIf="
+          addressForm.get('lastname').hasError('required') &&
+          addressForm.get('lastname').touched
+        "
+        class="value- text-danger show"
+      >
+        This is a mandatory field
+      </p>
     </div>
 
     <div class="form-group col-sm-6">
-      <label>Address
+      <label
+        >Address
         <span class="required">*</span>
       </label>
-      <textarea type="text" class="form-control" formControlName="address1"></textarea>
-      <p *ngIf="addressForm.get('address1').hasError('required') &&  addressForm.get('address1').touched" class="value-err text-danger show">This
-        is a mandatory field</p>
+      <textarea
+        type="text"
+        class="form-control"
+        formControlName="address1"
+      ></textarea>
+      <p
+        *ngIf="
+          addressForm.get('address1').hasError('required') &&
+          addressForm.get('address1').touched
+        "
+        class="value-err text-danger show"
+      >
+        This is a mandatory field
+      </p>
     </div>
     <div class="form-group col-sm-6">
-      <label>Mobile No
+      <label
+        >Mobile No
         <span class="required">*</span>
       </label>
-      <input type="tel" class="form-control" formControlName="phone">
-      <p *ngIf="addressForm.get('phone').hasError('required') &&  addressForm.get('phone').touched" class="value-err text-danger show">This
-        is a mandatory field</p>
+      <input type="tel" class="form-control" formControlName="phone" />
+      <p
+        *ngIf="
+          addressForm.get('phone').hasError('required') &&
+          addressForm.get('phone').touched
+        "
+        class="value-err text-danger show"
+      >
+        This is a mandatory field
+      </p>
     </div>
     <div class="save-button col-12 col-sm-6">
       <button class="btn themebtnprimary">SAVE</button>

@@ -8,9 +8,8 @@ describe('AddAddressComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddAddressComponent ]
-    })
-    .compileComponents();
+      declarations: [AddAddressComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

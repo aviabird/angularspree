@@ -3,7 +3,10 @@
   <section>
     <ng-progress [color]="'red'" [spinner]="false"></ng-progress>
 
-    <app-header *ngIf="currentUrl" [layoutState]="layoutState$ | async"></app-header>
+    <app-header
+      *ngIf="currentUrl"
+      [layoutState]="layoutState$ | async"
+    ></app-header>
 
     <main class="main-body">
       <router-outlet></router-outlet>

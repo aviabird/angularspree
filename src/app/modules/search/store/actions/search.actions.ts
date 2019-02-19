@@ -1,4 +1,7 @@
-import { SearchAppliedParams, SearchResponse } from './../../models/search-param';
+import {
+  SearchAppliedParams,
+  SearchResponse
+} from './../../models/search-param';
 import { Action } from '@ngrx/store';
 import { Product } from '../../../../core/models';
 

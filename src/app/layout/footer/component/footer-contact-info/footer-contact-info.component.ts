@@ -8,14 +8,13 @@ import { isPlatformBrowser } from '../../../../../../node_modules/@angular/commo
   styleUrls: ['./footer-contact-info.component.scss']
 })
 export class FooterContactInfoComponent implements OnInit {
-  contact_info = environment.config.contact_info
-  constructor(@Inject(PLATFORM_ID) private platformId: any) { }
+  contact_info = environment.config.contact_info;
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   scollTop() {
     if (isPlatformBrowser(this.platformId)) {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 }

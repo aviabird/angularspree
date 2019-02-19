@@ -6,7 +6,7 @@
     aria-label="Search"
     aria-describedby="search-button"
     type="search"
-    placeholder="{{searchPlaceholder}}"
+    placeholder="{{ searchPlaceholder }}"
     aria-label="Search"
     #box
     [(ngModel)]="asyncSelected"
@@ -18,12 +18,14 @@
     typeaheadOptionField="name"
     typeaheadWaitMs="300"
     typeaheadMinLength="3"
-    [placeholder]="searchPlaceholder">
+    [placeholder]="searchPlaceholder"
+  />
   <div class="input-group-append">
     <button
       class="btn btn-outline-light searchBar-btn"
       type="button"
-      (click)="doSearch(box.value)">
+      (click)="doSearch(box.value)"
+    >
       <span class="fa fa-search searchBar-btn-icon"></span>
     </button>
   </div>

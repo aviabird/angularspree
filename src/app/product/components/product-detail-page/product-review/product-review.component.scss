@@ -5,7 +5,7 @@
 
 h1 {
   font-size: 1.7em;
-  color: $gray-900
+  color: $gray-900;
 }
 
 .pdp-add-to-bag {
@@ -117,7 +117,7 @@ h1 {
   .write-review {
     width: calc(100% - 135px);
     @media screen and(min-width: 310px) and(max-width: 768px) {
-      width:100%
+      width: 100%;
     }
   }
   .review-display {
@@ -141,7 +141,7 @@ h1 {
       padding-top: 1rem;
       text-align: justify;
       color: $gray-900;
-      word-wrap: break-word
+      word-wrap: break-word;
     }
   }
   .review-sort-filter {

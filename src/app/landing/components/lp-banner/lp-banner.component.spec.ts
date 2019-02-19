@@ -8,9 +8,8 @@ describe('LpBannerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LpBannerComponent ]
-    })
-    .compileComponents();
+      declarations: [LpBannerComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

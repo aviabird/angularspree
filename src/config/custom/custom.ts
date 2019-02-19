@@ -11,10 +11,10 @@ export const CUSTOM_CONFIG = {
       logo: 'https://via.placeholder.com/350x150',
       name: 'Custom',
       height: '40',
-      width: '112',
+      width: '112'
     },
     searchPlaceholder: 'Search',
-    showGithubRibon: false,
+    showGithubRibon: false
   },
   // Following are the test crediantials for payubiz payment gateway.
   payuBizSalt: 'eCwWELxi',

@@ -1,5 +1,4 @@
-Angularspree Contributors
-============================================
+# Angularspree Contributors
 
 1. **[Chandra Shekhar](https://github.com/zeus999)** | [Twitter]
 2. **[Pankaj Kumar Rawat](https://github.com/pkrawat1)** | [Twitter]

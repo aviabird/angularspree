@@ -1,4 +1,4 @@
-@import "../../../../shared/scss/selected_theme_variables";
+@import '../../../../shared/scss/selected_theme_variables';
 .line {
   display: inline;
   padding: 10px;
@@ -16,7 +16,7 @@
   font-size: 1em;
   font-weight: normal;
   a {
-    padding: .7rem;
+    padding: 0.7rem;
     color: $footer-font-color;
   }
   a:hover {
@@ -55,7 +55,7 @@
     .backtopbtn {
       margin-top: 5px;
       padding: 0.7rem 1.8rem;
-      display: block
+      display: block;
     }
   }
 }

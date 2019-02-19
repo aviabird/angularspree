@@ -3,16 +3,30 @@ import { CheckoutActions } from './../actions/checkout.actions';
 import { CheckoutState, CheckoutStateRecord } from './checkout.state';
 import { Payment } from '../../core/models/payment';
 
-export const initialState: CheckoutState = new CheckoutStateRecord() as unknown as CheckoutState;
+export const initialState: CheckoutState = (new CheckoutStateRecord() as unknown) as CheckoutState;
 
-export function reducer(state = initialState, { type, payload }: any): CheckoutState {
-
-  let _lineItems, _lineItemEntities, _lineItemIds, _totalCartItems = 0, _totalCartValue,
-    _ship_address, _bill_address, _orderState, _shipTotal = 0, _itemTotal, _adjustmentTotal,
-    _paymentEntities, _payments, _orderNumber, _orderId, _paymentIds;
+export function reducer(
+  state = initialState,
+  { type, payload }: any
+): CheckoutState {
+  let _lineItems,
+    _lineItemEntities,
+    _lineItemIds,
+    _totalCartItems = 0,
+    _totalCartValue,
+    _ship_address,
+    _bill_address,
+    _orderState,
+    _shipTotal = 0,
+    _itemTotal,
+    _adjustmentTotal,
+    _paymentEntities,
+    _payments,
+    _orderNumber,
+    _orderId,
+    _paymentIds;
 
   switch (type) {
-
     case CheckoutActions.FETCH_CURRENT_ORDER_SUCCESS:
       _orderNumber = payload.number;
       _orderId = payload.id;
@@ -26,11 +40,14 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
       _shipTotal = payload.ship_total;
       _itemTotal = parseFloat(payload.order_total_amount.amount);
       _adjustmentTotal = payload.display_adjustment_total;
-      _lineItemEntities = _lineItems.reduce((lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
-        return Object.assign(lineItems, {
-          [lineItem.id]: lineItem
-        });
-      }, {});
+      _lineItemEntities = _lineItems.reduce(
+        (lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
+          return Object.assign(lineItems, {
+            [lineItem.id]: lineItem
+          });
+        },
+        {}
+      );
 
       return state.merge({
         orderNumber: _orderNumber,
@@ -50,8 +67,7 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
       }) as CheckoutState;
 
     case CheckoutActions.ADD_TO_CART_SUCCESS:
-      return state.merge({
-      }) as CheckoutState;
+      return state.merge({}) as CheckoutState;
 
     case CheckoutActions.ORDER_COMPLETE_SUCCESS:
       return initialState;
@@ -67,15 +83,23 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
       _itemTotal = parseFloat(payload.order_total_amount.amount);
       _lineItems = payload.line_items;
       _lineItemIds = _lineItems.map(lineItem => lineItem.id);
-      _lineItemEntities = _lineItems.reduce((lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
-        return Object.assign(lineItems, { [lineItem.id]: lineItem })
-      }, {});
+      _lineItemEntities = _lineItems.reduce(
+        (lineItems: { [id: number]: LineItem }, lineItem: LineItem) => {
+          return Object.assign(lineItems, { [lineItem.id]: lineItem });
+        },
+        {}
+      );
 
       _payments = payload.payments;
       _paymentIds = _payments.map(payment => payment.payment_method_id);
-      _paymentEntities = _payments.reduce((payments: { [id: number]: Payment }, payment: Payment) => {
-        return Object.assign(payments, { [payment.payment_method_id]: payment })
-      }, {});
+      _paymentEntities = _payments.reduce(
+        (payments: { [id: number]: Payment }, payment: Payment) => {
+          return Object.assign(payments, {
+            [payment.payment_method_id]: payment
+          });
+        },
+        {}
+      );
 
       return state.merge({
         orderState: _orderState,
@@ -95,6 +119,4 @@ export function reducer(state = initialState, { type, payload }: any): CheckoutS
     default:
       return state;
   }
-};
-
-
+}

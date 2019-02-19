@@ -8,9 +8,8 @@ describe('BrandMenuDropdownComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BrandMenuDropdownComponent ]
-    })
-    .compileComponents();
+      declarations: [BrandMenuDropdownComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

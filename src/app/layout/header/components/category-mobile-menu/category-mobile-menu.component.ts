@@ -1,4 +1,12 @@
-import { Component, OnInit, Output, Input, ChangeDetectionStrategy, PLATFORM_ID, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  Input,
+  ChangeDetectionStrategy,
+  PLATFORM_ID,
+  Inject
+} from '@angular/core';
 import {
   trigger,
   state,
@@ -15,31 +23,44 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./category-mobile-menu.component.scss'],
   animations: [
     trigger('popOverState', [
-      state('show', style({
-        left: -100 + 'vw'
-      })),
-      state('hide', style({
-        left: 0
-      })),
+      state(
+        'show',
+        style({
+          left: -100 + 'vw'
+        })
+      ),
+      state(
+        'hide',
+        style({
+          left: 0
+        })
+      ),
       transition('show => hide', animate('100ms ease-out')),
       transition('hide => show', animate('200ms ease-in'))
     ]),
     trigger('subCatgory', [
-      state('show', style({
-        left: -200 + 'vw'
-      })),
-      state('hide', style({
-        left: -100
-      })),
+      state(
+        'show',
+        style({
+          left: -200 + 'vw'
+        })
+      ),
+      state(
+        'hide',
+        style({
+          left: -100
+        })
+      ),
       transition('show => hide', animate('100ms ease-out')),
       transition('hide => show', animate('200ms ease-in'))
     ])
-
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryMobileMenuComponent implements OnInit {
-  @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<
+    boolean
+  >();
   @Input() taxonomies;
   @Input() isScrolled;
   @Input() screenwidth;
@@ -53,8 +74,10 @@ export class CategoryMobileMenuComponent implements OnInit {
   backBtnShow = false;
   contactno = environment.config.contact_info.contact_no;
 
-  constructor(private el: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(
+    private el: ElementRef,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   showCategory(i) {
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
@@ -62,11 +85,11 @@ export class CategoryMobileMenuComponent implements OnInit {
   }
 
   get getparrentState() {
-    return this.showParrent ? 'show' : 'hide'
+    return this.showParrent ? 'show' : 'hide';
   }
 
   get getChildState() {
-    return this.showChild ? 'show' : 'hide'
+    return this.showChild ? 'show' : 'hide';
   }
 
   showSubCategory(i) {
@@ -90,6 +113,5 @@ export class CategoryMobileMenuComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

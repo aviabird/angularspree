@@ -1,19 +1,19 @@
 // Used to import variables in components
-@import "../../../../../../node_modules/bootstrap/scss/mixins";
-@import "custom_bootstrap_variables";
+@import '../../../../../../node_modules/bootstrap/scss/mixins';
+@import 'custom_bootstrap_variables';
 // -- Theme Colors here --
 // Custom theme colors
 // Refer _default_variables to generate colors
-$theme-main-color: #212E40;
-$theme-action-color: #F2903D;
+$theme-main-color: #212e40;
+$theme-action-color: #f2903d;
 $primary-font: 'Catamaran', 'Lato', sans-serif;
 $header-font-color: $gray-200;
 $theme-action-sub-color1: $theme-action-color - 50;
 $theme-action-sub-color2: $theme-action-sub-color1 - 30;
 $theme-action-sub-color3: $theme-action-sub-color2 - 20;
 $theme-action-sub-color4: $theme-action-sub-color3 -10;
-$theme-main-sub-color1: #46566B;
-$theme-main-sub-color2: #212E40;
-$theme-main-sub-color3: #121A23;
-$theme-main-sub-color4: #121A23;
+$theme-main-sub-color1: #46566b;
+$theme-main-sub-color2: #212e40;
+$theme-main-sub-color3: #121a23;
+$theme-main-sub-color4: #121a23;
 $footer-font-color: $gray-500;

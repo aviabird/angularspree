@@ -4,9 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'random'
 })
 export class RandomPipe implements PipeTransform {
-
-  transform (input: any, min: number = 0, max: number = 1): any {
-
+  transform(input: any, min: number = 0, max: number = 1): any {
     if (!this.isNumberFinite(min) || !this.isNumberFinite(max)) {
       return input;
     }
@@ -19,12 +17,11 @@ export class RandomPipe implements PipeTransform {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  isNumberFinite (value: any): value is number {
+  isNumberFinite(value: any): value is number {
     return this.isNumber(value) && isFinite(value);
   }
 
-  isNumber (value: any): value is number {
+  isNumber(value: any): value is number {
     return typeof value === 'number';
   }
-
 }

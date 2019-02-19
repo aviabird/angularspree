@@ -6,61 +6,108 @@
         <div class="avg-review" id="review">
           <div class="row">
             <div class="review col-12 col-md-5 col-lg-5 p-0">
-              <ngx-input-star-rating disabled="true" value="{{productRating.average_rating}}" required></ngx-input-star-rating>
-              {{productRating.review_count}} Reviews
+              <ngx-input-star-rating
+                disabled="true"
+                value="{{ productRating.average_rating }}"
+                required
+              ></ngx-input-star-rating>
+              {{ productRating.review_count }} Reviews
             </div>
             <div class="out-review col-12 col-md-5 col-lg-5 ">
-              {{productRating.average_rating}} out of {{reviewsDisplayLimit}} stars
+              {{ productRating.average_rating }} out of
+              {{ reviewsDisplayLimit }} stars
             </div>
           </div>
         </div>
-        <div class="write-review">
-        </div>
-        <div *ngIf="(ratingOptions$ |async); let ratingOptions">
-        <div class="row rataingpercentage" *ngFor="let rating of ratingOptions | reverse">
-          <div class="col-3 col-md-2 col-lg-2 pl-2 pr-0">
-            {{rating.value}} Star
-          </div>
-          <div class="col-7 col-md-8 col-lg-8 pr-0 pl-0">
-            <div class="mb-2 progress-container">
-              <div *ngIf="productRating.rating_list[rating.value]; let ratingBar else elseBlock">
-                <progressbar [value]="ratingBar.value" type="warning"></progressbar>
+        <div class="write-review"></div>
+        <div *ngIf="(ratingOptions$ | async); let ratingOptions">
+          <div
+            class="row rataingpercentage"
+            *ngFor="let rating of (ratingOptions | reverse)"
+          >
+            <div class="col-3 col-md-2 col-lg-2 pl-2 pr-0">
+              {{ rating.value }} Star
+            </div>
+            <div class="col-7 col-md-8 col-lg-8 pr-0 pl-0">
+              <div class="mb-2 progress-container">
+                <div
+                  *ngIf="
+                    productRating.rating_list[rating.value];
+                    let ratingBar;
+                    else: elseBlock
+                  "
+                >
+                  <progressbar
+                    [value]="ratingBar.value"
+                    type="warning"
+                  ></progressbar>
+                </div>
+                <ng-template #elseBlock>
+                  <progressbar [value]="0" type="warning"></progressbar>
+                </ng-template>
               </div>
-              <ng-template #elseBlock>
-                <progressbar [value]="0" type="warning"></progressbar>
+            </div>
+            <div class="col-2  col-md-2 col-lg-2 pl-2">
+              <ng-template #showZero>
+                <b>{{ 0 }}%</b>
               </ng-template>
+              <b
+                *ngIf="
+                  productRating.rating_list[rating.value];
+                  let ratingBar;
+                  else: showZero
+                "
+              >
+                {{ ratingBar.value | number: '1.0-0' }}%
+              </b>
             </div>
           </div>
-          <div class="col-2  col-md-2 col-lg-2 pl-2">
-            <ng-template #showZero>
-              <b>{{0}}%</b>
-            </ng-template>
-            <b *ngIf="productRating.rating_list[rating.value]; let ratingBar else showZero">
-              {{ratingBar.value | number:'1.0-0'}}% </b>
-          </div>
-        </div>
         </div>
       </div>
       <div class="col-12 col-md-4 offset-md-1 mt-5 pt-5">
         <div class="row">
           <div class="col-12">
             <div class="row">
-              <div class="float-left review-percentage" *ngIf="productRating.review_count > 0">
+              <div
+                class="float-left review-percentage"
+                *ngIf="productRating.review_count > 0"
+              >
                 <div class="percent">
                   <div class="num">
-                    {{reviewPercent}}
+                    {{ reviewPercent }}
                     <span>%</span>
                   </div>
                   <small>RECOMMENDED</small>
                 </div>
-                <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'"
-                  [radius]="55" [stroke]="5" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false"
-                  [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0"></round-progress>
+                <round-progress
+                  [current]="reviewPercent"
+                  [max]="100"
+                  [color]="'#fe9700'"
+                  [background]="'#eaeaea'"
+                  [radius]="55"
+                  [stroke]="5"
+                  [semicircle]="false"
+                  [rounded]="true"
+                  [clockwise]="true"
+                  [responsive]="false"
+                  [duration]="800"
+                  [animation]="'easeInOutQuart'"
+                  [animationDelay]="0"
+                ></round-progress>
               </div>
               <div class="float-left p-0 write-review ">
-                <p *ngIf="productRating.review_count === 0">Be the first to Review this product</p>
-                <p *ngIf="productRating.review_count > 0">{{reviewPercent}}% OF REVIEWERS RECOMMEND THIS PRODUCT</p>
-                <button (click)="showReviewForm()" class="btn themebtnprimary  m-auto">Write Review</button>
+                <p *ngIf="productRating.review_count === 0">
+                  Be the first to Review this product
+                </p>
+                <p *ngIf="productRating.review_count > 0">
+                  {{ reviewPercent }}% OF REVIEWERS RECOMMEND THIS PRODUCT
+                </p>
+                <button
+                  (click)="showReviewForm()"
+                  class="btn themebtnprimary  m-auto"
+                >
+                  Write Review
+                </button>
               </div>
             </div>
           </div>
@@ -72,22 +119,27 @@
         <div class="col-md-8">
           <div class="review-sort-filter mt-5 mb-4">
             <div class="row">
-              <div class="float-left col-md-4 pt-2">Showing {{product?.reviews?.length}} of {{
-                productRating.review_count }} reviews</div>
+              <div class="float-left col-md-4 pt-2">
+                Showing {{ product?.reviews?.length }} of
+                {{ productRating.review_count }} reviews
+              </div>
             </div>
           </div>
           <div *ngIf="product.reviews">
             <div *ngFor="let item of product.reviews" class="rating-inner">
               <div class="rating-head">
-                <ngx-input-star-rating disabled="true" value="{{item.rating_option_vote?.rating_option?.value}}"
-                  required></ngx-input-star-rating>
-                <span class="pl-3">{{item.title}}</span>
+                <ngx-input-star-rating
+                  disabled="true"
+                  value="{{ item.rating_option_vote?.rating_option?.value }}"
+                  required
+                ></ngx-input-star-rating>
+                <span class="pl-3">{{ item.title }}</span>
               </div>
               <div class="rating-by">
-                By {{item.name}} on {{item.updated_at | date}}
+                By {{ item.name }} on {{ item.updated_at | date }}
               </div>
               <p class="description">
-                {{item.description}}
+                {{ item.description }}
               </p>
             </div>
           </div>
@@ -99,31 +151,57 @@
     <h1>Customer Reviews</h1>
     <div class="row">
       <div class="col-12 col-md-6">
-        <div class="avg-review" *ngIf="productRating.review_count > 0; else noReviews">
+        <div
+          class="avg-review"
+          *ngIf="productRating.review_count > 0; else noReviews"
+        >
           <div class="row">
             <div class="col-5">
               <div class="review-percentage">
                 <div class="percent">
                   <div class="num">
-                    {{reviewPercent}}
+                    {{ reviewPercent }}
                     <span>%</span>
                   </div>
                   <small>RECOMMENDED</small>
                 </div>
-                <round-progress [current]="reviewPercent" [max]="100" [color]="'#fe9700'" [background]="'#eaeaea'"
-                  [radius]="55" [stroke]="5" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false"
-                  [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0"></round-progress>
+                <round-progress
+                  [current]="reviewPercent"
+                  [max]="100"
+                  [color]="'#fe9700'"
+                  [background]="'#eaeaea'"
+                  [radius]="55"
+                  [stroke]="5"
+                  [semicircle]="false"
+                  [rounded]="true"
+                  [clockwise]="true"
+                  [responsive]="false"
+                  [duration]="800"
+                  [animation]="'easeInOutQuart'"
+                  [animationDelay]="0"
+                ></round-progress>
               </div>
             </div>
             <div class="review col-7 text-left mb-5 pl-2">
-              <p>{{reviewPercent}}% OF REVIEWERS
-                <br>RECOMMEND THIS PRODUCT</p>
-              <ngx-input-star-rating disabled="true" value="{{productRating.average_rating}}" required></ngx-input-star-rating>
-              {{productRating.average_rating | number:'1.1-1'}} / {{reviewsDisplayLimit}}
+              <p>
+                {{ reviewPercent }}% OF REVIEWERS <br />RECOMMEND THIS PRODUCT
+              </p>
+              <ngx-input-star-rating
+                disabled="true"
+                value="{{ productRating.average_rating }}"
+                required
+              ></ngx-input-star-rating>
+              {{ productRating.average_rating | number: '1.1-1' }} /
+              {{ reviewsDisplayLimit }}
             </div>
           </div>
           <div class="write-review">
-            <button (click)="showReviewForm()" class="btn themebtnprimary col-12 m-auto">Write a Review</button>
+            <button
+              (click)="showReviewForm()"
+              class="btn themebtnprimary col-12 m-auto"
+            >
+              Write a Review
+            </button>
           </div>
         </div>
       </div>
@@ -131,7 +209,12 @@
         <div class="row">
           <div class="box col-12">
             <div class="col-12 pl-0">Be the first to Review this product</div>
-            <button (click)="showReviewForm()" class="btn themebtnprimary col-12 m-auto">Write a Review</button>
+            <button
+              (click)="showReviewForm()"
+              class="btn themebtnprimary col-12 m-auto"
+            >
+              Write a Review
+            </button>
           </div>
         </div>
       </ng-template>
@@ -141,21 +224,26 @@
         <div class="col-md-8">
           <div class="review-sort-filter mt-1 mb-4">
             <div class="row">
-              <div class="float-left col-md-4 pt-2">Showing {{product?.reviews?.length}} of {{
-                productRating.review_count }} reviews</div>
+              <div class="float-left col-md-4 pt-2">
+                Showing {{ product?.reviews?.length }} of
+                {{ productRating.review_count }} reviews
+              </div>
             </div>
           </div>
           <div>
             <div *ngFor="let item of product.reviews" class="rating-inner">
               <div class="rating-head">
-                <ngx-input-star-rating disabled="true" value="{{item.rating_option_vote?.rating_option?.value}}"
-                  required></ngx-input-star-rating>
-                <span class="pl-3">{{item.title}}</span>
+                <ngx-input-star-rating
+                  disabled="true"
+                  value="{{ item.rating_option_vote?.rating_option?.value }}"
+                  required
+                ></ngx-input-star-rating>
+                <span class="pl-3">{{ item.title }}</span>
               </div>
               <div class="rating-by">
-                By {{item.name}} on {{item.updated_at | date}}
+                By {{ item.name }} on {{ item.updated_at | date }}
               </div>
-              <p class="description">{{item.description}}</p>
+              <p class="description">{{ item.description }}</p>
             </div>
           </div>
         </div>

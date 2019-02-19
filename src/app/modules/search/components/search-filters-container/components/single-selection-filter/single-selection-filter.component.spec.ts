@@ -8,9 +8,8 @@ describe('SingleSelectionFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SingleSelectionFilterComponent ]
-    })
-    .compileComponents();
+      declarations: [SingleSelectionFilterComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

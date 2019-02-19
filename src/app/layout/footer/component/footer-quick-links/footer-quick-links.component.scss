@@ -1,4 +1,4 @@
-@import "../../../../shared/scss/selected_theme_variables";
+@import '../../../../shared/scss/selected_theme_variables';
 
 a {
   color: $footer-font-color;
@@ -10,7 +10,7 @@ a {
 }
 
 ul {
-  list-style: none
+  list-style: none;
 }
 
 $break-small: 320px;

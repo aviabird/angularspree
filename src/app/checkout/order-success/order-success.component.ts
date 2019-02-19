@@ -10,7 +10,6 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
-
 @Component({
   selector: 'app-order-success',
   templateUrl: './order-success.component.html',
@@ -18,7 +17,7 @@ import { environment } from '../../../environments/environment';
 })
 export class OrderSuccessComponent implements OnInit {
   queryParams: Params;
-  orderDetails: Order
+  orderDetails: Order;
   layoutState$: Observable<LayoutState>;
   noImageUrl = 'assets/default/image-placeholder.svg';
   currency = environment.config.currency_symbol;
@@ -29,13 +28,12 @@ export class OrderSuccessComponent implements OnInit {
     private route: Router,
     private store: Store<AppState>
   ) {
-    this.activatedRouter.queryParams
-      .subscribe(params => {
-        this.queryParams = params
-        if (!this.queryParams.orderReferance) {
-          this.route.navigate(['/'])
-        }
-      });
+    this.activatedRouter.queryParams.subscribe(params => {
+      this.queryParams = params;
+      if (!this.queryParams.orderReferance) {
+        this.route.navigate(['/']);
+      }
+    });
   }
 
   ngOnInit() {
@@ -43,12 +41,14 @@ export class OrderSuccessComponent implements OnInit {
     this.userService
       .getOrderDetail(this.queryParams.orderReferance)
       .subscribe(order => {
-        this.orderDetails = order
+        this.orderDetails = order;
       });
   }
 
   getProductImageUrl(line_item: LineItem) {
-    const image_url = line_item.product.images[0] ? line_item.product.images[0].small : this.noImageUrl;
+    const image_url = line_item.product.images[0]
+      ? line_item.product.images[0].small
+      : this.noImageUrl;
     return image_url;
   }
 }

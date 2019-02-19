@@ -1,30 +1,45 @@
-<div *ngIf="paymentModes?.length !== 0 ;  else elseBlock">
+<div *ngIf="paymentModes?.length !== 0; else elseBlock">
   <div class="pay-modes" disabled>
-    <div class="mode" [ngClass]="{'selected': mode.id == selectedMode.id}" *ngFor="let mode of paymentModes" (click)="selectedPaymentMode(mode)">
-      {{mode.name}}
+    <div
+      class="mode"
+      [ngClass]="{ selected: mode.id == selectedMode.id }"
+      *ngFor="let mode of paymentModes"
+      (click)="selectedPaymentMode(mode)"
+    >
+      {{ mode.name }}
     </div>
   </div>
   <!-- // TODO: Applying switch case on source.  -->
   <div class="selected-mode" [ngSwitch]="selectedMode.name">
     <ng-template [ngSwitchCase]="'Stripe'">
-      <app-stripe-payment [paymentMethodId]="selectedMode.id"></app-stripe-payment>
+      <app-stripe-payment
+        [paymentMethodId]="selectedMode.id"
+      ></app-stripe-payment>
     </ng-template>
     <ng-template [ngSwitchCase]="'RazorPay'">
-      <app-razor-payment [paymentMethodId]="selectedMode.id"></app-razor-payment>
+      <app-razor-payment
+        [paymentMethodId]="selectedMode.id"
+      ></app-razor-payment>
     </ng-template>
     <ng-template [ngSwitchCase]="'COD'">
-      <app-cash-on-delivery [paymentMethodId]="selectedMode.id"></app-cash-on-delivery>
+      <app-cash-on-delivery
+        [paymentMethodId]="selectedMode.id"
+      ></app-cash-on-delivery>
     </ng-template>
     <ng-template [ngSwitchCase]="'Payubiz'">
-      <app-hosted-payment [paymentMethodId]="selectedMode.id"></app-hosted-payment>
+      <app-hosted-payment
+        [paymentMethodId]="selectedMode.id"
+      ></app-hosted-payment>
     </ng-template>
   </div>
-  <br>
-  <br>
-  <div *ngIf="showDummyCardInfo &&  selectedMode?.code === 'hpm'">
+  <br />
+  <br />
+  <div *ngIf="showDummyCardInfo && selectedMode?.code === 'hpm'">
     <div class="alert alert-success">
       <h6>
-        <strong>Note:</strong> Use following <strong>Test Card</strong> for making payment with {{selectedMode?.name}}</h6>
+        <strong>Note:</strong> Use following <strong>Test Card</strong> for
+        making payment with {{ selectedMode?.name }}
+      </h6>
     </div>
     <div class="alert alert-warning">
       <table class="table table-sm table-bordered">

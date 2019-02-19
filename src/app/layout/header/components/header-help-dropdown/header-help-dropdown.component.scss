@@ -5,7 +5,7 @@
   border-radius: 0 0 5px 5px;
   left: -2px !important;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     width: 0;
     height: 0;
@@ -34,7 +34,7 @@
   margin-right: 1em;
   position: relative;
   &:hover {
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
     background-color: $theme-main-color - 20;
   }
 }
@@ -45,10 +45,10 @@
 
 .dropdown-item.active,
 .dropdown-item:active {
-  background-color: $theme-main-color
+  background-color: $theme-main-color;
 }
 
 .openhelp {
   background-color: $theme-main-color - 20 !important;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
 }

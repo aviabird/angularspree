@@ -1,6 +1,11 @@
 <section class="qlinks text-left">
   <ul class="p-0">
-    <li class="line" *ngFor="let page of footer_pages; let first = first; let last = last" [class.first-item]="'pl-0'" [class.last-item]="last">
+    <li
+      class="line"
+      *ngFor="let page of footer_pages; let first = first; let last = last"
+      [class.first-item]="'pl-0'"
+      [class.last-item]="last"
+    >
       <!-- <a [routerLink]="['info' ,page.name]" target="_self">{{page.name}}</a> -->
     </li>
   </ul>

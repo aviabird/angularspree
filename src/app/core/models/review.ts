@@ -6,6 +6,6 @@ export class Review {
   locale: string;
   title: string;
   name: string;
-  rating_option_vote: RatingOptionVote
+  rating_option_vote: RatingOptionVote;
   updated_at: string;
 }

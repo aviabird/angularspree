@@ -18,11 +18,13 @@ export class ProfileEmailComponent implements OnInit {
   isEditEmailPressed: boolean;
   currentuserId: number;
 
-  constructor(private userService: UserService,
+  constructor(
+    private userService: UserService,
     private fb: FormBuilder,
     private toastyService: ToastrService,
     private authService: AuthService,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -31,7 +33,10 @@ export class ProfileEmailComponent implements OnInit {
   initForm() {
     const email = this.userDetails.email;
     this.emailForm = this.fb.group({
-      'email': [email, Validators.compose([Validators.required, Validators.email])]
+      email: [
+        email,
+        Validators.compose([Validators.required, Validators.email])
+      ]
     });
   }
 
@@ -44,23 +49,25 @@ export class ProfileEmailComponent implements OnInit {
   }
 
   onSaveEmail(id) {
-    const params = { user_id: id, email: this.emailForm.value.email }
-    this.userService.updateUser(params)
-      .subscribe(success => {
+    const params = { user_id: id, email: this.emailForm.value.email };
+    this.userService.updateUser(params).subscribe(
+      success => {
         this.toastyService.success('Email Updated!', 'Success!');
         this.authService.logout().subscribe();
-      }, error => {
+      },
+      error => {
         this.toastyService.error('Email could not be updated!', 'Error!');
-      })
+      }
+    );
   }
 
   emailConfirmModal(template: TemplateRef<any>, id: number) {
     this.currentuserId = id;
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   }
 
   confirm(): void {
-   this.onSaveEmail(this.currentuserId)
+    this.onSaveEmail(this.currentuserId);
     this.modalRef.hide();
   }
 

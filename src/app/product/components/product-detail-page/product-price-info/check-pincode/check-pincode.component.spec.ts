@@ -8,9 +8,8 @@ describe('CheckPincodeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckPincodeComponent ]
-    })
-    .compileComponents();
+      declarations: [CheckPincodeComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

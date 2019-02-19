@@ -6,13 +6,16 @@ import { AppState } from '../../interfaces';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '../../auth/actions/auth.actions';
 import { AuthService as OauthService } from 'ng2-ui-auth';
-import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpHeaders,
+  HttpClient,
+  HttpErrorResponse
+} from '@angular/common/http';
 import { HttpRequest } from '@angular/common/http/src/request';
 import { ToastrService, ActiveToast } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
 import { User } from '../models/user';
 import { RatingCategory } from '../models/rating_category';
-
 
 @Injectable()
 export class AuthService {
@@ -32,7 +35,7 @@ export class AuthService {
     private toastrService: ToastrService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: any
-  ) { }
+  ) {}
 
   /**
    *
@@ -43,12 +46,18 @@ export class AuthService {
    */
 
   login({ email, password }): Observable<User> {
-    const params = { data: { attributes: { 'email': email, 'password': password } } };
-    return this.http.post<{data: User}>('api/v1/login', params).pipe(
-      map(({data: user}) => {
+    const params = {
+      data: { attributes: { email: email, password: password } }
+    };
+    return this.http.post<{ data: User }>('api/v1/login', params).pipe(
+      map(({ data: user }) => {
         this.setTokenInLocalStorage(user, 'user');
-        this.store.dispatch(this.actions.getCurrentUserSuccess(JSON.parse(localStorage.getItem('user'))));
-        this.store.dispatch(this.actions.loginSuccess())
+        this.store.dispatch(
+          this.actions.getCurrentUserSuccess(
+            JSON.parse(localStorage.getItem('user'))
+          )
+        );
+        this.store.dispatch(this.actions.loginSuccess());
         return user;
       }),
       tap(
@@ -61,7 +70,6 @@ export class AuthService {
     );
   }
 
-
   /**
    *
    *
@@ -72,13 +80,16 @@ export class AuthService {
    */
   register(data: User): Observable<User> {
     const params = { data: { type: 'user', attributes: data } };
-    return this.http.post<{data: User}>('api/v1/register', params).pipe(
-      map(({data: user}) => {
+    return this.http.post<{ data: User }>('api/v1/register', params).pipe(
+      map(({ data: user }) => {
         return user;
       }),
       tap(
         _ => {
-          this.toastrService.success('You are successfully registerd!', 'Success!!')
+          this.toastrService.success(
+            'You are successfully registerd!',
+            'Success!!'
+          );
           this.router.navigate(['auth', 'login']);
         },
         _ => this.toastrService.error('Invalid/Existing data', 'ERROR!!')
@@ -174,16 +185,15 @@ export class AuthService {
     if (this.getUserToken()) {
       return new HttpHeaders({
         'Content-Type': 'application/vnd.api+json',
-        'Authorization': `Bearer ${this.getUserToken()}`,
-        'Accept': '*/*'
+        Authorization: `Bearer ${this.getUserToken()}`,
+        Accept: '*/*'
       });
     } else {
       return new HttpHeaders({
         'Content-Type': 'application/vnd.api+json',
-        'Accept': '*/*'
+        Accept: '*/*'
       });
     }
-
   }
 
   /**
@@ -223,14 +233,16 @@ export class AuthService {
 
   getUserToken() {
     if (isPlatformBrowser(this.platformId)) {
-      const user: User = JSON.parse(localStorage.getItem('user'))
-      return user ? user.token : null
+      const user: User = JSON.parse(localStorage.getItem('user'));
+      return user ? user.token : null;
     } else {
       return null;
     }
   }
 
   getRatingCategories(): Observable<Array<RatingCategory>> {
-    return this.http.get<{data: Array<RatingCategory>}>(`api/v1/ratings/`).pipe(map(resp => resp.data));
+    return this.http
+      .get<{ data: Array<RatingCategory> }>(`api/v1/ratings/`)
+      .pipe(map(resp => resp.data));
   }
 }

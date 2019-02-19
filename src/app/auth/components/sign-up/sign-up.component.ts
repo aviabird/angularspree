@@ -1,4 +1,3 @@
-
 import { tap } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -43,26 +42,34 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
     if (this.signUpForm.valid) {
       this.registerSubs = this.authService
-        .register(values).pipe(
-          tap(_ => _, (user) => {
-            const errors = user.error.errors || {};
-            keys.forEach(val => {
-              if (errors[val]) { this.pushErrorFor(val, errors[val][0]); };
-            });
-          })).subscribe();
+        .register(values)
+        .pipe(
+          tap(
+            _ => _,
+            user => {
+              const errors = user.error.errors || {};
+              keys.forEach(val => {
+                if (errors[val]) {
+                  this.pushErrorFor(val, errors[val][0]);
+                }
+              });
+            }
+          )
+        )
+        .subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.signUpForm.controls[val];
         if (!ctrl.valid) {
           this.pushErrorFor(val, null);
           ctrl.markAsTouched();
-        };
+        }
       });
     }
   }
 
   private pushErrorFor(ctrl_name: string, msg: string) {
-    this.signUpForm.controls[ctrl_name].setErrors({ 'msg': msg });
+    this.signUpForm.controls[ctrl_name].setErrors({ msg: msg });
   }
 
   initForm() {
@@ -72,26 +79,39 @@ export class SignUpComponent implements OnInit, OnDestroy {
     const first_name = '';
     const last_name = '';
 
-    this.signUpForm = this.fb.group({
-      'first_name': [first_name, Validators.compose([Validators.required])],
-      'last_name': [last_name, Validators.compose([Validators.required])],
-      'email': [email, Validators.compose([Validators.required, Validators.email])],
-      'password': [password, Validators.compose([Validators.required, Validators.minLength(8)])],
-      'password_confirmation': [password_confirmation, Validators.compose([Validators.required, Validators.minLength(8)])],
-    }, { validator: this.matchingPasswords('password', 'password_confirmation') }
+    this.signUpForm = this.fb.group(
+      {
+        first_name: [first_name, Validators.compose([Validators.required])],
+        last_name: [last_name, Validators.compose([Validators.required])],
+        email: [
+          email,
+          Validators.compose([Validators.required, Validators.email])
+        ],
+        password: [
+          password,
+          Validators.compose([Validators.required, Validators.minLength(8)])
+        ],
+        password_confirmation: [
+          password_confirmation,
+          Validators.compose([Validators.required, Validators.minLength(8)])
+        ]
+      },
+      { validator: this.matchingPasswords('password', 'password_confirmation') }
     );
   }
 
   redirectIfUserLoggedIn() {
-    this.store.select(getAuthStatus).subscribe(
-      data => {
-        if (data === true) { this.router.navigateByUrl('/'); }
+    this.store.select(getAuthStatus).subscribe(data => {
+      if (data === true) {
+        this.router.navigateByUrl('/');
       }
-    );
+    });
   }
 
   ngOnDestroy() {
-    if (this.registerSubs) { this.registerSubs.unsubscribe(); }
+    if (this.registerSubs) {
+      this.registerSubs.unsubscribe();
+    }
   }
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
@@ -104,7 +124,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
           mismatchedPasswords: true
         };
       }
-    }
+    };
   }
 
   socialLogin(provider: string) {

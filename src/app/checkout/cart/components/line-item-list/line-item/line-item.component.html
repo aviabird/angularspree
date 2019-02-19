@@ -1,19 +1,25 @@
 <div class="prod-item pb-3" *ngIf="!isMobile">
   <div *ngIf="name">
     <div class="col1 col-4 col-sm-2 col-md-2 col-lg-2">
-      <img [src]="image" alt="">
+      <img [src]="image" alt="" />
     </div>
     <div class="col2 col-6 col-sm-10 col-md-10 col-lg-10">
       <div class="row m-0">
         <div class="prod-name col-9">
           <div class="c-gray">
-            {{name}}
+            {{ name }}
           </div>
         </div>
         <div class="size-qty-wrap col-3 p-0">
           <div class="size-qty buy-quantity">
             <a class="cw-btn  quantity-minus" (click)="removeQuantity()">-</a>
-            <input type="text" class="quantity-input" value="{{quantityCount}}" id="quantity" required>
+            <input
+              type="text"
+              class="quantity-input"
+              value="{{ quantityCount }}"
+              id="quantity"
+              required
+            />
             <a class="cw-btn  quantity-plus" (click)="addQuantity()">+</a>
             <span class="qty">
               <!-- <span class="gray">Qty:</span>
@@ -25,9 +31,7 @@
       <div class="optiontxt">
         <!-- {{optionName}}: {{optionValue}} -->
       </div>
-      <div class="prod-amount">
-        {{currency}}{{amount}}
-      </div>
+      <div class="prod-amount">{{ currency }}{{ amount }}</div>
       <div class="edit-move-delete">
         <div class="actions">
           <span (click)="removeLineItem()" class="delete-item">
@@ -41,19 +45,25 @@
 <div class="prod-item py-2" *ngIf="isMobile">
   <div class="row m-0">
     <div class="col1 col-4 ">
-      <img [src]="image" alt="">
+      <img [src]="image" alt="" />
     </div>
     <div class="col2 col-8">
       <div class="row m-0">
         <div class="prod-name col-12">
           <div class="c-gray">
-            {{name}}
+            {{ name }}
           </div>
         </div>
         <div class="size-qty-wrap col-12 p-0">
           <div class="size-qty buy-quantity">
             <a class="cw-btn  quantity-minus" (click)="removeQuantity()">-</a>
-            <input type="text" class="quantity-input" value="{{quantityCount}}" id="quantity" required>
+            <input
+              type="text"
+              class="quantity-input"
+              value="{{ quantityCount }}"
+              id="quantity"
+              required
+            />
             <a class="cw-btn  quantity-plus" (click)="addQuantity()">+</a>
             <span class="qty">
               <!-- <span class="gray">Qty:</span>
@@ -63,7 +73,7 @@
         </div>
       </div>
       <div class="prod-amount">
-        {{amount}}
+        {{ amount }}
       </div>
       <div class="edit-move-delete">
         <div class="actions">

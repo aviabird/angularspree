@@ -1,5 +1,10 @@
 import { NguCarouselConfig } from '@ngu/carousel';
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'app-product-slider',
@@ -22,17 +27,13 @@ export class ProductSliderComponent implements OnInit {
     velocity: 0,
     easing: 'ease-in',
     custom: 'banner'
-  }
+  };
   @Input() showRating: boolean;
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  moveLeft() {
-  }
+  moveLeft() {}
 
-  moveRight() {
-  }
+  moveRight() {}
 }

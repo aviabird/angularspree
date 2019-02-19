@@ -1,7 +1,7 @@
 import { ProductResolver } from './guards/product-resolver';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../shared/index';
-import { ProgressbarModule } from 'ngx-bootstrap/progressbar'
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 import { ProductRoutingModule } from './product-routing.module';
 
@@ -15,10 +15,9 @@ import { ProductCountComponent } from './components/product-detail-page/product-
 import { ProductVariantsComponent } from './components/product-detail-page/product-variants/product-variants.component';
 import { ProductComponent } from './product.component';
 import { WriteProductReviewComponent } from './components/product-detail-page/write-product-review/write-product-review.component';
-import { ProductReviewComponent } from './components/product-detail-page/product-review/product-review.component'
-import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { ProductReviewComponent } from './components/product-detail-page/product-review/product-review.component';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { CheckPincodeComponent } from './components/product-detail-page/product-price-info/check-pincode/check-pincode.component';
-
 
 @NgModule({
   declarations: [
@@ -53,8 +52,6 @@ import { CheckPincodeComponent } from './components/product-detail-page/product-
     NgxInputStarRatingModule,
     ProgressbarModule.forRoot()
   ],
-  providers: [
-    ProductResolver
-  ]
+  providers: [ProductResolver]
 })
-export class ProductModule { }
+export class ProductModule {}

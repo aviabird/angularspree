@@ -3,10 +3,11 @@
     <div *ngFor="let filter of filterList">
       <app-filter-summary-filter
         *ngFor="let filterValue of filter.values"
-        id="{{filter.id}}"
+        id="{{ filter.id }}"
         (removeFilter)="updateFilter(filterValue, filter.id)"
         class="border"
-        [filterValue]="filterValue">
+        [filterValue]="filterValue"
+      >
       </app-filter-summary-filter>
     </div>
   </div>

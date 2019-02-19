@@ -19,7 +19,6 @@ import { RazorPaymentComponent } from './payment-modes-list/razor-payment/razor-
     CashOnDeliveryComponent,
     StripePaymentComponent,
     RazorPaymentComponent
-
   ],
   exports: [],
   imports: [
@@ -29,8 +28,6 @@ import { RazorPaymentComponent } from './payment-modes-list/razor-payment/razor-
     ReactiveFormsModule,
     TabsModule.forRoot()
   ],
-  providers: [
-    PaymentService
-  ]
+  providers: [PaymentService]
 })
-export class PaymentModule { }
+export class PaymentModule {}

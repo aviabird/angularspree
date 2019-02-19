@@ -8,7 +8,13 @@ import { AppState } from './interfaces';
 import { Store } from '@ngrx/store';
 import { Subscription, Observable } from 'rxjs';
 import { CheckoutService } from './core/services/checkout.service';
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { isPlatformBrowser } from '@angular/common';
@@ -50,8 +56,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.schema = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      'name': environment.appName,
-      'url': isPlatformBrowser(this.platformId) ? location.origin : ''
+      name: environment.appName,
+      url: isPlatformBrowser(this.platformId) ? location.origin : ''
     };
   }
 
@@ -60,17 +66,19 @@ export class AppComponent implements OnInit, OnDestroy {
       this.store.select(getAuthStatus).subscribe((data: boolean) => {
         if (data) {
           this.subscriptionList$.push(
-            this.checkoutService.fetchCurrentOrder()
-              .subscribe(_ => { },
-                _ => {
-                  localStorage.clear()
-                  this.store.dispatch(this.authAction.logoutSuccess())
-                }
-              )
-          )
+            this.checkoutService.fetchCurrentOrder().subscribe(
+              _ => {},
+              _ => {
+                localStorage.clear();
+                this.store.dispatch(this.authAction.logoutSuccess());
+              }
+            )
+          );
         } else {
           if (isPlatformBrowser(this.platformId)) {
-            const guestOrder: string = localStorage.getItem('order_number') ? JSON.parse(localStorage.getItem('order_number')) : null;
+            const guestOrder: string = localStorage.getItem('order_number')
+              ? JSON.parse(localStorage.getItem('order_number'))
+              : null;
             if (guestOrder) {
               this.subscriptionList$.push(
                 this.checkoutService.getOrder().subscribe()
@@ -90,11 +98,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private addFaviconIcon() {
     if (isPlatformBrowser(this.platformId)) {
-      const link =
-        (
-          document.querySelector(`link[rel*='icon']`) ||
-          document.createElement('link')
-        ) as HTMLLinkElement;
+      const link = (document.querySelector(`link[rel*='icon']`) ||
+        document.createElement('link')) as HTMLLinkElement;
       link.type = 'image/x-icon';
       link.rel = 'shortcut icon';
       link.href = environment.config.fevicon;
@@ -117,16 +122,31 @@ export class AppComponent implements OnInit, OnDestroy {
     this.meta.updateTag({ name: 'description', content: metaInfo.description });
     this.meta.updateTag({ name: 'keywords', content: metaInfo.title });
     this.meta.updateTag({ name: 'title', content: metaInfo.title });
-    this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: environment.appName });
-    this.meta.updateTag({ property: 'og:description', content: metaInfo.description });
-    this.meta.updateTag({ property: 'og:url', content: environment.config.frontEndUrl });
-    this.meta.updateTag({ property: 'twitter:title', content: metaInfo.description });
+    this.meta.updateTag({
+      name: 'apple-mobile-web-app-title',
+      content: environment.appName
+    });
+    this.meta.updateTag({
+      property: 'og:description',
+      content: metaInfo.description
+    });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: environment.config.frontEndUrl
+    });
+    this.meta.updateTag({
+      property: 'twitter:title',
+      content: metaInfo.description
+    });
     this.metaTitle.setTitle(metaInfo.title);
   }
 
   private addConstMetaInfo() {
     const metaInfo = environment.config.metaInfo;
-    this.meta.updateTag({ name: 'google-site-verification', content: metaInfo.googleSiteVerification })
+    this.meta.updateTag({
+      name: 'google-site-verification',
+      content: metaInfo.googleSiteVerification
+    });
   }
 
   private initLayoutState() {

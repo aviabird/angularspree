@@ -4,7 +4,7 @@ import * as fromUser from './user/reducers/user.reducer';
 import * as fromCheckout from './checkout/reducers/checkout.reducer';
 import * as fromAuth from './auth/reducers/auth.reducer';
 import * as fromSearch from './modules/search/store/reducers/search.reducer';
-import {Action} from '@ngrx/store';
+import { Action } from '@ngrx/store';
 
 /**
  * combineReducers is another useful metareducer that takes a map of reducer
@@ -44,8 +44,10 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 // console.log all actions
-export function logger(reducer: ActionReducer<State>): ActionReducer<State, Action> {
-  return function (state: State, action: Action): State {
+export function logger(
+  reducer: ActionReducer<State>
+): ActionReducer<State, Action> {
+  return function(state: State, action: Action): State {
     // console.log('state', state);
     // console.log('action', action);
 

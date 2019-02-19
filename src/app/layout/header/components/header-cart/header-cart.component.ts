@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+  OnDestroy
+} from '@angular/core';
 import { CheckoutService } from '../../../../core/services/checkout.service';
 import { Subscription } from 'rxjs';
 
@@ -13,7 +19,7 @@ export class HeaderCartComponent implements OnInit, OnDestroy {
   @Input() isMobile;
   subscriptionList$: Array<Subscription> = [];
 
-  constructor(private checkOutService: CheckoutService) { }
+  constructor(private checkOutService: CheckoutService) {}
 
   ngOnInit() {}
 
@@ -26,5 +32,4 @@ export class HeaderCartComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
-
 }

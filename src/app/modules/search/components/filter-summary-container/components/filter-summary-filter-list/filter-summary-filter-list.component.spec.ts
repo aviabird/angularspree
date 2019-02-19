@@ -8,9 +8,8 @@ describe('FilterSummaryFilterListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FilterSummaryFilterListComponent ]
-    })
-    .compileComponents();
+      declarations: [FilterSummaryFilterListComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

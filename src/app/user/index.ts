@@ -44,16 +44,14 @@ import { AddressModule } from '../checkout/address/address.module';
     ProfilePasswordComponent,
     AddEditAddressComponent
     // pipes
-
   ],
   exports: [],
-  providers: [
-    AddressService,
-  ],
+  providers: [AddressService],
   imports: [
     RouterModule.forChild(routes),
     SharedModule,
-    PaginationModule, AddressModule
+    PaginationModule,
+    AddressModule
   ]
 })
-export class UserModule { }
+export class UserModule {}

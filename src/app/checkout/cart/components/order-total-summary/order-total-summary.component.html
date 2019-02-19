@@ -1,20 +1,27 @@
 <div class="order-total-summary" *ngIf="!isMobile">
   <div class="order-total footer">
     <div class="place-order">
-      <button (click)="placeOrder()" class="btn themebtnprimary">Proceed to Checkout</button>
+      <button (click)="placeOrder()" class="btn themebtnprimary">
+        Proceed to Checkout
+      </button>
     </div>
   </div>
-  <div class="order-summary-span" *ngIf=itemTotal>
+  <div class="order-summary-span" *ngIf="itemTotal">
     <div class="bag-total">
       <span>Sub Total</span>
       <span class="value">
-        {{currency}}{{itemTotal| number:'1.2-2'}} </span>
+        {{ currency }}{{ itemTotal | number: '1.2-2' }}
+      </span>
     </div>
     <div class="shipping">
       <div class="float-left">Shipping</div>
-      <div class="shipping-fee c-green float-right" *ngIf="enableshipping">Only {{currency}}{{enableshippingvalue | number:'1.2-2'}}
-        to go for free delivery!</div>
-      <div class="shipping-fee c-green float-right" *ngIf="!enableshipping">Free</div>
+      <div class="shipping-fee c-green float-right" *ngIf="enableshipping">
+        Only {{ currency }}{{ enableshippingvalue | number: '1.2-2' }} to go for
+        free delivery!
+      </div>
+      <div class="shipping-fee c-green float-right" *ngIf="!enableshipping">
+        Free
+      </div>
       <div class="clearfix"></div>
     </div>
   </div>
@@ -24,34 +31,34 @@
     <div class="bag-total">
       <span>Sub Total :</span>
       <span class="value">
-        <i class="fa fa-rupee ml-2"></i> {{itemTotal | number:'1.2-2'}} </span>
+        <i class="fa fa-rupee ml-2"></i> {{ itemTotal | number: '1.2-2' }}
+      </span>
     </div>
   </div>
   <div class="order-total footer">
     <div class="place-order">
-      <button (click)="placeOrder()" class="btn themebtnprimary">Proceed to Checkout</button>
+      <button (click)="placeOrder()" class="btn themebtnprimary">
+        Proceed to Checkout
+      </button>
     </div>
   </div>
-  <button type="button" class="btn shippingbtn" *ngIf="!enableshipping"> You qualify for free delivery!
+  <button type="button" class="btn shippingbtn" *ngIf="!enableshipping">
+    You qualify for free delivery!
     <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
   </button>
-  <button type="button" class="btn shippingbtn" *ngIf="enableshipping">Only {{currency}}{{enableshippingvalue | number:'1.2-2'}}
+  <button type="button" class="btn shippingbtn" *ngIf="enableshipping">
+    Only {{ currency }}{{ enableshippingvalue | number: '1.2-2' }}
     to go for free delivery!
     <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
   </button>
 
   <div class="d-flex shippingprogess">
-    <span class="mr-2">
-      {{currency}}0
-    </span>
+    <span class="mr-2"> {{ currency }}0 </span>
     <span class="shipcount__bg__line"></span>
     <span class="shipcount__bg__line"></span>
     <span class="shipcount__bg__line"></span>
     <span class="shipcount__bg__line"></span>
-    <progressbar [value]="shippingProgress" type="success">
-    </progressbar>
-    <span class="ml-2">
-      {{currency}}{{freeShippingAmount}}
-    </span>
+    <progressbar [value]="shippingProgress" type="success"> </progressbar>
+    <span class="ml-2"> {{ currency }}{{ freeShippingAmount }} </span>
   </div>
 </div>

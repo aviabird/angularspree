@@ -9,5 +9,5 @@ export interface LayoutState extends Map<string, any> {
 export const LayoutStateRecord = Record({
   showMobileSearchBar: true,
   showMobileMainMenu: false,
-  isMobileView: false,
+  isMobileView: false
 });

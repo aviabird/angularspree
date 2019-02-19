@@ -1,12 +1,24 @@
-<ngu-carousel #landingBanners [inputs]="carouselTileConfig" [dataSource]="bannerItems">
-  <ngu-item *nguCarouselDef="let banner; let i = index;" class="bannerStyle">
-    <a href="{{banner.link_url}}">
-      <img src={{banner.image_link}} alt="" style="display: block; width: 100%;">
+<ngu-carousel
+  #landingBanners
+  [inputs]="carouselTileConfig"
+  [dataSource]="bannerItems"
+>
+  <ngu-item *nguCarouselDef="let banner; let i = index" class="bannerStyle">
+    <a href="{{ banner.link_url }}">
+      <img
+        src="{{ banner.image_link }}"
+        alt=""
+        style="display: block; width: 100%;"
+      />
     </a>
   </ngu-item>
-  <button NguCarouselPrev class='leftRs d-none d-sm-block'></button>
-  <button NguCarouselNext class='rightRs d-none d-sm-block'></button>
+  <button NguCarouselPrev class="leftRs d-none d-sm-block"></button>
+  <button NguCarouselNext class="rightRs d-none d-sm-block"></button>
   <ul class="ngucarouselPoint" NguCarouselPoint>
-    <li *ngFor="let i of landingBanners.pointNumbers; let i = index" [class.active]="i==landingBanners.activePoint" (click)="landingBanners.moveTo(i)"></li>
+    <li
+      *ngFor="let i of landingBanners.pointNumbers; let i = index"
+      [class.active]="i == landingBanners.activePoint"
+      (click)="landingBanners.moveTo(i)"
+    ></li>
   </ul>
 </ngu-carousel>

@@ -32,7 +32,7 @@ h1 {
 
 .bg {
   background-color: $white;
-  display: block
+  display: block;
 }
 
 .rating-count {
@@ -47,19 +47,19 @@ h1 {
 .hide-phone {
   @media screen and(min-width: 310px) and(max-width: 768px) {
     display: block;
-    text-align: right
+    text-align: right;
   }
 }
 
 .check-head {
-  font-size: 1.5em
+  font-size: 1.5em;
 }
 
 .msg {
-  display:block;
+  display: block;
   h5 {
     font-size: 12px;
-    text-transform: capitalize
+    text-transform: capitalize;
   }
 }
 
@@ -101,14 +101,14 @@ h1 {
   }
   /deep/ .product-tile p {
     margin-bottom: 10px;
-    font-size: .9em
+    font-size: 0.9em;
   }
   /deep/ .product-box {
     box-shadow: 0 0 1px $gray-11;
     border: 1px solid $gray-10;
   }
   /deep/ hr {
-    display: none
+    display: none;
   }
 }
 

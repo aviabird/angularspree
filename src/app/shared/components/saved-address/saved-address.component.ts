@@ -10,7 +10,6 @@ import { UserActions } from '../../../user/actions/user.actions';
   styleUrls: ['./saved-address.component.scss']
 })
 export class SavedAddressComponent implements OnInit {
-
   @Input() addressList;
   selectedIndex: number;
   @Output() getSelectedAddress = new EventEmitter<Object>();
@@ -18,13 +17,13 @@ export class SavedAddressComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private userAction: UserActions) { }
+    private userAction: UserActions
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   editAddress(selectedAddress) {
-    this.editButtonPressed.emit(selectedAddress)
+    this.editButtonPressed.emit(selectedAddress);
   }
 
   deleteAddress(addressId: string) {
@@ -34,5 +33,4 @@ export class SavedAddressComponent implements OnInit {
   selectedDeliveryAddress(address: Address) {
     this.getSelectedAddress.emit(address);
   }
-
 }

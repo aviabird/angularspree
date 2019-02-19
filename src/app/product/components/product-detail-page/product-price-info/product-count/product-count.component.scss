@@ -1,9 +1,9 @@
-@import "../../../../../shared/scss/selected_theme_variables";
+@import '../../../../../shared/scss/selected_theme_variables';
 #buybox {
   float: left;
   width: 40%;
   @media only screen and (min-width: 320px) and (max-width: 767px) {
-    width:100%
+    width: 100%;
   }
   .bordered {
     background-color: $gray-100;
@@ -11,7 +11,7 @@
     -webkit-border-radius: 5px;
     border-radius: 5px;
     @media only screen and (min-width: 320px) and (max-width: 767px) {
-      -webkit-border-radius:0;
+      -webkit-border-radius: 0;
       border-radius: 0;
     }
     .buybox__favorite {
@@ -60,7 +60,7 @@
           span {
             display: block;
             text-align: center;
-            font-size: .8em;
+            font-size: 0.8em;
             color: $gray-800;
           }
         }

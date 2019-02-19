@@ -30,14 +30,13 @@ export class OrderFailedComponent implements OnInit {
     private route: Router,
     private store: Store<AppState>
   ) {
-    this.activatedRouter.queryParams
-      .subscribe(params => {
-        this.queryParams = params
-        this.errorReason = this.queryParams.reason;
-        if (!this.queryParams.orderReferance) {
-          this.route.navigate(['/'])
-        }
-      });
+    this.activatedRouter.queryParams.subscribe(params => {
+      this.queryParams = params;
+      this.errorReason = this.queryParams.reason;
+      if (!this.queryParams.orderReferance) {
+        this.route.navigate(['/']);
+      }
+    });
   }
 
   ngOnInit() {
@@ -45,13 +44,14 @@ export class OrderFailedComponent implements OnInit {
     this.userService
       .getOrderDetail(this.queryParams.orderReferance)
       .subscribe(order => {
-        this.orderDetails = order
+        this.orderDetails = order;
       });
   }
 
   getProductImageUrl(line_item: LineItem) {
-    const image_url = line_item.product.images[0] ? line_item.product.images[0].small : this.noImageUrl;
+    const image_url = line_item.product.images[0]
+      ? line_item.product.images[0].small
+      : this.noImageUrl;
     return image_url;
   }
-
 }

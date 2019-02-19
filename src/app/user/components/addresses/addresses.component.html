@@ -9,25 +9,25 @@
       </span>
     </ng-template>
     <div class="clearfix"></div>
-    <app-saved-address *ngIf="!isEditAddrPressed" 
+    <app-saved-address *ngIf="!isEditAddrPressed"
       [userAddresses]="userAddresses"
       (isEditButtonPressed)="editAddress($event)"
       ></app-saved-address>
     <div *ngIf="isEditAddrPressed">
       <div class="head">Edit Address</div>
-      <app-add-edit-address 
-      [isEditAddrPressed]="isEditAddrPressed" 
-      [addressParams]="selectedAddress" 
+      <app-add-edit-address
+      [isEditAddrPressed]="isEditAddrPressed"
+      [addressParams]="selectedAddress"
       (isAddressEdited)="addressEditedDone($event)"
       [stateName]="Maharashtra"
       ></app-add-edit-address>
     </div>
   </div> -->
-  <!-- <div *ngIf="userDetails?.ship_address===null">
+<!-- <div *ngIf="userDetails?.ship_address===null">
     <div class="head">Add Address</div>
-    <app-add-edit-address 
-      [isEditAddrPressed]="false" 
-      (isAddressEdited)="addressEditedDone($event)" 
+    <app-add-edit-address
+      [isEditAddrPressed]="false"
+      (isAddressEdited)="addressEditedDone($event)"
       [addressParams]="buildAddressParams(userDetails)"
       [stateName]="null"></app-add-edit-address>
   </div> -->

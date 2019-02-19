@@ -16,12 +16,12 @@
   margin: 0 15px;
   border: 1px solid $gray-10;
   h3 {
-    font-size: 1.2em
+    font-size: 1.2em;
   }
   a {
     color: $gray-900;
     text-decoration: none;
-    font-size: 1em
+    font-size: 1em;
   }
   .ptitle {
     font-size: 1em;
@@ -36,7 +36,7 @@
     border-bottom: 0 solid;
   }
   border-bottom: 1px solid $gray-10;
-  padding: .5rem;
+  padding: 0.5rem;
   img {
     height: 75px;
     width: 100%;
@@ -53,12 +53,12 @@
     font-weight: 200;
     margin-top: 17px;
     cursor: pointer;
-    @media only screen and (min-width: 320px) and (max-width: 767px){
+    @media only screen and (min-width: 320px) and (max-width: 767px) {
       margin-top: 0;
     }
   }
   .lineitems-info {
-    font-size: .8em;
+    font-size: 0.8em;
     color: $gray-900;
     cursor: pointer;
   }
@@ -68,7 +68,7 @@
     font-weight: bold;
   }
   .qty {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 }
 
@@ -79,9 +79,13 @@ table {
         font-weight: 200;
         padding-right: 1rem;
         font-size: 1em;
-        color: $gray-600
+        color: $gray-600;
       }
     }
   }
 }
-.note{color:$gray-600;padding-left: 5px;font-size: 11px;}
+.note {
+  color: $gray-600;
+  padding-left: 5px;
+  font-size: 11px;
+}

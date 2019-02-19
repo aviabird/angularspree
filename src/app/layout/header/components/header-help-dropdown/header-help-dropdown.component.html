@@ -1,16 +1,35 @@
 <div>
-  <div class="btn helpbtn" [ngClass]="[isOpen ? 'openhelp':'']" (mouseenter)="dropdown.show()" (mouseleave)="dropdown.hide()">
+  <div
+    class="btn helpbtn"
+    [ngClass]="[isOpen ? 'openhelp' : '']"
+    (mouseenter)="dropdown.show()"
+    (mouseleave)="dropdown.hide()"
+  >
     <strong>24/7 help</strong>
     <i class="fa pl-3 fa-chevron-down"></i>
   </div>
-  <div class="dpmenu" dropdown #dropdown="bs-dropdown" [autoClose]="false" (isOpenChange)="onOpenChange($event)" (mouseenter)="dropdown.show()"
-    (mouseleave)="dropdown.hide()" (click)="dropdown.hide()">
-    <div id="dropdown-triggers-manual" *dropdownMenu class="dropdown-menu text-center" [ngClass]="[isScrolled ? '':'notscrolled']"
-      role="menu" aria-labelledby="button-triggers-manual">
+  <div
+    class="dpmenu"
+    dropdown
+    #dropdown="bs-dropdown"
+    [autoClose]="false"
+    (isOpenChange)="onOpenChange($event)"
+    (mouseenter)="dropdown.show()"
+    (mouseleave)="dropdown.hide()"
+    (click)="dropdown.hide()"
+  >
+    <div
+      id="dropdown-triggers-manual"
+      *dropdownMenu
+      class="dropdown-menu text-center"
+      [ngClass]="[isScrolled ? '' : 'notscrolled']"
+      role="menu"
+      aria-labelledby="button-triggers-manual"
+    >
       <ul>
         <li role="menuitem">
           <h6>Get help from our experts 24/7</h6>
-          <h2 class="text-danger">{{contactno}}</h2>
+          <h2 class="text-danger">{{ contactno }}</h2>
         </li>
         <li class="divider dropdown-divider"></li>
         <li></li>

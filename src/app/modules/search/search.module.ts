@@ -13,9 +13,7 @@ import * as fromSearch from './store';
 import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
-  declarations: [
-    ...COMPONENTS,
-  ],
+  declarations: [...COMPONENTS],
   imports: [
     CommonModule,
     SearchRoutingModule,
@@ -29,8 +27,6 @@ import { EffectsModule } from '@ngrx/effects';
 
     EffectsModule.forFeature([fromSearch.SearchEffects])
   ],
-  providers: [
-    SearchResolver
-  ]
+  providers: [SearchResolver]
 })
-export class SearchModule { }
+export class SearchModule {}

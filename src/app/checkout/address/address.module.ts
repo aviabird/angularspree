@@ -9,7 +9,6 @@ import { DeliveryAddressComponent } from './delivery-address/delivery-address.co
 import { DeliveryOptionsComponent } from './delivery-options/delivery-options.component';
 import { SharedModule } from '../../shared';
 
-
 @NgModule({
   declarations: [
     AddressComponent,
@@ -23,10 +22,8 @@ import { SharedModule } from '../../shared';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule,
+    SharedModule
   ],
-  providers: [
-    AddressService
-  ]
+  providers: [AddressService]
 })
-export class AddressModule { }
+export class AddressModule {}

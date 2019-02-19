@@ -23,11 +23,9 @@ import * as fromCheckout from './reducers/checkout.reducer';
     CartModule,
     AddressModule,
     PaymentModule,
-    SharedModule,
+    SharedModule
   ],
   declarations: [OrderSuccessComponent, OrderFailedComponent],
-  providers: [
-    CheckoutActions
-  ]
+  providers: [CheckoutActions]
 })
-export class CheckoutModule { }
+export class CheckoutModule {}

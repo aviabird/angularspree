@@ -1,16 +1,36 @@
-<div class='row m-0'>
+<div class="row m-0">
   <div class="col-12 p-3 p-sm-0">
     <h4 class="check-head">Check COD Availability</h4>
-    <form [formGroup]="checkPincodeForm" (ngSubmit)="checkCodAvilability()" class="d-block">
+    <form
+      [formGroup]="checkPincodeForm"
+      (ngSubmit)="checkCodAvilability()"
+      class="d-block"
+    >
       <div class="form-inline">
         <div class="form-group mr-sm-3 mr-3 mt-3 mt-sm-0">
-          <input type="text" class="form-control" name="pincode" placeholder="Postal/Pin code"
-          formControlName="pincode">
+          <input
+            type="text"
+            class="form-control"
+            name="pincode"
+            placeholder="Postal/Pin code"
+            formControlName="pincode"
+          />
         </div>
-        <button type="submit" class="btn themebtnprimarybasic" [disabled]=!checkPincodeForm.valid>Check</button>
+        <button
+          type="submit"
+          class="btn themebtnprimarybasic"
+          [disabled]="!checkPincodeForm.valid"
+        >
+          Check
+        </button>
       </div>
-      <div *ngIf="isCodAvilable$ | async;let isCodAvilable" class="mt-2 msg">
-        <h5 *ngIf="isCodAvilable.available; else elseBlock" class="text-success">CASH ON DELIVERY IS AVAILABLE!</h5>
+      <div *ngIf="(isCodAvilable$ | async); let isCodAvilable" class="mt-2 msg">
+        <h5
+          *ngIf="isCodAvilable.available; else elseBlock"
+          class="text-success"
+        >
+          CASH ON DELIVERY IS AVAILABLE!
+        </h5>
         <ng-template #elseBlock>
           <h5 class="text-danger">CASH ON DELIVERY IS NOT AVAILABLE!</h5>
         </ng-template>

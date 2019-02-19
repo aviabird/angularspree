@@ -1,5 +1,12 @@
 import { environment } from './../../../../environments/environment';
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ViewChild,
+  AfterViewInit,
+  ChangeDetectorRef
+} from '@angular/core';
 import { NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
@@ -25,10 +32,9 @@ export class LpBannerComponent implements OnInit, AfterViewInit {
     custom: 'banner'
   };
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 
-  ngAfterViewInit() {
-  }
+  ngAfterViewInit() {}
 }

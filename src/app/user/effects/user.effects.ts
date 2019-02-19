@@ -1,4 +1,3 @@
-
 import { switchMap, map, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
@@ -13,62 +12,55 @@ import { Address } from '../../core/models/address';
 
 @Injectable()
 export class UserEffects {
+  @Effect()
+  GetUserOrders$ = this.actions$.pipe(
+    ofType(UserActions.GET_USER_ORDERS),
+    switchMap<Action, Array<Order>>(_ => {
+      return this.userService.getOrders();
+    }),
+    map(orders => this.userActions.getUserOrdersSuccess(orders))
+  );
 
   @Effect()
-  GetUserOrders$ = this.actions$
-    .pipe(
-      ofType(UserActions.GET_USER_ORDERS),
-      switchMap<Action, Array<Order>>(_ => {
-        return this.userService.getOrders();
-      }),
-      map(orders => this.userActions.getUserOrdersSuccess(orders))
-    );
+  FetchUserAddress$ = this.actions$.pipe(
+    ofType(UserActions.FETCH_USER_ADDRESS),
+    switchMap<Action, Array<Address>>(_ => {
+      return this.addressService.getUserAddresses();
+    }),
+    map(addressList => this.userActions.fetchUserAddressSuccess(addressList))
+  );
 
   @Effect()
-  FetchUserAddress$ = this.actions$
-    .pipe(
-      ofType(UserActions.FETCH_USER_ADDRESS),
-      switchMap<Action, Array<Address>>(_ => {
-        return this.addressService.getUserAddresses();
-      }),
-      map(addressList => this.userActions.fetchUserAddressSuccess(addressList))
-    );
+  FetchCountries$ = this.actions$.pipe(
+    ofType(UserActions.FETCH_COUNTRIES),
+    switchMap<Action, Array<Country>>(_ => {
+      return this.addressService.getCountires();
+    }),
+    map(countries => this.userActions.fetchCountriesSuccess(countries))
+  );
 
   @Effect()
-  FetchCountries$ = this.actions$
-    .pipe(
-      ofType(UserActions.FETCH_COUNTRIES),
-      switchMap<Action, Array<Country>>(_ => {
-        return this.addressService.getCountires();
-      }),
-      map(countries => this.userActions.fetchCountriesSuccess(countries))
-    );
+  FetchStates$ = this.actions$.pipe(
+    ofType(UserActions.FETCH_STATES),
+    switchMap<Action & { payload }, Array<CState>>(action => {
+      return this.addressService.getAllStates(action.payload);
+    }),
+    map(states => this.userActions.fetchStatesSuccess(states))
+  );
 
   @Effect()
-  FetchStates$ = this.actions$
-    .pipe(
-      ofType(UserActions.FETCH_STATES),
-      switchMap<Action & { payload }, Array<CState>>(action => {
-        return this.addressService.getAllStates(action.payload);
-      }),
-      map(states => this.userActions.fetchStatesSuccess(states))
-    );
-
-  @Effect()
-  DeleteUserAddress$ = this.actions$
-    .pipe(
-      ofType(UserActions.DELETE_ADDRESS),
-      switchMap<Action & { payload }, Object>(action => {
-        return this.addressService.deleteAddress(action.payload);
-      }),
-      map(_ => this.userActions.fetchUserAddress())
-    );
+  DeleteUserAddress$ = this.actions$.pipe(
+    ofType(UserActions.DELETE_ADDRESS),
+    switchMap<Action & { payload }, Object>(action => {
+      return this.addressService.deleteAddress(action.payload);
+    }),
+    map(_ => this.userActions.fetchUserAddress())
+  );
 
   constructor(
     private actions$: Actions,
     private userService: UserService,
     private userActions: UserActions,
     private addressService: AddressService
-  ) { }
-
+  ) {}
 }

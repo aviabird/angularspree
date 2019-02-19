@@ -1,45 +1,67 @@
 <div class="address-section col-12 col-md-8 col-lg-8">
-	<div *ngIf="isUserSelectedAddress">
-		<div *ngIf="shipAddress" class="row m-0">
-			<div class="left col-12 col-md-8 col-lg-8 m-0 ">
-				<div class="edit-address">
-					<span class="edit-label">
-						Delivery Address
-					</span>
-					<br>
-					<div class="reviewlink">
-						<strong (click)=changeAddress()>
-							Change
-						</strong>
-					</div>
-				</div>
-				<app-delivery-address [address]="shipAddress"></app-delivery-address>
-			</div>
-			<div class="right col-12 col-md-4 col-lg-4 m-0">
-				<app-delivery-options (onCheckoutToPayment)="checkoutToPayment()"></app-delivery-options>
-			</div>
-		</div>
-	</div>
-	<div class="row" *ngIf="!isUserSelectedAddress">
-		<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0" *ngIf="!isUserSelectedAddress">
-			<div class="add-address reviewlink pl-1" *ngIf="!isEditButtonPressed">
-				<span class="add-label" (click)="addNewAddress()">+ ADD A NEW ADDRESS</span>
-				<app-add-address [modifiedAddress]="null" *ngIf="isAddNewAddress" (cancelAddress)="cancelAddress($event)"
-				 [countries]="(this.countries$ | async)">
-				</app-add-address>
-			</div>
-			<div class="add-address reviewlink pl-1" *ngIf="isEditButtonPressed">
-				<span class="add-label"> EDIT ADDRESS </span>
-				<app-add-address [modifiedAddress]="modifiedAddress" (cancelAddress)="cancelAddress($event)" [countries]="(this.countries$ | async)">
-				</app-add-address>
-			</div>
-		</div>
-		<div class="row" *ngIf="!isEditButtonPressed">
-			<div class="left col-12 col-md-10 col-lg-10 m-auto border-right-0" *ngIf="userAddresses$ | async; let userAddresses">
-				<app-saved-address *ngIf="userAddresses.length > 0" [addressList]="userAddresses" (getSelectedAddress)="getSelectedAddress($event)"
-				 (editButtonPressed)="editSelectedAddress($event)">
-				</app-saved-address>
-			</div>
-		</div>
-	</div>
+  <div *ngIf="isUserSelectedAddress">
+    <div *ngIf="shipAddress" class="row m-0">
+      <div class="left col-12 col-md-8 col-lg-8 m-0 ">
+        <div class="edit-address">
+          <span class="edit-label">
+            Delivery Address
+          </span>
+          <br />
+          <div class="reviewlink">
+            <strong (click)="changeAddress()">
+              Change
+            </strong>
+          </div>
+        </div>
+        <app-delivery-address [address]="shipAddress"></app-delivery-address>
+      </div>
+      <div class="right col-12 col-md-4 col-lg-4 m-0">
+        <app-delivery-options
+          (onCheckoutToPayment)="checkoutToPayment()"
+        ></app-delivery-options>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="!isUserSelectedAddress">
+    <div
+      class="left col-12 col-md-10 col-lg-10 m-auto border-right-0"
+      *ngIf="!isUserSelectedAddress"
+    >
+      <div class="add-address reviewlink pl-1" *ngIf="!isEditButtonPressed">
+        <span class="add-label" (click)="addNewAddress()"
+          >+ ADD A NEW ADDRESS</span
+        >
+        <app-add-address
+          [modifiedAddress]="null"
+          *ngIf="isAddNewAddress"
+          (cancelAddress)="cancelAddress($event)"
+          [countries]="this.countries$ | async"
+        >
+        </app-add-address>
+      </div>
+      <div class="add-address reviewlink pl-1" *ngIf="isEditButtonPressed">
+        <span class="add-label"> EDIT ADDRESS </span>
+        <app-add-address
+          [modifiedAddress]="modifiedAddress"
+          (cancelAddress)="cancelAddress($event)"
+          [countries]="this.countries$ | async"
+        >
+        </app-add-address>
+      </div>
+    </div>
+    <div class="row" *ngIf="!isEditButtonPressed">
+      <div
+        class="left col-12 col-md-10 col-lg-10 m-auto border-right-0"
+        *ngIf="(userAddresses$ | async); let userAddresses"
+      >
+        <app-saved-address
+          *ngIf="userAddresses.length > 0"
+          [addressList]="userAddresses"
+          (getSelectedAddress)="getSelectedAddress($event)"
+          (editButtonPressed)="editSelectedAddress($event)"
+        >
+        </app-saved-address>
+      </div>
+    </div>
+  </div>
 </div>

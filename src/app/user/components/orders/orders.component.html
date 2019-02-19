@@ -1,6 +1,9 @@
-<div class="" *ngIf="orders$ | async;let orders">
+<div class="" *ngIf="(orders$ | async); let orders">
   <div *ngIf="orders?.length > 0; else elseBlock">
-    <app-order-list-item [orders]="orders" [isMobile]="isMobile"></app-order-list-item>
+    <app-order-list-item
+      [orders]="orders"
+      [isMobile]="isMobile"
+    ></app-order-list-item>
     <div class="col-12 d-none d-sm-block">
       <div class="row">
         <!-- <pagination class="m-auto" *ngIf="orders.total_count > orders.per_page" [totalItems]="orders.total_count" [itemsPerPage]="orders.per_page"
@@ -20,9 +23,13 @@
     <div class="cart-empty">
       <div class="empty-cart-icon"></div>
       <div class="empty-cart-message">You have'nt ordered anything yet.</div>
-      <button type="button" class="btn themebtnprimary col-sm-4 m-auto" [routerLink]="['/']">Start Shopping</button>
+      <button
+        type="button"
+        class="btn themebtnprimary col-sm-4 m-auto"
+        [routerLink]="['/']"
+      >
+        Start Shopping
+      </button>
     </div>
   </ng-template>
 </div>
-
-

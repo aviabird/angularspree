@@ -94,35 +94,34 @@ export class CheckoutActions {
   getOrderDetails() {
     return {
       type: CheckoutActions.GET_ORDER_DETAILS
-    }
+    };
   }
 
   bindAddress(address: Address, orderId: number) {
     return {
       type: CheckoutActions.BIND_ADDRESS,
       payload: { address, orderId }
-    }
+    };
   }
 
   bindPayment(paymentMethodId: number, orderId: number, orderAmount: number) {
     return {
       type: CheckoutActions.BIND_PAYMENT,
       payload: { paymentMethodId, orderId, orderAmount }
-    }
+    };
   }
 
   getOrderPaymentsSuccess(order: Order) {
     return {
       type: CheckoutActions.GET_ORDER_PAYMENT_SUCCESS,
       payload: order
-    }
+    };
   }
 
   getShippingPreferences(orderId: number, packages: Array<{}>) {
     return {
       type: CheckoutActions.SHIPPING_PREFERENCES,
       payload: { orderId, packages }
-    }
+    };
   }
 }
-

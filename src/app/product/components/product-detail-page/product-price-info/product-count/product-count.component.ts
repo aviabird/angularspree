@@ -1,4 +1,13 @@
-import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewEncapsulation,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  OnDestroy
+} from '@angular/core';
 import { Product } from '../../../../../core/models/product';
 import { Router } from '@angular/router';
 import { environment } from '../../../../../../environments/environment';
@@ -28,16 +37,20 @@ export class ProductCountComponent implements OnInit, OnDestroy {
   count = 1;
   appConfig = environment.config;
 
-  constructor(private router: Router,
-    private store: Store<AppState>, private toastrService: ToastrService) {
+  constructor(
+    private router: Router,
+    private store: Store<AppState>,
+    private toastrService: ToastrService
+  ) {
     this.totalCartItems$ = this.store.select(getTotalCartItems);
     this.subscriptionList$.push(
-      this.store.select(getAuthStatus)
-        .subscribe(isValidUser => { this.isValidUser = isValidUser })
+      this.store.select(getAuthStatus).subscribe(isValidUser => {
+        this.isValidUser = isValidUser;
+      })
     );
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   increseCount() {
     this.count += 1;
@@ -53,14 +66,15 @@ export class ProductCountComponent implements OnInit, OnDestroy {
     if (this.count <= 1) {
       this.count = 1;
     }
-
   }
 
   addToCart(count: number) {
     if (this.isValidUser) {
       if (this.isOrderable) {
         this.onAddToCart.emit({ count: count, buyNow: false });
-      } else { this.toastrService.error('This product is Out of stock!', 'Error!'); }
+      } else {
+        this.toastrService.error('This product is Out of stock!', 'Error!');
+      }
     } else {
       this.redirectToLogin();
     }

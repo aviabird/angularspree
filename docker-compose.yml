@@ -1,7 +1,6 @@
 version: '2'
 
 services:
-
   angularspree-client:
     build:
       context: .

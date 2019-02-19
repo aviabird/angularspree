@@ -11,11 +11,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    SharedModule
-  ],
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   declarations: [
     LoginComponent,
     SignUpComponent,
@@ -23,4 +19,4 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
     UpdatePasswordComponent
   ]
 })
-export class AuthModule { }
+export class AuthModule {}

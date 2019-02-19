@@ -1,7 +1,6 @@
 import { CState } from './state';
 import { Country } from './country';
 
-
 export class Address {
   id: string;
   first_name: string;

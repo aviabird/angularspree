@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, EventEmitter, Output, PLATFORM_ID, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  EventEmitter,
+  Output,
+  PLATFORM_ID,
+  Inject
+} from '@angular/core';
 import { Variant } from './../../../../core/models/variant';
 import { VariantRetriverService } from './../../../../core/services/variant-retriver.service';
 import { VariantParserService } from './../../../../core/services/variant-parser.service';
@@ -21,7 +29,6 @@ export class ProductPriceInfoComponent implements OnInit {
   @Output() onMarkAsFavorites = new EventEmitter<Object>();
   @Output() selectedVariant = new EventEmitter<Object>();
 
-
   customOptionTypesHash: any;
   currentSelectedOptions = {};
   description: string;
@@ -33,18 +40,22 @@ export class ProductPriceInfoComponent implements OnInit {
   isOrderable: boolean;
   currency = environment.config.currency_symbol;
 
-  constructor(private variantParser: VariantParserService,
+  constructor(
+    private variantParser: VariantParserService,
     @Inject(PLATFORM_ID) private platformId: object
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.images = this.product.images;
     this.variantId = this.product.id;
     if (this.product.theme) {
-      this.customOptionTypesHash = this.variantParser
-        .getOptionsToDisplay(this.product.variants, this.product.theme.option_types);
-      this.mainOptions = this.makeGlobalOptinTypesHash(this.customOptionTypesHash);
+      this.customOptionTypesHash = this.variantParser.getOptionsToDisplay(
+        this.product.variants,
+        this.product.theme.option_types
+      );
+      this.mainOptions = this.makeGlobalOptinTypesHash(
+        this.customOptionTypesHash
+      );
       this.correspondingOptions = this.mainOptions;
     }
     this.isOrderable = this.product.is_orderable;
@@ -55,7 +66,7 @@ export class ProductPriceInfoComponent implements OnInit {
       this.currentSelectedOptions,
       this.customOptionTypesHash,
       option,
-      this.product,
+      this.product
     );
 
     this.createNewCorrespondingOptions(
@@ -93,23 +104,27 @@ export class ProductPriceInfoComponent implements OnInit {
   }
 
   addToCart(event) {
-    this.onAddToCart.emit(event)
+    this.onAddToCart.emit(event);
   }
 
   markAsFavorites() {
-    this.onMarkAsFavorites.emit()
+    this.onMarkAsFavorites.emit();
   }
 
   getSelectedVariant(variant) {
-    this.selectedVariant.emit(variant)
+    this.selectedVariant.emit(variant);
   }
 
   get discount() {
-    return Math.ceil(+this.product.max_retail_price.amount - +this.product.selling_price.amount);
+    return Math.ceil(
+      +this.product.max_retail_price.amount - +this.product.selling_price.amount
+    );
   }
 
   get discountPercent() {
-    return `${Math.ceil(this.discount / +this.product.max_retail_price.amount * 100)}%`;
+    return `${Math.ceil(
+      (this.discount / +this.product.max_retail_price.amount) * 100
+    )}%`;
   }
 
   scrollToReview() {
