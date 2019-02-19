@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="col-12 col-md-10 col-sm-10 col-lg-8 loginwindow">
     <h2>Sign In or Register</h2>
     <div class="row">
@@ -8,7 +7,11 @@
           <div id="content" class="col-sm-12" data-hook="">
             <div class="col-centered">
               <div class="panel panel-default">
-                <div id="existing-customer" class="panel-body" data-hook="login">
+                <div
+                  id="existing-customer"
+                  class="panel-body"
+                  data-hook="login"
+                >
                   <!-- <div class="login-third-party-login col-12">
                     <p class="login-button-info-text login-info-text">EASILY USING</p>
                     <div class="login-button-container col-12">
@@ -21,27 +24,65 @@
                     </div>
                   </div>
                   <p class="login-info-text">- OR USING EMAIL -</p> -->
-                  <form class="login-login-form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+                  <form
+                    class="login-login-form"
+                    [formGroup]="signInForm"
+                    (ngSubmit)="onSubmit()"
+                  >
                     <fieldset class="login-input-container">
                       <div class="login-input-item">
-                        <input type="email" class="login-user-input-email login-user-input" name="email" placeholder="Your Email Address" formControlName="email"
-                          autocomplete="off">
-                        <div *ngIf="signInForm.get('email').errors && signInForm.get('email').touched">
+                        <input
+                          type="email"
+                          class="login-user-input-email login-user-input"
+                          name="email"
+                          placeholder="Your Email Address"
+                          formControlName="email"
+                          autocomplete="off"
+                        />
+                        <div
+                          *ngIf="
+                            signInForm.get('email').errors &&
+                            signInForm.get('email').touched
+                          "
+                        >
                           <span class="login-error-icon text-danger">!</span>
-                          <p class="login-error-message text-danger">{{signInForm.get('email').errors.msg || 'Please enter a valid email id'}}</p>
+                          <p class="login-error-message text-danger">
+                            {{
+                              signInForm.get('email').errors.msg ||
+                                'Please enter a valid email id'
+                            }}
+                          </p>
                         </div>
                       </div>
                       <div class="login-input-item">
-                        <input type="password" class="login-user-input-password login-user-input" name="password" placeholder="Enter Password" formControlName="password"
-                          autocomplete="off">
-                        <div *ngIf="signInForm.get('password').errors && signInForm.get('password').touched">
+                        <input
+                          type="password"
+                          class="login-user-input-password login-user-input"
+                          name="password"
+                          placeholder="Enter Password"
+                          formControlName="password"
+                          autocomplete="off"
+                        />
+                        <div
+                          *ngIf="
+                            signInForm.get('password').errors &&
+                            signInForm.get('password').touched
+                          "
+                        >
                           <span class="login-error-icon text-danger">!</span>
-                          <p class="login-error-message text-danger">{{signInForm.get('password').errors.msg || 'Password must be at least 8 characters'}}</p>
+                          <p class="login-error-message text-danger">
+                            {{
+                              signInForm.get('password').errors.msg ||
+                                'Password must be at least 8 characters'
+                            }}
+                          </p>
                         </div>
                       </div>
                     </fieldset>
                     <fieldset class="login-login-button-container">
-                      <button type="submit" class="btn login-login-button">Log in</button>
+                      <button type="submit" class="btn login-login-button">
+                        Log in
+                      </button>
                     </fieldset>
                   </form>
                   <!-- <div class="login-link-container">
@@ -58,10 +99,16 @@
       <div class="col-12 0col-md-6 col-sm-6 col-lg-6 createacc">
         <div class="login-right-links">
           <h2 class="text-default">For New User</h2>
-          <p>Creating an account is fast, easy, and free. You'll be able to manage your autoships, track your orders, write
-            reviews, and more!
-            <p>
-              <a class="btn login-login-button" [routerLink]="['/auth']">Create Account</a>
+          <p>
+            Creating an account is fast, easy, and free. You'll be able to
+            manage your autoships, track your orders, write reviews, and more!
+          </p>
+
+          <p>
+            <a class="btn login-login-button" [routerLink]="['/auth']"
+              >Create Account</a
+            >
+          </p>
         </div>
       </div>
     </div>

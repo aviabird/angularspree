@@ -1,7 +1,13 @@
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../../interfaces';
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, Input, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+  OnDestroy
+} from '@angular/core';
 import {
   trigger,
   state,
@@ -10,7 +16,7 @@ import {
   transition
 } from '@angular/animations';
 
-import { URLSearchParams } from '@angular/http'
+import { URLSearchParams } from '@angular/http';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-categories-menu-dropdown',
@@ -18,12 +24,18 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./categories-menu-dropdown.component.scss'],
   animations: [
     trigger('popOverState', [
-      state('show', style({
-        left: -100 + '%'
-      })),
-      state('hide', style({
-        left: 0
-      })),
+      state(
+        'show',
+        style({
+          left: -100 + '%'
+        })
+      ),
+      state(
+        'hide',
+        style({
+          left: 0
+        })
+      ),
       transition('show => hide', animate('100ms ease-out')),
       transition('hide => show', animate('200ms ease-in'))
     ])
@@ -48,17 +60,14 @@ export class CategoriesMenuDropdownComponent implements OnInit, OnDestroy {
   subscriptionList$: Array<Subscription> = [];
 
   get stateName() {
-    return this.show ? 'show' : 'hide'
+    return this.show ? 'show' : 'hide';
   }
-  constructor(
-    private route: ActivatedRoute,
-    private store: Store<AppState>) {
+  constructor(private route: ActivatedRoute, private store: Store<AppState>) {
     this.subscriptionList$.push(
-      this.route.queryParams
-        .subscribe(params => {
-          this.queryParams = params;
-        })
-    )
+      this.route.queryParams.subscribe(params => {
+        this.queryParams = params;
+      })
+    );
   }
 
   ngOnInit() {
@@ -73,7 +82,6 @@ export class CategoriesMenuDropdownComponent implements OnInit, OnDestroy {
   showCategory(i) {
     this.menuTaxons = this.taxonomies[0].root.taxons[i];
     this.selectedItem = i;
-
   }
 
   showCategoryonclick(i) {

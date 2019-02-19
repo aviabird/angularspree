@@ -46,8 +46,8 @@ export class ProductDetailsComponent implements OnInit {
   brand: Taxon;
   checkPincodeForm: FormGroup;
   isCodAvilable$: Observable<any>;
-  linesItems: any
-  noImageUrl = 'assets/default/image-placeholder.svg'
+  linesItems: any;
+  noImageUrl = 'assets/default/image-placeholder.svg';
   ratingCategories1$: Observable<Object>;
 
   constructor(
@@ -57,9 +57,7 @@ export class ProductDetailsComponent implements OnInit {
     private meta: Meta,
     private title: Title,
     @Inject(PLATFORM_ID) private platformId: any
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
@@ -73,8 +71,12 @@ export class ProductDetailsComponent implements OnInit {
 
   initData() {
     if (this.product.variants.length) {
-      const variantProduct = this.product.variants.find(variant => variant.id === this.variantId) || this.product.variants[0];
-      this.images = variantProduct.images.length ? variantProduct.images : this.imagesPlaceHolder(this.noImageUrl);
+      const variantProduct =
+        this.product.variants.find(variant => variant.id === this.variantId) ||
+        this.product.variants[0];
+      this.images = variantProduct.images.length
+        ? variantProduct.images
+        : this.imagesPlaceHolder(this.noImageUrl);
       this.description = variantProduct.description;
       this.product.name = variantProduct.name;
       this.selectedVariant = variantProduct;
@@ -83,7 +85,9 @@ export class ProductDetailsComponent implements OnInit {
       this.product.max_retail_price = variantProduct.max_retail_price;
       this.product.is_orderable = variantProduct.is_orderable;
     } else {
-      this.images = this.product.images.length ? this.product.images : this.imagesPlaceHolder(this.noImageUrl);
+      this.images = this.product.images.length
+        ? this.product.images
+        : this.imagesPlaceHolder(this.noImageUrl);
       this.description = this.product.description;
       this.variantId = this.product.id;
       this.productId = this.product.id;
@@ -97,31 +101,32 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  addToCart(event: { buyNow: any; count: number; }) {
+  addToCart(event: { buyNow: any; count: number }) {
     let navigateToCart: boolean;
-    this.store.select(getLineItems)
-      .subscribe(res => {
-        this.linesItems = res
-      })
+    this.store.select(getLineItems).subscribe(res => {
+      this.linesItems = res;
+    });
     if (event.buyNow) {
-      this.linesItems.find((item: { product_id: number; quantity: number; }) => {
+      this.linesItems.find((item: { product_id: number; quantity: number }) => {
         if (item.product_id === +this.variantId && item.quantity === 1) {
-          navigateToCart = true
+          navigateToCart = true;
         }
-      })
+      });
       if (navigateToCart) {
-        this.router.navigate(['checkout', 'cart'])
+        this.router.navigate(['checkout', 'cart']);
       } else {
         this.store.dispatch(
-          this.checkoutActions.addToCart(this.variantId, event.count, true));
+          this.checkoutActions.addToCart(this.variantId, event.count, true)
+        );
       }
     } else {
       this.store.dispatch(
-        this.checkoutActions.addToCart(this.variantId, event.count, false));
+        this.checkoutActions.addToCart(this.variantId, event.count, false)
+      );
     }
   }
 
-  markAsFavorite() { }
+  markAsFavorite() {}
 
   showReviewForm() {
     this.router.navigate([this.product.slug, 'write_review'], {
@@ -130,12 +135,16 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   selectVariant(variant: Variant) {
-    this.images = variant.images.length ? variant.images : this.imagesPlaceHolder(this.noImageUrl);
+    this.images = variant.images.length
+      ? variant.images
+      : this.imagesPlaceHolder(this.noImageUrl);
     this.variantId = variant.id;
     this.selectedVariant = variant;
   }
 
-  get selectedImage() { return this.images ? this.images[0] : ''; }
+  get selectedImage() {
+    return this.images ? this.images[0] : '';
+  }
 
   addMetaInfo(product: Product) {
     this.meta.updateTag({
@@ -149,11 +158,23 @@ export class ProductDetailsComponent implements OnInit {
     });
 
     this.meta.updateTag({ name: 'title', content: product.slug });
-    this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: environment.appName });
-    this.meta.updateTag({ property: 'og:description', content: product.meta_description });
-    this.meta.updateTag({ property: 'og:url', content: environment.config.frontEndUrl }),
+    this.meta.updateTag({
+      name: 'apple-mobile-web-app-title',
+      content: environment.appName
+    });
+    this.meta.updateTag({
+      property: 'og:description',
+      content: product.meta_description
+    });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: environment.config.frontEndUrl
+    }),
       this.title.setTitle(this.product.name),
-      this.meta.updateTag({ property: 'twitter:title', content: this.product.description });
+      this.meta.updateTag({
+        property: 'twitter:title',
+        content: this.product.description
+      });
   }
 
   addJsonLD(product: Product) {
@@ -161,29 +182,31 @@ export class ProductDetailsComponent implements OnInit {
     this.schema = {
       '@context': 'https://schema.org',
       '@type': 'Product',
-      'url': isPlatformBrowser(this.platformId) ? location.href : '',
-      'itemCondition': 'https://schema.org/NewCondition',
-      'brand': {
+      url: isPlatformBrowser(this.platformId) ? location.href : '',
+      itemCondition: 'https://schema.org/NewCondition',
+      brand: {
         '@type': 'Thing',
-        'name': `AviaCommerce`
+        name: `AviaCommerce`
       },
-      'aggregateRating': {
+      aggregateRating: {
         '@type': 'AggregateRating',
-        'ratingValue': product.rating_summary.average_rating,
-        'reviewCount': `${product.rating_summary.review_count}`,
-        'bestRating': '5',
-        'worstRating': '0'
+        ratingValue: product.rating_summary.average_rating,
+        reviewCount: `${product.rating_summary.review_count}`,
+        bestRating: '5',
+        worstRating: '0'
       },
-      'description': product.meta_description,
-      'name': product.name,
-      'image': this.selectedImage && this.selectedImage.product_url,
-      'offers': [{
-        '@type': 'Offer',
-        'itemCondition': 'https://schema.org/NewCondition',
-        'availability': `https://schema.org/${stockStatus}`,
-        'price': product.selling_price.amount,
-        'priceCurrency': product.selling_price.currency,
-      }]
+      description: product.meta_description,
+      name: product.name,
+      image: this.selectedImage && this.selectedImage.product_url,
+      offers: [
+        {
+          '@type': 'Offer',
+          itemCondition: 'https://schema.org/NewCondition',
+          availability: `https://schema.org/${stockStatus}`,
+          price: product.selling_price.amount,
+          priceCurrency: product.selling_price.currency
+        }
+      ]
     };
   }
 
@@ -197,15 +220,19 @@ export class ProductDetailsComponent implements OnInit {
     const brandClassification = this.product.classifications.find(element =>
       element.taxon.pretty_name.includes('Brands')
     );
-    this.brand = brandClassification ? brandClassification.taxon : {} as Taxon;
+    this.brand = brandClassification
+      ? brandClassification.taxon
+      : ({} as Taxon);
   }
 
   imagesPlaceHolder(url: string) {
-    const images = [{
-      product_url: url,
-      large_url: url,
-      small_url: url
-    }]
+    const images = [
+      {
+        product_url: url,
+        large_url: url,
+        small_url: url
+      }
+    ];
     return images;
   }
 }

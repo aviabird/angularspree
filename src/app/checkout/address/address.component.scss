@@ -8,7 +8,7 @@
     border-right: 1px solid $gray-10;
     vertical-align: top;
     @media screen and(min-width: 320px) and(max-width: 768px) {
-      min-height:auto;
+      min-height: auto;
       border-right: 0 solid $gray-10;
       padding: 0;
     }
@@ -42,17 +42,16 @@
     @media screen and(min-width: 320px) and(max-width: 768px) {
       padding: 0;
     }
-   
   }
 
   .reviewlink {
     cursor: pointer;
     &:hover {
-      text-decoration: none
+      text-decoration: none;
     }
   }
 
-  .row{
+  .row {
     padding: inherit;
   }
 }

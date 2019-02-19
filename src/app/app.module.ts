@@ -2,14 +2,17 @@ import { AppPreloadingStrategy } from './app_preloading_strategy';
 import { myAuthConfig } from './oauth_config';
 import { Ng2UiAuthModule } from 'ng2-ui-auth';
 import { EffectsModule } from '@ngrx/effects';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  BrowserTransferStateModule
+} from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import {TransferHttpCacheModule} from '@nguniversal/common';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 // Components
 import { AppComponent } from './app.component';
@@ -27,7 +30,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AddressService } from './checkout/address/services/address.service';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,10 @@ import { AddressService } from './checkout/address/services/address.service';
     CheckoutFooterComponent
   ],
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: AppPreloadingStrategy, initialNavigation: 'enabled' }),
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: AppPreloadingStrategy,
+      initialNavigation: 'enabled'
+    }),
     StoreModule.forRoot(reducers, { metaReducers }),
 
     /**
@@ -74,9 +79,11 @@ import { AddressService } from './checkout/address/services/address.service';
     }),
     CoreModule,
     SharedModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
+    })
   ],
   providers: [AppPreloadingStrategy, AddressService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

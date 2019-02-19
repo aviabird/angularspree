@@ -12,9 +12,9 @@
     background-color: $gray-100;
     .order-num {
       @media only screen and (min-width: 320px) and (max-width: 767px) {
-        margin: 0.5rem .4rem .4rem 0.4rem;
+        margin: 0.5rem 0.4rem 0.4rem 0.4rem;
       }
-      margin: 0.5rem .4rem .4rem 0.5rem;
+      margin: 0.5rem 0.4rem 0.4rem 0.5rem;
       border-radius: 0;
       background-color: $theme-action-color;
       color: $white;
@@ -34,7 +34,7 @@
           border-bottom: 0 solid;
         }
         border-bottom: 1px solid $gray-10;
-        padding: .5rem;
+        padding: 0.5rem;
         img {
           height: 75px;
           width: 100%;
@@ -57,7 +57,7 @@
           }
         }
         .lineitems-info {
-          font-size: .8em;
+          font-size: 0.8em;
           color: $gray-900;
           cursor: pointer;
         }
@@ -70,7 +70,7 @@
           }
         }
         .qty {
-          font-size: .8em;
+          font-size: 0.8em;
           @media only screen and (min-width: 320px) and (max-width: 767px) {
             text-align: right;
           }
@@ -78,13 +78,13 @@
       }
     }
     .order-footer {
-      padding: .4rem;
+      padding: 0.4rem;
       border-top: 1px solid $gray-10;
       .order-on {
         padding: 3px;
         span {
           font-weight: 200;
-          color: $gray-900
+          color: $gray-900;
         }
         .head {
           font-weight: normal;

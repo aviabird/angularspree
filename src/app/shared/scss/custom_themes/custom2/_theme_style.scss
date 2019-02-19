@@ -2,18 +2,19 @@
 // <div class="selected-theme">...
 @import '../../selected_theme_variables';
 .selected-theme {
-  @import "header";
-  @import "badge";
-  @import "notify";
+  @import 'header';
+  @import 'badge';
+  @import 'notify';
 
-  input, button {
+  input,
+  button {
     &:focus {
       outline: none;
     }
   }
 
   .panel {
-    box-shadow: 0 0 4px rgba(40,44,63,0.08);
+    box-shadow: 0 0 4px rgba(40, 44, 63, 0.08);
   }
 
   .strong {

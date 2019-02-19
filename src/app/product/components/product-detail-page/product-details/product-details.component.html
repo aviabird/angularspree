@@ -1,23 +1,40 @@
 <ngx-json-ld [json]="schema"></ngx-json-ld>
 <div *ngIf="!isMobile">
   <div class="container">
-    <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row pt-5">
+    <div
+      itemscope
+      itemtype="https://schema.org/Product"
+      *ngIf="product != null"
+      class="row pt-5"
+    >
       <div class="col-12 col-md-5">
-        <app-image-container [images]="images" class="col-12" [selectedImage]="selectedImage">
+        <app-image-container
+          [images]="images"
+          class="col-12"
+          [selectedImage]="selectedImage"
+        >
         </app-image-container>
       </div>
       <div class="col-md-7 col-12">
-        <app-product-price-info [brand]="brand" [product]="product" (onAddToCart)="addToCart($event)"
-          (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectVariant($event)" class="row">
+        <app-product-price-info
+          [brand]="brand"
+          [product]="product"
+          (onAddToCart)="addToCart($event)"
+          (onMarkAsFavorites)="markAsFavorite()"
+          (selectedVariant)="selectVariant($event)"
+          class="row"
+        >
         </app-product-price-info>
       </div>
     </div>
   </div>
-  <div *ngIf="relatedProducts$ | async; let relatedProducts">
-    <div class="slider" *ngIf="relatedProducts.length >0">
+  <div *ngIf="(relatedProducts$ | async); let relatedProducts">
+    <div class="slider" *ngIf="relatedProducts.length > 0">
       <div class="container">
         <h2 class="position-absolute">Related products</h2>
-        <app-product-slider [productsList]="relatedProducts"></app-product-slider>
+        <app-product-slider
+          [productsList]="relatedProducts"
+        ></app-product-slider>
       </div>
     </div>
   </div>
@@ -32,11 +49,13 @@
       </div>
     </div>
   </div>
-  <div *ngIf="similarProducts$ | async; let similarProducts">
-    <div class="slider" *ngIf="similarProducts.length >0">
+  <div *ngIf="(similarProducts$ | async); let similarProducts">
+    <div class="slider" *ngIf="similarProducts.length > 0">
       <div class="container">
         <h2 class="position-absolute">Similar products</h2>
-        <app-product-slider [productsList]="similarProducts"></app-product-slider>
+        <app-product-slider
+          [productsList]="similarProducts"
+        ></app-product-slider>
       </div>
     </div>
   </div>
@@ -46,26 +65,42 @@
 </div>
 <div *ngIf="isMobile" class="bg">
   <div class="container p-0">
-    <div itemscope itemtype="https://schema.org/Product" *ngIf="product != null" class="row m-0 pt-2">
+    <div
+      itemscope
+      itemtype="https://schema.org/Product"
+      *ngIf="product != null"
+      class="row m-0 pt-2"
+    >
       <div class="col-12">
-        <h1 itemprop="name" class="title">{{product.name}}</h1>
+        <h1 itemprop="name" class="title">{{ product.name }}</h1>
       </div>
     </div>
     <div class="col-12">
       <div class="row m-0">
         <div class="product-subtitle col-5 p-0">
-          <a [routerLink]="['/s']" [queryParams]="{f: 'Brand:' + brand.name}" *ngIf="brand">
+          <a
+            [routerLink]="['/s']"
+            [queryParams]="{ f: 'Brand:' + brand.name }"
+            *ngIf="brand"
+          >
             <span>By </span>
-            {{brand.name}}
+            {{ brand.name }}
           </a>
         </div>
         <div class="product-header-extras col-7 p-0">
           <div class="ugc pr-3">
-            <a class="hide-phone js-revScrollTo reviewlink" (click)="scrollToReviewMobile()">
-              <ngx-input-star-rating disabled="true" value="{{product.rating_summary.average_rating }}" class="rating"
-                required></ngx-input-star-rating>
+            <a
+              class="hide-phone js-revScrollTo reviewlink"
+              (click)="scrollToReviewMobile()"
+            >
+              <ngx-input-star-rating
+                disabled="true"
+                value="{{ product.rating_summary.average_rating }}"
+                class="rating"
+                required
+              ></ngx-input-star-rating>
               <span class="rating-count">
-                {{product.rating_summary.review_count}}
+                {{ product.rating_summary.review_count }}
               </span>
             </a>
           </div>
@@ -80,18 +115,29 @@
         </div>
       </div>
       <div class="col-12 col-md-5">
-        <app-image-container [images]="images" [isMobile]='isMobile' class="col-12" [selectedImage]="images[0]">
+        <app-image-container
+          [images]="images"
+          [isMobile]="isMobile"
+          class="col-12"
+          [selectedImage]="images[0]"
+        >
         </app-image-container>
       </div>
       <div class="col-md-7 col-12 p-0 p-sm-0">
-        <app-product-price-info [product]="product" [isMobile]='isMobile' (onAddToCart)="addToCart($event)"
-          (onMarkAsFavorites)="markAsFavorite()" (selectedVariant)="selectVariant($event)" class="row">
+        <app-product-price-info
+          [product]="product"
+          [isMobile]="isMobile"
+          (onAddToCart)="addToCart($event)"
+          (onMarkAsFavorites)="markAsFavorite()"
+          (selectedVariant)="selectVariant($event)"
+          class="row"
+        >
         </app-product-price-info>
       </div>
     </div>
   </div>
-  <div *ngIf="relatedProducts$ | async; let relatedProducts">
-    <div class="slider mb-5 pb-4" *ngIf="relatedProducts.length >0">
+  <div *ngIf="(relatedProducts$ | async); let relatedProducts">
+    <div class="slider mb-5 pb-4" *ngIf="relatedProducts.length > 0">
       <div class="container">
         <h2 class="position-absolute">Related products</h2>
 
@@ -105,13 +151,16 @@
         <h1 class="mt-2">
           Description
         </h1>
-        <app-product-description [description]="product.description" class="row">
+        <app-product-description
+          [description]="product.description"
+          class="row"
+        >
         </app-product-description>
       </div>
     </div>
   </div>
-  <div *ngIf="similarProducts$ | async; let similarProducts">
-    <div class="slider mb-3 pb-4 pt-3 " *ngIf="similarProducts.length >0">
+  <div *ngIf="(similarProducts$ | async); let similarProducts">
+    <div class="slider mb-3 pb-4 pt-3 " *ngIf="similarProducts.length > 0">
       <div class="container">
         <h2 class="position-absolute">Similar products</h2>
         <!-- <app-product-slider [productsList]="similarProducts"></app-product-slider> -->
@@ -119,6 +168,9 @@
     </div>
   </div>
   <div class="container pt-2">
-    <app-product-review [product]="product" [isMobile]='isMobile'></app-product-review>
+    <app-product-review
+      [product]="product"
+      [isMobile]="isMobile"
+    ></app-product-review>
   </div>
 </div>

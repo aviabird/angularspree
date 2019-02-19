@@ -8,9 +8,8 @@ describe('RangeFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RangeFilterComponent ]
-    })
-    .compileComponents();
+      declarations: [RangeFilterComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

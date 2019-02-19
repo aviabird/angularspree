@@ -8,9 +8,8 @@ describe('CheckoutHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CheckoutHeaderComponent ]
-    })
-    .compileComponents();
+      declarations: [CheckoutHeaderComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

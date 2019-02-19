@@ -1,9 +1,9 @@
 // selected-theme is the main theme class add to top level main html component
 // <div class="selected-theme">...
 .selected-theme {
-  @import "header";
-  @import "badge";
-  @import "notify";
+  @import 'header';
+  @import 'badge';
+  @import 'notify';
   @media screen and (max-width: 768px) {
     background-color: $gray-100;
   }

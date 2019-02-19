@@ -1,4 +1,5 @@
-const cdn_url = 'https://res.cloudinary.com/aviabird/image/upload/h_500/v1538842572/aviacommerce/';
+const cdn_url =
+  'https://res.cloudinary.com/aviabird/image/upload/h_500/v1538842572/aviacommerce/';
 
 export const DEFAULT_APP_DATA = {
   landing_page_banner: [
@@ -46,7 +47,7 @@ export const DEFAULT_APP_DATA = {
     }
   },
   Deals: {
-    type: 'Today\'s Deals'
+    type: "Today's Deals"
   },
 
   footer_page_links: [
@@ -83,8 +84,7 @@ export const DEFAULT_APP_DATA = {
       icon: 'fa fa-instagram'
     },
     {
-      link_url:
-        'https://plus.google.com/',
+      link_url: 'https://plus.google.com/',
       name: 'Google +',
       icon: 'fa fa-google-plus-square'
     },

@@ -22,7 +22,9 @@ export class HeaderSearchComponent implements OnInit {
   queryParams: any;
   @Input() isMobile;
   @Input() isSearchopen;
-  @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onSubCatClicked: EventEmitter<boolean> = new EventEmitter<
+    boolean
+  >();
   searchPlaceholder = environment.config.header.searchPlaceholder;
   showGo = false;
   constructor(
@@ -30,7 +32,8 @@ export class HeaderSearchComponent implements OnInit {
     private router: Router,
     private activatedRouter: ActivatedRoute,
     private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: any) { }
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {}
 
   ngOnInit() {}
 
@@ -49,7 +52,7 @@ export class HeaderSearchComponent implements OnInit {
   onSearch(keyword: string) {
     if (keyword !== '') {
       keyword = keyword.trim();
-      this.router.navigate(['/s'], { queryParams: { 'q': keyword } });
+      this.router.navigate(['/s'], { queryParams: { q: keyword } });
       this.setKeywordToLocalStorage(keyword);
     }
   }

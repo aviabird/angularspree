@@ -8,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   contact_info = environment.config.contact_info;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -1,9 +1,19 @@
-<div class="header-cart btn" [routerLink]="['/checkout/cart']" *ngIf="!isMobile" (click)="getCurrentOrder()">
+<div
+  class="header-cart btn"
+  [routerLink]="['/checkout/cart']"
+  *ngIf="!isMobile"
+  (click)="getCurrentOrder()"
+>
   <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
-  <span class="badge badge-pill shadow-sm">{{totalCartItems}}</span>
+  <span class="badge badge-pill shadow-sm">{{ totalCartItems }}</span>
 </div>
 
-<div class="header-cart btn" [routerLink]="['/checkout/cart']" *ngIf="isMobile" (click)="getCurrentOrder()">
+<div
+  class="header-cart btn"
+  [routerLink]="['/checkout/cart']"
+  *ngIf="isMobile"
+  (click)="getCurrentOrder()"
+>
   <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-  <span class="badge badge-pill shadow-sm">{{totalCartItems}}</span>
+  <span class="badge badge-pill shadow-sm">{{ totalCartItems }}</span>
 </div>

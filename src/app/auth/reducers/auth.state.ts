@@ -3,7 +3,7 @@ import { RatingCategory } from '../../core/models/rating_category';
 
 export interface AuthState extends Map<string, any> {
   isAuthenticated: boolean;
-  currentUser: any,
+  currentUser: any;
   ratingCategories: Map<string, number>;
 }
 

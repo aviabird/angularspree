@@ -9,7 +9,7 @@
 }
 
 .notscrolled:before {
-  content: "";
+  content: '';
   position: absolute;
   width: 0;
   height: 0;
@@ -22,7 +22,7 @@
 }
 
 .dpmenu {
-  position: relative
+  position: relative;
 }
 
 .cust-menu-btn {
@@ -35,13 +35,13 @@
   left: -2px;
   &:hover {
     background-color: $theme-main-color - 20;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
   }
 }
 
 .open {
   background-color: $theme-main-color - 20;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 .dpbtn .dropdown-toggle::after {
@@ -61,7 +61,7 @@ ul {
     cursor: pointer;
     &::after {
       font-family: 'FontAwesome';
-      content: "\f105";
+      content: '\f105';
       width: 20px;
       height: 57px;
       margin-right: 12px;
@@ -72,17 +72,17 @@ ul {
     &:hover::after {
       color: $gray-800;
     }
-    ul>li {
+    ul > li {
       position: relative;
       left: 20%;
       width: 78%;
-      top: 0PX;
+      top: 0px;
       display: NONE;
     }
   }
   .active {
     &::after {
-      color: $gray-800
+      color: $gray-800;
     }
     background-color: $white !important;
     color: $gray-600 !important;
@@ -91,7 +91,7 @@ ul {
 }
 
 .detailcontainer {
-  padding: 0.9em 0.5rem
+  padding: 0.9em 0.5rem;
 }
 
 .main-nav-trigger {
@@ -121,14 +121,14 @@ label {
 .main-nav-trigger {
   &:after,
   &:before {
-    content: "";
+    content: '';
     width: 37px;
     left: 40%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-    -webkit-transition: transform .4s ease-out, transform-origin .4s ease-out;
-    transition: transform .4s ease-out, transform-origin .4s ease-out;
+    -webkit-transition: transform 0.4s ease-out, transform-origin 0.4s ease-out;
+    transition: transform 0.4s ease-out, transform-origin 0.4s ease-out;
   }
 }
 
@@ -224,9 +224,9 @@ label {
 
 .petmenu {
   width: 207%;
-  display: flex
+  display: flex;
 }
 
-.petdropdown .btn-group>.btn:first-child {
+.petdropdown .btn-group > .btn:first-child {
   margin-left: -17px;
 }

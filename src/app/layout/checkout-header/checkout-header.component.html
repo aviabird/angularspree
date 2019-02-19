@@ -1,20 +1,47 @@
 <div class="checkout-header">
   <div class="full-container">
     <a class="navbar-brand" routerLink="/">
-      <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name" [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
-        class="d-inline-block align-top" alt="">
+      <img
+        [src]="this.headerConfig.brand.logo"
+        [alt]="this.headerConfig.brand.name"
+        [width]="this.headerConfig.brand.width"
+        height="this.headerConfig.brand.height"
+        class="d-inline-block align-top"
+        alt=""
+      />
     </a>
     <ol class="checkout-steps">
       <li class="step step1">
-        <a [ngClass]="{'can-click': checkIfClickable('cart'), 'active': isActiveRoute('cart')}" [routerLink]="getRouterLink('cart')">Bag</a>
+        <a
+          [ngClass]="{
+            'can-click': checkIfClickable('cart'),
+            active: isActiveRoute('cart')
+          }"
+          [routerLink]="getRouterLink('cart')"
+          >Bag</a
+        >
       </li>
       <li class="divider"></li>
       <li class="step step2">
-        <a [ngClass]="{'can-click': checkIfClickable('address'), 'active': isActiveRoute('address')}" [routerLink]="getRouterLink('address')">Delivery</a>
+        <a
+          [ngClass]="{
+            'can-click': checkIfClickable('address'),
+            active: isActiveRoute('address')
+          }"
+          [routerLink]="getRouterLink('address')"
+          >Delivery</a
+        >
       </li>
       <li class="divider"></li>
       <li class="step step3">
-        <a [ngClass]="{'can-click': checkIfClickable('payment'), 'active': isActiveRoute('payment')}" [routerLink]="getRouterLink('payment')">Payment</a>
+        <a
+          [ngClass]="{
+            'can-click': checkIfClickable('payment'),
+            active: isActiveRoute('payment')
+          }"
+          [routerLink]="getRouterLink('payment')"
+          >Payment</a
+        >
       </li>
     </ol>
   </div>

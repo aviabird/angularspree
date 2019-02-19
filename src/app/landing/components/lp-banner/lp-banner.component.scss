@@ -1,4 +1,4 @@
-@import "../../../shared/scss/_selected_theme_variables.scss";
+@import '../../../shared/scss/_selected_theme_variables.scss';
 :host {
   /deep/ .banner {
     .bannerStyle {
@@ -45,7 +45,7 @@
       border: 1px solid $theme-main-color;
       padding: 5px;
       margin: 0 3px;
-      transition: .4s ease all;
+      transition: 0.4s ease all;
     }
     .ngucarouselPoint li.active {
       background-color: $white;
@@ -97,7 +97,7 @@
       margin-right: 10px;
       &.active {
         transform: translateY(-10px);
-        transition: .3s ease all;
+        transition: 0.3s ease all;
       }
     }
   }

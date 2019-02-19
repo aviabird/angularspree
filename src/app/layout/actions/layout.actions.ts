@@ -6,7 +6,7 @@ export enum LayoutActionTypes {
   HideMobileSearchBar = '[Layout] Hide Mobile Search Bar',
   ShowMobileSearchBar = '[Layout] Show Mobile Search Bar',
   HideMobileMainMenu = '[Layout] Hide Mobile Main Menu',
-  ShowMobileMainMenu = '[Layout] Show Mobile Main Menu',
+  ShowMobileMainMenu = '[Layout] Show Mobile Main Menu'
 }
 
 export class LoadLayouts implements Action {

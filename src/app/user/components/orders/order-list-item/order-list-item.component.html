@@ -1,9 +1,10 @@
 <div>
-  <div *ngFor="let order of orders | reverse">
+  <div *ngFor="let order of (orders | reverse)">
     <div *ngIf="order.state === 'confirmed'" class=" box shadow-sm">
       <div class="order">
         <div class="order-num btn float-left">
-          <a [routerLink]="['detail', order.number]" class="view-details-link"> {{order.number | humanize | uppercase}}
+          <a [routerLink]="['detail', order.number]" class="view-details-link">
+            {{ order.number | humanize | uppercase }}
           </a>
         </div>
         <div class="clearfix"></div>
@@ -13,19 +14,29 @@
           <div *ngFor="let item of order.line_items" class="lineitems">
             <div class="row ">
               <div class="col-12 pr-0 col-sm-1">
-                <img [routerLink]="['/', item.product.slug]" [src]='getProductImageUrl(item)' />
+                <img
+                  [routerLink]="['/', item.product.slug]"
+                  [src]="getProductImageUrl(item)"
+                />
               </div>
-              <div class="col-12 col-sm-5" [routerLink]="['/', item.product.slug]">
-                <div class="lineitems-name"> {{item.product.name}}</div>
+              <div
+                class="col-12 col-sm-5"
+                [routerLink]="['/', item.product.slug]"
+              >
+                <div class="lineitems-name">{{ item.product.name }}</div>
                 <!-- <div class="lineitems-info"> {{item.product.options_text}}</div> -->
               </div>
               <div class="col-12 col-sm-2">
-                <div class="price">{{currency}}{{item.unit_price.amount}}</div>
-                <div class="qty"> QTY: {{item.quantity}}</div>
+                <div class="price">
+                  {{ currency }}{{ item.unit_price.amount }}
+                </div>
+                <div class="qty">QTY: {{ item.quantity }}</div>
               </div>
               <div class="col-12 col-sm-4">
-                <b class="text-danger note p-0">Note:</b> <span class="note">You can return or exchange this within 15
-                  days.</span>
+                <b class="text-danger note p-0">Note:</b>
+                <span class="note"
+                  >You can return or exchange this within 15 days.</span
+                >
               </div>
             </div>
           </div>
@@ -34,19 +45,29 @@
           <div *ngFor="let item of order.line_items" class="lineitems">
             <div class="row ">
               <div class="col-12 pr-0 col-sm-1">
-                <img [routerLink]="['/', item.product.slug]" [src]='getProductImageUrl(item)' />
+                <img
+                  [routerLink]="['/', item.product.slug]"
+                  [src]="getProductImageUrl(item)"
+                />
               </div>
-              <div class="col-7 col-sm-5" [routerLink]="['/', item.product.slug]">
-                <div class="lineitems-name"> {{item.product.name}}</div>
+              <div
+                class="col-7 col-sm-5"
+                [routerLink]="['/', item.product.slug]"
+              >
+                <div class="lineitems-name">{{ item.product.name }}</div>
                 <!-- <div class="lineitems-info"> {{item.product.options_text}}</div> -->
               </div>
               <div class="col-5 col-sm-2">
-                <div class="qty"> QTY: {{item.quantity}}</div>
-                <div class="price">{{currency}} {{item.unit_price.amount}}</div>
+                <div class="qty">QTY: {{ item.quantity }}</div>
+                <div class="price">
+                  {{ currency }} {{ item.unit_price.amount }}
+                </div>
               </div>
               <div class="col-12 col-sm-4">
-                <b class="text-danger note p-0">Note:</b> <span class="note">You can return or exchange this within 15
-                  days.</span>
+                <b class="text-danger note p-0">Note:</b>
+                <span class="note"
+                  >You can return or exchange this within 15 days.</span
+                >
               </div>
             </div>
           </div>
@@ -54,7 +75,7 @@
         <div class="order-footer" *ngIf="!isMobile">
           <div class="order-on float-left col-12 col-sm-6">
             <span class="head">Order Status : </span>
-            <span>{{order.state | humanize | uppercase}}</span>
+            <span>{{ order.state | humanize | uppercase }}</span>
           </div>
           <!-- <div class="order-on float-right col-12 col-sm-6">
             <span class="head">Payment Status : </span>
@@ -66,7 +87,7 @@
           </div> -->
           <div class="order-on float-right col-12 col-sm-6">
             <span class="head">Order Total : </span>
-            <span>{{currency}}{{order.order_total_amount.amount}}</span>
+            <span>{{ currency }}{{ order.order_total_amount.amount }}</span>
           </div>
           <div class="clearfix"></div>
         </div>

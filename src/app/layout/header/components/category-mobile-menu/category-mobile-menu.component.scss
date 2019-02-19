@@ -11,7 +11,7 @@ ul {
     cursor: pointer;
     &::after {
       font-family: 'FontAwesome';
-      content: "\f105";
+      content: '\f105';
       width: 20px;
       height: 57px;
       margin-right: 12px;
@@ -19,11 +19,11 @@ ul {
       position: absolute;
       background-size: 10px;
     }
-    uL>LI {
+    ul > li {
       position: absolute;
       left: 20%;
       width: 78%;
-      top: 0PX;
+      top: 0px;
       display: NONE;
     }
   }
@@ -33,11 +33,11 @@ ul {
   li {
     border-bottom: 1px solid $gray-10;
     a {
-      color: $gray-900
+      color: $gray-900;
     }
     &::after {
       font-family: 'FontAwesome';
-      content: " ";
+      content: ' ';
     }
   }
 }
@@ -58,7 +58,7 @@ ul {
 }
 
 .bg-color {
-  background-color: $white
+  background-color: $white;
 }
 
 .subhead {
@@ -74,7 +74,7 @@ ul {
   padding-left: 10px;
   &::after {
     font-family: 'FontAwesome';
-    content: "";
+    content: '';
     width: 20px;
     height: 57px;
     margin-right: 12px;
@@ -94,5 +94,5 @@ ul {
   text-align: center;
   background-color: $theme-main-color - 20;
   width: 100%;
-  color:$white;
+  color: $white;
 }

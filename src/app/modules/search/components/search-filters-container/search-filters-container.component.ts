@@ -1,5 +1,17 @@
-import { SearchFilter, FilterAgg, RangeAgg, SearchMetaInfo } from './../../models/search-param';
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+  SearchFilter,
+  FilterAgg,
+  RangeAgg,
+  SearchMetaInfo
+} from './../../models/search-param';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { SearchAppliedParams } from '../../models/search-param';
 import { SearchingService } from '../../services';
 
@@ -17,36 +29,47 @@ export class SearchFiltersContainerComponent implements OnInit {
   @Output() selectedAggregation = new EventEmitter();
   mainFilter = ['Category', 'Brand'];
 
-  constructor(private searchingService: SearchingService) { }
+  constructor(private searchingService: SearchingService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   clearSearchFilters() {
     this.filterCleared.emit('');
   }
 
   get primaryFilters() {
-    const { aggregations: { filters: filters } } = this.metaInfo;
-    return filters.slice().sort(filter => filter.id === 'Category' ? -1 : 0);
+    const {
+      aggregations: { filters: filters }
+    } = this.metaInfo;
+    return filters.slice().sort(filter => (filter.id === 'Category' ? -1 : 0));
   }
 
   get rangeFilters() {
-    const { aggregations: { range_filters: filters } } = this.metaInfo;
+    const {
+      aggregations: { range_filters: filters }
+    } = this.metaInfo;
     return filters;
   }
 
   updateFilter(updatedVal: any, filterName: string) {
     this.filterUpdated.emit(
-      this.searchingService.updateFilter(this.appliedParams, updatedVal, filterName)
+      this.searchingService.updateFilter(
+        this.appliedParams,
+        updatedVal,
+        filterName
+      )
     );
   }
 
   updateRangeFilter(updatedVal: any, filterName: string) {
     const currentAppliedFilters = this.appliedParams.rangeFilters;
-    const filterToUpdate = currentAppliedFilters.find(f => f.id === filterName) || { id: filterName };
+    const filterToUpdate = currentAppliedFilters.find(
+      f => f.id === filterName
+    ) || { id: filterName };
     let newCurrentFilters: Array<SearchFilter>;
-    const filteredAppliedFilters = currentAppliedFilters.filter(f => f.id !== filterName);
+    const filteredAppliedFilters = currentAppliedFilters.filter(
+      f => f.id !== filterName
+    );
 
     newCurrentFilters = [
       ...filteredAppliedFilters,
@@ -54,12 +77,11 @@ export class SearchFiltersContainerComponent implements OnInit {
         ...filterToUpdate,
         values: [updatedVal]
       }
-    ]
+    ];
 
     this.filterUpdated.emit({
       ...this.appliedParams,
       rangeFilters: newCurrentFilters
     });
   }
-
 }

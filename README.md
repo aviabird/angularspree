@@ -27,26 +27,28 @@ It is a plug and play frontend application for [AviaCommerce API](https://www.av
 
 **It is not limited to aviacommerce and can also be used with any e-commerce solution with an api interface. Such as spreecommerce, magento, opencart etc.**
 
-* 🌍 [aviacommerce](https://aviacommerce.org/) - Learn more about AngularSpree
-* 📖 [Documentation](https://www.aviacommerce.org/docs/frontend-install.html)
-* 📚 [API Documentation](https://www.aviacommerce.org/docs/apis-getting-started.html)
-* 👍 Like us on [Facebook](https://www.facebook.com/aviacommerce)
-* 🕊 Twitter: [@aviacommerce](https://twitter.com/aviacommerce) - Get the latest news
-* 🐞 Issue Tracker: - [Issues](https://github.com/aviacommerce/avia/issues) - Report bugs here
-* 🗨 [Forums](https://forum.aviacommerce.org/) - Discussions(Coming soon) 
-* 👪 [Community Chat](https://gitter.im/avia-commerce/Lobby) - Gitter 
+- 🌍 [aviacommerce](https://aviacommerce.org/) - Learn more about AngularSpree
+- 📖 [Documentation](https://www.aviacommerce.org/docs/frontend-install.html)
+- 📚 [API Documentation](https://www.aviacommerce.org/docs/apis-getting-started.html)
+- 👍 Like us on [Facebook](https://www.facebook.com/aviacommerce)
+- 🕊 Twitter: [@aviacommerce](https://twitter.com/aviacommerce) - Get the latest news
+- 🐞 Issue Tracker: - [Issues](https://github.com/aviacommerce/avia/issues) - Report bugs here
+- 🗨 [Forums](https://forum.aviacommerce.org/) - Discussions(Coming soon)
+- 👪 [Community Chat](https://gitter.im/avia-commerce/Lobby) - Gitter
 
 ### Important Note
-AngularSpree is now a part of [Aviacommerce Project](https://aviacommerce.org). Further development of angularspree will happen in *this repository only*. Also, check the [aviacommerce repo](https://github.com/aviacommerce/avia) where this repository exists as a submodule.
+
+AngularSpree is now a part of [Aviacommerce Project](https://aviacommerce.org). Further development of angularspree will happen in _this repository only_. Also, check the [aviacommerce repo](https://github.com/aviacommerce/avia) where this repository exists as a submodule.
 
 ## Features
+
 Please check the online demo [here](https://www.aviacommerce.org/demo/demo.html).
 
 ### Features of this mobile appliction are:-
 
 1. Product List Page
 2. Product Detail Page
-3. Filters by Category, options, size etc 
+3. Filters by Category, options, size etc
 4. Sort(New arrival, Price)
 5. Advanced searching and autocomplete with Elasticsearch
 6. Add/update to cart
@@ -56,19 +58,20 @@ Please check the online demo [here](https://www.aviacommerce.org/demo/demo.html)
 
 ### Admin has following features for sellers:-
 
-1. Add/update products/inventory. 
-2. Manage orders 
-3. Manage Categories/Taxonomies 
+1. Add/update products/inventory.
+2. Manage orders
+3. Manage Categories/Taxonomies
 4. Support for Variants and Option Types, Option Sets
 5. Shipping settings/policy(free shipping, shipping rules)
 6. Promotions(coupons per user, total usage count)
-5. Manage Users(admin, user types)
-6. Taxation
-7. Send emails and notifications.
+7. Manage Users(admin, user types)
+8. Taxation
+9. Send emails and notifications.
 
 ### Quick Links
-[Gitter](https://gitter.im/avia-commerce/Lobby) | [Contributing](https://www.aviacommerce.org/docs/how-to-contribute.html) | [API Specs](https://www.aviacommerce.org/docs/apis-getting-started.html) | 
-|---|---|---|
+
+| [Gitter](https://gitter.im/avia-commerce/Lobby) | [Contributing](https://www.aviacommerce.org/docs/how-to-contribute.html) | [API Specs](https://www.aviacommerce.org/docs/apis-getting-started.html) |
+| ----------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 
 
 This project is an open-source initiative by[ Aviabird Technologies](https://aviabird.com) under the [Aviacommerce](https://aviacommerce.org) open-source project.

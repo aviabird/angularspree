@@ -21,11 +21,12 @@ export class OrdersComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private userActions: UserActions,
-    @Inject(PLATFORM_ID) private platformId: Object) {}
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit() {
     this.store.dispatch(this.userActions.getUserOrders());
-    this.orders$ = this.store.select(getUserOrders); 
+    this.orders$ = this.store.select(getUserOrders);
     if (isPlatformBrowser(this.platformId)) {
       this.screenwidth = window.innerWidth;
     }
@@ -41,5 +42,4 @@ export class OrdersComponent implements OnInit {
     this.page = event.page;
     this.store.dispatch(this.userActions.getUserOrders());
   }
-
 }

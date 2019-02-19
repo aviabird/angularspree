@@ -15,7 +15,7 @@ export class LineItemListComponent implements OnInit, OnDestroy {
   lineItems$: Observable<LineItem[]>;
   subscriptionList$: Array<Subscription> = [];
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.lineItems$ = this.store.select(getLineItems);

@@ -1,4 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'app-product-description',
@@ -8,9 +13,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class ProductDescriptionComponent implements OnInit {
   @Input() description;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

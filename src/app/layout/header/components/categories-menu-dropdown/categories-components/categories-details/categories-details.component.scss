@@ -1,4 +1,4 @@
-@import "../../../../../../shared/scss/selected_theme_variables";
+@import '../../../../../../shared/scss/selected_theme_variables';
 .brandsmenu a {
   color: $white;
   text-decoration: None;
@@ -18,7 +18,7 @@
   &:hover {
     border-bottom: 2px solid $theme-main-color;
     text-decoration: none;
-    color:$theme-main-color - 60;
+    color: $theme-main-color - 60;
   }
 }
 
@@ -36,7 +36,7 @@
       cursor: pointer;
       &::after {
         font-family: 'FontAwesome';
-        content: "\f105";
+        content: '\f105';
         width: 20px;
         height: 57px;
         margin-right: 12px;
@@ -45,18 +45,18 @@
         background-size: 10px;
       }
       &:hover::after {
-        color: $theme-main-color
+        color: $theme-main-color;
       }
       &:hover {
         background-color: $white;
         color: $theme-main-color !important;
         border-radius: 4px 0px 0px 4px;
       }
-      uL>LI {
+      ul > li {
         position: absolute;
         left: 20%;
         width: 78%;
-        top: 0PX;
+        top: 0px;
         display: NONE;
       }
     }
@@ -107,7 +107,7 @@
   position: relative;
   background-repeat: no-repeat !important;
   background-position: 100% !important;
-  background-size: 300px !important
+  background-size: 300px !important;
 }
 
 @media screen and(min-width: 628px) and(max-width: 768px) {

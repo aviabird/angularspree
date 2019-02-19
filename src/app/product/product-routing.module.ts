@@ -6,7 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: ':id', component: ProductDetailPageComponent,
+    path: ':id',
+    component: ProductDetailPageComponent,
     resolve: {
       product: ProductResolver
     }
@@ -19,15 +20,16 @@ const routes: Routes = [
     }
   },
   {
-    path: ':id/:variantId', component: ProductDetailPageComponent,
+    path: ':id/:variantId',
+    component: ProductDetailPageComponent,
     resolve: {
       product: ProductResolver
     }
-  },
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProductRoutingModule { }
+export class ProductRoutingModule {}

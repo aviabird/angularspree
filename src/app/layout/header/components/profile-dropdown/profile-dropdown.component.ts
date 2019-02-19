@@ -1,6 +1,15 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
-import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy, Inject, PLATFORM_ID, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  ChangeDetectionStrategy,
+  Inject,
+  PLATFORM_ID,
+  OnDestroy
+} from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import { User } from '../../../../core/models/user';
 import { Subscription } from 'rxjs';
@@ -24,18 +33,19 @@ export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
   constructor(
     private authService: AuthService,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: any) {
-  }
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onOpenChange(data: boolean): void {
     this.isOpen = !this.isOpen;
   }
 
   ngOnChanges() {
-    this.currentUser = isPlatformBrowser(this.platformId) ? JSON.parse(localStorage.getItem('user')) : null;
+    this.currentUser = isPlatformBrowser(this.platformId)
+      ? JSON.parse(localStorage.getItem('user'))
+      : null;
     if (this.currentUser) {
       this.name = this.currentUser.first_name;
     }
@@ -43,12 +53,15 @@ export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
 
   logout() {
     this.subnav = !this.subnav;
-    this.subList$.push(this.authService.logout().
-      subscribe(_ => this.router.navigate(['auth', 'login'])));
+    this.subList$.push(
+      this.authService
+        .logout()
+        .subscribe(_ => this.router.navigate(['auth', 'login']))
+    );
   }
 
   login() {
-    this.router.navigate(['/auth/login'])
+    this.router.navigate(['/auth/login']);
   }
 
   ngOnDestroy() {

@@ -2,89 +2,94 @@
   <nav
     class="navbar navbar-expand-lg"
     id="main"
-    [ngClass]="{'page-scroll-header': isScrolled}">
+    [ngClass]="{ 'page-scroll-header': isScrolled }"
+  >
     <div class="container">
       <app-categories-menu-dropdown
-        [taxonomies]="taxonomies$| async"
+        [taxonomies]="taxonomies$ | async"
         [screenwidth]="screenwidth"
         [isScrolled]="isScrolled"
-        *ngIf="!isMobile && isScrolled"></app-categories-menu-dropdown>
-      <a
-        class="navbar-brand"
-        routerLink="/"
-        *ngIf="!isMobile">
+        *ngIf="!isMobile && isScrolled"
+      ></app-categories-menu-dropdown>
+      <a class="navbar-brand" routerLink="/" *ngIf="!isMobile">
         <img
           [src]="this.headerConfig.brand.logo"
           [alt]="this.headerConfig.brand.name"
           [width]="this.headerConfig.brand.width"
           [height]="this.headerConfig.brand.height"
           class="d-inline-block align-top"
-          alt>
+          alt
+        />
       </a>
       <a
         (click)="showModal()"
         for="main-nav-state"
         class="main-nav-trigger"
         *ngIf="isMobile"
-        [ngClass]="{'main-nav-trigger-open':isModalShown}">
+        [ngClass]="{ 'main-nav-trigger-open': isModalShown }"
+      >
         <span></span>
       </a>
       <a
         *ngIf="this.headerConfig.showGithubRibon"
-        href="https://github.com/aviabird/angularspree">
+        href="https://github.com/aviabird/angularspree"
+      >
         <img
           style="position: absolute; top: 0; right: 0; border: 0; height: 130px; z-index: 9999;"
           src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
           alt="Fork me on GitHub"
-          data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+          data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
+        />
       </a>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div
         class="collapse navbar-collapse justify-content-end"
-        id="navbarNavDropdown">
+        id="navbarNavDropdown"
+      >
         <app-header-search></app-header-search>
         <app-header-help-dropdown></app-header-help-dropdown>
         <app-profile-dropdown
           class="pr-2 border-left"
-          [isAuthenticated]="isAuthenticated$ | async"></app-profile-dropdown>
+          [isAuthenticated]="isAuthenticated$ | async"
+        ></app-profile-dropdown>
         <app-header-cart
           class="pl-2 border-left"
-          [totalCartItems]="totalCartItems$ | async"></app-header-cart>
+          [totalCartItems]="totalCartItems$ | async"
+        ></app-header-cart>
       </div>
-      <div
-        class="resheader row m-0 hidden-md hidden-lg"
-        *ngIf="isMobile">
+      <div class="resheader row m-0 hidden-md hidden-lg" *ngIf="isMobile">
         <div class="mlogo">
-          <a
-            class="navbar-brand small-logo"
-            routerLink="/"
-            *ngIf="isMobile">
+          <a class="navbar-brand small-logo" routerLink="/" *ngIf="isMobile">
             <img
               [src]="this.headerConfig.brand.logo"
               [alt]="this.headerConfig.brand.name"
               [width]="this.headerConfig.brand.width"
               height="this.headerConfig.brand.height"
               class="d-inline-block align-top"
-              alt>
+              alt
+            />
           </a>
         </div>
         <div class="search">
           <app-header-search
             [isMobile]="isMobile"
             (onSubCatClicked)="childCatLoaded($event)"
-            [isSearchopen]="isSearchopen"></app-header-search>
+            [isSearchopen]="isSearchopen"
+          ></app-header-search>
         </div>
         <div class="profile">
           <app-profile-dropdown
             [isMobile]="isMobile"
             class="pr-2 "
-            [isAuthenticated]="isAuthenticated$ | async"></app-profile-dropdown>
+            [isAuthenticated]="isAuthenticated$ | async"
+          ></app-profile-dropdown>
         </div>
         <div class="cart">
           <app-header-cart
             class="pl-2 border-left"
             [isMobile]="isMobile"
-            [totalCartItems]="totalCartItems$ | async"></app-header-cart>
+            [totalCartItems]="totalCartItems$ | async"
+          ></app-header-cart>
         </div>
       </div>
     </div>
@@ -92,22 +97,21 @@
   <nav
     class="navbar navbar-expand-lg"
     id="sub-header"
-    [ngClass]="{'hide-sub-header': isScrolled}">
+    [ngClass]="{ 'hide-sub-header': isScrolled }"
+  >
     <div class="container">
       <div class="collapse navbar-collapse left-content-start">
         <app-categories-menu-dropdown
           [screenwidth]="screenwidth"
-          [taxonomies]="taxonomies$ | async"></app-categories-menu-dropdown>
-        <app-brand-menu-dropdown [brands]="brands$ | async "></app-brand-menu-dropdown>
+          [taxonomies]="taxonomies$ | async"
+        ></app-categories-menu-dropdown>
+        <app-brand-menu-dropdown
+          [brands]="brands$ | async"
+        ></app-brand-menu-dropdown>
         <div class="col text-right">
-
-          <button
-            type="button"
-            class="btn shippingbtn">
-            FREE 1-2 DAY SHIPPING OVER {{currency}}{{freeShippingAmount}}
-            <i
-              class="fa ml-2 fa-truck"
-              aria-hidden="true"></i>
+          <button type="button" class="btn shippingbtn">
+            FREE 1-2 DAY SHIPPING OVER {{ currency }}{{ freeShippingAmount }}
+            <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -116,20 +120,22 @@
 </div>
 <div
   *ngIf="isModalShown"
-  [config]="{ show: true ,backdrop:false}"
+  [config]="{ show: true, backdrop: false }"
   (onHidden)="onHidden()"
   bsModal
   #autoShownModal="bs-modal"
   class="modal fade"
   tabindex="-1"
   role="dialog"
-  aria-labelledby="dialog-auto-name">
+  aria-labelledby="dialog-auto-name"
+>
   <div class="modal-dialog  cat-mobile ">
     <div class="modal-content">
       <div class="modal-body">
         <app-category-mobile-menu
           (onSubCatClicked)="allmenuClosed($event)"
-          [taxonomies]="taxonomies$ | async"></app-category-mobile-menu>
+          [taxonomies]="taxonomies$ | async"
+        ></app-category-mobile-menu>
       </div>
     </div>
   </div>

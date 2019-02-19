@@ -1,8 +1,19 @@
-import { getTotalCartValue, getTotalCartItems, getItemTotal, getOrderNumber } from './../reducers/selectors';
+import {
+  getTotalCartValue,
+  getTotalCartItems,
+  getItemTotal,
+  getOrderNumber
+} from './../reducers/selectors';
 import { Observable, Subscription } from 'rxjs';
 import { AppState } from './../../interfaces';
 import { Store } from '@ngrx/store';
-import { Component, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  PLATFORM_ID,
+  Inject,
+  OnDestroy
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -20,9 +31,10 @@ export class CartComponent implements OnInit, OnDestroy {
   orderNumber: string;
   subscriptionList$: Array<Subscription> = [];
 
-  constructor(private store: Store<AppState>,
-    @Inject(PLATFORM_ID) private platformId: Object) {
-  }
+  constructor(
+    private store: Store<AppState>,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit() {
     this.subscriptionList$.push(

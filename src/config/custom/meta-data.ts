@@ -9,6 +9,6 @@ export const CUSTOM_META_DATA = {
     landingPage: {
       title: `Custom title`,
       description: `Custom desc`
-    },
-  },
-}
+    }
+  }
+};

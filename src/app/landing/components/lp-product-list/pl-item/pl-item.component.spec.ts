@@ -8,9 +8,8 @@ describe('PlItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlItemComponent ]
-    })
-    .compileComponents();
+      declarations: [PlItemComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

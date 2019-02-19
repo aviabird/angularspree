@@ -10,10 +10,7 @@ describe('LayoutEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        LayoutEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [LayoutEffects, provideMockActions(() => actions$)]
     });
 
     effects = TestBed.get(LayoutEffects);

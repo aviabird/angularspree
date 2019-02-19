@@ -39,8 +39,8 @@ import { Brand } from '../../core/models/brand';
 export class HeaderComponent implements OnInit {
   @ViewChild('autoShownModal') autoShownModal: ModalDirective;
   @Input() layoutState: LayoutState;
-  freeShippingAmount = environment.config.freeShippingAmount
-  currency = environment.config.currency_symbol
+  freeShippingAmount = environment.config.freeShippingAmount;
+  currency = environment.config.currency_symbol;
   isModalShown = false;
   isSearchopen = true;
   isAuthenticated$: Observable<boolean>;
@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
   scrollPos = {
     currPos: 0,
     startPos: 0,
-    changePos: 5,
+    changePos: 5
   };
   isMobile = false;
   screenwidth: any;
@@ -71,7 +71,8 @@ export class HeaderComponent implements OnInit {
     private modalService: BsModalService,
     private renderer: Renderer2,
     private productService: ProductService,
-    @Inject(PLATFORM_ID) private platformId: any) { }
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {}
 
   openModalWithClass(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
@@ -81,7 +82,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.authActions.authorize())
+    this.store.dispatch(this.authActions.authorize());
     this.store.dispatch(this.actions.getAllTaxonomies());
     this.store.dispatch(this.actions.getBrands());
     this.store.dispatch(this.authAction.getRatingCategories());
@@ -102,11 +103,15 @@ export class HeaderComponent implements OnInit {
       this.screenwidth = window.innerWidth;
     }
     this.isMobile = this.layoutState.isMobileView;
-    if (this.isMobile) { this.isScrolled = false; }
+    if (this.isMobile) {
+      this.isScrolled = false;
+    }
   }
 
   selectTaxon(taxon) {
-    this.router.navigateByUrl('/s', {queryParams: {f: `Category:${taxon.name}`}});
+    this.router.navigateByUrl('/s', {
+      queryParams: { f: `Category:${taxon.name}` }
+    });
   }
 
   showModal(): void {
@@ -137,7 +142,9 @@ export class HeaderComponent implements OnInit {
   updateHeader($event) {
     if (isPlatformBrowser(this.platformId)) {
       if (this.screenwidth >= 1000) {
-        this.scrollPos.currPos = (window.pageYOffset || $event.target.scrollTop) - ($event.target.clientTop || 0);
+        this.scrollPos.currPos =
+          (window.pageYOffset || $event.target.scrollTop) -
+          ($event.target.clientTop || 0);
         if (
           this.scrollPos.currPos >= this.scrollPos.changePos &&
           window.pageYOffset >= 100

@@ -1,11 +1,18 @@
 <section class="mt-3">
-  <ngu-carousel #productCarousel [inputs]="carouselTileConfig" [dataSource]="productsList">
-    <ngu-item *nguCarouselDef="let product; let i = index;" class="col-6 col-sm-4 col-md-3 col-lg-2 product-box m-1 card p-1">
+  <ngu-carousel
+    #productCarousel
+    [inputs]="carouselTileConfig"
+    [dataSource]="productsList"
+  >
+    <ngu-item
+      *nguCarouselDef="let product; let i = index"
+      class="col-6 col-sm-4 col-md-3 col-lg-2 product-box m-1 card p-1"
+    >
       <app-inner-product [product]="product" [showRating]="showRating">
       </app-inner-product>
     </ngu-item>
-    <button NguCarouselPrev class='leftRs d-none d-sm-block'></button>
-    <button NguCarouselNext class='rightRs d-none d-sm-block'></button>
+    <button NguCarouselPrev class="leftRs d-none d-sm-block"></button>
+    <button NguCarouselNext class="rightRs d-none d-sm-block"></button>
   </ngu-carousel>
-  <hr>
+  <hr />
 </section>

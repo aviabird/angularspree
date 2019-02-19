@@ -6,10 +6,12 @@ import { SearchPageComponent } from './pages';
 
 const routes: Routes = [
   {
-    path: '', component: SearchComponent,
+    path: '',
+    component: SearchComponent,
     children: [
       {
-        path: '', component: SearchPageComponent,
+        path: '',
+        component: SearchPageComponent,
         resolve: { resp: SearchResolver }
       }
     ]
@@ -20,4 +22,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SearchRoutingModule { }
+export class SearchRoutingModule {}

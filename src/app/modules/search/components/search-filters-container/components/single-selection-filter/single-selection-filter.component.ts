@@ -7,5 +7,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   templateUrl: './single-selection-filter.component.html',
   styleUrls: ['./single-selection-filter.component.scss']
 })
-export class SingleSelectionFilterComponent extends MultiselectFilterComponent {
-}
+export class SingleSelectionFilterComponent extends MultiselectFilterComponent {}

@@ -20,13 +20,9 @@ export class LpProductListComponent implements OnInit {
   @Input() dealsId;
   @Input() showRating: boolean;
 
-  constructor(
-    private store: Store<AppState>,
-    private router: ActivatedRoute
-  ) {}
+  constructor(private store: Store<AppState>, private router: ActivatedRoute) {}
 
   ngOnInit() {}
 
-  getDeals() {
-  }
+  getDeals() {}
 }

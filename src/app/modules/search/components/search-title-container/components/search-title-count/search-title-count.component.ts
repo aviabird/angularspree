@@ -8,10 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SearchTitleCountComponent implements OnInit {
   @Input() count = 0;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 
-  get itemOrItems() { return this.count > 1 ? 'items' : 'item'; }
-
+  get itemOrItems() {
+    return this.count > 1 ? 'items' : 'item';
+  }
 }

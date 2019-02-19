@@ -12,11 +12,10 @@ import { getBrands } from '../../../product/reducers/selectors';
 })
 export class BrandsPageComponent implements OnInit {
   brands$: Observable<Array<Brand>>;
-  
-  constructor(private store: Store<AppState>) { }
+
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.brands$ = this.store.select(getBrands);
   }
-
 }

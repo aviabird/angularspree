@@ -3,7 +3,7 @@
   .address-row {
     background: $gray-200;
     border: 1px solid $gray-10;
-    box-shadow: 0 0 4px rgba(40, 44, 63, .08);
+    box-shadow: 0 0 4px rgba(40, 44, 63, 0.08);
     padding-top: 25px;
     padding-left: 45px;
     display: inline-block;
@@ -12,7 +12,7 @@
     margin-right: 25px;
     border-radius: 4px;
     position: relative;
-  
+
     @media screen and(min-width: 320px) and(max-width: 768px) {
       height: auto;
       width: 100%;
@@ -43,7 +43,6 @@
           .mob-no {
             font-weight: 600;
             font-family: $primary-font;
-            ;
           }
         }
       }

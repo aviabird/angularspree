@@ -1,4 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { Product } from '../../../../../../core/models';
 
 @Component({
@@ -11,10 +16,11 @@ export class SearchResultListComponent implements OnInit {
   @Input() searchResults: Array<Product>;
   dummyResults = new Array(5);
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  trackBy(index: number) {
+    return index;
   }
-
-  trackBy(index: number) { return index; }
 }

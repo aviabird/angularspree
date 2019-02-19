@@ -1,6 +1,11 @@
 import { environment } from './../../../../../../../environments/environment';
 import { Product } from './../../../../../../core/models/product';
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'app-search-result-item',
@@ -15,10 +20,9 @@ export class SearchResultItemComponent implements OnInit {
   currency = environment.config.currency_symbol;
   imageLoaded = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getProductImageUrl(format = '.jpg') {
     if (this.defaultImage) {
@@ -33,17 +37,23 @@ export class SearchResultItemComponent implements OnInit {
   }
 
   get discount() {
-    return Math.ceil(+this.product.max_retail_price.amount - +this.product.selling_price.amount);
+    return Math.ceil(
+      +this.product.max_retail_price.amount - +this.product.selling_price.amount
+    );
   }
 
   get discountPercent() {
-    return `(${Math.ceil(this.discount / +this.product.max_retail_price.amount * 100)}% OFF)`;
+    return `(${Math.ceil(
+      (this.discount / +this.product.max_retail_price.amount) * 100
+    )}% OFF)`;
   }
 
   get reviewCount() {
-    const count = this.product.rating_summary.review_count
+    const count = this.product.rating_summary.review_count;
     return count > 0 ? `${count} reviews` : '';
   }
 
-  get defaultImage() { return this.product.images[0]; }
+  get defaultImage() {
+    return this.product.images[0];
+  }
 }

@@ -9,8 +9,7 @@ describe('HeaderSearchComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HeaderSearchComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
 import { Brand } from '../../../core/models/brand';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -6,16 +13,15 @@ import { isPlatformBrowser } from '@angular/common';
   selector: 'app-lp-brands',
   templateUrl: './lp-brands.component.html',
   styleUrls: ['./lp-brands.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LpBrandsComponent implements OnInit {
   @Input() brands: Array<Brand>;
-  imageUrl = 'assets/default/image-placeholder.svg'
+  imageUrl = 'assets/default/image-placeholder.svg';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getBrandImageUrl(url) {
     return url || this.imageUrl;

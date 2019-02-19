@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, Inject, PLATFORM_ID } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy,
+  Inject,
+  PLATFORM_ID
+} from '@angular/core';
 import { Brand } from '../../../../../../core/models/brand';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -10,12 +17,11 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class BrandListComponent implements OnInit {
   @Input() brand: Brand;
-  imageUrl = 'assets/default/image-placeholder.svg'
+  imageUrl = 'assets/default/image-placeholder.svg';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getBrandImageUrl(url) {
     return url || this.imageUrl;

@@ -1,20 +1,24 @@
 <div class="items" *ngIf="address">
   <div class="address-row">
-    <div class="name"><strong>{{address.first_name}} {{address.last_name}}</strong></div>
+    <div class="name">
+      <strong>{{ address.first_name }} {{ address.last_name }}</strong>
+    </div>
     <div class="address">
       <div class="address-content">
-        <div class="address-field">{{address.address_line_1}}</div>
-        <div class="address-field">{{address.address_line_2}}</div>
-        <span class="address-field">{{address.city}} - {{address.zip_code}}</span>
-        <div class="address-field">{{address?.state?.name}}</div>
-        <div class="address-field">{{address.country.name}}</div>
+        <div class="address-field">{{ address.address_line_1 }}</div>
+        <div class="address-field">{{ address.address_line_2 }}</div>
+        <span class="address-field"
+          >{{ address.city }} - {{ address.zip_code }}</span
+        >
+        <div class="address-field">{{ address?.state?.name }}</div>
+        <div class="address-field">{{ address.country.name }}</div>
         <div class="address-field">
           <span class="mob-lbl">Mobile: </span>
-          <span class="mob-no">{{address.phone}}</span>
+          <span class="mob-no">{{ address.phone }}</span>
         </div>
       </div>
     </div>
-    <br>
+    <br />
     <div class="serviceability">
       <div class="cod">
         <span class="mid-dot">•</span>

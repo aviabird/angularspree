@@ -9,9 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class FooterQuickLinksComponent implements OnInit {
   footer_pages = environment.config.footer_page_links;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -58,10 +58,20 @@
 :host /deep/.themebtnprimary {
   background: $theme-action-color - 60;
   &:focus {
-    @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
+    @include gradient-y(
+      $start-color: $theme-action-color,
+      $end-color: $theme-action-color - 40,
+      $start-percent: 0%,
+      $end-percent: 45%
+    );
   }
-  @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
-  color:$white;
+  @include gradient-y(
+    $start-color: $theme-action-color,
+    $end-color: $theme-action-color - 40,
+    $start-percent: 0%,
+    $end-percent: 45%
+  );
+  color: $white;
   border: 1px solid $theme-action-color - 80;
   border-radius: 0.4rem;
   padding: 0.5rem;
@@ -77,31 +87,61 @@
 
 :host /deep/.themebtnprimarybasic {
   &:focus {
-    @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
+    @include gradient-y(
+      $start-color: $theme-action-color,
+      $end-color: $theme-action-color - 40,
+      $start-percent: 0%,
+      $end-percent: 45%
+    );
   }
   text-transform: capitalize;
-  color:$white;
+  color: $white;
   border: 1px solid $theme-action-color - 80;
   box-shadow: 0px 2px 4.6px $theme-action-color - 20;
   &:focus {
-    @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
+    @include gradient-y(
+      $start-color: $theme-action-color,
+      $end-color: $theme-action-color - 40,
+      $start-percent: 0%,
+      $end-percent: 45%
+    );
   }
-  @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 40, $start-percent: 0%, $end-percent: 45%);
+  @include gradient-y(
+    $start-color: $theme-action-color,
+    $end-color: $theme-action-color - 40,
+    $start-percent: 0%,
+    $end-percent: 45%
+  );
 }
 
 :host /deep/.themebtnprimarysade {
-  @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 60, $start-percent: 0%, $end-percent: 95%);
+  @include gradient-y(
+    $start-color: $theme-action-color,
+    $end-color: $theme-action-color - 60,
+    $start-percent: 0%,
+    $end-percent: 95%
+  );
 }
 
 :host /deep/.themebtndisable {
-  @include gradient-y($start-color: $gray-200, $end-color:$gray-600, $start-percent: 0%, $end-percent: 95%);
+  @include gradient-y(
+    $start-color: $gray-200,
+    $end-color: $gray-600,
+    $start-percent: 0%,
+    $end-percent: 95%
+  );
   box-shadow: 0px 2px 4.6px $gray-600 - 20;
   border: 1px solid $gray-600 - 80;
 }
 
 .btn:not(:disabled):not(.disabled):active,
 .btn:not(:disabled):not(.disabled).active {
-  @include gradient-y($start-color: $theme-action-color, $end-color:$theme-action-color - 50, $start-percent: 0%, $end-percent: 80%);
+  @include gradient-y(
+    $start-color: $theme-action-color,
+    $end-color: $theme-action-color - 50,
+    $start-percent: 0%,
+    $end-percent: 80%
+  );
 }
 
 .btn:not(:disabled):not(.disabled):active,

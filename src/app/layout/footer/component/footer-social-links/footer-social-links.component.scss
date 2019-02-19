@@ -1,4 +1,4 @@
-@import "../../../../shared/scss/selected_theme_variables";
+@import '../../../../shared/scss/selected_theme_variables';
 
 a {
   color: $footer-font-color;
@@ -10,13 +10,12 @@ a {
 }
 
 .social-link {
-  text-align: right
+  text-align: right;
 }
 
 $break-small: 320px;
 @media screen and (min-width: $break-small) and (max-width: 767px) {
   .social-link {
-    text-align: center
+    text-align: center;
   }
-
 }

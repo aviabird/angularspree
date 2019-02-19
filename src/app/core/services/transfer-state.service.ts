@@ -10,11 +10,10 @@ const transferStateCache: String[] = [];
 
 @Injectable()
 export class TransferStateService {
-  constructor(private transferState: TransferState,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    // @Inject(APP_ID) private _appId: string
-  ) {
-  }
+  constructor(
+    private transferState: TransferState,
+    @Inject(PLATFORM_ID) private platformId: Object // @Inject(APP_ID) private _appId: string
+  ) {}
 
   /**
    * Set cache only when it's running on server
@@ -27,7 +26,6 @@ export class TransferStateService {
       this.transferState.set(transferStateCache[key], data);
     }
   }
-
 
   /**
    * Returns stored cache only when it's running on browser

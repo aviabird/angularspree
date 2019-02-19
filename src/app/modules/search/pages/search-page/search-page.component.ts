@@ -3,7 +3,7 @@ import { environment } from './../../../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {SearchAppliedParams } from '../../models/search-param';
+import { SearchAppliedParams } from '../../models/search-param';
 import { SearchingService } from '../../services';
 import { Product } from '../../../../core/models';
 import { Store } from '@ngrx/store';
@@ -31,13 +31,13 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private store: Store<AppState>
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.subsArray$.push(
-      this.store.pipe(map(fromSearch.searchResponse)).subscribe(
-        ({ searchResults, metaInfo, appliedParams }) => {
+      this.store
+        .pipe(map(fromSearch.searchResponse))
+        .subscribe(({ searchResults, metaInfo, appliedParams }) => {
           this.searchResults = searchResults;
           this.metaInfo = metaInfo;
           this.appliedParams = appliedParams;
@@ -48,11 +48,12 @@ export class SearchPageComponent implements OnInit, OnDestroy {
         this.store.dispatch(new ApplySearchParams(appliedParams));
       })
     );
-
   }
 
   updateFilters(appliedParams: SearchAppliedParams) {
-    const queryParams = this.searchService.convertToAPISearchParams(appliedParams);
+    const queryParams = this.searchService.convertToAPISearchParams(
+      appliedParams
+    );
     this.router.navigate(['/s'], { queryParams });
   }
 
@@ -65,16 +66,13 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   }
 
   get breadcrumbs() {
-    return [
-      { crumb: this.appliedParams.q || 'All Categories', link: '#' }
-    ]
+    return [{ crumb: this.appliedParams.q || 'All Categories', link: '#' }];
   }
 
   onSearch(keyword: string) {
     if (keyword !== '') {
       keyword = keyword.trim();
-      this.router.navigate(['/s'], { queryParams: { 'q': keyword } });
+      this.router.navigate(['/s'], { queryParams: { q: keyword } });
     }
   }
-
 }

@@ -4,4 +4,4 @@ import * as SFCComponents from './components';
 export const COMPONENTS = [
   ...SFCComponents.COMPONENTS,
   SearchFiltersContainerComponent
-]
+];

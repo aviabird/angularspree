@@ -51,7 +51,7 @@ import { ResponseInterceptor } from './interceptors/reponse.interceptor';
     NgProgressModule.forRoot({
       meteor: false
     }),
-    NgProgressHttpModule.forRoot(),
+    NgProgressHttpModule.forRoot()
   ],
   providers: [
     VariantParserService,
@@ -66,10 +66,14 @@ import { ResponseInterceptor } from './interceptors/reponse.interceptor';
     UserActions,
     UserService,
     CanActivateViaAuthGuard,
-    {provide: HTTP_INTERCEPTORS, useClass: TransferStateInterceptor, multi: true},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TransferStateInterceptor,
+      multi: true
+    },
     TransferStateService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseInterceptor, multi: true }
   ]
 })
-export class CoreModule { }
+export class CoreModule {}

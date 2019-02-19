@@ -5,23 +5,13 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [
-      "es2016"
-    ],
+    "lib": ["es2016"],
     "outDir": "../out-tsc/spec",
     "module": "commonjs",
     "target": "es6",
     "baseUrl": "",
-    "types": [
-      "jasmine",
-      "node"
-    ]
+    "types": ["jasmine", "node"]
   },
-  "files": [
-    "test.ts",
-    "polyfills.ts"
-  ],
-  "include": [
-    "**/*.spec.ts"
-  ]
+  "files": ["test.ts", "polyfills.ts"],
+  "include": ["**/*.spec.ts"]
 }

@@ -7,4 +7,4 @@ export const myAuthConfig = {
       url: `${environment.config.prodApiEndpoint}auth/google`
     }
   }
-}
+};

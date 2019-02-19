@@ -17,19 +17,23 @@ const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main');
+const {
+  AppServerModuleNgFactory,
+  LAZY_MODULE_MAP
+} = require('./dist/server/main');
 
 // Express Engine
 import { ngExpressEngine } from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 
-app.engine('html', ngExpressEngine({
-  bootstrap: AppServerModuleNgFactory,
-  providers: [
-    provideModuleMap(LAZY_MODULE_MAP)
-  ]
-}));
+app.engine(
+  'html',
+  ngExpressEngine({
+    bootstrap: AppServerModuleNgFactory,
+    providers: [provideModuleMap(LAZY_MODULE_MAP)]
+  })
+);
 
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));

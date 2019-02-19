@@ -9,8 +9,7 @@ describe('LineItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LineItemComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

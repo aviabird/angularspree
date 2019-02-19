@@ -1,10 +1,19 @@
-<div class="bgimg" *ngIf="!screenwidth" [ngStyle]="{'background': '#fff url(' + taxonImageLink + ') no-repeat 0 0'}">
+<div
+  class="bgimg"
+  *ngIf="!screenwidth"
+  [ngStyle]="{ background: '#fff url(' + taxonImageLink + ') no-repeat 0 0' }"
+>
   <div class="row m-0">
     <div class="col-md-9 py-3">
       <div class="row m-0">
         <div class="col-md-4 p-3" *ngFor="let taxon of taxons">
           <div>
-            <a class="headlinks" [routerLink]="['/s']" [queryParams]="{f: 'Category:' + taxon.name}">{{taxon.name}} </a>
+            <a
+              class="headlinks"
+              [routerLink]="['/s']"
+              [queryParams]="{ f: 'Category:' + taxon.name }"
+              >{{ taxon.name }}
+            </a>
             <app-categories-list [taxons]="taxon.taxons"></app-categories-list>
           </div>
         </div>
@@ -23,21 +32,33 @@
 <div class="catcon" *ngIf="screenwidth">
   <div class="row">
     <div class="col-md-8 catconinner">
-
       <div class="row catadjustwidth">
-        <div class="col-6 col-sm-6   p-0 no-gutters brandsmenu" [@popOverState]="stateName">
+        <div
+          class="col-6 col-sm-6   p-0 no-gutters brandsmenu"
+          [@popOverState]="stateName"
+        >
           <ul>
-            <li *ngFor="let taxon of taxons let i= index" (click)="showCategoryonclick(taxon)">
-              <a class="sucathead">{{taxon.name}}</a>
+            <li
+              *ngFor="let taxon of taxons; let i = index"
+              (click)="showCategoryonclick(taxon)"
+            >
+              <a class="sucathead">{{ taxon.name }}</a>
             </li>
           </ul>
         </div>
-        <div class="col-6 col-sm-6  p-0 no-gutters brandsmenu" [@popOverState]="stateName">
+        <div
+          class="col-6 col-sm-6  p-0 no-gutters brandsmenu"
+          [@popOverState]="stateName"
+        >
           <ul class="pb-0">
             <li (click)="backtolist()">Back</li>
           </ul>
-          <app-categories-list [screenwidth]="screenwidth" [taxons]="menuTaxons"></app-categories-list>
+          <app-categories-list
+            [screenwidth]="screenwidth"
+            [taxons]="menuTaxons"
+          ></app-categories-list>
         </div>
       </div>
     </div>
   </div>
+</div>

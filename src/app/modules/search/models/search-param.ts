@@ -18,14 +18,14 @@ export interface SearchParam {
 // ex: {id: 'Color', filterValues: [{id: 'red', count: 100, meta: 'red'}]}
 // ex: {id: 'Category', filterValues: [{id: 'tshirt', count: 100, meta: ''}]}
 export interface FilterAgg {
-  id: string,
-  values: Array<FilterValueAgg>
+  id: string;
+  values: Array<FilterValueAgg>;
 }
 
 // ex: {id: 'Price', min: 20, max: 100, {id: 'Price', count: 100, meta: 'red'}}
 // ex: {id: 'Discount', min: 20, max: 100, {id: 'Discount', count: 100, meta: 'red'}}
 export interface RangeAgg {
-  id: string,
+  id: string;
   min: number;
   max: number;
 }
@@ -54,21 +54,21 @@ export interface SearchAppliedParams {
 }
 
 export interface SearchFilter {
-  id: string,
+  id: string;
   values: Array<string>;
 }
 
 export interface SearchResponse {
-  data: Array<Product>,
-  meta: SearchMetaInfo,
-  links: any
+  data: Array<Product>;
+  meta: SearchMetaInfo;
+  links: any;
 }
 
 export interface SearchMetaInfo {
   aggregations: {
-    filters: Array<FilterAgg>,
-    range_filters: Array<RangeAgg>
-  },
+    filters: Array<FilterAgg>;
+    range_filters: Array<RangeAgg>;
+  };
   total: number;
-  applied_params: SearchParam
+  applied_params: SearchParam;
 }

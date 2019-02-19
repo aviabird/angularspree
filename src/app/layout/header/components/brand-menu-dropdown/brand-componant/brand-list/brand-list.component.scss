@@ -1,6 +1,5 @@
 @import '../../../../../../shared/scss/selected_theme_variables';
 a {
-
   &:focus {
     color: $black;
     text-decoration: None;
@@ -9,12 +8,11 @@ a {
       text-decoration: underline;
     }
   }
- 
 }
 
 .img-fit {
   max-width: 100%;
-  height:70px;
+  height: 70px;
   object-fit: scale-down;
 }
 
@@ -35,7 +33,8 @@ a {
   flex-wrap: wrap;
 }
 
-.wrap li {}
+.wrap li {
+}
 
 .flex-item {
   padding: 5px;

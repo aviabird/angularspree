@@ -23,8 +23,8 @@ export class ProductService {
   constructor(
     private http: HttpClient,
     private toastrService: ToastrService,
-    private apiParser: JsonApiParserService,
-  ) { }
+    private apiParser: JsonApiParserService
+  ) {}
   // tslint:disable-next-line:member-ordering
   success: any;
   // tslint:disable-next-line:member-ordering
@@ -39,17 +39,20 @@ export class ProductService {
    */
   getProduct(id: string): Observable<Product> {
     return this.http
-      .get<{data: Product}>(
-        `api/v1/products/${id}?${+new Date()}`
-      ).pipe(map(resp => resp.data));
+      .get<{ data: Product }>(`api/v1/products/${id}?${+new Date()}`)
+      .pipe(map(resp => resp.data));
   }
 
   getProductReviews(productId: string): Observable<Array<Review>> {
-    return this.http.get<{data: Array<Review>}>(`api/v1/product/${productId}/reviews`).pipe(map(resp => resp.data));
+    return this.http
+      .get<{ data: Array<Review> }>(`api/v1/product/${productId}/reviews`)
+      .pipe(map(resp => resp.data));
   }
 
   getProductRatingSummery(productId: string): Observable<any> {
-    return this.http.get<any>('api/v1/product/${productId}/rating-summary').pipe(map(resp => resp.data));
+    return this.http
+      .get<any>('api/v1/product/${productId}/rating-summary')
+      .pipe(map(resp => resp.data));
   }
 
   /**
@@ -59,7 +62,9 @@ export class ProductService {
    *
    * @memberof ProductService
    */
-  getTaxonomies(): any { return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies`); }
+  getTaxonomies(): any {
+    return this.http.get<Array<Taxonomy>>(`api/v1/taxonomies`);
+  }
 
   /**
    *
@@ -70,9 +75,10 @@ export class ProductService {
    */
   getProducts(pageNumber: number): Observable<Array<Product>> {
     return this.http
-      .get<{data: Array<Product>}>(
+      .get<{ data: Array<Product> }>(
         `api/v1/products?sort=date&rows=20&o=${(pageNumber - 1) * 20}`
-      ).pipe(map(resp => resp.data));
+      )
+      .pipe(map(resp => resp.data));
   }
 
   markAsFavorite(id: number): Observable<{}> {
@@ -112,28 +118,40 @@ export class ProductService {
       .get<{ data: Array<Product> }>(
         `api/v1/taxons/products?id=${id}&per_page=20&data_set=small`
       )
-      .pipe(map(res => res.data))
+      .pipe(map(res => res.data));
   }
 
   getTaxonByName(name: string): Observable<Array<Taxonomy>> {
-    return this.http.get<{data: Array<Taxonomy>}>(
-      `api/v1/taxonomies?q[name_cont]=${name}&set=nested&per_page=2`
-    ).pipe(map(res => res.data));
+    return this.http
+      .get<{ data: Array<Taxonomy> }>(
+        `api/v1/taxonomies?q[name_cont]=${name}&set=nested&per_page=2`
+      )
+      .pipe(map(res => res.data));
   }
 
   getproductsByKeyword(keywords: any): Observable<Array<Product>> {
     return this.http
-      .get<{data: Array<Product>}>(`api/v1/products?rows=20&o=1`, { params: keywords }).pipe(map(res => res.data));
+      .get<{ data: Array<Product> }>(`api/v1/products?rows=20&o=1`, {
+        params: keywords
+      })
+      .pipe(map(res => res.data));
   }
 
-  getChildTaxons(taxonomyId: string, taxonId: string): Observable<Array<Taxonomy>> {
-    return this.http.get<{data: Array<Taxonomy>}>(
-      `/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`
-    ).pipe(map(res => res.data));
+  getChildTaxons(
+    taxonomyId: string,
+    taxonId: string
+  ): Observable<Array<Taxonomy>> {
+    return this.http
+      .get<{ data: Array<Taxonomy> }>(
+        `/api/v1/taxonomies/${taxonomyId}/taxons/${taxonId}`
+      )
+      .pipe(map(res => res.data));
   }
 
   writeProductReview(params: Object): Observable<Review> {
-    return this.http.post<{data: Review}>(`api/v1/reviews`, params).pipe(map(res => res.data));
+    return this.http
+      .post<{ data: Review }>(`api/v1/reviews`, params)
+      .pipe(map(res => res.data));
   }
 
   getRelatedProducts(productId: any): Observable<Array<Product>> {
@@ -143,11 +161,16 @@ export class ProductService {
   }
 
   getBrands(): Observable<Array<Brand>> {
-    return this.http.get<{data: Array<Brand>}>(`api/v1/brands`).pipe(map(resp => resp.data));
+    return this.http
+      .get<{ data: Array<Brand> }>(`api/v1/brands`)
+      .pipe(map(resp => resp.data));
   }
 
-  getProductRatingOptions(ratingCategoryId: number): Observable<Array<RatingOption>>  {
-    return this.http.get<{data: Array<RatingOption>}>(`api/v1/ratings/${ratingCategoryId}`).pipe(map(resp => resp.data));
+  getProductRatingOptions(
+    ratingCategoryId: number
+  ): Observable<Array<RatingOption>> {
+    return this.http
+      .get<{ data: Array<RatingOption> }>(`api/v1/ratings/${ratingCategoryId}`)
+      .pipe(map(resp => resp.data));
   }
-
 }

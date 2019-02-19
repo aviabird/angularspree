@@ -1,4 +1,9 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { Product } from '../../../../core/models';
 
 @Component({
@@ -10,9 +15,7 @@ import { Product } from '../../../../core/models';
 export class SearchResultsContainerComponent implements OnInit {
   @Input() searchResults: Array<Product>;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

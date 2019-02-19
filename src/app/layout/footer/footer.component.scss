@@ -1,4 +1,4 @@
-@import "../../shared/scss/_selected_theme_variables.scss";
+@import '../../shared/scss/_selected_theme_variables.scss';
 
 $break-small: 320px;
 footer {
@@ -7,7 +7,7 @@ footer {
   right: 0;
   bottom: -60px;
   @media screen and (min-width: $break-small) and (max-width: 767px) {
-    bottom:auto;
+    bottom: auto;
   }
   left: 0;
   background-color: $gray-10;
@@ -31,15 +31,14 @@ footer {
     list-style: none;
     li {
       display: inline-block;
-      padding: 1REM;
+      padding: 1rem;
       a {
         color: $gray-600;
-        font-size: 15PX;
+        font-size: 15px;
       }
     }
   }
 }
-
 
 @media screen and (min-width: $break-small) and (max-width: 767px) {
   .quicklinks .row {

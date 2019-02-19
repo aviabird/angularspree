@@ -12,10 +12,12 @@ import { TransferStateService } from '../services/transfer-state.service';
 
 @Injectable()
 export class TransferStateInterceptor implements HttpInterceptor {
-  constructor(private transferStateService: TransferStateService) {
-  }
+  constructor(private transferStateService: TransferStateService) {}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     /**
      * Skip this interceptor if the request method isn't GET.
      */

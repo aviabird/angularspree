@@ -1,31 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="google-site-verification"
+      content="nG3sJH9BDF5kFOQrsvNkx_xbWVEO_wqNiE5dirqo3Yk"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=2"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#384c54" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="angularspree" />
+    <meta name="msapplication-TileColor" content="#384c54" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <base href="/" />
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="google-site-verification" content="nG3sJH9BDF5kFOQrsvNkx_xbWVEO_wqNiE5dirqo3Yk" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#384c54">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="angularspree">
-  <meta name="msapplication-TileColor" content="#384c54">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:type" content="website">
-  <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FF3867" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#FF3867">
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/x-icon" href="fevicon.ico" />
+  </head>
 
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon" type="image/x-icon" href="fevicon.ico">
-</head>
-
-<body>
-  <app-root>
-    <div style="
+  <body>
+    <app-root>
+      <div
+        style="
       vertical-align: middle;
       text-align: center;
       color: #129DD8;
@@ -35,42 +41,57 @@
       top: 50%;
       left: 50%;
       margin-right: -50%;
-      transform: translate(-50%, -50%);">
-      <img height="100" width="100" src="/assets/default/loader.svg" alt="Aviabird Technology" />
-    </div>
-  </app-root>
+      transform: translate(-50%, -50%);"
+      >
+        <img
+          height="100"
+          width="100"
+          src="/assets/default/loader.svg"
+          alt="Aviabird Technology"
+        />
+      </div>
+    </app-root>
 
-  <script nonce='2726c7f26c'>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/ngsw-worker.js').then(function (registration) {
-        console.log('Service Worker registered');
-      }).catch(function (err) {
-        console.log('Service Worker registration failed: ', err);
-      });
-    }
-  </script>
-  <!-- To enable search engine to render the app first then parse -->
-  <script nonce='2726c7f26c' src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/shim.min.js"> </script>
+    <script nonce="2726c7f26c">
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('/ngsw-worker.js')
+          .then(function(registration) {
+            console.log('Service Worker registered');
+          })
+          .catch(function(err) {
+            console.log('Service Worker registration failed: ', err);
+          });
+      }
+    </script>
+    <!-- To enable search engine to render the app first then parse -->
+    <script
+      nonce="2726c7f26c"
+      src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/shim.min.js"
+    ></script>
 
-  <script>
-    WebFontConfig = {
-      google: {
-        families: ['Catamaran:300,400,700'],
-        text: 'abcdefghijklmnopqrstuvwxyz!'
-      },
-      google: {
-        families: ['Lato:300,400,700']
-      },
-    };
+    <script>
+      WebFontConfig = {
+        google: {
+          families: ['Catamaran:300,400,700'],
+          text: 'abcdefghijklmnopqrstuvwxyz!'
+        },
+        google: {
+          families: ['Lato:300,400,700']
+        }
+      };
 
-    (function (d) {
-      var wf = d.createElement('script'), s = d.scripts[0];
-      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-      wf.async = true;
-      s.parentNode.insertBefore(wf, s);
-    })(document);
-  </script>
-  <noscript>Please enable JavaScript to continue using this application.</noscript>
-</body>
-
+      (function(d) {
+        var wf = d.createElement('script'),
+          s = d.scripts[0];
+        wf.src =
+          'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+      })(document);
+    </script>
+    <noscript
+      >Please enable JavaScript to continue using this application.</noscript
+    >
+  </body>
 </html>

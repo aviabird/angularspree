@@ -1,29 +1,46 @@
 <div class="bordered">
   <div class="buybox__purchase">
     <small class="py-2 d-block d-sm-none">
-      <b>FREE 1-2 day </b>shipping over {{appConfig.currency_symbol}}{{appConfig.freeShippingAmount}}</small>
+      <b>FREE 1-2 day </b>shipping over {{ appConfig.currency_symbol
+      }}{{ appConfig.freeShippingAmount }}</small
+    >
     <form>
       <div>
         <div class="buy-quantity">
           <a class="btn  quantity-minus" (click)="decreaseCount()">-</a>
           <span class="quantity-input">
-            <span class="quantity-number">{{count}}</span>
+            <span class="quantity-number">{{ count }}</span>
             <span>Quantity</span>
           </span>
           <a class="btn  quantity-plus" (click)="increseCount()">+</a>
         </div>
       </div>
       <div class="buttons row" *ngIf="isOrderable">
-        <input type="submit" class="btn col-12 themebtnprimary js-add-cart" value="Add to Cart" (click)="addToCart(count)">
-        <button (click)="buyNow(count)" class="btn col-12 themebtnprimary themebtnprimarysade mt-1">Buy Now</button>
+        <input
+          type="submit"
+          class="btn col-12 themebtnprimary js-add-cart"
+          value="Add to Cart"
+          (click)="addToCart(count)"
+        />
+        <button
+          (click)="buyNow(count)"
+          class="btn col-12 themebtnprimary themebtnprimarysade mt-1"
+        >
+          Buy Now
+        </button>
       </div>
       <div class="buttons row" *ngIf="!isOrderable">
-        <input type="submit" class=" btn col-12 themebtnprimary themebtndisable" value="Out of Stock" (click)="addToCart(count)" disabled>
+        <input
+          type="submit"
+          class=" btn col-12 themebtnprimary themebtndisable"
+          value="Out of Stock"
+          (click)="addToCart(count)"
+          disabled
+        />
       </div>
     </form>
   </div>
   <a class="buybox__favorite" (click)="markAsFavorites()">
-    <span>
-      <i class="fa fa-heart"></i> Add to Favorites</span>
+    <span> <i class="fa fa-heart"></i> Add to Favorites</span>
   </a>
 </div>

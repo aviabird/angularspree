@@ -12,16 +12,16 @@ import {
   selector: '[zoomable]'
 })
 export class ZoomableDirective implements OnInit {
-  hoverView: HTMLElement;         // transparent hover wrapper, sits on top of the image
-  peepView: HTMLElement;          // box that moves with mouse over the image
-  zoomView: HTMLElement;          // zoomed view
+  hoverView: HTMLElement; // transparent hover wrapper, sits on top of the image
+  peepView: HTMLElement; // box that moves with mouse over the image
+  zoomView: HTMLElement; // zoomed view
   imgRect: ClientRect;
   listeners: Function[] = [];
   hoverViewPosition: {
-    width: number,
-    height: number,
-    top: number,
-    left: number
+    width: number;
+    height: number;
+    top: number;
+    left: number;
   };
 
   public options = {
@@ -39,7 +39,7 @@ export class ZoomableDirective implements OnInit {
     },
     zoomView: {
       position: 'absolute',
-      zIndex: '999',
+      zIndex: '999'
     },
     settings: {
       zoom: 3,
@@ -49,16 +49,16 @@ export class ZoomableDirective implements OnInit {
 
   // tslint:disable-next-line:no-input-rename
   @Input('zoomable') customOptions?: {
-    hoverView?: {},
-    peepView?: {},
-    zoomView?: {},
-    settings?: {}
+    hoverView?: {};
+    peepView?: {};
+    zoomView?: {};
+    settings?: {};
   };
 
   // tslint:disable-next-line:no-input-rename
-  @Input('zoomableSrc') sourceImage?= '';
+  @Input('zoomableSrc') sourceImage? = '';
 
-  constructor(private el: ElementRef, private renderer: Renderer) { }
+  constructor(private el: ElementRef, private renderer: Renderer) {}
 
   // directives starts its work each time element it moused over
   @HostListener('mouseenter') onMouseEnter() {
@@ -87,7 +87,10 @@ export class ZoomableDirective implements OnInit {
    * Creates element that acts as wrapper for peep box
    */
   private createHoverView() {
-    this.hoverView = this.renderer.createElement(this.el.nativeElement.parentNode, 'div');
+    this.hoverView = this.renderer.createElement(
+      this.el.nativeElement.parentNode,
+      'div'
+    );
   }
 
   /**
@@ -101,24 +104,33 @@ export class ZoomableDirective implements OnInit {
    * Creates the zoom view element
    */
   private createZoomView() {
-    this.zoomView = this.renderer.createElement(this.el.nativeElement.parentNode, 'div');
+    this.zoomView = this.renderer.createElement(
+      this.el.nativeElement.parentNode,
+      'div'
+    );
   }
 
   // TODO: Try doing this with observables
   private assignHoverListeners() {
     this.listeners.push(
-      this.renderer.listen(this.hoverView, 'mouseenter', (event: MouseEvent) => {
-        // peep view related tasks
-        this.createPeepView();
-        this.stylePeepView();
-        this.positionPeepView(event);
+      this.renderer.listen(
+        this.hoverView,
+        'mouseenter',
+        (event: MouseEvent) => {
+          // peep view related tasks
+          this.createPeepView();
+          this.stylePeepView();
+          this.positionPeepView(event);
 
-        // zoom view related tasks
-        this.createZoomView();
-        this.styleZoomView();
-        this.positionZoomView();
-      }),
-      this.renderer.listen(this.hoverView, 'mouseleave', () => this.destroyViews()),
+          // zoom view related tasks
+          this.createZoomView();
+          this.styleZoomView();
+          this.positionZoomView();
+        }
+      ),
+      this.renderer.listen(this.hoverView, 'mouseleave', () =>
+        this.destroyViews()
+      ),
       this.renderer.listen(this.hoverView, 'mousemove', (event: MouseEvent) => {
         this.positionPeepView(event);
         this.positionZoomBackground(event);
@@ -127,30 +139,38 @@ export class ZoomableDirective implements OnInit {
   }
 
   private styleHoverView() {
-    Object.keys(this.options.hoverView)
-      .forEach(key => {
-        this.renderer.setElementStyle(this.hoverView, key, this.options.hoverView[key]);
-      });
+    Object.keys(this.options.hoverView).forEach(key => {
+      this.renderer.setElementStyle(
+        this.hoverView,
+        key,
+        this.options.hoverView[key]
+      );
+    });
   }
 
   private stylePeepView() {
     const dimensions = this.getPeepViewDimensions(),
-      props = Object.assign({
-        width: `${dimensions.width}px`,
-        height: `${dimensions.height}px`
-      }, this.options.peepView);
+      props = Object.assign(
+        {
+          width: `${dimensions.width}px`,
+          height: `${dimensions.height}px`
+        },
+        this.options.peepView
+      );
 
-    Object.keys(props)
-      .forEach(key => {
-        this.renderer.setElementStyle(this.peepView, key, props[key]);
-      });
+    Object.keys(props).forEach(key => {
+      this.renderer.setElementStyle(this.peepView, key, props[key]);
+    });
   }
 
   private styleZoomView() {
-    Object.keys(this.options.zoomView)
-      .forEach(key => {
-        this.renderer.setElementStyle(this.zoomView, key, this.options.zoomView[key]);
-      });
+    Object.keys(this.options.zoomView).forEach(key => {
+      this.renderer.setElementStyle(
+        this.zoomView,
+        key,
+        this.options.zoomView[key]
+      );
+    });
   }
 
   private updateHoverViewPosition() {
@@ -163,28 +183,37 @@ export class ZoomableDirective implements OnInit {
   }
 
   private positionHoverView() {
-    Object.keys(this.hoverViewPosition)
-      .forEach(key => {
-        this.renderer.setElementStyle(this.hoverView, key, `${this.hoverViewPosition[key]}px`);
-      });
+    Object.keys(this.hoverViewPosition).forEach(key => {
+      this.renderer.setElementStyle(
+        this.hoverView,
+        key,
+        `${this.hoverViewPosition[key]}px`
+      );
+    });
   }
 
-  private getPeepViewDimensions(): { width: number, height: number } {
+  private getPeepViewDimensions(): { width: number; height: number } {
     return {
       width: Math.round(this.imgRect.width / this.options.settings.zoom),
       height: Math.round(this.imgRect.height / this.options.settings.zoom)
     };
   }
 
-  private getPeepViewCoords(event: MouseEvent): { top: number, left: number } {
+  private getPeepViewCoords(event: MouseEvent): { top: number; left: number } {
     const dimensions = this.getPeepViewDimensions(),
       mouseX = event.clientX,
       mouseY = event.clientY,
       borderWidth = parseInt(this.options.peepView.borderWidth, 10) * 2,
       // ensure top is not above the box
-      top = Math.max(this.imgRect.top, mouseY - (dimensions.height / 2) - borderWidth),
+      top = Math.max(
+        this.imgRect.top,
+        mouseY - dimensions.height / 2 - borderWidth
+      ),
       // ensure left is not outside the box
-      left = Math.max(this.imgRect.left, mouseX - (dimensions.width / 2) - borderWidth);
+      left = Math.max(
+        this.imgRect.left,
+        mouseX - dimensions.width / 2 - borderWidth
+      );
 
     // ensure both top and left will not leak from bottom or right
     return {
@@ -201,24 +230,24 @@ export class ZoomableDirective implements OnInit {
 
   private positionZoomView() {
     const props = Object.assign({}, this.hoverViewPosition, {
-      left: this.hoverViewPosition.left + this.imgRect.width + this.options.settings.gap
+      left:
+        this.hoverViewPosition.left +
+        this.imgRect.width +
+        this.options.settings.gap
     });
 
-    Object.keys(props)
-
-      .forEach(key => {
-        if (key === 'top') {
-          props[key] = -20;
-        }
-        // if (key == 'width') {
-        //   props[key] = 500;
-        // }
-        // if (key == 'height') {
-        //   props[key] = 600;
-        // }
-        this.renderer.setElementStyle(this.zoomView, key, `${props[key]}px`);
-
-      });
+    Object.keys(props).forEach(key => {
+      if (key === 'top') {
+        props[key] = -20;
+      }
+      // if (key == 'width') {
+      //   props[key] = 500;
+      // }
+      // if (key == 'height') {
+      //   props[key] = 600;
+      // }
+      this.renderer.setElementStyle(this.zoomView, key, `${props[key]}px`);
+    });
   }
 
   private positionZoomBackground(event: MouseEvent) {
@@ -227,13 +256,37 @@ export class ZoomableDirective implements OnInit {
       bgWidth = this.imgRect.width * zoom,
       bgHeight = this.imgRect.height * zoom,
       imgSrc = this.sourceImage || this.el.nativeElement.getAttribute('src'),
-      xRatio = Math.max(0, (coords.left + window.scrollX - this.hoverViewPosition.left) / this.imgRect.width),
-      yRatio = Math.max(0, (coords.top + window.scrollY - this.hoverViewPosition.top) / this.imgRect.height);
+      xRatio = Math.max(
+        0,
+        (coords.left + window.scrollX - this.hoverViewPosition.left) /
+          this.imgRect.width
+      ),
+      yRatio = Math.max(
+        0,
+        (coords.top + window.scrollY - this.hoverViewPosition.top) /
+          this.imgRect.height
+      );
 
-    this.renderer.setElementStyle(this.zoomView, 'backgroundImage', `url("${imgSrc}")`);
-    this.renderer.setElementStyle(this.zoomView, 'backgroundPosition', `-${xRatio * bgWidth}px -${yRatio * bgHeight}px`);
-    this.renderer.setElementStyle(this.zoomView, 'backgroundSize', `${bgWidth}px ${bgHeight}px`);
-    this.renderer.setElementStyle(this.zoomView, 'backgroundRepeat', 'no-repeat');
+    this.renderer.setElementStyle(
+      this.zoomView,
+      'backgroundImage',
+      `url("${imgSrc}")`
+    );
+    this.renderer.setElementStyle(
+      this.zoomView,
+      'backgroundPosition',
+      `-${xRatio * bgWidth}px -${yRatio * bgHeight}px`
+    );
+    this.renderer.setElementStyle(
+      this.zoomView,
+      'backgroundSize',
+      `${bgWidth}px ${bgHeight}px`
+    );
+    this.renderer.setElementStyle(
+      this.zoomView,
+      'backgroundRepeat',
+      'no-repeat'
+    );
     this.renderer.setElementStyle(this.zoomView, 'height', '400px');
     this.renderer.setElementStyle(this.zoomView, 'width', '700px');
   }

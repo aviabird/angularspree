@@ -18,11 +18,7 @@ import { EmptyCartComponent } from './components/empty-cart/empty-cart.component
     EmptyCartComponent
   ],
   exports: [],
-  imports: [
-    CommonModule,
-    RouterModule,
-    ProgressbarModule.forRoot()
-  ],
+  imports: [CommonModule, RouterModule, ProgressbarModule.forRoot()],
   providers: []
 })
-export class CartModule { }
+export class CartModule {}

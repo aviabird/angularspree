@@ -9,12 +9,11 @@ export class FilterSummaryFilterComponent implements OnInit {
   @Input() filterValue: string;
   @Output() removeFilter = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   removeFilterClicked() {
     this.removeFilter.emit();
   }
-
 }

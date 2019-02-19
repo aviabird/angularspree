@@ -8,9 +8,8 @@ describe('ReturnPolicyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReturnPolicyComponent ]
-    })
-    .compileComponents();
+      declarations: [ReturnPolicyComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

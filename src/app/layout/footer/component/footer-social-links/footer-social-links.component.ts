@@ -8,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterSocialLinksComponent implements OnInit {
   social_links = environment.config.footer_social_links;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

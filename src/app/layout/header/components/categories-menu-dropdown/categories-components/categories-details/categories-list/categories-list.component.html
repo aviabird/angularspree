@@ -1,12 +1,22 @@
 <div *ngIf="!screenwidth">
   <div *ngFor="let taxon of taxons">
-    <a [routerLink]="['/s']" [queryParams]="{f: 'Category:' + taxon.name}" (click)="getTaxonName(taxon.name)">{{taxon.name}} </a>
+    <a
+      [routerLink]="['/s']"
+      [queryParams]="{ f: 'Category:' + taxon.name }"
+      (click)="getTaxonName(taxon.name)"
+      >{{ taxon.name }}
+    </a>
   </div>
 </div>
 <div class="subbrandmenu" *ngIf="screenwidth">
   <ul>
     <li *ngFor="let taxon of taxons">
-      <a [routerLink]="['/s']" [queryParams]="{f: 'Category:' + taxon.name}" (click)="getTaxonName(taxon.name)">{{taxon.name}} </a>
+      <a
+        [routerLink]="['/s']"
+        [queryParams]="{ f: 'Category:' + taxon.name }"
+        (click)="getTaxonName(taxon.name)"
+        >{{ taxon.name }}
+      </a>
     </li>
   </ul>
 </div>

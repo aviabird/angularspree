@@ -5,16 +5,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class JsonApiParserService {
-
-  constructor() { }
+  constructor() {}
 
   parseSingleObj(data): Object {
-    return Object.assign(new CJsonApi, data).toModel()
+    return Object.assign(new CJsonApi(), data).toModel();
   }
 
   parseArrayofObject(array): Array<Object> {
-    return array.map(
-      (obj) => Object.assign(new CJsonApi, obj).toModel()
-    );
+    return array.map(obj => Object.assign(new CJsonApi(), obj).toModel());
   }
 }

@@ -4,4 +4,4 @@ import { SearchResultsContainerComponent } from './search-results-container.comp
 export const COMPONENTS = [
   ...SRCComponents.COMPONENTS,
   SearchResultsContainerComponent
-]
+];

@@ -36,7 +36,7 @@
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     filter: FlipH;
-    -ms-filter: "FlipH";
+    -ms-filter: 'FlipH';
   }
   &:hover {
     background-color: $theme-main-color - 20 !important;
@@ -87,7 +87,7 @@
 .cart {
   padding-top: 6px;
   padding-right: 10px;
-  flex: .5;
+  flex: 0.5;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -165,7 +165,7 @@
     }
     .modal-body {
       padding: 0px;
-      background-color: $white - 10
+      background-color: $white - 10;
     }
   }
 }
@@ -188,7 +188,7 @@
   height: 37px;
   margin: 0;
   top: -4.5px;
-  left: 6px
+  left: 6px;
 }
 
 label {
@@ -201,14 +201,14 @@ label {
 .main-nav-trigger {
   &:after,
   &:before {
-    content: "";
+    content: '';
     width: 20px;
     left: 50%;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-    -webkit-transition: transform .4s ease-out, transform-origin .4s ease-out;
-    transition: transform .4s ease-out, transform-origin .4s ease-out;
+    -webkit-transition: transform 0.4s ease-out, transform-origin 0.4s ease-out;
+    transition: transform 0.4s ease-out, transform-origin 0.4s ease-out;
   }
 }
 

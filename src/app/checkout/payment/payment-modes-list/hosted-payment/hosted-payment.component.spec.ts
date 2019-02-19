@@ -8,9 +8,8 @@ describe('CreditCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HostedPaymentComponent ]
-    })
-    .compileComponents();
+      declarations: [HostedPaymentComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

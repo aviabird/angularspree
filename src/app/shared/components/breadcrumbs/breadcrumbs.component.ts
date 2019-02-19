@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-const DefaultCrumb = [
-  { crumb: 'Home', link: '/' },
-];
+const DefaultCrumb = [{ crumb: 'Home', link: '/' }];
 
 interface BreadCrumb {
   crumb: string;
@@ -26,9 +24,7 @@ export class BreadcrumbsComponent implements OnInit {
     this._breadcrumbs = value || [];
   }
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

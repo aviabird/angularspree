@@ -1,5 +1,10 @@
 import { Product } from './../../../../core/models/product';
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
   selector: 'app-pl-item',
@@ -9,10 +14,9 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class PlItemComponent implements OnInit {
   @Input() product: Product;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getProductImageUrl(url) {
     return url;

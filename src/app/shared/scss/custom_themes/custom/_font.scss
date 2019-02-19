@@ -2,8 +2,10 @@
 
 //@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400%7CRoboto:300,300i,400,400i,500,500i,700,700i");
 @font-face {
-  font-family: "Roboto Regular";
-  src: url("assets/custom/fonts/Roboto-Regular.eot?") format("eot"), url("assets/custom/fonts/Roboto-Regular.ttf") format("truetype"), url("assets/custom/fonts/Roboto-Regular.svg#Roboto-Regular") format("svg");
+  font-family: 'Roboto Regular';
+  src: url('assets/custom/fonts/Roboto-Regular.eot?') format('eot'),
+    url('assets/custom/fonts/Roboto-Regular.ttf') format('truetype'),
+    url('assets/custom/fonts/Roboto-Regular.svg#Roboto-Regular') format('svg');
   font-weight: normal;
   font-style: normal;
 }

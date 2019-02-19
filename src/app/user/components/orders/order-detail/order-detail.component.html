@@ -5,7 +5,7 @@
       <table>
         <tr>
           <td>Order Number:</td>
-          <td> {{order.number | humanize | uppercase}}</td>
+          <td>{{ order.number | humanize | uppercase }}</td>
         </tr>
         <!-- <tr>
           <td>Order Date:</td>
@@ -13,7 +13,7 @@
         </tr> -->
         <tr>
           <td>Item price:</td>
-          <td>{{currency}} {{order.order_total_amount.amount}}</td>
+          <td>{{ currency }} {{ order.order_total_amount.amount }}</td>
         </tr>
         <!-- <tr>
           <td>Shipping:</td>
@@ -21,7 +21,7 @@
         </tr> -->
         <tr>
           <td>Total Amount:</td>
-          <td> {{currency}} {{order.order_total_amount.amount}} </td>
+          <td>{{ currency }} {{ order.order_total_amount.amount }}</td>
         </tr>
         <!-- <tr>
             <td>Payment Status:</td>
@@ -39,21 +39,27 @@
       <h3>Address</h3>
       <table>
         <tr>
-          <td>Name: </td>
-          <td>{{order.shipping_address.first_name}} {{order.shipping_address.last_name}}</td>
+          <td>Name:</td>
+          <td>
+            {{ order.shipping_address.first_name }}
+            {{ order.shipping_address.last_name }}
+          </td>
         </tr>
         <tr>
           <td>Address:</td>
-          <td>{{order.shipping_address.address_line_1}}, {{order.shipping_address.address_line_1}},
-            {{order.shipping_address.city}}</td>
+          <td>
+            {{ order.shipping_address.address_line_1 }},
+            {{ order.shipping_address.address_line_1 }},
+            {{ order.shipping_address.city }}
+          </td>
         </tr>
         <tr>
           <td>Pincode:</td>
-          <td>{{order.shipping_address.zip_code}}</td>
+          <td>{{ order.shipping_address.zip_code }}</td>
         </tr>
         <tr>
           <td>Phone:</td>
-          <td>{{order.shipping_address.phone}}</td>
+          <td>{{ order.shipping_address.phone }}</td>
         </tr>
         <!-- <tr>
           <td>Email:</td>
@@ -67,18 +73,22 @@
     <div *ngFor="let item of order.line_items" class="lineitems">
       <div class="row ">
         <div class="col-12 pr-0 col-sm-1">
-          <img [routerLink]="['/', item.product.slug]" [src]='getProductImageUrl(item)' />
+          <img
+            [routerLink]="['/', item.product.slug]"
+            [src]="getProductImageUrl(item)"
+          />
         </div>
         <div class="col-12 col-sm-5" [routerLink]="['/', item.product.slug]">
-          <div class="lineitems-name"> {{item.product.name}}</div>
+          <div class="lineitems-name">{{ item.product.name }}</div>
           <!-- <div class="lineitems-info"> {{item.product.options_text}}</div> -->
         </div>
         <div class="col-12 col-sm-2">
-          <div class="price">{{currency}} {{item.unit_price.amount}}</div>
-          <div class="qty"> QTY: {{item.quantity}}</div>
+          <div class="price">{{ currency }} {{ item.unit_price.amount }}</div>
+          <div class="qty">QTY: {{ item.quantity }}</div>
         </div>
         <div class="col-12 col-sm-4">
-          <b class="text-danger note p-0">Please note:</b> You can return or exchange this within 15 days.
+          <b class="text-danger note p-0">Please note:</b> You can return or
+          exchange this within 15 days.
         </div>
       </div>
     </div>
@@ -87,19 +97,24 @@
     <div *ngFor="let item of order.line_items" class="lineitems">
       <div class="row ">
         <div class="col-12 pr-0 col-sm-1">
-          <img [routerLink]="['/', item.product.slug]" [src]='getProductImageUrl(item)' />
+          <img
+            [routerLink]="['/', item.product.slug]"
+            [src]="getProductImageUrl(item)"
+          />
         </div>
         <div class="col-6 col-sm-5" [routerLink]="['/', item.product.slug]">
-          <div class="lineitems-name"> {{item.product.name}}</div>
+          <div class="lineitems-name">{{ item.product.name }}</div>
           <!-- <div class="lineitems-info"> {{item.product.options_text}}</div> -->
         </div>
         <div class="col-6 col-sm-2 text-right">
-          <div class="qty"> QTY: {{item.quantity}}</div>
-          <div class="price">{{currency}} {{item.unit_price.amount}}</div>
+          <div class="qty">QTY: {{ item.quantity }}</div>
+          <div class="price">{{ currency }} {{ item.unit_price.amount }}</div>
         </div>
         <div class="col-12 col-sm-4">
           <b class="note text-danger p-0">Note:</b>
-          <span class="note">You can return or exchange this within 15 days.</span>
+          <span class="note"
+            >You can return or exchange this within 15 days.</span
+          >
         </div>
       </div>
     </div>

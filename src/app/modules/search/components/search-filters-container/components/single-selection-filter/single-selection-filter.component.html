@@ -1,23 +1,29 @@
 <ul
   class="list-group border border-left-0 border-bottom-0 py-3"
-  *ngIf="showFilter">
-  <small class="font-weight-bold pb-3 text-uppercase">{{filter.id}}</small>
+  *ngIf="showFilter"
+>
+  <small class="font-weight-bold pb-3 text-uppercase">{{ filter.id }}</small>
   <li
-    *ngFor="let filterValue of filter.values | slice: skipCount;"
-    class="list-group-item border-0 p-0">
+    *ngFor="let filterValue of (filter.values | slice: skipCount)"
+    class="list-group-item border-0 p-0"
+  >
     <div class="custom-control custom-checkbox">
       <input
         type="radio"
         class="custom-control-input"
-        id="{{filterValue.id}}"
+        id="{{ filterValue.id }}"
         [ngModel]="isSelected(filterValue.id)"
-        (change)="selectedItem(filterValue.id)">
+        (change)="selectedItem(filterValue.id)"
+      />
       <label
         class="custom-control-label text-capitalize"
-        for="{{filterValue.id}}">
-        {{filterValue.id}}
+        for="{{ filterValue.id }}"
+      >
+        {{ filterValue.id }}
       </label>
-      <small class="text-secondary font-weight-light">( {{filterValue.count}} )</small>
+      <small class="text-secondary font-weight-light"
+        >( {{ filterValue.count }} )</small
+      >
     </div>
   </li>
 </ul>

@@ -5,10 +5,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": [
-      "es2016",
-      "dom"
-    ],
+    "lib": ["es2016", "dom"],
     "outDir": "../out-tsc/app",
     "target": "es5",
     "module": "es2015",
@@ -18,8 +15,5 @@
       "@core": ["./app/core/*"]
     }
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["test.ts", "**/*.spec.ts"]
 }

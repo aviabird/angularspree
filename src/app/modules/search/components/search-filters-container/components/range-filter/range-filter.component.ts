@@ -1,6 +1,13 @@
 import { SearchFilter } from './../../../../models/search-param';
 import { Options, LabelType } from 'ng5-slider';
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { RangeAgg } from '../../../../models/search-param';
 
 @Component({
@@ -24,15 +31,16 @@ export class RangeFilterComponent implements OnInit {
     }
   };
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.options = Object.assign({}, this.options, {
       ceil: this.filter.max
     });
 
-    const currentFilter = this.appliedFilters
-      .find(filter => filter.id === this.filter.id);
+    const currentFilter = this.appliedFilters.find(
+      filter => filter.id === this.filter.id
+    );
 
     if (currentFilter) {
       const [min, max] = currentFilter.values[0].split(' TO ');
@@ -44,7 +52,7 @@ export class RangeFilterComponent implements OnInit {
     }
   }
 
-  filterUpdated(event: { value: number; highValue: number; }) {
+  filterUpdated(event: { value: number; highValue: number }) {
     this.rangeSeleted.emit(`${event.value} TO ${event.highValue}`);
   }
 }

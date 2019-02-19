@@ -6,13 +6,13 @@
   top: 3rem !important;
   min-height: 36.5vw;
   z-index: 10;
-  padding: .7rem;
+  padding: 0.7rem;
   border-radius: 0px;
   height: 420px;
   overflow: hidden;
   overflow-y: auto;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     width: 0;
     height: 0;
@@ -30,7 +30,7 @@
 }
 
 .dpmenu {
-  position: relative
+  position: relative;
 }
 
 .cust-menu-btn {
@@ -43,13 +43,13 @@
   left: -2px;
   &:hover {
     background-color: $theme-main-color - 20;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
   }
 }
 
 .open {
   background-color: $theme-main-color - 20;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 li {

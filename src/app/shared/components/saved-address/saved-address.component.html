@@ -1,19 +1,37 @@
 <div *ngIf="addressList">
-  <div *ngFor="let address of addressList | reverse; index as i" class="card mb-3">
+  <div
+    *ngFor="let address of (addressList | reverse); index as i"
+    class="card mb-3"
+  >
     <div class="address-row  select card-body">
       <div class="row ">
         <div class="col-12 name">
           <div class="">
             <div class="col-md-3 col-2 p-0 float-left">
-              <button class='btn themebtnprimarybasic mb-3' (click)="selectedDeliveryAddress(address)">Deliver here</button>
+              <button
+                class="btn themebtnprimarybasic mb-3"
+                (click)="selectedDeliveryAddress(address)"
+              >
+                Deliver here
+              </button>
             </div>
             <div class="col-md-6 col-2 float-right">
               <div class="row float-right p-0 ">
                 <div class="col-md-6">
-                  <button class='btn themebtnprimarybasic mb-3' (click)="editAddress(address)">Edit</button>
+                  <button
+                    class="btn themebtnprimarybasic mb-3"
+                    (click)="editAddress(address)"
+                  >
+                    Edit
+                  </button>
                 </div>
                 <div class="col-md-6">
-                  <button class='btn themebtnprimarybasic mb-3' (click)="deleteAddress(address.id)">Delete</button>
+                  <button
+                    class="btn themebtnprimarybasic mb-3"
+                    (click)="deleteAddress(address.id)"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
@@ -21,18 +39,20 @@
         </div>
         <div class="row m-0">
           <div class="col-12 name">
-            <span class="name mr-2 ">{{address.first_name}}</span>
-            <span class="name mr-2 ">{{address.last_name}}</span>
-            <span class="mob ">{{address.phone}}</span>
+            <span class="name mr-2 ">{{ address.first_name }}</span>
+            <span class="name mr-2 ">{{ address.last_name }}</span>
+            <span class="mob ">{{ address.phone }}</span>
           </div>
 
-          <div class="address col-12 ">{{address.address_line_1}}
-            <span class="address-field ">{{address.address_line_2}}</span>,
-            <span class="address-field ">{{address.city}}</span>
-            <span class="address-field pin ">-{{address.zip_code}}</span>
+          <div class="address col-12 ">
+            {{ address.address_line_1 }}
+            <span class="address-field ">{{ address.address_line_2 }}</span
+            >,
+            <span class="address-field ">{{ address.city }}</span>
+            <span class="address-field pin ">-{{ address.zip_code }}</span>
           </div>
-          <div class="address-field col-12">{{address?.state?.name}}</div>
-          <div class="address-field col-12">{{address.country.name}}</div>
+          <div class="address-field col-12">{{ address?.state?.name }}</div>
+          <div class="address-field col-12">{{ address.country.name }}</div>
         </div>
       </div>
     </div>

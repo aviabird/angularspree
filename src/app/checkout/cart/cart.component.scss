@@ -4,7 +4,7 @@
   .left {
     padding-right: 40px;
     @media screen and(min-width: 320px) and(max-width: 768px) {
-      padding:0;
+      padding: 0;
       border-radius: 0px;
     }
     .checkout-header-container {
@@ -16,7 +16,6 @@
           font-weight: normal;
           color: $gray-900;
           font-family: $primary-font;
-          ;
         }
       }
       .total-price {

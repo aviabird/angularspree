@@ -8,24 +8,24 @@
   width: 30px;
   height: 30px;
   /* display: block; */
-  background-color:$theme-action-sub-color2;
+  background-color: $theme-action-sub-color2;
   border-radius: 5px;
-  padding:3px;
+  padding: 3px;
   cursor: pointer;
   float: right;
   &:hover {
-    text-decoration: underline
+    text-decoration: underline;
   }
 }
 
 .useraddress {
   border: 1px solid $gray-10;
-  padding: .8em;
-  margin-bottom: 15px
+  padding: 0.8em;
+  margin-bottom: 15px;
 }
 
 .head {
   font-size: 1.4em;
   color: $theme-action-sub-color2;
-  margin:0 0 15px;
+  margin: 0 0 15px;
 }

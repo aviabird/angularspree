@@ -2,11 +2,13 @@ import { SearchState } from './../states/search.state';
 import { SearchActions, SearchActionTypes } from '../actions/search.actions';
 import { SearchStateRecord } from '../states/search.state';
 
-export const initialState: SearchState = new SearchStateRecord() as unknown as SearchState;
+export const initialState: SearchState = (new SearchStateRecord() as unknown) as SearchState;
 
-export function reducer(state = initialState, action: SearchActions): SearchState {
+export function reducer(
+  state = initialState,
+  action: SearchActions
+): SearchState {
   switch (action.type) {
-
     case SearchActionTypes.ApplySearchParams:
       return state.merge({
         searchAppliedParams: action.payload,
@@ -19,7 +21,6 @@ export function reducer(state = initialState, action: SearchActions): SearchStat
         searchResults: action.payload.data,
         metaInfo: action.payload.meta
       }) as SearchState;
-
 
     default:
       return state;

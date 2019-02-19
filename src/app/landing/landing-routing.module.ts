@@ -11,11 +11,10 @@ const routes: Routes = [
   { path: 'info/About us', component: AboutUsComponent },
   { path: 'info/Return Policy', component: ReturnPolicyComponent },
   { path: 'info/FAQs', component: FaqPageComponent }
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LandingRoutingModule { }
+export class LandingRoutingModule {}

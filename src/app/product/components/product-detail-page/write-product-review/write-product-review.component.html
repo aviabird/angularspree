@@ -4,34 +4,73 @@
   <div class="write-review">
     <div class="row">
       <div class="col-12 pl-4 col-sm-2 text-center">
-        <img [src]="getProductImageUrl()" class="img-fluid">
+        <img [src]="getProductImageUrl()" class="img-fluid" />
       </div>
       <div class="col-12 col-sm-7">
         <div class="container">
           <div class="row">
             <div class="col-12" *ngIf="!isReviewSubmitted">
-              <h2>{{product.name}}</h2>
-              <form [formGroup]="reviewForm" (ngSubmit)="onSubmit(product.id)" data-toggle="validator" *ngIf="reviewForm">
+              <h2>{{ product.name }}</h2>
+              <form
+                [formGroup]="reviewForm"
+                (ngSubmit)="onSubmit(product.id)"
+                data-toggle="validator"
+                *ngIf="reviewForm"
+              >
                 <div class="form-group">
                   <label for="exampleInputEmail1">Rate this product</label>
                   <div>
-                    <ngx-input-star-rating formControlName="rating" required></ngx-input-star-rating>
+                    <ngx-input-star-rating
+                      formControlName="rating"
+                      required
+                    ></ngx-input-star-rating>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Title</label>
-                  <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Headline for your review"
-                    formControlName="title" required>
-                  <p *ngIf="reviewForm.get('title').hasError('required') && reviewForm.get('title').touched" class="value-err text-danger show">
-                    Please enter your review title.</p>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-describedby="emailHelp"
+                    placeholder="Headline for your review"
+                    formControlName="title"
+                    required
+                  />
+                  <p
+                    *ngIf="
+                      reviewForm.get('title').hasError('required') &&
+                      reviewForm.get('title').touched
+                    "
+                    class="value-err text-danger show"
+                  >
+                    Please enter your review title.
+                  </p>
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1">Content</label>
-                  <textarea class="form-control" rows="3" placeholder="Your review" formControlName="review" required></textarea>
-                  <p *ngIf="reviewForm.get('review').hasError('required') && reviewForm.get('review').touched" class="value-err text-danger show">
-                    Please enter your review.</p>
+                  <textarea
+                    class="form-control"
+                    rows="3"
+                    placeholder="Your review"
+                    formControlName="review"
+                    required
+                  ></textarea>
+                  <p
+                    *ngIf="
+                      reviewForm.get('review').hasError('required') &&
+                      reviewForm.get('review').touched
+                    "
+                    class="value-err text-danger show"
+                  >
+                    Please enter your review.
+                  </p>
                 </div>
-                <button type="submit" class="btn themebtnprimary col-12 col-sm-5 mb-4">Submit Review</button>
+                <button
+                  type="submit"
+                  class="btn themebtnprimary col-12 col-sm-5 mb-4"
+                >
+                  Submit Review
+                </button>
               </form>
             </div>
             <div class="col-12" *ngIf="isReviewSubmitted">
@@ -40,11 +79,18 @@
                 <i class="fa fa-check-circle fa-2x text-success"></i>
               </div>
               <div class="float-right">
-                <p class="w-75 text-success">Your review has been submitted.Please note that your review may take up to
-                  48 hours to appear.</p>
+                <p class="w-75 text-success">
+                  Your review has been submitted.Please note that your review
+                  may take up to 48 hours to appear.
+                </p>
               </div>
-              <button type="normal" class="btn themebtnprimary col-12 col-sm-5 mt-4 mb-1" (click)="goToProduct(product.slug)">Continue
-                Shopping</button>
+              <button
+                type="normal"
+                class="btn themebtnprimary col-12 col-sm-5 mt-4 mb-1"
+                (click)="goToProduct(product.slug)"
+              >
+                Continue Shopping
+              </button>
             </div>
           </div>
         </div>
@@ -54,10 +100,12 @@
           <h4>Writing Guidelines</h4>
           <ul>
             <li>
-              Please refrain from mentioning competitors or the specific price you paid for the product
+              Please refrain from mentioning competitors or the specific price
+              you paid for the product
             </li>
             <li>
-              Do not include any personally identifiable information, such as full names
+              Do not include any personally identifiable information, such as
+              full names
             </li>
           </ul>
           <h4>Media Guidelines</h4>

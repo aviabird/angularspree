@@ -7,7 +7,7 @@ export class AuthActions {
   static LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
   static AUTHORIZE = 'AUTHORIZE';
   static O_AUTH_LOGIN = 'O_AUTH_LOGIN';
-  static NO_OP = 'NO_OPERATION'
+  static NO_OP = 'NO_OPERATION';
   static FORGET_PASSWORD = 'FORGET_PASSWORD';
   static FORGET_PASSWORD_SUCCESS = 'FORGET_PASSWORD_SUCCESS';
   static UPDATE_PASSWORD = 'UPDATE_PASSWORD';
@@ -16,7 +16,6 @@ export class AuthActions {
   static GET_CURRENT_USER_SUCCESS = 'GET_CURRENT_USER_SUCCESS';
   static GET_RATING_CATEGEORY = 'GET_RATING_CATEGEORY';
   static GET_RATING_CATEGEORY_SUCCESS = 'GET_RATING_CATEGEORY_SUCCESS';
-
 
   authorize() {
     return { type: AuthActions.AUTHORIZE };
@@ -66,26 +65,26 @@ export class AuthActions {
     return {
       type: AuthActions.GET_CURRENT_USER,
       payload: token
-    }
+    };
   }
 
   getCurrentUserSuccess(user: User) {
     return {
       type: AuthActions.GET_CURRENT_USER_SUCCESS,
       payload: user
-    }
+    };
   }
 
   getRatingCategories() {
     return {
       type: AuthActions.GET_RATING_CATEGEORY
-    }
+    };
   }
 
   getRatingCategoriesSuccess(ratingCategories: Array<RatingCategory>) {
     return {
       type: AuthActions.GET_RATING_CATEGEORY_SUCCESS,
       payload: ratingCategories
-    }
+    };
   }
 }

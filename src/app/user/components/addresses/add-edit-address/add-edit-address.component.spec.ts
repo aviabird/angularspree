@@ -8,9 +8,8 @@ describe('AddEditAddressComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddEditAddressComponent ]
-    })
-    .compileComponents();
+      declarations: [AddEditAddressComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

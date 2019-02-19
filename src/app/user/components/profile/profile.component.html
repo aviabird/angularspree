@@ -1,7 +1,10 @@
-<div class="row" *ngIf="userDetails$ | async; let userDetails">
+<div class="row" *ngIf="(userDetails$ | async); let userDetails">
   <div class="col-md-8" *ngIf="userDetails">
-    <app-profile-email [userDetails]="userDetails"></app-profile-email>    
-    <hr>
-    <app-profile-password [userDetails]="userDetails" class="mt-5"></app-profile-password>
+    <app-profile-email [userDetails]="userDetails"></app-profile-email>
+    <hr />
+    <app-profile-password
+      [userDetails]="userDetails"
+      class="mt-5"
+    ></app-profile-password>
   </div>
 </div>

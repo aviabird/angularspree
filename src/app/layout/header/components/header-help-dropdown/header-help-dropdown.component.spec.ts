@@ -8,9 +8,8 @@ describe('HeaderHelpDropdownComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderHelpDropdownComponent ]
-    })
-    .compileComponents();
+      declarations: [HeaderHelpDropdownComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

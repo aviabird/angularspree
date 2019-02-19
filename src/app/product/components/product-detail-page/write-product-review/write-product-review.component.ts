@@ -4,13 +4,22 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from './../../../../core/services/product.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, PLATFORM_ID, Inject, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  PLATFORM_ID,
+  Inject,
+  OnDestroy
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
 import { getAuthStatus } from '../../../../auth/reducers/selectors';
 import { User } from '../../../../core/models/user';
 import { RatingOption } from '../../../../core/models/rating_option';
-import { getProductRatingOptions, getIsReviewSubmitted } from '../../../reducers/selectors';
+import {
+  getProductRatingOptions,
+  getIsReviewSubmitted
+} from '../../../reducers/selectors';
 import { Subscription, Observable } from 'rxjs';
 import { ProductActions } from '../../../actions/product-actions';
 
@@ -26,27 +35,31 @@ export class WriteProductReviewComponent implements OnInit, OnDestroy {
   product: Product;
   submitReview = true;
   isAuthenticated: boolean;
-  noImageUrl = 'assets/default/image-placeholder.svg'
+  noImageUrl = 'assets/default/image-placeholder.svg';
   ratingOptions: Array<RatingOption>;
   ratingId: string;
   userInfo: User;
   subscriptionList$: Array<Subscription> = [];
   isReviewSubmitted: boolean;
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
     private productService: ProductService,
     private activeRoute: ActivatedRoute,
     private toastrService: ToastrService,
     private router: Router,
     private store: Store<AppState>,
     private productAction: ProductActions,
-    @Inject(PLATFORM_ID) private platformId: any) { }
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {}
 
   ngOnInit() {
     this.subscriptionList$.push(
-      this.store.select(getAuthStatus).subscribe(auth => { this.isAuthenticated = auth })
+      this.store.select(getAuthStatus).subscribe(auth => {
+        this.isAuthenticated = auth;
+      })
     );
-    this.product = this.activeRoute.snapshot.data['product'];    
+    this.product = this.activeRoute.snapshot.data['product'];
     this.initForm();
     this.userInfo = this.getUserFromLocalStorage();
   }
@@ -60,19 +73,22 @@ export class WriteProductReviewComponent implements OnInit, OnDestroy {
         rating: [rating, Validators.required],
         title: [title, Validators.required],
         review: [review, Validators.required]
-      }
-      );
-    } else { this.router.navigate([this.product.slug]) }
+      });
+    } else {
+      this.router.navigate([this.product.slug]);
+    }
   }
 
   getProductImageUrl() {
-    return this.product.images[0] ? this.product.images[0].product_url : this.noImageUrl;
+    return this.product.images[0]
+      ? this.product.images[0].product_url
+      : this.noImageUrl;
   }
 
   getUserFromLocalStorage() {
     if (isPlatformBrowser(this.platformId)) {
       if (localStorage.getItem('user')) {
-        return JSON.parse(localStorage.getItem('user'))
+        return JSON.parse(localStorage.getItem('user'));
       }
     }
   }
@@ -80,55 +96,65 @@ export class WriteProductReviewComponent implements OnInit, OnDestroy {
   onSubmit() {
     if (this.reviewForm.valid) {
       const formValues = this.reviewForm.value;
-      const params = this.buildReviewJson(formValues, this.userInfo, this.product.id, this.getRatingId(formValues.rating))
+      const params = this.buildReviewJson(
+        formValues,
+        this.userInfo,
+        this.product.id,
+        this.getRatingId(formValues.rating)
+      );
       this.store.dispatch(this.productAction.writeProductReview(params));
       this.subscriptionList$.push(
-        this.store.select(getIsReviewSubmitted).subscribe(status => this.isReviewSubmitted = status)
+        this.store
+          .select(getIsReviewSubmitted)
+          .subscribe(status => (this.isReviewSubmitted = status))
       );
     } else {
-      this.toastrService.error('All fields are rquired', 'Invalid!')
+      this.toastrService.error('All fields are rquired', 'Invalid!');
     }
   }
 
   goToProduct(prodSlug) {
-    this.router.navigate([prodSlug])
+    this.router.navigate([prodSlug]);
   }
 
   getRatingId(userRatingValue: number) {
-    this.store.select(getProductRatingOptions)
-      .subscribe(ratingOptionsList => { this.ratingOptions = ratingOptionsList })
+    this.store.select(getProductRatingOptions).subscribe(ratingOptionsList => {
+      this.ratingOptions = ratingOptionsList;
+    });
     this.ratingOptions.forEach(element => {
-      if (element.value === userRatingValue) { this.ratingId = element.id }
-    })
+      if (element.value === userRatingValue) {
+        this.ratingId = element.id;
+      }
+    });
     return this.ratingId;
   }
 
   buildReviewJson(formData, user: User, productId: number, ratingId: string) {
     const params = {
-      'data': {
-        'type': 'reviews',
-        'attributes': {
-          'title': formData.title,
-          'description': formData.review,
-          'name': user.first_name,
-          'locale': 'en'
+      data: {
+        type: 'reviews',
+        attributes: {
+          title: formData.title,
+          description: formData.review,
+          name: user.first_name,
+          locale: 'en'
         },
-        'relationships': {
-          'user': {
-            'data': {
-              'type': 'users',
-              'id': user.id
+        relationships: {
+          user: {
+            data: {
+              type: 'users',
+              id: user.id
             }
           },
-          'product': {
-            'data': { 'type': 'products', 'id': productId }
+          product: {
+            data: { type: 'products', id: productId }
           },
-          'rating_option': {
-            'data': { 'type': 'rating_options', 'id': ratingId }
+          rating_option: {
+            data: { type: 'rating_options', id: ratingId }
           }
         }
       }
-    }
+    };
     return params;
   }
 

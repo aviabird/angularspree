@@ -14,10 +14,9 @@ export class OrderListItemComponent implements OnInit {
   currency = environment.config.currency_symbol;
   noImageUrl = 'assets/default/image-placeholder.svg';
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getProductImageUrl(line_item: LineItem) {
     const imageUrl = line_item.product.images[0];

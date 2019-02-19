@@ -1,8 +1,6 @@
 <div class="h6 font-weight-bold clearfix mt-2 mb-3">
   <div class="float-left">FILTERS</div>
-  <a
-    class="pointer float-right text-danger"
-    (click)="clearSearchFilters()">
+  <a class="pointer float-right text-danger" (click)="clearSearchFilters()">
     CLEAR ALL
   </a>
 </div>
@@ -11,12 +9,14 @@
   <app-multiselect-filter
     [appliedFilters]="appliedParams.filters"
     [filter]="filter"
-    (filterClick)="updateFilter($event, filter.id)"></app-multiselect-filter>
+    (filterClick)="updateFilter($event, filter.id)"
+  ></app-multiselect-filter>
 </div>
 
 <div *ngFor="let filter of rangeFilters">
   <app-range-filter
     [appliedFilters]="appliedParams.rangeFilters"
     [filter]="filter"
-    (rangeSeleted)="updateRangeFilter($event, filter.id)"></app-range-filter>
+    (rangeSeleted)="updateRangeFilter($event, filter.id)"
+  ></app-range-filter>
 </div>

@@ -6,11 +6,17 @@ import {
   getShipTotal,
   getItemTotal,
   getAdjustmentTotal,
-  getOrderState,
+  getOrderState
 } from './../../reducers/selectors';
 import { Observable, Subscription } from 'rxjs';
 import { CheckoutService } from './../../../core/services/checkout.service';
-import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  EventEmitter,
+  Output
+} from '@angular/core';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -26,26 +32,24 @@ export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   shipTotal$: Observable<number>;
   adjustmentTotal$: Observable<number>;
   currency = environment.config.currency_symbol;
-  freeShippingAmount = environment.config.freeShippingAmount
+  freeShippingAmount = environment.config.freeShippingAmount;
   orderSub$: Subscription;
   orderState$: Observable<string>;
 
-
   constructor(
     private checkoutService: CheckoutService,
-    private store: Store<AppState>) { }
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit() {
-    this.orderSub$ = this.checkoutService.fetchCurrentOrder()
-      .subscribe(_ => {
-        this.totalCartValue$ = this.store.select(getTotalCartValue);
-        this.totalCartItems$ = this.store.select(getTotalCartItems);
-        this.shipTotal$ = this.store.select(getShipTotal);
-        this.itemTotal$ = this.store.select(getItemTotal);
-        this.adjustmentTotal$ = this.store.select(getAdjustmentTotal);
-        this.orderState$ = this.store.select(getOrderState);
-      });
-
+    this.orderSub$ = this.checkoutService.fetchCurrentOrder().subscribe(_ => {
+      this.totalCartValue$ = this.store.select(getTotalCartValue);
+      this.totalCartItems$ = this.store.select(getTotalCartItems);
+      this.shipTotal$ = this.store.select(getShipTotal);
+      this.itemTotal$ = this.store.select(getItemTotal);
+      this.adjustmentTotal$ = this.store.select(getAdjustmentTotal);
+      this.orderState$ = this.store.select(getOrderState);
+    });
   }
 
   ngOnDestroy() {

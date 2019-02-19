@@ -9,7 +9,7 @@
   width: 12em;
   left: 0.9em !important;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     width: 0;
     height: 0;
@@ -28,7 +28,7 @@
 
 .dropdown-item.active,
 .dropdown-item:active {
-  background-color: $theme-main-color
+  background-color: $theme-main-color;
 }
 
 .arrowalignement {
@@ -73,11 +73,11 @@
   position: relative;
   &:hover {
     background-color: $theme-main-color - 20;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
   }
 }
 
 .openhelp {
   background-color: $theme-main-color - 20 !important;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, .6);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
 }

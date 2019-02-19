@@ -7,10 +7,8 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
    malicious client-side scripts into web pages, which is often referred as
    Cross-site Scripting or XSS.
 */
-
 export class SanitizeHtmlPipe implements PipeTransform {
-
-  constructor(private _sanitizer: DomSanitizer) { }
+  constructor(private _sanitizer: DomSanitizer) {}
 
   transform(value: string): SafeHtml {
     return this._sanitizer.bypassSecurityTrustHtml(value);

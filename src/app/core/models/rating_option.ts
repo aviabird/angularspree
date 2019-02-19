@@ -1,4 +1,4 @@
-export class RatingOption{
+export class RatingOption {
   id: string;
   code: string;
   position: number;

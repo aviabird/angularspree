@@ -8,9 +8,8 @@ describe('CashOnDeliveryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StripePaymentComponent ]
-    })
-    .compileComponents();
+      declarations: [StripePaymentComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

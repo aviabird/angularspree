@@ -16,17 +16,22 @@ export class FilterSummaryContainerComponent implements OnInit {
   constructor(
     private searchService: SearchingService,
     private router: Router,
-    private store: Store<AppState>) { }
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit() {}
 
-  filterUpdated(filter: { name: any; value: any; }) {
-    this.updatedFilters.emit({ ...this.appliedParams, [filter.name]: filter.value })
+  filterUpdated(filter: { name: any; value: any }) {
+    this.updatedFilters.emit({
+      ...this.appliedParams,
+      [filter.name]: filter.value
+    });
   }
 
   updateFilters(appliedParams: SearchAppliedParams) {
-    const queryParams = this.searchService.convertToAPISearchParams(appliedParams);
+    const queryParams = this.searchService.convertToAPISearchParams(
+      appliedParams
+    );
     this.router.navigate(['/s'], { queryParams });
   }
-
 }

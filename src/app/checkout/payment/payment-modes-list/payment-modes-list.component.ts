@@ -20,7 +20,7 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
   payment: Payment;
   showDummyCardInfo = environment.config.showDummyCardInfo;
   paymentModes: PaymentMode[];
-  selectedMode: PaymentMode = new PaymentMode;
+  selectedMode: PaymentMode = new PaymentMode();
   isAuthenticated: boolean;
   showOrderSuccess = false;
   freeShippingAmount = environment.config.freeShippingAmount;
@@ -28,24 +28,30 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
   subscriptionList$: Array<Subscription> = [];
   isPaymentAdded: boolean;
 
-  constructor(private checkoutService: CheckoutService,
+  constructor(
+    private checkoutService: CheckoutService,
     private store: Store<AppState>,
-    private toastyService: ToastrService) { }
+    private toastyService: ToastrService
+  ) {}
 
   ngOnInit() {
     this.fetchAllPayments();
     this.subscriptionList$.push(
-      this.store.select(getAuthStatus).subscribe((auth) => {
+      this.store.select(getAuthStatus).subscribe(auth => {
         this.isAuthenticated = auth;
       }),
-      this.store.select(getIsPaymentAdded).
-        subscribe(paymentStaus => this.isPaymentAdded = paymentStaus)
+      this.store
+        .select(getIsPaymentAdded)
+        .subscribe(paymentStaus => (this.isPaymentAdded = paymentStaus))
     );
   }
 
   selectedPaymentMode(mode) {
     if (this.isPaymentAdded) {
-      this.toastyService.info('You have already confirmed payment mode for this order.', 'Info!');
+      this.toastyService.info(
+        'You have already confirmed payment mode for this order.',
+        'Info!'
+      );
     } else {
       this.selectedMode = mode;
     }
@@ -53,14 +59,13 @@ export class PaymentModesListComponent implements OnInit, OnDestroy {
 
   private fetchAllPayments() {
     this.subscriptionList$.push(
-      this.checkoutService.availablePaymentMethods()
-        .subscribe((payments) => {
-          this.paymentModes = payments;
-          if (this.paymentModes.length > 0) {
-            this.selectedMode = this.paymentModes[0];
-          }
-        })
-    )
+      this.checkoutService.availablePaymentMethods().subscribe(payments => {
+        this.paymentModes = payments;
+        if (this.paymentModes.length > 0) {
+          this.selectedMode = this.paymentModes[0];
+        }
+      })
+    );
   }
 
   ngOnDestroy() {

@@ -1,8 +1,19 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  OnDestroy
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../interfaces';
 import { CheckoutActions } from '../../../actions/checkout.actions';
-import { getOrderId, getTotalCartValue, getIsPaymentAdded } from '../../../reducers/selectors';
+import {
+  getOrderId,
+  getTotalCartValue,
+  getIsPaymentAdded
+} from '../../../reducers/selectors';
 import { Subscription } from 'rxjs';
 import { PaymentService } from '../../services/payment.service';
 import { Payment } from '../../../../core/models/payment';
@@ -16,7 +27,6 @@ import { CheckoutService } from '../../../../core/services/checkout.service';
   styleUrls: ['./cash-on-delivery.component.scss']
 })
 export class CashOnDeliveryComponent implements OnInit, OnDestroy {
-
   @Output() payOnDelivery: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() paymentMethodId: number;
   orderId: number;
@@ -31,38 +41,51 @@ export class CashOnDeliveryComponent implements OnInit, OnDestroy {
     private paymentService: PaymentService,
     private router: Router,
     private checkOutService: CheckoutService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.subscriptionList$.push(
-      this.store.select(getOrderId).subscribe(orderId => this.orderId = orderId),
-      this.store.select(getTotalCartValue).subscribe(orderAmount => this.orderAmount = orderAmount),
-      this.store.select(getIsPaymentAdded).subscribe(status => this.isPaymentAdded = status)
+      this.store
+        .select(getOrderId)
+        .subscribe(orderId => (this.orderId = orderId)),
+      this.store
+        .select(getTotalCartValue)
+        .subscribe(orderAmount => (this.orderAmount = orderAmount)),
+      this.store
+        .select(getIsPaymentAdded)
+        .subscribe(status => (this.isPaymentAdded = status))
     );
   }
 
   processCod() {
     this.subscriptionList$.push(
-      this.paymentService.makeCodPayment(this.orderId)
+      this.paymentService
+        .makeCodPayment(this.orderId)
         .subscribe((order: Order) => {
           this.checkOutService.fetchCurrentOrder().subscribe(_ => {
-            this.redirectToSuccessPage(order.number)
+            this.redirectToSuccessPage(order.number);
           });
         })
     );
   }
 
   addPayment() {
-    this.store.dispatch(this.checkoutActions.bindPayment(this.paymentMethodId, this.orderId, this.orderAmount))
+    this.store.dispatch(
+      this.checkoutActions.bindPayment(
+        this.paymentMethodId,
+        this.orderId,
+        this.orderAmount
+      )
+    );
   }
 
   private redirectToSuccessPage(orderNumber) {
-    this.router.navigate(['checkout', 'order-success'],
-      { queryParams: { orderReferance: orderNumber } });
+    this.router.navigate(['checkout', 'order-success'], {
+      queryParams: { orderReferance: orderNumber }
+    });
   }
 
   ngOnDestroy() {
     this.subscriptionList$.forEach(sub$ => sub$.unsubscribe());
   }
-
 }

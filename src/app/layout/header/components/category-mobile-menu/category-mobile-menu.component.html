@@ -1,54 +1,46 @@
 <div
   class="d-flex  my-flex-container"
-  *ngIf="taxonomies[0]; let catgeory_taxonomy">
+  *ngIf="taxonomies[0]; let catgeory_taxonomy"
+>
   <div
     class="p-0 no-gutters"
     class="parrent-catgory"
-    [@popOverState]="getparrentState">
+    [@popOverState]="getparrentState"
+  >
     <ul class="bg-color">
       <li
-        *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index"
-        (click)="showCategory(i)">
-        {{taxon.name}}
+        *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i = index"
+        (click)="showCategory(i)"
+      >
+        {{ taxon.name }}
       </li>
     </ul>
     <ul class="otherlinks">
       <li>
-        <a
-          [routerLink]="['info/About_us']"
-          (click)="onCloseMobilemenu()">
+        <a [routerLink]="['info/About_us']" (click)="onCloseMobilemenu()">
           About us
         </a>
-
       </li>
       <li>
-        <a
-          [routerLink]="['info/FAQs']"
-          (click)="onCloseMobilemenu()">
+        <a [routerLink]="['info/FAQs']" (click)="onCloseMobilemenu()">
           FAQs
         </a>
       </li>
       <li>
-        <a
-          [routerLink]="['info/Return Policy']"
-          (click)="onCloseMobilemenu()">
+        <a [routerLink]="['info/Return Policy']" (click)="onCloseMobilemenu()">
           Return Policy
         </a>
       </li>
-
     </ul>
   </div>
   <div
     class="p-0 no-gutters"
     class="sub-catgory"
     [@popOverState]="getparrentState"
-    [@subCatgory]="getChildState">
-    <ul
-      class="bg-color"
-      *ngIf="menuTaxons">
-      <li
-        (click)="parrantBack()"
-        class="backbtn">
+    [@subCatgory]="getChildState"
+  >
+    <ul class="bg-color" *ngIf="menuTaxons">
+      <li (click)="parrantBack()" class="backbtn">
         <i class="fa fa-chevron-left mr-2"></i>
         Back
       </li>
@@ -56,26 +48,25 @@
         class="subhead"
         (click)="onCloseMobilemenu()"
         [routerLink]="['s']"
-        [queryParams]="{'f': 'Category:' + menuTaxons.name}">
-        {{menuTaxons.name}}
+        [queryParams]="{ f: 'Category:' + menuTaxons.name }"
+      >
+        {{ menuTaxons.name }}
       </div>
       <li
-        *ngFor="let taxon of menuTaxons.taxons; let i= index"
-        (click)="showSubCategory(i)">
-        {{taxon.name}}
+        *ngFor="let taxon of menuTaxons.taxons; let i = index"
+        (click)="showSubCategory(i)"
+      >
+        {{ taxon.name }}
       </li>
     </ul>
   </div>
   <div
     class="p-0 no-gutters"
     class="sub-sub-catgory"
-    [@subCatgory]="getChildState">
-    <ul
-      class="bg-color"
-      *ngIf="subChild">
-      <li
-        (click)="childBack()"
-        class="backbtn">
+    [@subCatgory]="getChildState"
+  >
+    <ul class="bg-color" *ngIf="subChild">
+      <li (click)="childBack()" class="backbtn">
         <i class="fa fa-chevron-left mr-2"></i>
         Back
       </li>
@@ -83,17 +74,19 @@
         class="subhead"
         (click)="onCloseMobilemenu()"
         [routerLink]="['s']"
-        [queryParams]="{f: 'Category' + subChild.name}">
-        {{subChild.name}}
+        [queryParams]="{ f: 'Category' + subChild.name }"
+      >
+        {{ subChild.name }}
       </div>
       <li
-        *ngFor="let taxon of subChild.taxons; let i= index"
+        *ngFor="let taxon of subChild.taxons; let i = index"
         [routerLink]="['s']"
-        [queryParams]="{'f': 'Category:' + taxon.name}"
-        (click)="onCloseMobilemenu(taxon.name)">
-        {{taxon.name}}
+        [queryParams]="{ f: 'Category:' + taxon.name }"
+        (click)="onCloseMobilemenu(taxon.name)"
+      >
+        {{ taxon.name }}
       </li>
     </ul>
   </div>
-  <div class="need-help">Need help?{{contactno}}</div>
+  <div class="need-help">Need help?{{ contactno }}</div>
 </div>

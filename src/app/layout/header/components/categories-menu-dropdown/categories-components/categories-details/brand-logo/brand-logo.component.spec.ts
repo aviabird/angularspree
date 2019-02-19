@@ -9,8 +9,7 @@ describe('BrandLogoComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [BrandLogoComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

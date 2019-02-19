@@ -1,61 +1,78 @@
-<div class="payment-section container" *ngIf="totalCartValue$ | async; let totalCartValue">
-	<div class="col-12 col-sm-9 col-md-9 col-lg-9 m-auto p-0">
-		<div class="row m-0">
-			<div class="left col-12 col-md-8 col-lg-8 m-0">
-				<div class="payment-header">
-					<span class="lbl">Choose Payment Mode</span>
-					<span class="amt you-pay">
-						<span class="amt">You Pay</span>
-						<span class="you-pay">{{currency}}{{totalCartValue | number:'1.2-2'}}</span>
-					</span>
-				</div>
-				<div *ngIf="orderNumber$ | async ; let orderNumber">
-					<div class="pay-body" *ngIf="orderNumber!=null">
-						<app-payment-modes-list></app-payment-modes-list>
-					</div>
-				</div>
-			</div>
-			<div class="right col-12 col-md-4 col-lg-4 m-0">
-				<div class="mini-bag-summary">
-					<div class="lbl">ORDER SUMMARY</div>
-					<div class="items">{{totalCartItems$ | async}} ITEMS</div>
-					<div class="order-total">
-						<span>Order Total</span>
-						<span class="value">{{currency}}{{itemTotal$ | async | number:'1.2-2'}}</span>
-					</div>
-					<div class="shipping" *ngIf="shipTotal$ | async;let shipTotal">
-						<span>Delivery</span>
-						<span class="shipping-fee c-green" *ngIf="shipTotal > 0">{{currency}}{{shipTotal | number:'1.2-2'}}</span>
-						<span class="shipping-fee c-green" *ngIf="shipTotal === '0.0'">Free</span>
-					</div>
-					<div *ngIf="(adjustmentTotal$ | async);let adjustmentTotal">
-						<div class="order-total" *ngIf="!adjustmentTotal.includes('$0.00')">
-							<span>Adjustment</span>
-							<span class="value">{{adjustmentTotal}}</span>
-						</div>
-					</div>
-				</div>
-				<div class="pay-lbl-total">
-					<span class="pay-lbl">Total Payable</span>
-					<span class="pay-total">{{currency}}{{totalCartValue| number:'1.2-2'}}</span>
-				</div>
-				
-				<div class="address-summary" *ngIf="address$ | async; let address">
-					<div class="address-lbl">DELIVER TO</div>
-					<div class="add-info">
-						<strong>
-							<a routerLink="/checkout/address">Change</a>
-						</strong>
-					</div>
-					<div class="name">{{address.first_name}} {{address.last_name}}</div>
-					<div class="add-info">{{address.address_line_1}}</div>
-					<div class="add-info">{{address.address_line_2}}</div>
-					<div class="add-info">{{address.city}} - {{address.zip_code}}</div>
-					<!-- <div class="add-info">{{address?.state?.name}}</div>
+<div
+  class="payment-section container"
+  *ngIf="(totalCartValue$ | async); let totalCartValue"
+>
+  <div class="col-12 col-sm-9 col-md-9 col-lg-9 m-auto p-0">
+    <div class="row m-0">
+      <div class="left col-12 col-md-8 col-lg-8 m-0">
+        <div class="payment-header">
+          <span class="lbl">Choose Payment Mode</span>
+          <span class="amt you-pay">
+            <span class="amt">You Pay</span>
+            <span class="you-pay"
+              >{{ currency }}{{ totalCartValue | number: '1.2-2' }}</span
+            >
+          </span>
+        </div>
+        <div *ngIf="(orderNumber$ | async); let orderNumber">
+          <div class="pay-body" *ngIf="orderNumber != null">
+            <app-payment-modes-list></app-payment-modes-list>
+          </div>
+        </div>
+      </div>
+      <div class="right col-12 col-md-4 col-lg-4 m-0">
+        <div class="mini-bag-summary">
+          <div class="lbl">ORDER SUMMARY</div>
+          <div class="items">{{ totalCartItems$ | async }} ITEMS</div>
+          <div class="order-total">
+            <span>Order Total</span>
+            <span class="value"
+              >{{ currency }}{{ itemTotal$ | async | number: '1.2-2' }}</span
+            >
+          </div>
+          <div class="shipping" *ngIf="(shipTotal$ | async); let shipTotal">
+            <span>Delivery</span>
+            <span class="shipping-fee c-green" *ngIf="shipTotal > 0"
+              >{{ currency }}{{ shipTotal | number: '1.2-2' }}</span
+            >
+            <span class="shipping-fee c-green" *ngIf="shipTotal === '0.0'"
+              >Free</span
+            >
+          </div>
+          <div *ngIf="(adjustmentTotal$ | async); let adjustmentTotal">
+            <div class="order-total" *ngIf="!adjustmentTotal.includes('$0.00')">
+              <span>Adjustment</span>
+              <span class="value">{{ adjustmentTotal }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="pay-lbl-total">
+          <span class="pay-lbl">Total Payable</span>
+          <span class="pay-total"
+            >{{ currency }}{{ totalCartValue | number: '1.2-2' }}</span
+          >
+        </div>
+
+        <div class="address-summary" *ngIf="(address$ | async); let address">
+          <div class="address-lbl">DELIVER TO</div>
+          <div class="add-info">
+            <strong>
+              <a routerLink="/checkout/address">Change</a>
+            </strong>
+          </div>
+          <div class="name">
+            {{ address.first_name }} {{ address.last_name }}
+          </div>
+          <div class="add-info">{{ address.address_line_1 }}</div>
+          <div class="add-info">{{ address.address_line_2 }}</div>
+          <div class="add-info">
+            {{ address.city }} - {{ address.zip_code }}
+          </div>
+          <!-- <div class="add-info">{{address?.state?.name}}</div>
         	<div class="add-info">{{address.country.name}}</div> -->
-					<div class="add-info">Mobile: {{address.phone}}</div>
-				</div>
-			</div>
-		</div>
-	</div>
+          <div class="add-info">Mobile: {{ address.phone }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

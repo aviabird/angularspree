@@ -1,5 +1,4 @@
-
-import {tap} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { AuthService } from './../../../core/services/auth.service';
 import { AuthActions } from './../../actions/auth.actions';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,9 +27,7 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
     private router: Router,
     private actions: AuthActions,
     private authService: AuthService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
     this.initForm();
@@ -42,41 +39,47 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
 
     if (this.forgetPasswordForm.valid) {
       this.forgetPasswordSubs = this.authService
-        .forgetPassword(values).pipe(
-        tap(_ => {
-          this.emailSent = true,
-            this.sentEmail = values.email
-        }, (user) => {
-          const errors = user.error.error || 'Something went wrong';
-          keys.forEach(val => {
-            this.pushErrorFor(val, errors);
-          });
-        })).subscribe();
+        .forgetPassword(values)
+        .pipe(
+          tap(
+            _ => {
+              (this.emailSent = true), (this.sentEmail = values.email);
+            },
+            user => {
+              const errors = user.error.error || 'Something went wrong';
+              keys.forEach(val => {
+                this.pushErrorFor(val, errors);
+              });
+            }
+          )
+        )
+        .subscribe();
     } else {
       keys.forEach(val => {
         const ctrl = this.forgetPasswordForm.controls[val];
         if (!ctrl.valid) {
           this.pushErrorFor(val, null);
           ctrl.markAsTouched();
-        };
+        }
       });
     }
   }
 
-
   private pushErrorFor(ctrl_name: string, msg: string) {
-    this.forgetPasswordForm.controls[ctrl_name].setErrors({ 'msg': msg });
+    this.forgetPasswordForm.controls[ctrl_name].setErrors({ msg: msg });
   }
 
   initForm() {
     const email = '';
 
     this.forgetPasswordForm = this.fb.group({
-      'email': [email, Validators.required]
+      email: [email, Validators.required]
     });
   }
 
   ngOnDestroy() {
-    if (this.forgetPasswordSubs) { this.forgetPasswordSubs.unsubscribe(); }
+    if (this.forgetPasswordSubs) {
+      this.forgetPasswordSubs.unsubscribe();
+    }
   }
 }

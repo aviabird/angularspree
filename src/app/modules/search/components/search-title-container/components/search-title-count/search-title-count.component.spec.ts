@@ -8,9 +8,8 @@ describe('SearchTitleCountComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchTitleCountComponent ]
-    })
-    .compileComponents();
+      declarations: [SearchTitleCountComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
