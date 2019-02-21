@@ -1,0 +1,10 @@
+<app-mobile-filter-list
+  *ngIf="loadedFeature !== 'filter'"
+></app-mobile-filter-list>
+<app-mobile-sort-filter-list
+  *ngIf="loadedFeature === 'filter'"
+></app-mobile-sort-filter-list>
+<nav class="navbar fixed-bottom navbar-light bg-light">
+  <a class="navbar-brand" (click)="onSelect('sort')">Sort</a>
+  <a class="navbar-brand" (click)="onSelect('filter')">Filter</a>
+</nav>
