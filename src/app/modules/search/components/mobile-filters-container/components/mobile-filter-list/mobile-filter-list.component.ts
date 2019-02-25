@@ -9,14 +9,11 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class MobileFilterListComponent implements OnInit {
   modalRef: BsModalRef;
-  config = {
-    animated: true,
-    show: true
-  };
+  filterItems = ['First', 'Second', 'Third'];
+  config = { animated: true, class: 'modal-filter' };
   constructor(private modalService: BsModalService) {}
-
   ngOnInit() {}
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, this.config);
+  openModal(filterModal: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(filterModal, this.config);
   }
 }

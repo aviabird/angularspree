@@ -25,7 +25,6 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   noSearchImg = '/assets/default/no-search-result.svg';
   searchPlaceholder = environment.config.header.searchPlaceholder;
   searchFound = false;
-  loadedFeature = 'filter';
 
   constructor(
     private searchService: SearchingService,
@@ -75,9 +74,5 @@ export class SearchPageComponent implements OnInit, OnDestroy {
       keyword = keyword.trim();
       this.router.navigate(['/s'], { queryParams: { q: keyword } });
     }
-  }
-  onNavigate(feature: string) {
-    debugger;
-    this.loadedFeature = feature;
   }
 }
