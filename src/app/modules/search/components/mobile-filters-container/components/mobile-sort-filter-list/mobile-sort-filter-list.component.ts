@@ -9,10 +9,16 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class MobileSortFilterListComponent implements OnInit {
   modalRef: BsModalRef;
-  sortItems = ['First', 'Second', 'Third'];
+  sortItems = [
+    ' Popularity',
+    ' Latest',
+    ' Discount',
+    ' Price: High to Low',
+    ' Price: Low to High'
+  ];
   config = {
     animated: true,
-    class: 'sort-filter'
+    class: 'sort-modal'
   };
   constructor(private modalService: BsModalService) {}
 

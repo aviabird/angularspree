@@ -16,5 +16,19 @@
     float: left;
     text-transform: uppercase;
     cursor: pointer;
+    position: relative;
+    &.b-right {
+      ::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        background: #eaeaec;
+        height: 22px;
+        margin-top: 15px;
+        content: '';
+        z-index: 1;
+      }
+    }
   }
 }

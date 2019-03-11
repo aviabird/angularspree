@@ -1,31 +1,28 @@
 <!-- <h4>This is mobile filter list component</h4> -->
 
-<a type="" class="testbtn" (click)="openModal(filterModal)">
-  FILTER
-</a>
+<span type="" class="" (click)="openModal(filterModal)">
+  <i class="fa fa-filter mr-1"></i> FILTER
+</span>
 
 <ng-template #filterModal>
   <div class="modal-header">
     <div class="text-left">
       <h4 class="modal-title">Filters</h4>
     </div>
-    <div class="text-right">
+    <div class="text-right pr-0">
       <a class="clear-filter-btn">Clear all</a>
     </div>
   </div>
-  <div class="modal-body">
-    <div class="row">
-      <div class="col-4 p-0">
-        <ul class="filter-list">
-          <li *ngFor="let filterItem of filterItems; let i = index">
-            {{ filterItem }}
-          </li>
-        </ul>
-      </div>
-      <div class="col-8">
-        Tabs
-      </div>
-    </div>
+  <div class="modal-body p-0">
+    <tabset [vertical]="true" class="filter-tabs">
+      <tab
+        *ngFor="let tabz of tabs"
+        [heading]="tabz.title"
+        [customClass]="tabz.customClass"
+      >
+        <div class="col">{{ tabz?.content }}</div>
+      </tab>
+    </tabset>
   </div>
   <div class="modal-footer">
     <div>

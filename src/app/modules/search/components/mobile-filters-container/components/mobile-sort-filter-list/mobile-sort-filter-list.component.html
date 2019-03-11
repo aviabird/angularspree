@@ -1,10 +1,10 @@
-<a type="" class="" (click)="openModal(sortModal)">
-  SORT
-</a>
+<span type="" class="" (click)="openModal(sortModal)">
+  <i class="fa fa-sort mr-1"></i> SORT
+</span>
 
 <ng-template #sortModal>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Sort By</h4>
+  <div class="modal-header p-0">
+    <h4 class="modal-title float-left sort-header m-0">Sort By</h4>
   </div>
   <div class="modal-body">
     <ul class="sort-list">
