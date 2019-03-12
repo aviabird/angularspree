@@ -16,20 +16,25 @@
   <div class="modal-body p-0">
     <tabset [vertical]="true" class="filter-tabs">
       <tab
-        *ngFor="let tabz of tabs"
-        [heading]="tabz.title"
-        [customClass]="tabz.customClass"
+        *ngFor="let tab of tabs"
+        [heading]="tab.title"
+        [customClass]="tab.customClass"
       >
-        <div class="col">{{ tabz?.content }}</div>
+        <div class="filterlist-container">
+          <ul class="list-group">
+            <li
+              *ngFor="let filteritem of filterItemList"
+              class="list-group-item mb-0"
+            >
+              {{ tab?.content }}
+            </li>
+          </ul>
+        </div>
       </tab>
     </tabset>
   </div>
   <div class="modal-footer">
-    <div>
-      <a class="cancel-filter-btn" (click)="modalRef.hide()">Cancel</a>
-    </div>
-    <div>
-      <a class="apply-filter-btn">Apply</a>
-    </div>
+    <a class="cancel-filter-btn b-right" (click)="modalRef.hide()">Cancel</a>
+    <a class="apply-filter-btn">Apply</a>
   </div>
 </ng-template>

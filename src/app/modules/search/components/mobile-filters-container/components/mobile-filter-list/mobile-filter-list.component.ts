@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { idLocale } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-mobile-filter-list',
@@ -9,8 +10,12 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class MobileFilterListComponent implements OnInit {
   modalRef: BsModalRef;
-  filterItems = ['First', 'Second', 'Third'];
   config = { animated: true, class: 'filter-modal' };
+
+  filterItems = ['Category', 'Brand', 'Style', 'Unit', 'Price', 'Discount'];
+
+  filterItemList = [0, 1, 2, 3, 4];
+
   tabs: any[] = [
     {
       title: this.filterItems[0],
@@ -26,8 +31,14 @@ export class MobileFilterListComponent implements OnInit {
       title: this.filterItems[2],
       content: 'Dynamic content 3',
       customClass: 'customClass'
+    },
+    {
+      title: this.filterItems[3],
+      content: 'Dynamic content 1',
+      customClass: 'customClass'
     }
   ];
+
   constructor(private modalService: BsModalService) {}
 
   ngOnInit() {}

@@ -22,3 +22,125 @@ span {
   height: 100%;
   display: block;
 }
+
+// filter modal
+
+::ng-deep .filter-modal {
+  margin: 0;
+  .modal-content {
+    border: none;
+    border-radius: 0;
+    height: 100%;
+    .modal-header {
+      padding: 0;
+      div {
+        width: 50%;
+        float: left;
+        display: block;
+        padding: 13px 12px 10px 20px;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: bold;
+        height: 50px;
+        .modal-title {
+          font-size: 13px;
+        }
+        .clear-filter-btn {
+          font-weight: 300;
+          cursor: pointer;
+          padding-right: 20px;
+          color: #ff3e6c;
+        }
+      }
+    }
+    .modal-body {
+      min-height: calc(100vh - 99px);
+    }
+    .modal-footer {
+      padding: 4px 0;
+      border-top: 1px solid #eaeaec;
+      text-align: center;
+      background: white;
+      a {
+        width: 50%;
+        float: left;
+        display: block;
+        padding: 10px 15px;
+        text-transform: uppercase;
+        font-size: 13px;
+        text-align: center;
+        position: relative;
+        margin: 0;
+        &.b-right {
+          &::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            background: #eaeaec;
+            height: 22px;
+            margin-top: 15px;
+            content: '';
+            z-index: 1;
+          }
+        }
+        &.apply-filter-btn {
+          color: #ff3e6c;
+        }
+      }
+    }
+  }
+}
+
+// filter container
+
+::ng-deep .filter-tabs {
+  background: red;
+  .nav {
+    padding: 0;
+    height: 100%;
+    overflow: scroll;
+    border-right: 1px solid #eaeaec;
+    width: 33.33%;
+    float: left;
+    border-bottom: none;
+    li {
+      margin-bottom: 0;
+      a {
+        background: #f5f5f6;
+        font-size: 14px;
+        border-bottom: 1px solid #eaeaec;
+        padding: 0 15px;
+        min-height: 50px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border-radius: 0;
+        color: #3e4152;
+        &.active {
+          background: white;
+          font-weight: bold;
+          border: none;
+          border-left: 2px solid #ff3e6c;
+        }
+      }
+    }
+  }
+  .filterlist-container {
+    height: calc(100vh - 150px);
+    overflow: scroll;
+    padding: 0 16px;
+    ul {
+      li {
+        border: none;
+        border-radius: 0;
+        font-size: 13px;
+        padding: 15px 8px;
+        border-bottom: 1px solid #eaeaec;
+      }
+    }
+  }
+}

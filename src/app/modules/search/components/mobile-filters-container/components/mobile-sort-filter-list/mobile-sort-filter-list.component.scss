@@ -24,3 +24,27 @@ span {
   padding-top: 12px;
   padding-bottom: 8px;
 }
+
+// sort modal
+
+::ng-deep .sort-modal {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+  .modal-content {
+    border: none;
+    border-radius: 0;
+    // @at-root body.modal-open .modal {
+    //   padding-top: 30vh;
+    // }
+    .modal-header {
+      padding: 0px;
+      text-transform: uppercase;
+      border-bottom: none;
+    }
+    .modal-body {
+      padding: 0;
+    }
+  }
+}
