@@ -75,7 +75,7 @@
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
     "ts-loader": "^5.3.0",
-    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-bundle-analyzer": "^3.3.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
