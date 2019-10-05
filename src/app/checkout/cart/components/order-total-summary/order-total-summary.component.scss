@@ -32,16 +32,16 @@
       position: absolute;
       right: 0;
       text-align: right;
-      color: $theme-action-color - 50;
+      color: darken($theme-action-color, 25);
       font-size: 1.2em;
       font-weight: 600;
     }
     .coupon > .c-blue {
-      color: $theme-action-color - 50;
+      color: darken($theme-action-color, 25);
       cursor: pointer;
     }
     .shipping > .c-green {
-      color: $theme-action-color - 80;
+      color:darken($theme-action-color, 55);
       width: 11.8em;
       font-size: 14px;
       padding-top: 5px;
@@ -73,7 +73,7 @@
     -ms-filter: 'FlipH';
   }
   &:hover {
-    background-color: $theme-main-color - 20 !important;
+    background-color:darken($theme-main-color, 25) !important;
   }
 }
 

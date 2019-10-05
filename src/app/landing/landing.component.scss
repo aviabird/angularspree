@@ -14,7 +14,7 @@
     -ms-filter: 'FlipH';
   }
   &:hover {
-    background-color: $theme-main-color - 20 !important;
+    background-color:darken($theme-main-color, 25) !important;
   }
 }
 
@@ -26,16 +26,16 @@
 }
 
 :host {
-  /deep/ .section-title {
+  ::ng-deep .section-title {
     color: $black;
     text-transform: capitalize;
     font-weight: 600;
     position: absolute;
   }
-  /deep/ .scrollbar-hidden {
+  ::ng-deep .scrollbar-hidden {
     overflow: hidden !important;
   }
-  /deep/ .product-tile {
+  ::ng-deep .product-tile {
     text-align: center;
     a {
       color: $gray-900;
@@ -49,7 +49,7 @@
       }
     }
   }
-  /deep/ .product-box {
+  ::ng-deep .product-box {
     border-radius: 5px;
     margin-top: 1rem;
     border: 1px solid transparent;
@@ -63,17 +63,17 @@
       border-color: $gray-10;
     }
   }
-  /deep/.product-tile p {
+  ::ng-deep.product-tile p {
     margin-bottom: 0px;
     white-space: normal;
     margin-top: 10px;
   }
-  /deep/.dropdown-toggle::after {
+  ::ng-deep.dropdown-toggle::after {
     vertical-align: 0.055em !important;
   }
   $break-small: 320px;
   @media screen and (min-width: $break-small) and (max-width: 767px) {
-    /deep/ .section-title {
+    ::ng-deep .section-title {
       font-size: 1.4em;
     }
   }

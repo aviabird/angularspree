@@ -66,7 +66,7 @@ ul {
   font-size: 1.4em;
   font-weight: 700;
   line-height: 1.3;
-  background-color: $white - 10;
+  background-color: darken($white, 25);
   border-bottom: 1px solid $gray-10;
 }
 
@@ -92,7 +92,7 @@ ul {
   bottom: 7.8vh;
   padding: 1rem;
   text-align: center;
-  background-color: $theme-main-color - 20;
+  background-color: darken($theme-main-color, 25);
   width: 100%;
   color: $white;
 }

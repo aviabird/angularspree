@@ -39,7 +39,7 @@
     -ms-filter: 'FlipH';
   }
   &:hover {
-    background-color: $theme-main-color - 20 !important;
+    background-color:darken($theme-main-color, 25) !important;
   }
 }
 
@@ -48,12 +48,12 @@
   padding-bottom: 0px;
 }
 
-:host /deep/ .page-scroll-header .cust-menu-btn {
+:host ::ng-deep .page-scroll-header .cust-menu-btn {
   border-radius: 0px;
   margin-right: 10px;
 }
 
-:host /deep/ .dropdown-menu {
+:host ::ng-deep .dropdown-menu {
   // top: 3.1em !important
 }
 
@@ -64,9 +64,9 @@
 .header {
   background-color: $theme-main-color;
   .resheader {
-    width: calc(100vw - 15vw);
+    width: calc(100vw, 15vw);
     @media screen and(width: 768px) {
-      width: calc(100vw - 12vw);
+      width: calc(100vw, 12vw);
     }
   }
 }
@@ -114,7 +114,7 @@
     padding-top: 0;
     padding-right: 0;
   }
-  :host /deep/ .page-scroll-header .cust-menu-btn {
+  :host ::ng-deep .page-scroll-header .cust-menu-btn {
     display: none;
   }
   .navbar .btn {
@@ -133,7 +133,7 @@
     padding-top: 0;
     padding-right: 0;
   }
-  :host /deep/ .page-scroll-header .cust-menu-btn {
+  :host ::ng-deep .page-scroll-header .cust-menu-btn {
     display: none;
   }
   .search {
@@ -165,7 +165,7 @@
     }
     .modal-body {
       padding: 0px;
-      background-color: $white - 10;
+      background-color: darken($white, 25);
     }
   }
 }

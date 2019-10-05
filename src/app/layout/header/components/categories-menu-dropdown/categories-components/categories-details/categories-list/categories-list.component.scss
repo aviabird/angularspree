@@ -5,7 +5,7 @@ a {
   padding: 5px 0px;
   display: block;
   &:hover {
-    color: $theme-main-color - 80;
+    color: darken($theme-main-color, 55);
     text-decoration: underline;
   }
   @media screen and (min-width: 320px) and (max-width: 767px) {

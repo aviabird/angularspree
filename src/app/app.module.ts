@@ -41,7 +41,7 @@ import { AddressService } from './checkout/address/services/address.service';
       preloadingStrategy: AppPreloadingStrategy,
       initialNavigation: 'enabled'
     }),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers, { metaReducers, runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true } }),
 
     /**
      * Store devtools instrument the store retaining past versions of state

@@ -98,7 +98,7 @@
         color: $gray-800;
       }
       .shipping > .c-green {
-        color: $theme-action-color - 80;
+        color:darken($theme-action-color, 55);
         width: 15em;
         font-size: 14px;
         padding-top: 5px;

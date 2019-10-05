@@ -53,7 +53,7 @@ export class ProductEffects {
   @Effect()
   GetProductReviews$ = this.actions$.pipe(
     ofType(ProductActions.GET_PRODUCT_REVIEWS),
-    switchMap<Action & { payload }, Array<Review>>(action => {
+    switchMap<Action & { payload: string }, Observable<Array<Review>>>(action => {
       return this.productService.getProductReviews(action.payload);
     }),
     map(reviewsList =>
@@ -64,7 +64,7 @@ export class ProductEffects {
   @Effect()
   GetBrands$ = this.actions$.pipe(
     ofType(ProductActions.GET_ALL_BRANDS),
-    switchMap<Action, Array<Brand>>(_ => {
+    switchMap<Action, Observable<Array<Brand>>>(_ => {
       return this.productService.getBrands();
     }),
     map(brands => this.productActions.getBrandsSuccess(brands))
@@ -73,7 +73,7 @@ export class ProductEffects {
   @Effect()
   WriteProductReview$ = this.actions$.pipe(
     ofType(ProductActions.WRITE_PRODUCT_REVIEW),
-    switchMap<Action & { payload }, Review>(action => {
+    switchMap<Action & { payload: Object }, Observable<Review>>(action => {
       return this.productService.writeProductReview(action.payload);
     }),
     map(review => this.productActions.writeProductReviewSuccess(review))
@@ -82,7 +82,7 @@ export class ProductEffects {
   @Effect()
   GetProductRatingOptions$ = this.actions$.pipe(
     ofType(ProductActions.GET_RATING_OPTIONS),
-    switchMap<Action & { payload }, Array<RatingOption>>(action => {
+    switchMap<Action & { payload }, Observable<Array<RatingOption>>>(action => {
       return this.productService.getProductRatingOptions(action.payload);
     }),
     map(ratingOption =>

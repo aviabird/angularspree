@@ -13,7 +13,7 @@
               <h2>{{ product.name }}</h2>
               <form
                 [formGroup]="reviewForm"
-                (ngSubmit)="onSubmit(product.id)"
+                (ngSubmit)="onSubmit()"
                 data-toggle="validator"
                 *ngIf="reviewForm"
               >

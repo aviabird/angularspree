@@ -42,13 +42,13 @@
   position: relative;
   left: -2px;
   &:hover {
-    background-color: $theme-main-color - 20;
+    background-color:darken($theme-main-color, 25);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
   }
 }
 
 .open {
-  background-color: $theme-main-color - 20;
+  background-color:darken($theme-main-color, 25);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
 }
 

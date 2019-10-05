@@ -14,11 +14,11 @@
   text-decoration: none;
   border-bottom: 2px solid $gray-10;
   margin-bottom: 10px;
-  color: $theme-main-color - 50;
+  color: darken($theme-main-color, 25);
   &:hover {
     border-bottom: 2px solid $theme-main-color;
     text-decoration: none;
-    color: $theme-main-color - 60;
+    color: darken($theme-main-color, 30);
   }
 }
 

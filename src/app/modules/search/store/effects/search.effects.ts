@@ -6,13 +6,14 @@ import { switchMap, map } from 'rxjs/operators';
 import { SearchingService } from '../../services';
 import { SearchResponse } from '../../models/search-param';
 import * as actions from './../actions';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class SearchEffects {
   @Effect()
   appliedSearchParams$ = this.actions$.pipe(
     ofType(SearchActionTypes.ApplySearchParams),
-    switchMap<ApplySearchParams, SearchResponse>(action => {
+    switchMap<ApplySearchParams, Observable<SearchResponse>>(action => {
       const params = this.searchService.convertToAPISearchParams(
         action.payload
       );

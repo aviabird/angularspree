@@ -43,7 +43,7 @@
       font-weight: 600;
       font-size: 1.3em;
       font-family: $primary-font;
-      color: $theme-action-color - 50;
+      color: darken($theme-action-color, 25);
     }
     .size-qty-wrap {
       display: inline-block;

@@ -21,6 +21,6 @@
     font-weight: 800;
   }
   .caret {
-    color: $orange + 20;
+    color: lighter($orange, 25);
   }
 }

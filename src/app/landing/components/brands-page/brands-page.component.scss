@@ -1,14 +1,14 @@
 @import '../../../shared/scss/_selected_theme_variables';
 :host {
-  /deep/ .section-title {
+  ::ng-deep .section-title {
     color: $black;
     text-transform: capitalize;
     font-weight: 600;
   }
-  /deep/ .scrollbar-hidden {
+  ::ng-deep .scrollbar-hidden {
     overflow: hidden !important;
   }
-  /deep/ .product-tile {
+  ::ng-deep .product-tile {
     text-align: center;
     a {
       color: $gray-900;

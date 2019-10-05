@@ -1,14 +1,14 @@
 @import '../../scss/selected_theme_variables';
 :host {
-  /deep/ .section-title {
+  ::ng-deep .section-title {
     color: $black;
     text-transform: capitalize;
     font-weight: 600;
   }
-  /deep/ .scrollbar-hidden {
+  ::ng-deep .scrollbar-hidden {
     overflow: hidden !important;
   }
-  /deep/ .product-tile {
+  ::ng-deep .product-tile {
     text-align: center;
     a {
       color: $gray-900;
@@ -17,7 +17,7 @@
       }
     }
   }
-  /deep/ .product-box {
+  ::ng-deep .product-box {
     border-radius: 5px;
     border: 1px solid transparent;
     &:hover {
@@ -26,7 +26,7 @@
       border-color: $gray-10;
     }
   }
-  /deep/.product-tile p {
+  ::ng-deep.product-tile p {
     margin-bottom: 0px;
     white-space: normal;
     margin-top: 10px;
@@ -34,15 +34,15 @@
     height: 2.3rem;
     font-size: 0.8rem;
   }
-  /deep/.dropdown-toggle::after {
+  ::ng-deep.dropdown-toggle::after {
     vertical-align: 0.055em !important;
   }
   $break-small: 320px;
   @media screen and (min-width: $break-small) and (max-width: 767px) {
-    /deep/ .section-title {
+    ::ng-deep .section-title {
       font-size: 1.4em;
     }
-    /deep/ .product-box {
+    ::ng-deep .product-box {
       -webkit-box-shadow: 0 1px 0 $gray-10;
       box-shadow: 0 0 5px $gray-10;
     }
@@ -50,7 +50,7 @@
 }
 
 :host {
-  /deep/ .banner {
+  ::ng-deep .banner {
     .ngucarousel {
       padding-top: 3rem;
     }

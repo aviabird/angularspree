@@ -7,13 +7,13 @@
   }
 }
 
-.issearchopen :host /deep/ .main-body {
+.issearchopen :host ::ng-deep .main-body {
   @media screen and(min-width: 320px) and(max-width: 768px) {
     margin-top: 48px;
   }
 }
 
-:host /deep/.ngx-input-star-rating__btn {
+:host ::ng-deep.ngx-input-star-rating__btn {
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -22,13 +22,13 @@
   height: 8px;
 }
 
-:host /deep/.ngx-input-star-rating__btn svg {
+:host ::ng-deep.ngx-input-star-rating__btn svg {
   position: absolute;
   top: -12px;
   left: 5px;
 }
 
-:host /deep/.ngx-input-star-rating__btn {
+:host ::ng-deep.ngx-input-star-rating__btn {
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -37,46 +37,46 @@
   height: 8px;
 }
 
-:host /deep/.ngx-input-star-rating__btn svg {
+:host ::ng-deep.ngx-input-star-rating__btn svg {
   position: absolute;
   top: -12px;
   left: 5px;
 }
 
-:host /deep/ngx-input-star-rating {
+:host ::ng-deepngx-input-star-rating {
   display: inline-block;
   --color-star-default: #ddd;
   --color-star-highlight: #fe9700;
 }
 
-:host /deep/ngx-input-star-rating {
+:host ::ng-deepngx-input-star-rating {
   display: inline-block;
   --color-star-default: #ddd;
   --color-star-highlight: #fe9700;
 }
 
-:host /deep/.themebtnprimary {
-  background: $theme-action-color - 60;
+:host ::ng-deep.themebtnprimary {
+  background: darken($theme-action-color, 30);
   &:focus {
     @include gradient-y(
       $start-color: $theme-action-color,
-      $end-color: $theme-action-color - 40,
+      $end-color: darken($theme-action-color, 40),
       $start-percent: 0%,
       $end-percent: 45%
     );
   }
   @include gradient-y(
     $start-color: $theme-action-color,
-    $end-color: $theme-action-color - 40,
+    $end-color: darken($theme-action-color, 40),
     $start-percent: 0%,
     $end-percent: 45%
   );
   color: $white;
-  border: 1px solid $theme-action-color - 80;
+  border: 1px solid darken($theme-action-color, 55);
   border-radius: 0.4rem;
   padding: 0.5rem;
   font-weight: 300 !important;
-  box-shadow: 0px 2px 4.6px $theme-action-color - 20;
+  box-shadow: 0px 2px 4.6px darken($theme-action-color, 25);
   width: 100%;
   color: $white;
   // font-family: "Roboto Regular";
@@ -85,60 +85,60 @@
   text-transform: capitalize;
 }
 
-:host /deep/.themebtnprimarybasic {
+:host ::ng-deep.themebtnprimarybasic {
   &:focus {
     @include gradient-y(
       $start-color: $theme-action-color,
-      $end-color: $theme-action-color - 40,
+      $end-color: darken($theme-action-color, 40),
       $start-percent: 0%,
       $end-percent: 45%
     );
   }
   text-transform: capitalize;
   color: $white;
-  border: 1px solid $theme-action-color - 80;
-  box-shadow: 0px 2px 4.6px $theme-action-color - 20;
+  border: 1px solid darken($theme-action-color, 55);
+  box-shadow: 0px 2px 4.6px darken($theme-action-color, 25);
   &:focus {
     @include gradient-y(
       $start-color: $theme-action-color,
-      $end-color: $theme-action-color - 40,
+      $end-color: darken($theme-action-color, 40),
       $start-percent: 0%,
       $end-percent: 45%
     );
   }
   @include gradient-y(
     $start-color: $theme-action-color,
-    $end-color: $theme-action-color - 40,
+    $end-color: darken($theme-action-color, 40),
     $start-percent: 0%,
     $end-percent: 45%
   );
 }
 
-:host /deep/.themebtnprimarysade {
+:host ::ng-deep.themebtnprimarysade {
   @include gradient-y(
     $start-color: $theme-action-color,
-    $end-color: $theme-action-color - 60,
+    $end-color: darken($theme-action-color, 30),
     $start-percent: 0%,
     $end-percent: 95%
   );
 }
 
-:host /deep/.themebtndisable {
+:host ::ng-deep.themebtndisable {
   @include gradient-y(
     $start-color: $gray-200,
     $end-color: $gray-600,
     $start-percent: 0%,
     $end-percent: 95%
   );
-  box-shadow: 0px 2px 4.6px $gray-600 - 20;
-  border: 1px solid $gray-600 - 80;
+  box-shadow: 0px 2px 4.6px darken($gray-600, 25);
+  border: 1px solid darken($gray-600, 55);
 }
 
 .btn:not(:disabled):not(.disabled):active,
 .btn:not(:disabled):not(.disabled).active {
   @include gradient-y(
     $start-color: $theme-action-color,
-    $end-color: $theme-action-color - 50,
+    $end-color: darken($theme-action-color, 25),
     $start-percent: 0%,
     $end-percent: 80%
   );
@@ -149,17 +149,17 @@
   background-image: auto !important;
 }
 
-:host /deep/ .page-item.active .page-link {
+:host ::ng-deep .page-item.active .page-link {
   z-index: 1;
   color: $white;
-  background-color: $theme-action-color - 80;
-  border-color: $theme-action-color - 80;
+  background-color: darken($theme-action-color, 55);
+  border-color: darken($theme-action-color, 55);
 }
 
-:host /deep/ .page-link {
+:host ::ng-deep .page-link {
   color: $gray-900;
   &:hover {
-    background-color: $theme-action-color - 100;
-    border-color: $theme-action-color - 100;
+    background-color: darken($theme-action-color, 25);
+    border-color: darken($theme-action-color, 25);
   }
 }

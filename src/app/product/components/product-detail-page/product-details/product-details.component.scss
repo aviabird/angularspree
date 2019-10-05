@@ -99,15 +99,15 @@ h1 {
     font-size: 1.7em;
     color: $gray-900;
   }
-  /deep/ .product-tile p {
+  ::ng-deep .product-tile p {
     margin-bottom: 10px;
     font-size: 0.9em;
   }
-  /deep/ .product-box {
+  ::ng-deep .product-box {
     box-shadow: 0 0 1px $gray-11;
     border: 1px solid $gray-10;
   }
-  /deep/ hr {
+  ::ng-deep hr {
     display: none;
   }
 }
@@ -152,7 +152,7 @@ h1 {
     }
     .rating-by {
       font-size: 1em;
-      color: $gray-700 + 50;
+      color:darken($gray-700, 25);
     }
     .description {
       padding-top: 1rem;
@@ -176,6 +176,6 @@ h1 {
     border: 1px solid $gray-10;
   }
   &:hover {
-    border-color: $black - 200;
+    border-color: darken($black, 25);
   }
 }

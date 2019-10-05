@@ -9,6 +9,7 @@ import { Order } from '../../core/models/order';
 import { AddressService } from '../address/services/address.service';
 import { PaymentService } from '../payment/services/payment.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class CheckoutEffects {
@@ -21,7 +22,7 @@ export class CheckoutEffects {
       Action & {
         payload: { variant_id: number; quantity: number; isBuyNow: boolean };
       },
-      Order
+      Observable<Order>
     >(action => {
       this.isBuyNowAction = action.payload.isBuyNow;
       return this.checkoutService.createNewLineItem(
@@ -40,7 +41,7 @@ export class CheckoutEffects {
   @Effect()
   OrderDetails$ = this.actions$.pipe(
     ofType(CheckoutActions.GET_ORDER_DETAILS),
-    switchMap<Action, Order>(_ => this.checkoutService.getOrder()),
+    switchMap<Action, Observable<Order>>(_ => this.checkoutService.getOrder()),
     map(order => this.actions.fetchCurrentOrderSuccess(order))
   );
 
@@ -49,7 +50,7 @@ export class CheckoutEffects {
     ofType(CheckoutActions.BIND_ADDRESS),
     switchMap<
       Action & { payload: { address: Address; orderId: number } },
-      Order
+      Observable<Order>
     >(action => {
       return this.addressService.bindAddressToOrder(
         action.payload.address,
@@ -70,7 +71,7 @@ export class CheckoutEffects {
           orderAmount: number;
         };
       },
-      Order
+      Observable<Order>
     >(action => {
       return this.paymentService.addPaymentToOrder(
         action.payload.paymentMethodId,
@@ -86,7 +87,7 @@ export class CheckoutEffects {
     ofType(CheckoutActions.SHIPPING_PREFERENCES),
     switchMap<
       Action & { payload: { orderId: number; packages: Array<{}> } },
-      Order
+      Observable<Order>
     >(action => {
       return this.checkoutService.saveShippingPreferences(
         action.payload.orderId,

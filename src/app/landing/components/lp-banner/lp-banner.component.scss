@@ -1,11 +1,11 @@
 @import '../../../shared/scss/_selected_theme_variables.scss';
 :host {
-  /deep/ .banner {
+  ::ng-deep .banner {
     .bannerStyle {
       img {
         height: 350px;
         object-fit: cover;
-        background-color: $theme-main-color - 50;
+        background-color:darken($theme-main-color, 25);
       }
       @media (max-width: 768px) {
         img {

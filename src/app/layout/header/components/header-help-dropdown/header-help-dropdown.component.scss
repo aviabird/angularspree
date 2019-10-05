@@ -35,7 +35,7 @@
   position: relative;
   &:hover {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
-    background-color: $theme-main-color - 20;
+    background-color:darken($theme-main-color, 25);
   }
 }
 
@@ -49,6 +49,6 @@
 }
 
 .openhelp {
-  background-color: $theme-main-color - 20 !important;
+  background-color:darken($theme-main-color, 25) !important;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
 }

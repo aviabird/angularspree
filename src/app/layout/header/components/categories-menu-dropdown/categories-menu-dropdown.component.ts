@@ -16,7 +16,6 @@ import {
   transition
 } from '@angular/animations';
 
-import { URLSearchParams } from '@angular/http';
 import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-categories-menu-dropdown',

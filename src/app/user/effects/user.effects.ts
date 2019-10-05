@@ -9,13 +9,14 @@ import { AddressService } from '../../checkout/address/services/address.service'
 import { CState } from '../../core/models/state';
 import { Country } from '../../core/models/country';
 import { Address } from '../../core/models/address';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserEffects {
   @Effect()
   GetUserOrders$ = this.actions$.pipe(
     ofType(UserActions.GET_USER_ORDERS),
-    switchMap<Action, Array<Order>>(_ => {
+    switchMap(() => {
       return this.userService.getOrders();
     }),
     map(orders => this.userActions.getUserOrdersSuccess(orders))
@@ -24,7 +25,7 @@ export class UserEffects {
   @Effect()
   FetchUserAddress$ = this.actions$.pipe(
     ofType(UserActions.FETCH_USER_ADDRESS),
-    switchMap<Action, Array<Address>>(_ => {
+    switchMap(() => {
       return this.addressService.getUserAddresses();
     }),
     map(addressList => this.userActions.fetchUserAddressSuccess(addressList))
@@ -33,7 +34,7 @@ export class UserEffects {
   @Effect()
   FetchCountries$ = this.actions$.pipe(
     ofType(UserActions.FETCH_COUNTRIES),
-    switchMap<Action, Array<Country>>(_ => {
+    switchMap(() => {
       return this.addressService.getCountires();
     }),
     map(countries => this.userActions.fetchCountriesSuccess(countries))
@@ -42,7 +43,7 @@ export class UserEffects {
   @Effect()
   FetchStates$ = this.actions$.pipe(
     ofType(UserActions.FETCH_STATES),
-    switchMap<Action & { payload }, Array<CState>>(action => {
+    switchMap<Action & { payload: string }, Observable<CState[]>>(action => {
       return this.addressService.getAllStates(action.payload);
     }),
     map(states => this.userActions.fetchStatesSuccess(states))
@@ -51,7 +52,7 @@ export class UserEffects {
   @Effect()
   DeleteUserAddress$ = this.actions$.pipe(
     ofType(UserActions.DELETE_ADDRESS),
-    switchMap<Action & { payload }, Object>(action => {
+    switchMap<Action & { payload: string }, Observable<Object>>(action => {
       return this.addressService.deleteAddress(action.payload);
     }),
     map(_ => this.userActions.fetchUserAddress())

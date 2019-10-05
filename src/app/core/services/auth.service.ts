@@ -9,9 +9,8 @@ import { AuthService as OauthService } from 'ng2-ui-auth';
 import {
   HttpHeaders,
   HttpClient,
-  HttpErrorResponse
+  HttpRequest
 } from '@angular/common/http';
-import { HttpRequest } from '@angular/common/http/src/request';
 import { ToastrService, ActiveToast } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
 import { User } from '../models/user';

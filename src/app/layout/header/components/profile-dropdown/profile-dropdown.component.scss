@@ -50,7 +50,7 @@
   width: 100vw;
   min-width: 101.7vw;
   left: -76.6vw !important;
-  height: calc(100vh - 9vw);
+  height: calc(100vh, 9vw);
   top: 10vw !important;
   &:before {
     left: 15.3rem;
@@ -72,12 +72,12 @@
   margin: 0 1em;
   position: relative;
   &:hover {
-    background-color: $theme-main-color - 20;
+    background-color:darken($theme-main-color, 25);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
   }
 }
 
 .openhelp {
-  background-color: $theme-main-color - 20 !important;
+  background-color:darken($theme-main-color, 25) !important;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
 }

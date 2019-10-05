@@ -33,7 +33,7 @@ import { AppState as State } from './interfaces';
  * exception will be thrown. This is useful during development mode to
  * ensure that none of the reducers accidentally mutates the state.
  */
-import { storeFreeze } from 'ngrx-store-freeze';
+
 
 export const reducers: ActionReducerMap<State> = {
   products: fromProduct.reducer,
@@ -61,5 +61,5 @@ export function logger(
  * that will be composed to form the root meta-reducer.
  */
 export const metaReducers: MetaReducer<State>[] = !environment.production
-  ? [logger, storeFreeze]
+  ? [logger]
   : [];

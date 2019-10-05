@@ -21,7 +21,7 @@
   font-size: 1.5em;
   margin-left: 10px;
   a {
-    color: $theme-main-sub-color4 - 100;
+    color: darken($theme-main-sub-color4, 25);
   }
 }
 
@@ -39,7 +39,7 @@
   .ugc {
     float: left;
     a {
-      color: $theme-main-sub-color4 - 100;
+      color: darken($theme-main-sub-color4, 25);
     }
     margin: 3px 0;
     color: $theme-main-sub-color4;
@@ -52,7 +52,7 @@
   .product-header-extras__qna {
     float: left;
     a {
-      color: $theme-main-sub-color4 - 100;
+      color: darken($theme-main-sub-color4, 25);
     }
     color: $theme-main-sub-color4;
     font-size: 1em;

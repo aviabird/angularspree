@@ -105,7 +105,7 @@ export class CategoryMobileMenuComponent implements OnInit {
     this.showChild = !this.showChild;
   }
 
-  onCloseMobilemenu(taxonName: string) {
+  onCloseMobilemenu(taxonName = '') {
     this.onSubCatClicked.emit(false);
 
     if (isPlatformBrowser(this.platformId)) {

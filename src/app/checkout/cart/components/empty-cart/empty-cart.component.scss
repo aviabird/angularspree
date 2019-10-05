@@ -23,7 +23,7 @@
     font-weight: 500;
   }
   .empty-card-btn {
-    background-color: $theme-action-color - 50;
-    border: 1px solid $theme-action-color - 50;
+    background-color: darken($theme-action-color, 25);
+    border: 1px solid darken($theme-action-color, 25);
   }
 }

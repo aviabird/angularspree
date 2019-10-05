@@ -9,7 +9,7 @@
 }
 
 .box {
-  background-color: $gray-100 + 10;
+  background-color: lighter($gray-100, 25);
   padding: 1rem;
   border-radius: 2px;
   margin-bottom: 10px;

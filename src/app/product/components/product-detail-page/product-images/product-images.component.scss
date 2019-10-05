@@ -32,7 +32,7 @@
 }
 
 :host {
-  /deep/ .banner {
+  ::ng-deep .banner {
     .ngucarouselPoint {
       list-style-type: none;
       padding: 3px;

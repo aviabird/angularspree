@@ -20,7 +20,7 @@
     color: $footer-font-color;
   }
   a:hover {
-    background-color: $theme-main-color - 40;
+    background-color: darken($theme-main-color, 40);
     border-radius: 4px;
   }
   .backtopbtn {
@@ -40,7 +40,7 @@
       color: $footer-font-color;
     }
     .backtopbtn {
-      background-color: $theme-main-color + 40;
+      background-color: darken($theme-main-color, 40);
       border-radius: 4px;
       text-align: center;
       text-decoration: none;

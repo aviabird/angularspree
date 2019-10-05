@@ -22,7 +22,7 @@ export class AuthenticationEffects {
   @Effect()
   OAuthLogin: Observable<Action> = this.actions$.pipe(
     ofType(AuthActions.O_AUTH_LOGIN),
-    switchMap<Action & { payload: string }, string | User>(action => {
+    switchMap<Action & { payload: string }, Observable<string | User>>(action => {
       return this.authService.socialLogin(action.payload);
     }),
     filter(data => data !== null),
@@ -46,7 +46,7 @@ export class AuthenticationEffects {
   @Effect()
   GetRatingCategories$ = this.actions$.pipe(
     ofType(AuthActions.GET_RATING_CATEGEORY),
-    switchMap<Action, Array<RatingCategory>>(_ => {
+    switchMap<Action, Observable<Array<RatingCategory>>>(_ => {
       return this.authService.getRatingCategories();
     }),
     map(ratingCategory =>

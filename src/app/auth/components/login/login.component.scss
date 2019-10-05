@@ -128,7 +128,7 @@ fieldset {
   border: 0;
   text-transform: uppercase;
   border-radius: 3px;
-  background-color: $theme-action-color - 50;
+  background-color: darken($theme-action-color, 25);
   color: $white;
 }
 
@@ -313,7 +313,7 @@ p {
   background-color: $white;
   &:hover {
     border: 1px solid $theme-main-color;
-    box-shadow: 0.1px 0.2px 0.4px $theme-main-color - 100;
+    box-shadow: 0.1px 0.2px 0.4px darken($theme-main-color, 25);
   }
 }
 

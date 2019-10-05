@@ -1,6 +1,6 @@
 @import '../../../../../../shared/scss/selected_theme_variables';
 
-:host-context() {
+:host-context {
   margin: 3px;
   padding: 0.2rem 0.5rem;
   border-radius: 20px;

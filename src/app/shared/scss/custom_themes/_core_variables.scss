@@ -349,7 +349,7 @@ $table-striped-order: odd !default;
 
 $table-caption-color: $text-muted !default;
 
-// Buttons + Forms
+// Buttons, Forms
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
@@ -449,18 +449,18 @@ $input-height-border: $input-border-width * 2 !default;
 
 $input-height-inner: ($font-size-base * $input-btn-line-height) +
   ($input-btn-padding-y * 2) !default;
-$input-height: calc(#{$input-height-inner} + #{$input-height-border}) !default;
+$input-height: calc(#{$input-height-inner}, #{$input-height-border}) !default;
 
 $input-height-inner-sm: ($font-size-sm * $input-btn-line-height-sm) +
   ($input-btn-padding-y-sm * 2) !default;
 $input-height-sm: calc(
-  #{$input-height-inner-sm} + #{$input-height-border}
+  #{$input-height-inner-sm}, #{$input-height-border}
 ) !default;
 
 $input-height-inner-lg: ($font-size-lg * $input-btn-line-height-lg) +
   ($input-btn-padding-y-lg * 2) !default;
 $input-height-lg: calc(
-  #{$input-height-inner-lg} + #{$input-height-border}
+  #{$input-height-inner-lg}, #{$input-height-border}
 ) !default;
 
 $input-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
@@ -676,10 +676,10 @@ $navbar-nav-link-padding-x: 0.5rem !default;
 $navbar-brand-font-size: $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
 $nav-link-height: (
-  $font-size-base * $line-height-base + $nav-link-padding-y * 2
+  $font-size-base * $line-height-base, $nav-link-padding-y * 2
 ) !default;
 $navbar-brand-height: $navbar-brand-font-size * $line-height-base !default;
-$navbar-brand-padding-y: ($nav-link-height - $navbar-brand-height) / 2 !default;
+$navbar-brand-padding-y: ($nav-link-height, $navbar-brand-height) / 2 !default;
 
 $navbar-toggler-padding-y: 0.25rem !default;
 $navbar-toggler-padding-x: 0.75rem !default;
@@ -751,7 +751,7 @@ $card-border-width: $border-width !default;
 $card-border-radius: $border-radius !default;
 $card-border-color: rgba($black, 0.125) !default;
 $card-inner-border-radius: calc(
-  #{$card-border-radius} - #{$card-border-width}
+  #{$card-border-radius}, #{$card-border-width}
 ) !default;
 $card-cap-bg: rgba($black, 0.03) !default;
 $card-bg: $white !default;
