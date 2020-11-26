@@ -13,7 +13,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BrandMenuDropdownComponent } from './header/components/brand-menu-dropdown/brand-menu-dropdown.component';
 import { CategoriesMenuDropdownComponent } from './header/components/categories-menu-dropdown/categories-menu-dropdown.component';
 import { NgModule } from '@angular/core';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 // Components
 import { HeaderComponent } from './header/header.component';

@@ -1360,20 +1360,6 @@
   dependencies:
     tslib "^2.0.0"
 
-"@ngx-progressbar/core@^5.2.1":
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/@ngx-progressbar/core/-/core-5.3.2.tgz#d2e76034324d459dbbd7b9d89aa3b550db5e46f6"
-  integrity sha512-z0VzsJpgWxoU7wLXviCutXPXDop1Ry/SPOlVOtXHlkUGFAzHs3soDeXpTyigSdBB8Q16Nisow4EVuOKCByp6PQ==
-  dependencies:
-    tslib "^1.9.0"
-
-"@ngx-progressbar/http@^5.2.1":
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/@ngx-progressbar/http/-/http-5.3.2.tgz#8c61245390fe9b5c0935d665c7f2920f07977c1b"
-  integrity sha512-QijNeXRw1bLdYQ3yU4UJnoWV/aMM3FWOq0FYVVjazMoXfirz3OgaI298TuBRKsA0OGYXSZ3p2VTiEKb/bIYf4g==
-  dependencies:
-    tslib "^1.9.0"
-
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.3.tgz#3a582bdb53804c6ba6d146579c46e52130cf4a3b"
@@ -7678,10 +7664,17 @@ ng2-ui-auth@^9.2.0:
   dependencies:
     tslib "^1.9.0"
 
-ngx-bootstrap@^5.2.0:
-  version "5.6.2"
-  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-5.6.2.tgz#e648f826d303c29255c16772676efd30695740d1"
-  integrity sha512-6YHXtdXkGH3w0NQoaUgNYAcrj064Lv5RTO284ha/hvpNTrh55yQz2cVh0VvwBk3MjyY2tdmLH4SuCJDszYdYiw==
+ngx-bootstrap@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-6.2.0.tgz#678b274dabfda31411eb1234c981d1967750d890"
+  integrity sha512-5WKHo6/ltkenw4UyXZwED8rODCgp2RGbWurzYzZsF/gH1JO5SN7TJ+AL6kXYk6XM42sDA2WhN9Db+ZPNjiyHnA==
+
+ngx-progressbar@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-6.0.3.tgz#38abd2c6d770f146119817a91fb0db28889dcd0b"
+  integrity sha512-v/jJI9lKTzObR7TnzZqF4bku+rf3UH4Gf2HEiyLVNlB/IuvoG1lmTlSZjsS164+aLG44CNl5cyTnrBDYikxVHw==
+  dependencies:
+    tslib "^1.10.0"
 
 ngx-toastr@^11.2.0:
   version "11.3.3"
