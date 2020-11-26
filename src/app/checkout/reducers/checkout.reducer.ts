@@ -30,7 +30,7 @@ export function reducer(
     case CheckoutActions.FETCH_CURRENT_ORDER_SUCCESS:
       _orderNumber = payload.number;
       _orderId = payload.id;
-      _lineItems = payload.line_items || [];
+      _lineItems = payload.line_items;
       _lineItemIds = _lineItems.map(lineItem => lineItem.id);
       _totalCartItems = payload.item_count;
       _totalCartValue = parseFloat(payload.order_total_amount.amount);
