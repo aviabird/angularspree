@@ -4,25 +4,22 @@
       <div class="col-1">
         <div class="thumbnails-vertical-container d-none d-lg-block">
           <button
-            class="thumbnails-thumbnail-button"
-            *ngFor="let image of images"
-          >
+                  class="thumbnails-thumbnail-button"
+                  *ngFor="let image of images">
             <img
-              class="thumbnails-thumbnail img-fluid"
-              [src]="getProductImageUrl(image.small)"
-              alt="Product small image"
-              (mouseover)="onMouseOver(image)"
-            />
+                 class="thumbnails-thumbnail img-fluid"
+                 [src]="getProductImageUrl(image.small)"
+                 alt="Product small image"
+                 (mouseover)="onMouseOver(image)" />
           </button>
         </div>
       </div>
       <div class="col-11" *ngIf="selectedImage">
         <img
-          itemprop="image"
-          [src]="getProductImageUrl(selectedImage.large)"
-          alt="Product large image"
-          class="thumbnails-selected-image img-fluid"
-        />
+             itemprop="image"
+             [src]="getProductImageUrl(selectedImage.large)"
+             alt="Product large image"
+             class="thumbnails-selected-image img-fluid" />
       </div>
     </div>
   </div>
@@ -30,27 +27,24 @@
 <div *ngIf="isMobile">
   <div *ngIf="images">
     <ngu-carousel
-      #productSlider
-      [inputs]="carouselTileConfig"
-      [dataSource]="images"
-    >
+                  #productSlider
+                  [inputs]="carouselTileConfig"
+                  [dataSource]="images">
       <ngu-item *nguCarouselDef="let image; let i = index" class="bannerStyle">
         <a>
           <img
-            [src]="getProductImageUrl(image.thumb)"
-            alt=""
-            style="display: block; width: 100%;"
-          />
+               [src]="getProductImageUrl(image.thumb)"
+               alt=""
+               style="display: block; width: 100%;" />
         </a>
       </ngu-item>
       <button NguCarouselPrev class="leftRs d-none"></button>
       <button NguCarouselNext class="rightRs d-none"></button>
       <ul class="ngucarouselPoint" NguCarouselPoint>
         <li
-          *ngFor="let i of productSlider.pointNumbers; let i = index"
-          [class.active]="i == productSlider.activePoint"
-          (click)="productSlider.moveTo(i)"
-        ></li>
+            *ngFor="let idx of productSlider.pointNumbers; let i = index"
+            [class.active]="i == productSlider.activePoint"
+            (click)="productSlider.moveTo(i)"></li>
       </ul>
     </ngu-carousel>
   </div>

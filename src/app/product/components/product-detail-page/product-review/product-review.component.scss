@@ -1,4 +1,4 @@
-@import '../../../../shared/scss/selected_theme_variables';
+@import "../../../../shared/scss/selected_theme_variables";
 .padding-top {
   padding-top: 50px;
 }
@@ -115,7 +115,7 @@ h1 {
     }
   }
   .write-review {
-    width: calc(100%, 135px);
+    width: calc(100% - 135px);
     @media screen and(min-width: 310px) and(max-width: 768px) {
       width: 100%;
     }
@@ -135,7 +135,7 @@ h1 {
     }
     .rating-by {
       font-size: 1em;
-      color:darken($gray-700, 25);
+      color: darken($gray-700, 25);
     }
     .description {
       padding-top: 1rem;

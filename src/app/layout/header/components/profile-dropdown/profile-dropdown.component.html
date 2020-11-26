@@ -66,8 +66,7 @@
         id="dropdown-triggers-manual"
         *dropdownMenu
         class="dropdown-menu text-center"
-        [ngClass]="[isAuthenticated ? 'arrowalignement' : '']"
-        [ngClass]="[isScrolled ? '' : 'notscrolled']"
+        [ngClass]="{arrowalignement: isAuthenticated, notscrolled: !isScrolled}"
         role="menu"
         aria-labelledby="button-triggers-manual"
       >

@@ -1,7 +1,9 @@
 import { PreloadingStrategy, Route } from '@angular/router';
 import { Observable, timer, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class AppPreloadingStrategy implements PreloadingStrategy {
   preload(route: Route, load: Function): Observable<any> {
     const loadRoute = delay =>

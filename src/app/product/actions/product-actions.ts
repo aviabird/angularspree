@@ -1,7 +1,9 @@
 import { Brand } from '../../core/models/brand';
 import { Review } from '../../core/models/review';
 import { RatingOption } from '../../core/models/rating_option';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class ProductActions {
   static GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS';
   static GET_ALL_PRODUCTS_SUCCESS = 'GET_ALL_PRODUCTS_SUCCESS';

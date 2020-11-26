@@ -1,4 +1,4 @@
-@import '../../shared/scss/selected_theme_variables';
+@import "../../shared/scss/selected_theme_variables";
 .navbar {
   padding: 0px;
   padding-top: 1rem;
@@ -36,10 +36,10 @@
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     filter: FlipH;
-    -ms-filter: 'FlipH';
+    -ms-filter: "FlipH";
   }
   &:hover {
-    background-color:darken($theme-main-color, 25) !important;
+    background-color: darken($theme-main-color, 25) !important;
   }
 }
 
@@ -64,9 +64,9 @@
 .header {
   background-color: $theme-main-color;
   .resheader {
-    width: calc(100vw, 15vw);
+    width: calc(100vw - 15vw);
     @media screen and(width: 768px) {
-      width: calc(100vw, 12vw);
+      width: calc(100vw - 12vw);
     }
   }
 }
@@ -201,7 +201,7 @@ label {
 .main-nav-trigger {
   &:after,
   &:before {
-    content: '';
+    content: "";
     width: 20px;
     left: 50%;
     -webkit-transform: translateX(-50%);

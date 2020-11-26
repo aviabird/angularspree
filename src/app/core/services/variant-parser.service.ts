@@ -4,7 +4,6 @@ import { element } from 'protractor';
 import { Variant } from './../models/variant';
 import { OptionType } from './../models/option_type';
 import { Injectable } from '@angular/core';
-import { debug } from 'util';
 
 /**Custom Interface for return option hash */
 interface OptionTypesHash {

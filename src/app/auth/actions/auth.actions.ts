@@ -1,5 +1,7 @@
 import { User } from '../../core/models/user';
 import { RatingCategory } from '../../core/models/rating_category';
+import { Injectable } from "@angular/core";
+@Injectable()
 export class AuthActions {
   static LOGIN = 'LOGIN';
   static LOGIN_SUCCESS = 'LOGIN_SUCCESS';

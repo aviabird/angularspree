@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MultiselectFilterComponent } from './multiselect-filter.component';
 
@@ -6,7 +6,7 @@ describe('MultiselectFilterComponent', () => {
   let component: MultiselectFilterComponent;
   let fixture: ComponentFixture<MultiselectFilterComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [MultiselectFilterComponent]
     }).compileComponents();

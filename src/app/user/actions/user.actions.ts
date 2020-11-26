@@ -3,7 +3,9 @@ import { Address } from '../../core/models/address';
 import { CState } from '../../core/models/state';
 import { Country } from '../../core/models/country';
 import { state } from '@angular/animations';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class UserActions {
   static GET_USER_ORDERS = 'GET_USER_ORDERS';
   static GET_USER_ORDERS_SUCCESS = 'GET_USER_ORDERS_SUCCESS';

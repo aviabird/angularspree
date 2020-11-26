@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SearchTitleCountComponent } from './search-title-count.component';
 
@@ -6,7 +6,7 @@ describe('SearchTitleCountComponent', () => {
   let component: SearchTitleCountComponent;
   let fixture: ComponentFixture<SearchTitleCountComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SearchTitleCountComponent]
     }).compileComponents();

@@ -1,7 +1,9 @@
 import { LineItem } from './../../core/models/line_item';
 import { Order } from './../../core/models/order';
 import { Address } from '../../core/models/address';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class CheckoutActions {
   static FETCH_CURRENT_ORDER = 'FETCH_CURRENT_ORDER';
   static FETCH_CURRENT_ORDER_SUCCESS = 'FETCH_CURRENT_ORDER_SUCCESS';
