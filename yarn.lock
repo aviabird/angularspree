@@ -1312,6 +1312,13 @@
     enhanced-resolve "5.3.1"
     webpack-sources "2.0.1"
 
+"@ngu/carousel@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@ngu/carousel/-/carousel-3.0.1.tgz#dca7252db685df672d2f5c1324f26f363f6cfbf6"
+  integrity sha512-AqBIGMfRXzvdutqbREggQ216e/dahEuHWNcaBT8cghzoOZXgVjRNV8ZHol4H5plQ6aiOqdMfGNqNPI4DzIgudg==
+  dependencies:
+    tslib "^2.0.0"
+
 "@nguniversal/builders@^11.0.0":
   version "11.0.0"
   resolved "https://registry.yarnpkg.com/@nguniversal/builders/-/builders-11.0.0.tgz#2230a16928f448d2aec78219e511c8a913cf7a56"
@@ -1424,11 +1431,6 @@
     pacote "9.5.12"
     semver "7.3.2"
     semver-intersect "1.4.0"
-
-"@stockopedia/carousel@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@stockopedia/carousel/-/carousel-2.0.1.tgz#91a4650cfc228dc29c37f7b80414afa306407399"
-  integrity sha512-YmVF318ls/AcBdNbp7z8Qpvfx/ly0asZnq5dN3Ewfllp5ZdWtUBlALelv9UUXOy1xQ9MDdcMCWifZpliw0NsUw==
 
 "@types/body-parser@*":
   version "1.19.0"

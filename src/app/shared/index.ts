@@ -2,7 +2,7 @@ import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NguCarouselModule } from '@stockopedia/carousel';
+import { NguCarouselModule } from '@ngu/carousel';
 import { NgxJsonLdModule } from '@ngx-lite/json-ld';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';

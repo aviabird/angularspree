@@ -1,4 +1,4 @@
-import { NguCarouselConfig } from '@stockopedia/carousel';
+import { NguCarouselConfig } from '@ngu/carousel';
 import {
   Component,
   OnInit,

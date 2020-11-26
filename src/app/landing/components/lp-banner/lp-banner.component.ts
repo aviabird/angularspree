@@ -7,7 +7,7 @@ import {
   AfterViewInit,
   ChangeDetectorRef
 } from '@angular/core';
-import { NguCarouselConfig } from '@stockopedia/carousel';
+import { NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
   selector: 'app-lp-banner',
