@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OrderTotalSummaryComponent } from './order-total-summary.component';
 
@@ -6,7 +6,7 @@ describe('OrderTotalSummaryComponent', () => {
   let component: OrderTotalSummaryComponent;
   let fixture: ComponentFixture<OrderTotalSummaryComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [OrderTotalSummaryComponent]
     }).compileComponents();

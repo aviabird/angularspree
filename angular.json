@@ -9,7 +9,8 @@
       "schematics": {
         "@schematics/angular:component": {
           "prefix": "app",
-          "styleext": "scss"
+          "styleext": "scss",
+          "style": "scss"
         },
         "@schematics/angular:directive": {
           "prefix": "app"
@@ -41,7 +42,7 @@
                 "output": "/"
               },
               "src/manifest.json",
-              "src/manifest.json"
+              "src/service-worker.js"
             ],
             "styles": [
               "node_modules/font-awesome/css/font-awesome.css",
@@ -70,8 +71,6 @@
             "prod-ng-spree": {
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -95,8 +94,6 @@
             "prod-custom": {
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,

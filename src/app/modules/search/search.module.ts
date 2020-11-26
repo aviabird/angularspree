@@ -2,7 +2,7 @@ import { SearchResolver } from './guards/search-resolver';
 import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Ng5SliderModule } from 'ng5-slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { SearchRoutingModule } from './search-routing.module';
 import { SharedModule } from './../../shared/index';
@@ -21,7 +21,7 @@ import { EffectsModule } from '@ngrx/effects';
 
     SharedModule,
 
-    Ng5SliderModule,
+    NgxSliderModule,
 
     StoreModule.forFeature('search', fromSearch.reducer),
 

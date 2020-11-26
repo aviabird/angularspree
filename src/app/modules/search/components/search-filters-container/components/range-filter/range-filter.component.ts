@@ -1,5 +1,5 @@
 import { SearchFilter } from './../../../../models/search-param';
-import { Options, LabelType } from 'ng5-slider';
+import { Options, LabelType } from '@angular-slider/ngx-slider';
 import {
   Component,
   OnInit,

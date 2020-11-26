@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LineItemComponent } from './line-item.component';
 
@@ -6,7 +6,7 @@ describe('LineItemComponent', () => {
   let component: LineItemComponent;
   let fixture: ComponentFixture<LineItemComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [LineItemComponent]
     }).compileComponents();

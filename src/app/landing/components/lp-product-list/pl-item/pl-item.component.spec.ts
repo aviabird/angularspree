@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PlItemComponent } from './pl-item.component';
 
@@ -6,7 +6,7 @@ describe('PlItemComponent', () => {
   let component: PlItemComponent;
   let fixture: ComponentFixture<PlItemComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [PlItemComponent]
     }).compileComponents();

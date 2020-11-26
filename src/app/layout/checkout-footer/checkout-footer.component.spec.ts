@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CheckoutFooterComponent } from './checkout-footer.component';
 
@@ -6,7 +6,7 @@ describe('CheckoutFooterComponent', () => {
   let component: CheckoutFooterComponent;
   let fixture: ComponentFixture<CheckoutFooterComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [CheckoutFooterComponent]
     }).compileComponents();

@@ -108,12 +108,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  selectTaxon(taxon) {
-    this.router.navigateByUrl('/s', {
-      queryParams: { f: `Category:${taxon.name}` }
-    });
-  }
-
   showModal(): void {
     this.isModalShown = !this.isModalShown;
     this.isSearchopen = !this.isSearchopen;

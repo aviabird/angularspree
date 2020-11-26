@@ -1,4 +1,4 @@
-import { deserialize } from 'jsonapi-deserializer';
+import { deserialize } from 'deserialize-json-api';
 import {
   HttpEvent,
   HttpHandler,
@@ -30,6 +30,6 @@ export class ResponseInterceptor implements HttpInterceptor {
     if (!body) {
       return body;
     }
-    return { ...body, data: deserialize(body) };
+    return { ...body, data: deserialize(body).data };
   }
 }
