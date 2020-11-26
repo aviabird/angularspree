@@ -15,6 +15,7 @@ import { RandomPipe } from './pipes/random.pipe';
 // components
 // imports
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductSliderComponent } from './components/product-slider/product-slider.component';
@@ -49,6 +50,7 @@ import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
     // modules
     CommonModule,
     BsDropdownModule,
+    TabsModule,
     RatingModule,
     TypeaheadModule,
     FormsModule,
@@ -74,6 +76,7 @@ import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
     CommonModule,
     BsDropdownModule.forRoot(),
     TypeaheadModule.forRoot(),
+    TabsModule.forRoot(),
     RatingModule.forRoot(),
     RouterModule,
     NgxInputStarRatingModule,

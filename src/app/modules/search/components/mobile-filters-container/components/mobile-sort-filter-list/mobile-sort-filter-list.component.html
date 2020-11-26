@@ -1,0 +1,16 @@
+<span type="" class="" (click)="openModal(sortModal)">
+  <i class="fa fa-sort mr-1"></i> SORT
+</span>
+
+<ng-template #sortModal>
+  <div class="modal-header p-0">
+    <h4 class="modal-title float-left sort-header m-0">Sort By</h4>
+  </div>
+  <div class="modal-body">
+    <ul class="sort-list">
+      <li *ngFor="let sortItem of sortItems; let i = index">
+        {{ sortItem }}
+      </li>
+    </ul>
+  </div>
+</ng-template>

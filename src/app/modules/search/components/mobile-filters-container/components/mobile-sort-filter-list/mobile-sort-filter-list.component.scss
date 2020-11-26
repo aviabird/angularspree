@@ -1,0 +1,50 @@
+.sort-list {
+  li {
+    display: block;
+    line-height: 24px;
+    padding: 15px 0;
+    border-bottom: solid 1px #eaeaec;
+    width: 82%;
+    font-size: 14px;
+    margin-left: 65px;
+  }
+}
+
+span {
+  height: 100%;
+  display: block;
+}
+
+.sort-header {
+  font-weight: bold;
+  border: none;
+  font-size: 18px;
+  color: #3e4152;
+  padding-left: 20px;
+  padding-top: 12px;
+  padding-bottom: 8px;
+}
+
+// sort modal
+
+::ng-deep .sort-modal {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  margin: 0;
+  .modal-content {
+    border: none;
+    border-radius: 0;
+    // @at-root body.modal-open .modal {
+    //   padding-top: 30vh;
+    // }
+    .modal-header {
+      padding: 0px;
+      text-transform: uppercase;
+      border-bottom: none;
+    }
+    .modal-body {
+      padding: 0;
+    }
+  }
+}
