@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../../interfaces';
 import { Subscription } from 'rxjs';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
@@ -14,14 +14,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent implements OnInit, OnDestroy {
-  forgetPasswordForm: FormGroup;
+  forgetPasswordForm: UntypedFormGroup;
   forgetPasswordSubs: Subscription;
   returnUrl: string;
   emailSent = false;
   sentEmail = '';
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private store: Store<AppState>,
     private route: ActivatedRoute,
     private router: Router,

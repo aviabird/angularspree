@@ -1,6 +1,6 @@
 import { Address } from './../../../core/models/address';
 import { Store } from '@ngrx/store';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import {
   Component,
   OnInit,
@@ -31,7 +31,7 @@ export class AddAddressComponent implements OnInit, OnDestroy {
   @Input() countries: Country[];
   @Output() addressEdited = new EventEmitter<boolean>();
   @Output() cancelAddress = new EventEmitter<boolean>();
-  addressForm: FormGroup;
+  addressForm: UntypedFormGroup;
   isAuthenticated: boolean;
   states$: Observable<Array<CState>>;
   countryId: string;

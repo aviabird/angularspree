@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { CheckoutService } from '../../../../../core/services/checkout.service';
 
 import { Observable } from 'rxjs';
@@ -10,11 +10,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./check-pincode.component.scss']
 })
 export class CheckPincodeComponent implements OnInit {
-  checkPincodeForm: FormGroup;
+  checkPincodeForm: UntypedFormGroup;
   isCodAvilable$: Observable<any>;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private checkoutService: CheckoutService
   ) {}
 

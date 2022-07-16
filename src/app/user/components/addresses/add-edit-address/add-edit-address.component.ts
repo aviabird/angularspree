@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { AddressService } from '../../../../checkout/address/services/address.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../services/user.service';
@@ -11,7 +11,7 @@ import { Address } from '../../../../core/models/address';
   styleUrls: ['./add-edit-address.component.scss']
 })
 export class AddEditAddressComponent implements OnInit {
-  addressForm: FormGroup;
+  addressForm: UntypedFormGroup;
   states: any;
   @Input() isEditAddrPressed: boolean;
   @Input() addressParams: any;
@@ -21,7 +21,7 @@ export class AddEditAddressComponent implements OnInit {
   @Input() stateName: any;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private addrService: AddressService,
     private toastrService: ToastrService,
     private userService: UserService

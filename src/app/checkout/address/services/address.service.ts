@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { Address } from '../../../core/models/address';
 import { map, tap } from 'rxjs/operators';
@@ -13,7 +13,7 @@ import { CState } from '../../../core/models/state';
 @Injectable()
 export class AddressService {
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private http: HttpClient,
     private toastrService: ToastrService
   ) {}

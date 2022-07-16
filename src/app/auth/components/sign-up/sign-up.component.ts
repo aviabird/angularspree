@@ -1,6 +1,6 @@
 import { tap } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
@@ -16,13 +16,13 @@ import { AuthActions } from '../../actions/auth.actions';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit, OnDestroy {
-  signUpForm: FormGroup;
+  signUpForm: UntypedFormGroup;
   formSubmit = false;
   title = environment.appName;
   registerSubs: Subscription;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private actions: AuthActions,
     private store: Store<AppState>,
     private router: Router,
@@ -115,7 +115,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
   }
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-    return (group: FormGroup): { [key: string]: boolean } | null => {
+    return (group: UntypedFormGroup): { [key: string]: boolean } | null => {
       const password = group.controls[passwordKey];
       const confirmPassword = group.controls[confirmPasswordKey];
 

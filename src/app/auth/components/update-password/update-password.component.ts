@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppState } from './../../../interfaces';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-password.component.scss']
 })
 export class UpdatePasswordComponent implements OnInit {
-  updatePasswordForm: FormGroup;
+  updatePasswordForm: UntypedFormGroup;
   updatePasswordSubs: Subscription;
 
   token: string;
@@ -23,7 +23,7 @@ export class UpdatePasswordComponent implements OnInit {
   passwordReset = false;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private store: Store<AppState>,
     private route: ActivatedRoute,
     private router: Router,
@@ -97,7 +97,7 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-    return (group: FormGroup): { [key: string]: boolean } | null => {
+    return (group: UntypedFormGroup): { [key: string]: boolean } | null => {
       const password = group.controls[passwordKey];
       const confirmPassword = group.controls[confirmPasswordKey];
 

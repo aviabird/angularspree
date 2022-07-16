@@ -12,7 +12,6 @@ import { Observable } from 'rxjs';
       [variantId]="variantId$ | async"
     ></app-product-details>
   `,
-  styles: [''],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailPageComponent implements OnInit {

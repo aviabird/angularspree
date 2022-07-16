@@ -18,7 +18,7 @@ import { Product } from './../../../../core/models/product';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from '../../../../../environments/environment';
 import { Taxon } from '../../../../core/models/taxon';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { getLineItems } from '../../../../checkout/reducers/selectors';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -44,7 +44,7 @@ export class ProductDetailsComponent implements OnInit {
   schema: any;
   selectedVariant: any;
   brand: Taxon;
-  checkPincodeForm: FormGroup;
+  checkPincodeForm: UntypedFormGroup;
   isCodAvilable$: Observable<any>;
   linesItems: any;
   noImageUrl = 'assets/default/image-placeholder.svg';

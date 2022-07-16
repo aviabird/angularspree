@@ -8,7 +8,7 @@ import {
   PLATFORM_ID
 } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../interfaces';
@@ -23,13 +23,13 @@ import { ProductService } from '../../../core/services/product.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  signInForm: FormGroup;
+  signInForm: UntypedFormGroup;
   title = environment.appName;
   loginSubs: Subscription;
   returnUrl: string;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private store: Store<AppState>,
     private route: ActivatedRoute,
     private router: Router,

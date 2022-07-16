@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { PasswordMatchValidator } from '../../../../shared/custom-validator/password-match-validator';
 
@@ -11,9 +11,9 @@ import { PasswordMatchValidator } from '../../../../shared/custom-validator/pass
 export class ProfilePasswordComponent implements OnInit {
   @Input() userDetails;
   isChangePasswordPressed: boolean;
-  passwordForm: FormGroup;
+  passwordForm: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(private fb: UntypedFormBuilder, private userService: UserService) {}
 
   ngOnInit() {
     this.initForm();

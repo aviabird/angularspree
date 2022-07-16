@@ -3,7 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from './../../../../core/services/product.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import {
   Component,
   OnInit,
@@ -29,7 +29,7 @@ import { ProductActions } from '../../../actions/product-actions';
   styleUrls: ['./write-product-review.component.scss']
 })
 export class WriteProductReviewComponent implements OnInit, OnDestroy {
-  reviewForm: FormGroup;
+  reviewForm: UntypedFormGroup;
   queryParams: Object;
   showThanks = false;
   product: Product;
@@ -43,7 +43,7 @@ export class WriteProductReviewComponent implements OnInit, OnDestroy {
   isReviewSubmitted: boolean;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private productService: ProductService,
     private activeRoute: ActivatedRoute,
     private toastrService: ToastrService,

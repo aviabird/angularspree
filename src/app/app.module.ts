@@ -39,7 +39,7 @@ import { AddressService } from './checkout/address/services/address.service';
   imports: [
     RouterModule.forRoot(routes, {
     preloadingStrategy: AppPreloadingStrategy,
-    initialNavigation: 'enabled',
+    // initialNavigation: 'enabled',
     relativeLinkResolution: 'legacy'
 }),
     StoreModule.forRoot(reducers, { metaReducers, runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true } }),

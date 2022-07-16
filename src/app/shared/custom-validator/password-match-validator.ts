@@ -1,7 +1,7 @@
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 export class PasswordMatchValidator {
-  static validate(passwordFormGroup: FormGroup) {
+  static validate(passwordFormGroup: UntypedFormGroup) {
     const password = passwordFormGroup.controls.password.value;
     const repeatPassword =
       passwordFormGroup.controls.password_confirmation.value;

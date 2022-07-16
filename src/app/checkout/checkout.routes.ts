@@ -3,8 +3,9 @@ import { PaymentComponent } from './payment/payment.component';
 import { AddressComponent } from './address/address.component';
 import { CartComponent } from './cart/cart.component';
 import { OrderFailedComponent } from './order-failed/order-failed.component';
+import { Routes } from "@angular/router";
 
-export const routes = [
+export const routes: Routes = [
   { path: '', redirectTo: 'cart', pathMatch: 'full' },
   { path: 'cart', component: CartComponent },
   { path: 'address', component: AddressComponent },

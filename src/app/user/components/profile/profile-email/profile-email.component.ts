@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, TemplateRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../services/user.service';
 import { AuthService } from '../../../../core/services/auth.service';
@@ -14,13 +14,13 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class ProfileEmailComponent implements OnInit {
   @Input() userDetails;
   modalRef: BsModalRef;
-  emailForm: FormGroup;
+  emailForm: UntypedFormGroup;
   isEditEmailPressed: boolean;
   currentuserId: number;
 
   constructor(
     private userService: UserService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private toastyService: ToastrService,
     private authService: AuthService,
     private modalService: BsModalService
