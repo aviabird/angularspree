@@ -21,9 +21,9 @@
 
 # AngularSpree
 
-**AngularSpree is an Angular(7) e-commerce application.**
+**AngularSpree is an Angular(14) e-commerce application.**
 
-It is a plug and play frontend application for [AviaCommerce API](https://www.aviacommerce.org/docs/apis-getting-started.html) built using Angular(7), Redux, Observables & ImmutableJs.
+It is a plug and play frontend application for [AviaCommerce API](https://www.aviacommerce.org/docs/apis-getting-started.html) built using Angular(14), Redux, Observables & ImmutableJs.
 
 **It is not limited to aviacommerce and can also be used with any e-commerce solution with an api interface. Such as spreecommerce, magento, opencart etc.**
 
