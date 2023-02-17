@@ -2,7 +2,7 @@
 .pay-modes {
   display: inline-block;
   width: 32%;
-  @media screen and(min-width: 320px) and(max-width: 768px) {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
     padding: 0;
     width: 100%;
   }
@@ -19,7 +19,7 @@
     padding-left: 20px;
     border-left: 1px solid $gray-10;
     border-bottom: 1px solid $gray-10;
-    @media screen and(min-width: 320px) and(max-width: 768px) {
+    @media screen and (min-width: 320px) and (max-width: 768px) {
       width: 50%;
       float: left;
       border-right: 1px solid $gray-10;
@@ -37,7 +37,7 @@
   width: 67%;
   vertical-align: top;
   padding-left: 40px;
-  @media screen and(min-width: 320px) and(max-width: 768px) {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
     padding: 0;
     width: 100%;
   }

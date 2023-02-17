@@ -65,7 +65,7 @@
   background-color: $theme-main-color;
   .resheader {
     width: calc(100vw - 15vw);
-    @media screen and(width: 768px) {
+    @media screen and (width: 768px) {
       width: calc(100vw - 12vw);
     }
   }
@@ -106,7 +106,7 @@
   margin-top: 0;
 }
 
-@media screen and(min-width: 321px) and(max-width: 768px) {
+@media screen and (min-width: 321px) and (max-width: 768px) {
   .navbar {
     padding: 0px;
   }
@@ -125,7 +125,7 @@
   }
 }
 
-@media screen and(min-width: 310px) and(max-width: 320px) {
+@media screen and (min-width: 310px) and (max-width: 320px) {
   .navbar {
     padding: 0px;
   }

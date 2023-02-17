@@ -40,7 +40,7 @@
   background-color: $white;
 }
 
-@media screen and(min-width: 769px) and(max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   input.desktop-search-bar {
     width: 75%;
   }
@@ -63,7 +63,7 @@
   }
 }
 
-@media screen and(min-width: 320px) and(max-width: 768px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .desktop-query input.desktop-search-bar {
     width: 78%;
     border: 0px solid $theme-main-color;

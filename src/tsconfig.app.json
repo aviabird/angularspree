@@ -4,15 +4,21 @@
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "lib": ["es2016", "dom"],
+    "lib": [
+      "es2016",
+      "dom"
+    ],
     "outDir": "../out-tsc/app",
-    "target": "es2020",
+    "target": "ES2022",
     "module": "esnext",
     "baseUrl": "",
     "types": [],
     "paths": {
-      "@core": ["./app/core/*"]
-    }
+      "@core": [
+        "./app/core/*"
+      ]
+    },
+    "useDefineForClassFields": false
   },
   "exclude": ["test.ts", "**/*.spec.ts"]
 }

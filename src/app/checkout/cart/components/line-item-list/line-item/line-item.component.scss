@@ -31,7 +31,7 @@
         font-weight: normal;
         color: $gray-900;
         margin-right: 6px;
-        @media screen and(min-width: 320px) and(max-width: 768px) {
+        @media screen and (min-width: 320px) and (max-width: 768px) {
           white-space: normal;
         }
       }
@@ -82,7 +82,7 @@
       top: 0;
       color: $gray-11;
       right: -14px;
-      @media screen and(min-width: 320px) and(max-width: 768px) {
+      @media screen and (min-width: 320px) and (max-width: 768px) {
         right: 0;
       }
       top: -8px;

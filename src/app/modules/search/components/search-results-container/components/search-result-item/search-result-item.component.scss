@@ -1,7 +1,7 @@
 @import '../../../../../../shared/scss/selected_theme_variables';
 :host {
   display: block;
-  @media screen and(min-width: 576px) {
+  @media screen and (min-width: 576px) {
     min-width: 210px;
     max-width: 210px;
     padding: 0.8rem;
@@ -14,7 +14,7 @@
       }
     }
   }
-  @media screen and(min-width: 310px) and(max-width: 576px) {
+  @media screen and (min-width: 310px) and (max-width: 576px) {
     padding: 0;
     max-width: 50%;
     min-width: 50%;
@@ -29,7 +29,7 @@
 
 picture {
   height: 250px;
-  @media screen and(min-width: 310px) and(max-width: 576px) {
+  @media screen and (min-width: 310px) and (max-width: 576px) {
     height: 200px;
   }
   &.bg-img-none {

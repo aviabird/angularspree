@@ -51,7 +51,7 @@ h1 {
   }
 }
 
-@media screen and(min-width: 310px) and(max-width: 768px) {
+@media screen and (min-width: 310px) and (max-width: 768px) {
   .fav-icon-sontainer {
     .favorite {
       top: 50px;
@@ -64,7 +64,7 @@ h1 {
     padding: 1rem 0 3rem;
     .out-review {
       border-left: 1px solid $gray-10;
-      @media screen and(min-width: 310px) and(max-width: 768px) {
+      @media screen and (min-width: 310px) and (max-width: 768px) {
         border-left: 0 solid $gray-10;
         margin-top: 10px;
         padding: 10px;
@@ -116,7 +116,7 @@ h1 {
   }
   .write-review {
     width: calc(100% - 135px);
-    @media screen and(min-width: 310px) and(max-width: 768px) {
+    @media screen and (min-width: 310px) and (max-width: 768px) {
       width: 100%;
     }
   }
@@ -158,7 +158,7 @@ h1 {
   padding: 15px;
 }
 
-@media screen and(min-width: 310px) and(max-width: 768px) {
+@media screen and (min-width: 310px) and (max-width: 768px) {
   .review-percentage {
     position: relative;
     .percent {

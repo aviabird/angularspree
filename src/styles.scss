@@ -1,8 +1,8 @@
-@import '~bootstrap/scss/bootstrap-reboot';
-@import '~bootstrap/scss/bootstrap-grid';
+@import '../node_modules/bootstrap/scss/bootstrap-reboot';
+@import '../node_modules/bootstrap/scss/bootstrap-grid';
 @import 'app/shared/scss/themes';
 @import 'app/shared/scss/selected_theme_variables';
-@import '~ngx-toastr/toastr-bs4-alert';
+@import '../node_modules/ngx-toastr/toastr-bs4-alert';
 $break-small: 320px;
 ol,
 ul {
@@ -82,13 +82,13 @@ body {
   }
 }
 
-@media screen and(min-width: 1100px) and(max-width: 1400px) {
+@media screen and (min-width: 1100px) and (max-width: 1400px) {
   .container {
     max-width: 1280px;
   }
 }
 
-@media screen and(min-width: 320px) and(max-width: 768px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .container {
     max-width: 100%;
   }

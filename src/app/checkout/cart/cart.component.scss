@@ -3,7 +3,7 @@
   position: relative;
   .left {
     padding-right: 40px;
-    @media screen and(min-width: 320px) and(max-width: 768px) {
+    @media screen and (min-width: 320px) and (max-width: 768px) {
       padding: 0;
       border-radius: 0px;
     }
@@ -34,7 +34,7 @@
       background-color: $white;
       border-radius: 4px;
       box-shadow: 0px 0px 3px $gray-10;
-      @media screen and(min-width: 320px) and(max-width: 768px) {
+      @media screen and (min-width: 320px) and (max-width: 768px) {
         border-radius: 0px;
         padding: 0;
         box-shadow: none;
@@ -67,7 +67,7 @@
   .right {
     vertical-align: top;
     position: absolute;
-    @media screen and(min-width: 320px) and(max-width: 768px) {
+    @media screen and (min-width: 320px) and (max-width: 768px) {
       position: relative;
       box-shadow: none;
       padding: 0 15px;

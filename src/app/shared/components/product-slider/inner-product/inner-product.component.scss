@@ -17,7 +17,7 @@ picture {
 .rating {
   position: relative;
   left: 0.8em;
-  @media screen and(min-width: 320px) and(max-width: 768px) {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
     position: relative;
     left: 8.5px;
   }

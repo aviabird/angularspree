@@ -6,7 +6,7 @@
 h1 {
   font-size: 1.7em;
   color: $gray-900;
-  @media screen and(min-width: 310px) and(max-width: 768px) {
+  @media screen and (min-width: 310px) and (max-width: 768px) {
     font-size: 1.2em;
     line-height: 1.2em;
     font-weight: 700;
@@ -45,7 +45,7 @@ h1 {
 }
 
 .hide-phone {
-  @media screen and(min-width: 310px) and(max-width: 768px) {
+  @media screen and (min-width: 310px) and (max-width: 768px) {
     display: block;
     text-align: right;
   }
@@ -112,7 +112,7 @@ h1 {
   }
 }
 
-@media screen and(min-width: 310px) and(max-width: 768px) {
+@media screen and (min-width: 310px) and (max-width: 768px) {
   .fav-icon-sontainer {
     .favorite {
       top: 50px;

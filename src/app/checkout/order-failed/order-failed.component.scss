@@ -23,7 +23,7 @@
 
 .thankyou {
   padding: 2em;
-  @media screen and(min-width: 320px) and(max-width: 768px) {
+  @media screen and (min-width: 320px) and (max-width: 768px) {
     padding: 15px;
     margin: 10px 0px;
   }
@@ -40,7 +40,7 @@
     padding: 0px 36px;
     margin-left: 17px;
     display: block;
-    @media screen and(min-width: 320px) and(max-width: 768px) {
+    @media screen and (min-width: 320px) and (max-width: 768px) {
       padding: 0px 10px 0px 35px;
     }
   }
@@ -59,7 +59,7 @@
 
 .order-items {
   .order {
-    @media screen and(min-width: 320px) and(max-width: 768px) {
+    @media screen and (min-width: 320px) and (max-width: 768px) {
     }
     padding: 0px;
   }

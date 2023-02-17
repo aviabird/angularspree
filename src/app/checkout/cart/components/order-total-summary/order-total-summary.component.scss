@@ -6,7 +6,7 @@
     .bag-total {
       padding: 1rem 0;
       border-bottom: 1px solid $gray-10;
-      @media screen and(min-width: 320px) and(max-width: 768px) {
+      @media screen and (min-width: 320px) and (max-width: 768px) {
         border-bottom: 0 solid $gray-10;
         padding-bottom: 0;
       }
@@ -26,7 +26,7 @@
     .bag-total > .value,
     .coupon > .apply-coupon,
     .shipping > .shipping-fee {
-      @media screen and(min-width: 320px) and(max-width: 768px) {
+      @media screen and (min-width: 320px) and (max-width: 768px) {
         position: static;
       }
       position: absolute;
