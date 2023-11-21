@@ -124,7 +124,8 @@
             "main": "src/main.server.ts",
             "tsConfig": "src/tsconfig.server.json",
             "sourceMap": true,
-            "optimization": false
+            "optimization": false,
+            "buildOptimizer": false
           },
           "configurations": {
             "mock-ng-spree": {
