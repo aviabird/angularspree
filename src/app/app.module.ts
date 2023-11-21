@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { TransferHttpCacheModule } from '@nguniversal/common';
+import { TransferHttpCacheModule } from '@angular/ssr';
 
 // Components
 import { AppComponent } from './app.component';

@@ -174,30 +174,30 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angularspree:build"
+            "buildTarget": "angularspree:build"
           },
           "configurations": {
             "mock-ng-spree": {
-              "browserTarget": "angularspree:build:mock-ng-spree"
+              "buildTarget": "angularspree:build:mock-ng-spree"
             },
             "dev-ng-spree": {
-              "browserTarget": "angularspree:build:dev-ng-spree"
+              "buildTarget": "angularspree:build:dev-ng-spree"
             },
             "prod-ng-spree": {
-              "browserTarget": "angularspree:build:prod-ng-spree"
+              "buildTarget": "angularspree:build:prod-ng-spree"
             },
             "dev-custom": {
-              "browserTarget": "angularspree:build:dev-custom"
+              "buildTarget": "angularspree:build:dev-custom"
             },
             "prod-custom": {
-              "browserTarget": "angularspree:build:prod-custom"
+              "buildTarget": "angularspree:build:prod-custom"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angularspree:build"
+            "buildTarget": "angularspree:build"
           }
         },
         "test": {
