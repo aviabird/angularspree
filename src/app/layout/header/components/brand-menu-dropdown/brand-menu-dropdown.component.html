@@ -19,13 +19,13 @@
     <div
       id="dropdown-triggers-manual"
       *dropdownMenu
-      class="dropdown-menu"
+      class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded"
       role="menu"
       aria-labelledby="button-triggers-manual"
     >
       <div *ngIf="brandsList">
         <ul>
-          <li *ngFor="let brand of brandsList" class="col-2">
+          <li *ngFor="let brand of brandsList" class="w-1/5">
             <app-brand-list [brand]="brand"></app-brand-list>
           </li>
           <a [routerLink]="['b/brands']">

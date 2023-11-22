@@ -1,7 +1,7 @@
-<div class="input-group searchBar">
+<div class="relative flex items-stretch w-full searchBar">
   <input
     type="text"
-    class="form-control"
+    class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
     placeholder="Search"
     aria-label="Search"
     aria-describedby="search-button"
@@ -22,7 +22,7 @@
   />
   <div class="input-group-append">
     <button
-      class="btn btn-outline-light searchBar-btn"
+      class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-gray-100 border-gray-100 hover:bg-gray-100 hover:text-white bg-white hover:bg-gray-200 searchBar-btn"
       type="button"
       (click)="doSearch(box.value)"
     >

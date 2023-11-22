@@ -3,6 +3,9 @@
 @import 'app/shared/scss/themes';
 @import 'app/shared/scss/selected_theme_variables';
 @import '../node_modules/ngx-toastr/toastr-bs4-alert';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 $break-small: 320px;
 ol,
 ul {

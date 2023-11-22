@@ -1,6 +1,6 @@
 <div>
   <div
-    class="btn helpbtn"
+    class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline helpbtn"
     [ngClass]="[isOpen ? 'openhelp' : '']"
     (mouseenter)="dropdown.show()"
     (mouseleave)="dropdown.hide()"
@@ -21,19 +21,19 @@
     <div
       id="dropdown-triggers-manual"
       *dropdownMenu
-      class="dropdown-menu text-center"
+      class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded text-center"
       role="menu"
       aria-labelledby="button-triggers-manual"
     >
       <ul>
         <li role="menuitem">
           <h6>Get help from our experts 24/7</h6>
-          <h2 class="text-danger">{{ contactno }}</h2>
+          <h2 class="text-red-600">{{ contactno }}</h2>
         </li>
-        <li class="divider dropdown-divider"></li>
+        <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li>
         <li></li>
         <li role="menuitem">
-          <a class="dropdown-item" [routerLink]="['/']">Contact Us</a>
+          <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" [routerLink]="['/']">Contact Us</a>
         </li>
       </ul>
     </div>

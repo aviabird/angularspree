@@ -1,5 +1,5 @@
-<div *ngIf="!isMobile" class="col-12 p-0">
-  <div class="col-12 p-0">
+<div *ngIf="!isMobile" class="w-full p-0">
+  <div class="w-full p-0">
     <h1 itemprop="name" class="title">{{ product.name }}</h1>
     <div class="product-subtitle">
       <a
@@ -14,7 +14,7 @@
       </a>
     </div>
   </div>
-  <div class="col-12 p-0">
+  <div class="w-full p-0">
     <div class="product-header-extras">
       <div class="ugc pr-3">
         <a
@@ -31,8 +31,8 @@
       </div>
     </div>
   </div>
-  <div class="col-12 d-flex p-0">
-    <div class="buybox-wrapper col-12 p-0">
+  <div class="w-full flex p-0">
+    <div class="buybox-wrapper w-full p-0">
       <div id="product-vitals">
         <div id="pricing">
           <ul class="product-price">
@@ -48,11 +48,11 @@
               <ul>
                 <li>Price:</li>
                 <li>
-                  <span class="d-block float-left">
+                  <span class="block float-left">
                     {{ currency }}{{ product.selling_price.amount }}</span
                   >
                   <span
-                    class="free-shipping d-block float-left d-xs-none d-sm-none d-none d-lg-block"
+                    class="free-shipping block float-left sm:hidden sm:hidden hidden lg:block"
                     >FREE 1-2 Day
                     <span>Shipping on this item</span>
                   </span>
@@ -79,7 +79,7 @@
             (onOptionClickEvent)="onOptionClick($event)"
             [correspondingOptions]="correspondingOptions"
             [mainOptions]="mainOptions"
-            class="row m-0"
+            class="flex flex-wrap  m-0"
           ></app-product-variants>
         </div>
         <!-- <app-check-pincode></app-check-pincode> -->
@@ -95,7 +95,7 @@
   </div>
 </div>
 <div *ngIf="isMobile">
-  <div class="col-12 p-0">
+  <div class="w-full p-0">
     <div class="buybox-wrapper">
       <div id="product-vitals">
         <div id="pricing">
@@ -114,7 +114,7 @@
                     {{ currency }}{{ product.selling_price.amount }}</span
                   >
                   <span
-                    class="free-shipping  d-xs-none d-sm-none d-none d-lg-block"
+                    class="free-shipping  sm:hidden sm:hidden hidden lg:block"
                     >FREE 1-2 Day
                     <span>Shipping on this item</span>
                   </span>
@@ -137,7 +137,7 @@
             (onOptionClickEvent)="onOptionClick($event)"
             [correspondingOptions]="correspondingOptions"
             [mainOptions]="mainOptions"
-            class="row m-0"
+            class="flex flex-wrap  m-0"
           ></app-product-variants>
         </div>
       </div>

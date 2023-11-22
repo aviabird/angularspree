@@ -1,23 +1,23 @@
 <div class="header">
   <nav
-    class="navbar navbar-expand-lg"
+    class="relative flex flex-wrap items-center content-between py-3 px-4 "
     id="main"
     [ngClass]="{ 'page-scroll-header': isScrolled }"
   >
-    <div class="container">
+    <div class="container mx-auto sm:px-4">
       <app-categories-menu-dropdown
         [taxonomies]="taxonomies$ | async"
         [screenwidth]="screenwidth"
         [isScrolled]="isScrolled"
         *ngIf="!isMobile && isScrolled"
       ></app-categories-menu-dropdown>
-      <a class="navbar-brand" routerLink="/" *ngIf="!isMobile">
+      <a class="inline-block pt-1 pb-1 mr-4 text-lg whitespace-no-wrap" routerLink="/" *ngIf="!isMobile">
         <img
           [src]="this.headerConfig.brand.logo"
           [alt]="this.headerConfig.brand.name"
           [width]="this.headerConfig.brand.width"
           [height]="this.headerConfig.brand.height"
-          class="d-inline-block align-top"
+          class="inline-block align-top"
           alt
         />
       </a>
@@ -43,29 +43,29 @@
       </a>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div
-        class="collapse navbar-collapse justify-content-end"
+        class="hidden flex-grow items-center justify-end"
         id="navbarNavDropdown"
       >
         <app-header-search></app-header-search>
         <app-header-help-dropdown></app-header-help-dropdown>
         <app-profile-dropdown
-          class="pr-2 border-left"
+          class="pr-2 border-l"
           [isAuthenticated]="isAuthenticated$ | async"
         ></app-profile-dropdown>
         <app-header-cart
-          class="pl-2 border-left"
+          class="pl-2 border-l"
           [totalCartItems]="totalCartItems$ | async"
         ></app-header-cart>
       </div>
-      <div class="resheader row m-0 hidden-md hidden-lg" *ngIf="isMobile">
+      <div class="resheader flex flex-wrap  m-0 hidden-md hidden-lg" *ngIf="isMobile">
         <div class="mlogo">
-          <a class="navbar-brand small-logo" routerLink="/" *ngIf="isMobile">
+          <a class="inline-block pt-1 pb-1 mr-4 text-lg whitespace-no-wrap small-logo" routerLink="/" *ngIf="isMobile">
             <img
               [src]="this.headerConfig.brand.logo"
               [alt]="this.headerConfig.brand.name"
               [width]="this.headerConfig.brand.width"
               height="this.headerConfig.brand.height"
-              class="d-inline-block align-top"
+              class="inline-block align-top"
               alt
             />
           </a>
@@ -86,7 +86,7 @@
         </div>
         <div class="cart">
           <app-header-cart
-            class="pl-2 border-left"
+            class="pl-2 border-l"
             [isMobile]="isMobile"
             [totalCartItems]="totalCartItems$ | async"
           ></app-header-cart>
@@ -95,12 +95,12 @@
     </div>
   </nav>
   <nav
-    class="navbar navbar-expand-lg"
+    class="relative flex flex-wrap items-center content-between py-3 px-4 "
     id="sub-header"
     [ngClass]="{ 'hide-sub-header': isScrolled }"
   >
-    <div class="container">
-      <div class="collapse navbar-collapse left-content-start">
+    <div class="container mx-auto sm:px-4">
+      <div class="hidden flex-grow items-center left-content-start">
         <app-categories-menu-dropdown
           [screenwidth]="screenwidth"
           [taxonomies]="taxonomies$ | async"
@@ -108,8 +108,8 @@
         <app-brand-menu-dropdown
           [brands]="brands$ | async"
         ></app-brand-menu-dropdown>
-        <div class="col text-right">
-          <button type="button" class="btn shippingbtn">
+        <div class="relative flex-grow max-w-full flex-1 px-4 text-right">
+          <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline shippingbtn">
             FREE 1-2 DAY SHIPPING OVER {{ currency }}{{ freeShippingAmount }}
             <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
           </button>
@@ -124,7 +124,7 @@
   (onHidden)="onHidden()"
   bsModal
   #autoShownModal="bs-modal"
-  class="modal fade"
+  class="modal opacity-0"
   tabindex="-1"
   role="dialog"
   aria-labelledby="dialog-auto-name"

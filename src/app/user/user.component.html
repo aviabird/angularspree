@@ -1,6 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 my-3">
+<div class="container mx-auto sm:px-4">
+  <div class="flex flex-wrap ">
+    <div class="md:w-full pr-4 pl-4 my-3">
       <h5 *ngIf="selectedProfileMenu; else elseBlock">
         My Account > {{ selectedProfileMenu.name }}
       </h5>
@@ -10,7 +10,7 @@
       <hr />
     </div>
 
-    <div class="sidebar col-md-3 d-none d-lg-block">
+    <div class="sidebar md:w-1/4 pr-4 pl-4 hidden lg:block">
       <!-- <p><a routerLink="/user/overview" routerLinkActive="active">Overview</a></p> -->
       <!-- <hr> -->
       <p>
@@ -29,7 +29,7 @@
         <a routerLink="/user/favorite-products" routerLinkActive="active">My Favorite Products</a>
       </p> -->
     </div>
-    <div class="col-md-9">
+    <div class="md:w-3/4 pr-4 pl-4">
       <router-outlet></router-outlet>
     </div>
   </div>

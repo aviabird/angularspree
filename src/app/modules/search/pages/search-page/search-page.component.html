@@ -1,17 +1,17 @@
 <section
-  class="row search-container my-3 mx-auto"
+  class="flex flex-wrap  search-container my-3 mx-auto"
   *ngIf="searchFound; else notFound"
 >
-  <div class="col-12">
+  <div class="w-full">
     <app-breadcrumbs [breadcrumbs]="breadcrumbs"></app-breadcrumbs>
   </div>
-  <div class="col-12 mb-4">
+  <div class="w-full mb-4">
     <app-search-title-container
       [title]="'All Categories'"
       [metaInfo]="metaInfo"
     ></app-search-title-container>
   </div>
-  <div class="col pr-0 d-none d-sm-block verticalFilterContainer">
+  <div class="relative flex-grow max-w-full flex-1 px-4 pr-0 hidden sm:block verticalFilterContainer">
     <app-search-filters-container
       [appliedParams]="appliedParams"
       [metaInfo]="metaInfo"
@@ -19,10 +19,10 @@
       (filterUpdated)="updateFilters($event)"
     ></app-search-filters-container>
   </div>
-  <div class="col">
-    <div class="row d-none d-sm-flex">
+  <div class="relative flex-grow max-w-full flex-1 px-4">
+    <div class="flex flex-wrap  hidden sm:flex">
       <app-filter-summary-container
-        class="col-12 my-1"
+        class="w-full my-1"
         [appliedParams]="appliedParams"
         (updatedFilters)="updateFilters($event)"
       ></app-filter-summary-container>
@@ -34,18 +34,18 @@
 </section>
 
 <ng-template #notFound>
-  <div class="container search-failed-container">
-    <section class="row justify-content-center">
-      <div class="col-12 col-md-6 text-center">
-        <img [src]="noSearchImg" class="w-25 mx-auto" alt="No Search Found" />
+  <div class="container mx-auto sm:px-4 search-failed-container">
+    <section class="flex flex-wrap  justify-center">
+      <div class="w-full md:w-1/2 pr-4 pl-4 text-center">
+        <img [src]="noSearchImg" class="w-1/4 mx-auto" alt="No Search Found" />
         <h3 class="font-weight-light">We couldn't find any matches!</h3>
-        <small class="text-secondary">
+        <small class="text-gray-600">
           Please check the spelling or try searching something else
         </small>
-        <div class="input-group my-5">
+        <div class="relative flex items-stretch w-full my-5">
           <input
             type="text"
-            class="form-control rounded-0"
+            class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded rounded-none"
             placeholder="Search"
             aria-label="Search"
             aria-describedby="search-button"
@@ -57,7 +57,7 @@
           />
           <div class="input-group-append">
             <button
-              class="btn btn-outline-info rounded-0"
+              class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-teal-500 border-teal-500 hover:bg-teal-500 hover:text-white bg-white hover:bg-teal-600 rounded-none"
               type="button"
               id="search-button"
               (click)="onSearch(box.value)"

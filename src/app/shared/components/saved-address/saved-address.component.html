@@ -1,33 +1,33 @@
 <div *ngIf="addressList">
   <div
     *ngFor="let address of (addressList | reverse); index as i"
-    class="card mb-3"
+    class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 mb-3"
   >
-    <div class="address-row  select card-body">
-      <div class="row ">
-        <div class="col-12 name">
+    <div class="address-row  select flex-auto p-6">
+      <div class="flex flex-wrap  ">
+        <div class="w-full name">
           <div class="">
-            <div class="col-md-3 col-2 p-0 float-left">
+            <div class="md:w-1/4 pr-4 pl-4 w-1/5 p-0 float-left">
               <button
-                class="btn themebtnprimarybasic mb-3"
+                class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimarybasic mb-3"
                 (click)="selectedDeliveryAddress(address)"
               >
                 Deliver here
               </button>
             </div>
-            <div class="col-md-6 col-2 float-right">
-              <div class="row float-right p-0 ">
-                <div class="col-md-6">
+            <div class="md:w-1/2 pr-4 pl-4 w-1/5 float-right">
+              <div class="flex flex-wrap  float-right p-0 ">
+                <div class="md:w-1/2 pr-4 pl-4">
                   <button
-                    class="btn themebtnprimarybasic mb-3"
+                    class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimarybasic mb-3"
                     (click)="editAddress(address)"
                   >
                     Edit
                   </button>
                 </div>
-                <div class="col-md-6">
+                <div class="md:w-1/2 pr-4 pl-4">
                   <button
-                    class="btn themebtnprimarybasic mb-3"
+                    class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimarybasic mb-3"
                     (click)="deleteAddress(address.id)"
                   >
                     Delete
@@ -37,22 +37,22 @@
             </div>
           </div>
         </div>
-        <div class="row m-0">
-          <div class="col-12 name">
+        <div class="flex flex-wrap  m-0">
+          <div class="w-full name">
             <span class="name mr-2 ">{{ address.first_name }}</span>
             <span class="name mr-2 ">{{ address.last_name }}</span>
             <span class="mob ">{{ address.phone }}</span>
           </div>
 
-          <div class="address col-12 ">
+          <div class="address w-full ">
             {{ address.address_line_1 }}
             <span class="address-field ">{{ address.address_line_2 }}</span
             >,
             <span class="address-field ">{{ address.city }}</span>
             <span class="address-field pin ">-{{ address.zip_code }}</span>
           </div>
-          <div class="address-field col-12">{{ address?.state?.name }}</div>
-          <div class="address-field col-12">{{ address.country.name }}</div>
+          <div class="address-field w-full">{{ address?.state?.name }}</div>
+          <div class="address-field w-full">{{ address.country.name }}</div>
         </div>
       </div>
     </div>

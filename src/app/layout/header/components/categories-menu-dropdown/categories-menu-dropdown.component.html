@@ -22,22 +22,22 @@
     [autoClose]="false"
     (isOpenChange)="onOpenChange($event)"
     (mouseenter)="dropdown.show()"
-    class="open show"
+    class="open opacity-100 block"
     (mouseleave)="dropdown.hide()"
     (click)="dropdown.hide()"
   >
     <div
       id="dropdown-triggers-manual"
       *dropdownMenu
-      class="dropdown-menu container show"
+      class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded container mx-auto sm:px-4 opacity-100 block"
       style="left: 0px; right: auto; top: 100%; transform: translateY(0px);"
       [ngClass]="[isScrolled ? '' : 'notscrolled']"
       role="menu"
       aria-labelledby="button-triggers-manual"
     >
-      <div class="row m-0" *ngIf="catgeory_taxonomy?.root?.taxons">
-        <div class="col-md-3 p-0">
-          <ul class="h-100">
+      <div class="flex flex-wrap  m-0" *ngIf="catgeory_taxonomy?.root?.taxons">
+        <div class="md:w-1/4 pr-4 pl-4 p-0">
+          <ul class="h-full">
             <!-- <li *ngFor="let taxon of catgeory_taxonomy.root.taxons; let i= index" (click)="showCategoryonclick(i)" (mouseenter)="showCategory(i)"
               [ngClass]="{'active': selectedItem == i}" [routerLink]="['c' ,taxon.name]">
               {{taxon.name}}</li> -->
@@ -51,7 +51,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-md-9 no-gutters detailcontainer p-0" *ngIf="menuTaxons">
+        <div class="md:w-3/4 pr-4 pl-4 no-gutters detailcontainer p-0" *ngIf="menuTaxons">
           <app-categories-details
             [taxons]="menuTaxons.taxons"
             [taxonName]="menuTaxons.name"
