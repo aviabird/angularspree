@@ -43,7 +43,7 @@
       </a>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div
-        class="hidden flex-grow items-center justify-end"
+        class="flex-grow items-center justify-end"
         id="navbarNavDropdown"
       >
         <app-header-search></app-header-search>
@@ -100,7 +100,7 @@
     [ngClass]="{ 'hide-sub-header': isScrolled }"
   >
     <div class="container mx-auto sm:px-4">
-      <div class="hidden flex-grow items-center left-content-start">
+      <div class="flex-grow items-center left-content-start">
         <app-categories-menu-dropdown
           [screenwidth]="screenwidth"
           [taxonomies]="taxonomies$ | async"

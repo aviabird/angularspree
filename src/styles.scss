@@ -1,8 +1,4 @@
-@import '../node_modules/bootstrap/scss/bootstrap-reboot';
-@import '../node_modules/bootstrap/scss/bootstrap-grid';
-@import 'app/shared/scss/themes';
 @import 'app/shared/scss/selected_theme_variables';
-@import '../node_modules/ngx-toastr/toastr-bs4-alert';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
