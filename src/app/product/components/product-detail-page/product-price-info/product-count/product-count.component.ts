@@ -21,7 +21,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-product-count',
   templateUrl: './product-count.component.html',
-  styleUrls: ['./product-count.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })

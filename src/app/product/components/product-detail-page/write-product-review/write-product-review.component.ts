@@ -26,7 +26,7 @@ import { ProductActions } from '../../../actions/product-actions';
 @Component({
   selector: 'app-write-product-review',
   templateUrl: './write-product-review.component.html',
-  styleUrls: ['./write-product-review.component.scss']
+  
 })
 export class WriteProductReviewComponent implements OnInit, OnDestroy {
   reviewForm: UntypedFormGroup;

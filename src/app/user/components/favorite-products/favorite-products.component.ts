@@ -10,7 +10,7 @@ import { getUserFavoriteProducts } from '../../reducers/selector';
 @Component({
   selector: 'app-favorite-products',
   templateUrl: './favorite-products.component.html',
-  styleUrls: ['./favorite-products.component.scss']
+  
 })
 export class FavoriteProductsComponent implements OnInit {
   products$: Observable<Product[]>;

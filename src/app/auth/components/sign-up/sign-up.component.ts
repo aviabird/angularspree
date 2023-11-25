@@ -13,7 +13,7 @@ import { AuthActions } from '../../actions/auth.actions';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  
 })
 export class SignUpComponent implements OnInit, OnDestroy {
   signUpForm: UntypedFormGroup;

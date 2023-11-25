@@ -24,7 +24,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-hosted-payment',
   templateUrl: './hosted-payment.component.html',
-  styleUrls: ['./hosted-payment.component.scss']
+  
 })
 export class HostedPaymentComponent implements OnInit, OnDestroy {
   @Input() paymentMethodId: number;

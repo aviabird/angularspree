@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-line-item',
   templateUrl: './line-item.component.html',
-  styleUrls: ['./line-item.component.scss']
+  
 })
 export class LineItemComponent implements OnInit, OnDestroy {
   @Input() isMobile;

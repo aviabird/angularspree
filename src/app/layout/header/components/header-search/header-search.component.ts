@@ -15,7 +15,7 @@ import {
 @Component({
   selector: 'app-header-search',
   templateUrl: './header-search.component.html',
-  styleUrls: ['./header-search.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderSearchComponent implements OnInit {

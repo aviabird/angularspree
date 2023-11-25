@@ -14,7 +14,7 @@ import * as fromSearch from './../../store/selectors/search.selector';
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.scss']
+  
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
   appliedParams: SearchAppliedParams = SearchingService.DEFAULT_APPLIED_FILTERS;

@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'app-pl-item',
   templateUrl: './pl-item.component.html',
-  styleUrls: ['./pl-item.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlItemComponent implements OnInit {

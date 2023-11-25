@@ -20,7 +20,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-categories-menu-dropdown',
   templateUrl: './categories-menu-dropdown.component.html',
-  styleUrls: ['./categories-menu-dropdown.component.scss'],
+  
   animations: [
     trigger('popOverState', [
       state(
