@@ -1,32 +1,22 @@
-<div class="relative flex items-stretch w-full searchBar">
-  <input
-    type="text"
-    class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
-    placeholder="Search"
-    aria-label="Search"
-    aria-describedby="search-button"
-    type="search"
-    placeholder="{{ searchPlaceholder }}"
-    aria-label="Search"
-    #box
-    [(ngModel)]="asyncSelected"
-    [typeaheadAsync]="true"
-    [typeahead]="dataSource"
-    (typeaheadLoading)="changeTypeaheadLoading($event)"
-    (typeaheadOnSelect)="typeaheadOnSelect($event)"
-    [typeaheadOptionsLimit]="7"
-    typeaheadOptionField="name"
-    typeaheadWaitMs="300"
-    typeaheadMinLength="3"
-    [placeholder]="searchPlaceholder"
-  />
-  <div class="input-group-append">
-    <button
-      class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-gray-100 border-gray-100 hover:bg-gray-100 hover:text-white bg-white hover:bg-gray-200 searchBar-btn"
-      type="button"
-      (click)="doSearch(box.value)"
-    >
-      <span class="fa fa-search searchBar-btn-icon"></span>
-    </button>
-  </div>
-</div>
+<form class="relative pr-12 md:pr-14 bg-white overflow-hidden shadow-sm rounded-md w-full">
+  <label class="flex items-center py-0.5">
+    <input
+      class="form-input w-full pl-5 appearance-none transition ease-in-out border text-input text-sm font-sans rounded-md min-h-10 h-10 duration-200 bg-white focus:ring-0 outline-none border-none focus:outline-none placeholder-gray-500 placeholder-opacity-75"
+      aria-describedby="search-button" type="search" placeholder="{{ searchPlaceholder }}" aria-label="Search" #box
+      [(ngModel)]="asyncSelected" [typeaheadAsync]="true" [typeahead]="dataSource"
+      (typeaheadLoading)="changeTypeaheadLoading($event)" (typeaheadOnSelect)="typeaheadOnSelect($event)"
+      [typeaheadOptionsLimit]="7" typeaheadOptionField="name" typeaheadWaitMs="300" typeaheadMinLength="3"
+      [placeholder]="searchPlaceholder" />
+  </label>
+
+  <button aria-label="Search" (click)="doSearch(box.value)" type="submit"
+    class="outline-none text-xl text-gray-400 absolute top-0 right-0 end-0 w-12 md:w-14 h-full flex items-center justify-center transition duration-200 ease-in-out hover:text-heading focus:outline-none">
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em"
+      xmlns="http://www.w3.org/2000/svg">
+      <path fill="none" stroke-miterlimit="10" stroke-width="32"
+        d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"></path>
+      <path fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448">
+      </path>
+    </svg>
+  </button>
+</form>
