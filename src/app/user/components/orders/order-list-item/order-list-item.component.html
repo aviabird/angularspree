@@ -2,7 +2,7 @@
   <div *ngFor="let order of (orders | reverse)">
     <div *ngIf="order.state === 'confirmed'" class=" box shadow-sm">
       <div class="order">
-        <div class="order-num btn float-left">
+        <div class="order-num inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline float-left">
           <a [routerLink]="['detail', order.number]" class="view-details-link">
             {{ order.number | humanize | uppercase }}
           </a>
@@ -12,28 +12,28 @@
       <div class="order-detail">
         <div class="order-body" *ngIf="!isMobile">
           <div *ngFor="let item of order.line_items" class="lineitems">
-            <div class="row ">
-              <div class="col-12 pr-0 col-sm-1">
+            <div class="flex flex-wrap  ">
+              <div class="w-full pr-0 sm:w-1/6 pr-4 pl-4">
                 <img
                   [routerLink]="['/', item.product.slug]"
                   [src]="getProductImageUrl(item)"
                 />
               </div>
               <div
-                class="col-12 col-sm-5"
+                class="w-full sm:w-2/5 pr-4 pl-4"
                 [routerLink]="['/', item.product.slug]"
               >
                 <div class="lineitems-name">{{ item.product.name }}</div>
                 <!-- <div class="lineitems-info"> {{item.product.options_text}}</div> -->
               </div>
-              <div class="col-12 col-sm-2">
+              <div class="w-full sm:w-1/5 pr-4 pl-4">
                 <div class="price">
                   {{ currency }}{{ item.unit_price.amount }}
                 </div>
                 <div class="qty">QTY: {{ item.quantity }}</div>
               </div>
-              <div class="col-12 col-sm-4">
-                <b class="text-danger note p-0">Note:</b>
+              <div class="w-full sm:w-1/3 pr-4 pl-4">
+                <b class="text-red-600 note p-0">Note:</b>
                 <span class="note"
                   >You can return or exchange this within 15 days.</span
                 >
@@ -43,28 +43,28 @@
         </div>
         <div class="order-body" *ngIf="isMobile">
           <div *ngFor="let item of order.line_items" class="lineitems">
-            <div class="row ">
-              <div class="col-12 pr-0 col-sm-1">
+            <div class="flex flex-wrap  ">
+              <div class="w-full pr-0 sm:w-1/6 pr-4 pl-4">
                 <img
                   [routerLink]="['/', item.product.slug]"
                   [src]="getProductImageUrl(item)"
                 />
               </div>
               <div
-                class="col-7 col-sm-5"
+                class="w-3/5 sm:w-2/5 pr-4 pl-4"
                 [routerLink]="['/', item.product.slug]"
               >
                 <div class="lineitems-name">{{ item.product.name }}</div>
                 <!-- <div class="lineitems-info"> {{item.product.options_text}}</div> -->
               </div>
-              <div class="col-5 col-sm-2">
+              <div class="w-2/5 sm:w-1/5 pr-4 pl-4">
                 <div class="qty">QTY: {{ item.quantity }}</div>
                 <div class="price">
                   {{ currency }} {{ item.unit_price.amount }}
                 </div>
               </div>
-              <div class="col-12 col-sm-4">
-                <b class="text-danger note p-0">Note:</b>
+              <div class="w-full sm:w-1/3 pr-4 pl-4">
+                <b class="text-red-600 note p-0">Note:</b>
                 <span class="note"
                   >You can return or exchange this within 15 days.</span
                 >
@@ -73,19 +73,19 @@
           </div>
         </div>
         <div class="order-footer" *ngIf="!isMobile">
-          <div class="order-on float-left col-12 col-sm-6">
+          <div class="order-on float-left w-full sm:w-1/2 pr-4 pl-4">
             <span class="head">Order Status : </span>
             <span>{{ order.state | humanize | uppercase }}</span>
           </div>
-          <!-- <div class="order-on float-right col-12 col-sm-6">
+          <!-- <div class="order-on float-right w-full sm:w-1/2 pr-4 pl-4">
             <span class="head">Payment Status : </span>
             <span>{{order.payment_state | humanize | uppercase}}</span>
           </div> -->
-          <!-- <div class="order-on float-left col-12 col-sm-6">
+          <!-- <div class="order-on float-left w-full sm:w-1/2 pr-4 pl-4">
             <span class="head">Ordered On : </span>
             <span>{{order.completed_at | date:'fullDate'}}</span>
           </div> -->
-          <div class="order-on float-right col-12 col-sm-6">
+          <div class="order-on float-right w-full sm:w-1/2 pr-4 pl-4">
             <span class="head">Order Total : </span>
             <span>{{ currency }}{{ order.order_total_amount.amount }}</span>
           </div>

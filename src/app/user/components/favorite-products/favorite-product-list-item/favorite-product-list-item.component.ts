@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-favorite-product-list-item',
   templateUrl: './favorite-product-list-item.component.html',
-  styleUrls: ['./favorite-product-list-item.component.scss']
+  
 })
 export class FavoriteProductListItemComponent implements OnInit {
   @Input() product: Product;

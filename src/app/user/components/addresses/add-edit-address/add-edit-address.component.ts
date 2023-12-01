@@ -8,7 +8,7 @@ import { Address } from '../../../../core/models/address';
 @Component({
   selector: 'app-add-edit-address',
   templateUrl: './add-edit-address.component.html',
-  styleUrls: ['./add-edit-address.component.scss']
+  
 })
 export class AddEditAddressComponent implements OnInit {
   addressForm: UntypedFormGroup;

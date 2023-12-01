@@ -1,6 +1,6 @@
-<div class="cart-section container" *ngIf="!isMobile">
-  <div *ngIf="(totalCartItems$ | async) > 0; else emptyCart" class="row">
-    <div class="left col-md-9">
+<div class="cart-section container mx-auto sm:px-4" *ngIf="!isMobile">
+  <div *ngIf="(totalCartItems$ | async) > 0; else emptyCart" class="flex flex-wrap ">
+    <div class="left md:w-3/4 pr-4 pl-4">
       <div class="checkout-header-container">
         <div class="checkout-header">
           <span class="text">Your Shopping Cart</span>
@@ -10,7 +10,7 @@
         <app-line-item-list></app-line-item-list>
       </div>
     </div>
-    <div class="right col-md-3">
+    <div class="right md:w-1/4 pr-4 pl-4">
       <app-order-total-summary
         [itemTotal]="itemTotal$ | async"
       ></app-order-total-summary>
@@ -21,8 +21,8 @@
     <app-empty-cart></app-empty-cart>
   </ng-template>
 </div>
-<div class="cart-section container p-0" *ngIf="isMobile">
-  <div class="right col-12">
+<div class="cart-section container mx-auto sm:px-4 p-0" *ngIf="isMobile">
+  <div class="right w-full">
     <app-order-total-summary
       *ngIf="(totalCartItems$ | async) > 0"
       [itemTotal]="totalCartValue$ | async"
@@ -30,7 +30,7 @@
     ></app-order-total-summary>
   </div>
   <div *ngIf="(totalCartItems$ | async) > 0; else emptyCart">
-    <div class="left col-12">
+    <div class="left w-full">
       <div class="prod-set">
         <app-line-item-list [isMobile]="isMobile"></app-line-item-list>
       </div>

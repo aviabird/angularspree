@@ -4,7 +4,7 @@
   [ngClass]="[custopt?.length === 0 ? 'notvariant' : '']"
 >
   <div *ngFor="let variant of (customOptionTypesHash | keys)">
-    <div class="size-buttons-size-header d-none d-sm-block">
+    <div class="size-buttons-size-header hidden sm:block">
       <h6>{{ variant.key }}</h6>
     </div>
     <button

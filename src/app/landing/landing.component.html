@@ -1,9 +1,9 @@
 <app-lp-banner></app-lp-banner>
-<button type="button" class="btn shippingbtn d-block d-sm-none">
+<button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline shippingbtn block sm:hidden">
   FREE 1-2 DAY SHIPPING OVER {{ currency }}{{ freeShippingAmount }}
   <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
 </button>
-<div class="container my-5" *ngIf="(products$ | async); let productList">
+<div class="container mx-auto sm:px-4 my-5" *ngIf="(products$ | async); let productList">
   <app-lp-product-list
     [products]="productList"
     dealsType="Today's Deal"

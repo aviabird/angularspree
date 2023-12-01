@@ -1,14 +1,14 @@
 <form class="form" [formGroup]="addressForm" (ngSubmit)="onSubmit()">
   <hr />
-  <div class="row mt-3">
-    <div class="form-group col-sm-6">
+  <div class="flex flex-wrap  mt-3">
+    <div class="mb-4 sm:w-1/2 pr-4 pl-4">
       <label
         >Pin Code
         <span class="required">*</span>
       </label>
       <input
         type="tel"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         formControlName="zip_code"
         autocomplete="none"
       />
@@ -18,17 +18,17 @@
           addressForm.get('zip_code').touched
         "
       >
-        <p class="value-err text-danger show">Please enter Pincode!</p>
+        <p class="value-err text-red-600 opacity-100 block">Please enter Pincode!</p>
       </div>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="mb-4 sm:w-1/2 pr-4 pl-4">
       <label
         >Mobile No
         <span class="required">*</span>
       </label>
       <input
         type="tel"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         formControlName="phone"
         autocomplete="none"
       />
@@ -37,19 +37,19 @@
           addressForm.get('phone').errors && addressForm.get('phone').touched
         "
       >
-        <p class="value-err text-danger show">
+        <p class="value-err text-red-600 opacity-100 block">
           Please enter valid phone number!
         </p>
       </div>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="mb-4 sm:w-1/2 pr-4 pl-4">
       <label
         >First Name
         <span class="required">*</span>
       </label>
       <input
         type="text"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         formControlName="first_name"
         autocomplete="none"
       />
@@ -59,17 +59,17 @@
           addressForm.get('first_name').touched
         "
       >
-        <p class="value-err text-danger show">Please enter first name!</p>
+        <p class="value-err text-red-600 opacity-100 block">Please enter first name!</p>
       </div>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="mb-4 sm:w-1/2 pr-4 pl-4">
       <label>
         Last Name
         <span class="required">*</span>
       </label>
       <input
         type="text"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         formControlName="last_name"
         autocomplete="none"
       />
@@ -79,17 +79,17 @@
           addressForm.get('last_name').touched
         "
       >
-        <p class="value-err text-danger show">Please enter last name!</p>
+        <p class="value-err text-red-600 opacity-100 block">Please enter last name!</p>
       </div>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="mb-4 sm:w-1/2 pr-4 pl-4">
       <label>
         Locality / Town
         <span class="required">*</span>
       </label>
       <input
         type="text"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         formControlName="address_line_2"
         autocomplete="none"
       />
@@ -99,17 +99,17 @@
           addressForm.get('address_line_2').touched
         "
       >
-        <p class="value-err text-danger show">Please enter locality / town!</p>
+        <p class="value-err text-red-600 opacity-100 block">Please enter locality / town!</p>
       </div>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="mb-4 sm:w-1/2 pr-4 pl-4">
       <label
         >City / District
         <span class="required">*</span>
       </label>
       <input
         type="text"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         formControlName="city"
         autocomplete="none"
       />
@@ -118,17 +118,17 @@
           addressForm.get('city').errors && addressForm.get('city').touched
         "
       >
-        <p class="value-err text-danger show">Please enter city / district!</p>
+        <p class="value-err text-red-600 opacity-100 block">Please enter city / district!</p>
       </div>
     </div>
-    <div class="form-group col-sm-12">
+    <div class="mb-4 sm:w-full pr-4 pl-4">
       <label
         >Address
         <span class="required">*</span>
       </label>
       <textarea
         type="text"
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         formControlName="address_line_1"
         autocomplete="none"
       ></textarea>
@@ -138,16 +138,16 @@
           addressForm.get('address_line_1').touched
         "
       >
-        <p class="value-err text-danger show">
+        <p class="value-err text-red-600 opacity-100 block">
           Please enter address(minimum 10 characters long)!
         </p>
       </div>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="mb-4 sm:w-1/2 pr-4 pl-4">
       <label> Country </label>
       <span class="required">*</span>
       <select
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         formControlName="country_id"
         [(ngModel)]="countryId"
         (change)="selectedCountry(countryId)"
@@ -173,14 +173,14 @@
           addressForm.get('country_id').touched
         "
       >
-        <p class="value-err text-danger show">Please select country!</p>
+        <p class="value-err text-red-600 opacity-100 block">Please select country!</p>
       </div>
     </div>
-    <div class="form-group col-sm-6">
+    <div class="mb-4 sm:w-1/2 pr-4 pl-4">
       <label> State </label>
       <span class="required">*</span>
       <select
-        class="form-control"
+        class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
         formControlName="state_id"
         [(ngModel)]="stateId"
         (change)="selectedState(stateId)"
@@ -203,15 +203,15 @@
           addressForm.get('state_id').touched
         "
       >
-        <p class="value-err text-danger show">Please select state!</p>
+        <p class="value-err text-red-600 opacity-100 block">Please select state!</p>
       </div>
     </div>
-    <div *ngIf="isAuthenticated" class="save-button col-12 col-sm-6">
-      <button class="btn themebtnprimary">Save</button>
+    <div *ngIf="isAuthenticated" class="save-button w-full sm:w-1/2 pr-4 pl-4">
+      <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimary">Save</button>
     </div>
-    <div class="col-12 col-sm-2 " style="padding-top: 15px;">
+    <div class="w-full sm:w-1/5 pr-4 pl-4 " style="padding-top: 15px;">
       <button
-        class="btn themebtnprimarybasic mb-3"
+        class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimarybasic mb-3"
         (click)="closeAddressForm()"
       >
         Cancel

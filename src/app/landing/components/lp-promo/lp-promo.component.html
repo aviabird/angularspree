@@ -1,7 +1,7 @@
 <section *ngIf="promo_banners">
-  <div class="row">
-    <a href="{{ promo_banners.link_url }}" class="col">
-      <img src="{{ promo_banners.image_link }}" class="img-fluid w-100" />
+  <div class="flex flex-wrap ">
+    <a href="{{ promo_banners.link_url }}" class="relative flex-grow max-w-full flex-1 px-4">
+      <img src="{{ promo_banners.image_link }}" class="max-w-full h-auto w-full" />
     </a>
   </div>
   <hr />

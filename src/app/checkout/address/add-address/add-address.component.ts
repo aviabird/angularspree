@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-address',
   templateUrl: './add-address.component.html',
-  styleUrls: ['./add-address.component.scss']
+  
 })
 export class AddAddressComponent implements OnInit, OnDestroy {
   @Input() modifiedAddress: Address;

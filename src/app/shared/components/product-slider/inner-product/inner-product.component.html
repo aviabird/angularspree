@@ -1,12 +1,12 @@
 <div class="product-tile">
   <a [routerLink]="['/', product.slug, product.id]">
-    <picture class="img-responsive d-block">
+    <picture class="img-responsive block">
       <img
         [alt]="product.name"
         [errorImage]="noImageUrl"
         [lazyLoad]="getProductImageUrl()"
         [offset]="100"
-        class="img-responsive w-100 h-100"
+        class="img-responsive w-full h-full"
       />
     </picture>
     <ngx-input-star-rating
@@ -15,6 +15,6 @@
       class="rating"
       disabled="true"
     ></ngx-input-star-rating>
-    <p class="mt-1 mb-2 text-dark">{{ product.name }}</p>
+    <p class="mt-1 mb-2 text-gray-900">{{ product.name }}</p>
   </a>
 </div>

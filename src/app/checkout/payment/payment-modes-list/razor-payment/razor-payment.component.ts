@@ -24,7 +24,7 @@ declare var Razorpay: any;
 @Component({
   selector: 'app-razor-payment',
   templateUrl: './razor-payment.component.html',
-  styleUrls: ['./razor-payment.component.scss']
+  
 })
 export class RazorPaymentComponent implements OnInit, OnDestroy {
   @Input() paymentMethodId: number;

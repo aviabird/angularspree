@@ -1,10 +1,10 @@
 <div *ngIf="(products$ | async); let products">
-  <div class="table-responsive" *ngIf="products.length; else elseBlock">
+  <div class="block w-full overflow-auto scrolling-touch" *ngIf="products.length; else elseBlock">
     <app-favorite-product-list-item
       [product]="products"
     ></app-favorite-product-list-item>
   </div>
   <ng-template #elseBlock>
-    <div class="p-5">You have'nt favorited anything yet.</div>
+    <div class="p-12">You have'nt favorited anything yet.</div>
   </ng-template>
 </div>

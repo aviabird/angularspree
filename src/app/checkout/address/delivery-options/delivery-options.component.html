@@ -45,7 +45,7 @@
   <button
     [disabled]="(orderState$ | async) !== 'address'"
     (click)="checkoutToPayment()"
-    class="btn themebtnprimary"
+    class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimary"
   >
     continue to payment
   </button>

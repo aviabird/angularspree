@@ -1,15 +1,15 @@
-<div class="container pt-5 pb-5" *ngIf="isAuthenticated">
+<div class="container mx-auto sm:px-4 pt-5 pb-5" *ngIf="isAuthenticated">
   <h3 *ngIf="!isReviewSubmitted">Write Review</h3>
   <h3 *ngIf="isReviewSubmitted">Review Submitted!</h3>
   <div class="write-review">
-    <div class="row">
-      <div class="col-12 pl-4 col-sm-2 text-center">
-        <img [src]="getProductImageUrl()" class="img-fluid" />
+    <div class="flex flex-wrap ">
+      <div class="w-full pl-4 sm:w-1/5 pr-4 pl-4 text-center">
+        <img [src]="getProductImageUrl()" class="max-w-full h-auto" />
       </div>
-      <div class="col-12 col-sm-7">
-        <div class="container">
-          <div class="row">
-            <div class="col-12" *ngIf="!isReviewSubmitted">
+      <div class="w-full sm:w-3/5 pr-4 pl-4">
+        <div class="container mx-auto sm:px-4">
+          <div class="flex flex-wrap ">
+            <div class="w-full" *ngIf="!isReviewSubmitted">
               <h2>{{ product.name }}</h2>
               <form
                 [formGroup]="reviewForm"
@@ -17,7 +17,7 @@
                 data-toggle="validator"
                 *ngIf="reviewForm"
               >
-                <div class="form-group">
+                <div class="mb-4">
                   <label for="exampleInputEmail1">Rate this product</label>
                   <div>
                     <ngx-input-star-rating
@@ -26,11 +26,11 @@
                     ></ngx-input-star-rating>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="mb-4">
                   <label for="exampleInputEmail1">Title</label>
                   <input
                     type="text"
-                    class="form-control"
+                    class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
                     aria-describedby="emailHelp"
                     placeholder="Headline for your review"
                     formControlName="title"
@@ -41,15 +41,15 @@
                       reviewForm.get('title').hasError('required') &&
                       reviewForm.get('title').touched
                     "
-                    class="value-err text-danger show"
+                    class="value-err text-red-600 opacity-100 block"
                   >
                     Please enter your review title.
                   </p>
                 </div>
-                <div class="form-group">
+                <div class="mb-4">
                   <label for="exampleFormControlTextarea1">Content</label>
                   <textarea
-                    class="form-control"
+                    class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
                     rows="3"
                     placeholder="Your review"
                     formControlName="review"
@@ -60,33 +60,33 @@
                       reviewForm.get('review').hasError('required') &&
                       reviewForm.get('review').touched
                     "
-                    class="value-err text-danger show"
+                    class="value-err text-red-600 opacity-100 block"
                   >
                     Please enter your review.
                   </p>
                 </div>
                 <button
                   type="submit"
-                  class="btn themebtnprimary col-12 col-sm-5 mb-4"
+                  class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimary w-full sm:w-2/5 pr-4 pl-4 mb-4"
                 >
                   Submit Review
                 </button>
               </form>
             </div>
-            <div class="col-12" *ngIf="isReviewSubmitted">
+            <div class="w-full" *ngIf="isReviewSubmitted">
               <h3>Thanks for your review!</h3>
               <div class="float-left">
-                <i class="fa fa-check-circle fa-2x text-success"></i>
+                <i class="fa fa-check-circle fa-2x text-green-500"></i>
               </div>
               <div class="float-right">
-                <p class="w-75 text-success">
+                <p class="w-3/4 text-green-500">
                   Your review has been submitted.Please note that your review
                   may take up to 48 hours to appear.
                 </p>
               </div>
               <button
                 type="normal"
-                class="btn themebtnprimary col-12 col-sm-5 mt-4 mb-1"
+                class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimary w-full sm:w-2/5 pr-4 pl-4 mt-4 mb-1"
                 (click)="goToProduct(product.slug)"
               >
                 Continue Shopping
@@ -95,7 +95,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-sm-3" *ngIf="!isReviewSubmitted">
+      <div class="w-full sm:w-1/4 pr-4 pl-4" *ngIf="!isReviewSubmitted">
         <div class="guideline">
           <h4>Writing Guidelines</h4>
           <ul>

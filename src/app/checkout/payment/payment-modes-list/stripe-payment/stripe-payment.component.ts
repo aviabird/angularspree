@@ -28,7 +28,7 @@ import { switchMap, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-stripe-payment',
   templateUrl: './stripe-payment.component.html',
-  styleUrls: ['./stripe-payment.component.scss']
+  
 })
 export class StripePaymentComponent implements OnInit, OnDestroy {
   @Input() paymentMethodId: number;

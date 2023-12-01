@@ -1,11 +1,11 @@
-<div class="row justify-content-between">
+<div class="flex flex-wrap  justify-between">
   <app-search-result-item
-    class="col mb-sm-4 mx-sm-1 border"
+    class="relative flex-grow max-w-full flex-1 px-4 sm:mb-6 sm:mx-1 border"
     [product]="product"
     *ngFor="let product of searchResults; trackBy: trackBy"
   ></app-search-result-item>
   <div
-    class="results-li-dummy col mb-5 mx-sm-1"
+    class="results-li-dummy relative flex-grow max-w-full flex-1 px-4 mb-5 sm:mx-1"
     *ngFor="let _ of dummyResults"
   ></div>
 </div>

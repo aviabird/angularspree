@@ -1,7 +1,7 @@
-<div class="address-section col-12 col-md-8 col-lg-8">
+<div class="address-section w-full md:w-2/3 pr-4 pl-4 lg:w-2/3 pr-4 pl-4">
   <div *ngIf="isUserSelectedAddress">
-    <div *ngIf="shipAddress" class="row m-0">
-      <div class="left col-12 col-md-8 col-lg-8 m-0 ">
+    <div *ngIf="shipAddress" class="flex flex-wrap  m-0">
+      <div class="left w-full md:w-2/3 pr-4 pl-4 lg:w-2/3 pr-4 pl-4 m-0 ">
         <div class="edit-address">
           <span class="edit-label">
             Delivery Address
@@ -15,16 +15,16 @@
         </div>
         <app-delivery-address [address]="shipAddress"></app-delivery-address>
       </div>
-      <div class="right col-12 col-md-4 col-lg-4 m-0">
+      <div class="right w-full md:w-1/3 pr-4 pl-4 lg:w-1/3 pr-4 pl-4 m-0">
         <app-delivery-options
           (onCheckoutToPayment)="checkoutToPayment()"
         ></app-delivery-options>
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="!isUserSelectedAddress">
+  <div class="flex flex-wrap " *ngIf="!isUserSelectedAddress">
     <div
-      class="left col-12 col-md-10 col-lg-10 m-auto border-right-0"
+      class="left w-full md:w-4/5 pr-4 pl-4 lg:w-4/5 pr-4 pl-4 m-auto border-r-0"
       *ngIf="!isUserSelectedAddress"
     >
       <div class="add-address reviewlink pl-1" *ngIf="!isEditButtonPressed">
@@ -49,9 +49,9 @@
         </app-add-address>
       </div>
     </div>
-    <div class="row" *ngIf="!isEditButtonPressed">
+    <div class="flex flex-wrap " *ngIf="!isEditButtonPressed">
       <div
-        class="left col-12 col-md-10 col-lg-10 m-auto border-right-0"
+        class="left w-full md:w-4/5 pr-4 pl-4 lg:w-4/5 pr-4 pl-4 m-auto border-r-0"
         *ngIf="(userAddresses$ | async); let userAddresses"
       >
         <app-saved-address

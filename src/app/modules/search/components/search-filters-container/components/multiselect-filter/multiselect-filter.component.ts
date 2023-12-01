@@ -17,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-multiselect-filter',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './multiselect-filter.component.html',
-  styleUrls: ['./multiselect-filter.component.scss']
+  
 })
 export class MultiselectFilterComponent implements OnInit {
   @Input() filter: FilterAgg;

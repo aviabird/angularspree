@@ -9,7 +9,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 @Component({
   selector: 'app-profile-email',
   templateUrl: './profile-email.component.html',
-  styleUrls: ['./profile-email.component.scss']
+  
 })
 export class ProfileEmailComponent implements OnInit {
   @Input() userDetails;
