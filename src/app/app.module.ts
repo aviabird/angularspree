@@ -4,15 +4,14 @@ import { Ng2UiAuthModule } from 'ng2-ui-auth';
 import { EffectsModule } from '@ngrx/effects';
 import {
   BrowserModule,
-  BrowserTransferStateModule
 } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { TransferHttpCacheModule } from '@nguniversal/common';
+import { TransferHttpCacheModule } from '@angular/ssr';
 
 // Components
 import { AppComponent } from './app.component';
@@ -64,8 +63,8 @@ import { AddressService } from './checkout/address/services/address.service';
     EffectsModule.forRoot([]),
 
     BrowserAnimationsModule,
-    BrowserModule.withServerTransition({ appId: 'ng-spree' }),
-    BrowserTransferStateModule,
+    BrowserModule,
+    { provide: APP_ID, useValue: 'ng-spree' },
     TransferHttpCacheModule,
     FormsModule,
     LayoutModule,
