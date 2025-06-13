@@ -7,7 +7,7 @@ import { Address } from '../../../core/models/address';
 @Component({
   selector: 'app-addresses',
   templateUrl: './addresses.component.html',
-  styleUrls: ['./addresses.component.scss']
+  
 })
 export class AddressesComponent implements OnInit {
   userAddresses$: Observable<Array<Address>>;

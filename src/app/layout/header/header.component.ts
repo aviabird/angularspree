@@ -29,7 +29,7 @@ import { Brand } from '../../core/models/brand';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  
   // tslint:disable-next-line:use-host-property-decorator
   host: {
     '(window:scroll)': 'updateHeader($event)'

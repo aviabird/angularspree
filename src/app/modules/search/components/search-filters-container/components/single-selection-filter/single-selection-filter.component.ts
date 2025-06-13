@@ -5,6 +5,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-single-selection-filter',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './single-selection-filter.component.html',
-  styleUrls: ['./single-selection-filter.component.scss']
+  
 })
 export class SingleSelectionFilterComponent extends MultiselectFilterComponent {}

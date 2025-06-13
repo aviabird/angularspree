@@ -4,15 +4,15 @@
       [orders]="orders"
       [isMobile]="isMobile"
     ></app-order-list-item>
-    <div class="col-12 d-none d-sm-block">
-      <div class="row">
+    <div class="w-full hidden sm:block">
+      <div class="flex flex-wrap ">
         <!-- <pagination class="m-auto" *ngIf="orders.total_count > orders.per_page" [totalItems]="orders.total_count" [itemsPerPage]="orders.per_page"
           [(ngModel)]="orders.current_page" (pageChanged)="pageChanged($event)" [rotate]="rotate" [maxSize]="5">
         </pagination> -->
       </div>
     </div>
-    <div class="col-12 d-block d-sm-none mb-2">
-      <div class="row">
+    <div class="w-full block sm:hidden mb-2">
+      <div class="flex flex-wrap ">
         <!-- <pagination class="m-auto" *ngIf="orders.total_count > orders.per_page" [totalItems]="orders.total_count" [itemsPerPage]="orders.per_page"
           [(ngModel)]="orders.current_page" (pageChanged)="pageChanged($event)" [rotate]="rotate" [maxSize]="3">
         </pagination> -->
@@ -25,7 +25,7 @@
       <div class="empty-cart-message">You have'nt ordered anything yet.</div>
       <button
         type="button"
-        class="btn themebtnprimary col-sm-4 m-auto"
+        class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimary sm:w-1/3 pr-4 pl-4 m-auto"
         [routerLink]="['/']"
       >
         Start Shopping

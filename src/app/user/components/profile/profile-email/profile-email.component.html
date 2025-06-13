@@ -1,35 +1,35 @@
-<div class="row" *ngIf="userDetails">
-  <div class="col-md-12">
-    <div class="alert alert-success col-12">
+<div class="flex flex-wrap " *ngIf="userDetails">
+  <div class="md:w-full pr-4 pl-4">
+    <div class="relative px-3 py-3 mb-4 border rounded bg-green-200 border-green-300 text-green-800 w-full">
       <strong>Welcome!</strong> {{ userDetails.email }}
     </div>
-    <h5 class="d-block">Email Address</h5>
+    <h5 class="block">Email Address</h5>
     <form
       [formGroup]="emailForm"
       (ngSubmit)="emailConfirmModal(emailModal, userDetails.id)"
-      class="form-inline"
+      class="flex items-center"
     >
-      <div class="form-group mr-sm-3 d-none d-sm-block">
+      <div class="mb-4 sm:mr-4 hidden sm:block">
         <input
           type="email"
           [readonly]="!isEditEmailPressed"
-          class="form-control mt-1"
+          class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded mt-1"
           placeholder="Email Address"
           formControlName="email"
         />
       </div>
-      <div class="form-group mr-sm-3 col-12 p-0 d-bolck d-sm-none">
+      <div class="mb-4 sm:mr-4 w-full p-0 d-bolck sm:hidden">
         <input
           type="email"
           [readonly]="!isEditEmailPressed"
-          class="form-control mt-1"
+          class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded mt-1"
           placeholder="Email Address"
           formControlName="email"
         />
       </div>
       <button
         type="submit"
-        class="btn themebtnprimarybasic col-12 col-sm-2"
+        class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimarybasic w-full sm:w-1/5 pr-4 pl-4"
         (click)="editEmail()"
         *ngIf="!isEditEmailPressed"
       >
@@ -37,7 +37,7 @@
       </button>
       <button
         type="submit"
-        class="btn themebtnprimarybasic col-12 col-sm-3 mr-3"
+        class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimarybasic w-full sm:w-1/4 pr-4 pl-4 mr-3"
         *ngIf="isEditEmailPressed"
         [disabled]="!emailForm.valid"
       >
@@ -45,7 +45,7 @@
       </button>
       <button
         type="submit"
-        class="btn themebtnprimarybasic col-12 col-sm-3 mt-2 mt-sm-0"
+        class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline themebtnprimarybasic w-full sm:w-1/4 pr-4 pl-4 mt-2 sm:mt-0"
         *ngIf="isEditEmailPressed"
         (click)="cancelEmail()"
       >
@@ -59,9 +59,9 @@
   <div class="modal-body text-center">
     <p>After updating email, you will be automatically logged out!</p>
     <p>Do you want to confirm?</p>
-    <button type="button" class="btn btn-success mr-3" (click)="confirm()">
+    <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-green-500 text-white hover:bg-green-600 mr-3" (click)="confirm()">
       Yes
     </button>
-    <button type="button" class="btn btn-danger" (click)="decline()">No</button>
+    <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 text-white hover:bg-red-700" (click)="decline()">No</button>
   </div>
 </ng-template>

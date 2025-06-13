@@ -13,7 +13,7 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-order-failed',
   templateUrl: './order-failed.component.html',
-  styleUrls: ['./order-failed.component.scss']
+  
 })
 export class OrderFailedComponent implements OnInit {
   queryParams: Params;

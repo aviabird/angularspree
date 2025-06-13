@@ -1,6 +1,6 @@
-<ul class="list-group border border-left-0 border-bottom-0 py-3">
-  <small class="font-weight-bold pb-3 text-uppercase">{{ filter.id }}</small>
-  <li class="list-group-item custom-slider border-0 p-0 pr-1">
+<ul class="flex flex-col pl-0 mb-0 border rounded border-gray-300 border border-l-0 border-b-0 py-3">
+  <small class="font-bold pb-3 uppercase">{{ filter.id }}</small>
+  <li class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline custom-slider border-0 p-0 pr-1">
     <ngx-slider
       [(value)]="minValue"
       [(highValue)]="maxValue"

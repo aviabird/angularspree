@@ -22,7 +22,7 @@ import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-delivery-options',
   templateUrl: './delivery-options.component.html',
-  styleUrls: ['./delivery-options.component.scss']
+  
 })
 export class DeliveryOptionsComponent implements OnInit, OnDestroy {
   @Output() onCheckoutToPayment = new EventEmitter<boolean>();

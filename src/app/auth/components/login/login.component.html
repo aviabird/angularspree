@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="col-12 col-md-10 col-sm-10 col-lg-8 loginwindow">
+<div class="container mx-auto sm:px-4">
+  <div class="w-full md:w-4/5 pr-4 pl-4 sm:w-4/5 pr-4 pl-4 lg:w-2/3 pr-4 pl-4 loginwindow">
     <h2>Sign In or Register</h2>
-    <div class="row">
-      <div class="col-12 0col-md-6 col-sm-6 col-lg-6">
-        <div class="row login-container" data-hook="">
-          <div id="content" class="col-sm-12" data-hook="">
+    <div class="flex flex-wrap ">
+      <div class="w-full 0col-md-6 sm:w-1/2 pr-4 pl-4 lg:w-1/2 pr-4 pl-4">
+        <div class="flex flex-wrap  login-container" data-hook="">
+          <div id="content" class="sm:w-full pr-4 pl-4" data-hook="">
             <div class="col-centered">
               <div class="panel panel-default">
                 <div
@@ -12,10 +12,10 @@
                   class="panel-body"
                   data-hook="login"
                 >
-                  <!-- <div class="login-third-party-login col-12">
+                  <!-- <div class="login-third-party-login w-full">
                     <p class="login-button-info-text login-info-text">EASILY USING</p>
-                    <div class="login-button-container col-12">
-                      <div class="row">
+                    <div class="login-button-container w-full">
+                      <div class="flex flex-wrap ">
                         <button class="login-google login-button" id="gPlusLogin" (click)="socialLogin('google')">
                           <span class="header-sprite login-gplus-logo"></span>
                           GOOGLE
@@ -45,8 +45,8 @@
                             signInForm.get('email').touched
                           "
                         >
-                          <span class="login-error-icon text-danger">!</span>
-                          <p class="login-error-message text-danger">
+                          <span class="login-error-icon text-red-600">!</span>
+                          <p class="login-error-message text-red-600">
                             {{
                               signInForm.get('email').errors.msg ||
                                 'Please enter a valid email id'
@@ -69,8 +69,8 @@
                             signInForm.get('password').touched
                           "
                         >
-                          <span class="login-error-icon text-danger">!</span>
-                          <p class="login-error-message text-danger">
+                          <span class="login-error-icon text-red-600">!</span>
+                          <p class="login-error-message text-red-600">
                             {{
                               signInForm.get('password').errors.msg ||
                                 'Password must be at least 8 characters'
@@ -80,14 +80,14 @@
                       </div>
                     </fieldset>
                     <fieldset class="login-login-button-container">
-                      <button type="submit" class="btn login-login-button">
+                      <button type="submit" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline login-login-button">
                         Log in
                       </button>
                     </fieldset>
                   </form>
                   <!-- <div class="login-link-container">
                     <small>
-                      <a class="login-link text-danger" [routerLink]="['/auth/recover']">Forget Password</a>
+                      <a class="login-link text-red-600" [routerLink]="['/auth/recover']">Forget Password</a>
                     </small>
                   </div> -->
                 </div>
@@ -96,7 +96,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 0col-md-6 col-sm-6 col-lg-6 createacc">
+      <div class="w-full 0col-md-6 sm:w-1/2 pr-4 pl-4 lg:w-1/2 pr-4 pl-4 createacc">
         <div class="login-right-links">
           <h2 class="text-default">For New User</h2>
           <p>
@@ -105,7 +105,7 @@
           </p>
 
           <p>
-            <a class="btn login-login-button" [routerLink]="['/auth']"
+            <a class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline login-login-button" [routerLink]="['/auth']"
               >Create Account</a
             >
           </p>

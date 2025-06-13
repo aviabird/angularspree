@@ -1,19 +1,19 @@
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb bg-transparent pl-0 mb-0">
+  <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded bg-transparent pl-0 mb-0">
     <li
-      class="breadcrumb-item"
+      class="inline-block px-2 py-2 text-gray-700"
       [ngClass]="{ active: lastCrumb }"
       *ngFor="let breadcrumb of breadcrumbs; last as lastCrumb"
     >
       <a
         *ngIf="!lastCrumb"
-        class="text-secondary"
+        class="text-gray-600"
         [routerLink]="breadcrumb.link"
         >{{ breadcrumb.crumb }}</a
       >
       <span
         *ngIf="lastCrumb"
-        class="font-weight-bold text-dark text-capitalize"
+        class="font-bold text-gray-900 capitalize"
         >{{ breadcrumb.crumb }}</span
       >
     </li>

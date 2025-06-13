@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'app-inner-product',
   templateUrl: './inner-product.component.html',
-  styleUrls: ['./inner-product.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InnerIproductComponent implements OnInit {

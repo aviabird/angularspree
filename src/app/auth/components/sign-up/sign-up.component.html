@@ -1,8 +1,8 @@
-<div class="container">
-  <div class="col-12 col-md-7 col-sm-7 col-lg-5 loginwindow">
+<div class="container mx-auto sm:px-4">
+  <div class="w-full md:w-3/5 pr-4 pl-4 sm:w-3/5 pr-4 pl-4 lg:w-2/5 pr-4 pl-4 loginwindow">
     <h3 class="panel-title">Signup to {{ title }}</h3>
-    <div class="row register-container" data-hook="">
-      <div id="content" class="col-sm-12" data-hook="">
+    <div class="flex flex-wrap  register-container" data-hook="">
+      <div id="content" class="sm:w-full pr-4 pl-4" data-hook="">
         <div>
           <div class="panel panel-default">
             <div class="panel-heading"></div>
@@ -149,7 +149,7 @@
                   </div>
                 </fieldset>
                 <fieldset class="register-register-button-container">
-                  <button class="btn register-register-button">REGISTER</button>
+                  <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline register-register-button">REGISTER</button>
                 </fieldset>
               </form>
               <div class="register-link-container">
@@ -159,7 +159,7 @@
                       >Already have an account?</span
                     >
                     <a
-                      class="register-create-account-link register-link text-danger"
+                      class="register-create-account-link register-link text-red-600"
                       [routerLink]="['/auth', 'login']"
                       >Login!</a
                     >

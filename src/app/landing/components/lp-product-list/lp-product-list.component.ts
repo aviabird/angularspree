@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'app-lp-product-list',
   templateUrl: './lp-product-list.component.html',
-  styleUrls: ['./lp-product-list.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LpProductListComponent implements OnInit {

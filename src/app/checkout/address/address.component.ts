@@ -13,7 +13,7 @@ import { fadeInAnimation } from '../../shared/animations/fade-in.animation';
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
-  styleUrls: ['./address.component.scss'],
+  
   animations: [fadeInAnimation]
 })
 export class AddressComponent implements OnInit, OnDestroy {

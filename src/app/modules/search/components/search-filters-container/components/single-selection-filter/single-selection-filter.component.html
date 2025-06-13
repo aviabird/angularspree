@@ -1,11 +1,11 @@
 <ul
-  class="list-group border border-left-0 border-bottom-0 py-3"
+  class="flex flex-col pl-0 mb-0 border rounded border-gray-300 border border-l-0 border-b-0 py-3"
   *ngIf="showFilter"
 >
-  <small class="font-weight-bold pb-3 text-uppercase">{{ filter.id }}</small>
+  <small class="font-bold pb-3 uppercase">{{ filter.id }}</small>
   <li
     *ngFor="let filterValue of (filter.values | slice: skipCount)"
-    class="list-group-item border-0 p-0"
+    class="relative block py-3 px-6 -mb-px border border-r-0 border-l-0 border-gray-300 no-underline border-0 p-0"
   >
     <div class="custom-control custom-checkbox">
       <input
@@ -16,12 +16,12 @@
         (change)="selectedItem(filterValue.id)"
       />
       <label
-        class="custom-control-label text-capitalize"
+        class="custom-control-label capitalize"
         for="{{ filterValue.id }}"
       >
         {{ filterValue.id }}
       </label>
-      <small class="text-secondary font-weight-light"
+      <small class="text-gray-600 font-weight-light"
         >( {{ filterValue.count }} )</small
       >
     </div>

@@ -20,7 +20,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-category-mobile-menu',
   templateUrl: './category-mobile-menu.component.html',
-  styleUrls: ['./category-mobile-menu.component.scss'],
+  
   animations: [
     trigger('popOverState', [
       state(

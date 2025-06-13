@@ -14,7 +14,7 @@ import { Brand } from '../../../../core/models/brand';
 @Component({
   selector: 'app-brand-menu-dropdown',
   templateUrl: './brand-menu-dropdown.component.html',
-  styleUrls: ['./brand-menu-dropdown.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrandMenuDropdownComponent implements OnInit, OnDestroy {

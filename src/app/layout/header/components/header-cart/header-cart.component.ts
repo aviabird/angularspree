@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-header-cart',
   templateUrl: './header-cart.component.html',
-  styleUrls: ['./header-cart.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderCartComponent implements OnInit, OnDestroy {

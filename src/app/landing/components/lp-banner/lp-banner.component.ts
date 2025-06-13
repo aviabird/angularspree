@@ -12,7 +12,7 @@ import { NguCarouselConfig } from '@ngu/carousel';
 @Component({
   selector: 'app-lp-banner',
   templateUrl: './lp-banner.component.html',
-  styleUrls: ['./lp-banner.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LpBannerComponent implements OnInit, AfterViewInit {

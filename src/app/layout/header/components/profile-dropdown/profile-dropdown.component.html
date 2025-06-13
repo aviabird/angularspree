@@ -1,7 +1,7 @@
 <div *ngIf="!isMobile">
   <div *ngIf="!isAuthenticated">
     <div
-      class="btn  helpbtn"
+      class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline  helpbtn"
       [ngClass]="[isOpen ? 'openhelp' : '']"
       (mouseenter)="dropdown.show()"
       (mouseleave)="dropdown.hide()"
@@ -22,18 +22,18 @@
       <div
         id="dropdown-triggers-manual"
         *dropdownMenu
-        class="dropdown-menu text-center"
+        class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded text-center"
         [ngClass]="[isScrolled ? '' : 'notscrolled']"
         role="menu"
         aria-labelledby="button-triggers-manual"
       >
         <ul>
           <li role="menuitem">
-            <a class="dropdown-item" (click)="login()">Login</a>
+            <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" (click)="login()">Login</a>
           </li>
-          <li class="divider dropdown-divider"></li>
+          <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li>
           <li role="menuitem">
-            <a class="dropdown-item" [routerLink]="['/auth/signup']">Sign Up</a>
+            <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" [routerLink]="['/auth/signup']">Sign Up</a>
           </li>
         </ul>
       </div>
@@ -41,13 +41,13 @@
   </div>
   <div *ngIf="isAuthenticated">
     <div
-      class="btn  helpbtn"
+      class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline  helpbtn"
       [ngClass]="[isOpen ? 'openhelp' : '']"
       (mouseenter)="dropdown.show()"
       (mouseleave)="dropdown.hide()"
     >
       <i class="fa fa-user mr-2" aria-hidden="true"></i>
-      <strong class="text-capitalize"
+      <strong class="capitalize"
         >{{ name }}
         <i class="fa pl-3 fa-chevron-down"></i>
       </strong>
@@ -65,30 +65,30 @@
       <div
         id="dropdown-triggers-manual"
         *dropdownMenu
-        class="dropdown-menu text-center"
+        class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded text-center"
         [ngClass]="{arrowalignement: isAuthenticated, notscrolled: !isScrolled}"
         role="menu"
         aria-labelledby="button-triggers-manual"
       >
         <ul>
           <!-- <li role="menuitem">
-            <a class="dropdown-item" routerLink="/user/profile">My Profile</a>
+            <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" routerLink="/user/profile">My Profile</a>
           </li> -->
-          <li class="divider dropdown-divider"></li>
+          <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li>
           <li role="menuitem">
-            <a class="dropdown-item" routerLink="/user/orders">My Orders</a>
+            <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" routerLink="/user/orders">My Orders</a>
           </li>
-          <!-- <li class="divider dropdown-divider"></li> -->
+          <!-- <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li> -->
           <!-- <li role="menuitem">
-            <a class="dropdown-item" routerLink="/user/addresses">My Saved Addresses</a>
+            <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" routerLink="/user/addresses">My Saved Addresses</a>
           </li> -->
-          <!-- <li class="divider dropdown-divider"></li>
+          <!-- <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li>
           <li role="menuitem">
-            <a class="dropdown-item" routerLink="/user/favorite-products">My Favorite Products</a>
+            <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" routerLink="/user/favorite-products">My Favorite Products</a>
           </li> -->
-          <li class="divider dropdown-divider"></li>
+          <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li>
           <li role="menuitem">
-            <a class="dropdown-item" (click)="logout()">Logout</a>
+            <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" (click)="logout()">Logout</a>
           </li>
         </ul>
       </div>
@@ -102,12 +102,12 @@
     aria-hidden="true"
     *ngIf="!isAuthenticated"
   ></i>
-  <div class="btn-group" dropdown *ngIf="isAuthenticated">
+  <div class="relative inline-flex align-middle" dropdown *ngIf="isAuthenticated">
     <button
       id="button-basic"
       dropdownToggle
       type="button"
-      class="btn pr-0 pl-0"
+      class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline pr-0 pl-0"
       aria-controls="dropdown-basic"
     >
       <i class="fa fa-user mr-2" aria-hidden="true"></i>
@@ -115,28 +115,28 @@
     <ul
       id="dropdown-split"
       *dropdownMenu
-      class="dropdown-menu mobile-profile"
+      class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded mobile-profile"
       role="menu"
       aria-labelledby="button-split"
     >
       <li role="menuitem">
-        <!-- <a class="dropdown-item" routerLink="/user/profile">My Profile</a> -->
+        <!-- <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" routerLink="/user/profile">My Profile</a> -->
       </li>
-      <!-- <li class="divider dropdown-divider"></li> -->
+      <!-- <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li> -->
       <li role="menuitem">
-        <a class="dropdown-item" routerLink="/user/orders">My Orders</a>
+        <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" routerLink="/user/orders">My Orders</a>
       </li>
-      <!-- <li class="divider dropdown-divider"></li> -->
+      <!-- <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li> -->
       <li role="menuitem">
-        <!-- <a class="dropdown-item" routerLink="/user/addresses">Saved Addresses</a> -->
+        <!-- <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" routerLink="/user/addresses">Saved Addresses</a> -->
       </li>
-      <!-- <li class="divider dropdown-divider"></li> -->
+      <!-- <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li> -->
       <li role="menuitem">
-        <!-- <a class="dropdown-item" routerLink="/user/favorite-products">My Favorite Products</a> -->
+        <!-- <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" routerLink="/user/favorite-products">My Favorite Products</a> -->
       </li>
-      <li class="divider dropdown-divider"></li>
+      <li class="divider h-0 my-2 overflow-hidden border-t-1 border-gray-300"></li>
       <li role="menuitem">
-        <a class="dropdown-item" (click)="logout()">Logout</a>
+        <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>

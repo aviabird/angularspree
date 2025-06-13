@@ -12,7 +12,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-lp-brands',
   templateUrl: './lp-brands.component.html',
-  styleUrls: ['./lp-brands.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LpBrandsComponent implements OnInit {

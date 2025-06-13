@@ -1,26 +1,26 @@
-<footer class="border-top">
+<footer class="border-t">
   <app-footer-contact-info></app-footer-contact-info>
   <div class="quicklinks">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
+    <div class="container mx-auto sm:px-4">
+      <div class="flex flex-wrap ">
+        <div class="md:w-1/2 pr-4 pl-4">
           <app-footer-quick-links></app-footer-quick-links>
         </div>
-        <div class="col-md-6">
+        <div class="md:w-1/2 pr-4 pl-4">
           <app-footer-social-links></app-footer-social-links>
         </div>
       </div>
     </div>
   </div>
   <section class="cpy">
-    <div class="container cpy1">
-      <div class="row">
-        <div class="col-md-6 col-xs-12 text-left">
+    <div class="container mx-auto sm:px-4 cpy1">
+      <div class="flex flex-wrap ">
+        <div class="md:w-1/2 pr-4 pl-4 sm:w-full pr-4 pl-4 text-left">
           <ul class="p-0 copy">
             <li class="pl-0 pr-0">{{ contact_info.copyright }}</li>
           </ul>
         </div>
-        <div class="col-md-6 col-xs-12 text-right">
+        <div class="md:w-1/2 pr-4 pl-4 sm:w-full pr-4 pl-4 text-right">
           <ul class="text-right term">
             <li>
               <a href="#">Terms Of Use</a>

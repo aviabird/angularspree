@@ -1,115 +1,172 @@
-<div class="header">
-  <nav
-    class="navbar navbar-expand-lg"
-    id="main"
-    [ngClass]="{ 'page-scroll-header': isScrolled }"
-  >
-    <div class="container">
-      <app-categories-menu-dropdown
-        [taxonomies]="taxonomies$ | async"
-        [screenwidth]="screenwidth"
-        [isScrolled]="isScrolled"
-        *ngIf="!isMobile && isScrolled"
-      ></app-categories-menu-dropdown>
-      <a class="navbar-brand" routerLink="/" *ngIf="!isMobile">
-        <img
-          [src]="this.headerConfig.brand.logo"
-          [alt]="this.headerConfig.brand.name"
-          [width]="this.headerConfig.brand.width"
-          [height]="this.headerConfig.brand.height"
-          class="d-inline-block align-top"
-          alt
-        />
+<div class="bg-emerald-500 sticky top-0 z-20">
+  <div class="max-w-screen-2xl mx-auto px-3 sm:px-10">
+    <div class="top-bar h-16 lg:h-auto flex items-center justify-between py-4 mx-auto">
+      <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name"
+        [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height" class="inline-block align-top"
+        alt />
+      <div
+        class="w-full transition-all duration-200 ease-in-out lg:flex lg:max-w-[520px] xl:max-w-[750px] 2xl:max-w-[900px] md:mx-12 lg:mx-4 xl:mx-0">
+        <div class="w-full flex flex-col justify-center flex-shrink-0 relative z-30">
+          <div class="flex flex-col mx-auto w-full">
+            <form class="relative pr-12 md:pr-14 bg-white overflow-hidden shadow-sm rounded-md w-full"><label
+                class="flex items-center py-0.5"><input
+                  class="form-input w-full pl-5 appearance-none transition ease-in-out border text-input text-sm font-sans rounded-md min-h-10 h-10 duration-200 bg-white focus:ring-0 outline-none border-none focus:outline-none placeholder-gray-500 placeholder-opacity-75"
+                  placeholder="Search for products (e.g. fish, apple, oil)" value=""></label><button aria-label="Search"
+                type="submit"
+                class="outline-none text-xl text-gray-400 absolute top-0 right-0 end-0 w-12 md:w-14 h-full flex items-center justify-center transition duration-200 ease-in-out hover:text-heading focus:outline-none"><svg
+                  stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
+                  width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="none" stroke-miterlimit="10" stroke-width="32"
+                    d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"></path>
+                  <path fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"
+                    d="M338.29 338.29L448 448"></path>
+                </svg></button></form>
+          </div>
+        </div>
+      </div>
+      <div
+        class="hidden md:hidden md:items-center lg:flex xl:block absolute inset-y-0 right-0 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <button class="pr-5 text-white text-2xl font-bold" aria-label="Alert"><svg stroke="currentColor" fill="none"
+            stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+            class="w-6 h-6 drop-shadow-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg></button><button aria-label="Total" class="relative px-5 text-white text-2xl font-bold"><span
+            class="absolute z-10 top-0 right-0 inline-flex items-center justify-center p-1 h-5 w-5 text-xs font-medium leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">0</span><svg
+            stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+            stroke-linejoin="round" class="w-6 h-6 drop-shadow-xl" height="1em" width="1em"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg></button><button class="pl-5 text-white text-2xl font-bold" aria-label="Login"><span><svg
+              stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+              stroke-linejoin="round" class="w-6 h-6 drop-shadow-xl" height="1em" width="1em"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg></span></button>
+      </div>
+    </div>
+  </div>
+  <div class="hidden lg:block xl:block bg-white border-b">
+    <div class="max-w-screen-2xl mx-auto px-3 sm:px-10 h-12 flex justify-between items-center">
+      <div class="inline-flex">
+        <div class="relative" data-headlessui-state="">
+          <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center md:justify-start md:space-x-10">
+              <nav class="md:flex space-x-10 items-center">
+                <div class="relative font-serif" data-headlessui-state=""><button
+                    class="group inline-flex items-center py-2 hover:text-emerald-600 focus:outline-none" type="button"
+                    aria-expanded="false" data-headlessui-state="" id="headlessui-popover-button-11"><span
+                      class="font-serif text-sm font-medium">Categories</span><svg xmlns="http://www.w3.org/2000/svg"
+                      fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+                      class="ml-1 h-3 w-3 group-hover:text-emerald-600">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg></button></div><a class="font-serif mx-4 py-2 text-sm font-medium hover:text-emerald-600"
+                  href="/about-us">About Us</a><a
+                  class="font-serif mx-4 py-2 text-sm font-medium hover:text-emerald-600" href="/contact-us">Contact
+                  Us</a>
+                <div class="relative font-serif" data-headlessui-state=""><button
+                    class="group inline-flex items-center py-2 text-sm font-medium hover:text-emerald-600 focus:outline-none"
+                    type="button" aria-expanded="false" data-headlessui-state=""
+                    id="headlessui-popover-button-13"><span>Pages</span><svg xmlns="http://www.w3.org/2000/svg"
+                      fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+                      class="ml-1 h-3 w-3 group-hover:text-emerald-600">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                    </svg></button></div><a
+                  class="relative inline-flex items-center bg-red-100 font-serif ml-4 py-0 px-2 rounded text-sm font-medium text-red-500 hover:text-emerald-600"
+                  href="/offer">Offers<div class="absolute flex w-2 h-2 left-auto -right-1 -top-1"><span
+                      class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-red-400 opacity-75"></span><span
+                      class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span></div></a>
+              </nav>
+              <div
+                style="position: fixed; top: 1px; left: 1px; width: 1px; height: 0px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px; display: none;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="position: fixed; top: 1px; left: 1px; width: 1px; height: 0px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px; display: none;">
+        </div>
+      </div>
+      <div class="flex">
+        <div class="dropdown">
+          <div class="flot-l flag us"></div><button class="dropbtn">English&nbsp;<i
+              class="fas fa-angle-down"></i></button>
+          <div class="dropdown-content"><a href="/">
+              <div class="flot-l flag bd"></div>bangla
+            </a><a href="/">
+              <div class="flot-l flag de"></div>German
+            </a><a href="/">
+              <div class="flot-l flag us"></div>English
+            </a></div>
+        </div><a class="font-serif mx-4 py-2 text-sm font-medium hover:text-emerald-600" href="/privacy-policy">Privacy
+          Policy</a><a class="font-serif mx-4 py-2 text-sm font-medium hover:text-emerald-600"
+          href="/terms-and-conditions">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="">
+  <nav class="relative flex flex-wrap items-center content-between py-3 px-4 " id="main"
+    [ngClass]="{ 'page-scroll-header': isScrolled }">
+    <div class="container mx-auto sm:px-4">
+      <app-categories-menu-dropdown [taxonomies]="taxonomies$ | async" [screenwidth]="screenwidth"
+        [isScrolled]="isScrolled" *ngIf="!isMobile && isScrolled"></app-categories-menu-dropdown>
+      <a class="inline-block pt-1 pb-1 mr-4 text-lg whitespace-no-wrap" routerLink="/" *ngIf="!isMobile">
+        <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name"
+          [width]="this.headerConfig.brand.width" [height]="this.headerConfig.brand.height"
+          class="inline-block align-top" alt />
       </a>
-      <a
-        (click)="showModal()"
-        for="main-nav-state"
-        class="main-nav-trigger"
-        *ngIf="isMobile"
-        [ngClass]="{ 'main-nav-trigger-open': isModalShown }"
-      >
+      <a (click)="showModal()" for="main-nav-state" class="main-nav-trigger" *ngIf="isMobile"
+        [ngClass]="{ 'main-nav-trigger-open': isModalShown }">
         <span></span>
       </a>
-      <a
-        *ngIf="this.headerConfig.showGithubRibon"
-        href="https://github.com/aviabird/angularspree"
-      >
-        <img
-          style="position: absolute; top: 0; right: 0; border: 0; height: 130px; z-index: 9999;"
+      <a *ngIf="this.headerConfig.showGithubRibon" href="https://github.com/aviabird/angularspree">
+        <img style="position: absolute; top: 0; right: 0; border: 0; height: 130px; z-index: 9999;"
           src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67"
           alt="Fork me on GitHub"
-          data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
-        />
+          data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" />
       </a>
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div
-        class="collapse navbar-collapse justify-content-end"
-        id="navbarNavDropdown"
-      >
-        <app-header-search></app-header-search>
-        <app-header-help-dropdown></app-header-help-dropdown>
-        <app-profile-dropdown
-          class="pr-2 border-left"
-          [isAuthenticated]="isAuthenticated$ | async"
-        ></app-profile-dropdown>
-        <app-header-cart
-          class="pl-2 border-left"
-          [totalCartItems]="totalCartItems$ | async"
-        ></app-header-cart>
+      <div class="flex-grow items-center justify-end" id="navbarNavDropdown">
+        <app-profile-dropdown class="pr-2 border-l" [isAuthenticated]="isAuthenticated$ | async"></app-profile-dropdown>
+        <app-header-cart class="pl-2 border-l" [totalCartItems]="totalCartItems$ | async"></app-header-cart>
       </div>
-      <div class="resheader row m-0 hidden-md hidden-lg" *ngIf="isMobile">
+      <div class="resheader flex flex-wrap  m-0 hidden-md hidden-lg" *ngIf="isMobile">
         <div class="mlogo">
-          <a class="navbar-brand small-logo" routerLink="/" *ngIf="isMobile">
-            <img
-              [src]="this.headerConfig.brand.logo"
-              [alt]="this.headerConfig.brand.name"
-              [width]="this.headerConfig.brand.width"
-              height="this.headerConfig.brand.height"
-              class="d-inline-block align-top"
-              alt
-            />
+          <a class="inline-block pt-1 pb-1 mr-4 text-lg whitespace-no-wrap small-logo" routerLink="/" *ngIf="isMobile">
+            <img [src]="this.headerConfig.brand.logo" [alt]="this.headerConfig.brand.name"
+              [width]="this.headerConfig.brand.width" height="this.headerConfig.brand.height"
+              class="inline-block align-top" alt />
           </a>
         </div>
         <div class="search">
-          <app-header-search
-            [isMobile]="isMobile"
-            (onSubCatClicked)="childCatLoaded($event)"
-            [isSearchopen]="isSearchopen"
-          ></app-header-search>
+          <app-header-search [isMobile]="isMobile" (onSubCatClicked)="childCatLoaded($event)"
+            [isSearchopen]="isSearchopen"></app-header-search>
         </div>
         <div class="profile">
-          <app-profile-dropdown
-            [isMobile]="isMobile"
-            class="pr-2 "
-            [isAuthenticated]="isAuthenticated$ | async"
-          ></app-profile-dropdown>
+          <app-profile-dropdown [isMobile]="isMobile" class="pr-2 "
+            [isAuthenticated]="isAuthenticated$ | async"></app-profile-dropdown>
         </div>
         <div class="cart">
-          <app-header-cart
-            class="pl-2 border-left"
-            [isMobile]="isMobile"
-            [totalCartItems]="totalCartItems$ | async"
-          ></app-header-cart>
+          <app-header-cart class="pl-2 border-l" [isMobile]="isMobile"
+            [totalCartItems]="totalCartItems$ | async"></app-header-cart>
         </div>
       </div>
     </div>
   </nav>
-  <nav
-    class="navbar navbar-expand-lg"
-    id="sub-header"
-    [ngClass]="{ 'hide-sub-header': isScrolled }"
-  >
-    <div class="container">
-      <div class="collapse navbar-collapse left-content-start">
-        <app-categories-menu-dropdown
-          [screenwidth]="screenwidth"
-          [taxonomies]="taxonomies$ | async"
-        ></app-categories-menu-dropdown>
-        <app-brand-menu-dropdown
-          [brands]="brands$ | async"
-        ></app-brand-menu-dropdown>
-        <div class="col text-right">
-          <button type="button" class="btn shippingbtn">
+  <nav class="relative flex flex-wrap items-center content-between py-3 px-4 " id="sub-header"
+    [ngClass]="{ 'hide-sub-header': isScrolled }">
+    <div class="container mx-auto sm:px-4">
+      <div class="flex-grow items-center left-content-start">
+        <app-categories-menu-dropdown [screenwidth]="screenwidth"
+          [taxonomies]="taxonomies$ | async"></app-categories-menu-dropdown>
+        <app-brand-menu-dropdown [brands]="brands$ | async"></app-brand-menu-dropdown>
+        <div class="relative flex-grow max-w-full flex-1 px-4 text-right">
+          <button type="button"
+            class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline shippingbtn">
             FREE 1-2 DAY SHIPPING OVER {{ currency }}{{ freeShippingAmount }}
             <i class="fa ml-2 fa-truck" aria-hidden="true"></i>
           </button>
@@ -118,24 +175,13 @@
     </div>
   </nav>
 </div>
-<div
-  *ngIf="isModalShown"
-  [config]="{ show: true, backdrop: false }"
-  (onHidden)="onHidden()"
-  bsModal
-  #autoShownModal="bs-modal"
-  class="modal fade"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="dialog-auto-name"
->
+<div *ngIf="isModalShown" [config]="{ show: true, backdrop: false }" (onHidden)="onHidden()" bsModal
+  #autoShownModal="bs-modal" class="modal opacity-0" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
   <div class="modal-dialog  cat-mobile ">
     <div class="modal-content">
       <div class="modal-body">
-        <app-category-mobile-menu
-          (onSubCatClicked)="allmenuClosed($event)"
-          [taxonomies]="taxonomies$ | async"
-        ></app-category-mobile-menu>
+        <app-category-mobile-menu (onSubCatClicked)="allmenuClosed($event)"
+          [taxonomies]="taxonomies$ | async"></app-category-mobile-menu>
       </div>
     </div>
   </div>

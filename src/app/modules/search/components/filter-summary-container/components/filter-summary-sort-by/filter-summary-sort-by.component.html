@@ -1,9 +1,9 @@
-<div class="btn-group float-right" dropdown triggers="mouseover">
+<div class="relative inline-flex align-middle float-right" dropdown triggers="mouseover">
   <button
     id="button-basic"
     dropdownToggle
     type="button"
-    class="btn dropdown-toggle border text-secondary float-right text-left"
+    class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline  inline-block w-0 h-0 ml-1 align border-b-0 border-t-1 border-r-1 border-l-1 border text-gray-600 float-right text-left"
     aria-controls="dropdown-basic"
   >
     Sort by:
@@ -13,12 +13,12 @@
   <ul
     id="dropdown-basic"
     *dropdownMenu
-    class="dropdown-menu"
+    class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded"
     role="menu"
     aria-labelledby="button-basic"
   >
     <li role="menuitem" *ngFor="let sortOption of sortConfig">
-      <a class="dropdown-item" (click)="sortOrder(sortOption)">
+      <a class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0" (click)="sortOrder(sortOption)">
         {{ sortOption.name }}
       </a>
     </li>

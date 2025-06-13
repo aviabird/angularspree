@@ -1,25 +1,25 @@
 <div *ngIf="!isMobile">
   <div class="image-container" *ngIf="images">
-    <div class="row">
-      <div class="col-1">
-        <div class="thumbnails-vertical-container d-none d-lg-block">
+    <div class="flex flex-wrap ">
+      <div class="w-1/6">
+        <div class="thumbnails-vertical-container hidden lg:block">
           <button
                   class="thumbnails-thumbnail-button"
                   *ngFor="let image of images">
             <img
-                 class="thumbnails-thumbnail img-fluid"
+                 class="thumbnails-thumbnail max-w-full h-auto"
                  [src]="getProductImageUrl(image.small)"
                  alt="Product small image"
                  (mouseover)="onMouseOver(image)" />
           </button>
         </div>
       </div>
-      <div class="col-11" *ngIf="selectedImage">
+      <div class="w-5/6" *ngIf="selectedImage">
         <img
              itemprop="image"
              [src]="getProductImageUrl(selectedImage.large)"
              alt="Product large image"
-             class="thumbnails-selected-image img-fluid" />
+             class="thumbnails-selected-image max-w-full h-auto" />
       </div>
     </div>
   </div>
@@ -38,8 +38,8 @@
                style="display: block; width: 100%;" />
         </a>
       </ngu-item>
-      <button NguCarouselPrev class="leftRs d-none"></button>
-      <button NguCarouselNext class="rightRs d-none"></button>
+      <button NguCarouselPrev class="leftRs hidden"></button>
+      <button NguCarouselNext class="rightRs hidden"></button>
       <ul class="ngucarouselPoint" NguCarouselPoint>
         <li
             *ngFor="let idx of productSlider.pointNumbers; let i = index"

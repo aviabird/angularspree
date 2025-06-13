@@ -1,16 +1,16 @@
 <div class="prod-item pb-3" *ngIf="!isMobile">
   <div *ngIf="name">
-    <div class="col1 col-4 col-sm-2 col-md-2 col-lg-2">
+    <div class="col1 w-1/3 sm:w-1/5 pr-4 pl-4 md:w-1/5 pr-4 pl-4 lg:w-1/5 pr-4 pl-4">
       <img [src]="image" alt="" />
     </div>
-    <div class="col2 col-6 col-sm-10 col-md-10 col-lg-10">
-      <div class="row m-0">
-        <div class="prod-name col-9">
+    <div class="col2 w-1/2 sm:w-4/5 pr-4 pl-4 md:w-4/5 pr-4 pl-4 lg:w-4/5 pr-4 pl-4">
+      <div class="flex flex-wrap  m-0">
+        <div class="prod-name w-3/4">
           <div class="c-gray">
             {{ name }}
           </div>
         </div>
-        <div class="size-qty-wrap col-3 p-0">
+        <div class="size-qty-wrap w-1/4 p-0">
           <div class="size-qty buy-quantity">
             <a class="cw-btn  quantity-minus" (click)="removeQuantity()">-</a>
             <input
@@ -43,18 +43,18 @@
   </div>
 </div>
 <div class="prod-item py-2" *ngIf="isMobile">
-  <div class="row m-0">
-    <div class="col1 col-4 ">
+  <div class="flex flex-wrap  m-0">
+    <div class="col1 w-1/3 ">
       <img [src]="image" alt="" />
     </div>
-    <div class="col2 col-8">
-      <div class="row m-0">
-        <div class="prod-name col-12">
+    <div class="col2 w-2/3">
+      <div class="flex flex-wrap  m-0">
+        <div class="prod-name w-full">
           <div class="c-gray">
             {{ name }}
           </div>
         </div>
-        <div class="size-qty-wrap col-12 p-0">
+        <div class="size-qty-wrap w-full p-0">
           <div class="size-qty buy-quantity">
             <a class="cw-btn  quantity-minus" (click)="removeQuantity()">-</a>
             <input

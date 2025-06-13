@@ -6,13 +6,13 @@
   >
     <ngu-item
       *nguCarouselDef="let product; let i = index"
-      class="col-6 col-sm-4 col-md-3 col-lg-2 product-box m-1 card p-1"
+      class="w-1/2 sm:w-1/3 pr-4 pl-4 md:w-1/4 pr-4 pl-4 lg:w-1/5 pr-4 pl-4 product-box m-1 relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 p-1"
     >
       <app-inner-product [product]="product" [showRating]="showRating">
       </app-inner-product>
     </ngu-item>
-    <button NguCarouselPrev class="leftRs d-none d-sm-block"></button>
-    <button NguCarouselNext class="rightRs d-none d-sm-block"></button>
+    <button NguCarouselPrev class="leftRs hidden sm:block"></button>
+    <button NguCarouselNext class="rightRs hidden sm:block"></button>
   </ngu-carousel>
   <hr />
 </section>

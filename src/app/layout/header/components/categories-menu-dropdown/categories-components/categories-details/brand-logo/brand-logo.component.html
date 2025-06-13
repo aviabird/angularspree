@@ -1,11 +1,11 @@
-<div class="row pl-3" *ngIf="brandList">
+<div class="flex flex-wrap  pl-3" *ngIf="brandList">
   <div class="clearfix"></div>
   <div
     *ngFor="let brand of (brandList | slice: 0:5)"
     class="menu-popular-brand-list-item mr-1"
   >
     <a [routerLink]="['/s']" [queryParams]="{ f: 'Brand:' + brand.name }">
-      <img [src]="getBrandImageUrl(brand.icon)" class="img-fluid  p-1" />
+      <img [src]="getBrandImageUrl(brand.icon)" class="max-w-full h-auto  p-1" />
     </a>
   </div>
 </div>

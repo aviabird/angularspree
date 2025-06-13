@@ -1,28 +1,28 @@
 <ngx-json-ld [json]="schema"></ngx-json-ld>
 <div *ngIf="!isMobile">
-  <div class="container">
+  <div class="container mx-auto sm:px-4">
     <div
       itemscope
       itemtype="https://schema.org/Product"
       *ngIf="product != null"
-      class="row pt-5"
+      class="flex flex-wrap  pt-5"
     >
-      <div class="col-12 col-md-5">
+      <div class="w-full md:w-2/5 pr-4 pl-4">
         <app-image-container
           [images]="images"
-          class="col-12"
+          class="w-full"
           [selectedImage]="selectedImage"
         >
         </app-image-container>
       </div>
-      <div class="col-md-7 col-12">
+      <div class="md:w-3/5 pr-4 pl-4 w-full">
         <app-product-price-info
           [brand]="brand"
           [product]="product"
           (onAddToCart)="addToCart($event)"
           (onMarkAsFavorites)="markAsFavorite()"
           (selectedVariant)="selectVariant($event)"
-          class="row"
+          class="flex flex-wrap "
         >
         </app-product-price-info>
       </div>
@@ -30,54 +30,54 @@
   </div>
   <div *ngIf="(relatedProducts$ | async); let relatedProducts">
     <div class="slider" *ngIf="relatedProducts.length > 0">
-      <div class="container">
-        <h2 class="position-absolute">Related products</h2>
+      <div class="container mx-auto sm:px-4">
+        <h2 class="absolute">Related products</h2>
         <app-product-slider
           [productsList]="relatedProducts"
         ></app-product-slider>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
+  <div class="container mx-auto sm:px-4">
+    <div class="flex flex-wrap ">
+      <div class="w-full">
         <h1 class="mt-2">
           Description
         </h1>
-        <app-product-description [description]="description" class="row">
+        <app-product-description [description]="description" class="flex flex-wrap ">
         </app-product-description>
       </div>
     </div>
   </div>
   <div *ngIf="(similarProducts$ | async); let similarProducts">
     <div class="slider" *ngIf="similarProducts.length > 0">
-      <div class="container">
-        <h2 class="position-absolute">Similar products</h2>
+      <div class="container mx-auto sm:px-4">
+        <h2 class="absolute">Similar products</h2>
         <app-product-slider
           [productsList]="similarProducts"
         ></app-product-slider>
       </div>
     </div>
   </div>
-  <div class="container pt-2">
+  <div class="container mx-auto sm:px-4 pt-2">
     <app-product-review [product]="product"></app-product-review>
   </div>
 </div>
 <div *ngIf="isMobile" class="bg">
-  <div class="container p-0">
+  <div class="container mx-auto sm:px-4 p-0">
     <div
       itemscope
       itemtype="https://schema.org/Product"
       *ngIf="product != null"
-      class="row m-0 pt-2"
+      class="flex flex-wrap  m-0 pt-2"
     >
-      <div class="col-12">
+      <div class="w-full">
         <h1 itemprop="name" class="title">{{ product.name }}</h1>
       </div>
     </div>
-    <div class="col-12">
-      <div class="row m-0">
-        <div class="product-subtitle col-5 p-0">
+    <div class="w-full">
+      <div class="flex flex-wrap  m-0">
+        <div class="product-subtitle w-2/5 p-0">
           <a
             [routerLink]="['/s']"
             [queryParams]="{ f: 'Brand:' + brand.name }"
@@ -87,7 +87,7 @@
             {{ brand.name }}
           </a>
         </div>
-        <div class="product-header-extras col-7 p-0">
+        <div class="product-header-extras w-3/5 p-0">
           <div class="ugc pr-3">
             <a
               class="hide-phone js-revScrollTo reviewlink"
@@ -104,7 +104,7 @@
               </span>
             </a>
           </div>
-          <!-- <div class="product-header-extras col-7 p-0">
+          <!-- <div class="product-header-extras w-3/5 p-0">
             <div class="ugc pr-3">
               <a class="hide-phone js-revScrollTo">
                 <ngx-input-star-rating disabled="true" value="{{product.avg_rating }}" class="rating" required></ngx-input-star-rating>
@@ -114,23 +114,23 @@
           </div> -->
         </div>
       </div>
-      <div class="col-12 col-md-5">
+      <div class="w-full md:w-2/5 pr-4 pl-4">
         <app-image-container
           [images]="images"
           [isMobile]="isMobile"
-          class="col-12"
+          class="w-full"
           [selectedImage]="images[0]"
         >
         </app-image-container>
       </div>
-      <div class="col-md-7 col-12 p-0 p-sm-0">
+      <div class="md:w-3/5 pr-4 pl-4 w-full p-0 sm:p-0">
         <app-product-price-info
           [product]="product"
           [isMobile]="isMobile"
           (onAddToCart)="addToCart($event)"
           (onMarkAsFavorites)="markAsFavorite()"
           (selectedVariant)="selectVariant($event)"
-          class="row"
+          class="flex flex-wrap "
         >
         </app-product-price-info>
       </div>
@@ -138,22 +138,22 @@
   </div>
   <div *ngIf="(relatedProducts$ | async); let relatedProducts">
     <div class="slider mb-5 pb-4" *ngIf="relatedProducts.length > 0">
-      <div class="container">
-        <h2 class="position-absolute">Related products</h2>
+      <div class="container mx-auto sm:px-4">
+        <h2 class="absolute">Related products</h2>
 
         <!-- <app-product-slider [productsList]="relatedProducts"></app-product-slider> -->
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 mt-3 mb-3">
+  <div class="container mx-auto sm:px-4">
+    <div class="flex flex-wrap ">
+      <div class="w-full mt-3 mb-3">
         <h1 class="mt-2">
           Description
         </h1>
         <app-product-description
           [description]="product.description"
-          class="row"
+          class="flex flex-wrap "
         >
         </app-product-description>
       </div>
@@ -161,13 +161,13 @@
   </div>
   <div *ngIf="(similarProducts$ | async); let similarProducts">
     <div class="slider mb-3 pb-4 pt-3 " *ngIf="similarProducts.length > 0">
-      <div class="container">
-        <h2 class="position-absolute">Similar products</h2>
+      <div class="container mx-auto sm:px-4">
+        <h2 class="absolute">Similar products</h2>
         <!-- <app-product-slider [productsList]="similarProducts"></app-product-slider> -->
       </div>
     </div>
   </div>
-  <div class="container pt-2">
+  <div class="container mx-auto sm:px-4 pt-2">
     <app-product-review
       [product]="product"
       [isMobile]="isMobile"

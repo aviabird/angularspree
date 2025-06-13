@@ -10,7 +10,7 @@ import { NguCarouselConfig } from '@ngu/carousel';
 @Component({
   selector: 'app-image-container',
   templateUrl: './product-images.component.html',
-  styleUrls: ['./product-images.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductImagesComponent implements OnInit {

@@ -4,7 +4,7 @@
 >
   <div class="product-image-container">
     <picture
-      class="img-responsive d-block bg-rand-{{ '' | random: 1:10 }}"
+      class="img-responsive block bg-rand-{{ '' | random: 1:10 }}"
       [ngClass]="{ 'bg-img-none': imageLoaded }"
     >
       <img
@@ -14,16 +14,16 @@
         [errorImage]="noImageUrl"
         [lazyLoad]="getProductImageUrl()"
         [offset]="100"
-        class="img-responsive w-100 h-100"
+        class="img-responsive w-full h-full"
       />
     </picture>
   </div>
   <div class="product-meta-info mb-2">
     <b
-      class="product-brand text-capitalize font-weight-lighter text-truncate"
+      class="product-brand capitalize font-weight-lighter truncate"
       >{{ product.brand?.name || '&nbsp;' }}</b
     >
-    <div class="product-name text-truncate">{{ product.name }}</div>
+    <div class="product-name truncate">{{ product.name }}</div>
     <div class="product-price">
       <span>
         <b class="product-discountedPrice">

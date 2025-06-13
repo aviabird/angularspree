@@ -5,7 +5,7 @@ import { isPlatformBrowser } from '../../../../../../node_modules/@angular/commo
 @Component({
   selector: 'app-footer-contact-info',
   templateUrl: './footer-contact-info.component.html',
-  styleUrls: ['./footer-contact-info.component.scss']
+  
 })
 export class FooterContactInfoComponent implements OnInit {
   contact_info = environment.config.contact_info;

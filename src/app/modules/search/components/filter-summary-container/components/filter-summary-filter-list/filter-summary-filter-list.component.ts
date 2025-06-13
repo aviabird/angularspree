@@ -5,7 +5,7 @@ import { SearchingService } from '../../../../services';
 @Component({
   selector: 'app-filter-summary-filter-list',
   templateUrl: './filter-summary-filter-list.component.html',
-  styleUrls: ['./filter-summary-filter-list.component.scss']
+  
 })
 export class FilterSummaryFilterListComponent implements OnInit {
   @Input() appliedParams: SearchAppliedParams;

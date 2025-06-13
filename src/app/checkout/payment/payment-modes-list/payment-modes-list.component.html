@@ -35,14 +35,14 @@
   <br />
   <br />
   <div *ngIf="showDummyCardInfo && selectedMode?.code === 'hpm'">
-    <div class="alert alert-success">
+    <div class="relative px-3 py-3 mb-4 border rounded bg-green-200 border-green-300 text-green-800">
       <h6>
         <strong>Note:</strong> Use following <strong>Test Card</strong> for
         making payment with {{ selectedMode?.name }}
       </h6>
     </div>
-    <div class="alert alert-warning">
-      <table class="table table-sm table-bordered">
+    <div class="relative px-3 py-3 mb-4 border rounded bg-orange-200 border-orange-300 text-orange-800">
+      <table class="w-full max-w-full mb-4 bg-transparent p-1 table-bordered">
         <tr>
           <th>Card Type</th>
           <td>VISA</td>

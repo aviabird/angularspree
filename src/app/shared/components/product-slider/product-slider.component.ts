@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'app-product-slider',
   templateUrl: './product-slider.component.html',
-  styleUrls: ['./product-slider.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductSliderComponent implements OnInit {

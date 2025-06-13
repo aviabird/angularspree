@@ -21,7 +21,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ProfileDropdownComponent } from './header/components/profile-dropdown/profile-dropdown.component';
 import { HeaderSearchComponent } from './header/components/header-search/header-search.component';
 import { HeaderCartComponent } from './header/components/header-cart/header-cart.component';
-import { HeaderHelpDropdownComponent } from './header/components/header-help-dropdown/header-help-dropdown.component';
 import { CategoryMobileMenuComponent } from './header/components/category-mobile-menu/category-mobile-menu.component';
 // Modules
 import { SharedModule } from '../shared/index';
@@ -37,7 +36,6 @@ import { LayoutEffects } from './effects/layout.effects';
     HeaderComponent,
     HeaderSearchComponent,
     HeaderCartComponent,
-    HeaderHelpDropdownComponent,
     FooterComponent,
     CategoriesMenuDropdownComponent,
     BrandMenuDropdownComponent,

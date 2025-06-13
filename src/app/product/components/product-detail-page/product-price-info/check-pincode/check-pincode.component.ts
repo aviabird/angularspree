@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-check-pincode',
   templateUrl: './check-pincode.component.html',
-  styleUrls: ['./check-pincode.component.scss']
+  
 })
 export class CheckPincodeComponent implements OnInit {
   checkPincodeForm: UntypedFormGroup;

@@ -24,7 +24,7 @@ import { CheckoutService } from '../../../../core/services/checkout.service';
 @Component({
   selector: 'app-cash-on-delivery',
   templateUrl: './cash-on-delivery.component.html',
-  styleUrls: ['./cash-on-delivery.component.scss']
+  
 })
 export class CashOnDeliveryComponent implements OnInit, OnDestroy {
   @Output() payOnDelivery: EventEmitter<boolean> = new EventEmitter<boolean>();

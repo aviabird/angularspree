@@ -23,7 +23,7 @@ import {
 @Component({
   selector: 'app-categories-details',
   templateUrl: './categories-details.component.html',
-  styleUrls: ['./categories-details.component.scss'],
+  
   encapsulation: ViewEncapsulation.None,
   animations: [
     trigger('popOverState', [

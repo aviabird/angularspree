@@ -6,7 +6,7 @@ import { PasswordMatchValidator } from '../../../../shared/custom-validator/pass
 @Component({
   selector: 'app-profile-password',
   templateUrl: './profile-password.component.html',
-  styleUrls: ['./profile-password.component.scss']
+  
 })
 export class ProfilePasswordComponent implements OnInit {
   @Input() userDetails;

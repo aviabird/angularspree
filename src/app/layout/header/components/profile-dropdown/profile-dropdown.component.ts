@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-profile-dropdown',
   templateUrl: './profile-dropdown.component.html',
-  styleUrls: ['./profile-dropdown.component.scss'],
+  
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileDropdownComponent implements OnInit, OnChanges, OnDestroy {
