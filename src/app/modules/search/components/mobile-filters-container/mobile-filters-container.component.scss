@@ -1,0 +1,34 @@
+.mobile-bottom-nav {
+  border-top: 1px solid #eaeaec;
+  text-align: center;
+  background: white;
+  padding: 0;
+  a {
+    background: white;
+    color: #ff3e6c;
+    width: 50%;
+    height: 50px;
+    padding: 14px 0px;
+    font-size: 14px;
+    letter-spacing: 0.9px;
+    display: block;
+    margin: 0;
+    float: left;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    &.b-right {
+      ::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        background: #eaeaec;
+        height: 22px;
+        margin-top: 15px;
+        content: '';
+        z-index: 1;
+      }
+    }
+  }
+}

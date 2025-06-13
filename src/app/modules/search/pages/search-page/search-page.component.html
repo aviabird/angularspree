@@ -31,6 +31,14 @@
       [searchResults]="searchResults"
     ></app-search-results-container>
   </div>
+  <div class="d-block d-sm-none">
+    <app-mobile-filters-container
+      [appliedParams]="appliedParams"
+      [metaInfo]="metaInfo"
+      (filterCleared)="clearFilters()"
+      (filterUpdated)="updateFilters($event)"
+    ></app-mobile-filters-container>
+  </div>
 </section>
 
 <ng-template #notFound>
